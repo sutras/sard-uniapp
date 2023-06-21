@@ -1,0 +1,17 @@
+{
+  "name": "sard-uniapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "devDependencies": {},
+  "scripts": {
+    "dev": "sard dev",
+    "build:site": "sard build:site",
+    "build": "sard build",
+    "preview": "sard preview",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC"
+}

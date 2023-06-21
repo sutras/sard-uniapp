@@ -1,0 +1,65 @@
+.doc-code {
+  margin: 0 -20px -20px !important;
+  padding: 0 20px;
+
+  @at-root {
+    &-header {
+      display: flex;
+      justify-content: flex-end;
+      padding: 10px 0;
+      border-top: 1px dashed var(--doc-border-color);
+      transition: border-radius 0.1s ease-out;
+      user-select: none;
+    }
+    &-tool {
+      display: flex;
+
+      &-item {
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 30px;
+        height: 30px;
+        font-size: 16px;
+        cursor: pointer;
+      }
+
+      &-item ~ &-item {
+        margin-left: 5px;
+      }
+
+      &-icon {
+        color: var(--doc-tertiary-color);
+      }
+      &-item:hover &-icon {
+        color: var(--doc-emphasis-color);
+      }
+    }
+    &-copy-success {
+      position: absolute;
+      bottom: 100%;
+      left: 50%;
+      transform: translateX(-50%);
+      white-space: nowrap;
+      font-size: 14px;
+      color: var(--doc-secondary-color);
+      pointer-events: none;
+    }
+
+    &-body {
+      padding-bottom: 20px;
+
+      pre[class*='language-'] {
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .doc-code {
+    margin: 0 -15px -20px !important;
+    padding: 0 15px;
+  }
+}

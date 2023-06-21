@@ -1,0 +1,115 @@
+@mixin border-base($color) {
+  position: absolute;
+  background-color: $color;
+  pointer-events: none;
+  opacity: 1;
+  content: '';
+  @content;
+}
+
+@mixin border-vertical-base($color) {
+  @include border-base($color) {
+    left: 0;
+    right: 0;
+    height: 1px;
+    transform: scaleY(0.5);
+    @content;
+  }
+}
+
+@mixin border-horizontal-base($color) {
+  @include border-base($color) {
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    transform: scaleX(0.5);
+    @content;
+  }
+}
+
+@mixin border-top($color) {
+  &::before {
+    @include border-vertical-base($color) {
+      top: 0;
+      transform-origin: top center;
+      @content;
+    }
+  }
+}
+
+@mixin border-bottom($color) {
+  &::after {
+    @include border-vertical-base($color) {
+      bottom: 0;
+      transform-origin: bottom center;
+      @content;
+    }
+  }
+}
+
+@mixin border-vertical($color) {
+  &::before,
+  &::after {
+    @include border-vertical-base($color) {
+      @content;
+    }
+  }
+  &::before {
+    top: 0;
+    transform-origin: top center;
+  }
+  &::after {
+    bottom: 0;
+    transform-origin: bottom center;
+  }
+}
+
+@mixin border-left($color) {
+  &::before {
+    @include border-horizontal-base($color) {
+      left: 0;
+      transform-origin: left center;
+      @content;
+    }
+  }
+}
+
+@mixin border-right($color) {
+  &::before {
+    @include border-horizontal-base($color) {
+      right: 0;
+      transform-origin: right center;
+      @content;
+    }
+  }
+}
+
+@mixin border-horizontal($color) {
+  &::before,
+  &::after {
+    @include border-horizontal-base($color) {
+      @content;
+    }
+  }
+  &::before {
+    left: 0;
+    transform-origin: left center;
+  }
+  &::after {
+    right: 0;
+    transform-origin: right center;
+  }
+}
+
+@mixin border($color) {
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  bottom: -50%;
+  left: -50%;
+  border: 1px solid $color;
+  transform: scale(0.5);
+  pointer-events: none;
+  content: '';
+  @content;
+}

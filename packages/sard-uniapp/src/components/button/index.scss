@@ -1,0 +1,261 @@
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+:root {
+  --s-button-height: 36px;
+  --s-button-padding-y: 0;
+  --s-button-padding-x: 15px;
+  --s-button-border-radius: var(--s-rounded);
+  --s-button-font-size: var(--s-text-base);
+
+  --s-button-height-sm: 28px;
+  --s-button-padding-y-sm: 0;
+  --s-button-padding-x-sm: 8px;
+  --s-button-border-radius-sm: var(--s-rounded-sm);
+  --s-button-font-size-sm: var(--s-text-sm);
+
+  --s-button-height-lg: 50px;
+  --s-button-padding-y-lg: 0;
+  --s-button-padding-x-lg: 20px;
+  --s-button-border-radius-lg: var(--s-rounded-lg);
+  --s-button-font-size-lg: var(--s-text-lg);
+
+  --s-button-line-height: var(--s-leading-normal);
+
+  --s-button-border-width: 1px;
+
+  --s-button-transition-duration: var(--s-duration);
+
+  --s-button-active-opacity: var(--s-active-opacity);
+
+  --s-button-content-color: var(--s-white);
+
+  --s-button-mild-bg: var(--s-gray-200);
+
+  --s-button-pale-bg-opacity: 0.25;
+
+  --s-button-text-active-bg: var(--s-gray-200);
+
+  --s-button-loading-pointer-events: var(--s-loading-pointer-events);
+  --s-button-loading-opacity: var(--s-loading-opacity);
+  --s-button-loading-cursor: var(--s-loading-cursor);
+  --s-button-loading-text-margin-left: 0.5em;
+}
+
+[data-s-theme='dark'] {
+  --s-button-text-active-bg: var(--s-gray-700);
+}
+// #endvariables
+
+.s-button {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  border: none;
+  border-radius: inherit;
+  vertical-align: middle;
+  font-family: inherit;
+  line-height: var(--s-button-line-height);
+  white-space: nowrap;
+  text-align: center;
+  background-clip: border-box;
+  background-color: currentColor;
+  user-select: none;
+  cursor: pointer;
+  transition: var(--s-button-transition-duration);
+
+  @include button-size(
+    var(--s-button-height),
+    var(--s-button-padding-y),
+    var(--s-button-padding-x),
+    var(--s-button-border-radius),
+    var(--s-button-font-size)
+  );
+
+  &::before,
+  &::after {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    box-sizing: content-box;
+    width: 100%;
+    height: 100%;
+    transform: translate(-50%, -50%);
+    border-width: inherit;
+    border-style: solid;
+    border-color: transparent;
+    border-radius: inherit;
+    pointer-events: none;
+    background-clip: border-box;
+    background-color: currentColor;
+    opacity: 0;
+    color: inherit;
+    content: '';
+    transition: opacity 0.2s cubic-bezier(0.4, 0, 0.6, 1);
+  }
+
+  &::after {
+    background-color: rgba(0, 0, 0, 0.125);
+  }
+
+  @at-root {
+    .s-button-content {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      user-select: none;
+      color: var(--s-button-content-color);
+    }
+  }
+
+  @include button-active {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+// # 尺寸
+.s-button-small {
+  @include button-size(
+    var(--s-button-height-sm),
+    var(--s-button-padding-y-sm),
+    var(--s-button-padding-x-sm),
+    var(--s-button-border-radius-sm),
+    var(--s-button-font-size-sm)
+  );
+}
+.s-button-large {
+  @include button-size(
+    var(--s-button-height-lg),
+    var(--s-button-padding-y-lg),
+    var(--s-button-padding-x-lg),
+    var(--s-button-border-radius-lg),
+    var(--s-button-font-size-lg)
+  );
+}
+
+// # 圆形按钮
+.s-button-round {
+  border-radius: var(--s-rounded-full);
+}
+
+// # 块级按钮
+.s-button-block {
+  display: flex;
+  width: 100%;
+}
+
+// # 禁用状态
+.s-button[disabled],
+.s-button-disabled {
+  @include disabled;
+}
+
+// # 加载中
+.s-button-loading {
+  pointer-events: var(--s-button-loading-pointer-events);
+  opacity: var(--s-button-loading-opacity);
+  cursor: var(--s-button-loading-cursor);
+
+  @at-root {
+    .s-button-loading-text {
+      margin-left: var(--s-button-loading-text-margin-left);
+    }
+  }
+}
+
+// # 主题色
+@each $color, $value in $s-theme-colors {
+  .s-button-#{$color} {
+    color: $value;
+  }
+}
+
+// # 淡颜色类型
+.s-button-pale {
+  background-color: transparent;
+
+  .s-button-content {
+    color: currentColor;
+  }
+
+  &::before {
+    opacity: var(--s-button-pale-bg-opacity);
+  }
+
+  @include button-active {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+// # 温和类型
+.s-button-mild {
+  background-color: var(--s-button-mild-bg);
+
+  .s-button-content {
+    color: currentColor;
+  }
+
+  @include button-active {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+// # 轮廓类型
+.s-button-outline {
+  border: var(--s-button-border-width) solid currentColor;
+  background-color: transparent;
+
+  .s-button-content {
+    color: currentColor;
+  }
+
+  @include button-active {
+    &::after {
+      opacity: 1;
+    }
+  }
+}
+
+// # 文本类型
+.s-button-text {
+  background-color: transparent;
+
+  .s-button-content {
+    color: currentColor;
+  }
+
+  @include button-active {
+    background-color: var(--s-button-text-active-bg);
+
+    &::after {
+      opacity: 0;
+    }
+  }
+}
+
+// # 淡文本类型
+.s-button-pale-text {
+  background-color: transparent;
+
+  .s-button-content {
+    color: currentColor;
+  }
+
+  @include button-active {
+    opacity: var(--s-button-active-opacity);
+
+    &::after {
+      opacity: 0;
+    }
+  }
+}

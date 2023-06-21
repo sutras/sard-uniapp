@@ -1,0 +1,44 @@
+{
+  "name": "sard-uniapp",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npm run dev -w sard-uniapp",
+    "build:site": "npm run build:site -w sard-uniapp",
+    "build": "npm run build -w sard-uniapp",
+    "preview": "npm run preview -w sard-uniapp",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "prepare": "husky install",
+    "lint:eslint": "eslint --cache --max-warnings 0  \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "lint:prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,scss,css,less,md,vue}\"",
+    "lint:prettier:check": "prettier --check \"**/*.{ts,tsx,js,jsx,scss,css,less,md,vue}\"",
+    "commit": "commit"
+  },
+  "lint-staged": {
+    "**/*.{ts,tsx,js,jsx}": "eslint --fix",
+    "**/*.{ts,tsx,js,jsx,scss,css,md}": "prettier --write"
+  },
+  "author": "",
+  "license": "ISC",
+  "workspaces": [
+    "packages/sard-uniapp-cli",
+    "packages/sard-uniapp",
+    "packages/sard-uniapp-examples"
+  ],
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.5",
+    "@commitlint/config-conventional": "^17.6.5",
+    "@commitlint/prompt-cli": "^17.6.5",
+    "@typescript-eslint/eslint-plugin": "^5.59.11",
+    "@typescript-eslint/parser": "^5.59.11",
+    "eslint": "^8.43.0",
+    "eslint-config-prettier": "^8.8.0",
+    "eslint-plugin-prettier": "^4.2.1",
+    "eslint-plugin-vue": "^9.15.0",
+    "husky": "^8.0.3",
+    "lint-staged": "^13.2.2",
+    "prettier": "^2.8.8",
+    "vite-plugin-eslint": "^1.8.1"
+  }
+}

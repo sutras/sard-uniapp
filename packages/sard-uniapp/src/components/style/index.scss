@@ -1,0 +1,232 @@
+@use 'sass:color';
+@import './variables.scss';
+@import './functions.scss';
+
+// #variables
+:root {
+  // # 灰度值
+  --s-white: #{$s-white};
+  --s-gray-100: #{$s-gray-100};
+  --s-gray-200: #{$s-gray-200};
+  --s-gray-300: #{$s-gray-300};
+  --s-gray-400: #{$s-gray-400};
+  --s-gray-500: #{$s-gray-500};
+  --s-gray-600: #{$s-gray-600};
+  --s-gray-700: #{$s-gray-700};
+  --s-gray-800: #{$s-gray-800};
+  --s-gray-900: #{$s-gray-900};
+  --s-black: #{$s-black};
+
+  // # 灰度值 rgb
+  --s-white-rgb: #{extractRGB($s-white)};
+  --s-gray-100-rgb: #{extractRGB($s-gray-100)};
+  --s-gray-200-rgb: #{extractRGB($s-gray-200)};
+  --s-gray-300-rgb: #{extractRGB($s-gray-300)};
+  --s-gray-400-rgb: #{extractRGB($s-gray-400)};
+  --s-gray-500-rgb: #{extractRGB($s-gray-500)};
+  --s-gray-600-rgb: #{extractRGB($s-gray-600)};
+  --s-gray-700-rgb: #{extractRGB($s-gray-700)};
+  --s-gray-800-rgb: #{extractRGB($s-gray-800)};
+  --s-gray-900-rgb: #{extractRGB($s-gray-900)};
+  --s-black-rgb: #{extractRGB($s-black)};
+
+  // # 基础颜色
+  --s-blue: #{$s-blue};
+  --s-indigo: #{$s-indigo};
+  --s-purple: #{$s-purple};
+  --s-pink: #{$s-pink};
+  --s-red: #{$s-red};
+  --s-orange: #{$s-orange};
+  --s-yellow: #{$s-yellow};
+  --s-green: #{$s-green};
+  --s-teal: #{$s-teal};
+  --s-cyan: #{$s-cyan};
+
+  // # 基础颜色 rgb
+  --s-blue-rgb: #{extractRGB($s-blue)};
+  --s-indigo-rgb: #{extractRGB($s-indigo)};
+  --s-purple-rgb: #{extractRGB($s-purple)};
+  --s-pink-rgb: #{extractRGB($s-pink)};
+  --s-red-rgb: #{extractRGB($s-red)};
+  --s-orange-rgb: #{extractRGB($s-orange)};
+  --s-yellow-rgb: #{extractRGB($s-yellow)};
+  --s-green-rgb: #{extractRGB($s-green)};
+  --s-teal-rgb: #{extractRGB($s-teal)};
+  --s-cyan-rgb: #{extractRGB($s-cyan)};
+
+  // # 主题色
+  --s-primary: var(--s-blue);
+  --s-secondary: var(--s-gray-600);
+  --s-success: var(--s-green);
+  --s-info: var(--s-cyan);
+  --s-warning: var(--s-yellow);
+  --s-danger: var(--s-red);
+  --s-light: var(--s-gray-100);
+  --s-dark: var(--s-gray-900);
+
+  // # 主题色 rgb
+  --s-primary-rgb: var(--s-blue-rgb);
+  --s-secondary-rgb: var(--s-gray-600-rgb);
+  --s-success-rgb: var(--s-green-rgb);
+  --s-info-rgb: var(--s-cyan-rgb);
+  --s-warning-rgb: var(--s-yellow-rgb);
+  --s-danger-rgb: var(--s-red-rgb);
+  --s-light-rgb: var(--s-gray-100-rgb);
+  --s-dark-rgb: var(--s-gray-900-rgb);
+
+  // # 主题色 深文本
+  --s-primary-text: #{darken($s-blue, 20%)};
+  --s-secondary-text: #{darken($s-gray-600, 20%)};
+  --s-success-text: #{darken($s-green, 10%)};
+  --s-info-text: #{darken($s-cyan, 20%)};
+  --s-warning-text: #{darken($s-yellow, 20%)};
+  --s-danger-text: #{darken($s-red, 20%)};
+  --s-light-text: #{darken($s-gray-100, 20%)};
+  --s-dark-text: #{darken($s-gray-900, 20%)};
+
+  // # 灰度场景色
+  --s-body-color: var(--s-gray-900);
+  --s-body-bg: var(--s-gray-300);
+  --s-secondary-color: var(--s-gray-700);
+  --s-secondary-bg: var(--s-gray-200);
+  --s-tertiary-color: var(--s-gray-600);
+  --s-tertiary-bg: var(--s-gray-100);
+  --s-quaternary-color: var(--s-gray-500);
+  --s-quaternary-bg: var(--s-gray-100);
+  --s-emphasis-color: var(--s-black);
+  --s-emphasis-bg: var(--s-white);
+  --s-deemphasis-color: var(--s-gray-500);
+  --s-deemphasis-bg: var(--s-gray-500);
+  --s-border-color: var(--s-gray-300);
+  --s-active-bg: var(--s-gray-200);
+
+  // # 灰度场景色 rgb
+  --s-body-color-rgb: var(--s-gray-900-rgb);
+  --s-body-bg-rgb: var(--s-gray-300-rgb);
+  --s-secondary-color-rgb: var(--s-gray-700-rgb);
+  --s-secondary-bg-rgb: var(--s-gray-200-rgb);
+  --s-tertiary-color-rgb: var(--s-gray-600-rgb);
+  --s-tertiary-bg-rgb: var(--s-gray-100-rgb);
+  --s-quaternary-color-rgb: var(--s-gray-500-rgb);
+  --s-quaternary-bg-rgb: var(--s-gray-100-rgb);
+  --s-emphasis-color-rgb: var(--s-black-rgb);
+  --s-emphasis-bg-rgb: var(--s-white-rgb);
+  --s-deemphasis-color-rgb: var(--s-gray-500-rgb);
+  --s-deemphasis-bg-rgb: var(--s-gray-500-rgb);
+  --s-border-color-rgb: var(--s-gray-300-rgb);
+  --s-active-bg-rgb: var(--s-gray-200-rgb);
+
+  // # 圆角
+  --s-rounded-xs: 2px;
+  --s-rounded-sm: 4px;
+  --s-rounded: 6px;
+  --s-rounded-lg: 10px;
+  --s-rounded-xl: 14px;
+  --s-rounded-full: 9999px;
+
+  // # 字体
+  --s-font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+    Arial, 'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --s-font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --s-font-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+
+  // # 字号
+  --s-text-xs: 10px;
+  --s-text-sm: 12px;
+  --s-text-base: 14px;
+  --s-text-lg: 16px;
+  --s-text-xl: 24px;
+  --s-text-2xl: 32px;
+
+  // # 字重
+  --s-font-bold: 700;
+  --s-font-normal: 400;
+  --s-font-light: 300;
+
+  // # 行高
+  --s-leading-none: 1;
+  --s-leading-tight: 1.25;
+  --s-leading-snug: 1.375;
+  --s-leading-normal: 1.5;
+  --s-leading-relaxed: 1.625;
+  --s-leading-loose: 2;
+
+  // # 阴影
+  --s-shadow-sm: 0 1px 3px rgb(0 0 0 / 40%);
+  --s-shadow: 0 2px 6px rgb(0 0 0 / 5%);
+  --s-shadow-lg: 0 3px 12px rgb(0 0 0 / 8%);
+  --s-shadow-right: 1px 0 3px rgb(0 0 0 / 5%);
+
+  // # 黑色遮罩
+  --s-mask-legible: rgba(0, 0, 0, 0.1);
+  --s-mask: rgba(0, 0, 0, 0.5);
+  --s-mask-illegible: rgba(0, 0, 0, 0.7);
+
+  // # 白色遮罩
+  --s-mask-white-legible: rgba(255, 255, 255, 0.3);
+  --s-mask-white: rgba(255, 255, 255, 0.5);
+  --s-mask-white-illegible: rgba(255, 255, 255, 0.7);
+
+  // # 禁用状态
+  --s-disabled-pointer-events: none;
+  --s-disabled-opacity: 0.6;
+  --s-disabled-cursor: default;
+  --s-disabled-color: var(--s-deemphasis-color);
+  --s-disabled-filter: grayscale(100%);
+
+  // # 按下状态
+  --s-active-opacity: 0.5;
+
+  // # 加载状态
+  --s-loading-pointer-events: none;
+  --s-loading-opacity: 0.6;
+  --s-loading-cursor: default;
+
+  // # 过渡时间
+  --s-duration-slow: 500ms;
+  --s-duration: 300ms;
+  --s-duration-fast: 150ms;
+}
+
+[data-s-theme='dark'] {
+  // # 灰度场景色
+  --s-body-color: var(--s-gray-300);
+  --s-body-bg: var(--s-gray-900);
+  --s-secondary-color: var(--s-gray-400);
+  --s-secondary-bg: var(--s-gray-700);
+  --s-tertiary-color: var(--s-gray-500);
+  --s-tertiary-bg: var(--s-gray-700);
+  --s-quaternary-color: var(--s-gray-500);
+  --s-quaternary-bg: var(--s-gray-700);
+  --s-emphasis-color: var(--s-white);
+  --s-emphasis-bg: var(--s-gray-800);
+  --s-deemphasis-color: var(--s-gray-600);
+  --s-deemphasis-bg: var(--s-gray-300);
+  --s-border-color: var(--s-gray-600);
+  --s-active-bg: var(--s-gray-700);
+
+  // # 灰度场景色 rgb
+  --s-body-color-rgb: var(--s-gray-300-rgb);
+  --s-body-bg-rgb: var(--s-gray-900-rgb);
+  --s-secondary-color-rgb: var(--s-gray-400-rgb);
+  --s-secondary-bg-rgb: var(--s-gray-700-rgb);
+  --s-tertiary-color-rgb: var(--s-gray-500-rgb);
+  --s-tertiary-bg-rgb: var(--s-gray-700-rgb);
+  --s-quaternary-color-rgb: var(--s-gray-500-rgb);
+  --s-quaternary-bg-rgb: var(--s-gray-700-rgb);
+  --s-emphasis-color-rgb: var(--s-white-rgb);
+  --s-emphasis-bg-rgb: var(--s-gray-800-rgb);
+  --s-deemphasis-color-rgb: var(--s-gray-600-rgb);
+  --s-deemphasis-bg-rgb: var(--s-gray-300-rgb);
+  --s-border-color-rgb: var(--s-gray-600-rgb);
+  --s-active-bg-rgb: var(--s-gray-700-rgb);
+
+  // # 阴影
+  --s-shadow-sm: 0 1px 3px rgb(0 0 0 / 75%);
+  --s-shadow: 0 2px 6px rgb(0 0 0 / 15%);
+  --s-shadow-lg: 0 3px 12px rgb(0 0 0 / 25%);
+  --s-shadow-right: 1px 0 3px rgb(0 0 0 / 25%);
+}
+// #endvariables

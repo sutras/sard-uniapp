@@ -1,0 +1,13 @@
+# npm
+node_modules/
+package-lock.json
+
+# dist
+dist/
+docs/
+
+# eslint
+.eslintcache
+
+# others
+.DS_Store

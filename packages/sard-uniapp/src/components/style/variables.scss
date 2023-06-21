@@ -1,0 +1,44 @@
+// # 灰度值
+$s-white: #fff !default;
+$s-gray-100: #f8f9fa !default;
+$s-gray-200: #e9ecef !default;
+$s-gray-300: #dee2e6 !default;
+$s-gray-400: #ced4da !default;
+$s-gray-500: #adb5bd !default;
+$s-gray-600: #6c757d !default;
+$s-gray-700: #495057 !default;
+$s-gray-800: #343a40 !default;
+$s-gray-900: #212529 !default;
+$s-black: #000 !default;
+
+// # 颜色
+$s-blue: #0d6efd !default;
+$s-indigo: #6610f2 !default;
+$s-purple: #6f42c1 !default;
+$s-pink: #d63384 !default;
+$s-red: #dc3545 !default;
+$s-orange: #fd7e14 !default;
+$s-yellow: #ffc107 !default;
+$s-green: #198754 !default;
+$s-teal: #20c997 !default;
+$s-cyan: #0dcaf0 !default;
+
+// # 主题色
+$s-primary: $s-blue !default;
+$s-secondary: $s-gray-600 !default;
+$s-success: $s-green !default;
+$s-info: $s-cyan !default;
+$s-warning: $s-yellow !default;
+$s-danger: $s-red !default;
+$s-light: $s-gray-100 !default;
+$s-dark: $s-gray-900 !default;
+
+// # 主题色列表
+$s-theme-colors: (
+  primary: var(--s-primary),
+  secondary: var(--s-secondary),
+  success: var(--s-success),
+  info: var(--s-info),
+  warning: var(--s-warning),
+  danger: var(--s-danger),
+) !default;

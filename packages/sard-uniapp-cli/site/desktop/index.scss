@@ -1,0 +1,10 @@
+@import './components/style/index.scss';
+
+code[class*='language-'],
+pre[class*='language-'] {
+  color: var(--doc-white);
+}
+
+pre[class*='language-'] {
+  margin: 0 0 15px;
+}
