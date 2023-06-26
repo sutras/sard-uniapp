@@ -23,8 +23,7 @@
   "license": "ISC",
   "workspaces": [
     "packages/sard-uniapp-cli",
-    "packages/sard-uniapp",
-    "packages/sard-uniapp-examples"
+    "packages/sard-uniapp"
   ],
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
@@ -40,5 +39,8 @@
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "vite-plugin-eslint": "^1.8.1"
+  },
+  "dependencies": {
+    "vue": "^3.3.4"
   }
 }

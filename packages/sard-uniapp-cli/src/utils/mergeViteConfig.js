@@ -1,21 +1,22 @@
 import { relative, resolve } from 'node:path'
 import vue from '@vitejs/plugin-vue'
 import autoprefixer from 'autoprefixer'
-import {
-  CWD,
-  DEV_PORT,
-  PREVIEW_PORT,
-  sardConfig,
-  SITE_DIR,
-} from '../utils/constants.js'
 import { transformIndexHtml } from '../plugins/transformIndexHtml.js'
 import { loadSardConfig } from '../plugins/loadSardConfig.js'
 import { transformRouter } from '../plugins/transformRouter.js'
 import { transformMarkdown } from '../plugins/transformMarkdown.js'
 import { loadStyles } from '../plugins/loadStyles.js'
 import { transformDemo } from '../plugins/transformDemo.js'
-import { deepMerge } from './deepMerge.js'
 import { transformMobileUrl } from '../plugins/transformMobileUrl.js'
+import {
+  CWD,
+  SERVER_DEV_PORT,
+  SERVER_PREVIEW_PORT,
+  sardConfig,
+  SITE_DIR,
+  ROOT_DIR,
+} from './constants.js'
+import { deepMerge } from './deepMerge.js'
 
 export function mergeViteConfig(options) {
   return deepMerge(
@@ -37,7 +38,7 @@ export function mergeViteConfig(options) {
       base: sardConfig.base,
       publicDir: resolve(CWD, sardConfig.publicDir),
       server: {
-        port: DEV_PORT,
+        port: SERVER_DEV_PORT,
         host: true,
       },
       build: {
@@ -45,10 +46,20 @@ export function mergeViteConfig(options) {
         emptyOutDir: true,
       },
       preview: {
-        port: PREVIEW_PORT,
+        port: SERVER_PREVIEW_PORT,
       },
       resolve: {
-        alias: sardConfig.alias,
+        alias: [
+          ...sardConfig.alias,
+          {
+            find: '@@',
+            replacement: ROOT_DIR,
+          },
+          {
+            find: '@',
+            replacement: CWD,
+          },
+        ],
       },
       css: {
         postcss: {

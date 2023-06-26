@@ -1,15 +1,6 @@
-import pinyin from 'pinyin'
-import toUrlHandle from './toUrlHandle.js'
-
-const py = pinyin.default ?? pinyin
-
 export default function genHash(code) {
   return code.replace(/<h([123])>(.*?)<\/h\1>/g, (_, g1, g2) => {
-    const id = toUrlHandle(
-      py(g2, {
-        style: 'normal',
-      }).toString(),
-    )
+    const id = g2.replace(/\s/g, '')
 
     const anchor = `<a class="doc-anchor" href="#${id}">#</a>`
 

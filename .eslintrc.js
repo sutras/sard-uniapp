@@ -30,9 +30,11 @@ module.exports = {
     'prettier/prettier': 'error',
     'vue/multi-word-component-names': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
+    '@typescript-eslint/no-this-alias': 'off',
   },
   globals: {
     process: true,
     module: true,
+    uni: true,
   },
 }

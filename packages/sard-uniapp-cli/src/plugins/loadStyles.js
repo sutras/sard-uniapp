@@ -3,7 +3,7 @@ import { existsSync } from 'fs'
 import { resolve } from 'node:path'
 import { normalizePath } from 'vite'
 import {
-  SARD_CONFIG_NAME,
+  SARD_CONFIG_FILENAME,
   CUSTOM_PATH_R,
   CWD,
   sardConfig,
@@ -24,7 +24,7 @@ async function transform() {
         if (!existsSync(stylePath)) {
           logWarning(
             `Can't find module "${stylePath}"\n  File: ${chalk.cyan(
-              SARD_CONFIG_NAME,
+              SARD_CONFIG_FILENAME,
             )}`,
           )
           throw new Error()

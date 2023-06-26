@@ -1,0 +1,110 @@
+@use 'sass:math';
+
+// #variables
+page {
+  --sar-loading-icon-min-width: 16px;
+  --sar-loading-icon-min-height: 16px;
+  --sar-loading-icon-animation-duration: 0.8s;
+  --sar-loading-icon-border-width: 2px;
+  --sar-loading-icon-font-size: var(--sar-text-base);
+  --sar-loading-icon-color: var(--sar-tertiary-color);
+
+  --sar-loading-scale-width: 8%;
+  --sar-loading-scale-min-width: 1.5px;
+  --sar-loading-scale-height: 28%;
+  --sar-loading-scale-border-radius: 40%;
+
+  --sar-loading-text-margin-left: 0.5em;
+  --sar-loading-text-vertical-margin-top: 0.5em;
+  --sar-loading-text-font-size: var(--sar-text-base);
+  --sar-loading-text-color: var(--sar-tertiary-color);
+}
+// #endvariables
+
+.sar-loading {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  vertical-align: middle;
+
+  &.sar-loading-vertical {
+    flex-direction: column;
+  }
+
+  @at-root {
+    .sar-loading-icon {
+      position: relative;
+      box-sizing: border-box;
+      width: 1em;
+      height: 1em;
+      min-width: var(--sar-loading-icon-min-width);
+      min-height: var(--sar-loading-icon-min-height);
+      font-size: var(--sar-loading-icon-font-size);
+      color: var(--sar-loading-icon-color);
+    }
+
+    .sar-loading-text {
+      margin-left: var(--sar-loading-text-margin-left);
+      font-size: var(--sar-loading-text-font-size);
+      color: var(--sar-loading-text-color);
+
+      .sar-loading-vertical & {
+        margin-left: 0;
+        margin-top: var(--sar-loading-text-vertical-margin-top);
+      }
+    }
+  }
+}
+
+@keyframes sar-loading-rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(1turn);
+  }
+}
+
+// # clock
+$sar-loading-scale-number: 12;
+
+.sar-loading-clock {
+  animation: sar-loading-rotate var(--sar-loading-icon-animation-duration)
+    steps(#{$sar-loading-scale-number}) infinite;
+}
+
+.sar-loading-scale {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+
+  &:before {
+    display: flex;
+    width: var(--sar-loading-scale-width);
+    min-width: var(--sar-loading-scale-min-width);
+    height: var(--sar-loading-scale-height);
+    margin: 0 auto;
+    border-radius: var(--sar-loading-scale-border-radius);
+    content: '';
+    background-color: currentColor;
+  }
+}
+
+@for $i from 1 through $sar-loading-scale-number {
+  .sar-loading-scale:nth-child(#{$i}) {
+    opacity: tofixed(1 - math.div(1, $sar-loading-scale-number) * ($i - 1), 6);
+    transform: rotate(#{math.div(360, $sar-loading-scale-number) * $i}deg);
+  }
+}
+
+// # circular
+.sar-loading-circular {
+  border: 0.1em solid transparent;
+  border-radius: 100%;
+  border-top-color: initial;
+  animation: sar-loading-rotate var(--sar-loading-icon-animation-duration)
+    linear infinite;
+}

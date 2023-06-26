@@ -1,0 +1,30 @@
+@mixin button-active {
+  &:not([disabled]):not(.sar-button-disabled):not(.sar-button-loading):active {
+    @content;
+  }
+}
+
+@mixin button-size(
+  $height,
+  $padding-y,
+  $padding-x,
+  $border-radius,
+  $font-size
+) {
+  height: $height;
+  padding: $padding-y $padding-x;
+  border-radius: $border-radius;
+  font-size: $font-size;
+
+  &::after {
+    border-radius: calc($border-radius * 2);
+  }
+}
+
+@mixin button-flush {
+  margin: 0;
+  padding: 0;
+  border: none;
+  background-color: transparent;
+  color: inherit;
+}

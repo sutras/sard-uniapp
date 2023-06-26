@@ -1,0 +1,34 @@
+@import '../style/mixins.scss';
+
+$col-columns: 12;
+
+// #variables
+// #endvariables
+
+.sar-row {
+  display: flex;
+  flex-flow: row wrap;
+}
+
+// 等比率伸，不可缩，多时换行，不超过父元素宽度，固定比率不伸缩
+.sar-col {
+  box-sizing: border-box;
+  flex: 1 0 0;
+  width: 100%;
+  max-width: 100%;
+  min-height: 1px;
+}
+
+.sar-col-auto {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+.sar-col-none {
+  flex: 0 0 auto;
+  width: auto;
+}
+
+@include make-col($col-columns);
+
+@include make-offset($col-columns);

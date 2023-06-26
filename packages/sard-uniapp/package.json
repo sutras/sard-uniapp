@@ -1,9 +1,13 @@
 {
   "name": "sard-uniapp",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
+  "version": "1.0.1",
+  "description": "uniapp UI 组件库",
+  "main": "index.ts",
   "type": "module",
+  "files": [
+    "components",
+    "!.md"
+  ],
   "devDependencies": {},
   "scripts": {
     "dev": "sard dev",

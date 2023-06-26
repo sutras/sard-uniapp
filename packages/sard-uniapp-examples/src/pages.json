@@ -1,16 +1,66 @@
 {
-	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
-		{
-			"path": "pages/index/index",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		}
-	],
-	"globalStyle": {
-		"navigationBarTextStyle": "black",
-		"navigationBarTitleText": "uni-app",
-		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
-	}
+  "pages": [
+    //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationStyle": "custom",
+        "enablePullDownRefresh": true,
+        "mp-alipay": {
+          "transparentTitle": "always",
+          "titlePenetrate": "YES"
+        }
+      }
+    },
+    {
+      "path": "pages/components/button/index",
+      "style": {
+        "navigationBarTitleText": "Button 按钮"
+      }
+    },
+    {
+      "path": "pages/components/calendar/index",
+      "style": {
+        "navigationBarTitleText": "Calendar 日历"
+      }
+    },
+    {
+      "path": "pages/components/grid/index",
+      "style": {
+        "navigationBarTitleText": "Grid 栅格"
+      }
+    },
+    {
+      "path": "pages/components/icon/index",
+      "style": {
+        "navigationBarTitleText": "Icon 图标"
+      }
+    },
+    {
+      "path": "pages/components/loading/index",
+      "style": {
+        "navigationBarTitleText": "Loading 加载"
+      }
+    },
+    {
+      "path": "pages/components/style/index",
+      "style": {
+        "navigationBarTitleText": "Style 样式"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarBackgroundColor": "@navBgColor",
+    "navigationBarTextStyle": "@navTxtStyle",
+    "backgroundColor": "@bgColor",
+    "backgroundTextStyle": "@bgTxtStyle",
+    "backgroundColorTop": "@bgColorTop",
+    "backgroundColorBottom": "@bgColorBottom"
+  },
+  "easycom": {
+    "custom": {
+      "^sar-(.*)": "sard-uniapp/components/$1/index.vue",
+      "^doc-(.*)": "@/components/$1/index.vue"
+    }
+  }
 }

@@ -1,10 +1,4 @@
-import fse from 'fs-extra'
-import { resolve } from 'node:path'
-import {
-  CWD,
-  SARD_CONFIG_NAME,
-  VIRTUAL_SARD_CONFIG,
-} from '../utils/constants.js'
+import { VIRTUAL_SARD_CONFIG, sardConfig } from '../utils/constants.js'
 
 const resolvedModuleId = '\0' + VIRTUAL_SARD_CONFIG
 
@@ -19,7 +13,7 @@ export function loadSardConfig() {
     },
     load(id) {
       if (id === resolvedModuleId) {
-        return fse.readFileSync(resolve(CWD, SARD_CONFIG_NAME)).toString()
+        return 'export default ' + JSON.stringify(sardConfig)
       }
     },
   }

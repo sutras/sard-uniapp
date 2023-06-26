@@ -1,0 +1,21 @@
+@import './sari.scss';
+
+// #variables
+// #endvariables
+
+.sar-icon {
+  position: relative;
+  display: inline-flex;
+  vertical-align: middle;
+  font-size: inherit;
+  font-style: normal;
+  line-height: inherit;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.sar-icon-image {
+  display: block;
+  width: 1em;
+  height: 1em;
+  object-fit: contain;
+}

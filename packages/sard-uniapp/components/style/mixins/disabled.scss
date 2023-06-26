@@ -1,0 +1,10 @@
+@mixin disabled {
+  opacity: var(--sar-disabled-opacity);
+  cursor: var(--sar-disabled-cursor);
+  filter: var(--sar-disabled-filter);
+}
+
+@mixin disabled-text {
+  color: var(--sar-disabled-color);
+  cursor: var(--sar-disabled-cursor);
+}

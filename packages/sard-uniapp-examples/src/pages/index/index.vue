@@ -1,41 +1,63 @@
 <template>
   <view class="content">
-    <image class="logo" src="/static/logo.png" />
-    <view class="text-area">
-      <text class="title">{{ title }}</text>
+    <view class="header">
+      <view>
+        <view class="flex-row">
+          <image class="logo" src="/static/logo.svg" />
+          <text class="title">{{ title }}</text>
+        </view>
+        <view class="desc">
+          <text>{{ desc }}</text>
+        </view>
+      </view>
     </view>
+
+    <doc-menu></doc-menu>
   </view>
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-const title = ref('Hello')
+
+const title = ref('Sard uniapp')
+const desc = ref('uniapp UI 组件库')
 </script>
 
-<style>
+<style lang="scss" scoped>
 .content {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  padding: 100rpx 40rpx 40rpx;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.flex-row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 .logo {
-  height: 200rpx;
-  width: 200rpx;
-  margin-top: 200rpx;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 50rpx;
-}
-
-.text-area {
-  display: flex;
-  justify-content: center;
+  width: 32px;
+  height: 32px;
 }
 
 .title {
-  font-size: 36rpx;
-  color: #8f8f94;
+  margin-left: 10px;
+  font-size: 20px;
+}
+
+.desc {
+  margin-top: 10px;
+  font-size: 17px;
+  color: var(--sar-tertiary-color);
 }
 </style>

@@ -1,0 +1,4 @@
+@mixin notify-theme($color) {
+  color: $sar-white;
+  background-color: $color;
+}

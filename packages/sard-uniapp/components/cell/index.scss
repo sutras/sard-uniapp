@@ -1,0 +1,145 @@
+@import '../style/mixins.scss';
+
+// #variables
+page {
+  --sar-cell-min-height: 44px;
+  --sar-cell-padding-x: 16px;
+  --sar-cell-padding-y: 6px;
+  --sar-cell-border-color: var(--sar-border-color);
+  --sar-cell-active-bg: var(--sar-active-bg);
+  --sar-cell-transition-duration: var(--sar-duration-fast);
+  --sar-cell-disabled-opacity: var(--sar-disabled-opacity);
+
+  --sar-cell-header-gap-right: 10px;
+
+  --sar-cell-title-font-size: var(--sar-text-base);
+  --sar-cell-title-line-height: var(--sar-line-height);
+
+  --sar-cell-value-gap-left: 10px;
+  --sar-cell-value-font-size: var(--sar-text-base);
+  --sar-cell-value-line-height: var(--sar-leading-normal);
+  --sar-cell-value-color: var(--sar-tertiary-color);
+
+  --sar-cell-label-font-size: var(--sar-text-xs);
+  --sar-cell-label-line-height: var(--sar-leading-normal);
+  --sar-cell-label-color: var(--sar-tertiary-color);
+
+  --sar-cell-arrow-gap-left: 10px;
+  --sar-cell-arrow-font-size: var(--sar-text-xs);
+  --sar-cell-arrow-color: var(--sar-tertiary-color);
+}
+// #endvariables
+
+.sar-cell {
+  position: relative;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  padding-left: var(--sar-cell-padding-x);
+  padding-right: var(--sar-cell-padding-x);
+  transition: background-color var(--sar-cell-transition-duration);
+
+  &:first-child {
+    border-top-left-radius: inherit;
+    border-top-right-radius: inherit;
+  }
+
+  &:last-child {
+    border-bottom-left-radius: inherit;
+    border-bottom-right-radius: inherit;
+  }
+
+  &.sar-cell-is-link {
+    cursor: pointer;
+    &:active {
+      background-color: var(--sar-cell-active-bg);
+    }
+  }
+
+  @at-root {
+    .sar-cell-header {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-grow: 0;
+      padding-right: var(--sar-cell-header-gap-right);
+
+      .sar-cell + .sar-cell-inset & {
+        @include border-top(var(--sar-cell-border-color));
+      }
+    }
+    .sar-cell-content {
+      position: relative;
+      box-sizing: border-box;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: nowrap;
+      flex: auto;
+      min-height: var(--sar-cell-min-height);
+      padding-top: var(--sar-cell-padding-y);
+      padding-bottom: var(--sar-cell-padding-y);
+      overflow: hidden;
+
+      .sar-cell + .sar-cell & {
+        @include border-top(var(--sar-cell-border-color));
+      }
+
+      @at-root {
+        .sar-cell-body {
+          display: flex;
+          flex-direction: column;
+          justify-content: center;
+          flex: 1 0 auto;
+          overflow: hidden;
+          max-width: 100%;
+
+          @at-root {
+            .sar-cell-icon {
+              display: flex;
+              align-items: center;
+              flex: none;
+            }
+
+            .sar-cell-title {
+              font-size: var(--sar-cell-title-font-size);
+              line-height: var(--sar-cell-title-line-height);
+            }
+            .sar-cell-label {
+              font-size: var(--sar-cell-label-font-size);
+              line-height: var(--sar-cell-label-line-height);
+              color: var(--sar-cell-label-color);
+            }
+          }
+        }
+
+        .sar-cell-footer {
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+          flex: 0 1 auto;
+          overflow: hidden;
+          max-width: 100%;
+
+          @at-root {
+            .sar-cell-value {
+              margin-left: var(--sar-cell-value-gap-left);
+              font-size: var(--sar-cell-value-font-size);
+              line-height: var(--sar-cell-value-line-height);
+              color: var(--sar-cell-value-color);
+              word-wrap: break-word;
+              text-align: right;
+            }
+            .sar-cell-arrow {
+              margin-left: var(--sar-cell-arrow-gap-left);
+              font-size: var(--sar-cell-arrow-font-size);
+              font-weight: var(--sar-font-weight-bold);
+              color: var(--sar-cell-arrow-color);
+            }
+          }
+        }
+      }
+    }
+  }
+}

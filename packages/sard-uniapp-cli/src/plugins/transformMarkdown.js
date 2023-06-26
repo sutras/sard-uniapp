@@ -1,7 +1,6 @@
 import MarkdownIt from 'markdown-it'
 import { normalizePath } from 'vite'
 import path from 'node:path'
-import esbuild from 'esbuild'
 import { readFileSync, existsSync } from 'fs'
 import {
   MD_DEMO_CODE_R,
@@ -119,7 +118,7 @@ function transform(code, id, md) {
 
   const content = `<script setup lang="ts">
     import Demo from '${normalizePath(
-      path.resolve(ROOT_DIR, './site/desktop/components/Demo.vue'),
+      path.resolve(ROOT_DIR, './src/site/desktop/components/Demo.vue'),
     )}'
       ${sections
         .filter((section) => section.type === 'demo')
@@ -146,10 +145,6 @@ function transform(code, id, md) {
   `
 
   return content
-
-  // const result = esbuild.transformSync(content, { loader: 'js' })
-
-  // return result.code
 }
 
 export function transformMarkdown() {

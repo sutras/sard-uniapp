@@ -4,5 +4,8 @@
   "editor.formatOnSaveMode": "file",
   "[vue]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "files.associations": {
+    "*.json": "jsonc"
   }
 }

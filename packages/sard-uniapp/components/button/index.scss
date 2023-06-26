@@ -1,0 +1,311 @@
+@import '../style/variables.scss';
+@import '../style/mixins.scss';
+
+// #variables
+page {
+  --sar-button-height: 36px;
+  --sar-button-padding-y: 0;
+  --sar-button-padding-x: 15px;
+  --sar-button-border-radius: var(--sar-rounded);
+  --sar-button-font-size: var(--sar-text-base);
+
+  --sar-button-height-sm: 28px;
+  --sar-button-padding-y-sm: 0;
+  --sar-button-padding-x-sm: 8px;
+  --sar-button-border-radius-sm: var(--sar-rounded-sm);
+  --sar-button-font-size-sm: var(--sar-text-sm);
+
+  --sar-button-height-lg: 50px;
+  --sar-button-padding-y-lg: 0;
+  --sar-button-padding-x-lg: 20px;
+  --sar-button-border-radius-lg: var(--sar-rounded-lg);
+  --sar-button-font-size-lg: var(--sar-text-lg);
+
+  --sar-button-line-height: var(--sar-leading-normal);
+  --sar-button-border-color: var(--sar-border-color);
+  --sar-button-transition-duration: var(--sar-duration-fast);
+
+  --sar-button-active-opacity: var(--sar-active-opacity);
+  --sar-button-active-bg: rgba(0, 0, 0, 0.125);
+  --sar-button-mild-bg: var(--sar-gray-200);
+  --sar-button-pale-bg-opacity: 0.25;
+  --sar-button-text-active-bg: var(--sar-gray-200);
+
+  --sar-button-loading-opacity: var(--sar-loading-opacity);
+  --sar-button-loading-cursor: var(--sar-loading-cursor);
+  --sar-button-loading-text-margin-left: 0.5em;
+}
+
+@media (prefers-color-scheme: dark) {
+  page {
+    --sar-button-text-active-bg: var(--sar-gray-700);
+  }
+}
+// #endvariables
+
+.sar-button {
+  position: relative;
+  box-sizing: border-box;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  border: none;
+  vertical-align: middle;
+  font-family: inherit;
+  line-height: var(--sar-button-line-height);
+  white-space: nowrap;
+  text-align: center;
+  user-select: none;
+  cursor: pointer;
+  transition: var(--sar-button-transition-duration);
+
+  @include button-size(
+    var(--sar-button-height),
+    var(--sar-button-padding-y),
+    var(--sar-button-padding-x),
+    var(--sar-button-border-radius),
+    var(--sar-button-font-size)
+  );
+
+  // border
+  &::after {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    display: none;
+    width: 200%;
+    height: 200%;
+    border: 1px solid var(--sar-button-border-color);
+    transform: scale(0.5);
+    transform-origin: 0 0;
+    border-radius: calc(var(--sar-button-border-radius) * 2);
+    transition: var(--sar-button-transition-duration);
+  }
+
+  // shade
+  &::before {
+    content: ' ';
+    position: absolute;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    opacity: 0;
+    background-color: var(--sar-button-active-bg);
+    transition: var(--sar-button-transition-duration);
+  }
+}
+
+// # 尺寸
+.sar-button-small {
+  @include button-size(
+    var(--sar-button-height-sm),
+    var(--sar-button-padding-y-sm),
+    var(--sar-button-padding-x-sm),
+    var(--sar-button-border-radius-sm),
+    var(--sar-button-font-size-sm)
+  );
+}
+.sar-button-large {
+  @include button-size(
+    var(--sar-button-height-lg),
+    var(--sar-button-padding-y-lg),
+    var(--sar-button-padding-x-lg),
+    var(--sar-button-border-radius-lg),
+    var(--sar-button-font-size-lg)
+  );
+}
+
+// # 圆形按钮
+.sar-button-round {
+  border-radius: var(--sar-rounded-full);
+
+  &::after {
+    border-radius: var(--sar-rounded-full);
+  }
+}
+
+// # 块级按钮
+.sar-button-block {
+  display: flex;
+  width: 100%;
+}
+
+// # 禁用状态
+.sar-button-disabled {
+  @include disabled;
+}
+
+// # 加载状态
+.sar-button-loading {
+  opacity: var(--sar-button-loading-opacity);
+  cursor: var(--sar-button-loading-cursor);
+
+  @at-root {
+    .sar-button-loading-text {
+      margin-left: var(--sar-button-loading-text-margin-left);
+    }
+  }
+}
+
+// # 按钮类型
+
+// ## 默认类型
+.sar-button-default {
+  &,
+  &.sar-button-hover,
+  &.sar-button-disabled {
+    color: var(--sar-white);
+  }
+
+  &.sar-button-hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+// ## 淡颜色类型
+.sar-button-pale {
+  &.sar-button-hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+// ## 温和类型
+.sar-button-mild {
+  &.sar-button-hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+// ## 轮廓类型
+.sar-button-outline {
+  &::after {
+    display: flex;
+    border-color: currentColor;
+  }
+
+  &,
+  &.sar-button-hover {
+    background-color: transparent;
+  }
+
+  &.sar-button-hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+// ## 文本类型
+.sar-button-text {
+  &,
+  &.sar-button-hover {
+    background-color: transparent;
+  }
+
+  &.sar-button-hover {
+    &::before {
+      opacity: 1;
+    }
+  }
+}
+
+// ## 淡文本类型
+.sar-button-pale-text {
+  &,
+  &.sar-button-hover {
+    background-color: transparent;
+  }
+
+  &.sar-button-hover {
+    opacity: var(--sar-button-active-opacity);
+  }
+}
+
+// # 主题色
+@each $theme, $value in $sar-theme-colors {
+  $color: nth($value, 1);
+  $color-rgb: nth($value, 2);
+  $theme-class: '.sar-button-#{$theme}';
+
+  // ## 默认类型
+  .sar-button-default {
+    &#{$theme-class} {
+      &,
+      &.sar-button-disabled,
+      &.sar-button-loading {
+        color: var(--sar-white);
+        background-color: $color;
+      }
+    }
+  }
+
+  // ## 淡颜色类型
+  .sar-button-pale {
+    &#{$theme-class} {
+      &,
+      &.sar-button-disabled,
+      &.sar-button-loading {
+        color: $color;
+        background-color: rgba($color-rgb, var(--sar-button-pale-bg-opacity));
+      }
+    }
+  }
+
+  // ## 温和类型
+  .sar-button-mild {
+    &#{$theme-class} {
+      &,
+      &.sar-button-disabled,
+      &.sar-button-loading {
+        color: $color;
+        background-color: var(--sar-button-mild-bg);
+      }
+    }
+  }
+
+  // ## 轮廓类型
+  .sar-button-outline {
+    &#{$theme-class} {
+      &,
+      &.sar-button-disabled,
+      &.sar-button-loading {
+        color: $color;
+      }
+    }
+  }
+
+  // ## 文本类型
+  .sar-button-text {
+    &#{$theme-class} {
+      &,
+      &.sar-button-disabled,
+      &.sar-button-loading {
+        color: $color;
+      }
+    }
+  }
+
+  // ## 淡文本类型
+  .sar-button-pale-text {
+    &#{$theme-class} {
+      &,
+      &.sar-button-disabled,
+      &.sar-button-loading {
+        color: $color;
+      }
+    }
+  }
+}

@@ -1,37 +1,32 @@
 import { dirname, resolve } from 'node:path'
 import { fileURLToPath, pathToFileURL } from 'node:url'
-import { mergeSardConfig } from './mergeSardConfig.js'
+import { getMergeSardConfig } from './mergeSardConfig.js'
 
-// path
 export const ROOT_DIR = resolve(
   fileURLToPath(dirname(import.meta.url)),
   '../../',
 )
-export const SITE_DIR = resolve(ROOT_DIR, './site')
 
 export const CWD = process.cwd()
 
 // sard config
-export const SARD_CONFIG_NAME = 'sard.config.js'
+export const SARD_CONFIG_FILENAME = 'sard.config.js'
 
-const customConfig = (
-  await import(pathToFileURL(resolve(CWD, SARD_CONFIG_NAME)))
+const customSardconfig = (
+  await import(pathToFileURL(resolve(CWD, SARD_CONFIG_FILENAME)))
 ).default
 
-const mergedSardConfig = mergeSardConfig(customConfig)
-
-export const sardConfig = mergedSardConfig
+export const sardConfig = getMergeSardConfig(customSardconfig)
 
 // site
-export const DEV_PORT = 7761
-export const PREVIEW_PORT = 7760
-export const SITE_PATH_PREFIX = '@/site'
+export const SITE_DIR = resolve(ROOT_DIR, './src/site')
+
+export const SERVER_DEV_PORT = 7761
+export const SERVER_PREVIEW_PORT = 7760
 
 export const DEFAULT_README_NAME = 'README.md'
 
 export const VIRTUAL_SARD_CONFIG = 'virtual:sard-config'
-
-export const CONTEXT_PROVIDER_NAME = 'ContextProvider.tsx'
 
 export const DEMO_DIR = 'demo'
 
@@ -46,5 +41,5 @@ export const TEMP_STYLE_NAME = '__TEMP_STYLE__'
 
 // mobile
 export const MOBILE_COMP_PATH_R = /\/mobile\/index.vue$/
-export const MOBILE_URL_PLACEHOLDER = '__PLACEHOLDER__MOBILE_URL'
+export const MOBILE_URL_PLACEHOLDER = '__MOBILE_URL_PLACEHOLDER__'
 export const MOBILE_BUILD_PATH = '/sard/mobile/'
