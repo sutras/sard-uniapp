@@ -1,0 +1,97 @@
+@use '../style/base' as *;
+
+@include bem(keyboard) {
+  @include b() {
+    @include universal;
+    padding: var(--sar-keyboard-padding);
+    background-color: var(--sar-keyboard-bg);
+  }
+
+  @include e(content) {
+    @include universal;
+    flex-direction: row;
+    flex-wrap: wrap;
+    margin: calc(var(--sar-keyboard-key-gap) * -1)
+      calc(var(--sar-keyboard-key-gap) / 2 * -1) 0;
+  }
+
+  @include e(key-wrapper) {
+    @include universal;
+    margin-top: var(--sar-keyboard-key-gap);
+    padding: 0 calc(var(--sar-keyboard-key-gap) / 2);
+    flex: 1;
+  }
+
+  @include e(key) {
+    @include universal;
+    align-items: center;
+    justify-content: center;
+
+    height: var(--sar-keyboard-key-height);
+    border-radius: var(--sar-keyboard-key-border-radius);
+    font-size: var(--sar-keyboard-key-font-size);
+    color: var(--sar-keyboard-key-color);
+    background-color: var(--sar-keyboard-key-bg);
+    cursor: pointer;
+
+    &:active {
+      background-color: var(--sar-keyboard-key-active-bg);
+    }
+  }
+
+  @include e(intercept) {
+    width: 100%;
+  }
+
+  @include m(plate) {
+    @include e(key-wrapper) {
+      flex-basis: 10%;
+      flex-grow: 0;
+
+      @include m(A) {
+        margin-left: 5%;
+      }
+
+      @include m(backspace, toggle) {
+        flex-grow: 1;
+        max-width: 20%;
+
+        @include e(key) {
+          background-color: var(--sar-keyboard-key-plate-bg);
+
+          &:active {
+            background-color: var(--sar-keyboard-key-plate-active-bg);
+          }
+        }
+      }
+
+      @include m(toggle) {
+        margin-right: auto;
+      }
+
+      @include m(backspace) {
+        margin-left: auto;
+
+        @include e(key) {
+          font-size: var(--sar-keyboard-key-plate-backspace-font-size);
+        }
+      }
+    }
+
+    @include e(key) {
+      height: var(--sar-keyboard-key-plate-height);
+      border-radius: var(--sar-keyboard-key-plate-border-radius);
+      font-size: var(--sar-keyboard-key-plate-font-size);
+    }
+  }
+
+  @include m(number, digit, idcard, random) {
+    @include e(key-wrapper) {
+      flex-basis: 33.3333%;
+
+      @include m(backspace) {
+        max-width: 33.3333%;
+      }
+    }
+  }
+}

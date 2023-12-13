@@ -1,0 +1,112 @@
+@use '../style/base' as *;
+
+@include bem(form-item) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    padding: var(--sar-form-item-padding-y) var(--sar-form-item-padding-x);
+
+    &:not(:first-child) {
+      &::before {
+        @include border-top(var(--sar-form-item-border-color));
+        left: var(--sar-form-item-padding-x);
+        right: var(--sar-form-item-padding-x);
+      }
+    }
+  }
+
+  @include e(label) {
+    @include universal;
+    flex-direction: row;
+    flex: none;
+    width: var(--sar-form-item-label-width);
+    margin-right: var(--sar-form-item-label-margin-right);
+    font-size: var(--sar-form-item-label-font-size);
+    line-height: var(--sar-form-item-label-line-height);
+    word-wrap: break-word;
+    word-break: break-word;
+    gap: var(--sar-form-item-star-gap);
+  }
+
+  @include e(star) {
+    @include universal;
+    font-size: var(--sar-form-item-star-font-size);
+    line-height: var(--sar-form-item-star-line-height);
+    color: var(--sar-form-item-star-color);
+  }
+
+  @include e(content) {
+    @include universal;
+    justify-content: center;
+    flex: 1;
+  }
+
+  @include e(error) {
+    @include universal;
+    margin-top: var(--sar-form-item-error-margin-top);
+    font-size: var(--sar-form-item-error-font-size);
+    line-height: var(--sar-form-item-error-line-height);
+    color: var(--sar-form-item-error-color);
+  }
+
+  @include m(vertical) {
+    flex-direction: column;
+
+    @include e(label) {
+      flex: auto;
+      width: auto;
+      margin-right: 0;
+      margin-bottom: var(--sar-form-item-label-margin-bottom);
+    }
+  }
+
+  @include m(align-start) {
+    @include e(label) {
+      justify-content: flex-start;
+    }
+  }
+
+  @include m(align-center) {
+    @include e(label) {
+      justify-content: center;
+    }
+  }
+
+  @include m(align-end) {
+    @include e(label) {
+      justify-content: flex-end;
+    }
+  }
+
+  @include m(valign-start) {
+    @include e(label) {
+      align-items: flex-start;
+    }
+  }
+
+  @include m(valign-center) {
+    @include e(label) {
+      align-items: center;
+    }
+  }
+
+  @include m(valign-end) {
+    @include e(label) {
+      align-items: flex-end;
+    }
+  }
+
+  @include m(star-right) {
+    @include e(star) {
+      order: 1;
+    }
+  }
+
+  @include m(inlaid) {
+    padding: 0;
+
+    &::before {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,50 @@
+// #variables
+page {
+  // list
+  --sar-list-border-color: var(--sar-border-color);
+
+  --sar-list-title-margin-x: 32rpx;
+  --sar-list-title-margin-top: 64rpx;
+  --sar-list-title-margin-bottom: 16rpx;
+  --sar-list-title-font-size: var(--sar-text-sm);
+  --sar-list-title-line-height: var(--sar-leading-snug);
+  --sar-list-title-color: var(--sar-tertiary-color);
+
+  --sar-list-description-margin-x: 32rpx;
+  --sar-list-description-margin-top: 16rpx;
+  --sar-list-description-font-size: var(--sar-text-sm);
+  --sar-list-description-line-height: var(--sar-leading-snug);
+  --sar-list-description-color: var(--sar-tertiary-color);
+
+  --sar-list-card-border-radius: var(--sar-rounded-lg);
+
+  // item
+  --sar-list-item-min-height: 88rpx;
+  --sar-list-item-bg: var(--sar-emphasis-bg);
+
+  --sar-list-item-padding-x: 32rpx;
+  --sar-list-item-padding-y: 20rpx;
+
+  --sar-list-item-active-bg: var(--sar-active-bg);
+  --sar-list-item-disabled-opacity: var(--sar-disabled-opacity);
+
+  --sar-list-item-icon-font-size: 40rpx;
+  --sar-list-item-icon-margin-right: 24rpx;
+
+  --sar-list-item-title-font-size: var(--sar-text-base);
+  --sar-list-item-title-line-height: var(--sar-leading-snug);
+
+  --sar-list-item-value-font-size: var(--sar-text-base);
+  --sar-list-item-value-line-height: var(--sar-leading-snug);
+  --sar-list-item-value-color: var(--sar-tertiary-color);
+
+  --sar-list-item-description-margin-top: 8rpx;
+  --sar-list-item-description-font-size: var(--sar-text-sm);
+  --sar-list-item-description-line-height: var(--sar-leading-snug);
+  --sar-list-item-description-color: var(--sar-tertiary-color);
+
+  --sar-list-item-arrow-margin-left: 16rpx;
+  --sar-list-item-arrow-font-size: var(--sar-text-base);
+  --sar-list-item-arrow-color: var(--sar-tertiary-color);
+}
+// #endvariables

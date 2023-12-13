@@ -1,0 +1,52 @@
+@use '../style/base' as *;
+
+@include bem(upload) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(wrapper) {
+    @include universal;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: var(--sar-upload-preview-gap);
+  }
+
+  @include e(select) {
+    @include universal;
+    align-items: center;
+    justify-content: center;
+    width: var(--sar-upload-select-width);
+    height: var(--sar-upload-select-height);
+    color: var(--sar-upload-select-color);
+    border-radius: var(--sar-upload-select-border-radius);
+    background-color: var(--sar-upload-select-bg);
+    cursor: pointer;
+  }
+
+  @include e(select-icon) {
+    font-size: var(--sar-upload-select-font-size);
+    line-height: var(--sar-leading-none);
+  }
+
+  @include m-not(disabled, readonly) {
+    @include e(select) {
+      &:active {
+        background-color: var(--sar-upload-select-active-bg);
+      }
+    }
+  }
+
+  @include m(disabled) {
+    @include e(select) {
+      cursor: not-allowed;
+      color: var(--sar-disabled-color);
+    }
+  }
+
+  @include m(readonly) {
+    @include e(select) {
+      cursor: default;
+    }
+  }
+}

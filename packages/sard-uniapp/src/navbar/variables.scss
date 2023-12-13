@@ -1,0 +1,18 @@
+// #variables
+page {
+  --sar-navbar-height: 88rpx;
+  --sar-navbar-bg: var(--sar-emphasis-bg);
+
+  --sar-navbar-title-max-width: 60%;
+  --sar-navbar-title-font-size: var(--sar-text-lg);
+  --sar-navbar-title-color: var(--sar-emphasis-color);
+
+  --sar-navbar-item-padding-x: 20rpx;
+  --sar-navbar-item-font-size: var(--sar-text-base);
+  --sar-navbar-item-color: var(--sar-primary);
+  --sar-navbar-item-active-opacity: var(--sar-active-opacity);
+
+  --sar-navbar-left-gap: 8rpx;
+  --sar-navbar-right-gap: 8rpx;
+}
+// #endvariables

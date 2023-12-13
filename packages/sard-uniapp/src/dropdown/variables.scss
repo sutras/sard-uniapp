@@ -1,0 +1,29 @@
+// #variables
+page {
+  --sar-dropdown-height: 88rpx;
+  --sar-dropdown-bg: var(--sar-emphasis-bg);
+  --sar-dropdown-box-shadow: var(--sar-shadow-lg);
+
+  --sar-dropdown-item-padding-x: 16rpx;
+  --sar-dropdown-item-active-opacity: var(--sar-active-opacity);
+  --sar-dropdown-item-show-color: var(--sar-primary);
+
+  --sar-dropdown-value-font-size: var(--sar-text-base);
+
+  --sar-dropdown-label-font-size: var(--sar-text-base);
+  --sar-dropdown-label-color: var(--sar-tertiary-color);
+  --sar-dropdown-label-margin-right: 16rpx;
+
+  --sar-dropdown-placeholder-color: var(--sar-quaternary-color);
+
+  --sar-dropdown-arrow-margin-left: 8rpx;
+  --sar-dropdown-arrow-color: var(--sar-border-color);
+  --sar-dropdown-arrow-font-size: var(--sar-text-sm);
+
+  --sar-dropdown-popup-z-index: 1000;
+
+  --sar-dropdown-option-active-color: var(--sar-primary);
+
+  --sar-dropdown-option-icon-font-size: var(--sar-text-base);
+}
+// #endvariables

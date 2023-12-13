@@ -1,5 +1,5 @@
 {
-  "name": "sard-uniapp",
+  "name": "@sard/uniapp",
   "version": "1.0.1",
   "description": "uniapp UI 组件库",
   "main": "index.ts",
@@ -8,13 +8,18 @@
     "components",
     "!.md"
   ],
-  "devDependencies": {},
+  "peerDependencies": {
+    "@dcloudio/types": "^3.3.2",
+    "vue": "^3.2.45"
+  },
   "scripts": {
     "dev": "sard dev",
     "build:site": "sard build:site",
-    "build": "sard build",
     "preview": "sard preview",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "sard build",
+    "deploy": "sard deploy",
+    "release": "sard release",
+    "test": "vitest"
   },
   "author": "",
   "license": "ISC"

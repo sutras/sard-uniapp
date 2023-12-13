@@ -1,0 +1,32 @@
+// #variables
+page {
+  --sar-calendar-header-margin-bottom: 8rpx;
+  --sar-calendar-current-month-font-size: var(--sar-text-lg);
+
+  --sar-calendar-week-item-height: 64rpx;
+  --sar-calendar-week-item-font-size: var(--sar-text-base);
+
+  --sar-calendar-month-title-height: 88rpx;
+  --sar-calendar-month-title-font-size: var(--sar-text-base);
+
+  --sar-calendar-days-row-gap: 8rpx;
+
+  --sar-calendar-day-height: 100rpx;
+  --sar-calendar-day-font-size: var(--sar-text-base);
+  --sar-calendar-day-border-radius: var(--sar-rounded);
+  --sar-calendar-day-selected-color: var(--sar-white);
+  --sar-calendar-day-selected-bg: var(--sar-primary);
+  --sar-calendar-day-middle-color: var(--sar-primary);
+  --sar-calendar-day-middle-bg: rgba(var(--sar-blue-rgb), 0.1);
+  --sar-calendar-day-disabled-color: var(--sar-disabled-color);
+
+  --sar-calendar-info-font-size: var(--sar-text-xs);
+  --sar-calendar-info-line-height: var(--sar-leading-tight);
+  --sar-calendar-top-gap: 8rpx;
+  --sar-calendar-bottom-gap: 8rpx;
+
+  --sar-calendar-mark-font-size: 320rpx;
+  --sar-calendar-mark-color: var(--sar-emphasis-color);
+  --sar-calendar-mark-opacity: 0.05;
+}
+// #endvariables

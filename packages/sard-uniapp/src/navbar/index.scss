@@ -1,0 +1,80 @@
+@use '../style/base' as *;
+
+@include bem(navbar) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    height: var(--sar-navbar-height);
+    align-items: center;
+    justify-content: center;
+    background-color: var(--sar-navbar-bg);
+  }
+
+  @include e(content) {
+    @include universal;
+    flex-direction: row;
+    height: 100%;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+  }
+
+  @include e(title) {
+    @include universal;
+    width: 100%;
+    max-width: var(--sar-navbar-title-max-width);
+    font-size: var(--sar-navbar-title-font-size);
+    font-weight: var(--sar-font-bold);
+    text-align: center;
+    color: var(--sar-navbar-title-color);
+    @include ellipsis;
+  }
+
+  @include e(left, right) {
+    @include universal;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    z-index: 2;
+    flex-direction: row;
+    flex: none;
+    align-items: stretch;
+    height: 100%;
+  }
+
+  @include e(left) {
+    left: 0;
+    padding-left: var(--sar-navbar-left-gap);
+  }
+
+  @include e(right) {
+    right: 0;
+    padding-right: var(--sar-navbar-right-gap);
+  }
+
+  @include m(fixed) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+  }
+
+  @include m(custom) {
+    @include e(content) {
+      flex-direction: column;
+      align-items: stretch;
+    }
+  }
+
+  @include m(flow) {
+    @include e(title) {
+      max-width: 100%;
+      text-align: left;
+    }
+
+    @include e(left, right) {
+      position: relative;
+    }
+  }
+}

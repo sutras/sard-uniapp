@@ -1,0 +1,28 @@
+// #variables
+page {
+  --sar-dialog-width: 640rpx;
+  --sar-dialog-max-width: 90%;
+  --sar-dialog-border-color: var(--sar-border-color);
+  --sar-dialog-bg: var(--sar-emphasis-bg);
+  --sar-dialog-border-radius: var(--sar-rounded-xl);
+
+  --sar-dialog-header-padding-y: 32rpx;
+  --sar-dialog-header-padding-x: 32rpx;
+
+  --sar-dialog-body-padding-x: 32rpx;
+  --sar-dialog-body-padding-y: 48rpx;
+  --sar-dialog-body-gap: 20rpx;
+
+  --sar-dialog-title-font-size: var(--sar-text-lg);
+  --sar-dialog-title-headed-font-size: var(--sar-text-base);
+
+  --sar-dialog-close-font-size: var(--sar-text-lg);
+
+  --sar-dialog-message-font-size: var(--sar-text-base);
+  --sar-dialog-message-color: var(--sar-secondary-color);
+
+  --sar-dialog-footer-round-padding-x: 32rpx;
+  --sar-dialog-footer-round-padding-y: 32rpx;
+  --sar-dialog-footer-round-gap: 32rpx;
+}
+// #endvariables

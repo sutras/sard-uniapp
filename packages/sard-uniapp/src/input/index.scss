@@ -1,0 +1,118 @@
+@use '../style/base' as *;
+
+@include bem(input) {
+  @include b() {
+    @include universal;
+    justify-content: center;
+    width: 100%;
+    padding: var(--sar-input-padding-y) var(--sar-input-padding-x);
+    border: 1px solid var(--sar-input-border-color);
+    border-radius: var(--sar-input-border-radius);
+    transition: var(--sar-input-transition-duration);
+
+    @include m(borderless) {
+      padding-top: var(--sar-input-padding-borderless-y);
+      padding-bottom: var(--sar-input-padding-borderless-y);
+      border-width: 0;
+    }
+
+    @include m(inlaid) {
+      padding: 0;
+      border-width: 0;
+    }
+
+    @include m(focused) {
+      border-color: var(--sar-input-focused-border-color);
+    }
+
+    @include m(disabled) {
+      background-color: var(--sar-disabled-shallow-bg);
+    }
+  }
+
+  @include e(content) {
+    @include universal;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+  }
+
+  @include e(control) {
+    @include universal;
+    z-index: 0;
+    flex: 1;
+    align-self: center;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+    margin: 0;
+    padding: 0;
+    border-width: 0;
+    font-size: var(--sar-input-control-font-size);
+
+    @include m(input) {
+      height: var(--sar-input-control-input-height);
+    }
+
+    @include m(textarea) {
+      height: var(--sar-input-control-textarea-height);
+      min-height: var(--sar-input-control-textarea-height);
+    }
+
+    :deep([type='password']::-ms-reveal) {
+      display: none;
+    }
+  }
+
+  @include e(placeholder) {
+    color: var(--sar-input-placeholder-color);
+  }
+
+  @include e(prepend, append) {
+    @include universal;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+  }
+
+  @include e(prepend) {
+    margin-right: var(--sar-input-prepend-margin-right);
+  }
+
+  @include e(append) {
+    margin-left: var(--sar-input-append-margin-left);
+  }
+
+  @include e(clear) {
+    @include universal;
+    z-index: 2;
+    flex: none;
+    width: auto;
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    margin-right: var(--sar-input-clear-margin-right);
+    padding: 0 var(--sar-input-clear-padding-x);
+    font-size: var(--sar-input-clear-font-size);
+    color: var(--sar-input-clear-color);
+    cursor: pointer;
+
+    @include m(hide) {
+      display: none;
+    }
+  }
+
+  @include e(count) {
+    @include universal;
+    align-items: flex-end;
+    font-size: var(--sar-input-count-font-size);
+    line-height: var(--sar-input-count-line-height);
+    color: var(--sar-input-count-color);
+  }
+
+  @include m(disabled) {
+    @include e(control) {
+      color: var(--sar-disabled-color);
+    }
+  }
+}

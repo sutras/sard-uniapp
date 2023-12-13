@@ -1,0 +1,57 @@
+@use '../style/base' as *;
+
+@include bem(rate) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    justify-content: flex-start;
+  }
+
+  @include e(content) {
+    @include universal;
+    flex-direction: row;
+    gap: var(--sar-rate-gap);
+    touch-action: pan-y;
+  }
+
+  @include e(item) {
+    @include universal;
+    font-size: var(--sar-rate-star-font-size);
+    line-height: var(--sar-leading-none);
+    cursor: pointer;
+  }
+
+  @include e(star-void) {
+    @include universal;
+    color: var(--sar-rate-star-void-color);
+  }
+
+  @include e(star) {
+    @include universal;
+    position: absolute;
+    top: 0;
+    left: 0;
+    align-items: flex-start;
+    width: 0;
+    overflow: hidden;
+    color: var(--sar-rate-star-color);
+  }
+
+  @include m(readonly, disabled) {
+    touch-action: auto;
+  }
+
+  @include m(readonly) {
+    @include e(item) {
+      cursor: default;
+    }
+  }
+
+  @include m(disabled) {
+    @include disabled;
+
+    @include e(item) {
+      cursor: not-allowed;
+    }
+  }
+}

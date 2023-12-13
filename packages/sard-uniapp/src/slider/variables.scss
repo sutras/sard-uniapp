@@ -1,0 +1,32 @@
+// #variables
+page {
+  --sar-slider-vertical-height: 300rpx;
+  --sar-slider-padding: calc(var(--sar-slider-thumb-size) / 2);
+
+  --sar-slider-show-scale-padding-x: 68rpx;
+  --sar-slider-show-scale-padding-y: 52rpx;
+
+  --sar-slider-track-main-axis-size: 100%;
+  --sar-slider-track-cross-axis-size: 8rpx;
+  --sar-slider-track-bg: var(--sar-secondary-bg);
+
+  --sar-slider-piece-bg: var(--sar-primary);
+
+  --sar-slider-thumb-size: 48rpx;
+  --sar-slider-thumb-bg: var(--sar-white);
+  --sar-slider-thumb-box-shadow: var(--sar-shadow);
+
+  --sar-slider-value-padding: 8rpx;
+  --sar-slider-value-min-width: 40rpx;
+  --sar-slider-value-horizontal-min-width: 56rpx;
+  --sar-slider-value-font-size: var(--sar-text-sm);
+  --sar-slider-value-color: var(--sar-white);
+  --sar-slider-value-bg: var(--sar-gray-800);
+  --sar-slider-value-box-shadow: var(--sar-shadow);
+  --sar-slider-value-arrow-size: 12rpx;
+
+  --sar-slider-scale-size: 16rpx;
+  --sar-slider-scale-text-font-size: var(--sar-text-sm);
+  --sar-slider-scale-text-offset: 40rpx;
+}
+// #endvariables

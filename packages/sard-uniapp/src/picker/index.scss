@@ -1,0 +1,35 @@
+@use '../style/base' as *;
+
+@include bem(picker) {
+  @include b() {
+    @include universal;
+    height: var(--sar-picker-height);
+  }
+
+  @include e(picker-view) {
+    height: 100%;
+
+    @include e(indicator) {
+      height: var(--sar-picker-item-height);
+      &::before {
+        border-top-color: var(--sar-picker-indicator-border-color);
+      }
+      &::after {
+        border-bottom-color: var(--sar-picker-indicator-border-color);
+      }
+    }
+
+    @include e(mask) {
+      background-image: var(--sar-picker-mask-bg-image);
+    }
+  }
+
+  @include e(item) {
+    height: var(--sar-picker-item-height);
+    line-height: var(--sar-picker-item-height);
+    font-size: var(--sar-picker-item-font-size);
+    text-align: center;
+    color: var(--sar-picker-item-color);
+    @include ellipsis;
+  }
+}

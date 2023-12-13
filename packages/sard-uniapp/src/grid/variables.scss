@@ -1,0 +1,16 @@
+// #variables
+page {
+  --sar-grid-bg: var(--sar-emphasis-bg);
+  --sar-grid-border-color: var(--sar-border-color);
+  --sar-grid-active-bg: var(--sar-active-bg);
+
+  --sar-grid-item-padding-x: 16rpx;
+  --sar-grid-item-padding-y: 32rpx;
+
+  --sar-grid-item-icon-size: 48rpx;
+
+  --sar-grid-item-text-gap: 16rpx;
+  --sar-grid-item-text-font-size: var(--sar-text-sm);
+  --sar-grid-item-text-line-height: var(--sar-leading-tight);
+}
+// #endvariables

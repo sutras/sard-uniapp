@@ -1,0 +1,37 @@
+// #variables
+page {
+  --sar-steps-step-font-size: var(--sar-text-base);
+  --sar-steps-step-active-opacity: var(--sar-active-opacity);
+  --sar-steps-step-min-height: 72rpx;
+
+  --sar-steps-icon-finish-color: var(--sar-primary);
+  --sar-steps-icon-process-color: var(--sar-primary);
+  --sar-steps-icon-wait-color: var(--sar-tertiary-color);
+  --sar-steps-icon-error-color: var(--sar-danger);
+
+  --sar-steps-text-finish-color: var(--sar-body-color);
+  --sar-steps-text-process-color: var(--sar-primary);
+  --sar-steps-text-wait-color: var(--sar-tertiary-color);
+  --sar-steps-text-error-color: var(--sar-danger);
+
+  --sar-steps-header-gap-y: 8rpx;
+  --sar-steps-header-gap-x: 24rpx;
+  --sar-steps-header-vertical-top: 8rpx;
+
+  --sar-steps-line-thickness: 1px;
+  --sar-steps-line-gap: 6rpx;
+  --sar-steps-line-color: var(--sar-border-color);
+  --sar-steps-line-active-color: var(--sar-primary);
+
+  --sar-steps-icon-font-size: var(--sar-text-base);
+
+  --sar-steps-body-padding-x: 16rpx;
+  --sar-steps-body-padding-y: 8rpx;
+
+  --sar-steps-name-font-size: var(--sar-text-base);
+
+  --sar-steps-description-margin-top: 8rpx;
+  --sar-steps-description-font-size: var(--sar-text-sm);
+  --sar-steps-description-color: var(--sar-tertiary-color);
+}
+// #endvariables

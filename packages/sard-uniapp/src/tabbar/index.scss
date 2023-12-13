@@ -1,0 +1,18 @@
+@use '../style/base' as *;
+
+@include bem(tabbar) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    align-items: stretch;
+    height: var(--sar-tabbar-height);
+    color: var(--sar-tabbar-color);
+    background-color: var(--sar-tabbar-bg);
+  }
+
+  @include m(bordered) {
+    &::before {
+      @include border-top(var(--sar-tabbar-border-color));
+    }
+  }
+}

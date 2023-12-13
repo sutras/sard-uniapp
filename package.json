@@ -4,26 +4,29 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run dev -w sard-uniapp",
-    "build:site": "npm run build:site -w sard-uniapp",
-    "build": "npm run build -w sard-uniapp",
-    "preview": "npm run preview -w sard-uniapp",
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "npm run dev -w @sard/uniapp",
+    "build:site": "npm run build:site -w @sard/uniapp",
+    "preview": "npm run preview -w @sard/uniapp",
+    "build": "npm run build -w @sard/uniapp",
+    "deploy": "npm run deploy -w @sard/uniapp",
+    "release": "npm run release -w @sard/uniapp",
+    "test": "npm run test -w @sard/uniapp",
     "prepare": "husky install",
-    "lint:eslint": "eslint --cache --max-warnings 0  \"**/*.{ts,tsx,js,jsx}\" --fix",
+    "lint:eslint": "eslint --cache --max-warnings 0  \"**/*.{ts,tsx,js,jsx,vue}\" --fix",
     "lint:prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,scss,css,less,md,vue}\"",
     "lint:prettier:check": "prettier --check \"**/*.{ts,tsx,js,jsx,scss,css,less,md,vue}\"",
     "commit": "commit"
   },
   "lint-staged": {
-    "**/*.{ts,tsx,js,jsx}": "eslint --fix",
-    "**/*.{ts,tsx,js,jsx,scss,css,md}": "prettier --write"
+    "**/*.{ts,tsx,js,jsx,vue}": "eslint --fix",
+    "**/*.{ts,tsx,js,jsx,vue,scss,css,md}": "prettier --write"
   },
   "author": "",
   "license": "ISC",
   "workspaces": [
     "packages/sard-uniapp-cli",
-    "packages/sard-uniapp"
+    "packages/sard-uniapp",
+    "packages/sard-uniapp-demo"
   ],
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",
@@ -39,8 +42,5 @@
     "lint-staged": "^13.2.2",
     "prettier": "^2.8.8",
     "vite-plugin-eslint": "^1.8.1"
-  },
-  "dependencies": {
-    "vue": "^3.3.4"
   }
 }

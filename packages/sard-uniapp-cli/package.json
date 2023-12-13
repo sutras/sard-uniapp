@@ -1,5 +1,5 @@
 {
-  "name": "sard-uniapp-cli",
+  "name": "@sard/uniapp-cli",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
@@ -14,23 +14,31 @@
   "license": "ISC",
   "dependencies": {
     "bootstrap-icons": "^1.10.5",
+    "clipboard": "^2.0.11",
     "nprogress": "^0.2.0",
     "prism-themes": "^1.9.0",
+    "vue": "^3.3.9",
     "vue-router": "^4.2.2"
   },
   "devDependencies": {
+    "@testing-library/vue": "^8.0.1",
     "@vitejs/plugin-vue": "^4.2.3",
     "autoprefixer": "^10.4.14",
     "chalk": "^5.2.0",
     "commander": "^11.0.0",
     "consola": "^3.1.0",
     "fs-extra": "^11.1.1",
+    "gh-pages": "^6.1.0",
+    "happy-dom": "^12.10.3",
     "inquirer": "^9.2.7",
     "markdown-it": "^13.0.1",
+    "micromatch": "^4.0.5",
     "mime": "^3.0.0",
     "prismjs": "^1.29.0",
+    "rimraf": "^5.0.5",
     "sass": "^1.63.4",
     "shelljs": "^0.8.5",
-    "vite": "^4.3.9"
+    "vite": "4.0.3",
+    "vitest": "^1.0.4"
   }
 }

@@ -1,0 +1,120 @@
+@use '../style/base' as *;
+
+@include bem(dialog) {
+  @include b() {
+    @include universal;
+    width: var(--sar-dialog-width);
+    max-width: 100%;
+    background-color: var(--sar-dialog-bg);
+    border-radius: var(--sar-dialog-border-radius);
+  }
+
+  @include e(header) {
+    @include universal;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--sar-dialog-header-padding-y)
+      var(--sar-dialog-header-padding-x);
+
+    &::after {
+      @include border-bottom(var(--sar-dialog-border-color));
+    }
+  }
+
+  @include e(title) {
+    @include universal;
+    font-size: var(--sar-dialog-title-font-size);
+    font-weight: var(--sar-font-bold);
+    text-align: center;
+  }
+
+  @include e(close) {
+    @include universal;
+    flex: none;
+    z-index: 1;
+    margin-top: calc(var(--sar-dialog-header-padding-y) * -1);
+    margin-right: calc(var(--sar-dialog-header-padding-x) * -1);
+    margin-bottom: calc(var(--sar-dialog-header-padding-y) * -1);
+    margin-left: auto;
+  }
+
+  @include e(body) {
+    @include universal;
+    padding: var(--sar-dialog-body-padding-y) var(--sar-dialog-body-padding-x);
+    gap: var(--sar-dialog-body-gap);
+  }
+
+  @include e(message) {
+    @include universal;
+    font-size: var(--sar-dialog-message-font-size);
+    text-align: center;
+    color: var(--sar-dialog-message-color);
+  }
+
+  @include e(footer) {
+    @include universal;
+    flex-direction: row;
+  }
+
+  @include e(button) {
+    flex: 1;
+  }
+
+  @include e(divider) {
+    @include universal;
+    flex: none;
+    &::before {
+      @include border-left(var(--sar-dialog-border-color));
+    }
+  }
+
+  @include m(headed) {
+    @include e(title) {
+      font-size: var(--sar-dialog-title-headed-font-size);
+    }
+  }
+
+  @include m(untitled) {
+    @include e(header) {
+      padding-bottom: 0;
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  @include m-intersect(untitled, headed) {
+    @include e(body) {
+      padding-top: 0;
+    }
+  }
+
+  @include m(round) {
+    @include e(footer) {
+      padding-left: var(--sar-dialog-footer-round-padding-x);
+      padding-right: var(--sar-dialog-footer-round-padding-x);
+      padding-bottom: var(--sar-dialog-footer-round-padding-y);
+      gap: var(--sar-dialog-footer-round-gap);
+    }
+  }
+
+  @include m(text) {
+    @include e(footer) {
+      &::before {
+        @include border-top(var(--sar-dialog-border-color));
+      }
+    }
+
+    @include e(button) {
+      border-radius: 0;
+
+      &:first-child {
+        border-bottom-left-radius: var(--sar-dialog-border-radius);
+      }
+      &:last-child {
+        border-bottom-right-radius: var(--sar-dialog-border-radius);
+      }
+    }
+  }
+}

@@ -1,0 +1,50 @@
+@use '../style/base' as *;
+
+@include bem(list) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(title) {
+    @include universal;
+    margin-left: var(--sar-list-title-margin-x);
+    margin-right: var(--sar-list-title-margin-x);
+    margin-top: var(--sar-list-title-margin-top);
+    margin-bottom: var(--sar-list-title-margin-bottom);
+    font-size: var(--sar-list-title-font-size);
+    line-height: var(--sar-list-title-line-height);
+    color: var(--sar-list-title-color);
+  }
+
+  @include e(content) {
+    @include universal;
+
+    &::before {
+      @include border-vertical(var(--sar-list-border-color));
+    }
+  }
+
+  @include e(description) {
+    @include universal;
+    margin-left: var(--sar-list-description-margin-x);
+    margin-right: var(--sar-list-description-margin-x);
+    margin-top: var(--sar-list-description-margin-top);
+    font-size: var(--sar-list-description-font-size);
+    line-height: var(--sar-list-description-line-height);
+    color: var(--sar-list-description-color);
+  }
+
+  @include m(card) {
+    @include e(content) {
+      border-radius: var(--sar-list-card-border-radius);
+    }
+  }
+
+  @include m(card, inlaid) {
+    @include e(content) {
+      &::before {
+        display: none;
+      }
+    }
+  }
+}

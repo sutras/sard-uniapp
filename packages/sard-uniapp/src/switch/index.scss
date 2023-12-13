@@ -1,0 +1,59 @@
+@use '../style/base' as *;
+
+@include bem(switch) {
+  @include b() {
+    @include universal;
+    width: var(--sar-switch-width);
+    height: var(--sar-switch-height);
+    border-radius: var(--sar-rounded-full);
+    font-size: var(--sar-switch-font-size);
+    background-color: var(--sar-switch-bg);
+    cursor: pointer;
+    transition: background-color var(--sar-switch-transition-duration),
+      opacity var(--sar-switch-transition-duration);
+
+    @include m(checked) {
+      background-color: var(--sar-switch-checked-bg);
+    }
+
+    @include m(disabled) {
+      @include disabled;
+    }
+
+    @include m(readonly) {
+      cursor: default;
+    }
+
+    @include m(loading) {
+      opacity: var(--sar-switch-is-loading-opacity);
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(thumb) {
+    @include universal;
+    position: absolute;
+    left: 0;
+    top: var(--sar-switch-thumb-gap);
+    width: var(--sar-switch-thumb-width);
+    height: var(--sar-switch-thumb-height);
+    justify-content: center;
+    align-items: center;
+    border-radius: var(--sar-rounded-full);
+    color: var(--sar-switch-thumb-color);
+    background-color: var(--sar-switch-thumb-bg);
+    transform: translateX(var(--sar-switch-thumb-gap));
+    transition: transform var(--sar-switch-thumb-transition-duration);
+  }
+
+  @include m(checked) {
+    @include e(thumb) {
+      transform: translateX(
+        calc(
+          var(--sar-switch-width) - var(--sar-switch-thumb-width) -
+            var(--sar-switch-thumb-gap)
+        )
+      );
+    }
+  }
+}

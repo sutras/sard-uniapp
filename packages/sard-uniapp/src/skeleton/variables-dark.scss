@@ -1,0 +1,7 @@
+@use '../style/base' as *;
+
+// #variables
+@include theme-dark {
+  --sar-skeleton-highlight-color: rgba(255, 255, 255, 0.15);
+}
+// #endvariables

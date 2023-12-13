@@ -1,0 +1,31 @@
+// #variables
+page {
+  --sar-action-sheet-border-radius: var(--sar-rounded-xl);
+  --sar-action-sheet-border-color: var(--sar-border-color);
+  --sar-action-sheet-bg: var(--sar-emphasis-bg);
+  --sar-action-sheet-active-bg: var(--sar-active-bg);
+
+  --sar-action-sheet-description-padding: 32rpx;
+  --sar-action-sheet-description-font-size: var(--sar-text-base);
+  --sar-action-sheet-description-color: var(--sar-tertiary-color);
+
+  --sar-action-sheet-item-min-height: 96rpx;
+  --sar-action-sheet-item-padding: 16rpx 32rpx;
+
+  --sar-action-sheet-gap-bg: var(--sar-body-bg);
+  --sar-action-sheet-gap-height: 16rpx;
+
+  --sar-action-sheet-item-name-font-size: var(--sar-text-lg);
+
+  --sar-action-sheet-item-description-margin-top: 16rpx;
+  --sar-action-sheet-item-description-font-size: var(--sar-text-sm);
+  --sar-action-sheet-item-description-color: var(--sar-tertiary-color);
+
+  --sar-action-sheet-loading-font-size: 40rpx;
+  --sar-action-sheet-loading-color: var(--sar-quaternary-color);
+
+  --sar-action-sheet-cancel-min-height: 96rpx;
+  --sar-action-sheet-cancel-padding: 16rpx 32rpx;
+  --sar-action-sheet-cancel-font-size: var(--sar-text-lg);
+}
+// #endvariables

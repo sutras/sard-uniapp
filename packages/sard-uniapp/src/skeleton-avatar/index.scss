@@ -1,0 +1,11 @@
+@use '../style/base' as *;
+
+@include bem(skeleton) {
+  @include e(avatar) {
+    @include universal;
+    flex: none;
+    width: var(--sar-skeleton-avatar-size);
+    height: var(--sar-skeleton-avatar-size);
+    border-radius: var(--sar-skeleton-border-radius);
+  }
+}

@@ -1,0 +1,9 @@
+<template>
+  <sar-result
+    icon="emoji-smile"
+    icon-family="demo-icons"
+    icon-color="var(--sar-red)"
+    title="笑一笑"
+    description="请根据提示进行操作"
+  />
+</template>

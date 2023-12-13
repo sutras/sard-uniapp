@@ -1,0 +1,43 @@
+// #variables
+page {
+  --sar-upload-preview-width: 176rpx;
+  --sar-upload-preview-height: 176rpx;
+  --sar-upload-preview-gap: 16rpx;
+  --sar-upload-preview-border-radius: var(--sar-rounded);
+  --sar-upload-preview-bg: var(--sar-secondary-bg);
+  --sar-upload-preview-video-bg: var(--sar-black);
+
+  --sar-upload-file-color: var(--sar-body-color);
+  --sar-upload-file-icon-font-size: 40rpx;
+  --sar-upload-file-name-margin-top: 8rpx;
+  --sar-upload-file-name-padding-x: 8rpx;
+  --sar-upload-file-name-font-size: var(--sar-text-sm);
+
+  --sar-upload-status-color: var(--sar-white);
+  --sar-upload-status-bg: var(--sar-mask-illegible);
+  --sar-upload-status-icon-font-size: 40rpx;
+  --sar-upload-status-message-margin-top: 8rpx;
+  --sar-upload-status-message-padding-x: 8rpx;
+  --sar-upload-status-message-font-size: var(--sar-text-sm);
+
+  --sar-upload-close-top: 4rpx;
+  --sar-upload-close-right: 4rpx;
+  --sar-upload-close-size: 40rpx;
+  --sar-upload-close-font-size: var(--sar-text-sm);
+  --sar-upload-close-color: var(--sar-white);
+  --sar-upload-close-bg: var(--sar-mask-illegible);
+
+  --sar-upload-select-width: 176rpx;
+  --sar-upload-select-height: 176rpx;
+  --sar-upload-select-font-size: 48rpx;
+  --sar-upload-select-color: var(--sar-secondary-color);
+  --sar-upload-select-border-radius: var(--sar-rounded);
+  --sar-upload-select-bg: var(--sar-secondary-bg);
+  --sar-upload-select-active-bg: var(--sar-active-deep-bg);
+
+  --sar-upload-video-play-bg: var(--sar-mask-legible);
+  --sar-upload-video-play-color: rgba(var(--sar-white-rgb), 0.8);
+
+  --sar-upload-loading-size: 40rpx;
+}
+// #endvariables

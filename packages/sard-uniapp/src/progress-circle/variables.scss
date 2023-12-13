@@ -1,0 +1,15 @@
+// #variables
+page {
+  --sar-progress-circle-size: 200rpx;
+  --sar-progress-circle-track-color: var(--sar-secondary-bg);
+  --sar-progress-circle-piece-color: var(--sar-primary);
+  --sar-progress-circle-piece-transition-duration: var(--sar-duration);
+
+  --sar-progress-circle-text-font-size: var(--sar-text-base);
+
+  --sar-progress-circle-status-font-size: 36rpx;
+  --sar-progress-circle-success-color: var(--sar-success);
+  --sar-progress-circle-warning-color: var(--sar-warning);
+  --sar-progress-circle-error-color: var(--sar-danger);
+}
+// #endvariables

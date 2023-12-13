@@ -1,0 +1,46 @@
+// #variables
+page {
+  --sar-share-sheet-border-radius: var(--sar-rounded-xl);
+  --sar-share-sheet-border-color: var(--sar-border-color);
+  --sar-share-sheet-bg: var(--sar-emphasis-bg);
+
+  --sar-share-sheet-header-padding: 32rpx;
+
+  --sar-share-sheet-title-font-size: var(--sar-text-lg);
+
+  --sar-share-sheet-description-margin-top: 16rpx;
+  --sar-share-sheet-description-font-size: var(--sar-text-base);
+  --sar-share-sheet-description-color: var(--sar-tertiary-color);
+
+  --sar-share-sheet-row-padding-y: 32rpx;
+  --sar-share-sheet-row-padding-x: 16rpx;
+
+  --sar-share-sheet-item-width: 160rpx;
+  --sar-share-sheet-item-active-opacity: var(--sar-active-opacity);
+
+  --sar-share-sheet-icon-wrapper-size: 96rpx;
+  --sar-share-sheet-icon-wrapper-border-radius: var(--sar-rounded-full);
+
+  --sar-share-sheet-icon-font-size: 48rpx;
+  --sar-share-sheet-icon-color: var(--sar-tertiary-color);
+  --sar-share-sheet-icon-bg: var(--sar-secondary-bg);
+
+  --sar-share-sheet-name-margin-top: 16rpx;
+  --sar-share-sheet-name-padding-x: 8rpx;
+  --sar-share-sheet-name-font-size: var(--sar-text-base);
+  --sar-share-sheet-name-color: var(--sar-tertiary-color);
+
+  --sar-share-sheet-item-description-margin-top: 0;
+  --sar-share-sheet-item-description-padding-x: 8rpx;
+  --sar-share-sheet-item-description-font-size: var(--sar-text-sm);
+  --sar-share-sheet-item-description-color: var(--sar-quaternary-color);
+
+  --sar-share-sheet-gap-bg: var(--sar-body-bg);
+  --sar-share-sheet-gap-height: 16rpx;
+
+  --sar-share-sheet-cancel-min-height: 96rpx;
+  --sar-share-sheet-cancel-padding: 16rpx 32rpx;
+  --sar-share-sheet-cancel-font-size: var(--sar-text-lg);
+  --sar-share-sheet-cancel-active-bg: var(--sar-active-bg);
+}
+// #endvariables

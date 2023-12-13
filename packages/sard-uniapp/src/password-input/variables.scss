@@ -1,0 +1,18 @@
+// #variables
+page {
+  --sar-password-input-gap: 20rpx;
+  --sar-password-input-border-color: var(--sar-border-color);
+  --sar-password-input-active-border-color: var(--sar-primary);
+
+  --sar-password-input-height: 96rpx;
+  --sar-password-input-ciphertext-size: 20rpx;
+  --sar-password-input-ciphertext-bg: var(--sar-body-color);
+
+  --sar-password-input-plaintext-font-size: 40rpx;
+
+  --sar-password-input-cursor-width: 1px;
+  --sar-password-input-cursor-height: 40rpx;
+  --sar-password-input-cursor-color: var(--sar-body-color);
+  --sar-password-input-cursor-animation-duration: 1s;
+}
+// #endvariables

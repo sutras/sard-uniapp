@@ -1,0 +1,16 @@
+// #variables
+page {
+  --sar-accordion-bg: var(--sar-emphasis-bg);
+  --sar-accordion-active-bg: var(--sar-active-bg);
+  --sar-accordion-border-color: var(--sar-border-color);
+
+  --sar-accordion-item-header-padding-x: 32rpx;
+  --sar-accordion-item-header-padding-y: 20rpx;
+
+  --sar-accordion-item-title-font-size: var(--sar-text-base);
+  --sar-accordion-item-title-line-height: var(--sar-leading-snug);
+
+  --sar-accordion-item-body-padding-x: 32rpx;
+  --sar-accordion-item-body-padding-y: 32rpx;
+}
+// #endvariables

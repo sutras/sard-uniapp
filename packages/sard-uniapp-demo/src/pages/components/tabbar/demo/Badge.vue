@@ -1,0 +1,30 @@
+<template>
+  <sar-tabbar>
+    <sar-tabbar-item
+      :name="0"
+      icon="house-door-fill"
+      icon-family="demo-icons"
+      text="首页"
+    />
+    <sar-tabbar-item
+      :name="1"
+      icon="cart-fill"
+      icon-family="demo-icons"
+      text="购物车"
+    />
+    <sar-tabbar-item
+      :name="2"
+      icon="chat-dots-fill"
+      icon-family="demo-icons"
+      :badge="5"
+      text="消息"
+    />
+    <sar-tabbar-item
+      :name="3"
+      icon="person-fill"
+      icon-family="demo-icons"
+      dot
+      text="我的"
+    />
+  </sar-tabbar>
+</template>

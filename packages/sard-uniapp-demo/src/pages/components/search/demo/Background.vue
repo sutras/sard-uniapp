@@ -1,0 +1,9 @@
+<template>
+  <sar-search
+    placeholder="请输入关键词"
+    background="var(--sar-red)"
+    input-background="var(--sar-white)"
+    input-color="var(--sar-black)"
+    shape="round"
+  />
+</template>

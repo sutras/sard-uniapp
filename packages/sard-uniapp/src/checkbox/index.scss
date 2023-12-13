@@ -1,0 +1,44 @@
+@use '../style/base' as *;
+
+@include bem(checkbox) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    cursor: pointer;
+  }
+
+  @include e(icon) {
+    @include universal;
+    font-size: var(--sar-checkbox-icon-font-size);
+    line-height: var(--sar-leading-none);
+    color: var(--sar-checkbox-icon-color);
+    transition: color var(--sar-checkbox-icon-transition-duration);
+
+    @include m(checked) {
+      color: var(--sar-checkbox-icon-checked-color);
+    }
+  }
+
+  @include e(label) {
+    @include universal;
+    flex-direction: row;
+    margin-left: var(--sar-checkbox-label-margin-left);
+  }
+
+  @include m(readonly) {
+    cursor: default;
+  }
+
+  @include m(disabled) {
+    cursor: var(--sar-disabled-cursor);
+
+    @include e(icon) {
+      @include disabled;
+    }
+
+    @include e(label) {
+      @include disabled-text;
+    }
+  }
+}

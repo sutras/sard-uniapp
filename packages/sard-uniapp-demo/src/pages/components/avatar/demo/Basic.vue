@@ -1,0 +1,3 @@
+<template>
+  <sar-avatar />
+</template>

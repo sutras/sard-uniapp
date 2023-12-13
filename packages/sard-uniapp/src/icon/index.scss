@@ -1,0 +1,22 @@
+@use '../style/base' as *;
+@use './sari';
+
+@include bem(icon) {
+  @include b() {
+    position: relative;
+    display: inline-flex;
+    vertical-align: middle;
+    font-size: inherit;
+    font-style: normal;
+    line-height: inherit;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  @include e(image) {
+    display: flex;
+    width: 1em;
+    height: 1em;
+    object-fit: contain;
+  }
+}

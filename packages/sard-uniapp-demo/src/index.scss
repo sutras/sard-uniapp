@@ -1,0 +1,6 @@
+@forward '@sard/uniapp/src/style/mixins/bem.scss' with (
+  $namespace: 'doc',
+  $block-separator: '-',
+  $element-separator: '__',
+  $modifier-separator: '_'
+);

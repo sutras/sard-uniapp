@@ -1,0 +1,24 @@
+// #variables
+page {
+  --sar-tabs-tab-height: 88rpx;
+  --sar-tabs-tab-font-size: var(--sar-text-base);
+  --sar-tabs-tab-line-height: var(--sar-leading-snug);
+  --sar-tabs-tab-color: var(--sar-secondary-color);
+  --sar-tabs-tab-active-color: var(--sar-emphasis-color);
+
+  --sar-tabs-tab-padding-x: 32rpx;
+
+  --sar-tabs-pill-tab-height: 60rpx;
+  --sar-tabs-pill-current-tab-bg: var(--sar-primary);
+  --sar-tabs-pill-current-tab-color: var(--sar-white);
+
+  --sar-tabs-card-tab-height: 60rpx;
+  --sar-tabs-card-theme-color: var(--sar-primary);
+  --sar-tabs-card-border-radius: var(--sar-rounded);
+
+  --sar-tabs-line-width: 80rpx;
+  --sar-tabs-line-height: 6rpx;
+  --sar-tabs-line-bg: var(--sar-primary);
+  --sar-tabs-line-transition-duration: var(--sar-duration);
+}
+// #endvariables

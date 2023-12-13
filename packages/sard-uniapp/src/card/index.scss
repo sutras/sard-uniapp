@@ -1,0 +1,44 @@
+@use '../style/base' as *;
+
+@include bem(card) {
+  @include b() {
+    @include universal;
+    background-color: var(--sar-card-bg);
+    border-radius: var(--sar-card-border-radius);
+  }
+
+  @include e(header) {
+    @include universal;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--sar-card-header-padding-y) var(--sar-card-header-padding-x);
+
+    &::after {
+      @include border-bottom(var(--sar-card-border-color));
+    }
+  }
+
+  @include e(title) {
+    @include universal;
+    font-size: var(--sar-card-title-font-size);
+    line-height: var(--sar-card-title-line-height);
+  }
+
+  @include e(extra) {
+    @include universal;
+  }
+
+  @include e(body) {
+    @include universal;
+    padding: var(--sar-card-body-padding-y) var(--sar-card-body-padding-x);
+  }
+
+  @include e(footer) {
+    @include universal;
+    padding: var(--sar-card-footer-padding-y) var(--sar-card-footer-padding-x);
+    &::before {
+      @include border-top(var(--sar-card-border-color));
+    }
+  }
+}

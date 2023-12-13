@@ -1,0 +1,27 @@
+@use '../style/base' as *;
+
+@include bem(dropdown) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    height: var(--sar-dropdown-height);
+    background-color: var(--sar-dropdown-bg);
+  }
+
+  @include e(shadow) {
+    @include universal;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    box-shadow: var(--sar-dropdown-box-shadow);
+    pointer-events: none;
+  }
+
+  @include m(show) {
+    @include e(shadow) {
+      z-index: calc(var(--sar-dropdown-popup-z-index) + 1);
+    }
+  }
+}

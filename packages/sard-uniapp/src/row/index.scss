@@ -1,0 +1,12 @@
+@use '../style/base' as *;
+
+// #variables
+// #endvariables
+
+@include bem(row) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+}

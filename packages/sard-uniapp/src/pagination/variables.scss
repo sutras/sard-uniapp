@@ -1,0 +1,20 @@
+// #variables
+page {
+  --sar-pagination-border-radius: var(--sar-rounded);
+  --sar-pagination-border-color: var(--sar-border-color);
+
+  --sar-pagination-item-height: 40px;
+  --sar-pagination-item-min-width: 40px;
+  --sar-pagination-item-padding-x: 10px;
+  --sar-pagination-item-font-size: var(--sar-text-base);
+  --sar-pagination-item-color: var(--sar-primary);
+  --sar-pagination-item-active-bg: var(--sar-active-bg);
+
+  --sar-pagination-item-current-color: var(--sar-white);
+  --sar-pagination-item-current-border-color: var(--sar-primary);
+  --sar-pagination-item-current-bg: var(--sar-primary);
+
+  --sar-pagination-ratio-height: 40px;
+  --sar-pagination-ratio-font-size: var(--sar-text-base);
+}
+// #endvariables

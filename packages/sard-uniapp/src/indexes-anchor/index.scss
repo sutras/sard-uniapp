@@ -1,0 +1,15 @@
+@use '../style/base' as *;
+
+@include bem(indexes) {
+  @include e(anchor) {
+    @include universal;
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    padding: var(--sar-indexes-anchor-padding);
+    font-size: var(--sar-indexes-anchor-font-size);
+    line-height: var(--sar-indexes-anchor-line-height);
+    color: var(--sar-indexes-anchor-color);
+    background-color: var(--sar-indexes-anchor-bg);
+  }
+}

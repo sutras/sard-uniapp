@@ -1,0 +1,22 @@
+// #variables
+page {
+  --sar-keyboard-bg: var(--sar-gray-200);
+  --sar-keyboard-padding: 12rpx;
+
+  --sar-keyboard-key-gap: 12rpx;
+  --sar-keyboard-key-color: var(--sar-body-color);
+  --sar-keyboard-key-bg: var(--sar-white);
+  --sar-keyboard-key-active-bg: var(--sar-gray-300);
+
+  --sar-keyboard-key-height: 96rpx;
+  --sar-keyboard-key-border-radius: var(--sar-rounded);
+  --sar-keyboard-key-font-size: var(--sar-text-xl);
+
+  --sar-keyboard-key-plate-height: 80rpx;
+  --sar-keyboard-key-plate-border-radius: var(--sar-rounded-sm);
+  --sar-keyboard-key-plate-font-size: var(--sar-text-base);
+  --sar-keyboard-key-plate-backspace-font-size: 36rpx;
+  --sar-keyboard-key-plate-bg: var(--sar-gray-300);
+  --sar-keyboard-key-plate-active-bg: var(--sar-gray-400);
+}
+// #endvariables

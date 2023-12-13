@@ -1,0 +1,25 @@
+@use '../style/base' as *;
+
+@include bem(notify) {
+  @include b() {
+    @include universal;
+    padding: var(--sar-notify-paddding-y) var(--sar-notify-paddding-x);
+    font-size: var(--sar-notify-font-size);
+    text-align: center;
+    color: var(--sar-white);
+
+    @each $type,
+      $color
+        in (
+          primary: var(--sar-primary),
+          success: var(--sar-success),
+          warning: var(--sar-warning),
+          error: var(--sar-danger)
+        )
+    {
+      @include m($type) {
+        background-color: $color;
+      }
+    }
+  }
+}

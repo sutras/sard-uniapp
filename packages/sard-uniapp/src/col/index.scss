@@ -1,0 +1,47 @@
+@use 'sass:math';
+@use '../style/base' as *;
+
+$sar-col-columns: 12 !default;
+
+@mixin make-col($columns: 12) {
+  @for $col from 1 through $columns {
+    @include m($col) {
+      $width: tofixed(100% * math.div($col, $columns), 4);
+      width: $width;
+      flex: 0 0 auto;
+    }
+  }
+}
+
+@mixin make-offset($columns: 12) {
+  @for $col from 0 through $columns {
+    @include m(offset-#{$col}) {
+      $offset: tofixed(100% * math.div($col, $columns), 4);
+      margin-left: $offset;
+    }
+  }
+}
+
+@include bem(col) {
+  @include b() {
+    @include universal;
+    flex: 1 0 0;
+    width: 100%;
+    max-width: 100%;
+    min-height: 1px;
+  }
+
+  @include m(auto) {
+    flex: auto;
+    width: auto;
+  }
+
+  @include m(none) {
+    flex: none;
+    width: auto;
+  }
+
+  @include make-col($sar-col-columns);
+
+  @include make-offset($sar-col-columns);
+}

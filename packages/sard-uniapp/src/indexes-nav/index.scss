@@ -1,0 +1,65 @@
+@use '../style/base' as *;
+
+@include bem(indexes) {
+  @include e(nav) {
+    @include universal;
+    position: absolute;
+    top: 50%;
+    right: 0;
+    z-index: 10;
+    padding-right: var(--sar-indexes-nav-padding-right);
+    transform: translateY(-50%);
+    cursor: pointer;
+    touch-action: none;
+  }
+
+  @include e(nav-item) {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    width: var(--sar-indexes-nav-item-size);
+    height: var(--sar-indexes-nav-item-size);
+    border-radius: var(--sar-rounded-full);
+    font-size: var(--sar-indexes-nav-item-font-size);
+    color: var(--sar-indexes-nav-item-color);
+
+    @include m(active) {
+      color: var(--sar-indexes-nav-item-active-color);
+      background-color: var(--sar-indexes-nav-item-active-bg);
+    }
+  }
+
+  @include e(hint) {
+    @include universal;
+    position: absolute;
+    width: var(--sar-indexes-hint-size);
+    height: var(--sar-indexes-hint-size);
+    right: 100%;
+    top: 0;
+    align-items: center;
+    justify-content: center;
+    margin-right: var(--sar-indexes-hint-margin-right);
+    border-radius: 50% 0 50% 50%;
+    background-color: var(--sar-indexes-hint-bg);
+    transform-origin: top right;
+    transform: rotate(45deg);
+    pointer-events: none;
+
+    @include m(enter-active, leave-active) {
+      transition: opacity var(--sar-duration) ease;
+    }
+
+    @include m(enter-from, leave-to) {
+      opacity: 0;
+    }
+  }
+
+  @include e(hint-text) {
+    @include universal;
+    font-size: var(--sar-indexes-hint-text-font-size);
+    line-height: var(--sar-leading-none);
+    font-weight: var(--sar-font-bold);
+    transform: rotate(-45deg);
+    color: var(--sar-indexes-hint-text-color);
+  }
+}

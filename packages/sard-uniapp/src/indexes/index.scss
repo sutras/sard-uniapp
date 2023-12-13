@@ -1,0 +1,11 @@
+@use '../style/base' as *;
+
+@include bem(indexes) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(scroll-view) {
+    height: 100%;
+  }
+}

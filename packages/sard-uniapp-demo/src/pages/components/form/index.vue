@@ -1,0 +1,124 @@
+<template>
+  <doc-page>
+    <doc-demo>
+      <sar-list card>
+        <sar-list-item
+          title="典型表单"
+          arrow
+          hover
+          @click="navigateTo('Typical')"
+        />
+        <sar-list-item
+          title="方向与对齐"
+          arrow
+          hover
+          @click="navigateTo('DirectionAlign')"
+        />
+        <sar-list-item
+          title="表单校验"
+          arrow
+          hover
+          @click="navigateTo('Validate')"
+        />
+        <sar-list-item
+          title="自定义校验规则"
+          arrow
+          hover
+          @click="navigateTo('CustomValidate')"
+        />
+        <sar-list-item
+          title="添加/删除表单项"
+          arrow
+          hover
+          @click="navigateTo('DynamicFormItem')"
+        />
+        <sar-list-item
+          title="简单登录框"
+          arrow
+          hover
+          @click="navigateTo('BasicLogin')"
+        />
+        <sar-list-item
+          title="Label 宽度"
+          arrow
+          hover
+          @click="navigateTo('LabelWidth')"
+        />
+        <sar-list-item
+          title="表单只读和禁用"
+          arrow
+          hover
+          @click="navigateTo('DisabledReadOnly')"
+        />
+        <sar-list-item
+          title="登录框"
+          arrow
+          hover
+          @click="navigateTo('Login')"
+        />
+        <sar-list-item
+          title="嵌套结构与校验信息"
+          arrow
+          hover
+          @click="navigateTo('Nested')"
+        />
+        <sar-list-item
+          title="自定义表单控件"
+          arrow
+          hover
+          @click="navigateTo('CustomControl')"
+        />
+        <sar-list-item
+          title="复杂的动态增减表单项"
+          arrow
+          hover
+          @click="navigateTo('ComplexDynamicFormItem')"
+        />
+        <sar-list-item
+          title="动态增减嵌套字段"
+          arrow
+          hover
+          @click="navigateTo('DynamicNested')"
+        />
+        <sar-list-item
+          title="动态校验规则"
+          arrow
+          hover
+          @click="navigateTo('DynamicValidate')"
+        />
+        <sar-list-item
+          title="多表单联动"
+          arrow
+          hover
+          @click="navigateTo('MultiFormLinkage')"
+        />
+        <sar-list-item
+          title="弹出层中的新建表单"
+          arrow
+          hover
+          @click="navigateTo('DialogForm')"
+        />
+        <sar-list-item
+          title="滚动到第一个错误字段"
+          arrow
+          hover
+          @click="navigateTo('ScrollToFirstError')"
+        />
+      </sar-list>
+    </doc-demo>
+  </doc-page>
+</template>
+
+<script setup lang="ts">
+const navigateTo = (url: string) => {
+  uni.navigateTo({
+    url: `/pages/components/form/demo/${url}`,
+  })
+}
+</script>
+
+<style lang="scss" scoped>
+// :deep() {
+
+// }
+</style>

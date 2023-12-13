@@ -1,0 +1,92 @@
+@use 'sass:math';
+@use '../style/base' as *;
+
+// # clock
+$sar-loading-scale-number: 12;
+
+@include bem(loading) {
+  @include b() {
+    @include universal;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    @include m(vertical) {
+      flex-direction: column;
+    }
+  }
+
+  @include e(icon) {
+    @include universal;
+    width: 1em;
+    height: 1em;
+    min-width: var(--sar-loading-icon-min-width);
+    min-height: var(--sar-loading-icon-min-height);
+
+    @include m(circular) {
+      border: 4rpx solid transparent;
+      border-radius: 100%;
+      border-top-color: initial;
+      animation: #{bem-ns(loading-rotate)} var(
+          --sar-loading-icon-animation-duration
+        ) linear infinite;
+    }
+
+    @include m(clock) {
+      animation: #{bem-ns(loading-rotate)} var(
+          --sar-loading-icon-animation-duration
+        ) steps(#{$sar-loading-scale-number}) infinite;
+    }
+
+    @keyframes #{bem-ns(loading-rotate)} {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(1turn);
+      }
+    }
+  }
+
+  @include e(scale) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    &:before {
+      display: flex;
+      width: var(--sar-loading-scale-width);
+      min-width: var(--sar-loading-scale-min-width);
+      height: var(--sar-loading-scale-height);
+      margin: 0 auto;
+      border-radius: var(--sar-loading-scale-border-radius);
+      content: '';
+      background-color: currentColor;
+    }
+
+    @for $i from 1 through $sar-loading-scale-number {
+      &:nth-child(#{$i}) {
+        opacity: tofixed(
+          1 - math.div(1, $sar-loading-scale-number) * ($i - 1),
+          6
+        );
+        transform: rotate(#{math.div(360, $sar-loading-scale-number) * $i}deg);
+      }
+    }
+  }
+
+  @include e(text) {
+    @include universal;
+    margin-left: var(--sar-loading-text-margin-left);
+  }
+
+  @include m(vertical) {
+    @include e(text) {
+      margin-left: 0;
+      margin-top: var(--sar-loading-text-vertical-margin-top);
+    }
+  }
+}

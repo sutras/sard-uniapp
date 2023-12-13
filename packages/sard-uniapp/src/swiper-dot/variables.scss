@@ -1,0 +1,27 @@
+// #variables
+page {
+  --sar-swiper-dot-bottom: 20rpx;
+  --sar-swiper-dot-gap: 12rpx;
+  --sar-swiper-dot-size: 12rpx;
+  --sar-swiper-dot-font-size: var(--sar-text-sm);
+  --sar-swiper-dot-color: var(--sar-white);
+  --sar-swiper-dot-bg: rgba(0, 0, 0, 0.3);
+  --sar-swiper-dot-active-bg: rgba(0, 0, 0, 0.7);
+
+  --sar-swiper-dot-bar-active-size: 36rpx;
+
+  --sar-swiper-dot-index-size: 32rpx;
+
+  --sar-swiper-dot-title-padding: 16rpx;
+  --sar-swiper-dot-title-font-size: var(--sar-text-sm);
+  --sar-swiper-dot-title-color: var(--sar-white);
+  --sar-swiper-dot-title-bg: rgba(0, 0, 0, 0.3);
+
+  --sar-swiper-dot-fraction-right: 20rpx;
+  --sar-swiper-dot-fraction-bottom: 20rpx;
+  --sar-swiper-dot-fraction-padding: 4rpx 16rpx;
+  --sar-swiper-dot-fraction-font-size: var(--sar-text-sm);
+  --sar-swiper-dot-fraction-color: var(--sar-white);
+  --sar-swiper-dot-fraction-bg: rgba(0, 0, 0, 0.3);
+}
+// #endvariables

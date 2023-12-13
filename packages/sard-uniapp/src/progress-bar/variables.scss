@@ -1,0 +1,28 @@
+// #variables
+page {
+  --sar-progress-bar-height: 8rpx;
+  --sar-progress-bar-border-radius: var(--sar-rounded-full);
+
+  --sar-progress-bar-track-bg: var(--sar-secondary-bg);
+
+  --sar-progress-bar-piece-font-size: var(--sar-text-base);
+  --sar-progress-bar-piece-transition-duration: var(--sar-duration-slow);
+  --sar-progress-bar-piece-color: var(--sar-white);
+  --sar-progress-bar-piece-bg: var(--sar-primary);
+
+  --sar-progress-bar-text-font-size: var(--sar-text-base);
+  --sar-progress-bar-text-margin-left: 16rpx;
+  --sar-progress-bar-text-margin-right: 16rpx;
+
+  --sar-progress-bar-inside-height: 32rpx;
+  --sar-progress-bar-inside-text-font-size: var(--sar-text-sm);
+
+  --sar-progress-bar-striped-width: 32rpx;
+
+  --sar-progress-bar-status-line-height: var(--sar-leading-none);
+  --sar-progress-bar-status-margin-left: 16rpx;
+  --sar-progress-bar-success-color: var(--sar-success);
+  --sar-progress-bar-warning-color: var(--sar-warning);
+  --sar-progress-bar-error-color: var(--sar-danger);
+}
+// #endvariables

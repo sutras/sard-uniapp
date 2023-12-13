@@ -1,0 +1,38 @@
+// #variables
+page {
+  --sar-button-height-mini: 56rpx;
+  --sar-button-padding-y-mini: 0;
+  --sar-button-padding-x-mini: 12rpx;
+  --sar-button-border-radius-mini: var(--sar-rounded-sm);
+  --sar-button-font-size-mini: var(--sar-text-sm);
+
+  --sar-button-height-sm: 64rpx;
+  --sar-button-padding-y-sm: 0;
+  --sar-button-padding-x-sm: 24rpx;
+  --sar-button-border-radius-sm: var(--sar-rounded-sm);
+  --sar-button-font-size-sm: var(--sar-text-sm);
+
+  --sar-button-height: 80rpx;
+  --sar-button-padding-y: 0;
+  --sar-button-padding-x: 32rpx;
+  --sar-button-border-radius: var(--sar-rounded);
+  --sar-button-font-size: var(--sar-text-base);
+
+  --sar-button-height-lg: 96rpx;
+  --sar-button-padding-y-lg: 0;
+  --sar-button-padding-x-lg: 40rpx;
+  --sar-button-border-radius-lg: var(--sar-rounded-lg);
+  --sar-button-font-size-lg: var(--sar-text-lg);
+
+  --sar-button-line-height: var(--sar-leading-normal);
+
+  --sar-button-active-opacity: var(--sar-active-opacity);
+  --sar-button-active-bg: rgba(0, 0, 0, 0.125);
+  --sar-button-mild-bg: var(--sar-gray-200);
+  --sar-button-pale-bg-opacity: 0.2;
+
+  --sar-button-loading-opacity: var(--sar-loading-opacity);
+  --sar-button-loading-cursor: var(--sar-loading-cursor);
+  --sar-button-loading-margin-right: 0.5em;
+}
+// #endvariables

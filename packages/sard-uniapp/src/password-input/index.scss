@@ -1,0 +1,138 @@
+@use '../style/base' as *;
+
+@include bem(password-input) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: var(--sar-password-input-height);
+    gap: var(--sar-password-input-gap);
+  }
+
+  @include e(item) {
+    @include universal;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    height: 100%;
+  }
+
+  @include e(plaintext) {
+    @include universal;
+    font-size: var(--sar-password-input-plaintext-font-size);
+  }
+
+  @include e(ciphertext) {
+    @include universal;
+    width: var(--sar-password-input-ciphertext-size);
+    height: var(--sar-password-input-ciphertext-size);
+    border-radius: var(--sar-rounded-full);
+    background-color: var(--sar-password-input-ciphertext-bg);
+  }
+
+  @include e(cursor) {
+    @include universal;
+    width: var(--sar-password-input-cursor-width);
+    height: var(--sar-password-input-cursor-height);
+    background-color: var(--sar-password-input-cursor-color);
+    animation: var(--sar-password-input-cursor-animation-duration) #{bem-ns(
+        password-input-cursor-flicker
+      )} infinite;
+  }
+
+  @keyframes #{bem-ns(password-input-cursor-flicker)} {
+    0% {
+      opacity: 0;
+    }
+    50% {
+      opacity: 1;
+    }
+    100% {
+      opacity: 0;
+    }
+  }
+
+  @include e(input-wrapper) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 3;
+    overflow: hidden;
+  }
+
+  @include e(input) {
+    @include universal;
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    opacity: 0;
+  }
+
+  @include m(border) {
+    @include e(item) {
+      &::after {
+        @include border-surround(var(--sar-password-input-border-color));
+      }
+    }
+  }
+
+  @include m(underline) {
+    @include e(item) {
+      &::after {
+        @include border-bottom(var(--sar-password-input-border-color));
+      }
+    }
+  }
+
+  @include m(tight-border) {
+    @include e(item) {
+      &::after {
+        @include border-surround(var(--sar-password-input-border-color));
+        border-left-color: transparent;
+      }
+      &:first-child::after {
+        border-left-color: var(--sar-password-input-border-color);
+      }
+    }
+  }
+
+  @include m(border, underline, tight-border) {
+    @include e(item) {
+      @include m(active) {
+        &::after {
+          border-color: var(--sar-password-input-active-border-color);
+        }
+      }
+    }
+  }
+
+  @include m(tight-border) {
+    @include e(item) {
+      @include m(active) {
+        &:first-child::after {
+          border-left-color: var(--sar-password-input-active-border-color);
+        }
+      }
+    }
+  }
+
+  @include m(disabled) {
+    color: var(--sar-disabled-color);
+
+    @include e(item) {
+      background-color: var(--sar-disabled-shallow-bg);
+    }
+
+    @include e(ciphertext) {
+      background-color: var(--sar-disabled-color);
+    }
+  }
+}

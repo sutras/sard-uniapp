@@ -1,0 +1,24 @@
+// #variables
+page {
+  --sar-popout-border-top-radius: var(--sar-rounded-xl);
+  --sar-popout-bg: var(--sar-emphasis-bg);
+
+  --sar-popout-close-padding: 32rpx;
+  --sar-popout-close-font-size: var(--sar-text-lg);
+  --sar-popout-close-color: var(--sar-secondary-color);
+
+  --sar-popout-header-compact-height: 88rpx;
+  --sar-popout-header-loose-height: 88rpx;
+  --sar-popout-header-loose-padding-x: 120rpx;
+
+  --sar-popout-title-font-size: var(--sar-text-lg);
+  --sar-popout-title-color: var(--sar-emphasis-color);
+
+  --sar-popout-button-wrap-min-width: 160rpx;
+
+  --sar-popout-footer-gap-y: 20rpx;
+  --sar-popout-footer-gap-x: 32rpx;
+
+  --sar-popout-button-gap: 32rpx;
+}
+// #endvariables

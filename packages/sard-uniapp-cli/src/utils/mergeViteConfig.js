@@ -1,74 +1,71 @@
 import { relative, resolve } from 'node:path'
-import vue from '@vitejs/plugin-vue'
+import createVuePlugin from '@vitejs/plugin-vue'
 import autoprefixer from 'autoprefixer'
-import { transformIndexHtml } from '../plugins/transformIndexHtml.js'
-import { loadSardConfig } from '../plugins/loadSardConfig.js'
-import { transformRouter } from '../plugins/transformRouter.js'
-import { transformMarkdown } from '../plugins/transformMarkdown.js'
-import { loadStyles } from '../plugins/loadStyles.js'
-import { transformDemo } from '../plugins/transformDemo.js'
-import { transformMobileUrl } from '../plugins/transformMobileUrl.js'
+import { VitePluginIndexHtml } from '../plugins/VitePluginIndexHtml.js'
+import { VitePluginSardConfig } from '../plugins/VitePluginSardConfig.js'
+import { VitePluginRouter } from '../plugins/VitePluginRouter.js'
+import { VitePluginMarkdown } from '../plugins/VitePluginMarkdown.js'
+import { VitePluginStyles } from '../plugins/VitePluginStyles.js'
+import { VitePluginMobile } from '../plugins/VitePluginMobile.js'
+import { VitePluginRestart } from '../plugins/VitePluginRestart.js'
 import {
   CWD,
   SERVER_DEV_PORT,
   SERVER_PREVIEW_PORT,
   sardConfig,
   SITE_DIR,
-  ROOT_DIR,
+  SARD_CONFIG_FILENAME,
 } from './constants.js'
 import { deepMerge } from './deepMerge.js'
 
+const vuePlugin = createVuePlugin({
+  include: [/.vue$/, /.md$/],
+})
+
 export function mergeViteConfig(options) {
-  return deepMerge(
-    {
-      configFile: false,
-      plugins: [
-        transformIndexHtml(),
-        loadSardConfig(),
-        transformRouter(),
-        transformMarkdown(),
-        transformDemo(),
-        transformMobileUrl(),
-        loadStyles(),
-        vue({
-          include: [/.vue$/, /.md$/],
-        }),
-      ],
-      root: SITE_DIR,
-      base: sardConfig.base,
-      publicDir: resolve(CWD, sardConfig.publicDir),
-      server: {
-        port: SERVER_DEV_PORT,
-        host: true,
-      },
-      build: {
-        outDir: relative(SITE_DIR, resolve(CWD, sardConfig.buildSite.outDir)),
-        emptyOutDir: true,
-      },
-      preview: {
-        port: SERVER_PREVIEW_PORT,
-      },
-      resolve: {
-        alias: [
-          ...sardConfig.alias,
-          {
-            find: '@@',
-            replacement: ROOT_DIR,
-          },
-          {
-            find: '@',
-            replacement: CWD,
-          },
-        ],
-      },
-      css: {
-        postcss: {
-          plugins: [autoprefixer({})],
+  return deepMerge({
+    configFile: false,
+    plugins: [
+      VitePluginIndexHtml(),
+      VitePluginSardConfig(),
+      VitePluginRouter(),
+      VitePluginMarkdown(vuePlugin),
+      VitePluginMobile(),
+      VitePluginStyles(),
+      vuePlugin,
+      VitePluginRestart({
+        restart: [resolve(CWD, SARD_CONFIG_FILENAME)],
+        onRestart() {
+          options.onRestart?.()
         },
+      }),
+    ],
+    root: SITE_DIR,
+    base: sardConfig.base,
+    publicDir: resolve(CWD, sardConfig.publicDir),
+    server: {
+      port: SERVER_DEV_PORT,
+      host: true,
+    },
+    build: {
+      outDir: relative(SITE_DIR, resolve(CWD, sardConfig.buildSite.outDir)),
+      emptyOutDir: true,
+    },
+    preview: {
+      port: SERVER_PREVIEW_PORT,
+    },
+    resolve: {
+      alias: {
+        ...sardConfig.alias,
+        '@@': SITE_DIR,
       },
     },
-    options,
-  )
+    css: {
+      postcss: {
+        plugins: [autoprefixer({})],
+      },
+    },
+  })
 }
 
 export default mergeViteConfig

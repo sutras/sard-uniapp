@@ -1,0 +1,20 @@
+// #variables
+page {
+  --sar-tag-line-height: var(--sar-leading-tight);
+  --sar-tag-color: var(--sar-white);
+
+  --sar-tag-small-padding: 4rpx 4rpx;
+  --sar-tag-small-font-size: var(--sar-text-xs);
+  --sar-tag-small-border-radius: var(--sar-rounded-xs);
+
+  --sar-tag-medium-padding: 4rpx 8rpx;
+  --sar-tag-medium-font-size: var(--sar-text-sm);
+  --sar-tag-medium-border-radius: var(--sar-rounded-sm);
+
+  --sar-tag-large-padding: 4rpx 12rpx;
+  --sar-tag-large-font-size: var(--sar-text-base);
+  --sar-tag-large-border-radius: var(--sar-rounded);
+
+  --sar-tag-close-margin-left: 8rpx;
+}
+// #endvariables

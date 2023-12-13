@@ -1,0 +1,198 @@
+@use 'sass:color';
+@use './configuration' as *;
+@use './functions' as *;
+
+// #variables
+page {
+  // # 灰度值
+  --sar-white: #{$sar-white};
+  --sar-gray-100: #{$sar-gray-100};
+  --sar-gray-200: #{$sar-gray-200};
+  --sar-gray-300: #{$sar-gray-300};
+  --sar-gray-400: #{$sar-gray-400};
+  --sar-gray-500: #{$sar-gray-500};
+  --sar-gray-600: #{$sar-gray-600};
+  --sar-gray-700: #{$sar-gray-700};
+  --sar-gray-800: #{$sar-gray-800};
+  --sar-gray-900: #{$sar-gray-900};
+  --sar-black: #{$sar-black};
+
+  // # 灰度值 rgb
+  --sar-white-rgb: #{extractRGB($sar-white)};
+  --sar-gray-100-rgb: #{extractRGB($sar-gray-100)};
+  --sar-gray-200-rgb: #{extractRGB($sar-gray-200)};
+  --sar-gray-300-rgb: #{extractRGB($sar-gray-300)};
+  --sar-gray-400-rgb: #{extractRGB($sar-gray-400)};
+  --sar-gray-500-rgb: #{extractRGB($sar-gray-500)};
+  --sar-gray-600-rgb: #{extractRGB($sar-gray-600)};
+  --sar-gray-700-rgb: #{extractRGB($sar-gray-700)};
+  --sar-gray-800-rgb: #{extractRGB($sar-gray-800)};
+  --sar-gray-900-rgb: #{extractRGB($sar-gray-900)};
+  --sar-black-rgb: #{extractRGB($sar-black)};
+
+  // # 基础颜色
+  --sar-blue: #{$sar-blue};
+  --sar-indigo: #{$sar-indigo};
+  --sar-purple: #{$sar-purple};
+  --sar-pink: #{$sar-pink};
+  --sar-red: #{$sar-red};
+  --sar-orange: #{$sar-orange};
+  --sar-yellow: #{$sar-yellow};
+  --sar-green: #{$sar-green};
+  --sar-teal: #{$sar-teal};
+  --sar-cyan: #{$sar-cyan};
+
+  // # 基础颜色 rgb
+  --sar-blue-rgb: #{extractRGB($sar-blue)};
+  --sar-indigo-rgb: #{extractRGB($sar-indigo)};
+  --sar-purple-rgb: #{extractRGB($sar-purple)};
+  --sar-pink-rgb: #{extractRGB($sar-pink)};
+  --sar-red-rgb: #{extractRGB($sar-red)};
+  --sar-orange-rgb: #{extractRGB($sar-orange)};
+  --sar-yellow-rgb: #{extractRGB($sar-yellow)};
+  --sar-green-rgb: #{extractRGB($sar-green)};
+  --sar-teal-rgb: #{extractRGB($sar-teal)};
+  --sar-cyan-rgb: #{extractRGB($sar-cyan)};
+
+  // # 主题色
+  --sar-primary: var(--sar-blue);
+  --sar-secondary: var(--sar-gray-600);
+  --sar-success: var(--sar-green);
+  --sar-info: var(--sar-cyan);
+  --sar-warning: var(--sar-yellow);
+  --sar-danger: var(--sar-red);
+  --sar-light: var(--sar-gray-100);
+  --sar-dark: var(--sar-gray-900);
+
+  // # 主题色 rgb
+  --sar-primary-rgb: var(--sar-blue-rgb);
+  --sar-secondary-rgb: var(--sar-gray-600-rgb);
+  --sar-success-rgb: var(--sar-green-rgb);
+  --sar-info-rgb: var(--sar-cyan-rgb);
+  --sar-warning-rgb: var(--sar-yellow-rgb);
+  --sar-danger-rgb: var(--sar-red-rgb);
+  --sar-light-rgb: var(--sar-gray-100-rgb);
+  --sar-dark-rgb: var(--sar-gray-900-rgb);
+
+  // # 主题色 深文本
+  --sar-primary-text: #{darken($sar-blue, 20%)};
+  --sar-secondary-text: #{darken($sar-gray-600, 20%)};
+  --sar-success-text: #{darken($sar-green, 10%)};
+  --sar-info-text: #{darken($sar-cyan, 20%)};
+  --sar-warning-text: #{darken($sar-yellow, 20%)};
+  --sar-danger-text: #{darken($sar-red, 20%)};
+  --sar-light-text: #{darken($sar-gray-100, 20%)};
+  --sar-dark-text: #{darken($sar-gray-900, 20%)};
+
+  // # 灰度场景色
+  --sar-body-color: var(--sar-gray-900);
+  --sar-body-bg: var(--sar-gray-100);
+  --sar-secondary-color: var(--sar-gray-700);
+  --sar-secondary-bg: var(--sar-gray-200);
+  --sar-tertiary-color: var(--sar-gray-600);
+  --sar-tertiary-bg: var(--sar-gray-300);
+  --sar-quaternary-color: var(--sar-gray-500);
+  --sar-quaternary-bg: var(--sar-gray-100);
+  --sar-emphasis-color: var(--sar-black);
+  --sar-emphasis-bg: var(--sar-white);
+  --sar-border-color: var(--sar-gray-300);
+  --sar-active-bg: var(--sar-gray-200);
+  --sar-active-deep-bg: var(--sar-gray-300);
+
+  // # 灰度场景色 rgb
+  --sar-body-color-rgb: var(--sar-gray-900-rgb);
+  --sar-body-bg-rgb: var(--sar-gray-300-rgb);
+  --sar-secondary-color-rgb: var(--sar-gray-700-rgb);
+  --sar-secondary-bg-rgb: var(--sar-gray-200-rgb);
+  --sar-tertiary-color-rgb: var(--sar-gray-600-rgb);
+  --sar-tertiary-bg-rgb: var(--sar-gray-300-rgb);
+  --sar-quaternary-color-rgb: var(--sar-gray-500-rgb);
+  --sar-quaternary-bg-rgb: var(--sar-gray-100-rgb);
+  --sar-emphasis-color-rgb: var(--sar-black-rgb);
+  --sar-emphasis-bg-rgb: var(--sar-white-rgb);
+  --sar-border-color-rgb: var(--sar-gray-300-rgb);
+  --sar-active-bg-rgb: var(--sar-gray-200-rgb);
+
+  // # 圆角
+  --sar-rounded-xs: 4rpx;
+  --sar-rounded-sm: 8rpx;
+  --sar-rounded: 12rpx;
+  --sar-rounded-lg: 20rpx;
+  --sar-rounded-xl: 28rpx;
+  --sar-rounded-full: 9999px;
+
+  // # 字体
+  --sar-font-sans: system-ui, -apple-system, 'Segoe UI', Roboto,
+    'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif,
+    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --sar-font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
+  --sar-font-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
+    'Courier New', monospace;
+
+  // # 字号
+  --sar-text-xs: 20rpx;
+  --sar-text-sm: 24rpx;
+  --sar-text-base: 28rpx;
+  --sar-text-lg: 32rpx;
+  --sar-text-xl: 48rpx;
+  --sar-text-2xl: 64rpx;
+
+  // # 字重
+  --sar-font-bold: 700;
+  --sar-font-normal: 400;
+  --sar-font-light: 300;
+
+  // # 行高
+  --sar-leading-none: 1;
+  --sar-leading-tight: 1.25;
+  --sar-leading-snug: 1.375;
+  --sar-leading-normal: 1.5;
+  --sar-leading-relaxed: 1.625;
+  --sar-leading-loose: 2;
+
+  // # 阴影
+  --sar-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
+  --sar-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
+  --sar-shadow-md: 0 2px 6px -1px rgb(0 0 0 / 0.1),
+    0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --sar-shadow-lg: 0 3px 15px -3px rgb(0 0 0 / 0.1),
+    0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --sar-shadow-xl: 0 5px 25px -5px rgb(0 0 0 / 0.1),
+    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --sar-shadow-2xl: 0 10px 50px -12px rgb(0 0 0 / 0.25);
+  --sar-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
+
+  // # 黑色遮罩
+  --sar-mask-legible: rgba(0, 0, 0, 0.1);
+  --sar-mask: rgba(0, 0, 0, 0.5);
+  --sar-mask-illegible: rgba(0, 0, 0, 0.7);
+
+  // # 白色遮罩
+  --sar-mask-white-legible: rgba(255, 255, 255, 0.3);
+  --sar-mask-white: rgba(255, 255, 255, 0.5);
+  --sar-mask-white-illegible: rgba(255, 255, 255, 0.7);
+
+  // # 禁用状态
+  --sar-disabled-pointer-events: none;
+  --sar-disabled-opacity: 0.6;
+  --sar-disabled-cursor: not-allowed;
+  --sar-disabled-filter: grayscale(100%);
+  --sar-disabled-color: var(--sar-gray-500);
+  --sar-disabled-bg: var(--sar-gray-400);
+  --sar-disabled-shallow-bg: var(--sar-gray-200);
+  --sar-disabled-deep-bg: var(--sar-gray-500);
+
+  // # 按下状态
+  --sar-active-opacity: 0.5;
+
+  // # 加载状态
+  --sar-loading-pointer-events: none;
+  --sar-loading-opacity: 0.6;
+  --sar-loading-cursor: default;
+
+  // # 过渡时间
+  --sar-duration-slow: 500ms;
+  --sar-duration: 300ms;
+  --sar-duration-fast: 150ms;
+}
+// #endvariables

@@ -1,0 +1,225 @@
+@use 'sass:list';
+@use 'sass:string';
+@use 'sass:selector';
+@use 'sass:meta';
+@use '../configuration' as *;
+
+$namespace: $sar-namespace !default;
+$block-separator: $sar-block-separator !default;
+$element-separator: $sar-element-separator !default;
+$modifier-separator: $sar-modifier-separator !default;
+
+$current-block: '';
+
+@function get-selector-last($selector) {
+  $str: $selector + '';
+  $list: string.split($str, ',');
+  $result: ();
+  @each $item in $list {
+    $sub-list: string.split($item, ' ');
+    $last: list.nth($sub-list, list.length($sub-list));
+    $result: list.append($result, $last, $separator: comma);
+  }
+  @return $result;
+}
+
+@function is-block($selector) {
+  @return $selector + '' == $current-block;
+}
+
+@function get-modifier-selector($modifiers, $parent) {
+  $sep-modifier: ();
+
+  @each $item in $modifiers {
+    $sep-modifier: list.append(
+      $sep-modifier,
+      $modifier-separator + $item,
+      $separator: comma
+    );
+  }
+
+  @return selector.append($parent, $sep-modifier);
+}
+
+@function get-intersectant-selector($modifiers, $parent) {
+  $multi-element: ();
+
+  @each $p in $parent {
+    $one-element: '';
+
+    @each $m in $modifiers {
+      $one-element: $one-element + $p + $modifier-separator + $m;
+    }
+
+    $multi-element: list.append(
+      $multi-element,
+      $one-element,
+      $separator: comma
+    );
+  }
+
+  @return $multi-element;
+}
+
+@function get-element-selector($elements) {
+  $sep-elements: ();
+
+  @each $item in $elements {
+    $sep-elements: list.append(
+      $sep-elements,
+      $element-separator + $item,
+      $separator: comma
+    );
+  }
+
+  @return selector.append($current-block, $sep-elements);
+}
+
+@mixin bem($block) {
+  $selector: '.' + $namespace + $block-separator + $block;
+  $current-block: $selector !global;
+
+  #{$selector} {
+    @content;
+  }
+}
+
+@mixin b() {
+  & {
+    @content;
+  }
+}
+
+@mixin e($elements...) {
+  $selector: get-element-selector($elements);
+  $parent: &;
+
+  @if (is-block($parent)) {
+    @at-root {
+      #{$selector} {
+        @content;
+      }
+    }
+  } @else {
+    @at-root {
+      #{$parent} {
+        #{$selector} {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin m($modifiers...) {
+  $selector: get-modifier-selector($modifiers, &);
+
+  @at-root {
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+@mixin m-not($modifiers...) {
+  $selector-list: ();
+
+  @each $element in & {
+    $selector: get-modifier-selector($modifiers, $element);
+    $last: get-selector-last($selector);
+    $not-selector: selector.replace(':not(selector)', 'selector', $last);
+    $selector: selector.append(&, $not-selector);
+    $selector-list: list.append($selector-list, $selector, $separator: comma);
+  }
+
+  @at-root {
+    #{$selector-list} {
+      @content;
+    }
+  }
+}
+
+@mixin m-intersect($modifiers...) {
+  $selector: get-intersectant-selector($modifiers, &);
+
+  @at-root {
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+@mixin m-root($modifiers...) {
+  $selector: get-modifier-selector($modifiers, $current-block);
+  $parent: &;
+
+  @at-root {
+    #{$selector} {
+      #{$parent} {
+        @content;
+      }
+    }
+  }
+}
+
+// experiment
+@mixin e-root($elements...) {
+  $selector: get-element-selector($elements);
+
+  @at-root {
+    #{$selector} {
+      @content;
+    }
+  }
+}
+
+@mixin e-last-root($elements...) {
+  $selector: get-element-selector($elements);
+  $parent: &;
+
+  @at-root {
+    #{$selector} {
+      &:last-child {
+        #{$parent} {
+          @content;
+        }
+      }
+    }
+  }
+}
+
+@mixin m-root-intersect($modifiers...) {
+  $selector: get-intersectant-selector($modifiers, $current-block);
+  $parent: &;
+
+  @at-root {
+    #{$selector} {
+      #{$parent} {
+        @content;
+      }
+    }
+  }
+}
+
+@mixin em($element, $modifiers...) {
+  @include e($element) {
+    @include m($modifiers) {
+      @content;
+    }
+  }
+}
+
+@mixin em-root($element, $modifiers...) {
+  $selector: get-element-selector($element);
+  $parent: &;
+
+  @at-root {
+    #{$selector} {
+      @include m($modifiers) {
+        #{$parent} {
+          @content;
+        }
+      }
+    }
+  }
+}

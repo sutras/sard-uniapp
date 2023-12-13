@@ -1,0 +1,126 @@
+@use '../style/base' as *;
+
+@include bem(popup) {
+  @include b() {
+    @include universal;
+    position: fixed;
+    z-index: var(--sar-popup-z-index);
+
+    @include m(slide-top) {
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    @include m(slide-right) {
+      top: 0;
+      right: 0;
+      height: 100%;
+    }
+
+    @include m(slide-bottom) {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    @include m(slide-left) {
+      top: 0;
+      left: 0;
+      height: 100%;
+    }
+
+    @include m(fade, zoom) {
+      left: 50%;
+      top: 45%;
+      transform: translate(-50%, -50%);
+    }
+
+    // fade
+    @include m(fade-enter-from, fade-leave-to) {
+      opacity: 0;
+    }
+
+    @include m(fade-enter-to, fade-leave-from) {
+      opacity: 1;
+    }
+
+    @include m(fade-enter-active, fade-leave-active) {
+      transition: opacity var(--sar-popup-duration) ease;
+    }
+
+    // zoom
+    @include m(zoom-enter-from) {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.7);
+    }
+
+    @include m(zoom-leave-to) {
+      opacity: 0;
+      transform: translate(-50%, -50%) scale(0.9);
+    }
+
+    @include m(zoom-enter-to, zoom-leave-from) {
+      opacity: 1;
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    @include m(zoom-enter-active) {
+      transition: transform var(--sar-popup-duration) ease-out,
+        opacity var(--sar-popup-duration) ease-out;
+    }
+
+    @include m(zoom-leave-active) {
+      transition: transform var(--sar-popup-duration) ease-out,
+        opacity var(--sar-popup-duration) ease-in;
+    }
+
+    // slide
+    @include m(slide-top-enter-from, slide-top-leave-to) {
+      transform: translate3d(0, -100%, 0);
+    }
+
+    @include m(slide-right-enter-from, slide-right-leave-to) {
+      transform: translate3d(100%, 0, 0);
+    }
+
+    @include m(slide-bottom-enter-from, slide-bottom-leave-to) {
+      transform: translate3d(0, 100%, 0);
+    }
+
+    @include m(slide-left-enter-from, slide-left-leave-to) {
+      transform: translate3d(-100%, 0, 0);
+    }
+
+    @include m(
+      slide-top-enter-to,
+      slide-right-enter-to,
+      slide-bottom-enter-to,
+      slide-left-enter-to,
+      slide-top-leave-from,
+      slide-right-leave-from,
+      slide-bottom-leave-from,
+      slide-left-leave-from
+    ) {
+      transform: translate3d(0, 0, 0);
+    }
+
+    @include m(
+      slide-top-enter-active,
+      slide-right-enter-active,
+      slide-bottom-enter-active,
+      slide-left-enter-active
+    ) {
+      transition: transform var(--sar-popup-duration) ease-out;
+    }
+
+    @include m(
+      slide-top-leave-active,
+      slide-right-leave-active,
+      slide-bottom-leave-active,
+      slide-left-leave-active
+    ) {
+      transition: transform var(--sar-popup-duration) ease-in;
+    }
+  }
+}

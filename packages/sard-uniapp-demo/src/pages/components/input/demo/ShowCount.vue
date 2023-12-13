@@ -1,0 +1,9 @@
+<template>
+  <sar-input
+    type="textarea"
+    showCount
+    :maxlength="100"
+    clearable
+    placeholder="请输入"
+  />
+</template>

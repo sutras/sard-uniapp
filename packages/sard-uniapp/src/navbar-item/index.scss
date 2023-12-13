@@ -1,0 +1,20 @@
+@use '../style/base' as *;
+
+@include bem(navbar) {
+  @include e(item) {
+    @include universal;
+    display: inline-flex;
+    flex-direction: row;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
+    padding: 0 var(--sar-navbar-item-padding-x);
+    font-size: var(--sar-navbar-item-font-size);
+    color: var(--sar-navbar-item-color);
+    cursor: pointer;
+
+    &:active {
+      opacity: var(--sar-navbar-item-active-opacity);
+    }
+  }
+}

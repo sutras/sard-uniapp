@@ -1,9 +1,14 @@
 {
   "compilerOptions": {
-    "module": "ESNext",
-    "target": "ESNext",
+    "module": "esnext",
+    "target": "esnext",
     "esModuleInterop": true,
-    "moduleResolution": "Node",
-    "resolveJsonModule": true
-  }
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "strict": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "types": ["@dcloudio/types", "node", "vitest/globals"]
+  },
+  "exclude": ["**/dist/**", "**/node_modules/**"]
 }

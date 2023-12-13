@@ -1,0 +1,19 @@
+@use '../style/base' as *;
+
+@include bem(menu) {
+  @include b() {
+    @include universal;
+
+    @include m(vertical) {
+      flex-direction: column;
+    }
+
+    @include m(horizontal) {
+      flex-direction: row;
+    }
+  }
+
+  @include m(dark) {
+    --sar-menu-border-color: var(--sar-menu-dark-border-color);
+  }
+}

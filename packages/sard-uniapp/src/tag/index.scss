@@ -1,0 +1,80 @@
+@use '../style/base' as *;
+
+$sar-tag-sizes: (
+  small: (
+    padding: var(--sar-tag-small-padding),
+    font-size: var(--sar-tag-small-font-size),
+    border-radius: var(--sar-tag-small-border-radius),
+  ),
+  medium: (
+    padding: var(--sar-tag-medium-padding),
+    font-size: var(--sar-tag-medium-font-size),
+    border-radius: var(--sar-tag-medium-border-radius),
+  ),
+  large: (
+    padding: var(--sar-tag-large-padding),
+    font-size: var(--sar-tag-large-font-size),
+    border-radius: var(--sar-tag-large-border-radius),
+  ),
+);
+
+@include bem(tag) {
+  @include b() {
+    @include universal;
+    display: inline-flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    align-self: center;
+    border: 1px solid transparent;
+    color: var(--sar-tag-color);
+    line-height: var(--sar-tag-line-height);
+  }
+
+  // 主题
+  @each $theme, $value in $sar-theme-colors {
+    $color: nth($value, 1);
+
+    @include m($theme) {
+      background-color: $color;
+    }
+
+    @include m(#{$theme}-plain) {
+      color: $color;
+    }
+  }
+
+  @include m(plain) {
+    border-color: currentColor;
+    background-color: transparent;
+  }
+
+  // 尺寸
+  @each $size, $value in $sar-tag-sizes {
+    @include m($size) {
+      padding: map-get($value, padding);
+      font-size: map-get($value, font-size);
+      border-radius: map-get($value, border-radius);
+    }
+  }
+
+  // 圆角
+  @include m(round) {
+    border-radius: var(--sar-rounded-full);
+  }
+
+  // 标记
+  @include m(mark) {
+    border-top-right-radius: var(--sar-rounded-full);
+    border-bottom-right-radius: var(--sar-rounded-full);
+  }
+
+  // 可关闭的
+  @include e(close) {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    margin-left: var(--sar-tag-close-margin-left);
+    cursor: pointer;
+  }
+}

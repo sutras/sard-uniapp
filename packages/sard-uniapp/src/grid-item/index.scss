@@ -1,0 +1,118 @@
+@use '../style/base' as *;
+
+@include bem(grid) {
+  @include e(item) {
+    @include universal;
+    flex: none;
+  }
+
+  @include e(wrapper) {
+    @include universal;
+    flex: 1;
+  }
+
+  @include e(content) {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    padding-top: var(--sar-grid-item-padding-y);
+    padding-right: var(--sar-grid-item-padding-x);
+    padding-bottom: var(--sar-grid-item-padding-y);
+    padding-left: var(--sar-grid-item-padding-x);
+    background-color: var(--sar-grid-bg);
+  }
+
+  @include e(icon) {
+    @include universal;
+    font-size: var(--sar-grid-item-icon-size);
+  }
+
+  @include e(text) {
+    @include universal;
+    font-size: var(--sar-grid-item-text-font-size);
+    line-height: var(--sar-grid-item-text-line-height);
+  }
+
+  @include m(square) {
+    @include e(wrapper) {
+      height: 0;
+      padding-top: 100%;
+    }
+
+    @include e(content) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+    }
+  }
+
+  @include m(vertical) {
+    @include e(content) {
+      flex-direction: column;
+    }
+
+    @include e(text) {
+      margin-top: var(--sar-grid-item-text-gap);
+    }
+  }
+
+  @include m(horizontal) {
+    @include e(content) {
+      flex-direction: row;
+    }
+
+    @include e(text) {
+      margin-left: var(--sar-grid-item-text-gap);
+    }
+  }
+
+  @include m-intersect(vertical, reverse) {
+    @include e(content) {
+      flex-direction: column-reverse;
+    }
+
+    @include e(text) {
+      margin-top: 0;
+      margin-bottom: var(--sar-grid-item-text-gap);
+    }
+  }
+
+  @include m-intersect(horizontal, reverse) {
+    @include e(content) {
+      flex-direction: row-reverse;
+    }
+
+    @include e(text) {
+      margin-left: 0;
+      margin-right: var(--sar-grid-item-text-gap);
+    }
+  }
+
+  @include m(surround) {
+    @include e(content) {
+      &::after {
+        @include border-surround(var(--sar-grid-border-color));
+      }
+    }
+  }
+
+  @include m(bordered) {
+    @include e(content) {
+      &::after {
+        @include border-bottom-right(var(--sar-grid-border-color));
+      }
+    }
+  }
+
+  @include m(clickable) {
+    @include e(content) {
+      cursor: pointer;
+      &:active {
+        background-color: var(--sar-grid-active-bg);
+      }
+    }
+  }
+}

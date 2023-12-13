@@ -1,0 +1,117 @@
+@use '../style/base' as *;
+
+@include bem(dropdown-item) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    padding: 0 var(--sar-dropdown-item-padding-x);
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  @include e(label) {
+    margin-right: var(--sar-dropdown-label-margin-right);
+    font-size: var(--sar-dropdown-label-font-size);
+    color: var(--sar-dropdown-label-color);
+  }
+
+  @include e(title, value) {
+    font-size: var(--sar-dropdown-value-font-size);
+  }
+
+  @include e(placeholder) {
+    @include universal;
+    color: var(--sar-dropdown-placeholder-color);
+    font-size: var(--sar-dropdown-value-font-size);
+  }
+
+  @include e(arrow) {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    margin-left: var(--sar-dropdown-arrow-margin-left);
+    color: var(--sar-dropdown-arrow-color);
+    font-size: var(--sar-dropdown-arrow-font-size);
+  }
+
+  @include e(away) {
+    @include universal;
+    position: fixed;
+    z-index: var(--sar-dropdown-popup-z-index);
+    opacity: 0;
+    touch-action: none;
+  }
+
+  @include e(option) {
+    @include m(active) {
+      color: var(--sar-dropdown-option-active-color);
+
+      @include e(option-icon) {
+        display: flex;
+      }
+    }
+  }
+
+  @include e(option-icon) {
+    @include universal;
+    align-items: center;
+    justify-content: center;
+    display: none;
+    margin-left: auto;
+    font-size: var(--sar-dropdown-option-icon-font-size);
+  }
+
+  @include e(popover) {
+    @include universal;
+    position: fixed;
+    z-index: var(--sar-dropdown-popup-z-index);
+    overflow: hidden;
+    touch-action: none;
+  }
+
+  @include e(popup, overlay) {
+    touch-action: none;
+  }
+
+  @include m(show) {
+    touch-action: none;
+    color: var(--sar-dropdown-item-show-color);
+
+    @include e(arrow) {
+      color: var(--sar-dropdown-option-active-color);
+    }
+  }
+
+  @include m(some-show) {
+    z-index: calc(var(--sar-dropdown-popup-z-index) + 1);
+  }
+
+  @include m-not(disabled) {
+    &:active {
+      opacity: var(--sar-dropdown-item-active-opacity);
+    }
+  }
+
+  @include m(disabled) {
+    cursor: not-allowed;
+
+    @include e(title, value, label) {
+      color: var(--sar-disabled-color);
+    }
+  }
+
+  @include m(has-label) {
+    @include e(title, value, placeholder) {
+      margin-left: var(--sar-dropdown-label-margin-right);
+    }
+  }
+
+  @include m(up) {
+    @include e(arrow) {
+      transform: rotate(180deg);
+    }
+  }
+}

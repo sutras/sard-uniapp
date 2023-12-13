@@ -1,0 +1,19 @@
+// #variables
+page {
+  --sar-skeleton-bg: var(--sar-secondary-bg);
+  --sar-skeleton-border-radius: var(--sar-rounded-sm);
+  --sar-skeleton-highlight-color: rgba(0, 0, 0, 0.08);
+
+  --sar-skeleton-block-height: 32rpx;
+
+  --sar-skeleton-avatar-size: 64rpx;
+  --sar-skeleton-avatar-margin-right: 32rpx;
+
+  --sar-skeleton-title-width: 40%;
+  --sar-skeleton-title-height: 40rpx;
+  --sar-skeleton-title-margin-bottom: 32rpx;
+
+  --sar-skeleton-row-last-width: 60%;
+  --sar-skeleton-row-gap: 24rpx;
+}
+// #endvariables

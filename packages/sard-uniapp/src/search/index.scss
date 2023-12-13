@@ -1,0 +1,43 @@
+@use '../style/base' as *;
+
+@include bem(search) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    align-items: stretch;
+    padding: var(--sar-search-padding-y) var(--sar-search-padding-x);
+    background-color: var(--sar-search-bg);
+  }
+
+  @include m(show-action) {
+    padding-right: 0;
+  }
+
+  @include e(input-wrapper) {
+    flex: 1;
+  }
+
+  @include e(input) {
+    background-color: var(--sar-search-input-bg);
+
+    @include m(round) {
+      border-radius: var(--sar-rounded-full);
+    }
+  }
+
+  @include e(prepend, append) {
+    @include universal;
+    flex: none;
+  }
+
+  @include e(icon) {
+    @include universal;
+    color: var(--sar-search-icon-color);
+  }
+
+  @include m(disabled) {
+    @include e(input) {
+      background-color: var(--sar-search-input-disabled-bg);
+    }
+  }
+}

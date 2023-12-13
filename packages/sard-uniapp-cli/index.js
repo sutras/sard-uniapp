@@ -84,7 +84,7 @@ program
 
 program
   .command('preview')
-  .description('预览构建的站点')
+  .description('预览构建的文档站点')
   .action(async () => {
     const { preview } = await import('./src/commands/preview.js')
     preview()
@@ -96,6 +96,22 @@ program
   .action(async () => {
     const { build } = await import('./src/commands/build.js')
     build()
+  })
+
+program
+  .command('release')
+  .description('发布组件库到npm')
+  .action(async () => {
+    const { release } = await import('./src/commands/release.js')
+    release()
+  })
+
+program
+  .command('deploy')
+  .description('部署文档站点到 Github Page')
+  .action(async () => {
+    const { deploy } = await import('./src/commands/deploy.js')
+    deploy()
   })
 
 program.parse(process.argv)

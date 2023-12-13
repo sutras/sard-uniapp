@@ -1,6 +1,6 @@
 import { dirname, resolve } from 'node:path'
-import { fileURLToPath, pathToFileURL } from 'node:url'
-import { getMergeSardConfig } from './mergeSardConfig.js'
+import { fileURLToPath } from 'node:url'
+import { getSardConfig } from './getSardConfig.js'
 
 export const ROOT_DIR = resolve(
   fileURLToPath(dirname(import.meta.url)),
@@ -10,13 +10,9 @@ export const ROOT_DIR = resolve(
 export const CWD = process.cwd()
 
 // sard config
-export const SARD_CONFIG_FILENAME = 'sard.config.js'
-
-const customSardconfig = (
-  await import(pathToFileURL(resolve(CWD, SARD_CONFIG_FILENAME)))
-).default
-
-export const sardConfig = getMergeSardConfig(customSardconfig)
+export const SARD_CONFIG_FILENAME = 'sard.config.mjs'
+export const sardConfig = getSardConfig()
+export const MAIN_FILE_NAME = 'main.ts'
 
 // site
 export const SITE_DIR = resolve(ROOT_DIR, './src/site')
@@ -26,16 +22,11 @@ export const SERVER_PREVIEW_PORT = 7760
 
 export const DEFAULT_README_NAME = 'README.md'
 
-export const VIRTUAL_SARD_CONFIG = 'virtual:sard-config'
-
 export const DEMO_DIR = 'demo'
 
 export const MD_PATH_R = /\.md$/
 export const CUSTOM_PATH_R = /\/desktop\/custom\.scss$/
-export const ROUTER_PATH_R = /site\/desktop\/router.ts/
-
-export const MD_DEMO_CODE_R = /<script type="code">([\s\S]*?)<\/script>/
-export const MD_DEMO_CODE_SEPARATOR = '<script type="code"></script>'
+export const ROUTER_PATH_R = /site\/router.ts/
 
 export const TEMP_STYLE_NAME = '__TEMP_STYLE__'
 

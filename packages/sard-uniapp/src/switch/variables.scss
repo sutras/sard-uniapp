@@ -1,0 +1,22 @@
+// #variables
+page {
+  --sar-switch-font-size: 60rpx;
+  --sar-switch-width: calc(1em / 6 * 10);
+  --sar-switch-height: 1em;
+  --sar-switch-transition-duration: var(--sar-duration);
+  --sar-switch-bg: var(--sar-secondary-bg);
+  --sar-switch-checked-bg: var(--sar-primary);
+
+  --sar-switch-is-loading-opacity: var(--sar-loading-opacity);
+
+  --sar-switch-thumb-gap: 6rpx;
+  --sar-switch-thumb-width: calc(
+    var(--sar-switch-height) - var(--sar-switch-thumb-gap) * 2
+  );
+  --sar-switch-thumb-height: var(--sar-switch-thumb-width);
+  --sar-switch-thumb-border-radius: var(--sar-rounded-full);
+  --sar-switch-thumb-bg: var(--sar-white);
+  --sar-switch-thumb-color: var(--sar-gray-600);
+  --sar-switch-thumb-transition-duration: var(--sar-duration);
+}
+// #endvariables

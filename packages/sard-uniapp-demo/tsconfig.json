@@ -1,0 +1,21 @@
+{
+  "compilerOptions": {
+    "sourceMap": true,
+    "baseUrl": ".",
+    "lib": ["esnext", "dom"],
+    "types": ["@dcloudio/types", "node", "../sard-uniapp/src/global"],
+    "ignoreDeprecations": "5.0",
+    "paths": {
+      "@sard/uniapp": ["../sard-uniapp/src/index"],
+      "@sard/uniapp/dist/*": ["../sard-uniapp/src/*"],
+      "@/*": ["src/*"]
+    },
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "strictNullChecks": true
+  },
+  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+}

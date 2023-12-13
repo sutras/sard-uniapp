@@ -1,0 +1,186 @@
+@use '../style/base' as *;
+
+@include bem(button) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex: auto;
+    width: auto;
+    margin: 0;
+    border: none;
+    vertical-align: middle;
+    font-family: inherit;
+    line-height: var(--sar-button-line-height);
+    white-space: nowrap;
+    text-align: center;
+    user-select: none;
+    cursor: pointer;
+    overflow: visible;
+  }
+
+  // border
+  &::after {
+    @include border-surround(currentColor);
+    display: none;
+  }
+
+  // shade
+  &::before {
+    @include universal;
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    opacity: 0;
+    background-color: var(--sar-button-active-bg);
+    pointer-events: none;
+  }
+
+  // # 尺寸
+  @include m(mini) {
+    @include button-size(
+      var(--sar-button-height-mini),
+      var(--sar-button-padding-y-mini),
+      var(--sar-button-padding-x-mini),
+      var(--sar-button-border-radius-mini),
+      var(--sar-button-font-size-mini)
+    );
+  }
+
+  @include m(small) {
+    @include button-size(
+      var(--sar-button-height-sm),
+      var(--sar-button-padding-y-sm),
+      var(--sar-button-padding-x-sm),
+      var(--sar-button-border-radius-sm),
+      var(--sar-button-font-size-sm)
+    );
+  }
+
+  @include m(medium) {
+    @include button-size(
+      var(--sar-button-height),
+      var(--sar-button-padding-y),
+      var(--sar-button-padding-x),
+      var(--sar-button-border-radius),
+      var(--sar-button-font-size)
+    );
+  }
+
+  @include m(large) {
+    @include button-size(
+      var(--sar-button-height-lg),
+      var(--sar-button-padding-y-lg),
+      var(--sar-button-padding-x-lg),
+      var(--sar-button-border-radius-lg),
+      var(--sar-button-font-size-lg)
+    );
+  }
+
+  // ## 显示边框
+  @include m(outline) {
+    &::after {
+      display: flex;
+    }
+  }
+
+  // # 主题色
+  @each $theme, $value in $sar-theme-colors {
+    $color: nth($value, 1);
+    $color-rgb: nth($value, 2);
+
+    // ## 默认类型
+    @include m(default-#{$theme}) {
+      @include button-set-theme {
+        color: var(--sar-white);
+        background-color: $color;
+      }
+    }
+
+    // ## 淡颜色类型
+    @include m(pale-#{$theme}) {
+      @include button-set-theme {
+        color: $color;
+        background-color: rgba($color-rgb, var(--sar-button-pale-bg-opacity));
+      }
+    }
+
+    // ## 温和类型
+    @include m(mild-#{$theme}) {
+      @include button-set-theme {
+        color: $color;
+        background-color: var(--sar-button-mild-bg);
+      }
+    }
+
+    // ## 轮廓类型
+    @include m(outline-#{$theme}) {
+      @include button-set-theme {
+        color: $color;
+        background-color: transparent;
+      }
+    }
+
+    // ## 文本类型
+    @include m(text-#{$theme}) {
+      @include button-set-theme {
+        color: $color;
+        background-color: transparent;
+      }
+    }
+
+    // ## 淡文本类型
+    @include m(pale-text-#{$theme}) {
+      @include button-set-theme {
+        color: $color;
+        background-color: transparent;
+      }
+    }
+  }
+
+  // # 圆形按钮
+  @include m(round) {
+    border-radius: var(--sar-rounded-full);
+
+    &::after {
+      border-radius: var(--sar-rounded-full);
+    }
+  }
+
+  // # active 状态
+  @include m(default, pale, mild, outline, text) {
+    &:not([disabled]):active::before {
+      opacity: 1;
+    }
+  }
+
+  @include m(pale-text) {
+    &:active {
+      opacity: var(--sar-button-active-opacity);
+    }
+  }
+
+  // # 禁用状态
+  @include m(disabled) {
+    @include disabled;
+  }
+
+  // # 加载状态
+  @include m(loading) {
+    opacity: var(--sar-button-loading-opacity);
+    cursor: var(--sar-button-loading-cursor);
+  }
+
+  @include e(loading) {
+    display: flex;
+
+    @include m(with-slot) {
+      margin-right: var(--sar-button-loading-margin-right);
+    }
+  }
+}

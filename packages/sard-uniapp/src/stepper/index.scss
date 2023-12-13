@@ -1,0 +1,75 @@
+@use '../style/base' as *;
+
+@include bem(stepper) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    gap: var(--sar-stepper-gap);
+    height: var(--sar-stepper-height);
+  }
+
+  @include e(button) {
+    @include universal;
+    flex: none;
+    justify-content: center;
+    align-items: center;
+    width: var(--sar-stepper-button-width);
+    font-size: var(--sar-stepper-button-font-size);
+    background-color: var(--sar-stepper-bg);
+
+    cursor: pointer;
+
+    @include m(readonly) {
+      cursor: default;
+    }
+
+    @include m(disabled) {
+      cursor: not-allowed;
+    }
+
+    @include m(decrease) {
+      border-top-left-radius: var(--sar-stepper-button-border-radius);
+      border-bottom-left-radius: var(--sar-stepper-button-border-radius);
+    }
+
+    @include m(increase) {
+      border-top-right-radius: var(--sar-stepper-button-border-radius);
+      border-bottom-right-radius: var(--sar-stepper-button-border-radius);
+    }
+
+    @include m-not(disabled, readonly) {
+      &:active {
+        background-color: var(--sar-stepper-button-active-bg);
+      }
+    }
+
+    @include m(disabled) {
+      background-color: var(--sar-disabled-shallow-bg);
+      color: var(--sar-disabled-color);
+    }
+  }
+
+  @include e(input) {
+    flex: none;
+    width: var(--sar-stepper-input-width);
+    height: 100%;
+    padding: 0 var(--sar-stepper-input-padding-x);
+    border: 0;
+    border-radius: 0;
+    font-size: var(--sar-stepper-input-font-size);
+    text-align: center;
+    background-color: var(--sar-stepper-bg);
+  }
+
+  @include e(placeholder) {
+    color: var(--sar-stepper-placeholder-color);
+  }
+
+  @include m(disabled) {
+    @include e(input) {
+      color: var(--sar-stepper-input-disabled-color);
+    }
+  }
+}

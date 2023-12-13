@@ -1,0 +1,19 @@
+// #variables
+page {
+  --sar-card-border-radius: var(--sar-rounded-lg);
+  --sar-card-border-color: var(--sar-border-color);
+  --sar-card-bg: var(--sar-emphasis-bg);
+
+  --sar-card-header-padding-y: 20rpx;
+  --sar-card-header-padding-x: 32rpx;
+
+  --sar-card-title-font-size: var(--sar-text-lg);
+  --sar-card-title-line-height: var(--sar-leading-normal);
+
+  --sar-card-body-padding-y: 20rpx;
+  --sar-card-body-padding-x: 32rpx;
+
+  --sar-card-footer-padding-y: 20rpx;
+  --sar-card-footer-padding-x: 32rpx;
+}
+// #endvariables

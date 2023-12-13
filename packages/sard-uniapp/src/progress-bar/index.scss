@@ -1,0 +1,114 @@
+@use '../style/base' as *;
+
+@include bem(progress-bar) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+  }
+
+  @include e(track) {
+    @include universal;
+    flex: 1;
+    height: var(--sar-progress-bar-height);
+    border-radius: var(--sar-progress-bar-border-radius);
+    background-color: var(--sar-progress-bar-track-bg);
+    overflow: hidden;
+  }
+
+  @include e(piece) {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    height: 100%;
+    border-radius: var(--sar-progress-bar-border-radius);
+    font-size: var(--sar-progress-bar-piece-font-size);
+    color: var(--sar-progress-bar-piece-color);
+    background-color: var(--sar-progress-bar-piece-bg);
+    transition: width var(--sar-progress-bar-piece-transition-duration);
+  }
+
+  @include e(text) {
+    flex: none;
+    font-size: var(--sar-progress-bar-text-font-size);
+    margin-left: var(--sar-progress-bar-text-margin-left);
+  }
+
+  @include e(status) {
+    @include universal;
+    margin-left: var(--sar-progress-bar-status-margin-left);
+    line-height: var(--sar-progress-bar-status-line-height);
+  }
+
+  @include m(inside) {
+    @include e(track) {
+      height: var(--sar-progress-bar-inside-height);
+    }
+
+    @include e(text) {
+      margin-left: 0;
+      margin-right: var(--sar-progress-bar-text-margin-right);
+      font-size: var(--sar-progress-bar-inside-text-font-size);
+    }
+  }
+
+  @include m(striped) {
+    @include e(piece) {
+      background-image: linear-gradient(
+        45deg,
+        rgba(255, 255, 255, 0.15) 25%,
+        transparent 25%,
+        transparent 50%,
+        rgba(255, 255, 255, 0.15) 50%,
+        rgba(255, 255, 255, 0.15) 75%,
+        transparent 75%,
+        transparent
+      );
+      background-size: var(--sar-progress-bar-striped-width)
+        var(--sar-progress-bar-striped-width);
+    }
+  }
+
+  @include m(animated) {
+    @include e(piece) {
+      animation: 1s linear infinite #{bem-ns(progress-bar-stripes)};
+    }
+  }
+
+  @keyframes #{bem-ns(progress-bar-stripes)} {
+    0% {
+      background-position-x: var(--sar-progress-bar-striped-width);
+    }
+  }
+
+  @include m(success) {
+    @include e(piece) {
+      background-color: var(--sar-progress-bar-success-color);
+    }
+
+    @include e(status) {
+      color: var(--sar-progress-bar-success-color);
+    }
+  }
+
+  @include m(warning) {
+    @include e(piece) {
+      background-color: var(--sar-progress-bar-warning-color);
+    }
+
+    @include e(status) {
+      color: var(--sar-progress-bar-warning-color);
+    }
+  }
+
+  @include m(error) {
+    @include e(piece) {
+      background-color: var(--sar-progress-bar-error-color);
+    }
+
+    @include e(status) {
+      color: var(--sar-progress-bar-error-color);
+    }
+  }
+}

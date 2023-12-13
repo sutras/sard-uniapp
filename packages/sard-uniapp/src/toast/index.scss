@@ -1,0 +1,64 @@
+@use '../style/base' as *;
+
+@include bem(toast) {
+  @include b() {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    padding: var(--sar-toast-padding-y) var(--sar-toast-padding-x);
+    border-radius: var(--sar-toast-border-radius);
+    background-color: var(--sar-toast-bg);
+    touch-action: none;
+  }
+
+  @include e(popup) {
+    width: max-content;
+    max-width: var(--sar-toast-text-max-width);
+
+    @include m(top) {
+      top: var(--sar-toast-top);
+      transform: translate(-50%, 0);
+    }
+
+    @include m(bottom) {
+      top: auto;
+      bottom: var(--sar-toast-bottom);
+      transform: translate(-50%, 0);
+    }
+  }
+
+  @include e(icon) {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    width: var(--sar-toast-icon-size);
+    height: var(--sar-toast-icon-size);
+    margin-bottom: var(--sar-toast-icon-margin-bottom);
+    text-align: center;
+    font-size: var(--sar-toast-icon-size);
+    color: var(--sar-toast-color);
+
+    @include m(loading) {
+      font-size: var(--sar-toast-icon-loading-size);
+    }
+  }
+
+  @include e(title) {
+    @include universal;
+    font-size: var(--sar-toast-title-font-size);
+    line-height: var(--sar-toast-title-line-height);
+    text-align: center;
+    color: var(--sar-toast-color);
+  }
+
+  @include m(is-text) {
+    padding-top: var(--sar-toast-text-padding-y);
+    padding-bottom: var(--sar-toast-text-padding-y);
+    word-break: break-word;
+  }
+
+  @include m(not-text) {
+    width: var(--sar-toast-width);
+    min-height: var(--sar-toast-not-text-min-height);
+  }
+}

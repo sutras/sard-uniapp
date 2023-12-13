@@ -1,0 +1,88 @@
+@use '../style/base' as *;
+
+@include bem(notice-bar) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    align-items: center;
+    min-height: var(--sar-notice-bar-min-height);
+    padding: 0 var(--sar-notice-bar-padding-x);
+    background-color: var(--sar-notice-bar-bg);
+    color: var(--sar-notice-bar-color);
+
+    @include m(wrap) {
+      padding-top: var(--sar-notice-bar-padding-y);
+      padding-bottom: var(--sar-notice-bar-padding-y);
+    }
+
+    @include m(linkable) {
+      cursor: pointer;
+    }
+  }
+
+  @include e(left-icon) {
+    @include universal;
+    font-size: var(--sar-notice-bar-left-icon-size);
+    margin-right: var(--sar-notice-bar-left-icon-margin-right);
+  }
+
+  @include e(content) {
+    @include universal;
+    flex: 1;
+    flex-direction: row;
+    overflow: hidden;
+  }
+
+  @include e(wrapper) {
+    @include universal;
+    font-size: var(--sar-notice-bar-font-size);
+    line-height: var(--sar-notice-bar-wrap-line-height);
+    white-space: nowrap;
+  }
+
+  @include e(right-icon) {
+    @include universal;
+    font-size: var(--sar-notice-bar-right-icon-size);
+    padding: var(--sar-notice-bar-right-icon-padding);
+    margin-left: var(--sar-notice-bar-right-icon-margin-left);
+    margin-right: var(--sar-notice-bar-right-icon-margin-right);
+    cursor: pointer;
+  }
+
+  @include m(vertical) {
+    @include e(content) {
+      flex-direction: column;
+    }
+  }
+
+  @include m(scrollable) {
+    @include e(wrapper) {
+      animation: #{bem-ns(notice-bar-scroll)} linear both running;
+    }
+  }
+
+  @include m(infinite) {
+    @include e(wrapper) {
+      animation: #{bem-ns(notice-bar-scroll-infinite)} linear both running infinite;
+    }
+  }
+
+  @keyframes #{bem-ns(notice-bar-scroll)} {
+    100% {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+
+  @keyframes #{bem-ns(notice-bar-scroll-infinite)} {
+    100% {
+      transform: translate3d(-100%, 0, 0);
+    }
+  }
+
+  @include m(wrap) {
+    @include e(wrapper) {
+      white-space: normal;
+    }
+  }
+}

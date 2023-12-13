@@ -1,0 +1,19 @@
+// #variables
+page {
+  --sar-notice-bar-min-height: 80rpx;
+  --sar-notice-bar-padding-x: 32rpx;
+  --sar-notice-bar-padding-y: 20rpx;
+  --sar-notice-bar-font-size: var(--sar-text-base);
+  --sar-notice-bar-color: var(--sar-orange);
+  --sar-notice-bar-bg: rgba(var(--sar-yellow-rgb), 0.1);
+
+  --sar-notice-bar-wrap-line-height: var(--sar-leading-snug);
+
+  --sar-notice-bar-left-icon-size: 40rpx;
+  --sar-notice-bar-left-icon-margin-right: 16rpx;
+  --sar-notice-bar-right-icon-padding: 20rpx;
+  --sar-notice-bar-right-icon-size: 32rpx;
+  --sar-notice-bar-right-icon-margin-left: 0;
+  --sar-notice-bar-right-icon-margin-right: -20rpx;
+}
+// #endvariables

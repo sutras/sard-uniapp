@@ -1,0 +1,233 @@
+@use '../style/base' as *;
+
+@include bem(slider) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    padding: var(--sar-slider-padding);
+    cursor: pointer;
+  }
+
+  @include e(track) {
+    @include universal;
+    width: var(--sar-slider-track-main-axis-size);
+    height: var(--sar-slider-track-cross-axis-size);
+    border-radius: var(--sar-rounded-full);
+    background-color: var(--sar-slider-track-bg);
+  }
+
+  @include e(piece) {
+    @include universal;
+    position: absolute;
+    width: auto;
+    height: 100%;
+    border-radius: var(--sar-rounded-full);
+    background-color: var(--sar-slider-piece-bg);
+  }
+
+  @include e(thumb-container) {
+    @include universal;
+    position: absolute;
+    z-index: 2;
+    justify-content: center;
+    align-items: center;
+    touch-action: none;
+    transform: translate(-50%, -50%);
+
+    @include m(start) {
+      top: 50%;
+      left: 0;
+    }
+
+    @include m(end) {
+      top: 50%;
+      left: 100%;
+    }
+  }
+
+  @include e(thumb) {
+    @include universal;
+    flex: none;
+    width: var(--sar-slider-thumb-size);
+    height: var(--sar-slider-thumb-size);
+    border-radius: var(--sar-rounded-full);
+    background-color: var(--sar-slider-thumb-bg);
+    box-shadow: var(--sar-slider-thumb-box-shadow);
+  }
+
+  @include e(value) {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    padding: var(--sar-slider-value-padding);
+    font-size: var(--sar-slider-value-font-size);
+    line-height: var(--sar-leading-none);
+    color: var(--sar-slider-value-color);
+    border-radius: var(--sar-rounded-sm);
+    background-color: var(--sar-slider-value-bg);
+    box-shadow: var(--sar-slider-value-box-shadow);
+
+    &::after {
+      @include universal;
+      content: '';
+      position: absolute;
+      width: var(--sar-slider-value-arrow-size);
+      height: var(--sar-slider-value-arrow-size);
+      background-color: inherit;
+    }
+
+    @include m(top) {
+      bottom: calc(100% + var(--sar-slider-value-arrow-size));
+      &::after {
+        top: 100%;
+        left: 50%;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+    }
+
+    @include m(bottom) {
+      top: calc(100% + var(--sar-slider-value-arrow-size));
+      &::after {
+        bottom: 100%;
+        left: 50%;
+        transform: translate(-50%, 50%) rotate(45deg);
+      }
+    }
+
+    @include m(left) {
+      right: calc(100% + var(--sar-slider-value-arrow-size));
+      &::after {
+        top: 50%;
+        left: 100%;
+        transform: translate(-50%, -50%) rotate(45deg);
+      }
+    }
+
+    @include m(right) {
+      left: calc(100% + var(--sar-slider-value-arrow-size));
+      &::after {
+        top: 50%;
+        right: 100%;
+        transform: translate(50%, -50%) rotate(45deg);
+      }
+    }
+
+    @include m(top, bottom) {
+      min-width: var(--sar-slider-value-min-width);
+    }
+
+    @include m(left, right) {
+      min-width: var(--sar-slider-value-horizontal-min-width);
+    }
+  }
+
+  @include e(scale) {
+    @include universal;
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: var(--sar-slider-scale-size);
+    height: var(--sar-slider-scale-size);
+    border-radius: 50%;
+    background-color: var(--sar-slider-track-bg);
+
+    @include m(active) {
+      background-color: var(--sar-slider-piece-bg);
+    }
+  }
+
+  @include e(scale-text) {
+    @include universal;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: var(--sar-slider-scale-text-font-size);
+    line-height: var(--sar-leading-none);
+  }
+
+  @include m(vertical) {
+    width: auto;
+    height: var(--sar-slider-vertical-height);
+
+    @include e(track) {
+      width: var(--sar-slider-track-cross-axis-size);
+      height: var(--sar-slider-track-main-axis-size);
+    }
+
+    @include e(piece) {
+      width: 100%;
+      height: auto;
+    }
+
+    @include e(thumb-container) {
+      touch-action: auto;
+
+      @include m(start) {
+        top: 0;
+        left: 50%;
+      }
+
+      @include m(end) {
+        top: 100%;
+        left: 50%;
+      }
+    }
+
+    @include e(scale) {
+      left: 50%;
+    }
+
+    @include e(scale-text) {
+      top: 50%;
+      left: auto;
+      transform: translateY(-50%);
+    }
+  }
+
+  @include m(scale-top) {
+    padding-top: var(--sar-slider-show-scale-padding-y);
+
+    @include e(scale-text) {
+      bottom: var(--sar-slider-scale-text-offset);
+    }
+  }
+
+  @include m(scale-bottom) {
+    padding-bottom: var(--sar-slider-show-scale-padding-y);
+
+    @include e(scale-text) {
+      top: var(--sar-slider-scale-text-offset);
+    }
+  }
+
+  @include m(scale-left) {
+    padding-left: var(--sar-slider-show-scale-padding-x);
+
+    @include e(scale-text) {
+      right: var(--sar-slider-scale-text-offset);
+    }
+  }
+
+  @include m(scale-right) {
+    padding-right: var(--sar-slider-show-scale-padding-x);
+
+    @include e(scale-text) {
+      left: var(--sar-slider-scale-text-offset);
+    }
+  }
+
+  @include m(readonly) {
+    cursor: default;
+  }
+
+  @include m(disabled) {
+    @include disabled;
+  }
+
+  @include m(readonly, disabled) {
+    @include e(thumb-container) {
+      touch-action: auto;
+    }
+  }
+}

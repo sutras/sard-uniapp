@@ -1,0 +1,47 @@
+@use '../style/base' as *;
+
+@include bem(badge) {
+  @include b() {
+    @include universal;
+    flex: none;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    min-width: var(--sar-badge-min-width);
+    height: var(--sar-badge-height);
+    padding-left: var(--sar-badge-padding-x);
+    padding-right: var(--sar-badge-padding-x);
+    font-size: var(--sar-badge-font-size);
+    line-height: var(--sar-leading-none);
+    text-align: center;
+    border: 1px solid var(--sar-badge-border-color);
+    border-radius: var(--sar-rounded-full);
+    color: var(--sar-badge-color);
+    background-color: var(--sar-badge-bg);
+
+    @include m(fixed) {
+      position: absolute;
+      top: 0;
+      right: 0;
+      transform: translate(50%, -50%);
+      z-index: 10;
+    }
+
+    @include m(dot) {
+      width: var(--sar-badge-dot-size);
+      height: var(--sar-badge-dot-size);
+      min-width: var(--sar-badge-dot-size);
+      padding: 0;
+      border-radius: var(--sar-rounded-full);
+    }
+
+    @include m(zero-hide) {
+      display: none;
+    }
+  }
+
+  @include e(wrapper) {
+    @include universal;
+    display: inline-flex;
+  }
+}

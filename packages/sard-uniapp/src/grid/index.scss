@@ -1,0 +1,15 @@
+@use '../style/base' as *;
+
+@include bem(grid) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    flex-wrap: wrap;
+
+    @include m(bordered) {
+      &::after {
+        @include border-top-left(var(--sar-grid-border-color));
+      }
+    }
+  }
+}

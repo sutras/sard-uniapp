@@ -1,0 +1,87 @@
+@use '../style/base' as *;
+
+@include bem(progress-circle) {
+  @include b() {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    width: var(--sar-progress-circle-size);
+    height: var(--sar-progress-circle-size);
+  }
+
+  @include e(track) {
+    @include universal;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+    background-color: var(--sar-progress-circle-track-color);
+    pointer-events: none;
+  }
+
+  @include e(piece) {
+    @include universal;
+    width: 100%;
+    height: 100%;
+    color: var(--sar-progress-circle-piece-color);
+  }
+
+  @include e(cap) {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    background-color: currentColor;
+    border-radius: 50%;
+  }
+
+  @include e(cap-start) {
+    transform: translate(-50%, 0);
+  }
+
+  @include e(cap-end) {
+    transform: translate(-50%, -50%);
+  }
+
+  @include e(text) {
+    @include universal;
+    font-size: var(--sar-progress-circle-text-font-size);
+  }
+
+  @include e(status) {
+    @include universal;
+    font-size: var(--sar-progress-circle-status-font-size);
+  }
+
+  @include m(success) {
+    @include e(piece) {
+      color: var(--sar-progress-circle-success-color);
+    }
+
+    @include e(status) {
+      color: var(--sar-progress-circle-success-color);
+    }
+  }
+
+  @include m(warning) {
+    @include e(piece) {
+      color: var(--sar-progress-circle-warning-color);
+    }
+
+    @include e(status) {
+      color: var(--sar-progress-circle-warning-color);
+    }
+  }
+
+  @include m(error) {
+    @include e(piece) {
+      color: var(--sar-progress-circle-error-color);
+    }
+
+    @include e(status) {
+      color: var(--sar-progress-circle-error-color);
+    }
+  }
+}

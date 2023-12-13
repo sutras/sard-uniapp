@@ -1,0 +1,30 @@
+@use '../style/base' as *;
+
+@include bem(tabbar) {
+  @include e(item) {
+    @include universal;
+    z-index: 3;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    font-size: var(--sar-tabbar-item-text-font-size);
+    line-height: var(--sar-tabbar-item-text-line-height);
+    color: var(--sar-tabbar-color);
+    cursor: pointer;
+
+    @include m(current) {
+      color: var(--sar-tabbar-item-ative-color);
+    }
+  }
+
+  @include e(icon) {
+    @include universal;
+    margin-bottom: var(--sar-tabbar-item-icon-margin-bottom);
+    font-size: var(--sar-tabbar-item-icon-font-size);
+    line-height: var(--sar-tabbar-item-icon-line-height);
+  }
+
+  @include e(text) {
+    @include universal;
+  }
+}

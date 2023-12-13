@@ -1,0 +1,18 @@
+@use '../style/base' as *;
+
+@include bem(radio-group) {
+  @include b() {
+    @include universal;
+    row-gap: var(--sar-radio-group-row-gap);
+    column-gap: var(--sar-radio-group-column-gap);
+
+    @include m(horizontal) {
+      flex-direction: row;
+      flex-wrap: wrap;
+    }
+
+    @include m(vertical) {
+      flex-direction: column;
+    }
+  }
+}

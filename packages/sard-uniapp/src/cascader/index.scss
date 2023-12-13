@@ -1,0 +1,99 @@
+@use '../style/base' as *;
+
+@include bem(cascader) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(container) {
+    @include universal;
+    overflow: hidden;
+  }
+
+  @include e(wrapper) {
+    @include universal;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    transition: transform var(--sar-duration);
+  }
+
+  @include e(pane) {
+    @include universal;
+    width: 100%;
+    flex: none;
+  }
+
+  @include e(options) {
+    @include universal;
+    flex-direction: row;
+    height: var(--sar-cascader-options-height);
+  }
+
+  @include e(scroll) {
+    height: 100%;
+  }
+
+  @include e(option) {
+    @include universal;
+    flex-direction: row;
+    padding: var(--sar-cascader-option-padding-y)
+      var(--sar-cascader-option-padding-x);
+    cursor: pointer;
+
+    @include m(selected) {
+      color: var(--sar-cascader-selected-color);
+      font-weight: var(--sar-font-bold);
+
+      @include e(option-icon) {
+        display: flex;
+      }
+    }
+
+    @include m(disabled) {
+      @include disabled;
+    }
+
+    @include m-not(disabled) {
+      &:active {
+        background-color: var(--sar-cascader-option-active-bg);
+      }
+    }
+  }
+
+  @include e(option-label) {
+    font-size: var(--sar-cascader-option-font-size);
+    line-height: var(--sar-cascader-option-line-height);
+  }
+
+  @include e(option-icon) {
+    display: none;
+    justify-content: start;
+    align-items: center;
+    margin-left: auto;
+  }
+
+  @include e(loading-wrapper) {
+    @include universal;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 2;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity var(--sar-duration);
+    pointer-events: none;
+
+    @include m(show) {
+      opacity: 1;
+    }
+  }
+
+  @include e(loading) {
+    font-size: var(--sar-cascader-loading-font-size);
+    color: var(--sar-cascader-loading-color);
+  }
+}

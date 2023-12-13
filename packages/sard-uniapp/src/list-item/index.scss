@@ -1,0 +1,91 @@
+@use '../style/base' as *;
+
+@include bem(list-item) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    overflow: hidden;
+    min-height: var(--sar-list-item-min-height);
+    padding: var(--sar-list-item-padding-y) var(--sar-list-item-padding-x);
+    background-color: var(--sar-list-item-bg);
+
+    &:first-child {
+      border-top-left-radius: inherit;
+      border-top-right-radius: inherit;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: inherit;
+      border-bottom-right-radius: inherit;
+    }
+
+    &::before {
+      @include border-top(var(--sar-border-color));
+      left: var(--sar-list-item-padding-x);
+      right: var(--sar-list-item-padding-x);
+    }
+
+    &:first-child::before {
+      display: none;
+    }
+
+    @include m(hover) {
+      cursor: pointer;
+
+      &:active {
+        background-color: var(--sar-list-item-active-bg);
+      }
+    }
+
+    @include m(custom) {
+      flex-direction: column;
+    }
+  }
+
+  @include e(icon) {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    flex: none;
+    margin-right: var(--sar-list-item-icon-margin-right);
+    font-size: var(--sar-list-item-icon-font-size);
+  }
+
+  @include e(title) {
+    @include universal;
+    justify-content: center;
+    flex: auto;
+    font-size: var(--sar-list-item-title-font-size);
+    line-height: var(--sar-list-item-title-line-height);
+  }
+
+  @include e(description) {
+    @include universal;
+    margin-top: var(--sar-list-item-description-margin-top);
+    font-size: var(--sar-list-item-description-font-size);
+    line-height: var(--sar-list-item-description-line-height);
+    color: var(--sar-list-item-description-color);
+  }
+
+  @include e(value) {
+    @include universal;
+    justify-content: center;
+    align-items: flex-end;
+    flex: auto;
+    font-size: var(--sar-list-item-value-font-size);
+    line-height: var(--sar-list-item-value-line-height);
+    color: var(--sar-list-item-value-color);
+    text-align: right;
+    word-wrap: break-word;
+  }
+
+  @include e(arrow) {
+    @include universal;
+    align-items: center;
+    justify-content: center;
+    margin-left: var(--sar-list-item-arrow-margin-left);
+    font-size: var(--sar-list-item-arrow-font-size);
+    color: var(--sar-list-item-arrow-color);
+  }
+}

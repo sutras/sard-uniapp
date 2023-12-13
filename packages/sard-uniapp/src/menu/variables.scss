@@ -1,0 +1,20 @@
+// #variables
+page {
+  --sar-menu-item-border-radius: var(--sar-rounded);
+  --sar-menu-item-height: 88rpx;
+  --sar-menu-item-padding-x: 32rpx;
+  --sar-menu-item-font-size: var(--sar-text-base);
+  --sar-menu-item-active-bg: var(--sar-active-bg);
+
+  --sar-menu-item-dark-active-bg: var(--sar-gray-900);
+  --sar-menu-item-dark-color: var(--sar-white);
+  --sar-menu-border-color: var(--sar-border-color);
+  --sar-menu-dark-border-color: var(--sar-gray-700);
+
+  --sar-menu-item-horizontal-height: 68rpx;
+
+  --sar-menu-icon-font-size: var(--sar-text-base);
+  --sar-menu-icon-margin-right: 24rpx;
+  --sar-menu-icon-horizontal-margin-right: 16rpx;
+}
+// #endvariables

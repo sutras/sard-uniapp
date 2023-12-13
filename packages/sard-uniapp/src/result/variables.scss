@@ -1,0 +1,21 @@
+// #variables
+page {
+  --sar-result-icon-font-size: 96rpx;
+  --sar-result-icon-line-height: var(--sar-leading-none);
+
+  --sar-result-success-color: var(--sar-success);
+  --sar-result-info-color: var(--sar-info);
+  --sar-result-warning-color: var(--sar-warning);
+  --sar-result-error-color: var(--sar-danger);
+  --sar-result-question-color: var(--sar-primary);
+
+  --sar-result-title-margin-top: 32rpx;
+  --sar-result-title-font-size: var(--sar-text-xl);
+
+  --sar-result-description-margin-top: 8rpx;
+  --sar-result-description-font-size: var(--sar-text-base);
+  --sar-result-description-color: var(--sar-tertiary-color);
+
+  --sar-result-extra-margin-top: 32rpx;
+}
+// #endvariables

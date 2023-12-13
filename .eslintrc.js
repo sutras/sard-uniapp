@@ -31,6 +31,7 @@ module.exports = {
     'vue/multi-word-component-names': 'off',
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-this-alias': 'off',
+    '@typescript-eslint/no-explicit-any': 'off',
   },
   globals: {
     process: true,

@@ -1,0 +1,34 @@
+@use '../style/base' as *;
+
+@include bem(empty) {
+  @include b() {
+    @include universal;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  @include e(icon-wrapper) {
+    @include universal;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @include e(icon) {
+    font-size: var(--sar-empty-icon-font-size);
+    line-height: var(--sar-empty-icon-line-height);
+    color: var(--sar-empty-icon-color);
+  }
+
+  @include e(description) {
+    @include universal;
+    margin-top: var(--sar-empty-description-margin-top);
+    font-size: var(--sar-empty-description-font-size);
+    color: var(--sar-empty-description-color);
+  }
+
+  @include e(extra) {
+    @include universal;
+    margin-top: var(--sar-empty-extra-margin-top);
+  }
+}

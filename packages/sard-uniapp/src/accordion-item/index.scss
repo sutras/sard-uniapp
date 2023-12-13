@@ -1,0 +1,56 @@
+@use '../style/base' as *;
+
+@include bem(accordion-item) {
+  @include b() {
+    @include universal;
+    background-color: var(--sar-accordion-bg);
+
+    &::before {
+      @include border-top(var(--sar-accordion-border-color));
+      left: var(--sar-accordion-item-header-padding-x);
+      right: var(--sar-accordion-item-header-padding-x);
+    }
+
+    &:first-child::before {
+      display: none;
+    }
+  }
+
+  @include e(header) {
+    @include universal;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--sar-accordion-item-header-padding-y)
+      var(--sar-accordion-item-header-padding-x);
+    cursor: pointer;
+
+    @include m-not(disabled) {
+      &:active {
+        background-color: var(--sar-accordion-active-bg);
+      }
+    }
+
+    @include m(disabled) {
+      cursor: not-allowed;
+      @include disabled;
+    }
+  }
+
+  @include e(title) {
+    font-size: var(--sar-accordion-item-title-font-size);
+    line-height: var(--sar-accordion-item-title-line-height);
+  }
+
+  @include e(body) {
+    @include universal;
+    padding: var(--sar-accordion-item-body-padding-y)
+      var(--sar-accordion-item-body-padding-x);
+
+    &::before {
+      @include border-top(var(--sar-accordion-border-color));
+      left: var(--sar-accordion-item-body-padding-x);
+      right: var(--sar-accordion-item-body-padding-x);
+    }
+  }
+}

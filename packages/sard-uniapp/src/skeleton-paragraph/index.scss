@@ -1,0 +1,16 @@
+@use '../style/base' as *;
+
+@include bem(skeleton) {
+  @include e(row) {
+    @include universal;
+
+    &:last-child {
+      width: var(--sar-skeleton-row-last-width);
+    }
+  }
+
+  @include e(paragraph) {
+    @include universal;
+    row-gap: var(--sar-skeleton-row-gap);
+  }
+}

@@ -1,0 +1,16 @@
+// #variables
+page {
+  --sar-tabbar-height: 100rpx;
+  --sar-tabbar-border-color: var(--sar-border-color);
+  --sar-tabbar-bg: var(--sar-emphasis-bg);
+  --sar-tabbar-color: var(--sar-secondary-color);
+
+  --sar-tabbar-item-ative-color: var(--sar-primary);
+  --sar-tabbar-item-icon-margin-bottom: 8rpx;
+  --sar-tabbar-item-icon-font-size: 40rpx;
+  --sar-tabbar-item-icon-line-height: var(--sar-leading-none);
+
+  --sar-tabbar-item-text-font-size: var(--sar-text-sm);
+  --sar-tabbar-item-text-line-height: var(--sar-leading-tight);
+}
+// #endvariables

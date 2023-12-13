@@ -1,0 +1,67 @@
+@use '../style/base' as *;
+
+@include bem(calendar) {
+  @include b() {
+    @include universal;
+    overflow: hidden;
+    // touch-action: none;
+  }
+
+  @include e(header) {
+    @include universal;
+    z-index: 1;
+    flex: none;
+    margin-bottom: var(--sar-calendar-header-margin-bottom);
+
+    &::after {
+      @include border-bottom(var(--sar-border-color));
+    }
+  }
+
+  @include e(toolbar) {
+    @include universal;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include e(toolbar-inner) {
+    @include universal;
+    flex-direction: row;
+  }
+
+  @include e(current-month) {
+    @include universal;
+    font-size: var(--sar-calendar-current-month-font-size);
+  }
+
+  @include e(week) {
+    @include universal;
+    flex-direction: row;
+  }
+
+  @include e(week-item) {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    height: var(--sar-calendar-week-item-height);
+    font-size: var(--sar-calendar-week-item-font-size);
+  }
+
+  @include e(body) {
+    @include universal;
+    z-index: 0;
+    flex: none;
+  }
+
+  @include m(several) {
+    @include e(header) {
+      box-shadow: var(--sar-shadow-lg);
+    }
+
+    @include e(body) {
+      height: 360px;
+    }
+  }
+}

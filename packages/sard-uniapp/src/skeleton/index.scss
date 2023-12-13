@@ -1,0 +1,75 @@
+@use '../style/base' as *;
+
+@include bem(skeleton) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    column-gap: var(--sar-skeleton-avatar-margin-right);
+  }
+
+  @include e(block) {
+    @include universal;
+    width: 100%;
+    height: var(--sar-skeleton-block-height);
+    background-color: var(--sar-skeleton-bg);
+    border-radius: var(--sar-skeleton-border-radius);
+  }
+
+  @include e(avatar) {
+    @include universal;
+    flex: none;
+    width: var(--sar-skeleton-avatar-size);
+    height: var(--sar-skeleton-avatar-size);
+    border-radius: var(--sar-skeleton-border-radius);
+  }
+
+  @include e(title) {
+    @include universal;
+    width: var(--sar-skeleton-title-width);
+    height: var(--sar-skeleton-title-height);
+  }
+
+  @include e(row) {
+    @include universal;
+
+    &:last-child {
+      width: var(--sar-skeleton-row-last-width);
+    }
+  }
+
+  @include e(content) {
+    @include universal;
+    flex: 1;
+    row-gap: var(--sar-skeleton-title-margin-bottom);
+  }
+
+  @include e(paragraph) {
+    @include universal;
+    row-gap: var(--sar-skeleton-row-gap);
+  }
+
+  @include m(round) {
+    border-radius: var(--sar-rounded-full);
+  }
+
+  @include m(animated) {
+    background-image: linear-gradient(
+      90deg,
+      transparent 25%,
+      var(--sar-skeleton-highlight-color) 37%,
+      transparent 50%
+    );
+    background-size: 400% 100%;
+    animation: #{bem-ns(skeleton-animated)} 1.2s ease infinite;
+  }
+
+  @keyframes #{bem-ns(skeleton-animated)} {
+    0% {
+      background-position: 100% 50%;
+    }
+    100% {
+      background-position: 0 50%;
+    }
+  }
+}

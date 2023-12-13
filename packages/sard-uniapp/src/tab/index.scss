@@ -1,0 +1,72 @@
+@use '../style/base' as *;
+
+@include bem(tabs) {
+  @include e(tab) {
+    @include universal;
+    z-index: 2;
+    flex-direction: row;
+    flex: 1;
+    height: var(--sar-tabs-tab-height);
+    justify-content: center;
+    align-items: center;
+    padding: 0 var(--sar-tabs-tab-padding-x);
+    font-size: var(--sar-tabs-tab-font-size);
+    line-height: var(--sar-tabs-tab-line-height);
+    color: var(--sar-tabs-tab-color);
+    white-space: nowrap;
+    cursor: pointer;
+
+    @include m(current) {
+      font-weight: var(--sar-font-bold);
+      color: var(--sar-tabs-tab-active-color);
+    }
+
+    @include m(disabled) {
+      color: var(--sar-disabled-color);
+      cursor: not-allowed;
+    }
+  }
+
+  @include m(scrollable) {
+    @include e(tab) {
+      flex: 0;
+    }
+  }
+
+  @include m(pill) {
+    @include e(tab) {
+      height: var(--sar-tabs-pill-tab-height);
+      border-radius: var(--sar-rounded-full);
+
+      @include m(current) {
+        color: var(--sar-tabs-pill-current-tab-color);
+        background-color: var(--sar-tabs-pill-current-tab-bg);
+      }
+    }
+  }
+
+  @include m(card) {
+    @include e(tab) {
+      height: var(--sar-tabs-card-tab-height);
+      border: 1px solid var(--sar-tabs-card-theme-color);
+      border-left-width: 0;
+      color: var(--sar-tabs-card-theme-color);
+
+      &:first-child {
+        border-top-left-radius: var(--sar-tabs-card-border-radius);
+        border-bottom-left-radius: var(--sar-tabs-card-border-radius);
+        border-left-width: 1px;
+      }
+
+      &:last-child {
+        border-top-right-radius: var(--sar-tabs-card-border-radius);
+        border-bottom-right-radius: var(--sar-tabs-card-border-radius);
+      }
+
+      @include m(current) {
+        color: var(--sar-white);
+        background-color: var(--sar-tabs-card-theme-color);
+      }
+    }
+  }
+}

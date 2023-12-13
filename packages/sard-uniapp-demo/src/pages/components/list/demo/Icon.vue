@@ -1,0 +1,29 @@
+<template>
+  <sar-list>
+    <sar-list-item
+      title="下载"
+      hover
+      arrow
+      icon="arrow-down-square-fill"
+      icon-family="demo-icons"
+      icon-color="#4994EC"
+    ></sar-list-item>
+    <sar-list-item
+      title="订阅"
+      hover
+      arrow
+      icon="rss-fill"
+      icon-family="demo-icons"
+      icon-color="#E78A3D"
+    ></sar-list-item>
+    <sar-list-item title="视频" hover arrow>
+      <template #icon>
+        <sar-icon
+          family="demo-icons"
+          name="caret-left-square-fill"
+          color="#C24F4A"
+        />
+      </template>
+    </sar-list-item>
+  </sar-list>
+</template>

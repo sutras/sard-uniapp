@@ -1,0 +1,203 @@
+@font-face {
+  font-family: 'demo-icons'; /* Project id 4145921 */
+  src: url('./static/iconfont.ttf?t=1698991362047') format('truetype');
+}
+
+.demo-icons {
+  font-family: 'demo-icons' !important;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.demo-icons-empty:before {
+  content: '\e642';
+}
+
+.demo-icons-smile-line:before {
+  content: '\e607';
+}
+
+.demo-icons-arrow-clockwise:before {
+  content: '\e61f';
+}
+
+.demo-icons-play-circle:before {
+  content: '\e928';
+}
+
+.demo-icons-pause-circle:before {
+  content: '\e9e6';
+}
+
+.demo-icons-upc-scan:before {
+  content: '\ea7c';
+}
+
+.demo-icons-bell:before {
+  content: '\e693';
+}
+
+.demo-icons-bell-fill:before {
+  content: '\e694';
+}
+
+.demo-icons-upload:before {
+  content: '\ea7b';
+}
+
+.demo-icons-camera:before {
+  content: '\e71d';
+}
+
+.demo-icons-heart-fill:before {
+  content: '\e9c2';
+}
+
+.demo-icons-paypal-fill:before {
+  content: '\e7b0';
+}
+
+.demo-icons-skype-fill:before {
+  content: '\e7bf';
+}
+
+.demo-icons-spotify-fill:before {
+  content: '\e7c4';
+}
+
+.demo-icons-telegram-fill:before {
+  content: '\e7c6';
+}
+
+.demo-icons-snapchat-fill:before {
+  content: '\e7cb';
+}
+
+.demo-icons-youtube-fill:before {
+  content: '\e7e1';
+}
+
+.demo-icons-whatsapp-fill:before {
+  content: '\e7e3';
+}
+
+.demo-icons-alipay-fill:before {
+  content: '\e75a';
+}
+
+.demo-icons-facebook-circle-fill:before {
+  content: '\e776';
+}
+
+.demo-icons-twitter-fill:before {
+  content: '\e7ce';
+}
+
+.demo-icons-wechat-fill:before {
+  content: '\e7dc';
+}
+
+.demo-icons-person:before {
+  content: '\e9d5';
+}
+
+.demo-icons-house-door:before {
+  content: '\e878';
+}
+
+.demo-icons-arrow-down-square-fill:before {
+  content: '\e62d';
+}
+
+.demo-icons-caret-down-square-fill:before {
+  content: '\e730';
+}
+
+.demo-icons-caret-left-square-fill:before {
+  content: '\e735';
+}
+
+.demo-icons-filter-square-fill:before {
+  content: '\e830';
+}
+
+.demo-icons-rss-fill:before {
+  content: '\eb37';
+}
+
+.demo-icons-chat-dots:before {
+  content: '\e74e';
+}
+
+.demo-icons-cart:before {
+  content: '\e73a';
+}
+
+.demo-icons-emoji-smile:before {
+  content: '\e79a';
+}
+
+.demo-icons-heart:before {
+  content: '\e86b';
+}
+
+.demo-icons-info-circle-fill:before {
+  content: '\e88b';
+}
+
+.demo-icons-key:before {
+  content: '\e8a1';
+}
+
+.demo-icons-key-fill:before {
+  content: '\e8a3';
+}
+
+.demo-icons-person-fill:before {
+  content: '\e908';
+}
+
+.demo-icons-star:before {
+  content: '\e992';
+}
+
+.demo-icons-info-circle:before {
+  content: '\e9b9';
+}
+
+.demo-icons-share:before {
+  content: '\ea2c';
+}
+
+.demo-icons-search:before {
+  content: '\ea30';
+}
+
+.demo-icons-share-fill:before {
+  content: '\ea32';
+}
+
+.demo-icons-star-fill:before {
+  content: '\ead6';
+}
+
+.demo-icons-list-task:before {
+  content: '\e8c7';
+}
+
+.demo-icons-person-circle:before {
+  content: '\e913';
+}
+
+.demo-icons-cart-fill:before {
+  content: '\e744';
+}
+
+.demo-icons-chat-dots-fill:before {
+  content: '\e750';
+}
+
+.demo-icons-house-door-fill:before {
+  content: '\e879';
+}

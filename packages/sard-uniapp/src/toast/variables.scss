@@ -1,0 +1,27 @@
+@use '../style/base' as *;
+
+// #variables
+page {
+  --sar-toast-top: 10%;
+  --sar-toast-bottom: 10%;
+
+  --sar-toast-font-size: var(--sar-text-base);
+  --sar-toast-width: calc(var(--sar-toast-font-size) * 9);
+  --sar-toast-not-text-min-height: var(--sar-toast-width);
+  --sar-toast-padding-x: var(--sar-toast-font-size);
+  --sar-toast-padding-y: var(--sar-toast-font-size);
+  --sar-toast-border-radius: var(--sar-rounded-lg);
+  --sar-toast-color: var(--sar-white);
+  --sar-toast-bg: var(--sar-mask-illegible);
+
+  --sar-toast-text-max-width: 80%;
+  --sar-toast-text-padding-y: 20rpx;
+
+  --sar-toast-icon-margin-bottom: 16rpx;
+  --sar-toast-icon-size: 72rpx;
+  --sar-toast-icon-loading-size: 60rpx;
+
+  --sar-toast-title-font-size: var(--sar-toast-font-size);
+  --sar-toast-title-line-height: var(--sar-leading-normal);
+}
+// #endvariables

@@ -1,0 +1,28 @@
+<template>
+  <sar-list card>
+    <sar-list-item>
+      <sar-calendar-input
+        title="选择单个日期"
+        placeholder="选择单个日期"
+        clearable
+        type="single"
+      />
+    </sar-list-item>
+    <sar-list-item>
+      <sar-calendar-input
+        title="选择日期范围"
+        placeholder="选择日期范围"
+        clearable
+        type="range"
+      />
+    </sar-list-item>
+    <sar-list-item>
+      <sar-calendar-input
+        title="选择多个日期"
+        placeholder="选择多个日期"
+        clearable
+        type="multiple"
+      />
+    </sar-list-item>
+  </sar-list>
+</template>
