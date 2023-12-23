@@ -52,7 +52,7 @@
 </template>
 <script lang="ts" setup>
 import { toRaw, reactive, ref } from 'vue'
-import { toast, type FormExpose } from '@sard/uniapp'
+import { toast, type FormExpose } from 'sard-uniapp'
 
 interface User {
   first: string

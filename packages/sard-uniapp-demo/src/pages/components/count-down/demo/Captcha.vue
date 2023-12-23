@@ -23,7 +23,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { toast } from '@sard/uniapp'
+import { toast } from 'sard-uniapp'
 
 const loading = ref(false)
 const disabled = ref(false)

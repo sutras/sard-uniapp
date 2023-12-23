@@ -13,7 +13,7 @@ export type TransitionHookName =
 export interface TransitionOptions {
   visible?: boolean
   prefix?: string
-  duration?: number | [number, number]
+  duration?: number
   enterFromClass?: string
   enterActiveClass?: string
   enterToClass?: string
@@ -23,25 +23,11 @@ export interface TransitionOptions {
   onVisibleHook?: (name: TransitionHookName) => void
 }
 
-function getDuration(duration: number | [number, number] = 0) {
-  let enter: number, leave: number
-
-  if (typeof duration === 'number') {
-    enter = leave = duration
-  } else {
-    ;[enter, leave] = duration
-  }
-  return {
-    enter,
-    leave,
-  }
-}
-
 const tickInterval = 30
 
 export function useTransition(options: TransitionOptions = {}) {
   const duration = computed(() => {
-    return getDuration(options.duration)
+    return options.duration || 0
   })
 
   const enterFromClass = computed(() => {
@@ -118,7 +104,7 @@ export function useTransition(options: TransitionOptions = {}) {
       if (status === 'entering' && options.visible) {
         entered()
       }
-    }, duration.value.enter + tickInterval + 100)
+    }, duration.value + tickInterval)
   }
 
   function entered() {
@@ -149,7 +135,7 @@ export function useTransition(options: TransitionOptions = {}) {
       if (status === 'leaving' && !options.visible) {
         leaved()
       }
-    }, duration.value.leave + tickInterval + 100)
+    }, duration.value + tickInterval)
   }
 
   function leaved() {

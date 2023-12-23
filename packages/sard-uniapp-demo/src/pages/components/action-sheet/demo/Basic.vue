@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { toast, type ActionSheetItem } from '@sard/uniapp'
+import { toast, type ActionSheetItem } from 'sard-uniapp'
 
 const visible = ref(false)
 const itemList = ref([

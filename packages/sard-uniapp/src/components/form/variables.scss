@@ -1,0 +1,26 @@
+// #variables
+page {
+  --sar-form-bg: var(--sar-emphasis-bg);
+  --sar-form-card-border-radius: var(--sar-rounded-lg);
+
+  --sar-form-item-padding-x: 32rpx;
+  --sar-form-item-padding-y: 20rpx;
+  --sar-form-item-border-color: var(--sar-border-color);
+
+  --sar-form-item-label-width: 176rpx;
+  --sar-form-item-label-margin-right: 24rpx;
+  --sar-form-item-label-margin-bottom: 8rpx;
+  --sar-form-item-label-font-size: var(--sar-text-base);
+  --sar-form-item-label-line-height: var(--sar-leading-snug);
+
+  --sar-form-item-star-font-size: var(--sar-text-base);
+  --sar-form-item-star-line-height: var(--sar-leading-snug);
+  --sar-form-item-star-color: var(--sar-danger);
+  --sar-form-item-star-gap: 8rpx;
+
+  --sar-form-item-error-margin-top: 4px;
+  --sar-form-item-error-font-size: var(--sar-text-sm);
+  --sar-form-item-error-line-height: var(--sar-leading-tight);
+  --sar-form-item-error-color: var(--sar-danger);
+}
+// #endvariables

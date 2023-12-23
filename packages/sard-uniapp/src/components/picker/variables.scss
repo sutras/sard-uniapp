@@ -1,0 +1,43 @@
+@use '../style/base' as *;
+
+// #variables
+page {
+  --sar-picker-height: 480rpx;
+
+  --sar-picker-item-height: 96rpx;
+  --sar-picker-item-font-size: var(--sar-text-lg);
+  --sar-picker-item-color: var(--sar-body-color);
+
+  --sar-picker-indicator-border-color: var(--sar-border-color);
+
+  --sar-picker-mask-bg-image: linear-gradient(
+      to bottom,
+      rgba(var(--sar-emphasis-bg-rgb), 0.95),
+      rgba(var(--sar-emphasis-bg-rgb), 0.6)
+    ),
+    linear-gradient(
+      to top,
+      rgba(var(--sar-emphasis-bg-rgb), 0.95),
+      rgba(var(--sar-emphasis-bg-rgb), 0.6)
+    );
+}
+// #endvariables
+
+// 放到全局，兼容app
+@include bem(picker) {
+  @include e(picker-view) {
+    @include e(indicator) {
+      height: var(--sar-picker-item-height);
+      &::before {
+        border-top-color: var(--sar-picker-indicator-border-color);
+      }
+      &::after {
+        border-bottom-color: var(--sar-picker-indicator-border-color);
+      }
+    }
+
+    @include e(mask) {
+      background-image: var(--sar-picker-mask-bg-image);
+    }
+  }
+}

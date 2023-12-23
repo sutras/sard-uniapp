@@ -82,7 +82,7 @@ import {
   type FormRules,
   type FormExpose,
   type FieldValidateError,
-} from '@sard/uniapp'
+} from 'sard-uniapp'
 
 interface RuleForm {
   name: string

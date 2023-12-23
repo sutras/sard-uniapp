@@ -9,9 +9,7 @@ import { resolve } from 'node:path'
 import inquirer from 'inquirer'
 import { ROOT_DIR } from './src/utils/constants.js'
 
-process.sard = {
-  name: 'sard',
-}
+process.sard = {}
 
 const pkg = fse.readJSONSync(resolve(ROOT_DIR, 'package.json'))
 

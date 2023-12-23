@@ -13,7 +13,7 @@
     <div class="doc-sideslip-header">
       <div class="doc-sideslip-title">{{ title }}</div>
       <div class="doc-sideslip-close" @click="innerVisible = false">
-        <i class="bi bi-x-lg"></i>
+        <i class="hsi hsi-x-lg"></i>
       </div>
     </div>
     <div class="doc-sideslip-body">
@@ -103,7 +103,7 @@ useResize(() => {
     }
 
     &-title {
-      font-size: var(--doc-text-lg);
+      font-size: var(--doc-text-base);
       font-weight: bold;
     }
 

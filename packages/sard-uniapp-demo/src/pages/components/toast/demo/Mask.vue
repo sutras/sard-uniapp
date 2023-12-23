@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { toast } from '@sard/uniapp'
+import { toast } from 'sard-uniapp'
 
 const showOverlayToast = () => {
   toast.loading('加载中', {

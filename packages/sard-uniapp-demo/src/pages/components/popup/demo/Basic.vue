@@ -20,7 +20,7 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { createBem } from '@/utils'
-import { PopupProps } from '@sard/uniapp'
+import { PopupProps } from 'sard-uniapp'
 
 const bem = createBem('popup')
 

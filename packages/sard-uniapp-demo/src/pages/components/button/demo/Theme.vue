@@ -1,5 +1,6 @@
 <template>
   <sar-button theme="primary">primary</sar-button>
+  <sar-button theme="secondary">secondary</sar-button>
   <sar-button theme="success">success</sar-button>
   <sar-button theme="info">info</sar-button>
   <sar-button theme="warning">warning</sar-button>

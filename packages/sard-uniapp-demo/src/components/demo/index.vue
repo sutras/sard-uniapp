@@ -19,7 +19,7 @@ export default {
 </script>
 
 <script setup lang="ts">
-import { classNames } from '@sard/uniapp'
+import { classNames } from 'sard-uniapp'
 import { createBem } from '@/utils'
 
 withDefaults(

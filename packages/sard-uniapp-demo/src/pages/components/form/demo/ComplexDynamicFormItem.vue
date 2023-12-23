@@ -71,7 +71,7 @@
 <script lang="ts" setup>
 import { toRaw } from 'vue'
 import { reactive, ref, watch } from 'vue'
-import { toast, type FormExpose } from '@sard/uniapp'
+import { toast, type FormExpose } from 'sard-uniapp'
 
 interface Sights {
   value: string

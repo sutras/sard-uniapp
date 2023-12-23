@@ -33,4 +33,4 @@ export const TEMP_STYLE_NAME = '__TEMP_STYLE__'
 // mobile
 export const MOBILE_COMP_PATH_R = /\/mobile\/index.vue$/
 export const MOBILE_URL_PLACEHOLDER = '__MOBILE_URL_PLACEHOLDER__'
-export const MOBILE_BUILD_PATH = '/sard/mobile/'
+export const MOBILE_BUILD_PATH = `${sardConfig.base}mobile/`

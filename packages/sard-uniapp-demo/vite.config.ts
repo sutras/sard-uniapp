@@ -8,12 +8,8 @@ export default defineConfig({
   resolve: {
     alias: [
       {
-        find: /^@sard\/uniapp$/,
-        replacement: '@sard/uniapp/src',
-      },
-      {
-        find: /^@sard\/uniapp\/dist\//,
-        replacement: '@sard/uniapp/src/',
+        find: /^sard-uniapp/,
+        replacement: 'sard-uniapp/src',
       },
     ],
   },

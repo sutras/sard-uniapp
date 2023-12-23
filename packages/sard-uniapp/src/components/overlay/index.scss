@@ -1,0 +1,27 @@
+@use '../style/base' as *;
+
+@include bem(overlay) {
+  @include b() {
+    @include universal;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: var(--sar-overlay-z-index);
+    background-color: var(--sar-overlay-bg);
+    touch-action: none;
+
+    @include m(enter-from, leave-to) {
+      opacity: 0;
+    }
+
+    @include m(enter-active, leave-active) {
+      transition: opacity var(--sar-overlay-duration) ease;
+    }
+
+    @include m(transparent) {
+      background-color: transparent;
+    }
+  }
+}

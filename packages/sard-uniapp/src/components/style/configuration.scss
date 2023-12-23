@@ -1,0 +1,62 @@
+// # 灰度值
+$sar-white: #fff;
+$sar-gray-100: #f7f7f8;
+$sar-gray-200: #ecedee;
+$sar-gray-300: #e2e3e4;
+$sar-gray-400: #d1d4d6;
+$sar-gray-500: #b5b9bd;
+$sar-gray-600: #74787c;
+$sar-gray-700: #505457;
+$sar-gray-800: #393c3f;
+$sar-gray-900: #242628;
+$sar-black: #000;
+
+// # 颜色
+$sar-blue: #0d6efd;
+$sar-indigo: #6610f2;
+$sar-purple: #6f42c1;
+$sar-pink: #d63384;
+$sar-red: #dc3545;
+$sar-orange: #fd7e14;
+$sar-yellow: #ffc107;
+$sar-green: #198754;
+$sar-teal: #20c997;
+$sar-cyan: #0dcaf0;
+
+// # 主题色列表
+$sar-theme-colors: (
+  primary: (
+    var(--sar-primary),
+    var(--sar-primary-rgb),
+  ),
+  secondary: (
+    var(--sar-secondary),
+    var(--sar-secondary-rgb),
+  ),
+  success: (
+    var(--sar-success),
+    var(--sar-success-rgb),
+  ),
+  info: (
+    var(--sar-info),
+    var(--sar-info-rgb),
+  ),
+  warning: (
+    var(--sar-warning),
+    var(--sar-warning-rgb),
+  ),
+  danger: (
+    var(--sar-danger),
+    var(--sar-danger-rgb),
+  ),
+  neutral: (
+    var(--sar-neutral),
+    var(--sar-neutral-rgb),
+  ),
+);
+
+// # bem
+$sar-namespace: 'sar';
+$sar-block-separator: '-';
+$sar-element-separator: '__';
+$sar-modifier-separator: '_';

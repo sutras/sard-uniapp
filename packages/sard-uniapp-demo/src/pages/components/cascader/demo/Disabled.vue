@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { toast } from '@sard/uniapp'
+import { toast } from 'sard-uniapp'
 
 interface Option {
   label: string

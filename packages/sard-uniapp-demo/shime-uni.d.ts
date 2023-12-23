@@ -6,3 +6,5 @@ declare module '@vue/runtime-core' {
 
   interface ComponentCustomOptions extends Hooks {}
 }
+
+declare namespace program {}

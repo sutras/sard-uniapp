@@ -20,7 +20,7 @@
         rel="noreferrer"
         href="https://github.com/sutras/sard-uniapp"
       >
-        <i class="bi-github"></i>
+        <i class="hsi hsi-github"></i>
         <span class="doc-topnav-icon-text">Github</span>
       </a>
     </li>
@@ -31,7 +31,7 @@
         rel="noreferrer"
         href="https://gitee.com/sutras/sard-uniapp"
       >
-        <i class="bi-github"></i>
+        <i class="hsi hsi-gitee"></i>
         <span class="doc-topnav-icon-text">Gitee</span>
       </a>
     </li>

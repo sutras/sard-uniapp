@@ -1,0 +1,7 @@
+@use '../style/base' as *;
+
+// #variables
+@include theme-dark {
+  --sar-slider-value-bg: var(--sar-gray-700);
+}
+// #endvariables

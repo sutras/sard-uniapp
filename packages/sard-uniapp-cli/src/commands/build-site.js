@@ -7,7 +7,8 @@ export async function buildSite() {
   try {
     await build(mergeViteConfig())
     const child = buildSiteMobile()
-    consola.success('已完成文档的构建，开始构建案例...')
+    consola.success('已完成文档的构建')
+    consola.info('开始构建案例...')
     child.stdout.on('data', (data) => {
       console.log(data)
     })

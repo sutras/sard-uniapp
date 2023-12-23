@@ -15,7 +15,7 @@
 </template>
 
 <script setup lang="ts">
-import type { CalendarDay } from '@sard/uniapp'
+import type { CalendarDay } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const visible = ref(false)

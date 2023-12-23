@@ -1,17 +1,16 @@
 {
-  "name": "@sard/uniapp",
-  "version": "1.0.1",
-  "description": "uniapp UI 组件库",
-  "main": "index.ts",
-  "type": "module",
-  "files": [
-    "components",
-    "!.md"
+  "id": "sard-uniapp",
+  "name": "sard-uniapp",
+  "displayName": "sard-uniapp",
+  "version": "1.0.2",
+  "description": "sard-uniapp 是一套基于 Uniapp + Vue3 框架开发的兼容多端的 UI 组件库",
+  "keywords": [
+    "uniapp",
+    "UI",
+    "vue3",
+    "typescript"
   ],
-  "peerDependencies": {
-    "@dcloudio/types": "^3.3.2",
-    "vue": "^3.2.45"
-  },
+  "main": "index.js",
   "scripts": {
     "dev": "sard dev",
     "build:site": "sard build:site",
@@ -21,6 +20,90 @@
     "release": "sard release",
     "test": "vitest"
   },
-  "author": "",
-  "license": "ISC"
+  "peerDependencies": {
+    "@dcloudio/types": "^3.3.2",
+    "vue": "^3.2.45"
+  },
+  "devDependencies": {
+    "region-data": "^1.0.6"
+  },
+  "author": "wuzhitao",
+  "license": "MIT",
+  "repository": "https://github.com/sutras/sard-uniapp",
+  "dcloudext": {
+    "type": "component-vue",
+    "category": [
+      "前端组件",
+      "通用组件"
+    ],
+    "sale": {
+      "regular": {
+        "price": "0.00"
+      },
+      "sourcecode": {
+        "price": "0.00"
+      }
+    },
+    "contact": {
+      "qq": ""
+    },
+    "declaration": {
+      "ads": "无",
+      "data": "插件不采集任何数据",
+      "permissions": "无"
+    },
+    "npmurl": "https://www.npmjs.com/package/sard-uniapp"
+  },
+  "uni_modules": {
+    "dependencies": [],
+    "encrypt": [],
+    "platforms": {
+      "cloud": {
+        "tcb": "y",
+        "aliyun": "y"
+      },
+      "client": {
+        "Vue": {
+          "vue2": "n",
+          "vue3": "y"
+        },
+        "App": {
+          "app-vue": "y",
+          "app-nvue": "n",
+          "app-uvue": "n"
+        },
+        "H5-mobile": {
+          "Safari": "y",
+          "Android Browser": "y",
+          "微信浏览器(Android)": "y",
+          "QQ浏览器(Android)": "y"
+        },
+        "H5-pc": {
+          "Chrome": "y",
+          "IE": "n",
+          "Edge": "y",
+          "Firefox": "y",
+          "Safari": "y"
+        },
+        "小程序": {
+          "微信": "y",
+          "阿里": "y",
+          "百度": "y",
+          "字节跳动": "y",
+          "QQ": "y",
+          "钉钉": "y",
+          "快手": "y",
+          "飞书": "u",
+          "京东": "u"
+        },
+        "快应用": {
+          "华为": "u",
+          "联盟": "u"
+        }
+      }
+    }
+  },
+  "engines": {
+    "HBuilderX": "^3.6.0"
+  }
 }

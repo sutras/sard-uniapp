@@ -39,7 +39,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { type SwiperDotProps } from '@sard/uniapp'
+import { type SwiperDotProps } from 'sard-uniapp'
 
 const current = ref(0)
 const list = [

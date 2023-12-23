@@ -3,7 +3,7 @@
     <sar-list-item>
       <sar-cascader
         :options="regionData"
-        :field-names="{ label: 'name', value: 'code' }"
+        :field-keys="{ label: 'name', value: 'code' }"
         @update:model-value="onChange"
       >
         <template #top="{ tabIndex }">
@@ -24,7 +24,7 @@
 
 <script setup lang="ts">
 import { getRegionData, type Node } from 'region-data'
-import { toast } from '@sard/uniapp'
+import { toast } from 'sard-uniapp'
 
 const regionData = getRegionData()
 

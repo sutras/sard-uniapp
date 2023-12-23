@@ -5,15 +5,15 @@
 }
 
 $doc-white: #fff !default;
-$doc-gray-100: #f5f5f5 !default;
-$doc-gray-200: #ededed !default;
-$doc-gray-300: #e3e3e3 !default;
-$doc-gray-400: #d4d4d4 !default;
-$doc-gray-500: #b5b5b5 !default;
-$doc-gray-600: #757575 !default;
-$doc-gray-700: #4f4f4f !default;
-$doc-gray-800: #3b3b3b !default;
-$doc-gray-900: #262626 !default;
+$doc-gray-100: #f8f9fa !default;
+$doc-gray-200: #ecedee !default;
+$doc-gray-300: #e2e3e4 !default;
+$doc-gray-400: #d1d4d6 !default;
+$doc-gray-500: #b5b9bd !default;
+$doc-gray-600: #74787c !default;
+$doc-gray-700: #505457 !default;
+$doc-gray-800: #393c3f !default;
+$doc-gray-900: #242628 !default;
 $doc-black: #000 !default;
 
 $doc-blue: #0d6efd !default;
@@ -139,7 +139,7 @@ $doc-cyan: #0dcaf0 !default;
   --doc-secondary-color: var(--doc-gray-700);
   --doc-secondary-bg: var(--doc-gray-200);
   --doc-tertiary-color: var(--doc-gray-600);
-  --doc-tertiary-bg: var(--doc-gray-200);
+  --doc-tertiary-bg: var(--doc-gray-300);
   --doc-emphasis-color: var(--doc-black);
   --doc-emphasis-bg: var(--doc-white);
   --doc-border-color: var(--doc-gray-300);
@@ -148,7 +148,7 @@ $doc-cyan: #0dcaf0 !default;
 
 [data-doc-theme='dark'] {
   --doc-body-color: var(--doc-gray-100);
-  --doc-body-bg: var(--doc-gray-900);
+  --doc-body-bg: var(--doc-black);
   --doc-secondary-color: var(--doc-gray-300);
   --doc-secondary-bg: var(--doc-gray-700);
   --doc-tertiary-color: var(--doc-gray-500);
@@ -156,7 +156,7 @@ $doc-cyan: #0dcaf0 !default;
   --doc-quaternary-color: var(--doc-gray-600);
   --doc-quaternary-bg: var(--doc-gray-700);
   --doc-emphasis-color: var(--doc-white);
-  --doc-emphasis-bg: var(--doc-gray-800);
+  --doc-emphasis-bg: var(--doc-gray-900);
   --doc-border-color: var(--doc-gray-700);
   --doc-active-bg: var(--doc-gray-700);
   --doc-active-deep-bg: var(--doc-gray-600);

@@ -1,0 +1,74 @@
+@use '../style/base' as *;
+
+@include bem(popover) {
+  @include b() {
+    @include universal;
+    position: fixed;
+    top: auto;
+    right: auto;
+    bottom: auto;
+    left: auto;
+    overflow: visible;
+    border-radius: var(--sar-popover-border-radius);
+    background-color: var(--sar-popover-bg);
+    box-shadow: var(--sar-popover-box-shadow);
+    touch-action: none;
+  }
+
+  @include e(content) {
+    @include universal;
+    z-index: 1;
+    min-width: var(--sar-popover-min-width);
+  }
+
+  @include e(arrow) {
+    @include universal;
+    position: absolute;
+    width: var(--sar-popover-arrow-size);
+    height: var(--sar-popover-arrow-size);
+    margin-left: calc(var(--sar-popover-arrow-size) / 2 * -1);
+    margin-top: calc(var(--sar-popover-arrow-size) / 2 * -1);
+    transform: rotate(45deg);
+    background-color: inherit;
+  }
+
+  @include m(light) {
+    background-color: var(--sar-popover-bg);
+  }
+
+  @include m(dark) {
+    color: var(--sar-popover-dark-color);
+    background-color: var(--sar-popover-dark-bg);
+  }
+
+  // zoom
+  @include m(enter-active) {
+    animation: #{bem-ns(popover-enter)} var(--sar-popover-duration) both;
+  }
+
+  @keyframes #{bem-ns(popover-enter)} {
+    from {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  @include m(leave-active) {
+    animation: #{bem-ns(popover-leave)} var(--sar-popover-duration) both;
+  }
+
+  @keyframes #{bem-ns(popover-leave)} {
+    from {
+      opacity: 1;
+      transform: scale(1);
+    }
+    to {
+      opacity: 0;
+      transform: scale(0.4);
+    }
+  }
+}

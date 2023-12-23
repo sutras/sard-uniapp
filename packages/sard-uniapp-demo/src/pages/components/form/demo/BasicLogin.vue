@@ -32,7 +32,7 @@
 
 <script lang="ts" setup>
 import { ref, reactive, toRaw } from 'vue'
-import { toast, type FormExpose, type FieldValidateError } from '@sard/uniapp'
+import { toast, type FormExpose, type FieldValidateError } from 'sard-uniapp'
 
 const formRef = ref<FormExpose>()
 

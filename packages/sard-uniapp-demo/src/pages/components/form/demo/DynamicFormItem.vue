@@ -59,7 +59,7 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import { toast, type FormExpose } from '@sard/uniapp'
+import { toast, type FormExpose } from 'sard-uniapp'
 
 const formRef = ref<FormExpose>()
 const dynamicValidateForm = reactive<{

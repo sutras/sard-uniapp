@@ -54,7 +54,7 @@
 </template>
 
 <script setup lang="ts">
-import { toast, type MenuOption, type PopoverPosition } from '@sard/uniapp'
+import { toast, type MenuOption, type PopoverPosition } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const position = ref<PopoverPosition>('bottom')

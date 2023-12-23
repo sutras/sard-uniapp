@@ -5,6 +5,7 @@ package-lock.json
 # dist
 dist/
 docs/
+uni_modules/
 
 # eslint
 .eslintcache

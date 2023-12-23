@@ -10,6 +10,7 @@
     />
     <sar-picker-input
       :model-value="modelValue.currency"
+      placeholder="currency"
       :columns="[
         { value: 'rmb', label: 'RMB' },
         { value: 'dollar', label: 'Dollar' },
@@ -21,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { useFormItemContext, type FormItemContext } from '@sard/uniapp'
+import { useFormItemContext, type FormItemContext } from 'sard-uniapp'
 
 export type Currency = 'rmb' | 'dollar'
 

@@ -9,7 +9,7 @@
 </template>
 
 <script setup lang="ts">
-import { toast, type ShareSheetItem } from '@sard/uniapp'
+import { toast, type ShareSheetItem } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const itemList = [

@@ -1,0 +1,10 @@
+@mixin test-mp {
+  /* #ifdef MP */
+  background-color: red;
+  @content;
+  /* #endif */
+  /* #ifndef MP */
+  color: green;
+  @content;
+  /* #endif */
+}

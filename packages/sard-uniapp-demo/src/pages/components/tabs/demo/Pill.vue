@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { type TabOption } from '@sard/uniapp'
+import { type TabOption } from 'sard-uniapp'
 
 const current = ref(0)
 const list = ref<TabOption[]>(

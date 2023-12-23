@@ -9,13 +9,13 @@
 </template>
 
 <script setup lang="ts">
-import { toast, type ShareSheetItem } from '@sard/uniapp'
+import { toast, type ShareSheetItem } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const itemList = [
   {
     name: 'Sard',
-    icon: 'https://unpkg.com/@sard/assets@1.2.0/images/pic1.jpg',
+    icon: 'https://fastly.jsdelivr.net/npm/@sard/assets/pic1.jpg',
   },
   {
     name: 'Wechat',

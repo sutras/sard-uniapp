@@ -3,13 +3,13 @@ import path from 'node:path'
 const srcDir = path.resolve(process.cwd(), 'src')
 
 function getComponentPath(compPath) {
-  return path.resolve(srcDir, compPath)
+  return path.resolve(srcDir, 'components', compPath)
 }
 
 export default {
   name: 'Sard',
   styles: ['assets/index.scss'],
-  base: '/sard/',
+  base: '/sard-uniapp-docs/',
   publicDir: 'public',
   buildSite: {
     outDir: 'docs',
@@ -25,8 +25,10 @@ export default {
     cssEntry: 'src/index.scss',
     name: 'Sard',
     fileName: 'index',
-    outDir: 'dist',
     srcDir: srcDir,
+    outDir: 'dist',
+    uniModulesDir: '../sard-uniapp-demo/src/uni_modules',
+    uniName: 'sard-uniapp',
     external: ['vue'],
   },
   site: {
@@ -83,6 +85,11 @@ export default {
                 path: 'i18n',
                 filePath: getComponentPath('locale'),
               },
+              {
+                title: '暗黑模式',
+                path: 'dark-mode',
+                filePath: 'markdown/dark-mode.md',
+              },
             ],
           },
         ],
@@ -118,11 +125,11 @@ export default {
               //   path: 'locale',
               //   filePath: getComponentPath('locale'),
               // },
-              // {
-              //   title: 'style 样式',
-              //   path: 'style',
-              //   filePath: getComponentPath('style'),
-              // },
+              {
+                title: 'style 样式',
+                path: 'style',
+                filePath: getComponentPath('style'),
+              },
             ],
           },
           {

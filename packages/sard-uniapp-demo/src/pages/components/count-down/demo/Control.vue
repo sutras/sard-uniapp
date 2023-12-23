@@ -26,12 +26,13 @@
     format="ss:SSS"
     millisecond
     :auto-start="false"
+    @finish="toast('到时了!')"
   />
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { type CountDownExpose } from '@sard/uniapp'
+import { toast, type CountDownExpose } from 'sard-uniapp'
 
 const elRef = ref<CountDownExpose>()
 </script>

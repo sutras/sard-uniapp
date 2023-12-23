@@ -3,20 +3,20 @@
 </template>
 
 <script setup lang="ts">
-import type { UploadFileItem } from '@sard/uniapp'
+import type { UploadFileItem } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const fileList = ref<UploadFileItem[]>([
   {
-    url: 'https://unpkg.com/@sard/assets@1.2.0/images/pic1.jpg',
+    url: 'https://fastly.jsdelivr.net/npm/@sard/assets/pic1.jpg',
   },
   {
-    url: 'https://unpkg.com/@sard/assets@1.2.0/images/pic2.jpg',
+    url: 'https://fastly.jsdelivr.net/npm/@sard/assets/pic2.jpg',
     status: 'uploading',
     message: '正在上传',
   },
   {
-    url: 'https://unpkg.com/@sard/assets@1.2.0/images/pic3.jpg',
+    url: 'https://fastly.jsdelivr.net/npm/@sard/assets/pic3.jpg',
     status: 'failed',
     message: '上传失败',
   },

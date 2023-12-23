@@ -28,24 +28,27 @@
       </sar-radio-group>
     </doc-demo>
 
-    <sar-form
-      label-width="200rpx"
-      :direction="direction"
-      :label-align="labelAlign"
-      :label-valign="labelValign"
-      :star-position="starPosition"
-      :model="formLabelAlign"
-    >
-      <sar-form-item label="Name" required>
-        <sar-input v-model="formLabelAlign.name" />
-      </sar-form-item>
-      <sar-form-item label="Activity zone" required>
-        <sar-input v-model="formLabelAlign.region" />
-      </sar-form-item>
-      <sar-form-item label="Activity form" required>
-        <sar-input v-model="formLabelAlign.type" type="textarea" />
-      </sar-form-item>
-    </sar-form>
+    <doc-demo>
+      <sar-form
+        label-width="200rpx"
+        :direction="direction"
+        :label-align="labelAlign"
+        :label-valign="labelValign"
+        :star-position="starPosition"
+        :model="formLabelAlign"
+        card
+      >
+        <sar-form-item label="Name" required>
+          <sar-input v-model="formLabelAlign.name" />
+        </sar-form-item>
+        <sar-form-item label="Activity zone" required>
+          <sar-input v-model="formLabelAlign.region" />
+        </sar-form-item>
+        <sar-form-item label="Activity form" required>
+          <sar-input v-model="formLabelAlign.type" type="textarea" />
+        </sar-form-item>
+      </sar-form>
+    </doc-demo>
   </doc-page>
 </template>
 

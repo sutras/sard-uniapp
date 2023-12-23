@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { toast, type UploadFileItem } from '@sard/uniapp'
+import { toast, type UploadFileItem } from 'sard-uniapp'
 
 const overSize = (fileItem: UploadFileItem[]) => {
   console.log(fileItem)

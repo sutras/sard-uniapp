@@ -3,11 +3,10 @@
     "sourceMap": true,
     "baseUrl": ".",
     "lib": ["esnext", "dom"],
-    "types": ["@dcloudio/types", "node", "../sard-uniapp/src/global"],
+    "types": ["jest", "@dcloudio/types", "node", "../sard-uniapp/src/global"],
     "ignoreDeprecations": "5.0",
     "paths": {
-      "@sard/uniapp": ["../sard-uniapp/src/index"],
-      "@sard/uniapp/dist/*": ["../sard-uniapp/src/*"],
+      "sard-uniapp/*": ["../sard-uniapp/src/*"],
       "@/*": ["src/*"]
     },
     "esModuleInterop": true,

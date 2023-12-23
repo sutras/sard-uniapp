@@ -6,11 +6,11 @@
 </template>
 
 <script setup lang="ts">
-import { notify } from '@sard/uniapp'
+import { notify } from 'sard-uniapp'
 
 const showNotice = () => {
   notify('这是一条通知', {
-    duration: 0,
+    timeout: 0,
   })
 }
 const hideNotice = () => {

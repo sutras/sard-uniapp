@@ -7,7 +7,7 @@
 
 <script setup lang="ts">
 import { createBem } from '@/utils'
-import { classNames } from '@sard/uniapp'
+import { classNames } from 'sard-uniapp'
 
 defineProps<{
   emphasis?: boolean
@@ -21,7 +21,7 @@ const bem = createBem('page')
 
 @include bem(page) {
   @include b() {
-    padding: 10px 0;
+    padding: 20rpx 0 calc(20rpx + env(safe-area-inset-bottom));
   }
 
   @include m(emphasis) {

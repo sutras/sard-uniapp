@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { toast } from '@sard/uniapp'
+import { toast } from 'sard-uniapp'
 
 const onTopToast = () => {
   toast('顶部位置', {

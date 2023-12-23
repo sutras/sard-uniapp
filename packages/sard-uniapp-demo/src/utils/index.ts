@@ -1,4 +1,4 @@
-import { createBemStruct } from '@sard/uniapp'
+import { createBemStruct } from 'sard-uniapp'
 
 export const createBem = createBemStruct({
   namespace: 'doc',

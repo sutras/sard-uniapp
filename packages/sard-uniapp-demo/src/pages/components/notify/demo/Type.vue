@@ -8,7 +8,7 @@
 </template>
 
 <script setup lang="ts">
-import { notify } from '@sard/uniapp'
+import { notify } from 'sard-uniapp'
 
 const showSucessNotice = () => {
   notify.success('这是一条通知')

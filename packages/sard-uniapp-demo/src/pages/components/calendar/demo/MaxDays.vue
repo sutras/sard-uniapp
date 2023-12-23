@@ -33,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { toast } from '@sard/uniapp'
+import { toast } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const mulitpleVisible = ref(false)

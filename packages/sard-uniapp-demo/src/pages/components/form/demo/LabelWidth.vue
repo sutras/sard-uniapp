@@ -34,7 +34,7 @@
 </template>
 <script lang="ts" setup>
 import { reactive, toRaw, ref, type UnwrapRef } from 'vue'
-import { type FormExpose } from '@sard/uniapp'
+import { type FormExpose } from 'sard-uniapp'
 
 const formRef = ref<FormExpose>()
 

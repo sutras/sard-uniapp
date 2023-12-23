@@ -8,7 +8,12 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "types": ["@dcloudio/types", "node", "vitest/globals"]
+    "types": ["@dcloudio/types", "node", "vitest", "vitest/globals"]
   },
-  "exclude": ["**/dist/**", "**/node_modules/**"]
+  "exclude": [
+    "**/dist/**",
+    "**/docs/**",
+    "**/node_modules/**",
+    "**/uni_modules/**"
+  ]
 }

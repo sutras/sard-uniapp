@@ -14,7 +14,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { type StepsItem } from '@sard/uniapp'
+import { type StepsItem } from 'sard-uniapp'
 
 const current = ref(1)
 

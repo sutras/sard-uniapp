@@ -17,7 +17,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { type DatetimeColumnOption, type DatetimeLetter } from '@sard/uniapp'
+import { type DatetimeColumnOption, type DatetimeLetter } from 'sard-uniapp'
 
 const visible = ref(false)
 const date = ref<Date>()

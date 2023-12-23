@@ -1,0 +1,12 @@
+@use '../style/base' as *;
+
+// #variables
+@include theme-dark {
+  --sar-keyboard-bg: var(--sar-gray-800);
+  --sar-keyboard-key-color: var(--sar-white);
+  --sar-keyboard-key-bg: var(--sar-gray-600);
+  --sar-keyboard-key-active-bg: var(--sar-gray-500);
+  --sar-keyboard-key-plate-bg: var(--sar-gray-600);
+  --sar-keyboard-key-plate-active-bg: var(--sar-gray-500);
+}
+// #endvariables

@@ -19,7 +19,7 @@ import {
   usePopover,
   type MenuOption,
   type PopoverPosition,
-} from '@sard/uniapp'
+} from 'sard-uniapp'
 import { ref } from 'vue'
 
 const position = ref<PopoverPosition>('bottom')

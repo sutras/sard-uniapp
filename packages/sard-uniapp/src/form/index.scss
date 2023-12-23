@@ -1,8 +1,0 @@
-@use '../style/base' as *;
-
-@include bem(form) {
-  @include b() {
-    @include universal;
-    background-color: var(--sar-form-bg);
-  }
-}

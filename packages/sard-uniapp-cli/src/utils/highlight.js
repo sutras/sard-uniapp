@@ -1,7 +1,7 @@
 import Prism from 'prismjs'
 import loadLanguages from 'prismjs/components/index.js'
 
-loadLanguages(['js', 'jsx', 'ts', 'tsx', 'html', 'css', 'scss', 'bash'])
+loadLanguages(['js', 'jsx', 'ts', 'tsx', 'json', 'html', 'css', 'scss', 'bash'])
 
 export function highlight(code, lang = 'text') {
   return Prism.highlight(code, Prism.languages[lang], lang)

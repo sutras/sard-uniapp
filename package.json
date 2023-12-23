@@ -4,13 +4,13 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "npm run dev -w @sard/uniapp",
-    "build:site": "npm run build:site -w @sard/uniapp",
-    "preview": "npm run preview -w @sard/uniapp",
-    "build": "npm run build -w @sard/uniapp",
-    "deploy": "npm run deploy -w @sard/uniapp",
-    "release": "npm run release -w @sard/uniapp",
-    "test": "npm run test -w @sard/uniapp",
+    "dev": "npm run dev -w sard-uniapp",
+    "build:site": "npm run build:site -w sard-uniapp",
+    "preview": "npm run preview -w sard-uniapp",
+    "build": "npm run build -w sard-uniapp",
+    "deploy": "npm run deploy -w sard-uniapp",
+    "release": "npm run release -w sard-uniapp",
+    "test": "npm run test -w sard-uniapp",
     "prepare": "husky install",
     "lint:eslint": "eslint --cache --max-warnings 0  \"**/*.{ts,tsx,js,jsx,vue}\" --fix",
     "lint:prettier": "prettier --write \"**/*.{ts,tsx,js,jsx,scss,css,less,md,vue}\"",
@@ -22,11 +22,10 @@
     "**/*.{ts,tsx,js,jsx,vue,scss,css,md}": "prettier --write"
   },
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "workspaces": [
     "packages/sard-uniapp-cli",
-    "packages/sard-uniapp",
-    "packages/sard-uniapp-demo"
+    "packages/sard-uniapp"
   ],
   "devDependencies": {
     "@commitlint/cli": "^17.6.5",

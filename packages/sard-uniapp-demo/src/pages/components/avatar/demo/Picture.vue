@@ -1,3 +1,3 @@
 <template>
-  <sar-avatar src="https://unpkg.com/@sard/assets@1.2.0/images/pic1.jpg" />
+  <sar-avatar src="https://fastly.jsdelivr.net/npm/@sard/assets/pic1.jpg" />
 </template>

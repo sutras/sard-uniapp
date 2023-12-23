@@ -1,17 +1,17 @@
 <template>
   <doc-title>单值选择</doc-title>
   <sar-slider :model-value="50">
-    <template #endThumb="{ value }">
+    <template #end-thumb="{ value }">
       <view class="slider-thumb">{{ value }}</view>
     </template>
   </sar-slider>
 
   <doc-title>范围选择</doc-title>
   <sar-slider range :model-value="[20, 80]">
-    <template #startThumb="{ value }">
+    <template #start-thumb="{ value }">
       <view class="slider-thumb">{{ value }}</view>
     </template>
-    <template #endThumb="{ value }">
+    <template #end-thumb="{ value }">
       <view class="slider-thumb">{{ value }}</view>
     </template>
   </sar-slider>

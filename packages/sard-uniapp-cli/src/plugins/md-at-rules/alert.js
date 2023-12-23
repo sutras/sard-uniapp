@@ -1,8 +1,8 @@
 const mapTypeIconName = {
-  success: 'bi-hand-thumbs-up',
-  danger: 'bi-exclamation-triangle',
-  warning: 'bi-exclamation-circle',
-  info: 'bi-chat-right-text',
+  success: 'hsi hsi-hand-thumbs-up',
+  danger: 'hsi hsi-exclamation-triangle',
+  warning: 'hsi hsi-exclamation-circle',
+  info: 'hsi hsi-chat-right-text',
 }
 
 const mapTypeTitle = {

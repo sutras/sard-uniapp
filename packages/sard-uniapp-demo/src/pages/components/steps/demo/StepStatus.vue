@@ -11,7 +11,7 @@
 </template>
 
 <script setup lang="ts">
-import { type StepsItem } from '@sard/uniapp'
+import { type StepsItem } from 'sard-uniapp'
 
 const itemList: StepsItem[] = [
   {

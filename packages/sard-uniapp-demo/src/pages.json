@@ -473,7 +473,7 @@
   },
   "easycom": {
     "custom": {
-      "^sar-(.*)": "@sard/uniapp/src/$1/$1.vue",
+      "^sar-(.*)": "sard-uniapp/components/$1/$1.vue",
       "^doc-(.*)": "@/components/$1/index.vue"
     }
   }

@@ -6,8 +6,9 @@
         title="请选择省市区"
         placeholder="请选择省市区"
         clearable
-        :options="regionData"
-        :field-names="fieldNames"
+        :options="options"
+        :field-keys="fieldKeys"
+        :loading="loading"
       />
     </sar-list-item>
 
@@ -24,11 +25,19 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { getRegionData } from 'region-data'
+import { getRegionData, type Node } from 'region-data'
 
 const regionData = getRegionData()
 
+const options = ref<Node[]>([])
+const loading = ref(true)
+
+setTimeout(() => {
+  options.value = regionData
+  loading.value = false
+}, 1500)
+
 const value = ref<number | undefined>(440111)
 
-const fieldNames = { label: 'name', value: 'code' }
+const fieldKeys = { label: 'name', value: 'code' }
 </script>

@@ -35,7 +35,7 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import { toast, type FormRules, type FormExpose } from '@sard/uniapp'
+import { toast, type FormRules, type FormExpose } from 'sard-uniapp'
 
 const ruleFormRef = ref<FormExpose>()
 

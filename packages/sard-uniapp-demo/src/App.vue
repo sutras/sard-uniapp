@@ -12,9 +12,9 @@ onHide(() => {
 </script>
 
 <style lang="scss">
-@use '@sard/uniapp/dist/index.scss';
-@use '@sard/uniapp/dist/dark.scss';
-@use './iconfont.css';
+@import 'sard-uniapp/index.scss';
+@import 'sard-uniapp/dark.scss';
+@import './demo-icons.css';
 
 ::-webkit-scrollbar {
   display: none;

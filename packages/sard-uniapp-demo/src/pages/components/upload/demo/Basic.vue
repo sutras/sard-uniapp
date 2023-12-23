@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import type { UploadFileItem } from '@sard/uniapp'
+import type { UploadFileItem } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const fileList = ref<UploadFileItem[]>([])

@@ -1,5 +1,5 @@
 <template>
-  <doc-page emphasis>
+  <doc-page>
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

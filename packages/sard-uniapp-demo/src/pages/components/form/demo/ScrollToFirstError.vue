@@ -49,7 +49,7 @@ import {
   type FormExpose,
   type ScrollIntoViewPosition,
   type FieldValidateError,
-} from '@sard/uniapp'
+} from 'sard-uniapp'
 import { onMounted } from 'vue'
 
 const formState = ref(

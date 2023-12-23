@@ -1,4 +1,4 @@
-@forward '@sard/uniapp/src/style/mixins/bem.scss' with (
+@forward 'sard-uniapp/components/style/mixins/bem.scss' with (
   $namespace: 'doc',
   $block-separator: '-',
   $element-separator: '__',

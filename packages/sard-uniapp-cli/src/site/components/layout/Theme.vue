@@ -17,8 +17,8 @@ const toggleTheme = () => {
 }
 
 const mapThemeIcon = {
-  light: 'bi-sun-fill',
-  dark: 'bi-moon-stars-fill',
+  light: 'hsi hsi-sun-fill',
+  dark: 'hsi hsi-moon-stars-fill',
 }
 
 const icon = computed(() => {

@@ -5,8 +5,8 @@ import App from './App.vue'
 import 'nprogress/nprogress.css'
 import NProgress from 'nprogress'
 
-import 'bootstrap-icons/font/bootstrap-icons.css'
 import 'prism-themes/themes/prism-one-dark.css'
+import './assets/font/hsi.css'
 import './index.scss'
 import './custom.scss'
 

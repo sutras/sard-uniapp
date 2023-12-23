@@ -5,7 +5,7 @@
       class="doc-sideslip-toggle doc-sidebar-toggle"
       @click="emit('sidebar-toggle')"
     >
-      <i class="bi bi-list"></i>
+      <i class="hsi hsi-list"></i>
     </div>
     <router-link class="doc-brand" to="/">
       <h1>
@@ -17,7 +17,7 @@
       class="doc-sideslip-toggle doc-topnav-toggle"
       @click="topbarVisible = true"
     >
-      <i class="bi bi-three-dots"></i>
+      <i class="hsi hsi-three-dots"></i>
     </div>
     <Sideslip title="导航" side="right" v-model:visible="topbarVisible">
       <Topnav @link-click="topbarVisible = false"></Topnav>

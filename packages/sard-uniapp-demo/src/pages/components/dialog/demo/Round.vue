@@ -6,7 +6,7 @@
 </template>
 
 <script setup lang="ts">
-import { dialog } from '@sard/uniapp'
+import { dialog } from 'sard-uniapp'
 
 const showAlert = () => {
   dialog.alert({

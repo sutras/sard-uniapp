@@ -20,7 +20,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { formatDate } from '@sard/uniapp'
+import { formatDate } from 'sard-uniapp'
 
 const value = ref<Date | undefined>(new Date())
 </script>

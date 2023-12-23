@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { toast, type UploadFile } from '@sard/uniapp'
+import { toast, type UploadFile } from 'sard-uniapp'
 
 const beforeRead = (file: UploadFile) => {
   if (file.path) {

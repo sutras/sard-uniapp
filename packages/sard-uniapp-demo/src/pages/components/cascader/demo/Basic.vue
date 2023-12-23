@@ -4,7 +4,7 @@
       <sar-cascader
         v-model="value"
         :options="regionData"
-        :field-names="{ label: 'name', value: 'code' }"
+        :field-keys="{ label: 'name', value: 'code' }"
       />
     </sar-list-item>
     <sar-list-item title="当前值：" :value="String(value)" />

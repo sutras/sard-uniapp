@@ -1,4 +1,3 @@
-export * from './animate'
 export * from './bem'
 export * from './case'
 export * from './date'

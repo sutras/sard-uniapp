@@ -7,7 +7,7 @@
 </template>
 
 <script setup lang="ts">
-import { toast, type MenuOption } from '@sard/uniapp'
+import { toast, type MenuOption } from 'sard-uniapp'
 
 const options = [
   {

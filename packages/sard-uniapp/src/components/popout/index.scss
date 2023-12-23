@@ -1,0 +1,92 @@
+@use '../style/base' as *;
+
+@include bem(popout) {
+  @include b() {
+    max-height: 100%;
+    padding-bottom: env(safe-area-inset-bottom);
+    border-top-left-radius: var(--sar-popout-border-top-radius);
+    border-top-right-radius: var(--sar-popout-border-top-radius);
+    background-color: var(--sar-popout-bg);
+  }
+
+  @include e(header) {
+    @include universal;
+    flex-grow: 0;
+    flex-shrink: 0;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+
+    @include m(compact) {
+      height: var(--sar-popout-header-compact-height);
+    }
+
+    @include m(loose) {
+      height: var(--sar-popout-header-loose-height);
+      padding-left: var(--sar-popout-header-loose-padding-x);
+      padding-right: var(--sar-popout-header-loose-padding-x);
+    }
+  }
+
+  @include e(button-wrap) {
+    @include universal;
+    height: 100%;
+    min-width: var(--sar-popout-button-wrap-min-width);
+  }
+
+  @include e(header-button) {
+    height: 100%;
+  }
+
+  @include e(header-cancel) {
+    margin-left: 0;
+    margin-right: auto;
+  }
+
+  @include e(header-confirm) {
+    margin-left: auto;
+    margin-right: 0;
+  }
+
+  @include e(title) {
+    @include universal;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    flex: 1 1 0;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    font-size: var(--sar-popout-title-font-size);
+    font-weight: var(--sar-font-bold);
+    color: var(--sar-popout-title-color);
+    overflow: hidden;
+  }
+
+  @include e(title-text) {
+    @include ellipsis;
+  }
+
+  @include e(close) {
+    @include universal;
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 100%;
+    border-width: 0;
+    font-size: var(--sar-popout-close-font-size);
+    color: var(--sar-popout-close-color);
+  }
+
+  @include e(footer) {
+    @include universal;
+    flex-direction: row;
+    gap: var(--sar-popout-button-gap);
+    align-items: center;
+    padding: var(--sar-popout-footer-gap-y) var(--sar-popout-footer-gap-x);
+  }
+
+  @include e(footer-button) {
+    flex: 1 1 0;
+  }
+}

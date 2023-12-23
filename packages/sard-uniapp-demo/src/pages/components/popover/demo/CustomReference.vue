@@ -10,7 +10,7 @@
 </template>
 
 <script setup lang="ts">
-import { toast, type MenuOption, usePopover } from '@sard/uniapp'
+import { toast, type MenuOption, usePopover } from 'sard-uniapp'
 
 const popover = usePopover('#refId')
 

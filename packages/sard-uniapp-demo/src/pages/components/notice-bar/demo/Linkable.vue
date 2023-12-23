@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { toast } from '@sard/uniapp'
+import { toast } from 'sard-uniapp'
 
 const onClick = () => {
   toast('navigate to')

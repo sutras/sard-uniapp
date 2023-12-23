@@ -1,0 +1,21 @@
+@use '../style/base' as *;
+
+@include bem(picker) {
+  @include b() {
+    @include universal;
+    height: var(--sar-picker-height);
+  }
+
+  @include e(picker-view) {
+    height: 100%;
+  }
+
+  @include e(item) {
+    height: var(--sar-picker-item-height);
+    line-height: var(--sar-picker-item-height);
+    font-size: var(--sar-picker-item-font-size);
+    text-align: center;
+    color: var(--sar-picker-item-color);
+    @include ellipsis;
+  }
+}

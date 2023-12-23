@@ -38,7 +38,7 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { toast } from '@sard/uniapp'
+import { toast } from 'sard-uniapp'
 
 const current = ref(0)
 </script>
