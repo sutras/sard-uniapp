@@ -68,6 +68,18 @@ npm install sard-uniapp
 }
 ```
 
+### 配置全局组件类型
+
+`tsconfig.json`
+
+```json
+{
+  "compilerOptions": {
+    "types": ["sard-uniapp/global"]
+  }
+}
+```
+
 ## 引入全局样式
 
 全局样式文件定义了所有组件共用的一些 `css` 变量。
