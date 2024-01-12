@@ -1,8 +1,8 @@
 import '@vue/runtime-core'
 
 import SarAccordion from './components/accordion/accordion.vue'
-import SarActionSheet from './components/action-sheet/action-sheet.vue'
 import SarAccordionItem from './components/accordion-item/accordion-item.vue'
+import SarActionSheet from './components/action-sheet/action-sheet.vue'
 import SarAvatar from './components/avatar/avatar.vue'
 import SarBadge from './components/badge/badge.vue'
 import SarButton from './components/button/button.vue'
@@ -37,6 +37,7 @@ import SarListItem from './components/list-item/list-item.vue'
 import SarLoading from './components/loading/loading.vue'
 import SarMenu from './components/menu/menu.vue'
 import SarNavbar from './components/navbar/navbar.vue'
+import SarNavbarItem from './components/navbar-item/navbar-item.vue'
 import SarNoticeBar from './components/notice-bar/notice-bar.vue'
 import SarNotify from './components/notify/notify.vue'
 import SarNotifyAgent from './components/notify-agent/notify-agent.vue'
@@ -70,9 +71,10 @@ import SarSteps from './components/steps/steps.vue'
 import SarSwiperDot from './components/swiper-dot/swiper-dot.vue'
 import SarSwitch from './components/switch/switch.vue'
 import SarTab from './components/tab/tab.vue'
-import SarTabs from './components/tabs/tabs.vue'
 import SarTabbar from './components/tabbar/tabbar.vue'
 import SarTabbarItem from './components/tabbar-item/tabbar-item.vue'
+import SarTabs from './components/tabs/tabs.vue'
+import SarTag from './components/tag/tag.vue'
 import SarToast from './components/toast/toast.vue'
 import SarToastAgent from './components/toast-agent/toast-agent.vue'
 import SarUpload from './components/upload/upload.vue'
@@ -117,6 +119,7 @@ declare module '@vue/runtime-core' {
     SarLoading: typeof SarLoading
     SarMenu: typeof SarMenu
     SarNavbar: typeof SarNavbar
+    SarNavbarItem: typeof SarNavbarItem
     SarNoticeBar: typeof SarNoticeBar
     SarNotify: typeof SarNotify
     SarNotifyAgent: typeof SarNotifyAgent
@@ -150,9 +153,10 @@ declare module '@vue/runtime-core' {
     SarSwiperDot: typeof SarSwiperDot
     SarSwitch: typeof SarSwitch
     SarTab: typeof SarTab
-    SarTabs: typeof SarTabs
     SarTabbar: typeof SarTabbar
     SarTabbarItem: typeof SarTabbarItem
+    SarTabs: typeof SarTabs
+    SarTag: typeof SarTag
     SarToast: typeof SarToast
     SarToastAgent: typeof SarToastAgent
     SarUpload: typeof SarUpload
