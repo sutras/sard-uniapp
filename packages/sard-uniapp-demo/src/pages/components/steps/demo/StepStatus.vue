@@ -1,11 +1,7 @@
 <template>
   <sar-list card>
     <sar-list-item>
-      <sar-steps
-        :item-list="itemList"
-        direction="vertical"
-        line-color="var(--sar-border-color)"
-      />
+      <sar-steps :item-list="itemList" direction="vertical" />
     </sar-list-item>
   </sar-list>
 </template>
