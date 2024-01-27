@@ -104,6 +104,13 @@ const scrollOffsetCallbackParam = {
   scrollWidth: 375,
 }
 
+Object.defineProperty(globalThis, 'tempFiles', {
+  value: [],
+  writable: true,
+  enumerable: true,
+  configurable: true,
+})
+
 const uniObject = {
   pageScrollTo() {
     void 0
@@ -117,8 +124,10 @@ const uniObject = {
   previewImage() {
     void 0
   },
-  chooseImage() {
-    void 0
+  chooseImage({ success }: any) {
+    success({
+      tempFiles: Reflect.get(globalThis, 'tempFiles'),
+    })
   },
   chooseVideo() {
     void 0

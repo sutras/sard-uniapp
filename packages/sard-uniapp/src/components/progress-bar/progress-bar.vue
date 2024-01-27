@@ -54,7 +54,7 @@ const progressBarClass = computed(() => {
     bem.m('inside', props.inside),
     bem.m('striped', props.striped),
     bem.m('animated', props.animated),
-    bem.m(props.status),
+    bem.m(props.status, props.status),
     props.rootClass,
   )
 })

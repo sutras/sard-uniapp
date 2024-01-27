@@ -211,7 +211,7 @@ describe('Checkbox', () => {
 
     const wrapper = mount(
       h(CheckboxGroup, null, {
-        custom: ({ toggle }) =>
+        custom: ({ toggle }: any) =>
           options.map((option) => {
             return h(
               'div',

@@ -8,7 +8,8 @@
     "strict": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "types": ["@dcloudio/types", "node", "vitest", "vitest/globals"]
+    "types": ["@dcloudio/types", "node", "vitest", "vitest/globals"],
+    "jsx": "preserve"
   },
   "exclude": [
     "**/dist/**",

@@ -69,7 +69,7 @@ const mask = computed(() => {
 })
 
 const progressCircleClass = computed(() => {
-  return classNames(bem.b(), bem.m(props.status), props.rootClass)
+  return classNames(bem.b(), bem.m(props.status, props.status), props.rootClass)
 })
 
 const progressCircleStyle = computed(() => {

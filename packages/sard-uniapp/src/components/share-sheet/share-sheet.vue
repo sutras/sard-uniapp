@@ -8,7 +8,7 @@
     <view :class="shareSheetClass" :style="shareSheetStyle">
       <view v-if="title || description" :class="bem.e('header')">
         <view v-if="title" :class="bem.e('title')">
-          {{ description }}
+          {{ title }}
         </view>
         <view v-if="description" :class="bem.e('description')">
           {{ description }}

@@ -34,8 +34,8 @@ const bem = createBem('col')
 const colClass = computed(() => {
   return classNames(
     bem.b(),
-    bem.m(props.span, props.span),
-    bem.m(`offset-${props.span}`, props.offset),
+    bem.m(props.span, props.span !== undefined),
+    bem.m(`offset-${props.offset}`, props.offset !== undefined),
     props.rootClass,
   )
 })

@@ -1,12 +1,7 @@
 <template>
   <view :class="tagClass" :style="tagStyle" @click="$emit('click', $event)">
     <slot></slot>
-    <view
-      v-if="closable"
-      :class="iconClass"
-      :style="iconStyle"
-      @click="$emit('close', $event)"
-    >
+    <view v-if="closable" :class="iconClass" @click="$emit('close', $event)">
       <sar-icon name="close" />
     </view>
   </view>
@@ -61,17 +56,7 @@ const tagStyle = computed(() => {
 })
 
 const iconClass = computed(() => {
-  return classNames(
-    bem.e('close'),
-    bem.em('close', props.theme),
-    bem.em('close', `${props.theme}-plain`, props.plain),
-  )
-})
-
-const iconStyle = computed(() => {
-  return stringifyStyle({
-    color: props.plain ? props.color : props.textColor,
-  })
+  return classNames(bem.e('close'))
 })
 </script>
 
