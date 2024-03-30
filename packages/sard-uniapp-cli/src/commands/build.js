@@ -158,6 +158,21 @@ async function copyStaticFiles() {
   await copySrcToDist('./**/*.{jpg,png,gif,jpeg,ttf,svg}')
 }
 
+async function generateChangelog() {
+  await new Promise((resolve, reject) => {
+    child_process.exec(
+      `conventional-changelog -p angular -i changelog.md -s -r 0`,
+      (err) => {
+        if (err) {
+          reject(err)
+        } else {
+          resolve()
+        }
+      },
+    )
+  })
+}
+
 async function copyPackageJson() {
   await fse.copyFile(
     path.resolve(CWD, 'package.json'),
@@ -169,6 +184,13 @@ async function copyReadme() {
   await fse.copyFile(
     path.resolve(CWD, '../../README.md'),
     path.resolve(outDir, 'README.md'),
+  )
+}
+
+async function copyChangelog() {
+  await fse.copyFile(
+    path.resolve(CWD, 'changelog.md'),
+    path.resolve(outDir, 'changelog.md'),
   )
 }
 
@@ -188,8 +210,10 @@ export async function build() {
     // [generateVueType, `已生成vue文件类型`],
     [copyScss, `已完成 scss 拷贝`],
     [copyStaticFiles, `已完成静态资源拷贝`],
-    [copyPackageJson, `已复制 package.json`],
-    [copyReadme, `已复制 README.md`],
+    [generateChangelog, `已完 changelog.md 文件生成`],
+    [copyPackageJson, `已复制 package.json 文件`],
+    [copyReadme, `已复制 README.md 文件`],
+    [copyChangelog, `已复制 changelog.md 文件`],
     [generateUniModules, '已完成 uni_modules 目录构建'],
     [null, `已完成所有构建流程`],
   ]
