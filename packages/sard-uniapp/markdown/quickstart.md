@@ -1,5 +1,12 @@
 # 快速上手
 
+## 前提条件
+
+使用 `sard-uniapp` 组件库的`uniapp` 项目需要通过命令行的方式创建。因为通过 `HBuilderX` 创建的项目，其依赖的很多软件包版本过低，在使用 `sard-uniapp` 的过程中可能会有错误。
+
+`uniapp`项目创建文档：
+<a href="https://uniapp.dcloud.net.cn/quickstart-cli.html" target="_blank">https://uniapp.dcloud.net.cn/quickstart-cli.html</a>
+
 ## 安装
 
 ### NPM
@@ -22,7 +29,9 @@ npm install sard-uniapp
 
 #### 安装 sass
 
-通过 `HBuilderX > 工具 > 插件安装` 来安装 sass。
+```bash
+npm install sass -D
+```
 
 #### 安装 sard-uniapp
 
