@@ -1,21 +1,23 @@
 {
   "compilerOptions": {
+    "forceConsistentCasingInFileNames": true,
+    "strict": true,
     "sourceMap": true,
     "baseUrl": ".",
     "lib": ["esnext", "dom"],
     "types": ["jest", "@dcloudio/types", "node", "../sard-uniapp/src/global"],
     "ignoreDeprecations": "5.0",
-    "paths": {
-      "sard-uniapp/*": ["../sard-uniapp/src/*"],
-      "sard-uniapp": ["../sard-uniapp/src/"],
-      "@/*": ["src/*"]
-    },
     "esModuleInterop": true,
     "moduleResolution": "Node",
     "resolveJsonModule": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "strictNullChecks": true
+    "strictNullChecks": true,
+    "paths": {
+      "@/*": ["src/*"],
+      "sard-uniapp/*": ["../sard-uniapp/src/*"],
+      "sard-uniapp": ["../sard-uniapp/src/"]
+    }
   },
-  "include": ["src/**/*.ts", "src/**/*.d.ts", "src/**/*.tsx", "src/**/*.vue"]
+  "include": ["src/**/*", "src/**/*.vue"]
 }
