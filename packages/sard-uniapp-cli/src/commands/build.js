@@ -55,7 +55,7 @@ const sharedTscConfig = [
 async function compileTs() {
   const config = [
     ['tsc'],
-    [`${srcDir}/**/*.ts`, `${srcDir}/*.ts`],
+    [`${srcDir}/*.ts`, `${srcDir}/**/*.ts`, `${srcDir}/**/**/*.ts`],
     sharedTscConfig,
   ]
     .flat(Infinity)
