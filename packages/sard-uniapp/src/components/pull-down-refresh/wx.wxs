@@ -1,0 +1,80 @@
+var startX = 0
+var startY = 0
+var movable = false
+var lockDirection = ''
+
+function setStyle(instance, offsetY, duration) {
+  instance.setStyle({
+    transform: 'translate3d(0,' + offsetY + 'px,0)',
+    'transition-duration': duration + 'ms',
+  })
+}
+
+function onTouchStart(event) {
+  var dataset = event.instance.getDataset()
+  if (dataset.status !== 'initial' || dataset.scrolltop !== 0) {
+    return
+  }
+  startX = event.touches[0].clientX
+  startY = event.touches[0].clientY
+  movable = true
+}
+
+function onTouchMove(event, ownerIns) {
+  if (!movable || (lockDirection && lockDirection !== 'down')) {
+    return
+  }
+
+  var deltaX = event.touches[0].clientX - startX
+  var deltaY = event.touches[0].clientY - startY
+
+  if (!lockDirection) {
+    var isVertical = Math.abs(deltaY) >= Math.abs(deltaX)
+    lockDirection = isVertical && deltaY > 0 ? 'down' : 'others'
+  }
+
+  if (lockDirection === 'down') {
+    var offsetY = Math.max(deltaY, 0) / 2
+    var dataset = event.instance.getDataset()
+    var status = offsetY >= dataset.threshold ? 'ready' : 'unready'
+    ownerIns.callMethod('_setStatus', status)
+    setStyle(event.instance, offsetY, 0)
+    ownerIns.callMethod('_setTranslateY', offsetY)
+
+    return false
+  }
+}
+
+function onTouchEnd(event, ownerIns) {
+  var dataset = event.instance.getDataset()
+
+  movable = false
+  lockDirection = ''
+
+  switch (dataset.status) {
+    case 'unready':
+      ownerIns.callMethod('_toRecovering')
+      return
+    case 'ready':
+      ownerIns.callMethod('_toLoading')
+      ownerIns.callMethod('_emit', {
+        name: 'refresh',
+      })
+      return
+  }
+}
+
+module.exports = {
+  onTouchStart: onTouchStart,
+  onTouchMove: onTouchMove,
+  onTouchEnd: onTouchEnd,
+  statusYWatch: function (newValue, oldValue, ownerInstance, instance) {
+    var dataset = instance.getDataset()
+    if (newValue === 'loading') {
+      setStyle(instance, dataset.headerheight, dataset.duration)
+    }
+    if (newValue === 'recovering') {
+      setStyle(instance, 0, dataset.duration)
+    }
+  },
+}

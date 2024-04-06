@@ -19,21 +19,23 @@ $sar-loading-scale-number: 12;
 
   @include e(icon) {
     @include universal;
-    width: 1em;
-    height: 1em;
-    min-width: var(--sar-loading-icon-min-width);
-    min-height: var(--sar-loading-icon-min-height);
 
-    @include m(circular) {
-      border: 4rpx solid transparent;
-      border-radius: 100%;
-      border-top-color: initial;
+    @include m(circular, clock) {
+      align-items: center;
+      justify-content: center;
+      width: 1em;
+      height: 1em;
+      min-width: var(--sar-loading-icon-min-width);
+      min-height: var(--sar-loading-icon-min-height);
+    }
+
+    @include m-intersect(circular, animated) {
       animation: #{bem-ns(loading-rotate)} var(
           --sar-loading-icon-animation-duration
         ) linear infinite;
     }
 
-    @include m(clock) {
+    @include m-intersect(clock, animated) {
       animation: #{bem-ns(loading-rotate)} var(
           --sar-loading-icon-animation-duration
         ) steps(#{$sar-loading-scale-number}) infinite;
@@ -49,6 +51,19 @@ $sar-loading-scale-number: 12;
     }
   }
 
+  @include e(spinner) {
+    width: 100%;
+    height: 100%;
+    border-radius: 100%;
+    background: conic-gradient(
+      rgba(255, 255, 255, 0) 0deg,
+      rgba(255, 255, 255, 0) 60deg,
+      currentColor 330deg,
+      rgba(255, 255, 255, 0) 360deg
+    );
+    -webkit-mask: radial-gradient(transparent calc(55% - 1px), #fff 55%);
+  }
+
   @include e(scale) {
     position: absolute;
     top: 0;
@@ -60,6 +75,7 @@ $sar-loading-scale-number: 12;
       display: flex;
       width: var(--sar-loading-scale-width);
       min-width: var(--sar-loading-scale-min-width);
+      transform: scaleX(var(--sar-loading-scale-scale-x));
       height: var(--sar-loading-scale-height);
       margin: 0 auto;
       border-radius: var(--sar-loading-scale-border-radius);
@@ -68,13 +84,14 @@ $sar-loading-scale-number: 12;
     }
 
     @for $i from 1 through $sar-loading-scale-number {
-      &:nth-child(#{$i}) {
-        opacity: tofixed(
-          1 - math.div(1, $sar-loading-scale-number) * ($i - 1),
-          6
-        );
+      @include m(#{$i}) {
+        opacity: tofixed(math.div(1, $sar-loading-scale-number) * $i, 4);
         transform: rotate(#{math.div(360, $sar-loading-scale-number) * $i}deg);
       }
+    }
+
+    @include m(hidden) {
+      opacity: 0;
     }
   }
 

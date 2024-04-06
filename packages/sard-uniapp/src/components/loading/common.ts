@@ -11,10 +11,14 @@ export interface LoadingProps {
   textColor?: string
   textSize?: string
   vertical?: boolean
+  animated?: boolean
+  progress?: number
 }
 
 // const props = withDefaults(defineProps<LoadingProps>(), {
 //   type: 'circular',
+//   animated: true,
+//   progress: 1,
 // })
 
 export const loadingProps = {
@@ -30,8 +34,17 @@ export const loadingProps = {
   textColor: String,
   textSize: String,
   vertical: Boolean,
+  animated: {
+    type: Boolean,
+    default: true,
+  },
+  progress: {
+    type: Number,
+    default: 1,
+  },
 }
 
 export interface LoadingSlots {
   default(props: Record<string, never>): any
+  circular(props: Record<string, never>): any
 }

@@ -4,7 +4,10 @@
   @include b() {
     @include universal;
     overflow: hidden;
-    // touch-action: none;
+
+    @include m(no-scroll) {
+      touch-action: pan-x;
+    }
   }
 
   @include e(header) {

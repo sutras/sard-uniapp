@@ -70,6 +70,7 @@ import {
   uniqid,
   getBoundingClientRect,
   type NodeRect,
+  toTouchEvent,
 } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
@@ -181,8 +182,6 @@ const onTouchMove = (event: TouchEvent) => {
     return
   }
 
-  event.preventDefault()
-
   if (!rateRect.value || !firstStarRect.value) {
     return
   }
@@ -223,13 +222,9 @@ const onMouseDown = () => {
 
   const moveHandler = (event: MouseEvent) => {
     event.preventDefault()
+    event.stopPropagation()
 
-    onTouchMove({
-      touches: [event],
-      preventDefault: () => {
-        event.preventDefault()
-      },
-    } as unknown as TouchEvent)
+    onTouchMove(toTouchEvent(event))
   }
   const upHandler = () => {
     document.removeEventListener('mouseup', upHandler)

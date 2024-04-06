@@ -31,6 +31,8 @@
           "
           @touchstart="onTouchStart($event, 0)"
           @touchmove.stop.prevent="onTouchMove($event, 0)"
+          @touchend="onTouchEnd($event)"
+          @touchcancel="onTouchEnd($event)"
           @mousedown="onMouseDown($event, 0)"
         >
           <slot name="start-thumb" :value="rangeValue[0]">
@@ -49,6 +51,8 @@
           "
           @touchstart="onTouchStart($event, 1)"
           @touchmove.stop.prevent="onTouchMove($event, 1)"
+          @touchend="onTouchEnd($event)"
+          @touchcancel="onTouchEnd($event)"
           @mousedown="onMouseDown($event, 1)"
         >
           <slot name="end-thumb" :value="rangeValue[1]">
@@ -104,7 +108,12 @@ import { sliderProps } from './common'
 
 const props = defineProps(sliderProps)
 
-const emit = defineEmits(['update:model-value'])
+const emit = defineEmits([
+  'update:model-value',
+  'change',
+  'drag-start',
+  'drag-end',
+])
 
 const bem = createBem('slider')
 
@@ -142,6 +151,7 @@ let trackRect: NodeRect
 let downValue: number | number[]
 let moveValue: number | number[]
 let downRatio = 0
+let triggerMove = false
 
 const onSliderClick = async (event: MouseEvent | TouchEvent) => {
   if (isDisabled.value || isReadonly.value) {
@@ -187,6 +197,7 @@ const onSliderClick = async (event: MouseEvent | TouchEvent) => {
   if (nextValue !== undefined) {
     innerValue.value = nextValue
     emit('update:model-value', nextValue)
+    emit('change', nextValue)
   }
 }
 
@@ -219,6 +230,11 @@ const onTouchStart = async (event: TouchEvent, index: number) => {
 const onTouchMove = (event: TouchEvent, index: number) => {
   if (isDisabled.value || isReadonly.value) {
     return
+  }
+
+  if (!triggerMove) {
+    triggerMove = true
+    emit('drag-start', event)
   }
 
   if (!trackRect) {
@@ -260,24 +276,33 @@ const onTouchMove = (event: TouchEvent, index: number) => {
   }
 }
 
+const onTouchEnd = (event: TouchEvent) => {
+  triggerMove = false
+
+  if (isDisabled.value || isReadonly.value) {
+    return
+  }
+
+  if (!arrayEqual(toArray(downValue), toArray(innerValue.value))) {
+    emit('change', innerValue.value)
+  }
+  emit('drag-end', event)
+}
+
 const onMouseDown = (event: MouseEvent, index: number) => {
   // #ifdef H5
   const info = uni.getSystemInfoSync()
 
-  onTouchStart(
-    toTouchEvent(event, info.windowTop) as unknown as TouchEvent,
-    index,
-  )
+  onTouchStart(toTouchEvent(event, info.windowTop), index)
 
   const moveHandler = (event: MouseEvent) => {
     event.preventDefault()
+    event.stopPropagation()
 
-    onTouchMove(
-      toTouchEvent(event, info.windowTop) as unknown as TouchEvent,
-      index,
-    )
+    onTouchMove(toTouchEvent(event, info.windowTop), index)
   }
   const upHandler = () => {
+    onTouchEnd(event as unknown as TouchEvent)
     document.removeEventListener('mouseup', upHandler)
     document.removeEventListener('mousemove', moveHandler)
   }

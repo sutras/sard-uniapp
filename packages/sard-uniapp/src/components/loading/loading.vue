@@ -1,8 +1,25 @@
 <template>
   <view :class="loadingClass">
     <view :class="iconClass" :style="iconStyle">
-      <template v-if="type === 'clock'">
-        <view v-for="i in 12" :key="i" :class="bem.e('scale')"></view>
+      <slot v-if="type === 'circular'" name="circular">
+        <view :class="bem.e('spinner')"></view>
+      </slot>
+      <template v-else-if="type === 'clock'">
+        <view
+          v-for="i in 12"
+          :key="i"
+          :class="
+            classNames(
+              bem.e('scale'),
+              bem.em('scale', i),
+              !props.animated
+                ? {
+                    [bem.em('scale', 'hidden')]: i > scaleShowNum,
+                  }
+                : null,
+            )
+          "
+        ></view>
       </template>
     </view>
 
@@ -42,6 +59,9 @@ const props = defineProps(loadingProps)
 const bem = createBem('loading')
 
 // main
+const scaleShowNum = computed(() => {
+  return Math.max(Math.floor(props.progress * 12), 1)
+})
 
 // others
 const loadingClass = computed(() => {
@@ -49,7 +69,11 @@ const loadingClass = computed(() => {
 })
 
 const iconClass = computed(() => {
-  return classNames(bem.e('icon'), bem.em('icon', props.type))
+  return classNames(
+    bem.e('icon'),
+    bem.em('icon', props.type),
+    bem.em('icon', 'animated', props.animated),
+  )
 })
 
 const iconStyle = computed(() => {
@@ -58,6 +82,11 @@ const iconStyle = computed(() => {
       color: props.color,
       fontSize: props.size,
     },
+    props.type === 'circular' && !props.animated
+      ? {
+          transform: `rotate(${props.progress * 360}deg)`,
+        }
+      : null,
     props.rootClass,
   )
 })

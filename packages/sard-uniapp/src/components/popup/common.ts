@@ -110,3 +110,7 @@ export function usePopupEnter(callback: () => void) {
     )
   }
 }
+
+export function useInPopup() {
+  return !!inject<PopupContext | null>(popupContextSymbol, null)
+}

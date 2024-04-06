@@ -29,12 +29,12 @@ export type ToastOptions = ToastAgentProps
 
 export interface ToastSimpleShowFunction {
   (options: ToastOptions): void
-  (title: string, options?: ToastOptions): void
+  (title?: string | number, options?: ToastOptions): void
 }
 
 export interface ToastShowFunction {
   (
-    optionsOrTitle: string | ToastOptions,
+    optionsOrTitle?: string | number | ToastOptions,
     options?: ToastOptions,
     internalType?: ToastOptions['type'],
   ): void
@@ -71,28 +71,28 @@ const show: ToastShowFunction = (
 }
 
 const toast: ToastFunction = (
-  optionsOrTitle: string | ToastOptions,
+  optionsOrTitle?: string | number | ToastOptions,
   options?: ToastOptions,
 ) => {
   show(optionsOrTitle, options, 'text')
 }
 
 const success: ToastSimpleShowFunction = (
-  optionsOrTitle: string | ToastOptions,
+  optionsOrTitle?: string | number | ToastOptions,
   options?: ToastOptions,
 ) => {
   show(optionsOrTitle, options, 'success')
 }
 
 const fail: ToastSimpleShowFunction = (
-  optionsOrTitle: string | ToastOptions,
+  optionsOrTitle?: string | number | ToastOptions,
   options?: ToastOptions,
 ) => {
   show(optionsOrTitle, options, 'fail')
 }
 
 const loading: ToastSimpleShowFunction = (
-  optionsOrTitle: string | ToastOptions,
+  optionsOrTitle?: string | number | ToastOptions,
   options?: ToastOptions,
 ) => {
   show(optionsOrTitle, options, 'loading')

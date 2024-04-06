@@ -96,11 +96,15 @@ async function compileTs() {
 // }
 
 function doCompileVue(code, filePath) {
+  let wxsMatch = null
+  code = code.replace(/<script.*?lang="wxs".*?><\/script>/, (m) => {
+    wxsMatch = m
+    return ''
+  })
   const { descriptor } = compiler.parse(code, {
     filename: filePath,
   })
 
-  descriptor.template.content
   const style = descriptor.styles[0]
 
   const compiledScript = compiler
@@ -108,15 +112,24 @@ function doCompileVue(code, filePath) {
       id: filePath,
       inlineTemplate: false,
     })
-    .content.replace(/^.*__isScriptSetup.*$/m)
+    .content.replace(/^.*__isScriptSetup.*$/m, '')
+    // 转义uniapp条件注释，避免被esbuild删掉
+    .replace(/\/\/ #/g, '//! #')
 
-  const transformedScript = esbuild.transformSync(compiledScript, {
-    loader: 'ts',
-  }).code
+  const transformedScript = esbuild
+    .transformSync(compiledScript, {
+      loader: 'ts',
+      legalComments: 'inline',
+    })
+    .code.replace(/\/\/! #/g, '// #')
 
-  let compiledVue =
-    `<template>${descriptor.template.content}</template>\n\n` +
-    `<script lang="ts">\n${transformedScript}</script>\n`
+  let compiledVue = `<template>${descriptor.template.content}</template>\n\n`
+
+  if (wxsMatch) {
+    compiledVue += `<!-- #ifdef MP-WEIXIN -->\n${wxsMatch}\n<!-- #endif -->\n\n`
+  }
+
+  compiledVue += `<script lang="ts">\n${transformedScript}</script>\n`
 
   if (style) {
     compiledVue += `\n<style lang="scss">${style.content}</style>`
@@ -156,6 +169,10 @@ async function copyScss() {
 
 async function copyStaticFiles() {
   await copySrcToDist('./**/*.{jpg,png,gif,jpeg,ttf,svg}')
+}
+
+async function copyWxs() {
+  await copySrcToDist('./**/*.wxs')
 }
 
 async function generateChangelog() {
@@ -210,6 +227,7 @@ export async function build() {
     // [generateVueType, `已生成vue文件类型`],
     [copyScss, `已完成 scss 拷贝`],
     [copyStaticFiles, `已完成静态资源拷贝`],
+    [copyWxs, `已完成 wxs 拷贝`],
     [generateChangelog, `已完 changelog.md 文件生成`],
     [copyPackageJson, `已复制 package.json 文件`],
     [copyReadme, `已复制 README.md 文件`],

@@ -45,7 +45,7 @@ import { toast } from 'sard-uniapp'
 | 属性        | 描述                     | 类型                                       | 默认值   |
 | ----------- | ------------------------ | ------------------------------------------ | -------- |
 | type        | 提示框类型               | 'text' \| 'loading' \| 'success' \| 'fail' | 'text'   |
-| title       | 标题                     | string                                     | -        |
+| title       | 标题                     | string \| number                           | -        |
 | visible     | 是否可见                 | boolean                                    | -        |
 | position    | 提示框垂直方向放置的位置 | 'top' \| 'center' \| 'bottom'              | 'center' |
 | overlay     | 是否显示背景遮罩         | boolean                                    | false    |
@@ -89,7 +89,7 @@ type ToastFunction = ToastSimpleShowFunction & {
 ```ts
 interface ToastSimpleShowFunction {
   (options: ToastOptions): void
-  (title: string, options?: ToastOptions): void
+  (title?: string | number, options?: ToastOptions): void
 }
 ```
 

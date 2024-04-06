@@ -46,6 +46,12 @@ import Button from 'sard-uniapp/components/loading/loading.vue'
 
 @code('${DEMO_PATH}/loading/demo/Color.vue')
 
+### 自定义图标
+
+通过 `circular` 插槽可以自定义加载图标。
+
+@code('${DEMO_PATH}/loading/demo/Custom.vue')
+
 ## API
 
 ### LoadingProps
@@ -61,12 +67,15 @@ import Button from 'sard-uniapp/components/loading/loading.vue'
 | text-color | 文字颜色               | string                | -          |
 | text-size  | 文字尺寸               | string                | -          |
 | vertical   | 是否垂直排列图标和文案 | boolean               | false      |
+| animated   | 是否开启加载动画       | boolean               | true       |
+| progress   | 当前加载的进度         | number                | 1          |
 
 ### LoadingSlots
 
-| 插槽    | 描述               | 属性 |
-| ------- | ------------------ | ---- |
-| default | 自定义加载文字内容 | -    |
+| 插槽     | 描述                         | 属性 |
+| -------- | ---------------------------- | ---- |
+| default  | 自定义加载文字内容           | -    |
+| circular | 自定义 `circular` 类型的图标 | -    |
 
 ## 主题定制
 

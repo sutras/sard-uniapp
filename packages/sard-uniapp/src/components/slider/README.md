@@ -26,7 +26,7 @@ import Slider from 'sard-uniapp/components/slider/slider.vue'
 
 ### 显示值
 
-设置 `showValue` 属性会在滑块上方显示当前滑块对应的值。
+设置 `show-value` 属性会在滑块上方显示当前滑块对应的值。
 
 @code('${DEMO_PATH}/slider/demo/ShowValue.vue')
 
@@ -50,19 +50,19 @@ import Slider from 'sard-uniapp/components/slider/slider.vue'
 
 ### 显示刻度
 
-设置 `showScale` 属性可以显示步长对应的刻度，设置 `scalePosition` 属性可以让刻度显示在各个方位。
+设置 `show-scale` 属性可以显示步长对应的刻度，设置 `scale-position` 属性可以让刻度显示在各个方位。
 
 @code('${DEMO_PATH}/slider/demo/ShowScale.vue')
 
 ### 自定义颜色
 
-使用 `trackColor` 属性设置轨道颜色；使用 `pieceColor` 属性设置选中片段的颜色；使用 `thumbColor` 属性设置按钮的颜色。
+使用 `track-color` 属性设置轨道颜色；使用 `piece-color` 属性设置选中片段的颜色；使用 `thumb-color` 属性设置按钮的颜色。
 
 @code('${DEMO_PATH}/slider/demo/Color.vue')
 
 ### 自定义尺寸
 
-使用 `trackSize` 属性设置轨道尺寸；使用 `thumbSize` 属性设置滑块的尺寸。
+使用 `track-size` 属性设置轨道尺寸；使用 `thumb-size` 属性设置滑块的尺寸。
 
 @code('${DEMO_PATH}/slider/demo/Size.vue')
 
@@ -96,9 +96,9 @@ import Slider from 'sard-uniapp/components/slider/slider.vue'
 | readonly         | 只读状态         | boolean                                | false             |
 | piece-color      | 滑块间的轨道颜色 | string                                 | -                 |
 | track-color      | 滑动器轨道颜色   | string                                 | -                 |
-| track-size       | 滑动器轨道尺寸   | string \| number                       | -                 |
+| track-size       | 滑动器轨道尺寸   | string                                 | -                 |
 | thumb-color      | 滑块颜色         | string                                 | -                 |
-| thumb-size       | 滑块尺寸         | string \| number                       | -                 |
+| thumb-size       | 滑块尺寸         | string                                 | -                 |
 | show-value       | 是否显示值       | boolean                                | false             |
 | value-position   | 值显示的位置     | 'top' \| 'right' \| 'bottom' \| 'left' | 'top' / 'right'   |
 | value-background | 设置值的背景色   | string                                 | -                 |
@@ -116,9 +116,12 @@ import Slider from 'sard-uniapp/components/slider/slider.vue'
 
 ### SliderEmits
 
-| 事件               | 描述           | 类型                                |
-| ------------------ | -------------- | ----------------------------------- |
-| update:model-value | 滑动器值改变时 | (value: number \| number[]) => void |
+| 事件               | 描述                               | 类型                                |
+| ------------------ | ---------------------------------- | ----------------------------------- |
+| update:model-value | 滑动器值实时改变时触发             | (value: number \| number[]) => void |
+| change             | 滑动器点击或拖动结束且值改变时触发 | (value: number \| number[]) => void |
+| drag-start         | 开始拖动时触发                     | (event: TouchEvent) => void         |
+| drag-end           | 结束拖动时触发                     | (event: TouchEvent) => void         |
 
 ## 主题定制
 

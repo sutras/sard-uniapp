@@ -20,7 +20,7 @@
         rel="noreferrer"
         href="https://github.com/sutras/sard-uniapp"
       >
-        <i class="hsi hsi-github"></i>
+        <i class="hsi hsi-github doc-topnav-icon"></i>
         <span class="doc-topnav-icon-text">Github</span>
       </a>
     </li>
@@ -31,7 +31,7 @@
         rel="noreferrer"
         href="https://gitee.com/sutras/sard-uniapp"
       >
-        <i class="hsi hsi-gitee"></i>
+        <i class="hsi hsi-gitee doc-topnav-icon"></i>
         <span class="doc-topnav-icon-text">Gitee</span>
       </a>
     </li>
@@ -87,6 +87,7 @@ const getActiveClass = (path) => {
     height: 100%;
     margin: 0;
     padding: 0 10px;
+    font-size: var(--doc-text-sm);
     color: inherit;
     text-decoration: none;
     &:hover {
@@ -104,6 +105,10 @@ const getActiveClass = (path) => {
     height: 40%;
     background: var(--doc-border-color);
     margin: 0 10px;
+  }
+
+  &-icon {
+    font-size: var(--doc-text-base);
   }
 
   &-icon-text {
@@ -124,6 +129,7 @@ const getActiveClass = (path) => {
       width: 100%;
       justify-content: flex-start;
       padding: 8px 0;
+      font-size: var(--doc-text-base);
     }
 
     &-divide {

@@ -145,12 +145,12 @@ const onMouseDown = (event: MouseEvent) => {
   // #ifdef H5
   const info = uni.getSystemInfoSync()
 
-  onTouchStart(toTouchEvent(event, info.windowTop) as unknown as TouchEvent)
+  onTouchStart(toTouchEvent(event, info.windowTop))
 
   const moveHandler = (event: MouseEvent) => {
     event.preventDefault()
 
-    onTouchMove(toTouchEvent(event, info.windowTop) as unknown as TouchEvent)
+    onTouchMove(toTouchEvent(event, info.windowTop))
   }
   const upHandler = () => {
     onTouchEnd()

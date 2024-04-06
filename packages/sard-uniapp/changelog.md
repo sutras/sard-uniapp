@@ -1,3 +1,8 @@
+## 1.1.0-beta.1 (2024-04-06)
+
+- docs: update quickstart.md ([fa280f6](https://github.com/sutras/sard-uniapp/commit/fa280f6))
+- build: 新增 changelog 构建流程 ([e1e862d](https://github.com/sutras/sard-uniapp/commit/e1e862d))
+
 ## <small>1.0.5 (2024-03-30)</small>
 
 - fix: 修复打包组件缺少文件的问题 ([21c032f](https://github.com/sutras/sard-uniapp/commit/21c032f))

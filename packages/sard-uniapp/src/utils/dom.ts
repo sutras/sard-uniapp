@@ -199,19 +199,14 @@ export async function matchScrollVisible(
   }
 }
 
-export function toTouchEvent(
-  event: MouseEvent | TouchEvent,
-  windowTop: number,
-) {
-  return 'touches' in event
-    ? event
-    : {
-        ...event,
-        touches: [
-          {
-            clientX: event.clientX,
-            clientY: event.clientY - windowTop,
-          },
-        ],
-      }
+export function toTouchEvent(event: MouseEvent | TouchEvent, windowTop = 0) {
+  if (!('touches' in event)) {
+    ;(event as any).touches = [
+      {
+        clientX: event.clientX,
+        clientY: event.clientY - windowTop,
+      },
+    ]
+  }
+  return event as TouchEvent
 }

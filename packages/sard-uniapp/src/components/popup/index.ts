@@ -1,1 +1,9 @@
-export type { PopupProps, PopupSlots, PopupEmits } from './common'
+export {
+  type PopupProps,
+  type PopupSlots,
+  type PopupEmits,
+  type PopupContext,
+  usePopupVisibleHookProvide,
+  usePopupEnter,
+  useInPopup,
+} from './common'
