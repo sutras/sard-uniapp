@@ -49,6 +49,6 @@ const itemList = [
 const visible = ref(false)
 
 const onSelect = (item: ShareSheetItem) => {
-  toast(item.name as string)
+  toast(item.name)
 }
 </script>

@@ -5,7 +5,7 @@ export interface ToastProps {
   rootStyle?: StyleValue
   rootClass?: string
   type?: 'text' | 'loading' | 'success' | 'fail'
-  title?: string
+  title?: string | number
   visible?: boolean
   position?: 'top' | 'center' | 'bottom'
   overlay?: boolean
@@ -28,7 +28,7 @@ export const toastProps = {
     type: String as PropType<NonNullable<ToastProps['type']>>,
     default: defaultConfig.toast.type,
   },
-  title: String,
+  title: [String, Number],
   visible: Boolean,
   position: {
     type: String as PropType<NonNullable<ToastProps['position']>>,

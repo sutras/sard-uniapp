@@ -24,6 +24,6 @@ const options = [
 ]
 
 const onSelect = (option: MenuOption) => {
-  toast(option.text as string)
+  toast(option.text)
 }
 </script>

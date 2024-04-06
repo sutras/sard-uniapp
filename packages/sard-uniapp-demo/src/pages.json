@@ -361,6 +361,12 @@
       }
     },
     {
+      "path": "pages/components/pull-down-refresh/index",
+      "style": {
+        "navigationBarTitleText": "PullDownRefresh 下拉刷新"
+      }
+    },
+    {
       "path": "pages/components/radio/index",
       "style": {
         "navigationBarTitleText": "Radio 单选按钮"

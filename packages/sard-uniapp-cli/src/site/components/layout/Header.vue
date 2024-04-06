@@ -79,11 +79,11 @@ const topbarVisible = ref(false)
   }
 
   img {
-    width: 40px;
-    height: 40px;
+    width: 24px;
+    height: 24px;
+    margin-right: 8px;
   }
   span {
-    margin-left: 5px;
     font-size: var(--doc-text-base);
     font-weight: 600;
   }

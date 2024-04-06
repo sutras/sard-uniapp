@@ -426,6 +426,11 @@ export default {
                 filePath: getComponentPath('overlay'),
               },
               {
+                title: 'PullDownRefresh 下拉刷新',
+                path: 'pull-down-refresh',
+                filePath: getComponentPath('pull-down-refresh'),
+              },
+              {
                 title: 'Result 结果',
                 path: 'result',
                 filePath: getComponentPath('result'),

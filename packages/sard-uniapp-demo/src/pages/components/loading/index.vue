@@ -23,6 +23,10 @@
     <doc-demo title="自定义颜色">
       <DemoColor />
     </doc-demo>
+
+    <doc-demo title="自定义图标">
+      <DemoCustom />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -33,6 +37,7 @@ import DemoText from './demo/Text.vue'
 import DemoVertical from './demo/Vertical.vue'
 import DemoSize from './demo/Size.vue'
 import DemoColor from './demo/Color.vue'
+import DemoCustom from './demo/Custom.vue'
 </script>
 
 <style lang="scss" scoped>

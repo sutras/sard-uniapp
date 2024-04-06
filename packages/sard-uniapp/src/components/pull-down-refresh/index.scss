@@ -1,0 +1,26 @@
+@use '../style/base' as *;
+
+@include bem(pull-down-refresh) {
+  @include b() {
+    @include universal;
+    transition-property: transform;
+  }
+
+  @include e(header) {
+    @include universal;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-100%);
+    font-size: var(--sar-pull-down-refresh-header-font-size);
+    color: var(--sar-pull-down-refresh-header-color);
+  }
+
+  @include e(loading) {
+    font-size: var(--sar-pull-down-refresh-loading-font-size);
+  }
+}

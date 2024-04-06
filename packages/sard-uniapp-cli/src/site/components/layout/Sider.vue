@@ -155,7 +155,7 @@ function Items() {
       background-color: rgba(var(--doc-blue-rgb), 0.1);
     }
     &.active {
-      font-weight: bold;
+      font-weight: 500;
       color: var(--doc-primary);
       background-color: rgba(var(--doc-blue-rgb), 0.1);
     }

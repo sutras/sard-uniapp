@@ -15,7 +15,7 @@
         )
       "
     >
-      <sar-loading size="inherit" color="inherit" :type="loadingType" />
+      <sar-loading :type="loadingType" />
     </view>
     <slot></slot>
   </button>

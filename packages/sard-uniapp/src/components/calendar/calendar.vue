@@ -56,7 +56,7 @@
         :several-months="severalMonths"
         :t="t"
         :bem="bem"
-        @day-click="handleDayClick"
+        @day-click="onDayClick"
       />
     </scroll-view>
   </view>
@@ -105,6 +105,7 @@ import {
   sortDates,
   weeksIndex,
 } from './common'
+import { useInPopup } from '../popup/common'
 import SarButton from '../button/button.vue'
 import SarIcon from '../icon/icon.vue'
 import { useTranslate } from '../locale'
@@ -271,7 +272,7 @@ const currentDates = computed(() => {
   return dates
 })
 
-const handleDayClick = (date: Date) => {
+const onDayClick = (date: Date) => {
   let nextValue: Date | Date[] | undefined
 
   if (props.type === 'single') {
@@ -330,11 +331,18 @@ const handleDayClick = (date: Date) => {
   }
 }
 
+// prevent page scroll
+const inPopup = useInPopup()
+const preventPageScroll = computed(() => {
+  return inPopup && !props.severalMonths
+})
+
 // others
 const calendarClass = computed(() => {
   return classNames(
     bem.b(),
     bem.m('several', props.severalMonths),
+    bem.m('no-scroll', preventPageScroll.value),
     props.rootClass,
   )
 })

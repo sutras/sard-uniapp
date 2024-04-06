@@ -60,6 +60,10 @@ const bem = createBem('demo')
       padding-left: 0;
       padding-right: 0;
     }
+
+    @include e(title) {
+      margin-top: 80rpx;
+    }
   }
 }
 </style>

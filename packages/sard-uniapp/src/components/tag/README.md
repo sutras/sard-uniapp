@@ -50,7 +50,7 @@ import Tag from 'sard-uniapp/components/tag/tag.vue'
 
 ### 可关闭的
 
-添加 `closeable` 属性添加关闭按钮，点击关闭按钮时会触发 `close` 事件。
+通过 `closeable` 属性添加关闭按钮，点击关闭按钮时会触发 `close` 事件。
 
 @code('${DEMO_PATH}/tag/demo/Closable.vue')
 

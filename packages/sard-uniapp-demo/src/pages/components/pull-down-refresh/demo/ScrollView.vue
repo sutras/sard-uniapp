@@ -1,0 +1,69 @@
+<template>
+  <view>
+    <sar-button @click="loading = !loading">toggle loading</sar-button>
+    <scroll-view
+      scroll-y
+      style="
+        height: 300px;
+        margin: 20rpx 0;
+        border: 1px solid var(--sar-border-color);
+      "
+      @scroll="onScroll"
+    >
+      <sar-pull-down-refresh
+        :loading="loading"
+        ref="pullDownRefresh"
+        @refresh="onRefresh"
+      >
+        <view
+          v-for="item in 10"
+          :key="item"
+          style="
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 10rpx 32rpx;
+            height: 40px;
+            border: 1px solid var(--sar-border-color);
+          "
+        >
+          {{ item }}
+        </view>
+      </sar-pull-down-refresh>
+    </scroll-view>
+  </view>
+</template>
+
+<script setup lang="ts">
+import { toast } from 'sard-uniapp'
+import { ref } from 'vue'
+
+const loading = ref(false)
+const pullDownRefresh = ref()
+
+const onScroll = (event: any) => {
+  pullDownRefresh.value?.setScrollTop(event.detail.scrollTop)
+}
+
+const fetchApi = () => {
+  return new Promise<void>((resolve) => {
+    setTimeout(() => {
+      resolve()
+    }, 1000)
+  })
+}
+
+const onRefresh = () => {
+  loading.value = true
+  fetchApi()
+    .then(() => {
+      toast('刷新成功')
+    })
+    .catch(() => {
+      toast('刷新失败')
+    })
+    .finally(() => {
+      loading.value = false
+    })
+}
+</script>

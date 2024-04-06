@@ -6,6 +6,7 @@ import 'nprogress/nprogress.css'
 import NProgress from 'nprogress'
 
 import 'prism-themes/themes/prism-one-dark.css'
+// import 'prism-themes/themes/prism-one-light.css'
 import './assets/font/hsi.css'
 import './index.scss'
 import './custom.scss'

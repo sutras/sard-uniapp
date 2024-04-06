@@ -254,6 +254,10 @@ const menus = [
         name: 'overlay',
       },
       {
+        title: 'PullDownRefresh 下拉刷新',
+        name: 'pull-down-refresh',
+      },
+      {
         title: 'Result 结果',
         name: 'result',
       },

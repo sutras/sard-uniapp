@@ -53,6 +53,7 @@ import SarPopoverReference from './components/popover-reference/popover-referenc
 import SarPopup from './components/popup/popup.vue'
 import SarProgressBar from './components/progress-bar/progress-bar.vue'
 import SarProgressCircle from './components/progress-circle/progress-circle.vue'
+import SarPullDownRefresh from './components/pull-down-refresh/pull-down-refresh.vue'
 import SarRadio from './components/radio/radio.vue'
 import SarRadioGroup from './components/radio-group/radio-group.vue'
 import SarRate from './components/rate/rate.vue'
@@ -135,6 +136,7 @@ declare module '@vue/runtime-core' {
     SarPopup: typeof SarPopup
     SarProgressBar: typeof SarProgressBar
     SarProgressCircle: typeof SarProgressCircle
+    SarPullDownRefresh: typeof SarPullDownRefresh
     SarRadio: typeof SarRadio
     SarRadioGroup: typeof SarRadioGroup
     SarRate: typeof SarRate

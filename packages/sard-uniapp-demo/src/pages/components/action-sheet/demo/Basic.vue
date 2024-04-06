@@ -25,6 +25,6 @@ const itemList = ref([
 ])
 
 const onSelect = (item: ActionSheetItem) => {
-  toast(item.name as string)
+  toast(item.name)
 }
 </script>
