@@ -35,6 +35,7 @@ import SarKeyboard from './components/keyboard/keyboard.vue'
 import SarList from './components/list/list.vue'
 import SarListItem from './components/list-item/list-item.vue'
 import SarLoading from './components/loading/loading.vue'
+import SarLoadMore from './components/load-more/load-more.vue'
 import SarMenu from './components/menu/menu.vue'
 import SarNavbar from './components/navbar/navbar.vue'
 import SarNavbarItem from './components/navbar-item/navbar-item.vue'
@@ -118,6 +119,7 @@ declare module '@vue/runtime-core' {
     SarList: typeof SarList
     SarListItem: typeof SarListItem
     SarLoading: typeof SarLoading
+    SarLoadMore: typeof SarLoadMore
     SarMenu: typeof SarMenu
     SarNavbar: typeof SarNavbar
     SarNavbarItem: typeof SarNavbarItem

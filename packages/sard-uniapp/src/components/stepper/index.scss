@@ -15,7 +15,7 @@
     flex: none;
     justify-content: center;
     align-items: center;
-    width: var(--sar-stepper-button-width);
+    width: var(--sar-stepper-height);
     font-size: var(--sar-stepper-button-font-size);
     background-color: var(--sar-stepper-bg);
 
@@ -70,6 +70,20 @@
   @include m(disabled) {
     @include e(input) {
       color: var(--sar-stepper-input-disabled-color);
+    }
+  }
+
+  @include m(small) {
+    height: var(--sar-stepper-height-sm);
+
+    @include e(input) {
+      width: var(--sar-stepper-input-width-sm);
+      font-size: var(--sar-stepper-input-font-size-sm);
+    }
+
+    @include e(button) {
+      width: var(--sar-stepper-height-sm);
+      font-size: var(--sar-stepper-button-font-size-sm);
     }
   }
 }

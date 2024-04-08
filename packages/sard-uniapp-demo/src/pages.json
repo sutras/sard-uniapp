@@ -277,6 +277,12 @@
       }
     },
     {
+      "path": "pages/components/load-more/index",
+      "style": {
+        "navigationBarTitleText": "LoadMore 加载更多"
+      }
+    },
+    {
       "path": "pages/components/navbar/index",
       "style": {
         "navigationBarTitleText": "Navbar 头部导航"

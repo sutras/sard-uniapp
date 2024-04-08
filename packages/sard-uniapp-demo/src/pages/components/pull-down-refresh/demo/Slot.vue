@@ -39,7 +39,7 @@
             加载中...
           </sar-loading>
         </template>
-        <template #done>{{ doneStatus }}</template>
+        <template #done>{{ doneText }}</template>
         <view
           v-for="item in 10"
           :key="item"
@@ -77,16 +77,16 @@ const fetchApi = () => {
   })
 }
 
-const doneStatus = ref('')
+const doneText = ref('')
 
 const onRefresh = () => {
   loading.value = true
   fetchApi()
     .then(() => {
-      doneStatus.value = '刷新成功'
+      doneText.value = '刷新成功'
     })
     .catch(() => {
-      doneStatus.value = '刷新失败'
+      doneText.value = '刷新失败'
     })
     .finally(() => {
       loading.value = false

@@ -40,6 +40,7 @@
     :data-threshold="threshold"
     :data-headerheight="headerHeight"
     :data-duration="transitionDuration"
+    :data-disabled="disabled"
     @touchstart="wxsswipe.onTouchStart"
     @touchmove="wxsswipe.onTouchMove"
     @touchend="wxsswipe.onTouchEnd"
@@ -157,7 +158,11 @@ export default {
     const isDragging = ref(false)
 
     const onTouchStart = (event: TouchEvent) => {
-      if (status.value !== 'initial' || scrollTop.value !== 0) {
+      if (
+        props.disabled ||
+        status.value !== 'initial' ||
+        scrollTop.value !== 0
+      ) {
         return
       }
       startX = event.touches[0].clientX

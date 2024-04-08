@@ -175,6 +175,12 @@ export const defaultConfig = {
     percent: 0,
     thickness: 4,
   },
+  pullDownRefresh: {
+    threshold: 50,
+    headerHeight: 50,
+    transitionDuration: 300,
+    doneDuration: 0,
+  },
   radioGroup: {
     direction: 'vertical',
     validateEvent: true,
@@ -214,6 +220,7 @@ export const defaultConfig = {
     pressTime: 350,
     interval: 150,
     validateEvent: true,
+    size: 'medium',
   },
   steps: {
     current: 0,

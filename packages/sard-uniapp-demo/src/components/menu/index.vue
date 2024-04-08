@@ -246,6 +246,10 @@ const menus = [
         name: 'loading',
       },
       {
+        title: 'LoadMore 加载更多',
+        name: 'load-more',
+      },
+      {
         title: 'Notify 通知栏',
         name: 'notify',
       },

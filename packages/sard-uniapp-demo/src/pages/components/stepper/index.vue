@@ -19,6 +19,10 @@
     <doc-demo title="只读和禁用">
       <DemoDisabledReadOnly />
     </doc-demo>
+
+    <doc-demo title="尺寸">
+      <DemoSize />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -28,6 +32,7 @@ import DemoMinMax from './demo/MinMax.vue'
 import DemoStep from './demo/Step.vue'
 import DemoPrecision from './demo/Precision.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
+import DemoSize from './demo/Size.vue'
 </script>
 
 <style lang="scss" scoped>
