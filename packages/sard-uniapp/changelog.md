@@ -1,5 +1,8 @@
+## 1.1.0-rc.1 (2024-04-08)
+
 ## 1.1.0-beta.1 (2024-04-06)
 
+- feat: 新增 pull-down-refresh 组件, slider 组件新增时间, 重构 loading 组件, 其他优化 ([802816a](https://github.com/sutras/sard-uniapp/commit/802816a))
 - docs: update quickstart.md ([fa280f6](https://github.com/sutras/sard-uniapp/commit/fa280f6))
 - build: 新增 changelog 构建流程 ([e1e862d](https://github.com/sutras/sard-uniapp/commit/e1e862d))
 

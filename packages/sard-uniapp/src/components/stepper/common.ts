@@ -19,6 +19,7 @@ export interface StepperProps {
   pressTime?: number
   interval?: number
   validateEvent?: boolean
+  size?: 'small' | 'medium'
 }
 
 // const props = withDefaults(defineProps<StepperProps>(), {
@@ -30,6 +31,7 @@ export interface StepperProps {
 //   pressTime: 350,
 //   interval: 150,
 //   validateEvent: true,
+//   size: 'medium',
 // })
 
 export const stepperProps = {
@@ -73,6 +75,10 @@ export const stepperProps = {
   validateEvent: {
     type: Boolean,
     default: defaultConfig.stepper.validateEvent,
+  },
+  size: {
+    type: String,
+    default: defaultConfig.stepper.size,
   },
 }
 

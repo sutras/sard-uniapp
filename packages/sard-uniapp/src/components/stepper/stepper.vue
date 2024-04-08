@@ -24,7 +24,7 @@
       :placeholder-class="bem.e('placeholder')"
       :value="inputValue"
       :disabled="isDisabled || isReadonly"
-      :stype="inputStyle"
+      :style="inputStyle"
       @input="onInput"
       @blur="onBlur"
       @focus="onFocus"
@@ -231,6 +231,7 @@ const onMouseDown = (delta: number) => {
 const stepperClass = computed(() => {
   return classNames(
     bem.b(),
+    bem.m(props.size),
     bem.m('disabled', isDisabled.value),
     bem.m('readonly', isReadonly.value),
     props.rootClass,

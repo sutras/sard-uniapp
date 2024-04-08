@@ -84,6 +84,12 @@ export default {
       },
     },
   },
+  loadMore: {
+    incompleteText: 'Load more',
+    loadingText: 'Loading...',
+    errorText: 'Request failed. Click to reload',
+    completeText: 'No more',
+  },
   pagination: {
     previous: 'Previous',
     next: 'Next',

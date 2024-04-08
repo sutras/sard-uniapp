@@ -103,4 +103,15 @@ describe('Stepper', () => {
     ).toBeTruthy()
     expect(wrapper.find('input').attributes()).toHaveProperty('disabled')
   })
+
+  test('size', async () => {
+    const wrapper = mount(
+      h(Stepper, {
+        placeholder: '数量',
+        size: 'small',
+      }),
+    )
+
+    expect(wrapper.find('.sar-stepper.sar-stepper_small').exists()).toBeTruthy()
+  })
 })

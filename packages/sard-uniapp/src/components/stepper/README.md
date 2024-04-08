@@ -42,6 +42,12 @@ import Stepper from 'sard-uniapp/components/stepper/stepper.vue'
 
 @code('${DEMO_PATH}/stepper/demo/DisabledReadOnly.vue')
 
+### 尺寸
+
+设置 `size="small"` 可以小尺寸展示步进器。
+
+@code('${DEMO_PATH}/stepper/demo/Size.vue')
+
 ## API
 
 ### StepperProps
@@ -65,6 +71,7 @@ import Stepper from 'sard-uniapp/components/stepper/stepper.vue'
 | press-time            | 触发长按事件的时间，单位毫秒          | boolean                          | 350                     |
 | interval              | 长按改变数值的时间间隔，单位毫秒      | number                           | 150                     |
 | validate-event        | 是否触发表单验证                      | boolean                          | true                    |
+| size                  | 步进器尺寸                            | 'medium' \| 'small'              | 'medium'                |
 
 ### StepperEmits
 

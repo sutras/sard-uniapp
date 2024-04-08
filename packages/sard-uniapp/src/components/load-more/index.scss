@@ -1,0 +1,17 @@
+@use '../style/base' as *;
+
+@include bem(load-more) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    height: var(--sar-load-more-height);
+    font-size: var(--sar-load-more-font-size);
+    color: var(--sar-load-more-color);
+
+    @include m(incomplete, error) {
+      cursor: pointer;
+    }
+  }
+}

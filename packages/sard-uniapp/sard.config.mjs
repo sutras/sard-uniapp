@@ -416,6 +416,11 @@ export default {
                 filePath: getComponentPath('loading'),
               },
               {
+                title: 'LoadMore 加载更多',
+                path: 'load-more',
+                filePath: getComponentPath('load-more'),
+              },
+              {
                 title: 'Notify 通知栏',
                 path: 'notify',
                 filePath: getComponentPath('notify'),

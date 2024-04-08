@@ -1,18 +1,22 @@
 // #variables
 page {
-  --sar-stepper-height: 72rpx;
+  --sar-stepper-height: 64rpx;
   --sar-stepper-gap: 8rpx;
   --sar-stepper-bg: var(--sar-secondary-bg);
 
-  --sar-stepper-input-width: 100rpx;
+  --sar-stepper-input-width: 80rpx;
   --sar-stepper-input-padding-x: 10rpx;
   --sar-stepper-input-font-size: var(--sar-text-base);
   --sar-stepper-input-disabled-color: var(--sar-disabled-color);
   --sar-stepper-placeholder-color: var(--sar-quaternary-color);
 
-  --sar-stepper-button-width: var(--sar-stepper-height);
-  --sar-stepper-button-font-size: 36rpx;
+  --sar-stepper-button-font-size: var(--sar-text-lg);
   --sar-stepper-button-border-radius: var(--sar-rounded-sm);
   --sar-stepper-button-active-bg: var(--sar-active-deep-bg);
+
+  --sar-stepper-height-sm: 56rpx;
+  --sar-stepper-input-width-sm: 64rpx;
+  --sar-stepper-input-font-size-sm: var(--sar-text-sm);
+  --sar-stepper-button-font-size-sm: var(--sar-text-base);
 }
 // #endvariables

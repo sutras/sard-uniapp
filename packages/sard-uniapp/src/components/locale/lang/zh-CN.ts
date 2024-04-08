@@ -84,6 +84,12 @@ export default {
       },
     },
   },
+  loadMore: {
+    incompleteText: '加载更多',
+    loadingText: '加载中...',
+    completeText: '没有更多了',
+    errorText: '请求失败，点击重新加载',
+  },
   pagination: {
     previous: '上一页',
     next: '下一页',

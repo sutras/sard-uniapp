@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page emphasis>
     <doc-demo title="基于页面的刷新" full>
       <sar-pull-down-refresh
         :loading="loading"
