@@ -1,5 +1,7 @@
 ## 1.1.0-rc.1 (2024-04-08)
 
+- feat: 新增 load-more 组件, stepper 组件新增 size 属性 ([f1e1c79](https://github.com/sutras/sard-uniapp/commit/f1e1c79))
+
 ## 1.1.0-beta.1 (2024-04-06)
 
 - feat: 新增 pull-down-refresh 组件, slider 组件新增时间, 重构 loading 组件, 其他优化 ([802816a](https://github.com/sutras/sard-uniapp/commit/802816a))
