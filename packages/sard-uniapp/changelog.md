@@ -1,3 +1,9 @@
+## 1.1.0-rc.2 (2024-04-27)
+
+- docs: 添加 github 文档和演示链接 ([3b1c445](https://github.com/sutras/sard-uniapp/commit/3b1c445))
+- docs: close #16 ([e33dfa7](https://github.com/sutras/sard-uniapp/commit/e33dfa7)), closes [#16](https://github.com/sutras/sard-uniapp/issues/16)
+- dropdown-item 点击变化值后，没有回传 ([3f21060](https://github.com/sutras/sard-uniapp/commit/3f21060))
+
 ## 1.1.0-rc.1 (2024-04-08)
 
 - feat: 新增 load-more 组件, stepper 组件新增 size 属性 ([f1e1c79](https://github.com/sutras/sard-uniapp/commit/f1e1c79))
