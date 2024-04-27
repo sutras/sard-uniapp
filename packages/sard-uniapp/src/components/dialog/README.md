@@ -62,7 +62,7 @@ import Dialog from 'sard-uniapp/components/dialog/dialog.vue'
 | show-cancel       | 是否显示取消按钮      | boolean           | true    |
 | cancel-text       | 取消按钮文案          | string            | '取消'  |
 | show-confirm      | 是否显示确定按钮      | boolean           | true    |
-| cancel-text       | 确定按钮文案          | string            | '确定'  |
+| confirm-text      | 确定按钮文案          | string            | '确定'  |
 | overlay-closable  | 点击遮罩是否关闭      | boolean           | false   |
 | duration          | 显隐动画时长，单位 ms | number            | 300     |
 
