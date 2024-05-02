@@ -95,7 +95,7 @@
       <slot name="addon"></slot>
     </view>
     <view v-if="showCount" :class="bem.e('count')">
-      {{ String(innerValue).length }} / {{ maxlength }}
+      {{ innerValue.length }} / {{ maxlength }}
     </view>
   </view>
 </template>
@@ -143,9 +143,9 @@ const isReadonly = computed(() => {
 })
 
 // value
-const innerValue = ref(props.modelValue)
+const innerValue = ref(String(props.modelValue ?? ''))
 
-const setInnerValue = (value: any) => {
+const setInnerValue = (value: string) => {
   innerValue.value = value
   emit('update:model-value', value)
 }
@@ -153,7 +153,7 @@ const setInnerValue = (value: any) => {
 watch(
   () => props.modelValue,
   () => {
-    innerValue.value = props.modelValue ?? ''
+    innerValue.value = String(props.modelValue ?? '')
     if (props.validateEvent) {
       formItemContext?.onChange()
     }
