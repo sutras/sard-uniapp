@@ -2,6 +2,7 @@
   <view :class="uploadPreviewClass" :style="uploadPreviewStyle">
     <image
       v-if="isImage"
+      :class="bem.e('image')"
       mode="aspectFill"
       :src="mediaUrl"
       @click="onImageClick"
