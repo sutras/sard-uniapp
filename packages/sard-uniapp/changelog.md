@@ -1,3 +1,8 @@
+## <small>1.1.1 (2024-05-05)</small>
+
+- fix: 修复 upload-preview 的 image 在 h5 环境下，没有宽度导致图片显示不全 ([e155724](https://github.com/sutras/sard-uniapp/commit/e155724))
+- fix: 修复 upload 组件图片预览问题 ([dd69007](https://github.com/sutras/sard-uniapp/commit/dd69007))
+
 ## 1.1.0 (2024-05-02)
 
 - fix: 修复 input 组件字数统计问题 close #19 ([52160b3](https://github.com/sutras/sard-uniapp/commit/52160b3)), closes [#19](https://github.com/sutras/sard-uniapp/issues/19)

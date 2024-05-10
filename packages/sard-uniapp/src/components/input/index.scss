@@ -58,10 +58,6 @@
       height: var(--sar-input-control-textarea-height);
       min-height: var(--sar-input-control-textarea-height);
     }
-
-    :deep([type='password']::-ms-reveal) {
-      display: none;
-    }
   }
 
   @include e(placeholder) {
@@ -116,3 +112,15 @@
     }
   }
 }
+
+/* #ifdef H5 */
+@include bem(input) {
+  @include b() {
+    @include e(control) {
+      :deep([type='password']::-ms-reveal) {
+        display: none;
+      }
+    }
+  }
+}
+/* #endif */

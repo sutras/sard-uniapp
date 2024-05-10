@@ -18,7 +18,7 @@
   margin-bottom: 20px;
   padding: 0 24px;
   text-align: center;
-  font-size: var(--doc-text-base);
+  font-size: var(--doc-text-sm);
   color: var(--doc-gray-500);
 
   @media (max-width: 768px) {

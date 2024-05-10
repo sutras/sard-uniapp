@@ -1,8 +1,4 @@
-@mixin button-active {
-  &:not([disabled]):not(.sar-button-disabled):not(.sar-button-loading):active {
-    @content;
-  }
-}
+@use '../functions' as *;
 
 @mixin button-size(
   $height,
@@ -31,8 +27,10 @@
 
 @mixin button-set-theme {
   &,
-  &[disabled],
-  &[disabled]:not([type]) {
-    @content;
+  &#{bem($b: button, $m: disabled)},
+  &#{bem($b: button, $m: loading)} {
+    &#{bem($b: button)} {
+      @content;
+    }
   }
 }

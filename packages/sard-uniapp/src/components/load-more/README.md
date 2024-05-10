@@ -31,15 +31,15 @@ import LoadMore from 'sard-uniapp/components/load-more/load-more.vue'
 
 ### LoadMoreProps
 
-| 属性           | 描述               | 类型           | 默认值                   |
-| -------------- | ------------------ | -------------- | ------------------------ |
-| root-class     | 组件根元素类名     | string         | -                        |
-| root-style     | 组件根元素样式     | StyleValue     | -                        |
-| status         | 加载的状态         | LoadMoreStatus | 'incomplete'             |
-| incompleteText | 未加载完的状态文本 | string         | '加载更多'               |
-| loadingText    | 加载中的状态文本   | string         | '加载中...'              |
-| completeText   | 加载完的状态文本   | string         | '没有更多了'             |
-| errorText      | 加载错误的状态文本 | string         | '请求失败，点击重新加载' |
+| 属性            | 描述               | 类型           | 默认值                   |
+| --------------- | ------------------ | -------------- | ------------------------ |
+| root-class      | 组件根元素类名     | string         | -                        |
+| root-style      | 组件根元素样式     | StyleValue     | -                        |
+| status          | 加载的状态         | LoadMoreStatus | 'incomplete'             |
+| incomplete-text | 未加载完的状态文本 | string         | '加载更多'               |
+| loading-text    | 加载中的状态文本   | string         | '加载中...'              |
+| complete-text   | 加载完的状态文本   | string         | '没有更多了'             |
+| error-text      | 加载错误的状态文本 | string         | '请求失败，点击重新加载' |
 
 ### LoadMoreSlots
 
