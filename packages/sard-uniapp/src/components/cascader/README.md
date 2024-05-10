@@ -47,7 +47,7 @@ import { Cascader } from 'sard'
 | model-value (v-model) | 选中项的值                | string \| number                   | -                |
 | options               | 可选项数据源              | CascaderOption[]                   | []               |
 | field-keys            | 自定义 `options` 中的字段 | CascaderFieldKeys                  | defaultFieldKeys |
-| hintText              | 未选中时的提示文案        | string                             | '请选择'         |
+| hint-text             | 未选中时的提示文案        | string                             | '请选择'         |
 | label-render          | 自定义可选项渲染          | (option: CascaderOption) => string | -                |
 
 ### CascaderSlots

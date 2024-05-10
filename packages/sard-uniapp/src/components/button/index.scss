@@ -154,13 +154,17 @@
 
   // # active 状态
   @include m(default, pale, mild, outline, text) {
-    &:not([disabled]):active::before {
+    &:not(#{bem($b: button, $m: disabled)}):not(
+        #{bem($b: button, $m: loading)}
+      ):active::before {
       opacity: 1;
     }
   }
 
   @include m(pale-text) {
-    &:active {
+    &:not(#{bem($b: button, $m: disabled)}):not(
+        #{bem($b: button, $m: loading)}
+      ):active {
       opacity: var(--sar-button-active-opacity);
     }
   }

@@ -107,15 +107,15 @@ import Upload from 'sard-uniapp/components/upload/upload.vue'
 
 ### UploadFileItem
 
-| 属性    | 描述                                                                              | 类型         | 默认值    |
-| ------- | --------------------------------------------------------------------------------- | ------------ | --------- |
-| file    | 用户选择的文件                                                                    | UploadFile   | -         |
-| name    | 图片和视频之外的文件要展示的文件名，如果不指定且有 `file`，则获取 `file` 的文件名 | string       | -         |
-| url     | 图片的 `url`                                                                      | string       | -         |
-| isImage | 当无法从 `url` 中判断为图片时，可以显式指定为图片，以便可以对图片进行预览         | boolean      | false     |
-| isVideo | 当无法从 `url` 中判断为视频时，可以显式指定为视频，以便可以对视频进行预览         | boolean      | false     |
-| status  | 指定预览图片的状态                                                                | UploadStatus | 'pending' |
-| message | 展示预览图片在 `uploading`, `failed` 等状态下的说明文本                           | string       | -         |
+| 属性     | 描述                                                                              | 类型         | 默认值    |
+| -------- | --------------------------------------------------------------------------------- | ------------ | --------- |
+| file     | 用户选择的文件                                                                    | UploadFile   | -         |
+| name     | 图片和视频之外的文件要展示的文件名，如果不指定且有 `file`，则获取 `file` 的文件名 | string       | -         |
+| url      | 图片的 `url`                                                                      | string       | -         |
+| is-image | 当无法从 `url` 中判断为图片时，可以显式指定为图片，以便可以对图片进行预览         | boolean      | false     |
+| is-video | 当无法从 `url` 中判断为视频时，可以显式指定为视频，以便可以对视频进行预览         | boolean      | false     |
+| status   | 指定预览图片的状态                                                                | UploadStatus | 'pending' |
+| message  | 展示预览图片在 `uploading`, `failed` 等状态下的说明文本                           | string       | -         |
 
 ### UploadStatus
 

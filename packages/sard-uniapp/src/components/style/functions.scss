@@ -35,5 +35,16 @@
 }
 
 @function bem-ns($str) {
-  @return $sar-namespace + '-' + $str;
+  @return $sar-namespace + $sar-block-separator + $str;
+}
+
+@function bem($b, $e: null, $m: null) {
+  $result: '.' + $sar-namespace + $sar-block-separator + $b;
+  @if $e {
+    $result: $result + $sar-element-separator + $e;
+  }
+  @if $m {
+    $result: $result + $sar-modifier-separator + $m;
+  }
+  @return $result;
 }
