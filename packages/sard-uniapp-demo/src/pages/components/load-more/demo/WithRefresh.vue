@@ -7,7 +7,9 @@
         margin: 20rpx 0;
         border: 1px solid var(--sar-border-color);
       "
+      :throttle="false"
       @scroll="onScroll"
+      @scrolltoupper="onScrolltoupper"
       @scrolltolower="onScrolltolower"
     >
       <sar-pull-down-refresh
@@ -76,7 +78,10 @@ const refreshing = ref(false)
 const pullDownRefresh = ref()
 
 const onScroll = (event: any) => {
-  pullDownRefresh.value?.setScrollTop(event.detail.scrollTop)
+  pullDownRefresh.value?.enableToRefresh(event.detail.scrollTop === 0)
+}
+const onScrolltoupper = () => {
+  pullDownRefresh.value?.enableToRefresh(true)
 }
 
 const onRefresh = () => {

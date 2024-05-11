@@ -71,5 +71,5 @@ export interface PullDownRefreshEmits {
 }
 
 export interface PullDownRefreshExpose {
-  setScrollTop: (scrollTop: number) => void
+  enableToRefresh: (canRefresh: boolean) => void
 }

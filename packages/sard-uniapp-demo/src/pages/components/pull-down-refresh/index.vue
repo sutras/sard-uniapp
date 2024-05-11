@@ -45,7 +45,7 @@ const loading = ref(false)
 const pullDownRefresh = ref()
 
 onPageScroll(({ scrollTop }) => {
-  pullDownRefresh.value?.setScrollTop(scrollTop)
+  pullDownRefresh.value?.enableToRefresh(scrollTop === 0)
 })
 
 const fetchApi = () => {
