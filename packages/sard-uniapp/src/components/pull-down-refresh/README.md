@@ -2,7 +2,18 @@
 
 ## 介绍
 
-提供下拉刷新的交互操作。
+`PullDownRefresh` 提供下拉刷新的交互操作。
+
+`PullDownRefresh` 可以在页面、`scroll-view` 或其他容器中使用，
+当满足下拉刷新条件（滚动到顶部）且进行下拉操作时，会接替容器的滚动行为。
+
+因此当滚动到顶部时调用 `PullDownRefreshExpose['enableToRefresh']` 方法并传递`true`告诉组件可以进行下拉刷新操作。
+
+当用户下拉到指定阈值时会触发 `refresh` 事件，此时要设置 `loading` 属性为 `true` 以便向用户展示加载状态，并发送网络请求。
+
+在获取到数据后设置 `loading` 属性为 `false` 来关闭加载状态。
+
+`PullDownRefresh` 组件被设计为与滚动容器弱关联关系，因此，如果有需要，你可以将此组件与滚动容器以及上拉加载组件组合使用来实现复杂的效果。
 
 ## 引入
 
@@ -14,24 +25,21 @@ import PullDownRefresh from 'sard-uniapp/components/pull-down-refresh/pull-down-
 
 ### 基于页面的刷新
 
-`PullDownRefresh` 可以在页面、`scroll-view` 或其他容器中使用，
-当判断被设置的 `scrollTop` 值为 0 且进行下拉操作时，会接替容器的滚动行为。
-
-因此，当容器滚动时，需要调用 `PullDownRefreshExpose['setScrollTop']` 方法来收集容器的 `scrollTop` 值。
-
-当正在请求数据时，需将 `loading` 属性设置为 `true` 以便向用户展示加载状态。
-
-当用户下拉到指定阈值时会触发 `refresh` 事件，此时要设置 `loading = true`，并发送网络请求；
-
-在获取到数据后设置 `loading = false` 来关闭加载状态。
+在页面生命周期 `onPageScroll` 中获取当前 `scrollTop` 的值，当为 0 时启用下拉刷新。
 
 @code('${DEMO_PATH}/pull-down-refresh/index.vue')
 
 ### 基于 scroll-view 的刷新
 
-需要监听 `scroll-view` 的 `scroll` 事件来收集 `scrollTop` 值。
+监听 `scroll-view` 组件的 `scroll` 事件来获取 `scrollTop` 值，当为 0 时启用下拉刷新。
 
-`PullDownRefresh` 组件被设计为与容器弱关联关系，因此，如果有需要，你可以将此组件与容器以及上拉加载组件组合使用实现复杂的效果。
+因为小程序端 `scroll-view` 组件内置了节流功能，当快速滚动到顶部时，可能不会触发 `scroll` 事件，
+造成 `scrollTop` 不为 0 的情况。
+
+因此需要同时监听 `scrolltoupper` 事件，当此事件触发时也启用下拉刷新。
+
+即便如此，在极少数的情况下，滚动到顶部也不会触发 `scrolltoupper` 事件，因此保守起见，
+还要设置 `scroll-view` 组件的 `throttle` 属性为 `false` 来关闭节流（官方文档中没有关于`throttle` 属性的描述，但此属性确实存在）。
 
 @code('${DEMO_PATH}/pull-down-refresh/demo/ScrollView.vue')
 
@@ -76,9 +84,9 @@ import PullDownRefresh from 'sard-uniapp/components/pull-down-refresh/pull-down-
 
 ### PullDownRefreshExpose
 
-| 属性         | 描述                             | 类型                        |
-| ------------ | -------------------------------- | --------------------------- |
-| setScrollTop | 用于设置容器当前滚动到顶部的距离 | (scrollTop: number) => void |
+| 属性            | 描述                                           | 类型                          |
+| --------------- | ---------------------------------------------- | ----------------------------- |
+| enableToRefresh | 是否启用下拉刷新，通常在容器滚动到顶部时设为真 | (canRefresh: boolean) => void |
 
 ## 主题定制
 

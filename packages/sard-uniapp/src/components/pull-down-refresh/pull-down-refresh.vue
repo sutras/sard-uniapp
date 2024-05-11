@@ -36,7 +36,7 @@
     :prop="status"
     :change:prop="wxsswipe.statusYWatch"
     :data-status="status"
-    :data-scrolltop="scrollTop"
+    :data-canrefresh="canRefresh"
     :data-threshold="threshold"
     :data-headerheight="headerHeight"
     :data-duration="transitionDuration"
@@ -158,11 +158,7 @@ export default {
     const isDragging = ref(false)
 
     const onTouchStart = (event: TouchEvent) => {
-      if (
-        props.disabled ||
-        status.value !== 'initial' ||
-        scrollTop.value !== 0
-      ) {
+      if (props.disabled || status.value !== 'initial' || !canRefresh.value) {
         return
       }
       startX = event.touches[0].clientX
@@ -233,14 +229,14 @@ export default {
       // #endif
     }
 
-    const scrollTop = ref(0)
+    const canRefresh = ref(true)
 
-    const setScrollTop = (sTop: number) => {
-      scrollTop.value = sTop
+    const enableToRefresh = (can: boolean) => {
+      canRefresh.value = can
     }
 
     expose<PullDownRefreshExpose>({
-      setScrollTop,
+      enableToRefresh,
       _setStatus: (newStatus) => {
         status.value = newStatus
       },
@@ -290,7 +286,7 @@ export default {
       headerStyle,
       loadingClass,
 
-      scrollTop,
+      canRefresh,
     }
   },
 }

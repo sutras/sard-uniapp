@@ -1,3 +1,7 @@
+## <small>1.1.2 (2024-05-10)</small>
+
+- fix: 移除属性选择器 close #23 ([89ef3fc](https://github.com/sutras/sard-uniapp/commit/89ef3fc)), closes [#23](https://github.com/sutras/sard-uniapp/issues/23)
+
 ## <small>1.1.1 (2024-05-05)</small>
 
 - fix: 修复 upload-preview 的 image 在 h5 环境下，没有宽度导致图片显示不全 ([e155724](https://github.com/sutras/sard-uniapp/commit/e155724))

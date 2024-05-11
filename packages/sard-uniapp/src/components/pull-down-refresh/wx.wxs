@@ -12,11 +12,7 @@ function setStyle(instance, offsetY, duration) {
 
 function onTouchStart(event) {
   var dataset = event.instance.getDataset()
-  if (
-    dataset.disabled ||
-    dataset.status !== 'initial' ||
-    dataset.scrolltop !== 0
-  ) {
+  if (dataset.disabled || dataset.status !== 'initial' || !dataset.canrefresh) {
     return
   }
   startX = event.touches[0].clientX
