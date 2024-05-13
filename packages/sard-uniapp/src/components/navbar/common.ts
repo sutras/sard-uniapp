@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 
 export interface NavbarProps {
   rootStyle?: StyleValue
@@ -7,18 +7,11 @@ export interface NavbarProps {
   flow?: boolean
 }
 
-export const navbarProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  title: String,
-  flow: Boolean,
-}
-
 export interface NavbarSlots {
-  default(props: Record<string, never>): any
-  title(props: Record<string, never>): any
-  left(props: Record<string, never>): any
-  right(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
+  title?(props: Record<string, never>): any
+  left?(props: Record<string, never>): any
+  right?(props: Record<string, never>): any
 }
 
 export interface NavbarItemProps {
@@ -26,13 +19,8 @@ export interface NavbarItemProps {
   rootClass?: string
 }
 
-export const navbarItemProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-}
-
 export interface NavbarItemSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface NavbarItemEmits {

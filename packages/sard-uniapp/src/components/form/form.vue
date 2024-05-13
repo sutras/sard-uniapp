@@ -4,15 +4,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, reactive, provide, toRef, watch, markRaw } from 'vue'
 import {
@@ -24,18 +15,29 @@ import {
   noop,
 } from '../../utils'
 import {
+  type FormProps,
+  type FormSlots,
   type FormContext,
   type FormItemContext,
   type FieldName,
+  type FormExpose,
   formContextSymbol,
   FieldValidateError,
-  type FormExpose,
-  formProps,
+  formPropsDefaults,
 } from './common'
 import { Validator } from './Validator'
 import { useTranslate } from '../locale'
 
-const props = defineProps(formProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<FormProps>(), formPropsDefaults)
+
+defineSlots<FormSlots>()
 
 const bem = createBem('form')
 

@@ -9,18 +9,16 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { classNames } from 'sard-uniapp'
+import { createBem } from '@/utils'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
-
-<script setup lang="ts">
-import { classNames } from 'sard-uniapp'
-import { createBem } from '@/utils'
+})
 
 withDefaults(
   defineProps<{

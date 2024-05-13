@@ -19,24 +19,28 @@
   <slot v-else></slot>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarSkeletonAvatar from '../skeleton-avatar/skeleton-avatar.vue'
 import SarSkeletonTitle from '../skeleton-title/skeleton-title.vue'
 import SarSkeletonParagraph from '../skeleton-paragraph/skeleton-paragraph.vue'
-import { skeletonProps } from './common'
+import {
+  type SkeletonProps,
+  type SkeletonSlots,
+  skeletonPropsDefaults,
+} from './common'
 
-const props = defineProps(skeletonProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<SkeletonProps>(), skeletonPropsDefaults)
+
+defineSlots<SkeletonSlots>()
 
 const bem = createBem('skeleton')
 

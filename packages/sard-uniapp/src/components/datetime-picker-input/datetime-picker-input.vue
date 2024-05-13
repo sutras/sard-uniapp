@@ -33,15 +33,6 @@
   </sar-popout>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
@@ -54,12 +45,27 @@ import {
   getMinDate,
   getMaxDate,
 } from '../datetime-picker/common'
-import { datetimePickerInputProps, mapTypeFormat } from './common'
+import {
+  type DatetimePickerInputProps,
+  type DatetimePickerInputEmits,
+  datetimePickerInputPropsDefaults,
+  mapTypeFormat,
+} from './common'
 import { useFormItemContext } from '../form/common'
 
-const props = defineProps(datetimePickerInputProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:visible', 'update:model-value'])
+const props = withDefaults(
+  defineProps<DatetimePickerInputProps>(),
+  datetimePickerInputPropsDefaults,
+)
+
+const emit = defineEmits<DatetimePickerInputEmits>()
 
 // main
 const formItemContext = useFormItemContext()

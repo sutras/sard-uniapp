@@ -8,21 +8,21 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { computed } from 'vue'
+import { classNames, stringifyStyle, createBem } from '../../utils'
+import { type NavbarItemProps, type NavbarItemSlots } from '../navbar/common'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { computed } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
-import { navbarItemProps } from '../navbar/common'
+const props = withDefaults(defineProps<NavbarItemProps>(), {})
 
-const props = defineProps(navbarItemProps)
+defineSlots<NavbarItemSlots>()
 
 defineEmits(['click'])
 

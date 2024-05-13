@@ -40,17 +40,8 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
-import { computed, useSlots } from 'vue'
+import { computed } from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -58,13 +49,25 @@ import {
   createBem,
 } from '../../utils'
 import SarIcon from '../icon/icon.vue'
-import { listItemProps } from '../list/common'
+import {
+  type ListItemProps,
+  type ListItemSlots,
+  type ListItemEmits,
+  listItemPropsDefaults,
+} from '../list/common'
 
-const props = defineProps(listItemProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click'])
+const props = withDefaults(defineProps<ListItemProps>(), listItemPropsDefaults)
 
-const slots = useSlots()
+const slots = defineSlots<ListItemSlots>()
+
+const emit = defineEmits<ListItemEmits>()
 
 const bem = createBem('list-item')
 

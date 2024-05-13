@@ -76,15 +76,6 @@
   </sar-popout>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import {
@@ -99,7 +90,9 @@ import {
   toArray,
 } from '../../utils'
 import {
-  calendarProps,
+  type CalendarProps,
+  type CalendarEmits,
+  calendarPropsDefaults,
   getMaxDate,
   getMinDate,
   sortDates,
@@ -113,9 +106,16 @@ import SarCalendarMonth from '../calendar-month/calendar-month.vue'
 import SarPopout from '../popout/popout.vue'
 import SarDatetimePicker from '../datetime-picker/datetime-picker.vue'
 
-const props = defineProps(calendarProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:model-value'])
+const props = withDefaults(defineProps<CalendarProps>(), calendarPropsDefaults)
+
+const emit = defineEmits<CalendarEmits>()
 
 const bem = createBem('calendar')
 

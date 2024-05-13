@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface KeyboardProps {
@@ -7,21 +7,10 @@ export interface KeyboardProps {
   type?: 'number' | 'digit' | 'idcard' | 'random' | 'plate'
 }
 
-// const props = withDefaults(defineProps<KeyboardProps>(), {
-//   type: 'number',
-// })
-
-export const keyboardProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  type: {
-    type: String,
-    default: defaultConfig.keyboard.type,
-  },
-}
+export const keyboardPropsDefaults = defaultConfig.keyboard
 
 export interface KeyboardSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface KeyboardEmits {

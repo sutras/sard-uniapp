@@ -100,33 +100,30 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
-import { inputProps } from './common'
+import {
+  type InputProps,
+  type InputSlots,
+  type InputEmits,
+  inputPropsDefaults,
+} from './common'
 
-const props = defineProps(inputProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits([
-  'update:model-value',
-  'clear',
-  'focus',
-  'blur',
-  'linechange',
-  'confirm',
-  'keyboardheightchange',
-])
+const props = withDefaults(defineProps<InputProps>(), inputPropsDefaults)
+
+defineSlots<InputSlots>()
+
+const emit = defineEmits<InputEmits>()
 
 const bem = createBem('input')
 

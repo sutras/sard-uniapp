@@ -6,15 +6,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import {
   computed,
@@ -25,12 +16,27 @@ import {
   nextTick,
 } from 'vue'
 import { classNames, stringifyStyle, createBem, uniqid } from '../../utils'
-import { type TabContext, tabContextSymbol, tabProps } from '../tabs/common'
+import {
+  type TabProps,
+  type TabSlots,
+  type TabEmits,
+  type TabContext,
+  tabContextSymbol,
+} from '../tabs/common'
 import { getBoundingClientRect } from '../../utils'
 
-const props = defineProps(tabProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click'])
+const props = withDefaults(defineProps<TabProps>(), {})
+
+defineSlots<TabSlots>()
+
+const emit = defineEmits<TabEmits>()
 
 const bem = createBem('tabs')
 

@@ -31,15 +31,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import {
   computed,
@@ -57,13 +48,29 @@ import {
   getBoundingClientRect,
   type NodeRect,
 } from '../../utils'
-import { tabContextSymbol, type TabContext, tabsProps } from './common'
+import {
+  type TabsProps,
+  type TabsSlots,
+  type TabsEmits,
+  type TabContext,
+  tabContextSymbol,
+  tabsPropsDefaults,
+} from './common'
 import SarTab from '../tab/tab.vue'
 import { usePopupEnter } from '../popup/common'
 
-const props = defineProps(tabsProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:current'])
+const props = withDefaults(defineProps<TabsProps>(), tabsPropsDefaults)
+
+defineSlots<TabsSlots>()
+
+const emit = defineEmits<TabsEmits>()
 
 const bem = createBem('tabs')
 

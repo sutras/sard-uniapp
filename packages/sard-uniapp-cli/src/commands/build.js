@@ -37,66 +37,65 @@ async function copySrcToDist(pattern) {
   )
 }
 
-const sharedTscConfig = [
-  ['--target', 'esnext'],
-  ['--resolveJsonModule'],
-  ['--esModuleInterop'],
-  ['--moduleResolution', 'node'],
-  ['--declaration'],
-  ['--strict'],
-  ['--noUnusedLocals'],
-  ['--noUnusedParameters'],
-  ['--types', '@dcloudio/types'],
-  ['--skipLibCheck'],
-  ['--module', 'esnext'],
-  ['--outDir', outDir],
-]
+const tsconfigPath = `${process.cwd()}/__tsconfig.json`
 
-async function compileTs() {
-  const config = [
-    ['tsc'],
-    [`${srcDir}/*.ts`, `${srcDir}/**/*.ts`, `${srcDir}/**/**/*.ts`],
-    sharedTscConfig,
-  ]
-    .flat(Infinity)
-    .join(' ')
+const vueTsconfig = {
+  include: [`${srcDir}/**/*`],
+  exclude: [
+    `${srcDir}/**/*.test.ts`,
+    `${srcDir}/**/*.test.tsx`,
+    `${srcDir}/**/*copy.*`,
+  ],
+  compilerOptions: {
+    target: 'esnext',
+    resolveJsonModule: true,
+    esModuleInterop: true,
+    moduleResolution: 'node',
+    declaration: true,
+    strict: true,
+    noImplicitAny: false,
+    noUnusedLocals: true,
+    noUnusedParameters: true,
+    types: ['@dcloudio/types'],
+    skipLibCheck: true,
+    module: 'esnext',
+    outDir: outDir,
+  },
+}
+
+async function compileTsAndGenerateVueType() {
+  await fs.writeFile(tsconfigPath, JSON.stringify(vueTsconfig))
+
+  const config = [['vue-tsc'], ['-p', tsconfigPath]].flat(Infinity).join(' ')
 
   await new Promise((resolve, reject) => {
-    child_process.exec(`${config}`, (err) => {
+    const child = child_process.exec(`${config}`, (err) => {
+      fs.rm(tsconfigPath)
       if (err) {
         reject(err)
       } else {
         resolve()
       }
     })
+
+    child.stdout.on('data', (data) => {
+      console.log(data)
+    })
   })
 
-  await copySrcToDist('global.d.ts')
+  const vueJs = await glob(path.resolve(outDir, './**/*.vue.js'))
+  for (const file of vueJs) {
+    await fs.rm(file)
+  }
+
+  const vueDts = await glob(path.resolve(outDir, './**/*.vue.d.ts'))
+  for (const file of vueDts) {
+    await fs.rename(file, file.replace(/\.vue\.d\.ts$/, '.d.ts'))
+  }
 }
 
-// async function generateVueType() {
-//   const config = [
-//     ['vue-tsc'],
-//     [`${srcDir}/**/*.vue`],
-//     ['--emitDeclarationOnly'],
-//     sharedTscConfig,
-//   ]
-//     .flat(Infinity)
-//     .join(' ')
-
-//   await new Promise((resolve, reject) => {
-//     child_process.exec(`${config}`, (err) => {
-//       if (err) {
-//         reject(err)
-//       } else {
-//         resolve()
-//       }
-//     })
-//   })
-// }
-
 function doCompileVue(code, filePath) {
-  let wxsMatch = null
+  let wxsMatch = ''
   code = code.replace(/<script.*?lang="wxs".*?><\/script>/, (m) => {
     wxsMatch = m
     return ''
@@ -122,6 +121,7 @@ function doCompileVue(code, filePath) {
       legalComments: 'inline',
     })
     .code.replace(/\/\/! #/g, '// #')
+    .replace(/\/\* @__PURE__ \*\//g, '')
 
   let compiledVue = `<template>${descriptor.template.content}</template>\n\n`
 
@@ -129,7 +129,7 @@ function doCompileVue(code, filePath) {
     compiledVue += `<!-- #ifdef MP-WEIXIN -->\n${wxsMatch}\n<!-- #endif -->\n\n`
   }
 
-  compiledVue += `<script lang="ts">\n${transformedScript}</script>\n`
+  compiledVue += `<script>\n${transformedScript}</script>\n`
 
   if (style) {
     compiledVue += `\n<style lang="scss">${style.content}</style>`
@@ -161,6 +161,16 @@ async function compileVue() {
       await fs.writeFile(target, vue)
     }),
   )
+}
+
+async function handleGlobalComponent() {
+  let content = await fs.readFile(path.resolve(srcDir, 'global.d.ts'), {
+    encoding: 'utf8',
+  })
+
+  content = content.replace(/\.vue/gm, '')
+
+  await fs.writeFile(path.resolve(outDir, 'global.d.ts'), content)
 }
 
 async function copyScss() {
@@ -222,9 +232,9 @@ async function generateUniModules() {
 export async function build() {
   const steps = [
     [deleteOutDir, `已删除 ${outDir} 目录`],
-    [compileTs, `已完成 ts 文件编译打包`],
+    [compileTsAndGenerateVueType, `已完成 ts 文件编译以及生成 vue 类型文件`],
     [compileVue, `已完成 vue 文件编译`],
-    // [generateVueType, `已生成vue文件类型`],
+    [handleGlobalComponent, `已完成全局组件类型处理`],
     [copyScss, `已完成 scss 拷贝`],
     [copyStaticFiles, `已完成静态资源拷贝`],
     [copyWxs, `已完成 wxs 拷贝`],

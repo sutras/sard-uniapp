@@ -4,27 +4,28 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, provide, reactive, toRef } from 'vue'
 import { splitUnit, classNames, stringifyStyle, createBem } from '../../utils'
 import {
+  type RowProps,
+  type RowSlots,
   type RowContext,
   rowSymbol,
   mapJustify,
   mapAlign,
-  rowProps,
 } from '../layout/common'
 
-const props = defineProps(rowProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<RowProps>(), {})
+
+defineSlots<RowSlots>()
 
 const bem = createBem('row')
 

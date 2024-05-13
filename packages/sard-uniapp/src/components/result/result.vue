@@ -22,22 +22,27 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
-import { resultProps, mapStatusIcon } from './common'
+import {
+  type ResultProps,
+  type ResultSlots,
+  mapStatusIcon,
+  resultPropsDefaults,
+} from './common'
 
-const props = defineProps(resultProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<ResultProps>(), resultPropsDefaults)
+
+defineSlots<ResultSlots>()
 
 const bem = createBem('result')
 

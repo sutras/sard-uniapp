@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 
 export interface CollapseProps {
   rootStyle?: StyleValue
@@ -8,14 +8,6 @@ export interface CollapseProps {
   visible?: boolean
 }
 
-export const collapseProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  contentClass: String,
-  contentStyle: String,
-  visible: Boolean,
-}
-
 export interface CollapseSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }

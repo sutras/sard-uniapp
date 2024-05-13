@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export type StepsStatus = 'wait' | 'process' | 'error' | 'finish'
@@ -25,49 +25,4 @@ export interface StepsProps {
   errorIcon?: string
 }
 
-// const props = withDefaults(defineProps<StepsProps>(), {
-//   center: false,
-//   direction: 'horizontal',
-//   current: 0,
-//   finishIcon: 'check-circle-fill',
-//   processIcon: 'circle',
-//   waitIcon: 'circle',
-//   errorIcon: 'x-circle',
-// })
-
-export const stepsProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  current: {
-    type: Number,
-    default: defaultConfig.steps.current,
-  },
-  itemList: Array as PropType<StepsProps['itemList']>,
-  center: {
-    type: Boolean,
-    default: defaultConfig.steps.center,
-  },
-  direction: {
-    type: String as PropType<StepsProps['direction']>,
-    default: defaultConfig.steps.direction,
-  },
-  status: String as PropType<StepsProps['status']>,
-  iconFamily: String,
-  iconSize: String,
-  finishIcon: {
-    type: String,
-    default: defaultConfig.steps.finishIcon,
-  },
-  processIcon: {
-    type: String,
-    default: defaultConfig.steps.processIcon,
-  },
-  waitIcon: {
-    type: String,
-    default: defaultConfig.steps.waitIcon,
-  },
-  errorIcon: {
-    type: String,
-    default: defaultConfig.steps.errorIcon,
-  },
-}
+export const stepsPropsDefaults = defaultConfig.steps

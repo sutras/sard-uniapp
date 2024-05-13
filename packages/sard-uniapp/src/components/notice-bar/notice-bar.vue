@@ -27,15 +27,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, getCurrentInstance, onMounted } from 'vue'
 import {
@@ -46,11 +37,28 @@ import {
   getBoundingClientRect,
 } from '../../utils'
 import SarIcon from '../icon/icon.vue'
-import { noticeBarProps } from './common'
+import {
+  type NoticeBarProps,
+  type NoticeBarSlots,
+  type NoticeBarEmits,
+  noticeBarPropsDefaults,
+} from './common'
 
-const props = defineProps(noticeBarProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click', 'close'])
+const props = withDefaults(
+  defineProps<NoticeBarProps>(),
+  noticeBarPropsDefaults,
+)
+
+defineSlots<NoticeBarSlots>()
+
+const emit = defineEmits<NoticeBarEmits>()
 
 const bem = createBem('notice-bar')
 

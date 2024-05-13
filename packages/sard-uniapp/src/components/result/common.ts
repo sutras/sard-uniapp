@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface ResultProps {
@@ -12,29 +12,13 @@ export interface ResultProps {
   description?: string
 }
 
-// const props = withDefaults(defineProps<ResultProps>(), {
-//   status: 'info',
-// })
-
-export const resultProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  status: {
-    type: String as PropType<NonNullable<ResultProps['status']>>,
-    default: defaultConfig.result.status,
-  },
-  icon: String,
-  iconFamily: String,
-  iconColor: String,
-  title: String,
-  description: String,
-}
+export const resultPropsDefaults = defaultConfig.result
 
 export interface ResultSlots {
-  default(props: Record<string, never>): any
-  title(props: Record<string, never>): any
-  description(props: Record<string, never>): any
-  icon(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
+  title?(props: Record<string, never>): any
+  description?(props: Record<string, never>): any
+  icon?(props: Record<string, never>): any
 }
 
 export const mapStatusIcon = {

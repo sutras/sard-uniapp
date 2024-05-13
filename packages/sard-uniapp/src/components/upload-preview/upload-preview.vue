@@ -52,15 +52,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, getCurrentInstance } from 'vue'
 import {
@@ -73,11 +64,25 @@ import {
 } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import SarLoading from '../loading/loading.vue'
-import { uploadPreviewProps } from '../upload/common'
+import {
+  type UploadPreviewProps,
+  type UploadPreviewEmits,
+  uploadPreviewPropsDefaults,
+} from '../upload/common'
 
-const props = defineProps(uploadPreviewProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['image-click', 'remove'])
+const props = withDefaults(
+  defineProps<UploadPreviewProps>(),
+  uploadPreviewPropsDefaults,
+)
+
+const emit = defineEmits<UploadPreviewEmits>()
 
 const bem = createBem('upload')
 

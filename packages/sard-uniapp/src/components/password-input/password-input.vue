@@ -32,24 +32,29 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import { useFormContext, useFormItemContext } from '../form/common'
-import { passwordInputProps } from './common'
+import {
+  type PasswordInputProps,
+  type PasswordInputEmits,
+  passwordInputPropsDefaults,
+} from './common'
 
-const props = defineProps(passwordInputProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:model-value', 'updat:focused'])
+const props = withDefaults(
+  defineProps<PasswordInputProps>(),
+  passwordInputPropsDefaults,
+)
+
+const emit = defineEmits<PasswordInputEmits>()
 
 const bem = createBem('password-input')
 

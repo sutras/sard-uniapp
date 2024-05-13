@@ -4,28 +4,34 @@
   </slot>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { computed, onMounted, ref, watch } from 'vue'
+import {
+  type CountDownProps,
+  type CountDownSlots,
+  type CountDownEmits,
+  type CountDownExpose,
+  type CountDownCurrentTime,
+  getCurrentTime,
+  formatTime,
+  countDownPropsDefaults,
+} from './common'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
-import {
-  type CountDownCurrentTime,
-  type CountDownExpose,
-  getCurrentTime,
-  formatTime,
-  countDownProps,
-} from './common'
+const props = withDefaults(
+  defineProps<CountDownProps>(),
+  countDownPropsDefaults,
+)
 
-const props = defineProps(countDownProps)
+defineSlots<CountDownSlots>()
 
-const emit = defineEmits(['change', 'finish'])
+const emit = defineEmits<CountDownEmits>()
 
 // main
 const remainTime = ref(props.time)

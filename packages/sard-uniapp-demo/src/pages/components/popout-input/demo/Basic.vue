@@ -5,6 +5,7 @@
         v-model="value"
         placeholder="请选择"
         clearable
+        @clear="toast('清除')"
         @click="toast('点击了')"
       />
     </sar-list-item>

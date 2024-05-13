@@ -14,24 +14,27 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarMenuItem from '../menu-item/menu-item.vue'
-import { menuProps, type MenuOption } from './common'
+import {
+  type MenuProps,
+  type MenuEmits,
+  type MenuOption,
+  menuPropsDefaults,
+} from './common'
 
-const props = defineProps(menuProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['select'])
+const props = withDefaults(defineProps<MenuProps>(), menuPropsDefaults)
+
+const emit = defineEmits<MenuEmits>()
 
 const bem = createBem('menu')
 

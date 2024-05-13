@@ -25,7 +25,7 @@
   },
   "peerDependencies": {
     "@dcloudio/types": "^3.3.2",
-    "vue": "^3.2.45"
+    "vue": "^3.3.11"
   },
   "devDependencies": {
     "@vitejs/plugin-vue-jsx": "^3.1.0",

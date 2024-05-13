@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 
 export interface PopoutInputProps {
   rootStyle?: StyleValue
@@ -9,17 +9,6 @@ export interface PopoutInputProps {
   disabled?: boolean
   clearable?: boolean
   loading?: boolean
-}
-
-export const popoutInputProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  modelValue: null,
-  readonly: Boolean,
-  disabled: Boolean,
-  clearable: Boolean,
-  placeholder: String,
-  loading: Boolean,
 }
 
 export interface PopoutInputEmits {

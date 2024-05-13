@@ -4,17 +4,15 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { createBem } from '@/utils'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
-
-<script setup lang="ts">
-import { createBem } from '@/utils'
+})
 
 const bem = createBem('title')
 </script>

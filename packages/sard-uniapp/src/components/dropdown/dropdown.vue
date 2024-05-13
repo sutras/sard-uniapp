@@ -5,25 +5,27 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, provide, toRef, unref, toRaw, reactive, Ref } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import {
+  type DropdownProps,
+  type DropdownSlots,
   type DropdownContext,
   dropdownContextSymbol,
-  dropdownProps,
+  dropdownPropsDefaults,
 } from './common'
 
-const props = defineProps(dropdownProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<DropdownProps>(), dropdownPropsDefaults)
+
+defineSlots<DropdownSlots>()
 
 const bem = createBem('dropdown')
 

@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface PickerOptionKeys {
@@ -22,24 +22,9 @@ export interface PickerProps {
   immediateChange?: boolean
 }
 
-// const props = withDefaults(defineProps<PickerProps>(), {
-//   columns: () => [],
-//   immediateChange: false,
-// })
-
-export const pickerProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  columns: {
-    type: Array as PropType<NonNullable<PickerProps['columns']>>,
-    default: () => [],
-  },
-  optionKeys: Object as PropType<PickerProps['optionKeys']>,
-  modelValue: null,
-  immediateChange: {
-    type: Boolean,
-    default: defaultConfig.picker.immediateChange,
-  },
+export const pickerPropsDefaults = {
+  ...defaultConfig.picker,
+  columns: () => [],
 }
 
 export interface PickerEmits {

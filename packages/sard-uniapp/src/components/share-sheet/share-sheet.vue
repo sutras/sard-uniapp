@@ -69,15 +69,6 @@
   </sar-popup>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import {
@@ -89,11 +80,26 @@ import {
 } from '../../utils'
 import SarPopup from '../popup/popup.vue'
 import SarIcon from '../icon/icon.vue'
-import { shareSheetProps, type ShareSheetItem } from './common'
+import {
+  type ShareSheetProps,
+  type ShareSheetEmits,
+  type ShareSheetItem,
+  shareSheetPropsDefaults,
+} from './common'
 
-const props = defineProps(shareSheetProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:visible', 'close', 'cancel', 'select'])
+const props = withDefaults(
+  defineProps<ShareSheetProps>(),
+  shareSheetPropsDefaults,
+)
+
+const emit = defineEmits<ShareSheetEmits>()
 
 const bem = createBem('share-sheet')
 

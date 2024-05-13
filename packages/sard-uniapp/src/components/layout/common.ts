@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 
 export interface RowProps {
   rootStyle?: StyleValue
@@ -8,16 +8,8 @@ export interface RowProps {
   align?: 'start' | 'center' | 'end' | 'stretch'
 }
 
-export const rowProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  gap: [Number, String],
-  justify: String as PropType<RowProps['justify']>,
-  align: String as PropType<RowProps['align']>,
-}
-
 export interface RowSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface ColProps {
@@ -28,16 +20,8 @@ export interface ColProps {
   order?: number
 }
 
-export const colProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  span: [Number, String] as PropType<ColProps['span']>,
-  offset: Number,
-  order: Number,
-}
-
 export interface ColSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export type RowContext = {

@@ -1,10 +1,6 @@
-import {
-  type CascaderProps,
-  type CascaderOption,
-  cascaderProps,
-} from '../cascader/common'
+import { type CascaderProps, type CascaderOption } from '../cascader/common'
+import { type PopoutInputProps } from '../popout-input/common'
 import { defaultConfig } from '../config'
-import { type PopoutInputProps, popoutInputProps } from '../popout-input/common'
 
 export interface CascaderInputProps
   extends CascaderProps,
@@ -15,28 +11,10 @@ export interface CascaderInputProps
   validateEvent?: boolean
 }
 
-// const props = withDefaults(defineProps<CascaderInputProps>(), {
-//   showConfirm: false,
-//   validateEvent: true,
-// })
-
-export const cascaderInputProps = {
-  ...popoutInputProps,
-  ...cascaderProps,
-  visible: Boolean,
-  title: String,
-  showConfirm: {
-    type: Boolean,
-    default: defaultConfig.cascaderInput.showConfirm,
-  },
-  validateEvent: {
-    type: Boolean,
-    default: defaultConfig.cascaderInput.validateEvent,
-  },
-}
+export const cascaderInputPropsDefaults = defaultConfig.cascaderInput
 
 export interface CascaderInputSlots {
-  top(props: { tabIndex: number }): any
+  top?(props: { tabIndex: number }): any
 }
 
 export interface CascaderInputEmits {

@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface AvatarProps {
@@ -12,21 +12,9 @@ export interface AvatarProps {
   src?: string
 }
 
-export const avatarProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  shape: {
-    type: String as PropType<AvatarProps['shape']>,
-    default: defaultConfig.avatar.shape,
-  },
-  size: String,
-  iconSize: String,
-  background: String,
-  color: String,
-  src: String,
-}
+export const avatarPropsDefaults = defaultConfig.avatar
 
 export interface AvatarSlots {
-  default(props: Record<string, never>): any
-  extra(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
+  extra?(props: Record<string, never>): any
 }

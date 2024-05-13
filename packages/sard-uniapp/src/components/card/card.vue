@@ -17,30 +17,28 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
-import { computed, useSlots } from 'vue'
+import { computed } from 'vue'
 import {
   classNames,
   stringifyStyle,
   createBem,
   isVisibleEmpty,
 } from '../../utils'
-import { cardProps } from './common'
+import { type CardProps, type CardSlots } from './common'
 
-const props = defineProps(cardProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<CardProps>(), {})
+
+const slots = defineSlots<CardSlots>()
 
 defineEmits(['click'])
-
-const slots = useSlots()
 
 const bem = createBem('card')
 

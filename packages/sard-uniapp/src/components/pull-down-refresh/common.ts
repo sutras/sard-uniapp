@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export type PullDownRefreshStatus =
@@ -17,20 +17,17 @@ export interface PullDownRefreshProps {
   loading?: boolean
   transitionDuration?: number
   doneDuration?: number
-  disabled?: number
+  disabled?: boolean
 }
 
-// const props = withDefaults(defineProps<PullDownRefreshProps>(), {
-//   threshold: 50,
-//   headerHeight: 50,
-//   loading: false,
-//   transitionDuration: 300,
-//   doneDuration: 0,
-//   disabled: false,
-// })
+export const pullDownRefreshPropsDefaults = {
+  ...defaultConfig.pullDownRefresh,
+  loading: false,
+  disabled: false,
+}
 
 export const pullDownRefreshProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
+  rootStyle: [String, Object, Array],
   rootClass: String,
   threshold: {
     type: Number,
@@ -59,11 +56,11 @@ export const pullDownRefreshProps = {
 }
 
 export interface PullDownRefreshSlots {
-  default(props: Record<string, never>): any
-  unready(props: { progress: number }): any
-  ready(props: Record<string, never>): any
-  loading(props: Record<string, never>): any
-  done(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
+  unready?(props: { progress: number }): any
+  ready?(props: Record<string, never>): any
+  loading?(props: Record<string, never>): any
+  done?(props: Record<string, never>): any
 }
 
 export interface PullDownRefreshEmits {
@@ -72,4 +69,12 @@ export interface PullDownRefreshEmits {
 
 export interface PullDownRefreshExpose {
   enableToRefresh: (canRefresh: boolean) => void
+  _setStatus: (status: PullDownRefreshStatus) => void
+  _emit: (event: {
+    name: Parameters<PullDownRefreshEmits>[0]
+    payload?: any
+  }) => void
+  _toRecovering: () => void
+  _toLoading: () => void
+  _setTranslateY: (y: number) => void
 }

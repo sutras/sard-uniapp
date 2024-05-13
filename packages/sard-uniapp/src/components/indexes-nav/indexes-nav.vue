@@ -38,15 +38,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, getCurrentInstance, reactive } from 'vue'
 import {
@@ -59,13 +50,26 @@ import {
   type NodeRect,
   toTouchEvent,
 } from '../../utils'
+import {
+  type IndexesNavProps,
+  type IndexesNavSlots,
+  type IndexesNavEmits,
+} from '../indexes/common'
 import { useTransition } from '../../use'
-import { indexesNavProps } from '../indexes/common'
 import { defaultConfig } from '../config'
 
-const props = defineProps(indexesNavProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['select'])
+const props = withDefaults(defineProps<IndexesNavProps>(), {})
+
+defineSlots<IndexesNavSlots>()
+
+const emit = defineEmits<IndexesNavEmits>()
 
 const bem = createBem('indexes')
 

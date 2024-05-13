@@ -11,30 +11,33 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, provide, inject, ref, watch } from 'vue'
 import { classNames, createBem, stringifyStyle } from '../../utils'
 import {
+  type CheckboxProps,
+  type CheckboxSlots,
+  type CheckboxEmits,
   type CheckboxContext,
   checkboxContextSymbol,
   mapTypeIcon,
-  checkboxProps,
+  checkboxPropsDefaults,
 } from './common'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
 
-const props = defineProps(checkboxProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click', 'update:checked'])
+const props = withDefaults(defineProps<CheckboxProps>(), checkboxPropsDefaults)
+
+defineSlots<CheckboxSlots>()
+
+const emit = defineEmits<CheckboxEmits>()
 
 const bem = createBem('checkbox')
 

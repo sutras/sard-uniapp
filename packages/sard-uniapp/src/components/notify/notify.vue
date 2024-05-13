@@ -9,26 +9,29 @@
   </sar-popup>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch, nextTick } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import { useSetTimeout } from '../../use'
-import { type NotifyExpose, notifyProps } from './common'
+import {
+  type NotifyExpose,
+  type NotifyProps,
+  type NotifyEmits,
+  notifyPropsDefaults,
+} from './common'
 import SarPopup from '../popup/popup.vue'
 import { type PopupProps } from '../popup/common'
 
-const props = defineProps(notifyProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click', 'update:visible'])
+const props = withDefaults(defineProps<NotifyProps>(), notifyPropsDefaults)
+
+const emit = defineEmits<NotifyEmits>()
 
 const bem = createBem('notify')
 

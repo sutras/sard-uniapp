@@ -15,22 +15,29 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
-import { progressCircleProps } from './common'
+import {
+  type ProgressCircleProps,
+  type ProgressCircleSlots,
+  progressCircleDefaults,
+} from './common'
 
-const props = defineProps(progressCircleProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(
+  defineProps<ProgressCircleProps>(),
+  progressCircleDefaults,
+)
+
+defineSlots<ProgressCircleSlots>()
 
 const bem = createBem('progress-circle')
 

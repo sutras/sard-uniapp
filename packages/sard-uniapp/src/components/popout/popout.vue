@@ -85,15 +85,6 @@
   </sar-popup>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem, noop } from '../../utils'
@@ -103,17 +94,25 @@ import SarIcon from '../icon/icon.vue'
 import { usePopupVisibleHookProvide } from '../popup/common'
 import { type TransitionHookName } from '../../use'
 import { useTranslate } from '../locale'
-import { popoutProps } from './common'
+import {
+  type PopoutProps,
+  type PopoutSlots,
+  type PopoutEmits,
+  popoutPropsDefaults,
+} from './common'
 
-const props = defineProps(popoutProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits([
-  'update:visible',
-  'close',
-  'cancel',
-  'confirm',
-  'visible-hook',
-])
+const props = withDefaults(defineProps<PopoutProps>(), popoutPropsDefaults)
+
+defineSlots<PopoutSlots>()
+
+const emit = defineEmits<PopoutEmits>()
 
 const bem = createBem('popout')
 

@@ -18,15 +18,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import {
   computed,
@@ -58,17 +49,28 @@ import {
 } from '../../utils'
 import { type VdaliteFailResult, type Rule } from '../form/Validator'
 import {
+  type FormItemProps,
+  type FormItemSlots,
   type FieldValidateError,
   type FormItemContext,
   type ValidateState,
   type FormItemExpose,
   formItemContextSymbol,
   useFormContext,
-  formItemProps,
+  formItemPropsDefaults,
 } from '../form/common'
 import { defaultConfig } from '../config'
 
-const props = defineProps(formItemProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<FormItemProps>(), formItemPropsDefaults)
+
+defineSlots<FormItemSlots>()
 
 const bem = createBem('form-item')
 

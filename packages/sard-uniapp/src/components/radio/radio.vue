@@ -11,30 +11,33 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, provide, inject } from 'vue'
 import { classNames, createBem, stringifyStyle } from '../../utils'
 import {
-  radioContextSymbol,
+  type RadioProps,
+  type RadioSlots,
+  type RadioEmits,
   type RadioContext,
-  radioProps,
+  radioContextSymbol,
   mapTypeIcon,
+  radioPropsDefaults,
 } from './common'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext } from '../form/common'
 
-const props = defineProps(radioProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click'])
+const props = withDefaults(defineProps<RadioProps>(), radioPropsDefaults)
+
+defineSlots<RadioSlots>()
+
+const emit = defineEmits<RadioEmits>()
 
 const bem = createBem('radio')
 

@@ -35,27 +35,25 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarInput from '../input/input.vue'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext } from '../form/common'
-import { popoutInputProps } from './common'
+import { type PopoutInputProps, type PopoutInputEmits } from './common'
 import SarLoading from '../loading/loading.vue'
 
-const props = defineProps(popoutInputProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click', 'update:model-value', 'clear'])
+const props = withDefaults(defineProps<PopoutInputProps>(), {})
+
+const emit = defineEmits<PopoutInputEmits>()
 
 const bem = createBem('popout-input')
 

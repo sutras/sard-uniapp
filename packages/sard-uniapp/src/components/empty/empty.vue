@@ -16,25 +16,24 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useTranslate } from '../locale'
-import { emptyProps } from './common'
+import { type EmptyProps, type EmptySlots, emptyPropsDefaults } from './common'
+
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
 const { t } = useTranslate('empty')
+const props = withDefaults(defineProps<EmptyProps>(), emptyPropsDefaults)
 
-const props = defineProps(emptyProps)
+defineSlots<EmptySlots>()
 
 const bem = createBem('empty')
 

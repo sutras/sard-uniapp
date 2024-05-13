@@ -13,28 +13,34 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { ref, watch, provide, toRef, reactive } from 'vue'
 import {
+  type RadioGroupProps,
+  type RadioGroupSlots,
+  type RadioGroupEmits,
   type RadioContext,
   radioContextSymbol,
-  radioGroupProps,
+  radioGroupPropsDefaults,
 } from '../radio/common'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import { useFormItemContext } from '../form/common'
 
-const props = defineProps(radioGroupProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:model-value'])
+const props = withDefaults(
+  defineProps<RadioGroupProps>(),
+  radioGroupPropsDefaults,
+)
+
+defineSlots<RadioGroupSlots>()
+
+const emit = defineEmits<RadioGroupEmits>()
 
 const bem = createBem('radio-group')
 

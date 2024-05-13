@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface GridProps {
@@ -13,31 +13,10 @@ export interface GridProps {
   direction?: 'horizontal' | 'vertical'
 }
 
-// const props = withDefaults(defineProps<GridProps>(), {
-//   columns: 4,
-//   direction: 'vertical',
-// })
-
-export const gridProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  columns: {
-    type: Number,
-    default: defaultConfig.grid.columns,
-  },
-  gap: String,
-  bordered: Boolean,
-  square: Boolean,
-  clickable: Boolean,
-  reverse: Boolean,
-  direction: {
-    type: String as PropType<NonNullable<GridProps['direction']>>,
-    default: defaultConfig.grid.direction,
-  },
-}
+export const gridPropsDefaults = defaultConfig.grid
 
 export interface GridSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface GridItemProps {
@@ -50,20 +29,10 @@ export interface GridItemProps {
   iconFamily?: string
 }
 
-export const gridItemProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  text: String,
-  icon: String,
-  iconSize: String,
-  iconColor: String,
-  iconFamily: String,
-}
-
 export interface GridItemSlots {
-  default(props: Record<string, never>): any
-  icon(props: Record<string, never>): any
-  text(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
+  icon?(props: Record<string, never>): any
+  text?(props: Record<string, never>): any
 }
 
 export interface GridItemEmits {

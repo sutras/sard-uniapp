@@ -8,20 +8,13 @@
   />
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { classNames, stringifyStyle } from '../../utils'
 import SarPicker from '../picker/picker.vue'
 import {
+  type DatetimePickerProps,
+  type DatetimePickerEmits,
   type DatetimeLetter,
   type DateEvery,
   type DatetimeColumnOption,
@@ -32,13 +25,23 @@ import {
   letterArray,
   strategies,
   getColumnData,
-  datetimePickerProps,
+  datetimePickerPropsDefaults,
 } from './common'
 import { useTranslate } from '../locale'
 
-const props = defineProps(datetimePickerProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:model-value'])
+const props = withDefaults(
+  defineProps<DatetimePickerProps>(),
+  datetimePickerPropsDefaults,
+)
+
+const emit = defineEmits<DatetimePickerEmits>()
 
 // main
 const { t } = useTranslate('datetimePicker')

@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface NoticeBarProps {
@@ -17,45 +17,12 @@ export interface NoticeBarProps {
   vertical?: boolean
 }
 
-// const props = withDefaults(defineProps<NoticeBarProps>(), {
-//   visible: true,
-//   delay: 1000,
-//   speed: 50,
-//   scrollable: 'auto',
-// })
-
-export const noticeBarProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  color: String,
-  background: String,
-  hideLeftIcon: Boolean,
-  delay: {
-    type: Number,
-    default: defaultConfig.noticeBar.delay,
-  },
-  speed: {
-    type: Number,
-    default: defaultConfig.noticeBar.speed,
-  },
-  scrollable: {
-    type: String,
-    default: defaultConfig.noticeBar.scrollable,
-  },
-  wrap: Boolean,
-  closable: Boolean,
-  linkable: Boolean,
-  visible: {
-    type: Boolean,
-    default: defaultConfig.noticeBar.visible,
-  },
-  vertical: Boolean,
-}
+export const noticeBarPropsDefaults = defaultConfig.noticeBar
 
 export interface NoticeBarSlots {
-  default(props: Record<string, never>): any
-  'left-icon'(props: Record<string, never>): any
-  'right-icon'(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
+  'left-icon'?(props: Record<string, never>): any
+  'right-icon'?(props: Record<string, never>): any
 }
 
 export interface NoticeBarEmits {

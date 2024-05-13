@@ -20,29 +20,31 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, inject } from 'vue'
 import { classNames, stringifyStyle, createBem, isNullish } from '../../utils'
 import {
+  type AccordionItemProps,
+  type AccordionItemSlots,
+  type AccordionItemEmits,
   type AccoridonContext,
   accoridonContextSymbol,
-  accordionItemProps,
 } from '../accordion/common'
 import SarCollapse from '../collapse/collapse.vue'
 import SarIcon from '../icon/icon.vue'
 
-const props = defineProps(accordionItemProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click'])
+const props = withDefaults(defineProps<AccordionItemProps>(), {})
+
+defineSlots<AccordionItemSlots>()
+
+const emit = defineEmits<AccordionItemEmits>()
 
 const bem = createBem('accordion-item')
 

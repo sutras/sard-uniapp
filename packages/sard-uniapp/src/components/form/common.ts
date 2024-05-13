@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue, type Ref, inject } from 'vue'
+import { type StyleValue, type Ref, inject } from 'vue'
 import { type Validator, type Rule } from './Validator'
 import { type ScrollIntoViewOptions } from '../../utils'
 import { defaultConfig } from '../config'
@@ -42,72 +42,10 @@ export interface FormProps {
   card?: boolean
 }
 
-// const props = withDefaults(defineProps<FormProps>(), {
-//   direction: 'horizontal',
-//   labelAlign: 'start',
-//   labelValign: 'center',
-//   starPosition: 'left',
-//   showError: true,
-//   validateTrigger: 'change',
-//   disabled: undefined,
-//   readonly: undefined,
-//   validateOnRuleChange: true,
-// })
-
-export const formProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  model: Object as PropType<FormProps['model']>,
-  rules: Object as PropType<FormProps['rules']>,
-  validateTrigger: {
-    type: [String, Array] as PropType<
-      NonNullable<FormProps['validateTrigger']>
-    >,
-    default: defaultConfig.form.validateTrigger,
-  },
-  validateOnRuleChange: {
-    type: Boolean,
-    default: defaultConfig.form.validateOnRuleChange,
-  },
-
-  direction: {
-    type: String as PropType<NonNullable<FormProps['direction']>>,
-    default: defaultConfig.form.direction,
-  },
-  labelWidth: String,
-  labelAlign: {
-    type: String as PropType<NonNullable<FormProps['labelAlign']>>,
-    default: defaultConfig.form.labelAlign,
-  },
-  labelValign: {
-    type: String as PropType<NonNullable<FormProps['labelValign']>>,
-    default: defaultConfig.form.labelValign,
-  },
-  starPosition: {
-    type: String as PropType<NonNullable<FormProps['starPosition']>>,
-    default: defaultConfig.form.starPosition,
-  },
-
-  showError: {
-    type: Boolean,
-    default: defaultConfig.form.showError,
-  },
-  scrollToFirstError: Boolean,
-  scrollIntoViewOptions: Object as PropType<FormProps['scrollIntoViewOptions']>,
-
-  disabled: {
-    type: Boolean,
-    default: undefined,
-  },
-  readonly: {
-    type: Boolean,
-    default: undefined,
-  },
-  card: Boolean,
-}
+export const formPropsDefaults = defaultConfig.form
 
 export interface FormSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface FormExpose {
@@ -138,47 +76,16 @@ export interface FormItemProps {
   inlaid?: boolean
 }
 
-// const props = withDefaults(defineProps<FormItemProps>(), {
-//   required: undefined,
-//   showError: undefined,
-//   showStar: undefined,
-// })
-
-export const formItemProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-
-  direction: String as PropType<NonNullable<FormItemProps['direction']>>,
-  labelWidth: String,
-  labelAlign: String as PropType<NonNullable<FormItemProps['labelAlign']>>,
-  labelValign: String as PropType<NonNullable<FormItemProps['labelValign']>>,
-  starPosition: String as PropType<NonNullable<FormItemProps['starPosition']>>,
-  showStar: {
-    type: Boolean,
-    default: undefined,
-  },
-
-  label: String,
-  required: {
-    type: Boolean,
-    default: undefined,
-  },
-  name: [String, Number, Array] as PropType<FormItemProps['name']>,
-  rules: [Object, Array] as PropType<FormItemProps['rules']>,
-  validateTrigger: [String, Array] as PropType<
-    FormItemProps['validateTrigger']
-  >,
-  error: String,
-  showError: {
-    type: Boolean,
-    default: undefined,
-  },
-  inlaid: Boolean,
+export const formItemPropsDefaults = {
+  required: undefined,
+  showError: undefined,
+  showStar: undefined,
 }
 
 export interface FormItemSlots {
-  default(props: Record<string, never>): any
-  validate(props: { state: ValidateState }): any
+  default?(props: Record<string, never>): any
+  label?(props: Record<string, never>): any
+  validate?(props: { state: ValidateState }): any
 }
 
 export interface FormItemExpose {

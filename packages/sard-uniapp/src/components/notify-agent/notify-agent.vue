@@ -13,22 +13,27 @@
   />
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref } from 'vue'
+import SarNotify from '../notify/notify.vue'
+import {
+  type NotifyAgentProps,
+  mapIdImperative,
+  notifyAgentPropsDefaults,
+} from './common'
+import { type NotifyExpose } from '../notify/common'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
-import SarNotify from '../notify/notify.vue'
-import { notifyAgentProps, mapIdImperative } from './common'
-import { type NotifyExpose } from '../notify/common'
-
-const props = defineProps(notifyAgentProps)
+const props = withDefaults(
+  defineProps<NotifyAgentProps>(),
+  notifyAgentPropsDefaults,
+)
 
 // main
 const innerProps = ref({ ...props })

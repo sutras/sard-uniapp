@@ -1,9 +1,6 @@
+import { type DatetimePickerProps } from '../datetime-picker/common'
+import { type PopoutInputProps } from '../popout-input/common'
 import { defaultConfig } from '../config'
-import {
-  type DatetimePickerProps,
-  datetimePickerProps,
-} from '../datetime-picker/common'
-import { type PopoutInputProps, popoutInputProps } from '../popout-input/common'
 
 export interface DatetimePickerInputProps
   extends DatetimePickerProps,
@@ -14,20 +11,9 @@ export interface DatetimePickerInputProps
   validateEvent?: boolean
 }
 
-// const props = withDefaults(defineProps<DatetimePickerInputProps>(), {
-//   validateEvent: true,
-// })
-
-export const datetimePickerInputProps = {
-  ...popoutInputProps,
-  ...datetimePickerProps,
-  visible: Boolean,
-  title: String,
-  outletFormat: String,
-  validateEvent: {
-    type: Boolean,
-    default: defaultConfig.datetimePickerInput.validateEvent,
-  },
+export const datetimePickerInputPropsDefaults = {
+  ...defaultConfig.datetimePicker,
+  ...defaultConfig.datetimePickerInput,
 }
 
 export interface DatetimePickerInputEmits {

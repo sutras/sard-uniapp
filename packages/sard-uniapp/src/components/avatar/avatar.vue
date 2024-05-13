@@ -14,22 +14,26 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
-import { avatarProps } from './common'
+import {
+  type AvatarProps,
+  type AvatarSlots,
+  avatarPropsDefaults,
+} from './common'
 
-const props = defineProps(avatarProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<AvatarProps>(), avatarPropsDefaults)
+
+defineSlots<AvatarSlots>()
 
 const bem = createBem('avatar')
 

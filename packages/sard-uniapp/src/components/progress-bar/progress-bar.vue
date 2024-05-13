@@ -16,22 +16,29 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
-import { progressBarProps } from './common'
+import {
+  type ProgressBarProps,
+  type ProgressBarSlots,
+  progressBarPropsDefaults,
+} from './common'
 
-const props = defineProps(progressBarProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(
+  defineProps<ProgressBarProps>(),
+  progressBarPropsDefaults,
+)
+
+defineSlots<ProgressBarSlots>()
 
 const bem = createBem('progress-bar')
 

@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue, type Ref } from 'vue'
+import { type StyleValue, type Ref } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface DropdownProps {
@@ -11,40 +11,10 @@ export interface DropdownProps {
   duration?: number
 }
 
-// const props = withDefaults(defineProps<DropdownProps>(), {
-//   direction: 'down',
-//   disabled: false,
-//   awayClosable: true,
-//   overlayClosable: true,
-// })
-
-export const dropdownProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  direction: {
-    type: String as PropType<NonNullable<DropdownProps['direction']>>,
-    default: defaultConfig.dropdown.direction,
-  },
-  disabled: {
-    type: Boolean,
-    default: defaultConfig.dropdown.disabled,
-  },
-  awayClosable: {
-    type: Boolean,
-    default: defaultConfig.dropdown.awayClosable,
-  },
-  overlayClosable: {
-    type: Boolean,
-    default: defaultConfig.dropdown.overlayClosable,
-  },
-  duration: {
-    type: Number,
-    default: defaultConfig.dropdown.duration,
-  },
-}
+export const dropdownPropsDefaults = defaultConfig.dropdown
 
 export interface DropdownSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface DropdownOption {
@@ -65,28 +35,12 @@ export interface DropdownItemProps {
   placeholder?: string
 }
 
-// const props = withDefaults(defineProps<DropdownItemProps>(), {
-//   options: () => [],
-// })
-
-export const dropdownItemProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  title: String,
-  label: String,
-  options: {
-    type: Array as PropType<NonNullable<DropdownItemProps['options']>>,
-    default: () => [],
-  },
-  disabled: String,
-  modelValue: null,
-  visible: Boolean,
-  separator: String,
-  placeholder: String,
+export const dropdownItemPropsDefaults = {
+  options: () => [],
 }
 
 export interface DropdownItemSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface DropdownItemEmits {

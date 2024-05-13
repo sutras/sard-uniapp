@@ -17,15 +17,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, nextTick, ref, watch } from 'vue'
 import {
@@ -38,6 +29,8 @@ import {
   isNullish,
 } from '../../utils'
 import {
+  type PickerProps,
+  type PickerEmits,
   type PickerOption,
   defaultOptionKeys,
   getColumnsType,
@@ -46,12 +39,19 @@ import {
   getOptionsByIndexes,
   getMaySingleValueByOptions,
   getValueOrLabelByOption,
-  pickerProps,
+  pickerPropsDefaults,
 } from './common'
 
-const props = defineProps(pickerProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:model-value'])
+const props = withDefaults(defineProps<PickerProps>(), pickerPropsDefaults)
+
+const emit = defineEmits<PickerEmits>()
 
 const bem = createBem('picker')
 

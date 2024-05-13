@@ -35,15 +35,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import {
@@ -52,9 +43,22 @@ import {
   isRenderVisible,
   createBem,
 } from '../../utils'
-import { loadingProps } from './common'
+import {
+  type LoadingProps,
+  type LoadingSlots,
+  loadingPropsDefaults,
+} from './common'
 
-const props = defineProps(loadingProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<LoadingProps>(), loadingPropsDefaults)
+
+defineSlots<LoadingSlots>()
 
 const bem = createBem('loading')
 

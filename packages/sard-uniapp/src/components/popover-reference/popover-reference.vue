@@ -4,15 +4,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, inject, onMounted, getCurrentInstance } from 'vue'
 import {
@@ -22,14 +13,25 @@ import {
   uniqid,
 } from '../../utils'
 import {
+  type PopoverReferenceProps,
+  type PopoverReferenceSlots,
+  type PopoverReferenceEmits,
   type PopoverContext,
   popoverContextSymbol,
-  popoverReferenceProps,
 } from '../popover/common'
 
-const props = defineProps(popoverReferenceProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click'])
+const props = withDefaults(defineProps<PopoverReferenceProps>(), {})
+
+defineSlots<PopoverReferenceSlots>()
+
+const emit = defineEmits<PopoverReferenceEmits>()
 
 // main
 const referenceId = uniqid()

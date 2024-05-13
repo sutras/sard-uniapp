@@ -79,15 +79,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, getCurrentInstance, ref, watch } from 'vue'
 import {
@@ -104,16 +95,25 @@ import {
   toTouchEvent,
 } from '../../utils'
 import { useFormContext, useFormItemContext } from '../form/common'
-import { sliderProps } from './common'
+import {
+  type SliderProps,
+  type SliderSlots,
+  type SliderEmits,
+  sliderPropsDefaults,
+} from './common'
 
-const props = defineProps(sliderProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits([
-  'update:model-value',
-  'change',
-  'drag-start',
-  'drag-end',
-])
+const props = withDefaults(defineProps<SliderProps>(), sliderPropsDefaults)
+
+defineSlots<SliderSlots>()
+
+const emit = defineEmits<SliderEmits>()
 
 const bem = createBem('slider')
 

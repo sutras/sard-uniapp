@@ -7,22 +7,22 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
-import { tagProps } from './common'
+import { type TagProps, type TagSlots, tagPropsDefaults } from './common'
 
-const props = defineProps(tagProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<TagProps>(), tagPropsDefaults)
+
+defineSlots<TagSlots>()
 
 defineEmits(['click', 'close'])
 

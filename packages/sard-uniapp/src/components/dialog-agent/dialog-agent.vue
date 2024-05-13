@@ -16,21 +16,26 @@
   />
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { onMounted, onUnmounted, ref } from 'vue'
+import SarDialog from '../dialog/dialog.vue'
+import {
+  type DialogAgentProps,
+  dialogAgentPropsDefaults,
+  mapIdImperative,
+} from './common'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
-import SarDialog from '../dialog/dialog.vue'
-import { dialogAgentProps, mapIdImperative } from './common'
-
-const props = defineProps(dialogAgentProps)
+const props = withDefaults(
+  defineProps<DialogAgentProps>(),
+  dialogAgentPropsDefaults,
+)
 
 // main
 const innerProps = ref({ ...props })

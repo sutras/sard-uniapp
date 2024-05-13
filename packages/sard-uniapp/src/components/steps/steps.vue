@@ -32,22 +32,20 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
-import { stepsProps, type StepsStatus } from './common'
+import { type StepsProps, type StepsStatus, stepsPropsDefaults } from './common'
 
-const props = defineProps(stepsProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<StepsProps>(), stepsPropsDefaults)
 
 const getStatus = (current: number, index: number) => {
   return index < current

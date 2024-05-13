@@ -37,15 +37,6 @@
   </sar-popout>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
@@ -58,12 +49,29 @@ import {
 } from '../cascader/common'
 import SarPopout from '../popout/popout.vue'
 import { isNullish } from '../../utils'
-import { cascaderInputProps } from './common'
+import {
+  type CascaderInputProps,
+  type CascaderInputSlots,
+  type CascaderInputEmits,
+  cascaderInputPropsDefaults,
+} from './common'
 import { useFormItemContext } from '../form/common'
 
-const props = defineProps(cascaderInputProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:visible', 'update:model-value', 'select'])
+const props = withDefaults(
+  defineProps<CascaderInputProps>(),
+  cascaderInputPropsDefaults,
+)
+
+defineSlots<CascaderInputSlots>()
+
+const emit = defineEmits<CascaderInputEmits>()
 
 // main
 const formItemContext = useFormItemContext()

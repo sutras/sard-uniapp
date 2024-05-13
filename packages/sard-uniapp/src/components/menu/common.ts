@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 
 export interface MenuOption {
   text?: string
@@ -15,19 +15,8 @@ export interface MenuProps {
   theme?: 'dark' | 'light'
 }
 
-// const props = withDefaults(defineProps<MenuProps>(), {
-//   options: () => [],
-// })
-
-export const menuProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  options: {
-    type: Array as PropType<NonNullable<MenuProps['options']>>,
-    default: () => [],
-  },
-  direction: String as PropType<MenuProps['direction']>,
-  theme: String as PropType<MenuProps['theme']>,
+export const menuPropsDefaults = {
+  options: () => [],
 }
 
 export interface MenuEmits {
@@ -41,15 +30,6 @@ export interface MenuItemProps {
   iconFamily?: string
   withIcon?: boolean
   direction?: 'vertical' | 'horizontal'
-}
-
-export const menuItemProps = {
-  text: String,
-  disabled: Boolean,
-  icon: String,
-  iconFamily: String,
-  withIcon: Boolean,
-  direction: String as PropType<MenuItemProps['direction']>,
 }
 
 export interface MenuItemEmits {
