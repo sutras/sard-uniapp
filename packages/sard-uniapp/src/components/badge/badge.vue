@@ -14,27 +14,25 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { computed } from 'vue'
+import { classNames, stringifyStyle, createBem } from '../../utils'
+import { type BadgeProps, type BadgeSlots, badgePropsDefaults } from './common'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { computed, useSlots } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
-import { badgeProps } from './common'
+const props = withDefaults(defineProps<BadgeProps>(), badgePropsDefaults)
 
-const props = defineProps(badgeProps)
+const slots = defineSlots<BadgeSlots>()
 
 const bem = createBem('badge')
 
 // main
-const slots = useSlots()
-
 const zeroHide = computed(() => {
   return !props.dot && props.value === 0 && !props.showZero && !slots.value
 })

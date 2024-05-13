@@ -1,20 +1,13 @@
+import { type DialogProps } from '../dialog/common'
 import { defaultConfig } from '../config'
-import { type DialogProps, dialogProps } from '../dialog/common'
 
 export interface DialogAgentProps extends DialogProps {
   id?: string
 }
 
-// const props = withDefaults(defineProps<DialogAgentProps>(), {
-//   id: 'dialog',
-// })
-
-export const dialogAgentProps = {
-  ...dialogProps,
-  id: {
-    type: String,
-    default: defaultConfig.dialogAgent.id,
-  },
+export const dialogAgentPropsDefaults = {
+  ...defaultConfig.dialog,
+  ...defaultConfig.dialogAgent,
 }
 
 export const mapIdImperative: Record<

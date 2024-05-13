@@ -17,15 +17,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import {
   computed,
@@ -47,17 +38,28 @@ import {
   isNullish,
 } from '../../utils'
 import {
+  type IndexesProps,
+  type IndexesSlots,
+  type IndexesEmits,
   type IndexesContext,
   type IndexesExpose,
   indexesContextSymbol,
-  indexesProps,
 } from './common'
 import { useSetTimeout } from '../../use'
 import SarIndexesNav from '../indexes-nav/indexes-nav.vue'
 
-const props = defineProps(indexesProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['change'])
+const props = withDefaults(defineProps<IndexesProps>(), {})
+
+defineSlots<IndexesSlots>()
+
+const emit = defineEmits<IndexesEmits>()
 
 const bem = createBem('indexes')
 

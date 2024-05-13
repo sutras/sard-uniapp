@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface PaginationProps {
@@ -15,50 +15,11 @@ export interface PaginationProps {
   multiCount?: number
 }
 
-// const props = withDefaults(defineProps<PaginationProps>(), {
-//   total: 0,
-//   current: 1,
-//   pageSize: 10,
-//   pageButtonCount: 5,
-//   type: 'multi',
-//   multiCount: 5,
-// })
-
-export const paginationProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  total: {
-    type: Number,
-    default: defaultConfig.pagination.total,
-  },
-  pageSize: {
-    type: Number,
-    default: defaultConfig.pagination.pageSize,
-  },
-  current: {
-    type: Number,
-    default: defaultConfig.pagination.current,
-  },
-  pageCount: Number,
-  pageButtonCount: {
-    type: Number,
-    default: defaultConfig.pagination.pageButtonCount,
-  },
-  hideOnSinglePage: Boolean,
-  type: {
-    type: String as PropType<NonNullable<PaginationProps['type']>>,
-    default: defaultConfig.pagination.type,
-  },
-  ellipsis: Boolean,
-  multiCount: {
-    type: Number,
-    default: defaultConfig.pagination.multiCount,
-  },
-}
+export const paginationPropsDefaults = defaultConfig.pagination
 
 export interface PaginationSlots {
-  prev(props: Record<string, never>): any
-  next(props: Record<string, never>): any
+  prev?(props: Record<string, never>): any
+  next?(props: Record<string, never>): any
 }
 
 export interface PaginationEmits {

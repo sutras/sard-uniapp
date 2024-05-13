@@ -50,26 +50,31 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarInput from '../input/input.vue'
 import SarIcon from '../icon/icon.vue'
 import SarButton from '../button/button.vue'
-import { searchProps } from './common'
+import {
+  type SearchProps,
+  type SearchSlots,
+  type SearchEmits,
+  searchPropsDefaults,
+} from './common'
 
-const props = defineProps(searchProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:model-value', 'cancel', 'search'])
+const props = withDefaults(defineProps<SearchProps>(), searchPropsDefaults)
+
+defineSlots<SearchSlots>()
+
+const emit = defineEmits<SearchEmits>()
 
 const bem = createBem('search')
 

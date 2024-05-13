@@ -6,15 +6,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, inject, onBeforeMount, getCurrentInstance } from 'vue'
 import {
@@ -25,12 +16,22 @@ import {
   uniqid,
 } from '../../utils'
 import {
+  type IndexesAnchorProps,
+  type IndexesAnchorSlots,
   type IndexesContext,
   indexesContextSymbol,
-  indexesAnchorProps,
 } from '../indexes/common'
 
-const props = defineProps(indexesAnchorProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<IndexesAnchorProps>(), {})
+
+defineSlots<IndexesAnchorSlots>()
 
 const bem = createBem('indexes')
 

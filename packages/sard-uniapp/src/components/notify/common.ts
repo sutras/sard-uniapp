@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface NotifyProps {
@@ -14,36 +14,7 @@ export interface NotifyProps {
   duration?: number
 }
 
-export const notifyProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  type: {
-    type: String as PropType<NotifyProps['type']>,
-    default: defaultConfig.notify.type,
-  },
-  message: String,
-  color: String,
-  background: String,
-  visible: Boolean,
-  position: {
-    type: String as PropType<NonNullable<NotifyProps['position']>>,
-    default: defaultConfig.notify.position,
-  },
-  timeout: {
-    type: Number,
-    default: defaultConfig.notify.timeout,
-  },
-  duration: {
-    type: Number,
-    default: defaultConfig.notify.duration,
-  },
-}
-
-// const props = withDefaults(defineProps<NotifyProps>(), {
-//   type: 'primary',
-//   timeout: 3000,
-//   position: 'top',
-// })
+export const notifyPropsDefaults = defaultConfig.notify
 
 export interface NotifyEmits {
   (e: 'click', event: any): void

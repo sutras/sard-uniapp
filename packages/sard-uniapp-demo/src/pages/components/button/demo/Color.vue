@@ -1,5 +1,5 @@
 <template>
-  <sar-button background="fuchsia">default</sar-button>
+  <sar-button background="fuchsia" type="default">default</sar-button>
   <sar-button background="rgba(255,0,255,0.2)" color="fuchsia" type="pale">
     pale
   </sar-button>

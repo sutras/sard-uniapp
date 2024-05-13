@@ -15,15 +15,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import {
@@ -32,9 +23,18 @@ import {
   isRenderVisible,
   createBem,
 } from '../../utils'
-import { listProps } from './common'
+import { type ListProps, type ListSlots } from './common'
 
-const props = defineProps(listProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<ListProps>(), {})
+
+defineSlots<ListSlots>()
 
 const bem = createBem('list')
 

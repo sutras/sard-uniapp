@@ -23,21 +23,22 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { computed } from 'vue'
+import { classNames, stringifyStyle, createBem } from '../../utils'
+import { type SwiperDotProps, swiperDotPropsDefaults } from './common'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { computed } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
-import { swiperDotProps } from './common'
-
-const props = defineProps(swiperDotProps)
+const props = withDefaults(
+  defineProps<SwiperDotProps>(),
+  swiperDotPropsDefaults,
+)
 
 const bem = createBem('swiper-dot')
 

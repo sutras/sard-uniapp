@@ -14,29 +14,31 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, inject } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import {
-  tabbarContextSymbol,
+  type TabbarItemProps,
+  type TabbarItemSlots,
+  type TabbarItemEmits,
   type TabbarContext,
-  tabbarItemProps,
+  tabbarContextSymbol,
 } from '../tabbar/common'
 import SarIcon from '../icon/icon.vue'
 import SarBadge from '../badge/badge.vue'
 
-const props = defineProps(tabbarItemProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click'])
+const props = withDefaults(defineProps<TabbarItemProps>(), {})
+
+defineSlots<TabbarItemSlots>()
+
+const emit = defineEmits<TabbarItemEmits>()
 
 const bem = createBem('tabbar')
 

@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface TabbarProps {
@@ -10,24 +10,10 @@ export interface TabbarProps {
   bordered?: boolean
 }
 
-// const props = withDefaults(defineProps<TabbarProps>(), {
-//   bordered: true,
-// })
-
-export const tabbarProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  current: [Number, String],
-  color: String,
-  activeColor: String,
-  bordered: {
-    type: Boolean,
-    default: defaultConfig.tabbar.bordered,
-  },
-}
+export const tabbarPropsDefaults = defaultConfig.tabbar
 
 export interface TabbarSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface TabbarEmits {
@@ -46,21 +32,9 @@ export interface TabbarItemProps {
   text?: string
 }
 
-export const tabbarItemProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  name: [Number, String],
-  icon: String,
-  iconFamily: String,
-  iconSize: String,
-  badge: [Number, String],
-  dot: Boolean,
-  text: String,
-}
-
 export interface TabbarItemSlots {
-  default(props: Record<string, never>): any
-  icon(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
+  icon?(props: Record<string, never>): any
 }
 
 export interface TabbarItemEmits {

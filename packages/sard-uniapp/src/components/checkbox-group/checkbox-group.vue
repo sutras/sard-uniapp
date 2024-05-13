@@ -13,28 +13,34 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { ref, watch, provide, toRef, reactive } from 'vue'
 import {
+  type CheckboxGroupProps,
+  type CheckboxGroupSlots,
+  type CheckboxGroupEmits,
   type CheckboxContext,
-  checkboxGroupProps,
   checkboxContextSymbol,
+  checkboxGroupPropsDefaults,
 } from '../checkbox/common'
 import { classNames, createBem, stringifyStyle } from '../../utils'
 import { useFormItemContext } from '../form/common'
 
-const props = defineProps(checkboxGroupProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:model-value'])
+const props = withDefaults(
+  defineProps<CheckboxGroupProps>(),
+  checkboxGroupPropsDefaults,
+)
+
+defineSlots<CheckboxGroupSlots>()
+
+const emit = defineEmits<CheckboxGroupEmits>()
 
 const bem = createBem('checkbox-group')
 

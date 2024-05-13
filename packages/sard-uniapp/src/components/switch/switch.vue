@@ -6,25 +6,27 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarLoading from '../loading/loading.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
-import { switchProps } from './common'
+import {
+  type SwitchProps,
+  type SwitchEmits,
+  switchPropsDefaults,
+} from './common'
 
-const props = defineProps(switchProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click', 'update:model-value', 'update:loading'])
+const props = withDefaults(defineProps<SwitchProps>(), switchPropsDefaults)
+
+const emit = defineEmits<SwitchEmits>()
 
 const bem = createBem('switch')
 

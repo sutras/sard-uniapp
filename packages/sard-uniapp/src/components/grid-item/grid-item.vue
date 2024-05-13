@@ -22,24 +22,30 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { computed, inject } from 'vue'
+import { stringifyStyle, createBem, classNames } from '../../utils'
+import {
+  type GridItemProps,
+  type GridItemSlots,
+  type GridItemEmits,
+  type GridContext,
+  gridSymbol,
+} from '../grid/common'
+import SarIcon from '../icon/icon.vue'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { computed, inject } from 'vue'
-import { stringifyStyle, createBem, classNames } from '../../utils'
-import { type GridContext, gridSymbol, gridItemProps } from '../grid/common'
-import SarIcon from '../icon/icon.vue'
+const props = withDefaults(defineProps<GridItemProps>(), {})
 
-const props = defineProps(gridItemProps)
+defineSlots<GridItemSlots>()
 
-const emit = defineEmits(['click'])
+const emit = defineEmits<GridItemEmits>()
 
 const bem = createBem('grid')
 

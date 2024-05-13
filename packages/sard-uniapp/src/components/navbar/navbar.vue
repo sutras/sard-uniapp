@@ -18,23 +18,21 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { computed } from 'vue'
+import { classNames, stringifyStyle, createBem } from '../../utils'
+import { type NavbarProps, type NavbarSlots } from './common'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { computed, useSlots } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
-import { navbarProps } from './common'
+const props = withDefaults(defineProps<NavbarProps>(), {})
 
-const props = defineProps(navbarProps)
-
-const slots = useSlots()
+const slots = defineSlots<NavbarSlots>()
 
 const bem = createBem('navbar')
 

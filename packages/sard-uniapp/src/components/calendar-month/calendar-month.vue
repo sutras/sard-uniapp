@@ -30,15 +30,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import {
@@ -51,11 +42,22 @@ import {
   stringifyStyle,
   classNames,
 } from '../../utils'
-import { type CalendarDay, calendarMonthProps } from '../calendar/common'
+import {
+  type CalendarMonthProps,
+  type CalendarMonthEmits,
+  type CalendarDay,
+} from '../calendar/common'
 
-const props = defineProps(calendarMonthProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['day-click'])
+const props = withDefaults(defineProps<CalendarMonthProps>(), {})
+
+const emit = defineEmits<CalendarMonthEmits>()
 
 // main
 const days = computed(() => {

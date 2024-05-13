@@ -1,12 +1,4 @@
-import {
-  type PropType,
-  type StyleValue,
-  inject,
-  ref,
-  provide,
-  watch,
-  reactive,
-} from 'vue'
+import { type StyleValue, inject, ref, provide, watch, reactive } from 'vue'
 import { type TransitionHookName } from '../../use'
 import { defaultConfig } from '../config'
 
@@ -29,36 +21,10 @@ export interface PopupProps {
   transparent?: boolean
 }
 
-// const props = withDefaults(defineProps<PopupProps>(), {
-//   overlay: true,
-//   effect: 'fade',
-//   duration: 300,
-// })
-
-export const popupProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  visible: Boolean,
-  duration: {
-    type: [Number, Array] as PropType<NonNullable<PopupProps['duration']>>,
-    default: defaultConfig.popup.duration,
-  },
-  effect: {
-    type: String as PropType<PopupProps['effect']>,
-    default: defaultConfig.popup.effect,
-  },
-  overlay: {
-    type: Boolean,
-    default: defaultConfig.popup.overlay,
-  },
-  overlayClass: String,
-  overlayStyle: String,
-  background: String,
-  transparent: Boolean,
-}
+export const popupPropsDefaults = defaultConfig.popup
 
 export interface PopupSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface PopupEmits {

@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface SearchProps {
@@ -17,34 +17,13 @@ export interface SearchProps {
   search?: string
 }
 
-// const props = withDefaults(defineProps<SearchProps>(), {
-//   shape: 'square',
-// })
-
-export const searchProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  modelValue: String,
-  placeholder: String,
-  shape: {
-    type: String as PropType<NonNullable<SearchProps['shape']>>,
-    default: defaultConfig.search.shape,
-  },
-  background: String,
-  inputBackground: String,
-  inputColor: String,
-  readonly: Boolean,
-  disabled: Boolean,
-  align: String as PropType<SearchProps['align']>,
-  cancel: String,
-  search: String,
-}
+export const searchPropsDefaults = defaultConfig.search
 
 export interface SearchSlots {
-  prepend(props: Record<string, never>): any
-  append(props: Record<string, never>): any
-  'input-prepend'(props: Record<string, never>): any
-  'input-append'(props: Record<string, never>): any
+  prepend?(props: Record<string, never>): any
+  append?(props: Record<string, never>): any
+  'input-prepend'?(props: Record<string, never>): any
+  'input-append'?(props: Record<string, never>): any
 }
 
 export interface SearchEmits {

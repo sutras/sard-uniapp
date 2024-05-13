@@ -46,25 +46,31 @@
   </sar-popup>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem, noop } from '../../utils'
 import SarPopup from '../popup/popup.vue'
 import SarLoading from '../loading/loading.vue'
-import { type ActionSheetItem, actionSheetProps } from './common'
+import {
+  type ActionSheetItem,
+  type ActionSheetProps,
+  type ActionSheetEmits,
+  actionSheetPropsDefaults,
+} from './common'
 
-const props = defineProps(actionSheetProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:visible', 'close', 'cancel', 'select'])
+const props = withDefaults(
+  defineProps<ActionSheetProps>(),
+  actionSheetPropsDefaults,
+)
+
+const emit = defineEmits<ActionSheetEmits>()
 
 const bem = createBem('action-sheet')
 

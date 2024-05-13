@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 
 export interface CascaderFieldKeys {
   label?: string
@@ -25,25 +25,12 @@ export interface CascaderProps {
   labelRender?: (option: CascaderOption) => string
 }
 
-// const props = withDefaults(defineProps<CascaderProps>(), {
-//   options: () => [],
-// })
-
-export const cascaderProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  modelValue: [String, Number],
-  options: {
-    type: Array as PropType<CascaderProps['options']>,
-    default: () => [] as PropType<CascaderProps['options']>,
-  },
-  fieldKeys: Object as PropType<CascaderProps['fieldKeys']>,
-  hintText: String,
-  labelRender: Function as PropType<CascaderProps['labelRender']>,
+export const cascaderPropsDefaults = {
+  options: () => [],
 }
 
 export interface CascaderSlots {
-  top(props: { tabIndex: number }): any
+  top?(props: { tabIndex: number }): any
 }
 
 export interface CascaderEmits {

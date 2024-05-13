@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { getDaysInMonth, minmax } from '../../utils'
 import { defaultConfig } from '../config'
 
@@ -24,24 +24,7 @@ export interface DatetimePickerProps {
   ) => string | void | undefined
 }
 
-// const props = withDefaults(defineProps<DatetimePickerProps>(), {
-//   type: 'yMd',
-// })
-
-export const datetimePickerProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-
-  type: {
-    type: String,
-    default: defaultConfig.datetimePicker.type,
-  },
-  min: Date,
-  max: Date,
-  modelValue: Date,
-  filter: Function as PropType<DatetimePickerProps['filter']>,
-  formatter: Function as PropType<DatetimePickerProps['formatter']>,
-}
+export const datetimePickerPropsDefaults = defaultConfig.datetimePicker
 
 export interface DatetimePickerEmits {
   (e: 'update:model-value', date: Date): void

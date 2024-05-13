@@ -19,36 +19,31 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, reactive, toRef } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import { TransitionOptions, useTransition, useZIndex } from '../../use'
 import SarOverlay from '../overlay/overlay.vue'
-import { popupProps, usePopupVisibleHookProvide } from './common'
+import {
+  type PopupProps,
+  type PopupSlots,
+  type PopupEmits,
+  popupPropsDefaults,
+  usePopupVisibleHookProvide,
+} from './common'
 
-const props = defineProps(popupProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits([
-  'overlay-click',
-  'before-enter',
-  'enter',
-  'after-enter',
-  'enter-cancelled',
-  'before-leave',
-  'leave',
-  'after-leave',
-  'leave-cancelled',
-  'visible-hook',
-])
+const props = withDefaults(defineProps<PopupProps>(), popupPropsDefaults)
+
+defineSlots<PopupSlots>()
+
+const emit = defineEmits<PopupEmits>()
 
 const bem = createBem('popup')
 

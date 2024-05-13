@@ -7,30 +7,10 @@ export interface CountDownProps {
   millisecond?: boolean
 }
 
-// const props = withDefaults(defineProps<CountDownProps>(), {
-//   time: 0,
-//   autoStart: true,
-//   format: 'HH:mm:ss',
-// })
-
-export const countDownProps = {
-  time: {
-    type: Number,
-    default: defaultConfig.countDown.time,
-  },
-  autoStart: {
-    type: Boolean,
-    default: defaultConfig.countDown.autoStart,
-  },
-  format: {
-    type: String,
-    default: defaultConfig.countDown.format,
-  },
-  millisecond: Boolean,
-}
+export const countDownPropsDefaults = defaultConfig.countDown
 
 export interface CountDownSlots {
-  default(props: { time: CountDownCurrentTime }): any
+  default?(props: { time: CountDownCurrentTime }): any
 }
 
 export interface CountDownEmits {

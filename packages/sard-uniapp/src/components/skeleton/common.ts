@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface SkeletonProps {
@@ -15,32 +15,10 @@ export interface SkeletonProps {
   animated?: boolean
 }
 
-// const props = withDefaults(defineProps<SkeletonProps>(), {
-//   rows: 3,
-//   loading: true,
-// })
-
-export const skeletonProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  rows: {
-    type: Number,
-    default: defaultConfig.skeleton.rows,
-  },
-  title: Boolean,
-  avatar: Boolean,
-  avatarSize: String,
-  avatarRound: Boolean,
-  round: Boolean,
-  loading: {
-    type: Boolean,
-    default: defaultConfig.skeleton.loading,
-  },
-  animated: Boolean,
-}
+export const skeletonPropsDefaults = defaultConfig.skeleton
 
 export interface SkeletonSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface SkeletonBlockProps {
@@ -52,33 +30,12 @@ export interface SkeletonBlockProps {
   height?: string
 }
 
-export const skeletonBlockProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  animated: Boolean,
-  round: Boolean,
-  width: String,
-  height: String,
-}
-
 export interface SkeletonAvatarProps extends SkeletonBlockProps {
   size?: string
-}
-
-export const SkeletonAvatarProps = {
-  ...skeletonBlockProps,
-  size: String,
 }
 
 export interface SkeletonParagraphProps extends SkeletonBlockProps {
   rows?: number
 }
 
-export const skeletonParagraphProps = {
-  ...skeletonBlockProps,
-  rows: Number,
-}
-
 export interface SkeletonTitleProps extends SkeletonBlockProps {}
-
-export const skeletonTitleProps = skeletonBlockProps

@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { type NodeRect } from '../../utils'
 
 export interface IndexesProps {
@@ -7,14 +7,8 @@ export interface IndexesProps {
   current?: number | string
 }
 
-export const indexesProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  current: [String, Number],
-}
-
 export interface IndexesSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface IndexesEmits {
@@ -31,17 +25,8 @@ export interface IndexesAnchorProps {
   name: string | number
 }
 
-export const indexesAnchorProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  name: {
-    type: [String, Number] as PropType<IndexesAnchorProps['name']>,
-    required: true as const,
-  },
-}
-
 export interface IndexesAnchorSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface IndexesNavProps {
@@ -49,16 +34,8 @@ export interface IndexesNavProps {
   current?: string | number
 }
 
-export const indexesNavProps = {
-  anchors: {
-    type: Array as PropType<IndexesNavProps['anchors']>,
-    required: true as const,
-  },
-  current: [Number, String],
-}
-
 export interface IndexesNavSlots {
-  default(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
 }
 
 export interface IndexesNavEmits {

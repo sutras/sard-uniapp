@@ -4,23 +4,30 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { computed, provide, ref, watch, toRef, reactive } from 'vue'
+import { classNames, stringifyStyle, createBem } from '../../utils'
+import {
+  type TabbarProps,
+  type TabbarSlots,
+  type TabbarEmits,
+  type TabbarContext,
+  tabbarContextSymbol,
+  tabbarPropsDefaults,
+} from './common'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { computed, provide, ref, watch, toRef, reactive } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
-import { tabbarContextSymbol, type TabbarContext, tabbarProps } from './common'
+const props = withDefaults(defineProps<TabbarProps>(), tabbarPropsDefaults)
 
-const props = defineProps(tabbarProps)
+defineSlots<TabbarSlots>()
 
-const emit = defineEmits(['update:current'])
+const emit = defineEmits<TabbarEmits>()
 
 const bem = createBem('tabbar')
 

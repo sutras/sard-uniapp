@@ -1,20 +1,13 @@
+import { type NotifyProps } from '../notify/common'
 import { defaultConfig } from '../config'
-import { NotifyProps, notifyProps } from '../notify/common'
 
 export interface NotifyAgentProps extends NotifyProps {
   id?: string
 }
 
-// const props = withDefaults(defineProps<NotifyAgentProps>(), {
-//   id: 'notify',
-// })
-
-export const notifyAgentProps = {
-  ...notifyProps,
-  id: {
-    type: String,
-    default: defaultConfig.notifyAgent.id,
-  },
+export const notifyAgentPropsDefaults = {
+  ...defaultConfig.notify,
+  ...defaultConfig.notifyAgent,
 }
 
 export const mapIdImperative: Record<

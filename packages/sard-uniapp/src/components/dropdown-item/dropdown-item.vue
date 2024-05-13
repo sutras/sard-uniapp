@@ -75,15 +75,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import {
   computed,
@@ -108,15 +99,30 @@ import SarList from '../list/list.vue'
 import SarListItem from '../list-item/list-item.vue'
 import SarIcon from '../icon/icon.vue'
 import {
+  type DropdownItemProps,
+  type DropdownItemSlots,
+  type DropdownItemEmits,
   type DropdownContext,
   type DropdownOption,
   dropdownContextSymbol,
-  dropdownItemProps,
+  dropdownItemPropsDefaults,
 } from '../dropdown/common'
 
-const props = defineProps(dropdownItemProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:model-value', 'update:visible'])
+const props = withDefaults(
+  defineProps<DropdownItemProps>(),
+  dropdownItemPropsDefaults,
+)
+
+defineSlots<DropdownItemSlots>()
+
+const emit = defineEmits<DropdownItemEmits>()
 
 const bem = createBem('dropdown-item')
 
@@ -222,7 +228,7 @@ const onItemClick = () => {
 const onOptionClick = (item: DropdownOption) => {
   if (item.value !== innerValue.value) {
     innerValue.value = item.value
-    emit("update:model-value", item.value)
+    emit('update:model-value', item.value)
   }
   setInnerVisible(false)
 }

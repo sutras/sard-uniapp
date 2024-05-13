@@ -1,20 +1,13 @@
 import { defaultConfig } from '../config'
-import { type ToastProps, toastProps } from '../toast/common'
+import { type ToastProps, toastPropsDefaults } from '../toast/common'
 
 export interface ToastAgentProps extends ToastProps {
   id?: string
 }
 
-// const props = withDefaults(defineProps<ToastAgentProps>(), {
-//   id: 'toast',
-// })
-
-export const toastAgentProps = {
-  ...toastProps,
-  id: {
-    type: String,
-    default: defaultConfig.toastAgent.id,
-  },
+export const toastAgentPropsDefaults = {
+  ...toastPropsDefaults,
+  ...defaultConfig.toastAgent,
 }
 
 export const mapIdImperative: Record<

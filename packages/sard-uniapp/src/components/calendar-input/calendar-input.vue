@@ -40,15 +40,6 @@
   </sar-popout>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
@@ -57,12 +48,26 @@ import SarPopout from '../popout/popout.vue'
 import { formatDate } from '../../utils'
 import { type CalendarType } from '../calendar/common'
 import { useTranslate } from '../locale'
-import { calendarInputProps } from './common'
+import {
+  type CalendarInputProps,
+  type CalendarInputEmits,
+  calendarInputPropsDefaults,
+} from './common'
 import { useFormItemContext } from '../form/common'
 
-const props = defineProps(calendarInputProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:visible', 'update:model-value'])
+const props = withDefaults(
+  defineProps<CalendarInputProps>(),
+  calendarInputPropsDefaults,
+)
+
+const emit = defineEmits<CalendarInputEmits>()
 
 // main
 const formItemContext = useFormItemContext()

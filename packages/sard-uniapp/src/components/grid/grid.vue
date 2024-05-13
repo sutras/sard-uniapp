@@ -4,21 +4,27 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { computed, provide, reactive, toRef } from 'vue'
+import { splitUnit, classNames, stringifyStyle, createBem } from '../../utils'
+import {
+  type GridContext,
+  type GridProps,
+  type GridSlots,
+  gridSymbol,
+  gridPropsDefaults,
+} from './common'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { computed, provide, reactive, toRef } from 'vue'
-import { splitUnit, classNames, stringifyStyle, createBem } from '../../utils'
-import { type GridContext, gridProps, gridSymbol } from './common'
+const props = withDefaults(defineProps<GridProps>(), gridPropsDefaults)
 
-const props = defineProps(gridProps)
+defineSlots<GridSlots>()
 
 const bem = createBem('grid')
 

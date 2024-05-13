@@ -4,27 +4,29 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, provide, ref, watch, toRef, reactive } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import {
+  type AccordionProps,
+  type AccordionSlots,
+  type AccordionEmits,
   type AccoridonContext,
   accoridonContextSymbol,
-  accordionProps,
 } from './common'
 
-const props = defineProps(accordionProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:model-value'])
+const props = withDefaults(defineProps<AccordionProps>(), {})
+
+defineSlots<AccordionSlots>()
+
+const emit = defineEmits<AccordionEmits>()
 
 const bem = createBem('accordion')
 

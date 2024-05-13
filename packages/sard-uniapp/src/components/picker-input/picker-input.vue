@@ -31,15 +31,6 @@
   </sar-popout>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
@@ -56,12 +47,26 @@ import {
 } from '../picker/common'
 import { type TransitionHookName } from '../../use'
 import { isNullish, toArray } from '../../utils'
-import { pickerInputProps } from './common'
+import {
+  type PickerInputProps,
+  type PickerInputEmits,
+  pickerInputPropsDefaults,
+} from './common'
 import { useFormItemContext } from '../form/common'
 
-const props = defineProps(pickerInputProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:visible', 'update:model-value'])
+const props = withDefaults(
+  defineProps<PickerInputProps>(),
+  pickerInputPropsDefaults,
+)
+
+const emit = defineEmits<PickerInputEmits>()
 
 // main
 const formItemContext = useFormItemContext()

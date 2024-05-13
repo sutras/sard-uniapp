@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface EmptyProps {
@@ -10,20 +10,10 @@ export interface EmptyProps {
   iconSize?: string
 }
 
-export const emptyProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  description: String,
-  icon: {
-    type: String,
-    default: defaultConfig.empty.icon,
-  },
-  iconFamily: String,
-  iconSize: String,
-}
+export const emptyPropsDefaults = defaultConfig.empty
 
 export interface EmptySlots {
-  default(props: Record<string, never>): any
-  icon(props: Record<string, never>): any
-  description(props: Record<string, never>): any
+  default?(props: Record<string, never>): any
+  icon?(props: Record<string, never>): any
+  description?(props: Record<string, never>): any
 }

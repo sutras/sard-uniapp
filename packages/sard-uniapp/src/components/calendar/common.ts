@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { type LocaleTranslate } from '../locale'
 import { type Bem } from '../../utils'
 import { defaultConfig } from '../config'
@@ -33,37 +33,7 @@ export interface CalendarProps {
   severalMonths?: boolean
 }
 
-// const props = withDefaults(defineProps<CalendarProps>(), {
-//   type: 'single',
-//   maxDays: Number.MAX_SAFE_INTEGER,
-//   weekStartsOn: 0,
-// })
-
-export const calendarProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  type: {
-    type: String as PropType<CalendarType>,
-    default: defaultConfig.calendar.type,
-  },
-  modelValue: [Date, Array] as PropType<CalendarProps['modelValue']>,
-  min: Date,
-  max: Date,
-  currentDate: Date,
-  disabledDate: Function as PropType<CalendarProps['disabledDate']>,
-  maxDays: {
-    type: Number,
-    default: defaultConfig.calendar.maxDays,
-  },
-  overMaxDays: Function as PropType<CalendarProps['overMaxDays']>,
-  weekStartsOn: {
-    type: Number,
-    default: defaultConfig.calendar.weekStartsOn,
-  },
-  formatter: Function as PropType<CalendarProps['formatter']>,
-  allowSameDay: Boolean,
-  severalMonths: Boolean,
-}
+export const calendarPropsDefaults = defaultConfig.calendar
 
 export interface CalendarEmits {
   (e: 'update:model-value', value: Date | Date[]): void
@@ -83,52 +53,6 @@ export interface CalendarMonthProps {
   severalMonths?: boolean
   t: LocaleTranslate
   bem: Bem
-}
-
-export const calendarMonthProps = {
-  year: {
-    type: Number,
-    required: true as const,
-  },
-  month: {
-    type: Number,
-    required: true as const,
-  },
-  type: {
-    type: String as PropType<CalendarType>,
-    required: true as const,
-  },
-  minDate: {
-    type: Date,
-    required: true as const,
-  },
-  maxDate: {
-    type: Date,
-    required: true as const,
-  },
-  currentDates: {
-    type: Array as PropType<CalendarMonthProps['currentDates']>,
-    required: true as const,
-  },
-  formatter: Function as PropType<CalendarMonthProps['formatter']>,
-  disabledDate: Function as PropType<CalendarMonthProps['disabledDate']>,
-  todayNumber: {
-    type: Number,
-    required: true as const,
-  },
-  weekStartsOn: {
-    type: Number,
-    required: true as const,
-  },
-  severalMonths: Boolean,
-  t: {
-    type: Function as PropType<CalendarMonthProps['t']>,
-    required: true as const,
-  },
-  bem: {
-    type: Object as PropType<CalendarMonthProps['bem']>,
-    required: true as const,
-  },
 }
 
 export interface CalendarMonthEmits {

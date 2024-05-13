@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface ShareSheetProps {
@@ -14,28 +14,7 @@ export interface ShareSheetProps {
   duration?: number
 }
 
-// const props = withDefaults(defineProps<ShareSheetProps>(), {
-//   overlayClosable: true,
-// })
-
-export const shareSheetProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  itemList: Array as PropType<ShareSheetProps['itemList']>,
-  title: String,
-  description: String,
-  cancel: String,
-  visible: Boolean,
-  overlayClosable: {
-    type: Boolean,
-    default: defaultConfig.shareSheet.overlayClosable,
-  },
-  beforeClose: Function as PropType<ShareSheetProps['beforeClose']>,
-  duration: {
-    type: Number,
-    default: defaultConfig.shareSheet.duration,
-  },
-}
+export const shareSheetPropsDefaults = defaultConfig.shareSheet
 
 export interface ShareSheetEmits {
   (e: 'update:visible', visible: boolean): void

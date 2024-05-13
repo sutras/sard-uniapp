@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface InputProps {
@@ -72,94 +72,12 @@ export interface InputProps {
   validateEvent?: boolean
 }
 
-export const inputProps = {
-  placeholder: String,
-  placeholderStyle: String,
-  placeholderClass: String,
-  disabled: Boolean,
-  maxlength: {
-    type: Number,
-    default: defaultConfig.input.maxlength,
-  },
-  focus: Boolean,
-  cursorSpacing: Number,
-  cursor: Number,
-  confirmType: String as PropType<InputProps['confirmType']>,
-  confirmHold: Number,
-  selectionStart: Number,
-  selectionEnd: Number,
-  adjustPosition: {
-    type: Boolean,
-    default: defaultConfig.input.adjustPosition,
-  },
-  holdKeyboard: Boolean,
-  autoBlur: Boolean,
-  ignoreCompositionEvent: {
-    type: Boolean,
-    default: defaultConfig.input.ignoreCompositionEvent,
-  },
-  inputmode: String as PropType<InputProps['inputmode']>,
-
-  // textarea
-  autoHeight: Boolean,
-  fixed: Boolean,
-  showConfirmBar: {
-    type: Boolean,
-    default: defaultConfig.input.showConfirmBar,
-  },
-  disableDefaultPadding: {
-    type: Boolean,
-    default: defaultConfig.input.disableDefaultPadding,
-  },
-
-  // input
-  type: String as PropType<InputProps['type']>,
-  alwaysEmbed: Boolean,
-  safePasswordCertPath: String,
-  safePasswordLength: String,
-  safePasswordTimeStamp: String,
-  safePasswordNonce: String,
-  safePasswordSalt: String,
-  safePasswordCustomHash: String,
-  randomNumber: Boolean,
-  controlled: Boolean,
-  alwaysSystem: Boolean,
-
-  // custom
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  modelValue: {
-    type: [String, Number] as PropType<InputProps['modelValue']>,
-    default: defaultConfig.input.modelValue,
-  },
-  clearable: Boolean,
-  showClearOnlyFocus: Boolean,
-  showCount: Boolean,
-  inlaid: Boolean,
-  borderless: Boolean,
-  readonly: Boolean,
-  focused: Boolean,
-  minHeight: String,
-  validateEvent: {
-    type: Boolean,
-    default: defaultConfig.input.validateEvent,
-  },
-}
-
-// const props = withDefaults(defineProps<InputProps>(), {
-//   maxlength: 140,
-//   showConfirmBar: true,
-//   adjustPosition: true,
-//   disableDefaultPadding: true,
-//   ignoreCompositionEvent: true,
-//   modelValue: '',
-//   validateEvent: true,
-// })
+export const inputPropsDefaults = defaultConfig.input
 
 export interface InputSlots {
-  prepend(props: Record<string, never>): any
-  append(props: Record<string, never>): any
-  addon(props: Record<string, never>): any
+  prepend?(props: Record<string, never>): any
+  append?(props: Record<string, never>): any
+  addon?(props: Record<string, never>): any
 }
 
 export interface InputEmits {

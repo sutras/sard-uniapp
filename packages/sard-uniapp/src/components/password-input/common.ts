@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface PasswordInputProps {
@@ -16,35 +16,7 @@ export interface PasswordInputProps {
   validateEvent?: boolean
 }
 
-// const props = withDefaults(defineProps<PasswordInputProps>(), {
-//   length: 6,
-//   type: 'border',
-//   validateEvent: true,
-// })
-
-export const passwordInputProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  modelValue: String,
-  length: {
-    type: Number,
-    default: defaultConfig.passwordInput.length,
-  },
-  type: {
-    type: String as PropType<NonNullable<PasswordInputProps['type']>>,
-    default: defaultConfig.passwordInput.type,
-  },
-  gap: [String, Number],
-  plainText: Boolean,
-  focused: Boolean,
-  customKeyboard: Boolean,
-  disabled: Boolean,
-  readonly: Boolean,
-  validateEvent: {
-    type: Boolean,
-    default: defaultConfig.passwordInput.validateEvent,
-  },
-}
+export const passwordInputPropsDefaults = defaultConfig.passwordInput
 
 export interface PasswordInputEmits {
   (e: 'update:model-value', value: string): void

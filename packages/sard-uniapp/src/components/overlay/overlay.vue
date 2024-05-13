@@ -11,24 +11,29 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, reactive, toRef } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import { useTransition } from '../../use'
-import { overlayProps } from './common'
+import {
+  type OverlayProps,
+  type OverlaySlots,
+  type OverlayEmits,
+  overlayPropsDefaults,
+} from './common'
 
-const props = defineProps(overlayProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click'])
+const props = withDefaults(defineProps<OverlayProps>(), overlayPropsDefaults)
+
+defineSlots<OverlaySlots>()
+
+const emit = defineEmits<OverlayEmits>()
 
 const bem = createBem('overlay')
 

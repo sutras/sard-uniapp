@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export type IconType = 'circle' | 'record'
@@ -15,32 +15,14 @@ export interface RadioProps {
   checkedColor?: string
 }
 
-// const props = withDefaults(defineProps<RadioProps>(), {
-//   disabled: undefined,
-//   readonly: undefined,
-// })
-
-export const radioProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  value: null,
-  label: String,
-  disabled: {
-    type: Boolean,
-    default: undefined,
-  },
-  readonly: {
-    type: Boolean,
-    default: undefined,
-  },
-  size: String,
-  type: String as PropType<RadioProps['type']>,
-  checkedColor: String,
+export const radioPropsDefaults = {
+  disabled: undefined,
+  readonly: undefined,
 }
 
 export interface RadioSlots {
-  default(props: Record<string, never>): any
-  icon(props: { checked: boolean }): any
+  default?(props: Record<string, never>): any
+  icon?(props: { checked: boolean }): any
 }
 
 export interface RadioEmits {
@@ -60,33 +42,11 @@ export interface RadioGroupProps {
   validateEvent?: boolean
 }
 
-// const props = withDefaults(defineProps<RadioGroupProps>(), {
-//   direction: 'vertical',
-//   validateEvent: true,
-// })
-
-export const radioGroupProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  modelValue: null,
-  disabled: Boolean,
-  readonly: Boolean,
-  size: String,
-  type: String as PropType<RadioGroupProps['type']>,
-  checkedColor: String,
-  direction: {
-    type: String as PropType<RadioGroupProps['direction']>,
-    default: defaultConfig.radioGroup.direction,
-  },
-  validateEvent: {
-    type: Boolean,
-    default: defaultConfig.radioGroup.validateEvent,
-  },
-}
+export const radioGroupPropsDefaults = defaultConfig.radioGroup
 
 export interface RadioGroupSlots {
-  default(props: Record<string, never>): any
-  custom(props: { toggle: (value: any) => void; value: any }): any
+  default?(props: Record<string, never>): any
+  custom?(props: { toggle: (value: any) => void; value: any }): any
 }
 
 export interface RadioGroupEmits {

@@ -15,8 +15,8 @@
     "strictNullChecks": true,
     "paths": {
       "@/*": ["src/*"],
-      "sard-uniapp/*": ["../sard-uniapp/src/*"],
-      "sard-uniapp": ["../sard-uniapp/src/"]
+      "sard-uniapp/*": ["../sard-uniapp/dist/*"],
+      "sard-uniapp": ["../sard-uniapp/dist/"]
     }
   },
   "include": ["src/**/*", "src/**/*.vue"]

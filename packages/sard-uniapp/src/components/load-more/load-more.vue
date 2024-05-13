@@ -17,25 +17,30 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { computed } from 'vue'
+import { classNames, stringifyStyle, createBem } from '../../utils'
+import {
+  type LoadMoreProps,
+  type LoadMoreSlots,
+  type LoadMoreEmits,
+  loadMorePropsDefaults,
+} from './common'
+import { useTranslate } from '../locale'
+import SarLoading from '../loading/loading.vue'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { computed } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
-import { loadMoreProps } from './common'
-import { useTranslate } from '../locale'
-import SarLoading from '../loading/loading.vue'
+const props = withDefaults(defineProps<LoadMoreProps>(), loadMorePropsDefaults)
 
-const props = defineProps(loadMoreProps)
+defineSlots<LoadMoreSlots>()
 
-const emit = defineEmits(['load-more', 'reload'])
+const emit = defineEmits<LoadMoreEmits>()
 
 const bem = createBem('load-more')
 

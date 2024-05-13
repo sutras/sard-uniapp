@@ -1,3 +1,7 @@
+## <small>1.1.3 (2024-05-11)</small>
+
+- fix: 修复下拉刷新组件有时不触发的问题 close #18 ([3bbe3a9](https://github.com/sutras/sard-uniapp/commit/3bbe3a9)), closes [#18](https://github.com/sutras/sard-uniapp/issues/18)
+
 ## <small>1.1.2 (2024-05-10)</small>
 
 - fix: 移除属性选择器 close #23 ([89ef3fc](https://github.com/sutras/sard-uniapp/commit/89ef3fc)), closes [#23](https://github.com/sutras/sard-uniapp/issues/23)

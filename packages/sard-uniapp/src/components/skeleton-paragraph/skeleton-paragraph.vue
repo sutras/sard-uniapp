@@ -12,22 +12,20 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarSkeletonBlock from '../skeleton-block/skeleton-block.vue'
-import { skeletonParagraphProps } from '../skeleton/common'
+import { type SkeletonParagraphProps } from '../skeleton/common'
 
-const props = defineProps(skeletonParagraphProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<SkeletonParagraphProps>(), {})
 
 const bem = createBem('skeleton')
 

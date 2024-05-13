@@ -103,33 +103,36 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import {
+  type KeyboardProps,
+  type KeyboardSlots,
+  type KeyboardEmits,
+  type KeyBoardExpose,
   numberKeys,
   digitKeys,
   idcardKeys,
   chineseKeys,
   englishKeys,
   getRandomKeys,
-  keyboardProps,
-  KeyBoardExpose,
+  keyboardPropsDefaults,
 } from './common'
 import SarIcon from '../icon/icon.vue'
 
-const props = defineProps(keyboardProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['input', 'delete'])
+const props = withDefaults(defineProps<KeyboardProps>(), keyboardPropsDefaults)
+
+defineSlots<KeyboardSlots>()
+
+const emit = defineEmits<KeyboardEmits>()
 
 const bem = createBem('keyboard')
 

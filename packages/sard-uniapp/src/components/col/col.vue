@@ -4,21 +4,26 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { computed, inject } from 'vue'
+import {
+  type ColProps,
+  type ColSlots,
+  type RowContext,
+  rowSymbol,
+} from '../layout/common'
+import { classNames, stringifyStyle, createBem } from '../../utils'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { computed, inject } from 'vue'
-import { type RowContext, rowSymbol, colProps } from '../layout/common'
-import { classNames, stringifyStyle, createBem } from '../../utils'
+const props = withDefaults(defineProps<ColProps>(), {})
 
-const props = defineProps(colProps)
+defineSlots<ColSlots>()
 
 const context = inject<RowContext>(rowSymbol) as RowContext
 

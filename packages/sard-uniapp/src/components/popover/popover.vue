@@ -27,15 +27,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import {
   computed,
@@ -60,15 +51,27 @@ import SarOverlay from '../overlay/overlay.vue'
 import SarMenu from '../menu/menu.vue'
 import { type MenuOption } from '../menu/common'
 import {
+  type PopoverProps,
+  type PopoverSlots,
+  type PopoverEmits,
   type PopoverContext,
   type ReferenceExpose,
   popoverContextSymbol,
-  popoverProps,
+  popoverPropsDefaults,
 } from './common'
 
-const props = defineProps(popoverProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:visible', 'select'])
+const props = withDefaults(defineProps<PopoverProps>(), popoverPropsDefaults)
+
+defineSlots<PopoverSlots>()
+
+const emit = defineEmits<PopoverEmits>()
 
 const bem = createBem('popover')
 

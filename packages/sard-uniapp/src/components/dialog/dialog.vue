@@ -67,15 +67,6 @@
   </sar-popup>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem, noop } from '../../utils'
@@ -83,12 +74,26 @@ import { useTranslate } from '../locale'
 import SarPopup from '../popup/popup.vue'
 import SarButton from '../button/button.vue'
 import SarIcon from '../icon/icon.vue'
-import { dialogProps } from './common'
+import {
+  type DialogProps,
+  type DialogEmits,
+  type DialogSlots,
+  dialogPropsDefaults,
+} from './common'
 import { type ButtonProps } from '../button'
 
-const props = defineProps(dialogProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:visible', 'close', 'cancel', 'confirm'])
+const props = withDefaults(defineProps<DialogProps>(), dialogPropsDefaults)
+
+defineSlots<DialogSlots>()
+
+const emit = defineEmits<DialogEmits>()
 
 const bem = createBem('dialog')
 

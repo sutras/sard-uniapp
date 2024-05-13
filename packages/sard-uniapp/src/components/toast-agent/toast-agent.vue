@@ -12,22 +12,27 @@
   />
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref } from 'vue'
 import SarToast from '../toast/toast.vue'
 import { type ToastExpose } from '../toast/common'
-import { mapIdImperative, toastAgentProps } from './common'
+import {
+  ToastAgentProps,
+  mapIdImperative,
+  toastAgentPropsDefaults,
+} from './common'
 
-const props = defineProps(toastAgentProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(
+  defineProps<ToastAgentProps>(),
+  toastAgentPropsDefaults,
+)
 
 // main
 const innerProps = ref({ ...props })

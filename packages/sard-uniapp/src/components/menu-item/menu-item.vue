@@ -12,24 +12,22 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
-import { menuItemProps } from '../menu/common'
+import { type MenuItemEmits, type MenuItemProps } from '../menu/common'
 
-const props = defineProps(menuItemProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click'])
+const props = withDefaults(defineProps<MenuItemProps>(), {})
+
+const emit = defineEmits<MenuItemEmits>()
 
 const bem = createBem('menu')
 

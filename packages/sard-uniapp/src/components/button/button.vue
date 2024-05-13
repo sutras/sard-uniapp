@@ -21,25 +21,30 @@
   </button>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarLoading from '../loading/loading.vue'
 import { useFormContext } from '../form/common'
-import { buttonProps } from './common'
+import {
+  type ButtonProps,
+  type ButtonSlots,
+  type ButtonEmits,
+  buttonPropsDefaults,
+} from './common'
 
-const props = defineProps(buttonProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['click'])
+const props = withDefaults(defineProps<ButtonProps>(), buttonPropsDefaults)
+
+defineSlots<ButtonSlots>()
+
+const emit = defineEmits<ButtonEmits>()
 
 const bem = createBem('button')
 

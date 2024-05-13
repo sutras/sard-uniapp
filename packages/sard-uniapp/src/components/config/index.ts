@@ -4,21 +4,22 @@ import { type App, provide, inject } from 'vue'
 export const defaultConfig = {
   actionSheet: {
     overlayClosable: true,
+    duration: 300,
   },
   avatar: {
-    shape: 'circle',
+    shape: 'circle' as const,
   },
   badge: {
     value: 0,
     max: 99,
   },
   button: {
-    type: 'default',
-    theme: 'primary',
-    size: 'medium',
+    type: 'default' as const,
+    theme: 'primary' as const,
+    size: 'medium' as const,
   },
   calendar: {
-    type: 'single',
+    type: 'single' as const,
     maxDays: Number.MAX_SAFE_INTEGER,
     weekStartsOn: 0,
   },
@@ -34,7 +35,7 @@ export const defaultConfig = {
     validateEvent: true,
   },
   checkboxGroup: {
-    direction: 'vertical',
+    direction: 'vertical' as const,
     validateEvent: true,
   },
   countDown: {
@@ -50,7 +51,7 @@ export const defaultConfig = {
   },
   dialog: {
     headed: true,
-    buttonType: 'round',
+    buttonType: 'round' as const,
     showCancel: true,
     showConfirm: true,
     overlayClosable: true,
@@ -60,7 +61,7 @@ export const defaultConfig = {
     id: 'dialog',
   },
   dropdown: {
-    direction: 'down',
+    direction: 'down' as const,
     disabled: false,
     awayClosable: true,
     overlayClosable: true,
@@ -70,18 +71,18 @@ export const defaultConfig = {
     icon: 'empty',
   },
   form: {
-    validateTrigger: 'change',
+    validateTrigger: 'change' as const,
     validateOnRuleChange: true,
-    direction: 'horizontal',
-    labelAlign: 'start',
-    labelValign: 'center',
-    starPosition: 'left',
+    direction: 'horizontal' as const,
+    labelAlign: 'start' as const,
+    labelValign: 'center' as const,
+    starPosition: 'left' as const,
     showError: true,
     scrollDuration: 150,
   },
   grid: {
     columns: 4,
-    direction: 'vertical',
+    direction: 'vertical' as const,
   },
   icon: {
     name: '',
@@ -100,23 +101,23 @@ export const defaultConfig = {
     validateEvent: true,
   },
   keyboard: {
-    type: 'number',
+    type: 'number' as const,
   },
   listItem: {
-    arrowDirection: 'right',
+    arrowDirection: 'right' as const,
   },
   loading: {
-    type: 'circular',
+    type: 'circular' as const,
   },
   noticeBar: {
     delay: 1000,
     speed: 50,
-    scrollable: 'auto',
+    scrollable: 'auto' as const,
     visible: true,
   },
   notify: {
-    type: 'primary',
-    position: 'top',
+    type: 'primary' as const,
+    position: 'top' as const,
     duration: 300,
     timeout: 3000,
   },
@@ -131,12 +132,12 @@ export const defaultConfig = {
     pageSize: 10,
     current: 1,
     pageButtonCount: 5,
-    type: 'multi',
+    type: 'multi' as const,
     multiCount: 5,
   },
   passwordInput: {
     length: 6,
-    type: 'border',
+    type: 'border' as const,
     validateEvent: true,
   },
   picker: {
@@ -146,7 +147,7 @@ export const defaultConfig = {
     validateEvent: true,
   },
   popout: {
-    type: 'loose',
+    type: 'loose' as const,
     showConfirm: true,
     showClose: true,
     showFooter: true,
@@ -154,9 +155,9 @@ export const defaultConfig = {
     duration: 300,
   },
   popover: {
-    position: 'bottom',
-    direction: 'vertical',
-    theme: 'light',
+    position: 'bottom' as const,
+    direction: 'vertical' as const,
+    theme: 'light' as const,
     refGap: 10,
     viewportGap: 10,
     transparent: true,
@@ -164,7 +165,7 @@ export const defaultConfig = {
   },
   popup: {
     duration: 300,
-    effect: 'fade',
+    effect: 'fade' as const,
     overlay: true,
   },
   progressBar: {
@@ -182,7 +183,7 @@ export const defaultConfig = {
     doneDuration: 0,
   },
   radioGroup: {
-    direction: 'vertical',
+    direction: 'vertical' as const,
     validateEvent: true,
   },
   rate: {
@@ -192,10 +193,10 @@ export const defaultConfig = {
     validateEvent: true,
   },
   result: {
-    status: 'info',
+    status: 'info' as const,
   },
   search: {
-    shape: 'square',
+    shape: 'square' as const,
   },
   shareSheet: {
     overlayClosable: true,
@@ -215,24 +216,24 @@ export const defaultConfig = {
     min: Number.MIN_SAFE_INTEGER,
     max: Number.MAX_SAFE_INTEGER,
     step: 1,
-    inputType: 'number',
+    inputType: 'number' as const,
     press: true,
     pressTime: 350,
     interval: 150,
     validateEvent: true,
-    size: 'medium',
+    size: 'medium' as const,
   },
   steps: {
     current: 0,
     center: false,
-    direction: 'horizontal',
+    direction: 'horizontal' as const,
     finishIcon: 'check-circle-fill',
     processIcon: 'circle',
     waitIcon: 'circle',
     errorIcon: 'x-circle',
   },
   swiperDot: {
-    type: 'dot',
+    type: 'dot' as const,
     current: 0,
     total: 0,
     field: 'title',
@@ -246,15 +247,15 @@ export const defaultConfig = {
     bordered: true,
   },
   tabs: {
-    type: 'line',
+    type: 'line' as const,
   },
   tag: {
-    theme: 'default',
-    size: 'medium',
+    theme: 'default' as const,
+    size: 'medium' as const,
   },
   toast: {
-    type: 'text',
-    position: 'center',
+    type: 'text' as const,
+    position: 'center' as const,
     overlay: false,
     timeout: 1500,
     duration: 300,
@@ -263,9 +264,9 @@ export const defaultConfig = {
     id: 'toast',
   },
   upload: {
-    accept: 'image',
-    sourceType: () => ['album', 'camera'],
-    sizeType: () => ['original', 'compressed'],
+    accept: 'image' as const,
+    sourceType: () => ['album', 'camera'] as ('album' | 'camera')[],
+    sizeType: () => ['original', 'compressed'] as ('original' | 'compressed')[],
     maxDuration: 60,
     maxCount: Number.MAX_SAFE_INTEGER,
     maxSize: Number.MAX_SAFE_INTEGER,
@@ -273,7 +274,7 @@ export const defaultConfig = {
     validateEvent: true,
   },
   uploadPreview: {
-    status: 'pending',
+    status: 'pending' as const,
   },
 }
 

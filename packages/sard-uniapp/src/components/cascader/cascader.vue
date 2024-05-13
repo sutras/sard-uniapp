@@ -74,15 +74,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
@@ -91,17 +82,29 @@ import SarTabs from '../tabs/tabs.vue'
 import SarIcon from '../icon/icon.vue'
 import SarLoading from '../loading/loading.vue'
 import {
+  type CascaderProps,
+  type CascaderSlots,
+  type CascaderEmits,
   type CascaderOption,
   type CascaderFieldKeys,
   type CascaderTab,
   defaultFieldKeys,
   getSelectedOptionsByValue,
-  cascaderProps,
+  cascaderPropsDefaults,
 } from './common'
 
-const props = defineProps(cascaderProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:model-value', 'select'])
+const props = withDefaults(defineProps<CascaderProps>(), cascaderPropsDefaults)
+
+defineSlots<CascaderSlots>()
+
+const emit = defineEmits<CascaderEmits>()
 
 const bem = createBem('cascader')
 

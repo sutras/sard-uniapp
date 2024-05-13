@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface ActionSheetProps {
@@ -13,23 +13,7 @@ export interface ActionSheetProps {
   duration?: number
 }
 
-export const actionSheetProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  description: String,
-  itemList: Array as PropType<ActionSheetProps['itemList']>,
-  cancel: String,
-  visible: Boolean,
-  overlayClosable: {
-    type: Boolean,
-    default: defaultConfig.actionSheet.overlayClosable,
-  },
-  beforeClose: Function as PropType<ActionSheetProps['beforeClose']>,
-  duration: {
-    type: Number,
-    default: defaultConfig.shareSheet.duration,
-  },
-}
+export const actionSheetPropsDefaults = defaultConfig.actionSheet
 
 export interface ActionSheetEmits {
   (e: 'update:visible', visible: boolean): void

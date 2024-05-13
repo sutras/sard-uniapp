@@ -4,21 +4,19 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { computed } from 'vue'
+import { classNames, stringifyStyle, isFileUrl, createBem } from '../../utils'
+import { type IconProps, iconPropsDefaults } from './common'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { computed } from 'vue'
-import { classNames, stringifyStyle, isFileUrl, createBem } from '../../utils'
-import { iconProps } from './common'
-
-const props = defineProps(iconProps)
+const props = withDefaults(defineProps<IconProps>(), iconPropsDefaults)
 
 const bem = createBem('icon')
 

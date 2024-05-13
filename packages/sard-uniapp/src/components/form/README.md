@@ -190,6 +190,7 @@ import FormItem from 'sard-uniapp/components/form-item/form-item.vue'
 | 插槽     | 描述                                 | 属性                     |
 | -------- | ------------------------------------ | ------------------------ |
 | default  | 自定义默认内容                       | -                        |
+| label    | 自定义标签内容                       | -                        |
 | validate | 同默认插槽，额外接受当前验证状态属性 | { state: ValidateState } |
 
 ### FormItemExpose

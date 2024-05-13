@@ -14,15 +14,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { getCurrentInstance, watch, computed, ref } from 'vue'
 import {
@@ -32,9 +23,18 @@ import {
   uniqid,
   getBoundingClientRect,
 } from '../../utils'
-import { collapseProps } from './common'
+import { type CollapseProps, type CollapseSlots } from './common'
 
-const props = defineProps(collapseProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<CollapseProps>(), {})
+
+defineSlots<CollapseSlots>()
 
 const bem = createBem('collapse')
 

@@ -2,21 +2,19 @@
   <view :class="skeletonBlockClass" :style="skeletonBlockStyle"></view>
 </template>
 
-<script lang="ts">
-export default {
+<script setup lang="ts">
+import { computed } from 'vue'
+import { classNames, stringifyStyle, createBem } from '../../utils'
+import { type SkeletonBlockProps } from '../skeleton/common'
+
+defineOptions({
   options: {
     virtualHost: true,
     styleIsolation: 'shared',
   },
-}
-</script>
+})
 
-<script setup lang="ts">
-import { computed } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
-import { skeletonBlockProps } from '../skeleton/common'
-
-const props = defineProps(skeletonBlockProps)
+const props = withDefaults(defineProps<SkeletonBlockProps>(), {})
 
 const bem = createBem('skeleton')
 

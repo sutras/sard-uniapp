@@ -41,11 +41,16 @@ import SarPopup from '../popup/popup.vue'
 import SarLoading from '../loading/loading.vue'
 import SarIcon from '../icon/icon.vue'
 import { useSetTimeout } from '../../use'
-import { ToastExpose, toastProps } from './common'
+import {
+  type ToastProps,
+  type ToastEmits,
+  type ToastExpose,
+  toastPropsDefaults,
+} from './common'
 
-const props = defineProps(toastProps)
+const props = withDefaults(defineProps<ToastProps>(), toastPropsDefaults)
 
-const emit = defineEmits(['update:visible'])
+const emit = defineEmits<ToastEmits>()
 
 const bem = createBem('toast')
 

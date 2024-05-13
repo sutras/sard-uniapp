@@ -49,15 +49,6 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import {
@@ -69,11 +60,22 @@ import {
 } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
-import { stepperProps } from './common'
+import {
+  type StepperProps,
+  type StepperEmits,
+  stepperPropsDefaults,
+} from './common'
 
-const props = defineProps(stepperProps)
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
-const emit = defineEmits(['update:model-value', 'focus', 'blur'])
+const props = withDefaults(defineProps<StepperProps>(), stepperPropsDefaults)
+
+const emit = defineEmits<StepperEmits>()
 
 const bem = createBem('stepper')
 

@@ -1,4 +1,4 @@
-import { type PropType, type StyleValue } from 'vue'
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export type IconType = 'square' | 'circle'
@@ -17,38 +17,15 @@ export interface CheckboxProps {
   validateEvent?: boolean
 }
 
-export const checkboxProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  checked: Boolean,
-  value: null,
-  label: String,
-  disabled: {
-    type: Boolean,
-    default: undefined,
-  },
-  readonly: {
-    type: Boolean,
-    default: undefined,
-  },
-  size: String,
-  type: String as PropType<CheckboxProps['type']>,
-  checkedColor: String,
-  validateEvent: {
-    type: Boolean,
-    default: defaultConfig.checkbox.validateEvent,
-  },
+export const checkboxPropsDefaults = {
+  ...defaultConfig.checkbox,
+  disabled: undefined,
+  readonly: undefined,
 }
 
-// const props = withDefaults(defineProps<CheckboxProps>(), {
-//   disabled: undefined,
-//   readonly: undefined,
-//   validateEvent: true,
-// })
-
 export interface CheckboxSlots {
-  default(props: Record<string, never>): any
-  icon(props: { checked: boolean }): any
+  default?(props: Record<string, never>): any
+  icon?(props: { checked: boolean }): any
 }
 
 export interface CheckboxEmits {
@@ -69,33 +46,11 @@ export interface CheckboxGroupProps {
   validateEvent?: boolean
 }
 
-// const props = withDefaults(defineProps<CheckboxGroupProps>(), {
-//   direction: 'vertical',
-//   validateEvent: true,
-// })
-
-export const checkboxGroupProps = {
-  rootStyle: [String, Object, Array] as PropType<StyleValue>,
-  rootClass: String,
-  modelValue: Array as PropType<CheckboxGroupProps['modelValue']>,
-  disabled: Boolean,
-  readonly: Boolean,
-  size: String,
-  type: String as PropType<CheckboxGroupProps['type']>,
-  checkedColor: String,
-  direction: {
-    type: String as PropType<CheckboxGroupProps['direction']>,
-    default: defaultConfig.checkboxGroup.direction,
-  },
-  validateEvent: {
-    type: Boolean,
-    default: defaultConfig.checkboxGroup.validateEvent,
-  },
-}
+export const checkboxGroupPropsDefaults = defaultConfig.checkboxGroup
 
 export interface CheckboxGroupSlots {
-  default(props: Record<string, never>): any
-  custom(props: { toggle: (value: any) => void; value: any[] }): any
+  default?(props: Record<string, never>): any
+  custom?(props: { toggle: (value: any) => void; value: any[] }): any
 }
 
 export interface CheckboxGroupEmits {

@@ -46,26 +46,35 @@
   </view>
 </template>
 
-<script lang="ts">
-export default {
-  options: {
-    virtualHost: true,
-    styleIsolation: 'shared',
-  },
-}
-</script>
-
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem, minmax } from '../../utils'
 import { useTranslate } from '../locale'
-import { paginationProps, getPageRange } from './common'
+import {
+  type PaginationProps,
+  type PaginationSlots,
+  type PaginationEmits,
+  getPageRange,
+  paginationPropsDefaults,
+} from './common'
+
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
 
 const { t } = useTranslate('pagination')
 
-const props = defineProps(paginationProps)
+const props = withDefaults(
+  defineProps<PaginationProps>(),
+  paginationPropsDefaults,
+)
 
-const emit = defineEmits(['update:current'])
+defineSlots<PaginationSlots>()
+
+const emit = defineEmits<PaginationEmits>()
 
 const bem = createBem('pagination')
 
