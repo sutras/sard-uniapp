@@ -7,12 +7,12 @@
 <p align="center">sard-uniapp 是一套基于 Uniapp + Vue3 框架开发的兼容多端的 UI 组件库。</p>
 
 <p align="center">
-  📖 <a href="http://sutras.gitee.io/sard-uniapp-docs">文档网站 (国内站)</a>&nbsp;&nbsp;&nbsp;&nbsp;
-  🧑🏻‍🏫 <a href="http://sutras.gitee.io/sard-uniapp-docs/mobile/">案例演示 (国内站)</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  📖 <a href="http://sutras.gitee.io/sard-uniapp-docs">文档 (gitee)</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  🧑🏻‍🏫 <a href="http://sutras.gitee.io/sard-uniapp-docs/mobile/">案例演示 (gitee)</a>&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 <p align="center">
-  📖 <a href="http://sutras.github.io/sard-uniapp-docs">文档网站 (国外站)</a>&nbsp;&nbsp;&nbsp;&nbsp;
-  🧑🏻‍🏫 <a href="http://sutras.github.io/sard-uniapp-docs/mobile/">案例演示 (国外站)</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  📖 <a href="http://sutras.github.io/sard-uniapp-docs">文档 (github)</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  🧑🏻‍🏫 <a href="http://sutras.github.io/sard-uniapp-docs/mobile/">案例演示 (github)</a>&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 
 ---

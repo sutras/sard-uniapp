@@ -41,11 +41,7 @@ const tsconfigPath = `${process.cwd()}/__tsconfig.json`
 
 const vueTsconfig = {
   include: [`${srcDir}/**/*`],
-  exclude: [
-    `${srcDir}/**/*.test.ts`,
-    `${srcDir}/**/*.test.tsx`,
-    `${srcDir}/**/*copy.*`,
-  ],
+  exclude: [`${srcDir}/**/*.test.ts`, `${srcDir}/**/*.test.tsx`],
   compilerOptions: {
     target: 'esnext',
     resolveJsonModule: true,

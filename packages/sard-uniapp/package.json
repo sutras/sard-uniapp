@@ -28,8 +28,12 @@
     "vue": "^3.3.11"
   },
   "devDependencies": {
+    "@sard/uniapp-cli": "workspace:*",
+    "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
-    "region-data": "^1.0.6"
+    "@vue/test-utils": "^2.4.6",
+    "region-data": "^1.2.1",
+    "vitest": "^1.0.4"
   },
   "author": "wuzhitao",
   "license": "MIT",

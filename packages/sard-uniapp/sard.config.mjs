@@ -27,7 +27,7 @@ export default {
     fileName: 'index',
     srcDir: srcDir,
     outDir: 'dist',
-    uniModulesDir: '../sard-uniapp-demo/src/uni_modules',
+    uniModulesDir: '../../src/uni_modules',
     uniName: 'sard-uniapp',
     external: ['vue'],
   },

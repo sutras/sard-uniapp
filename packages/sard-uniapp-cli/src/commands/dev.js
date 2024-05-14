@@ -30,6 +30,10 @@ export async function dev() {
   let timer = null
   let start = false
 
+  child.stderr.on('data', (data) => {
+    console.log(data)
+  })
+
   child.stdout.on('data', (data) => {
     log += data
 

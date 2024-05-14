@@ -1,8 +1,18 @@
-# npm
-node_modules/
-package-lock.json
+# Logs
+logs
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+lerna-debug.log*
 
-# dist
+package-lock.json
+.DS_Store
+dist
+*.local
+
+node_modules/
 dist/
 docs/
 uni_modules/
@@ -10,5 +20,10 @@ uni_modules/
 # eslint
 .eslintcache
 
-# others
-.DS_Store
+# Editor directories and files
+.idea
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?

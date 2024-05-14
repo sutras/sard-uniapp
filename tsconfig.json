@@ -2,15 +2,27 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
-    "esModuleInterop": true,
-    "moduleResolution": "node",
-    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
     "strict": true,
+    "sourceMap": true,
+    "baseUrl": ".",
+    "lib": ["esnext", "dom"],
+    "types": ["@dcloudio/types", "sard-uniapp/src/global"],
+    "ignoreDeprecations": "5.0",
+    "esModuleInterop": true,
+    "moduleResolution": "Node",
+    "resolveJsonModule": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
-    "types": ["@dcloudio/types", "node", "vitest", "vitest/globals"],
-    "jsx": "preserve"
+    "strictNullChecks": true,
+    "jsx": "preserve",
+    "paths": {
+      "@/*": ["src/*"],
+      "sard-uniapp/*": ["../sard-uniapp/dist/*"],
+      "sard-uniapp": ["../sard-uniapp/dist/"]
+    }
   },
+  "include": ["src/**/*", "src/**/*.vue"],
   "exclude": [
     "**/dist/**",
     "**/docs/**",
