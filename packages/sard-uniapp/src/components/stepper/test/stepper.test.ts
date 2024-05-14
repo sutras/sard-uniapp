@@ -12,7 +12,7 @@ describe('Stepper', () => {
       }),
     )
 
-    expect(wrapper.find('input').element.value).toBe('')
+    expect(wrapper.find('input').element.value).toBe(undefined)
 
     await wrapper.find('.sar-stepper__button_increase').trigger('click')
     expect(wrapper.find('input').element.value).toBe(1)
