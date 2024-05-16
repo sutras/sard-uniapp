@@ -111,7 +111,7 @@ const onSealTouchEnd = () => {
 }
 
 const onSealMouseDown = () => {
-  // #ifdef H5
+  // #ifdef WEB
   onSealTouchStart()
 
   const upHandler = () => {

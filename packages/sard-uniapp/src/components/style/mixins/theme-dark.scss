@@ -5,7 +5,7 @@
     }
   }
 
-  /* #ifdef H5 */
+  /* #ifdef WEB */
   :root[data-sard-theme='dark'] page {
     @content;
   }

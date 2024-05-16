@@ -4,7 +4,7 @@ import { setLocale } from 'sard-uniapp'
 import zhCN from 'sard-uniapp/components/locale/lang/zh-CN'
 // import enUS from 'sard-uniapp/components/locale/lang/en-US'
 
-// #ifdef H5
+// #ifdef WEB
 import './bridge'
 // #endif
 

@@ -215,7 +215,7 @@ const onTouchMove = (event: TouchEvent) => {
 }
 
 const onMouseDown = () => {
-  // #ifdef H5
+  // #ifdef WEB
   onTouchStart()
 
   const moveHandler = (event: MouseEvent) => {

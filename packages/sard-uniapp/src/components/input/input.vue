@@ -207,7 +207,7 @@ const onClearTouchEnd = () => {
 }
 
 const onClearMouseDown = () => {
-  // #ifdef H5
+  // #ifdef WEB
   onClearTouchStart()
 
   const upHandler = () => {

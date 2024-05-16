@@ -290,7 +290,7 @@ const onTouchEnd = (event: TouchEvent) => {
 }
 
 const onMouseDown = (event: MouseEvent, index: number) => {
-  // #ifdef H5
+  // #ifdef WEB
   const info = uni.getSystemInfoSync()
 
   onTouchStart(toTouchEvent(event, info.windowTop), index)
