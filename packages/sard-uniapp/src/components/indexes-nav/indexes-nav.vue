@@ -146,7 +146,7 @@ const onTouchEnd = () => {
 }
 
 const onMouseDown = (event: MouseEvent) => {
-  // #ifdef H5
+  // #ifdef WEB
   const info = uni.getSystemInfoSync()
 
   onTouchStart(toTouchEvent(event, info.windowTop))

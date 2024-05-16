@@ -218,7 +218,7 @@ const onTouchEnd = () => {
 
 // pc长按
 const onMouseDown = (delta: number) => {
-  // #ifdef H5
+  // #ifdef WEB
   onTouchStart(delta)
 
   const upHandler = () => {
