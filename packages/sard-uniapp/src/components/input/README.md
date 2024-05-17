@@ -82,7 +82,7 @@ import Input from 'sard-uniapp/components/input/input.vue'
 ### 字数提示
 
 设置 `showCount` 属性可以显示当前输入的字数和总字数；
-设置 `maxLength` 可以限制输入的最大字数。
+设置 `maxlength` 可以限制输入的最大字数。
 
 @code('${DEMO_PATH}/input/demo/ShowCount.vue')
 
@@ -107,7 +107,7 @@ import Input from 'sard-uniapp/components/input/input.vue'
 | placeholder-style         | 输入框占位符样式                                                                     | string                                                                                                         | -      |
 | placeholder-class         | 输入框占位符类名                                                                     | string                                                                                                         | -      |
 | disabled                  | 禁用状态                                                                             | boolean                                                                                                        | false  |
-| max-length                | 最大输入长度，设置为 -1 的时候不限制最大长度                                         | number                                                                                                         | 140    |
+| maxlength                 | 最大输入长度，设置为 -1 的时候不限制最大长度                                         | number                                                                                                         | 140    |
 | focus                     | 获取焦点                                                                             | boolean                                                                                                        | -      |
 | cursor-spacing            | 指定光标与键盘的距离                                                                 | number                                                                                                         | 0      |
 | cursor                    | 指定 focus 时的光标位置                                                              | number                                                                                                         | -      |

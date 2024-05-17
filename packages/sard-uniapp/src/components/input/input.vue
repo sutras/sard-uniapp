@@ -158,7 +158,10 @@ watch(
 )
 
 const onInput = (event: any) => {
-  const value = event.detail.value
+  let value = event.detail.value
+  if (props.maxlength >= 0) {
+    value = value.slice(0, props.maxlength)
+  }
   setInnerValue(value)
   return value
 }

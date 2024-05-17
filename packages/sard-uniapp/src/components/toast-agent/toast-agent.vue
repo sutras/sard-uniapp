@@ -17,8 +17,8 @@ import { onMounted, onUnmounted, ref } from 'vue'
 import SarToast from '../toast/toast.vue'
 import { type ToastExpose } from '../toast/common'
 import {
-  ToastAgentProps,
-  mapIdImperative,
+  type ToastAgentProps,
+  mapIdImperatives,
   toastAgentPropsDefaults,
 } from './common'
 
@@ -60,14 +60,21 @@ const imperative = {
 }
 
 onMounted(() => {
-  if (innerProps.value.id) {
-    mapIdImperative[innerProps.value.id] = imperative
+  const id = innerProps.value.id
+  if (id) {
+    mapIdImperatives[id] ??= []
+    mapIdImperatives[id].push(imperative)
   }
 })
 
 onUnmounted(() => {
-  if (innerProps.value.id) {
-    delete mapIdImperative[innerProps.value.id]
+  const id = innerProps.value.id
+  if (id) {
+    const imperatives = mapIdImperatives[id]
+    const index = imperatives.indexOf(imperative)
+    if (index !== -1) {
+      imperatives.splice(imperatives.indexOf(imperative), 1)
+    }
   }
 })
 </script>
