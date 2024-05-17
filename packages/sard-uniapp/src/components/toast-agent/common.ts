@@ -10,12 +10,12 @@ export const toastAgentPropsDefaults = {
   ...defaultConfig.toastAgent,
 }
 
-export const mapIdImperative: Record<
+export const mapIdImperatives: Record<
   string,
   {
     show(props: Record<string, any>): void
     hide(): void
-  }
+  }[]
 > = {}
 
 export type ToastOptions = ToastAgentProps
@@ -54,12 +54,12 @@ const show: ToastShowFunction = (
 
   options.type = internalType
 
-  const { id = 'toast' } = options
+  const { id = defaultConfig.toastAgent.id } = options
 
-  const imperative = mapIdImperative[id]
+  const imperatives = mapIdImperatives[id]
 
-  if (imperative) {
-    imperative.show(options)
+  if (imperatives && imperatives.length > 0) {
+    imperatives[imperatives.length - 1].show(options)
   }
 }
 
@@ -91,14 +91,16 @@ const loading: ToastSimpleShowFunction = (
   show(optionsOrTitle, options, 'loading')
 }
 
-const hide = (id = 'toast') => {
-  const imperative = mapIdImperative[id]
-  if (imperative) {
-    imperative.hide()
+const hide = (id = defaultConfig.toastAgent.id) => {
+  const imperatives = mapIdImperatives[id]
+  if (imperatives && imperatives.length > 0) {
+    imperatives.forEach((imperative) => {
+      imperative.hide()
+    })
   }
 }
 const hideAll = () => {
-  Object.keys(mapIdImperative).forEach(hide)
+  Object.keys(mapIdImperatives).forEach(hide)
 }
 
 toast.success = success

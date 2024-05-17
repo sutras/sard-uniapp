@@ -22,7 +22,7 @@ import SarDialog from '../dialog/dialog.vue'
 import {
   type DialogAgentProps,
   dialogAgentPropsDefaults,
-  mapIdImperative,
+  mapIdImperatives,
 } from './common'
 
 defineOptions({
@@ -57,14 +57,21 @@ const imperative = {
 }
 
 onMounted(() => {
-  if (innerProps.value.id) {
-    mapIdImperative[innerProps.value.id] = imperative
+  const id = innerProps.value.id
+  if (id) {
+    mapIdImperatives[id] ??= []
+    mapIdImperatives[id].push(imperative)
   }
 })
 
 onUnmounted(() => {
-  if (innerProps.value.id) {
-    delete mapIdImperative[innerProps.value.id]
+  const id = innerProps.value.id
+  if (id) {
+    const imperatives = mapIdImperatives[id]
+    const index = imperatives.indexOf(imperative)
+    if (index !== -1) {
+      imperatives.splice(imperatives.indexOf(imperative), 1)
+    }
   }
 })
 </script>

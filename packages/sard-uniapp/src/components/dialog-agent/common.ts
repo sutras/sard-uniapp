@@ -1,4 +1,4 @@
-import { type DialogProps } from '../dialog/common'
+import { type DialogProps, dialogPropsDefaults } from '../dialog/common'
 import { defaultConfig } from '../config'
 
 export interface DialogAgentProps extends DialogProps {
@@ -6,16 +6,16 @@ export interface DialogAgentProps extends DialogProps {
 }
 
 export const dialogAgentPropsDefaults = {
-  ...defaultConfig.dialog,
+  ...dialogPropsDefaults,
   ...defaultConfig.dialogAgent,
 }
 
-export const mapIdImperative: Record<
+export const mapIdImperatives: Record<
   string,
   {
     show(props: Record<string, any>): void
     hide(): void
-  }
+  }[]
 > = {}
 
 export type DialogOptions = DialogAgentProps
@@ -59,12 +59,12 @@ const show: DialogShowFunction = (
 
   options = Object.assign({}, defaultDialogOptions, options, internalOptions)
 
-  const { id = 'dialog' } = options
+  const { id = defaultConfig.dialogAgent.id } = options
 
-  const imperative = mapIdImperative[id]
+  const imperatives = mapIdImperatives[id]
 
-  if (imperative) {
-    imperative.show(options)
+  if (imperatives && imperatives.length > 0) {
+    imperatives[imperatives.length - 1].show(options)
   }
 }
 
@@ -91,14 +91,16 @@ const confirm: DialogSimpleShowFunction = (
   })
 }
 
-const hide = (id = 'dialog') => {
-  const imperative = mapIdImperative[id]
-  if (imperative) {
-    imperative.hide()
+const hide = (id = defaultConfig.dialogAgent.id) => {
+  const imperatives = mapIdImperatives[id]
+  if (imperatives && imperatives.length > 0) {
+    imperatives.forEach((imperative) => {
+      imperative.hide()
+    })
   }
 }
 const hideAll = () => {
-  Object.keys(mapIdImperative).forEach(hide)
+  Object.keys(mapIdImperatives).forEach(hide)
 }
 
 dialog.alert = alert
