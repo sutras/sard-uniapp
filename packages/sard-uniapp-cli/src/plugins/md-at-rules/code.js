@@ -3,7 +3,7 @@ import path from 'node:path'
 import { ROOT_DIR } from '../../utils/constants.js'
 
 const defaultPaths = {
-  DEMO_PATH: path.resolve(ROOT_DIR, '../src/pages/components/'),
+  DEMO_PATH: path.resolve(ROOT_DIR, '../../src/pages/components/'),
 }
 
 function makeTextToCode(text, lang) {

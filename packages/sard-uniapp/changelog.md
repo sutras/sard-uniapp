@@ -1,3 +1,12 @@
+## [1.1.4](https://github.com/sutras/sard-uniapp/compare/v1.1.3...v1.1.4) (2024-05-17)
+
+
+### Bug Fixes
+
+* 修复input组件字数统计, dialog&toast组件不能显示的问题 close [#26](https://github.com/sutras/sard-uniapp/issues/26),[#24](https://github.com/sutras/sard-uniapp/issues/24) ([bb9ea25](https://github.com/sutras/sard-uniapp/commit/bb9ea253bde0963d3ff1a4f76eee72f5b0f57d0a))
+
+
+
 ## [1.1.3](https://github.com/sutras/sard-uniapp/compare/v1.1.2...v1.1.3) (2024-05-11)
 
 
