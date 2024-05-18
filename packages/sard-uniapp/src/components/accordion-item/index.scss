@@ -42,6 +42,15 @@
     line-height: var(--sar-accordion-item-title-line-height);
   }
 
+  @include e(arrow) {
+    @include universal;
+    align-items: center;
+    justify-content: center;
+    margin-left: var(--sar-accordion-item-arrow-margin-left);
+    font-size: var(--sar-accordion-item-arrow-font-size);
+    color: var(--sar-accordion-item-arrow-color);
+  }
+
   @include e(body) {
     @include universal;
     padding: var(--sar-accordion-item-body-padding-y)

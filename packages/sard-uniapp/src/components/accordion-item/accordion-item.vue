@@ -8,8 +8,8 @@
     >
       <view :class="bem.e('title')">{{ title }}</view>
       <view v-if="value" :class="bem.e('value')">{{ value }}</view>
-      <view :class="bem.e('icon')">
-        <sar-icon :name="iconName" />
+      <view :class="bem.e('arrow')">
+        <sar-icon :name="arrowName" />
       </view>
     </view>
     <sar-collapse :visible="visible">
@@ -71,7 +71,7 @@ const visible = computed(() => {
 })
 
 // others
-const iconName = computed(() => {
+const arrowName = computed(() => {
   return visible.value ? 'up' : 'down'
 })
 

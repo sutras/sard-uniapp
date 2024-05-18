@@ -1,3 +1,8 @@
+import {
+  getAllImperatives,
+  getAvailableImperative,
+  getImperatives,
+} from '../../use/useImperative'
 import { defaultConfig } from '../config'
 import { type ToastProps, toastPropsDefaults } from '../toast/common'
 
@@ -10,13 +15,12 @@ export const toastAgentPropsDefaults = {
   ...defaultConfig.toastAgent,
 }
 
-export const mapIdImperatives: Record<
-  string,
-  {
-    show(props: Record<string, any>): void
-    hide(): void
-  }[]
-> = {}
+export const imperativeName = 'toast'
+
+export interface ToastImperative {
+  show(newProps: Record<string, any>): void
+  hide(): void
+}
 
 export type ToastOptions = ToastAgentProps
 
@@ -56,10 +60,9 @@ const show: ToastShowFunction = (
 
   const { id = defaultConfig.toastAgent.id } = options
 
-  const imperatives = mapIdImperatives[id]
-
-  if (imperatives && imperatives.length > 0) {
-    imperatives[imperatives.length - 1].show(options)
+  const imperative = getAvailableImperative<ToastImperative>(imperativeName, id)
+  if (imperative) {
+    imperative.show(options)
   }
 }
 
@@ -92,15 +95,18 @@ const loading: ToastSimpleShowFunction = (
 }
 
 const hide = (id = defaultConfig.toastAgent.id) => {
-  const imperatives = mapIdImperatives[id]
+  const imperatives = getImperatives<ToastImperative>(imperativeName, id)
   if (imperatives && imperatives.length > 0) {
-    imperatives.forEach((imperative) => {
-      imperative.hide()
+    imperatives.forEach((item) => {
+      item.imperative.hide()
     })
   }
 }
 const hideAll = () => {
-  Object.keys(mapIdImperatives).forEach(hide)
+  const mapImperatives = getAllImperatives<ToastImperative>()[imperativeName]
+  if (mapImperatives) {
+    Object.keys(mapImperatives).forEach(hide)
+  }
 }
 
 toast.success = success
