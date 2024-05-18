@@ -13,14 +13,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import SarToast from '../toast/toast.vue'
 import { type ToastExpose } from '../toast/common'
 import {
   type ToastAgentProps,
-  mapIdImperatives,
+  type ToastImperative,
+  imperativeName,
   toastAgentPropsDefaults,
 } from './common'
+import { useImperative } from '../../use/useImperative'
 
 defineOptions({
   options: {
@@ -39,7 +41,7 @@ const innerProps = ref({ ...props })
 
 const elRef = ref<ToastExpose>()
 
-const imperative = {
+const imperative: ToastImperative = {
   show(newProps: Record<string, any>) {
     innerProps.value = {
       ...props,
@@ -59,22 +61,9 @@ const imperative = {
   },
 }
 
-onMounted(() => {
-  const id = innerProps.value.id
-  if (id) {
-    mapIdImperatives[id] ??= []
-    mapIdImperatives[id].push(imperative)
-  }
-})
-
-onUnmounted(() => {
-  const id = innerProps.value.id
-  if (id) {
-    const imperatives = mapIdImperatives[id]
-    const index = imperatives.indexOf(imperative)
-    if (index !== -1) {
-      imperatives.splice(imperatives.indexOf(imperative), 1)
-    }
-  }
-})
+useImperative(
+  imperativeName,
+  imperative,
+  computed(() => innerProps.value.id),
+)
 </script>

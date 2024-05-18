@@ -10,6 +10,10 @@ page {
   --sar-accordion-item-title-font-size: var(--sar-text-base);
   --sar-accordion-item-title-line-height: var(--sar-leading-snug);
 
+  --sar-accordion-item-arrow-margin-left: 16rpx;
+  --sar-accordion-item-arrow-font-size: var(--sar-text-base);
+  --sar-accordion-item-arrow-color: var(--sar-tertiary-color);
+
   --sar-accordion-item-body-padding-x: 32rpx;
   --sar-accordion-item-body-padding-y: 32rpx;
 }
