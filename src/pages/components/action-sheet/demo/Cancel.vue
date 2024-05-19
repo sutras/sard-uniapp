@@ -11,15 +11,6 @@
 import { ref } from 'vue'
 
 const visible = ref(false)
-const itemList = ref([
-  {
-    name: '选项1',
-  },
-  {
-    name: '选项2',
-  },
-  {
-    name: '选项3',
-  },
-])
+
+const itemList = ref([{ name: '选项1' }, { name: '选项2' }, { name: '选项3' }])
 </script>

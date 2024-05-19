@@ -1,22 +1,26 @@
-import { type NotifyProps } from '../notify/common'
+import { type NotifyProps, notifyPropsDefaults } from '../notify/common'
 import { defaultConfig } from '../config'
+import {
+  getAllImperatives,
+  getAvailableImperative,
+  getImperatives,
+} from '../../use/useImperative'
 
 export interface NotifyAgentProps extends NotifyProps {
   id?: string
 }
 
 export const notifyAgentPropsDefaults = {
-  ...defaultConfig.notify,
+  ...notifyPropsDefaults,
   ...defaultConfig.notifyAgent,
 }
 
-export const mapIdImperative: Record<
-  string,
-  {
-    show(props: Record<string, any>): void
-    hide(): void
-  }
-> = {}
+export const imperativeName = 'notify'
+
+export interface NotifyImperative {
+  show(newProps: Record<string, any>): void
+  hide(): void
+}
 
 export type NotifyOptions = NotifyAgentProps
 
@@ -54,10 +58,12 @@ const show: NotifyShowFunction = (
 
   options.type = internalType
 
-  const { id = 'notify' } = options
+  const { id = defaultConfig.notifyAgent.id } = options
 
-  const imperative = mapIdImperative[id]
-
+  const imperative = getAvailableImperative<NotifyImperative>(
+    imperativeName,
+    id,
+  )
   if (imperative) {
     imperative.show(options)
   }
@@ -91,14 +97,19 @@ const error: NotifySimpleShowFunction = (
   show(optionsOrMessage, options, 'error')
 }
 
-const hide = (id = 'notify') => {
-  const imperative = mapIdImperative[id]
-  if (imperative) {
-    imperative.hide()
+const hide = (id = defaultConfig.notifyAgent.id) => {
+  const imperatives = getImperatives<NotifyImperative>(imperativeName, id)
+  if (imperatives && imperatives.length > 0) {
+    imperatives.forEach((item) => {
+      item.imperative.hide()
+    })
   }
 }
 const hideAll = () => {
-  Object.keys(mapIdImperative).forEach(hide)
+  const mapImperatives = getAllImperatives<NotifyImperative>()[imperativeName]
+  if (mapImperatives) {
+    Object.keys(mapImperatives).forEach(hide)
+  }
 }
 
 notify.success = success

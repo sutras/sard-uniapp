@@ -1,3 +1,12 @@
+## [1.1.5](https://github.com/sutras/sard-uniapp/compare/v1.1.4...v1.1.5) (2024-05-18)
+
+
+### Bug Fixes
+
+* 修复toast&dialog不显示问题 ([9e49c67](https://github.com/sutras/sard-uniapp/commit/9e49c6772e7d0cff8976133b1dc05fa69b51d7ea))
+
+
+
 ## [1.1.4](https://github.com/sutras/sard-uniapp/compare/v1.1.3...v1.1.4) (2024-05-17)
 
 

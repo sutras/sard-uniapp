@@ -33,7 +33,7 @@ import CheckboxGroup from 'sard-uniapp/components/checkbox-group/checkbox-group.
 
 ### 自定义颜色
 
-使用 `checkedColor` 属性设置选中时的图标颜色。
+使用 `checked-color` 属性设置选中时的图标颜色。
 
 @code('${DEMO_PATH}/checkbox/demo/Color.vue')
 
@@ -56,13 +56,27 @@ import CheckboxGroup from 'sard-uniapp/components/checkbox-group/checkbox-group.
 
 @code('${DEMO_PATH}/checkbox/demo/Group.vue')
 
-### 自定义
+### 排列方向
 
-利用复选框组的 `custom` 插槽可以将复选框和其他组件结合使用。
-`custom` 插槽接收 `toggle` 方法来切换选中状态；
-同时要给复选框组件添加 `readonly` 属性以便将点击操作交给其他组件。
+将 `direction` 属性设置为 `horizontal` 后，复选框组会变成水平排列。
 
-@code('${DEMO_PATH}/checkbox/demo/Custom.vue')
+@code('${DEMO_PATH}/checkbox/demo/Direction.vue')
+
+### 自定义 UI
+
+如果只想使用复选的逻辑，并想自定义 UI，可以使用复选框组的 `custom` 插槽。
+
+这个插槽接收 `toggle`方法和 `value` 属性作为参数。`toggle` 用于切换指定选项的选中状态，`value` 用于判断选中状态。
+
+@code('${DEMO_PATH}/checkbox/demo/Custom1.vue')
+
+结合 `list` 组件使用：
+
+@code('${DEMO_PATH}/checkbox/demo/Custom2.vue')
+
+复选框组里面 `checkbox` 组件，会自动判断选中状态；可以给 `checkbox` 组件添加 `readonly` 属性以便将点击操作交给其他组件。
+
+@code('${DEMO_PATH}/checkbox/demo/Custom3.vue')
 
 ## API
 

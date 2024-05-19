@@ -20,15 +20,9 @@ import { type StepsItem } from 'sard-uniapp'
 const current = ref(1)
 
 const itemList: StepsItem[] = [
-  {
-    name: '步骤1',
-  },
-  {
-    name: '步骤2',
-  },
-  {
-    name: '步骤3',
-  },
+  { name: '步骤1' },
+  { name: '步骤2' },
+  { name: '步骤3' },
 ]
 
 const prevStep = () => {
