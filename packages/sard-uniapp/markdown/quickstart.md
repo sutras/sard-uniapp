@@ -43,6 +43,21 @@ npm install sass -D
 
 ## 配置
 
+### vite
+
+在 web 开发环境使用 `sard-uniapp` 时，为避免 `vite` 依赖预构建缓存 `sard-uniapp` 部分文件导致出现问题，
+需要在预构建中强制排除对 `sard-uniapp` 的依赖。
+
+`vite.config.ts`
+
+```ts
+export default defineConfig({
+  optimizeDeps: {
+    exclude: ['sard-uniapp'],
+  },
+})
+```
+
 ### 配置 easycom
 
 建议使用 `easycom` 来简化组件的引入和注册。

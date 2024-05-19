@@ -14,7 +14,7 @@
     />
   </sar-list>
 
-  <sar-popout v-model:visible="visible1" title="单个日期">
+  <sar-popout v-model:visible="visible1">
     <template #visible="{ already }">
       <sar-datetime-picker
         v-if="already"
@@ -25,7 +25,7 @@
     </template>
   </sar-popout>
 
-  <sar-popout v-model:visible="visible2" title="多个日期">
+  <sar-popout v-model:visible="visible2">
     <template #visible="{ already }">
       <sar-datetime-picker
         v-if="already"

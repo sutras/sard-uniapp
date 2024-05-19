@@ -8,6 +8,7 @@
 
 ```ts
 import Tabbar from 'sard-uniapp/components/tabbar/tabbar.vue'
+import TabbarItem from 'sard-uniapp/components/tabbar-item/tabbar-item.vue'
 ```
 
 ## 代码演示

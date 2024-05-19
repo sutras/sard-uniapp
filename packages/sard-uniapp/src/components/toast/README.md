@@ -53,6 +53,12 @@ import { toast } from 'sard-uniapp'
 | timeout     | 提示的延迟时间，单位 ms  | number                                     | 1500     |
 | duration    | 显隐动画时长，单位 ms    | number                                     | 300      |
 
+### ToastEmits
+
+| 事件           | 描述             | 类型                       |
+| -------------- | ---------------- | -------------------------- |
+| update:visible | 对话框显隐时触发 | (visible: boolean) => void |
+
 ### ToastAgentProps / ToastOptions
 
 继承 `ToastProps` 并有以下额外属性。

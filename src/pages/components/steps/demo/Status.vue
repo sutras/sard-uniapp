@@ -20,18 +20,9 @@ import { type StepsItem } from 'sard-uniapp'
 const current = ref(1)
 
 const itemList: StepsItem[] = [
-  {
-    name: '订单已提交',
-    description: '01月01日 12:00',
-  },
-  {
-    name: '正在处理中',
-    description: '01月01日 12:05',
-  },
-  {
-    name: '订单已完成',
-    description: '01月01日 12:10',
-  },
+  { name: '订单已提交', description: '01月01日 12:00' },
+  { name: '正在处理中', description: '01月01日 12:05' },
+  { name: '订单已完成', description: '01月01日 12:10' },
 ]
 
 const prevStep = () => {

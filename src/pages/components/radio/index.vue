@@ -28,7 +28,7 @@
       <DemoIcon />
     </doc-demo>
 
-    <doc-demo title="自定义">
+    <doc-demo title="自定义 UI">
       <DemoCustom />
     </doc-demo>
   </doc-page>

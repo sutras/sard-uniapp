@@ -25,11 +25,11 @@ import RadioGroup from 'sard-uniapp/components/radio-group/radio-group.vue'
 
 @code('${DEMO_PATH}/radio/demo/Direction.vue')
 
-### 禁用
+### 只读和禁用
 
 只读或禁用后不可点击。
 
-@code('${DEMO_PATH}/radio/demo/Disabled.vue')
+@code('${DEMO_PATH}/radio/demo/DisabledReadOnly.vue')
 
 ### 图标大小
 
@@ -37,9 +37,9 @@ import RadioGroup from 'sard-uniapp/components/radio-group/radio-group.vue'
 
 @code('${DEMO_PATH}/radio/demo/Size.vue')
 
-### 自定义颜色
+### 图标颜色
 
-使用 `checkedColor` 属性设置选中时的图标颜色。
+使用 `checked-color` 属性设置选中时的图标颜色。
 
 @code('${DEMO_PATH}/radio/demo/Color.vue')
 
@@ -56,13 +56,21 @@ import RadioGroup from 'sard-uniapp/components/radio-group/radio-group.vue'
 
 @code('${DEMO_PATH}/radio/demo/Icon.vue')
 
-### 自定义
+### 自定义 UI
 
-利用单选按钮组的 `custom` 插槽可以将单选按钮和其他组件结合使用。
-`custom` 插槽接收 `toggle` 方法来切换选中状态；
-同时要给单选按钮组件添加 `readonly` 属性以便将点击操作交给其他组件。
+如果只想使用单选的逻辑，并想自定义 UI，可以使用单选按钮组的 `custom` 插槽。
 
-@code('${DEMO_PATH}/radio/demo/Custom.vue')
+这个插槽接收 `toggle`方法和 `value` 属性作为参数。`toggle` 用于选中指定的选项，`value` 用于判断选中状态。
+
+@code('${DEMO_PATH}/radio/demo/Custom1.vue')
+
+结合 `list` 组件使用：
+
+@code('${DEMO_PATH}/radio/demo/Custom2.vue')
+
+单选按钮组里面 `radio` 组件，会自动判断选中状态；可以给 `radio` 组件添加 `readonly` 属性以便将点击操作交给其他组件。
+
+@code('${DEMO_PATH}/radio/demo/Custom3.vue')
 
 ## API
 
@@ -110,10 +118,10 @@ import RadioGroup from 'sard-uniapp/components/radio-group/radio-group.vue'
 
 ### RadioGroupSlots
 
-| 插槽    | 描述                                                                             | 属性                                         |
-| ------- | -------------------------------------------------------------------------------- | -------------------------------------------- |
-| default | 自定义默认内容                                                                   | -                                            |
-| custom  | 同默认插槽，额外可以接收 `toggle` 方法切换选中状态，用于自定义单选按钮结构和样式 | { toggle: (value: any) => void, value: any } |
+| 插槽    | 描述                                                                                                            | 属性                                         |
+| ------- | --------------------------------------------------------------------------------------------------------------- | -------------------------------------------- |
+| default | 自定义默认内容                                                                                                  | -                                            |
+| custom  | 同默认插槽，额外可以接收 `toggle` 方法切换选中状态，接收 `value` 属性判断选中状态；用于自定义单选按钮结构和样式 | { toggle: (value: any) => void, value: any } |
 
 ### RadioGroupEmits
 

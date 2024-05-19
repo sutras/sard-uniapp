@@ -8,15 +8,8 @@ import { type TabOption } from 'sard-uniapp'
 
 const current = ref(0)
 const list = ref<TabOption[]>([
-  {
-    title: '标签0',
-  },
-  {
-    title: '标签1',
-    disabled: true,
-  },
-  {
-    title: '标签2',
-  },
+  { title: '标签0' },
+  { title: '标签1', disabled: true },
+  { title: '标签2' },
 ])
 </script>

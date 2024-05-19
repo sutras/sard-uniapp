@@ -1,4 +1,4 @@
-import { Position } from './utils'
+import type { Position } from './utils'
 
 export { usePopover } from './usePopover'
 

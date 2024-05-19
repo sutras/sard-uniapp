@@ -17,7 +17,7 @@ export interface ToastProps {
 export const toastPropsDefaults = defaultConfig.toast
 
 export interface ToastEmits {
-  (e: 'update:visible', event: any): void
+  (e: 'update:visible', visible: boolean): void
 }
 
 export interface ToastExpose {

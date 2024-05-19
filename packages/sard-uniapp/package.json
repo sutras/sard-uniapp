@@ -2,7 +2,8 @@
   "id": "sard-uniapp",
   "name": "sard-uniapp",
   "displayName": "sard-uniapp",
-  "version": "1.1.5",
+  "version": "1.1.6",
+  "type": "module",
   "description": "sard-uniapp 是一套基于 Uniapp + Vue3 框架开发的兼容多端的 UI 组件库",
   "keywords": [
     "uniapp",
@@ -24,8 +25,8 @@
     "test": "vitest"
   },
   "peerDependencies": {
-    "@dcloudio/types": "^3.3.2",
-    "vue": "^3.3.11"
+    "@dcloudio/types": "^3.4.8",
+    "vue": "^3.4.27"
   },
   "devDependencies": {
     "@sard/uniapp-cli": "workspace:*",

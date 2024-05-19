@@ -14,14 +14,16 @@
 </template>
 
 <script setup lang="ts">
-import { onMounted, onUnmounted, ref } from 'vue'
+import { computed, ref } from 'vue'
 import SarNotify from '../notify/notify.vue'
+import { type NotifyExpose } from '../notify/common'
 import {
   type NotifyAgentProps,
-  mapIdImperative,
+  type NotifyImperative,
+  imperativeName,
   notifyAgentPropsDefaults,
 } from './common'
-import { type NotifyExpose } from '../notify/common'
+import { useImperative } from '../../use/useImperative'
 
 defineOptions({
   options: {
@@ -40,7 +42,7 @@ const innerProps = ref({ ...props })
 
 const elRef = ref<NotifyExpose>()
 
-const imperative = {
+const imperative: NotifyImperative = {
   show(newProps: Record<string, any>) {
     innerProps.value = {
       ...props,
@@ -60,15 +62,9 @@ const imperative = {
   },
 }
 
-onMounted(() => {
-  if (innerProps.value.id) {
-    mapIdImperative[innerProps.value.id] = imperative
-  }
-})
-
-onUnmounted(() => {
-  if (innerProps.value.id) {
-    delete mapIdImperative[innerProps.value.id]
-  }
-})
+useImperative(
+  imperativeName,
+  imperative,
+  computed(() => innerProps.value.id),
+)
 </script>

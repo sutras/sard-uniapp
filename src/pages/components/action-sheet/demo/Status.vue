@@ -12,17 +12,8 @@ import { ref } from 'vue'
 
 const visible = ref(false)
 const itemList = ref([
-  {
-    name: '选项1',
-    color: 'var(--sar-red)',
-  },
-  {
-    name: '选项2',
-    disabled: true,
-  },
-  {
-    name: '选项3',
-    loading: true,
-  },
+  { name: '选项1', color: 'var(--sar-red)' },
+  { name: '选项2', disabled: true },
+  { name: '选项3', loading: true },
 ])
 </script>

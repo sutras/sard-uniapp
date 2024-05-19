@@ -8,6 +8,8 @@
 
 ```ts
 import Dialog from 'sard-uniapp/components/dialog/dialog.vue'
+import DialogAgent from 'sard-uniapp/components/dialog-agent/dialog-agent.vue'
+import { dialog } from 'sard-uniapp'
 ```
 
 ## 代码演示
@@ -66,6 +68,21 @@ import Dialog from 'sard-uniapp/components/dialog/dialog.vue'
 | overlay-closable  | 点击遮罩是否关闭      | boolean           | false   |
 | duration          | 显隐动画时长，单位 ms | number            | 300     |
 
+### DialogSlots
+
+| 插槽    | 描述           | 属性 |
+| ------- | -------------- | ---- |
+| default | 自定义默认内容 | -    |
+
+### DialogEmits
+
+| 事件           | 描述                     | 类型                       |
+| -------------- | ------------------------ | -------------------------- |
+| update:visible | 对话框显隐时触发         | (visible: boolean) => void |
+| close          | 点击关闭按钮或遮罩时触发 | () => void                 |
+| cancel         | 点击取消按钮时触发       | () => void                 |
+| confirm        | 点击确定按钮时触发       | () => void                 |
+
 ### DialogAgentProps / DialogOptions
 
 继承 `DialogProps` 并有以下额外属性。
@@ -105,6 +122,8 @@ interface DialogSimpleShowFunction {
 ```
 
 ### defaultDialogOptions
+
+命令式默认值和声明式有所区别。
 
 ```ts
 const defaultDialogOptions = {

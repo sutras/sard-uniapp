@@ -8,6 +8,7 @@
 
 ```ts
 import Navbar from 'sard-uniapp/components/navbar/navbar.vue'
+import NavbarItem from 'sard-uniapp/components/navbar-item/navbar-item.vue'
 ```
 
 ## 代码演示
