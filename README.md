@@ -38,4 +38,45 @@
 
 ## 开源协议
 
-本项目基于 <a href="https://zh.wikipedia.org/wiki/MIT%E8%A8%B1%E5%8F%AF%E8%AD%89" target="_blank">MIT</a> 协议，请自由地享受和参与开源。
+本项目基于 [MIT](https://zh.wikipedia.org/wiki/MIT%E8%A8%B1%E5%8F%AF%E8%AD%89) 协议，请自由地享受和参与开源。
+
+## 如何维护
+
+### 克隆仓库到本地
+
+```bash
+git clone https://github.com/sutras/sard-uniapp.git
+```
+
+### 全局安装 pnpm（如果未安装）
+
+```bash
+npm install -g pnpm
+```
+
+### 使用 pnpm 安装依赖
+
+```bash
+pnpm install
+```
+
+### 修改 @dcloudio 源码
+
+安装完依赖，需要修改@dcloudio 里面的一个地方，具体参考以下文档中的第一个问题（“热更新无效”）：
+
+[https://zhuanlan.zhihu.com/p/665000866](https://zhuanlan.zhihu.com/p/665000866)
+
+### 运行开发环境
+
+```bash
+pnpm run dev
+```
+
+运行上面后命令后会生成四个链接：
+
+```bash
+Local:   http://localhost:5173/sard-uniapp-docs/mobile/    （演示）
+Network: http://192.168.1.121:5173/sard-uniapp-docs/mobile/ (局域网演示）
+Local:   http://localhost:7761/sard-uniapp-docs/           （文档）
+Network: http://192.168.1.121:7761/sard-uniapp-docs/       （局域网文档）
+```

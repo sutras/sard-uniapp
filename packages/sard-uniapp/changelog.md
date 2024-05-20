@@ -1,3 +1,12 @@
+## [1.1.7](https://github.com/sutras/sard-uniapp/compare/v1.1.6...v1.1.7) (2024-05-20)
+
+
+### Bug Fixes
+
+* 修复表单内组件的禁用和只读问题 close [#27](https://github.com/sutras/sard-uniapp/issues/27) ([eee674c](https://github.com/sutras/sard-uniapp/commit/eee674c156687b25893cd0456b7050440ea1ad4d))
+
+
+
 ## [1.1.6](https://github.com/sutras/sard-uniapp/compare/v1.1.5...v1.1.6) (2024-05-19)
 
 
