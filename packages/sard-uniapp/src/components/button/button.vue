@@ -52,7 +52,7 @@ const bem = createBem('button')
 const formContext = useFormContext()
 
 const isDisabled = computed(() => {
-  return formContext?.disabled ?? props.disabled
+  return formContext?.disabled || props.disabled
 })
 
 const onClick = (event: any) => {

@@ -61,11 +61,11 @@ const bem = createBem('popout-input')
 const formContext = useFormContext()
 
 const isDisabled = computed(() => {
-  return formContext?.disabled ?? props.disabled
+  return formContext?.disabled || props.disabled
 })
 
 const isReadonly = computed(() => {
-  return formContext?.readonly ?? props.readonly
+  return formContext?.readonly || props.readonly
 })
 
 // value

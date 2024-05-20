@@ -1,3 +1,12 @@
+## [1.1.6](https://github.com/sutras/sard-uniapp/compare/v1.1.5...v1.1.6) (2024-05-19)
+
+
+### Bug Fixes
+
+* 修复 notify 组件显示问题、优化文档 ([7ed66fd](https://github.com/sutras/sard-uniapp/commit/7ed66fd09870b24d485fd82ed6f152373b665f3c))
+
+
+
 ## [1.1.5](https://github.com/sutras/sard-uniapp/compare/v1.1.4...v1.1.5) (2024-05-18)
 
 

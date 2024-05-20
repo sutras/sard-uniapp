@@ -47,11 +47,11 @@ const formContext = useFormContext()
 const formItemContext = useFormItemContext()
 
 const isDisabled = computed(() => {
-  return formContext?.disabled ?? props.disabled ?? groupContext?.disabled
+  return formContext?.disabled || groupContext?.disabled || props.disabled
 })
 
 const isReadonly = computed(() => {
-  return formContext?.readonly ?? props.readonly ?? groupContext?.readonly
+  return formContext?.readonly || groupContext?.readonly || props.readonly
 })
 
 const innerChecked = ref(

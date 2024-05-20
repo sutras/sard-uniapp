@@ -28,7 +28,7 @@
           placeholder="Pick a date"
         />
       </sar-form-item>
-      <sar-form-item label="" :show-star="false" name="date2">
+      <sar-form-item label="" hide-star name="date2">
         <sar-datetime-picker-input
           v-model="ruleForm.date2"
           type="hms"

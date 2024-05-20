@@ -33,6 +33,7 @@ export interface FormProps {
   labelValign?: 'start' | 'center' | 'end'
   starPosition?: 'left' | 'right'
 
+  hideStar?: boolean
   showError?: boolean
   scrollToFirstError?: boolean
   scrollIntoViewOptions?: ScrollIntoViewOptions
@@ -64,9 +65,9 @@ export interface FormItemProps {
   labelAlign?: 'start' | 'center' | 'end'
   labelValign?: 'start' | 'center' | 'end'
   starPosition?: 'left' | 'right'
-  showStar?: boolean
-
   label?: string
+  hideStar?: boolean
+
   required?: boolean | undefined
   name?: FieldName
   rules?: Rule | Rule[]
@@ -77,10 +78,13 @@ export interface FormItemProps {
 }
 
 export const formItemPropsDefaults = {
+  ...defaultConfig.formItem,
   required: undefined,
-  showError: undefined,
-  showStar: undefined,
 }
+
+// export const formItemPropsDefaults = {
+//   required: undefined,
+// }
 
 export interface FormItemSlots {
   default?(props: Record<string, never>): any
@@ -106,6 +110,7 @@ export interface FormContext {
   labelAlign: FormProps['labelAlign']
   labelValign: FormProps['labelValign']
   starPosition: FormProps['starPosition']
+  hideStar: FormProps['hideStar']
   showError: FormProps['showError']
   scrollIntoViewOptions: FormProps['scrollIntoViewOptions']
   disabled: FormProps['disabled']

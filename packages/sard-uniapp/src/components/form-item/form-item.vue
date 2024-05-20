@@ -114,7 +114,7 @@ watch(
 )
 
 const shouldShowError = computed(() => {
-  return (props.showError ?? formContext.showError) && validateMessage.value
+  return props.showError && formContext.showError && validateMessage.value
 })
 
 const validateState = ref<ValidateState>('')
@@ -177,7 +177,7 @@ const isRequired = computed(() => {
 })
 
 const shouldShowStar = computed(() => {
-  return isNullish(props.showStar) ? isRequired.value : props.showStar
+  return !formContext.hideStar && !props.hideStar && isRequired.value
 })
 
 const validate = async (trigger?: string | string[]) => {

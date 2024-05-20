@@ -21,7 +21,6 @@ import {
   type RadioContext,
   radioContextSymbol,
   mapTypeIcon,
-  radioPropsDefaults,
 } from './common'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext } from '../form/common'
@@ -33,7 +32,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<RadioProps>(), radioPropsDefaults)
+const props = withDefaults(defineProps<RadioProps>(), {})
 
 defineSlots<RadioSlots>()
 
@@ -50,11 +49,11 @@ const innerChecked = computed(() => {
 })
 
 const isDisabled = computed(() => {
-  return formContext?.disabled ?? props.disabled ?? groupContext?.disabled
+  return formContext?.disabled || groupContext?.disabled || props.disabled
 })
 
 const isReadonly = computed(() => {
-  return formContext?.readonly ?? props.readonly ?? groupContext?.readonly
+  return formContext?.readonly || groupContext?.readonly || props.readonly
 })
 
 const onClick = (event: any) => {
