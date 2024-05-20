@@ -17,11 +17,7 @@ export interface CheckboxProps {
   validateEvent?: boolean
 }
 
-export const checkboxPropsDefaults = {
-  ...defaultConfig.checkbox,
-  disabled: undefined,
-  readonly: undefined,
-}
+export const checkboxPropsDefaults = defaultConfig.checkbox
 
 export interface CheckboxSlots {
   default?(props: Record<string, never>): any

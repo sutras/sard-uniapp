@@ -144,7 +144,8 @@ import FormItem from 'sard-uniapp/components/form-item/form-item.vue'
 | label-align             | 标签水平对齐方式                                                                   | 'start' \| 'center' \| 'end' | 'start'      |
 | label-valign            | 标签垂直对齐方式                                                                   | 'start' \| 'center' \| 'end' | 'start'      |
 | star-position           | 必填星号在标签的左边或右边                                                         | 'left' \| 'right'            | 'left'       |
-| show-rrror              | 是否显示校验错误信息                                                               | boolean                      | true         |
+| hide-star               | 是否隐藏必填时的星号                                                               | boolean                      | false        |
+| show-error              | 是否显示校验错误信息                                                               | boolean                      | true         |
 | scroll-to-first-error   | 当校验失败时，滚动到第一个错误表单项                                               | boolean                      | false        |
 | disabled                | 是否禁用该表单内的所有组件。 如果设置为 `true`, 它将覆盖内部组件的 `disabled` 属性 | boolean                      | false        |
 | readonly                | 是否只读该表单内的所有组件。 如果设置为 `true`, 它将覆盖内部组件的 `readonly` 属性 | boolean                      | false        |
@@ -175,7 +176,6 @@ import FormItem from 'sard-uniapp/components/form-item/form-item.vue'
 | label-align      | 标签水平对齐方式                                                                       | 'start' \| 'center' \| 'end' | 'start'      |
 | label-valign     | 标签垂直对齐方式                                                                       | 'start' \| 'center' \| 'end' | 'start'      |
 | star-position    | 必填星号在标签的左边或右边                                                             | 'left' \| 'right'            | 'left'       |
-| show-star        | 是否显示星号，会覆盖验证规则                                                           | boolean                      | -            |
 | label            | 标签文本                                                                               | string                       | -            |
 | required         | 是否为必填项，如不设置，则会根据校验规则确认                                           | boolean                      | -            |
 | name             | 表单域 `model` 字段，在使用 `validate、reset` 方法的情况下，该属性是必填的。           | FieldName                    | -            |

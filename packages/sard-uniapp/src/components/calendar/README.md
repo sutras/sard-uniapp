@@ -101,7 +101,7 @@ type CalendarType = 'single' | 'multiple' | 'range'
 | 属性      | 描述                             | 类型                                                             |
 | --------- | -------------------------------- | ---------------------------------------------------------------- |
 | date      | 当前月份中每日对应的日期对象     | Date                                                             |
-| disabled  | 知否禁用                         | boolean                                                          |
+| disabled  | 是否禁用                         | boolean                                                          |
 | type      | 日期类型，每个类型对应的含义如下 | 'same' \| 'start' \| 'middle' \| 'end' \| 'selected' \| 'normal' |
 | top       | 额外的上方信息                   | string                                                           |
 | text      | 中间显示的文字                   | string \| number                                                 |

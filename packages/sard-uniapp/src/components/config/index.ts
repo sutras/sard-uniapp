@@ -80,6 +80,9 @@ export const defaultConfig = {
     showError: true,
     scrollDuration: 150,
   },
+  formItem: {
+    showError: true,
+  },
   grid: {
     columns: 4,
     direction: 'vertical' as const,

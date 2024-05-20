@@ -15,11 +15,6 @@ export interface RadioProps {
   checkedColor?: string
 }
 
-export const radioPropsDefaults = {
-  disabled: undefined,
-  readonly: undefined,
-}
-
 export interface RadioSlots {
   default?(props: Record<string, never>): any
   icon?(props: { checked: boolean }): any
