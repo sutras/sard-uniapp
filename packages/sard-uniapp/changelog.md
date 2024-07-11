@@ -1,3 +1,12 @@
+# [1.2.0](https://github.com/sutras/sard-uniapp/compare/v1.1.7...v1.2.0) (2024-07-11)
+
+
+### Features
+
+* 新增Marquee, LuckyDraw, CountTo组件 ([61db992](https://github.com/sutras/sard-uniapp/commit/61db992aea95658b714ae4182526dff10ad54491))
+
+
+
 ## [1.1.7](https://github.com/sutras/sard-uniapp/compare/v1.1.6...v1.1.7) (2024-05-20)
 
 
