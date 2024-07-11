@@ -17,6 +17,7 @@ export interface IndexesEmits {
 
 export interface IndexesExpose {
   scrollTo: (name: string | number) => void
+  update: () => void
 }
 
 export interface IndexesAnchorProps {

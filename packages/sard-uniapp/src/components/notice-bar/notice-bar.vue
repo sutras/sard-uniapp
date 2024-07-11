@@ -41,8 +41,10 @@ import {
   type NoticeBarProps,
   type NoticeBarSlots,
   type NoticeBarEmits,
+  type NoticeBarExpose,
   noticeBarPropsDefaults,
 } from './common'
+import { useSetTimeout } from '../../use'
 
 defineOptions({
   options: {
@@ -77,7 +79,7 @@ const getWidth = async (id: string) => {
   return (await getBoundingClientRect(`#${id}`, instance)).width
 }
 
-const updateWrapperData = async () => {
+const update = async () => {
   if (props.scrollable === 'never') {
     shouldScroll.value = false
     return
@@ -118,15 +120,23 @@ const onRightIconClick = () => {
   }
 }
 
+const [updateLater] = useSetTimeout(() => {
+  update()
+})
+
 onMounted(() => {
   if (props.scrollable) {
-    updateWrapperData()
+    updateLater(props.delay)
   }
 })
 
 const onClick = (event: any) => {
   emit('click', event)
 }
+
+defineExpose<NoticeBarExpose>({
+  update,
+})
 
 // others
 const noticeBarClass = computed(() => {
@@ -157,7 +167,6 @@ const wrapperStyle = computed(() => {
     transform: `translateX(${
       firstLap.value ? 0 : wrapperData.value.contentWidth
     }px)`,
-    animationDelay: `${firstLap.value ? props.delay : 0}ms`,
     animationDuration: `${
       firstLap.value ? wrapperData.value.first : wrapperData.value.later
     }ms`,

@@ -22,7 +22,7 @@
 <script setup lang="ts">
 import { computed, reactive, toRef } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
-import { TransitionOptions, useTransition, useZIndex } from '../../use'
+import { type UseTransitionOptions, useTransition, useZIndex } from '../../use'
 import SarOverlay from '../overlay/overlay.vue'
 import {
   type PopupProps,
@@ -52,7 +52,7 @@ const [zIndex, increaseZIndex] = useZIndex()
 
 const callVisibleHook = usePopupVisibleHookProvide()
 
-const onVisibleHook: TransitionOptions['onVisibleHook'] = (name) => {
+const onVisibleHook: UseTransitionOptions['onVisibleHook'] = (name) => {
   callVisibleHook(name)
   emit('visible-hook', name)
   emit(name as any)

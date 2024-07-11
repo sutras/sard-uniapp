@@ -10,7 +10,7 @@ export type TransitionHookName =
   | 'after-leave'
   | 'leave-cancelled'
 
-export interface TransitionOptions {
+export interface UseTransitionOptions {
   visible?: boolean
   prefix?: string
   duration?: number
@@ -25,7 +25,7 @@ export interface TransitionOptions {
 
 const tickInterval = 30
 
-export function useTransition(options: TransitionOptions = {}) {
+export function useTransition(options: UseTransitionOptions = {}) {
   const duration = computed(() => {
     return options.duration || 0
   })

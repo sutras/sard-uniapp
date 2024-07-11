@@ -91,15 +91,17 @@ import GridItem from 'sard-uniapp/components/grid-item/grid-item.vue'
 
 ### GridItemProps
 
-| 属性        | 描述                     | 类型       | 默认值 |
-| ----------- | ------------------------ | ---------- | ------ |
-| root-class  | 组件根元素类名           | string     | -      |
-| root-style  | 组件根元素样式           | StyleValue | -      |
-| text        | 自定义文字内容           | string     | -      |
-| icon        | 图标名称，可以为图片路径 | string     | -      |
-| icon-size   | 图标尺寸                 | string     | -      |
-| icon-color  | 图标颜色                 | string     | -      |
-| icon-family | 图标字体名称             | string     | -      |
+| 属性          | 描述                     | 类型       | 默认值 |
+| ------------- | ------------------------ | ---------- | ------ |
+| root-class    | 组件根元素类名           | string     | -      |
+| root-style    | 组件根元素样式           | StyleValue | -      |
+| content-class | 内容元素类名             | string     | -      |
+| content-style | 内容元素样式             | StyleValue | -      |
+| text          | 自定义文字内容           | string     | -      |
+| icon          | 图标名称，可以为图片路径 | string     | -      |
+| icon-size     | 图标尺寸                 | string     | -      |
+| icon-color    | 图标颜色                 | string     | -      |
+| icon-family   | 图标字体名称             | string     | -      |
 
 ### GridItemSlots
 

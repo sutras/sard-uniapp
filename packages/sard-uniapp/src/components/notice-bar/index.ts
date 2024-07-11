@@ -1,1 +1,6 @@
-export type { NoticeBarProps, NoticeBarSlots, NoticeBarEmits } from './common'
+export type {
+  NoticeBarProps,
+  NoticeBarSlots,
+  NoticeBarEmits,
+  NoticeBarExpose,
+} from './common'

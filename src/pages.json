@@ -91,6 +91,12 @@
       }
     },
     {
+      "path": "pages/components/count-to/index",
+      "style": {
+        "navigationBarTitleText": "CountTo 数字滚动"
+      }
+    },
+    {
       "path": "pages/components/datetime-picker/index",
       "style": {
         "navigationBarTitleText": "DatetimePicker 日期时间选择器"
@@ -229,6 +235,12 @@
       }
     },
     {
+      "path": "pages/components/form/demo/ToastValidateError",
+      "style": {
+        "navigationBarTitleText": "toast显示验证错误信息"
+      }
+    },
+    {
       "path": "pages/components/grid/index",
       "style": {
         "navigationBarTitleText": "Grid 宫格"
@@ -244,6 +256,18 @@
       "path": "pages/components/indexes/index",
       "style": {
         "navigationBarTitleText": "Indexes 索引"
+      }
+    },
+    {
+      "path": "pages/components/indexes/demo/AreaCode",
+      "style": {
+        "navigationBarTitleText": "AreaCode 选择国家/地区"
+      }
+    },
+    {
+      "path": "pages/components/indexes/demo/AreaCodeSearch",
+      "style": {
+        "navigationBarTitleText": "AreaCodeSearch 选择国家/地区"
       }
     },
     {
@@ -280,6 +304,18 @@
       "path": "pages/components/load-more/index",
       "style": {
         "navigationBarTitleText": "LoadMore 加载更多"
+      }
+    },
+    {
+      "path": "pages/components/lucky-draw/index",
+      "style": {
+        "navigationBarTitleText": "LuckyDraw 幸运抽奖"
+      }
+    },
+    {
+      "path": "pages/components/marquee/index",
+      "style": {
+        "navigationBarTitleText": "Marquee 跑马灯"
       }
     },
     {
@@ -486,7 +522,7 @@
   "easycom": {
     "custom": {
       "^sar-(.*)": "sard-uniapp/components/$1/$1.vue",
-      "^doc-(.*)": "@/components/$1/index.vue"
+      "^doc-(.*)": "@/components/$1/$1.vue"
     }
   }
 }

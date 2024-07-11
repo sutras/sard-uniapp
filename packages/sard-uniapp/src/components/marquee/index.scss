@@ -1,0 +1,43 @@
+@use '../style/base' as *;
+
+@include bem(marquee) {
+  @include b() {
+    @include universal;
+    overflow: hidden;
+  }
+
+  @include e(wrapper) {
+    @include universal;
+    flex: none;
+    animation-timing-function: linear;
+    animation-iteration-count: infinite;
+    animation-play-state: paused;
+  }
+
+  @include m(vertical) {
+    @include e(wrapper) {
+      flex-direction: column;
+      animation-name: #{bem-ns(marquee-scroll-vertical)};
+    }
+  }
+
+  @include m(horizontal) {
+    flex-direction: row;
+    @include e(wrapper) {
+      flex-direction: row;
+      animation-name: #{bem-ns(marquee-scroll-horizontal)};
+    }
+  }
+
+  @keyframes #{bem-ns(marquee-scroll-vertical)} {
+    100% {
+      transform: translate3d(0, -50%, 0);
+    }
+  }
+
+  @keyframes #{bem-ns(marquee-scroll-horizontal)} {
+    100% {
+      transform: translate3d(-50%, 0, 0);
+    }
+  }
+}

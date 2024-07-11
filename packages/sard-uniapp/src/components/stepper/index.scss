@@ -8,6 +8,7 @@
     align-items: stretch;
     gap: var(--sar-stepper-gap);
     height: var(--sar-stepper-height);
+    color: var(--sar-body-color);
   }
 
   @include e(button) {

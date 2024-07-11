@@ -22,6 +22,8 @@ export interface GridSlots {
 export interface GridItemProps {
   rootStyle?: StyleValue
   rootClass?: string
+  contentStyle?: StyleValue
+  contentClass?: string
   text?: string
   icon?: string
   iconSize?: string

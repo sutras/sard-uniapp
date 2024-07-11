@@ -72,7 +72,7 @@ pnpm install
 pnpm run dev
 ```
 
-运行上面后命令后会生成四个链接：
+运行上面命令后会生成四个链接：
 
 ```bash
 Local:   http://localhost:5173/sard-uniapp-docs/mobile/    （演示）

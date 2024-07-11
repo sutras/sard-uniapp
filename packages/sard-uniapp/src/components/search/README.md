@@ -80,6 +80,7 @@ import Search from 'sard-uniapp/components/search/search.vue'
 | align                 | 输入框文字对齐     | 'left' \| 'center' \| 'right' | 'left'   |
 | cancel                | 定义取消按钮       | string                        | -        |
 | search                | 定义搜索按钮       | string                        | -        |
+| focus                 | 获取焦点           | boolean                       | false    |
 
 ### SearchSlots
 
@@ -97,6 +98,7 @@ import Search from 'sard-uniapp/components/search/search.vue'
 | update:model-value | 输入框值改变时触发 | (value: string) => void |
 | cancel             | 点击取消按钮时触发 | () => void              |
 | search             | 点击确定按钮时触发 | (value: string) => void |
+| click              | 点击组件时触发     | (event: any) => void    |
 
 ## 主题定制
 

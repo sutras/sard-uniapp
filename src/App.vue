@@ -14,7 +14,8 @@ onHide(() => {
 <style lang="scss">
 @import 'sard-uniapp/index.scss';
 @import 'sard-uniapp/dark.scss';
-@import './demo-icons.css';
+@import '@/style/demo-icons.css';
+@import '@/style/cake.css';
 
 ::-webkit-scrollbar {
   display: none;

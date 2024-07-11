@@ -813,3 +813,16 @@ export function nestedToMulti(
 
   return columns
 }
+
+// 生成两数间的一个随机整数
+export function random(min: number, max: number) {
+  return Math.round(min + Math.random() * (max - min))
+}
+
+// 每n位数字添加一个分隔符
+export function addSeparator(num: number | string, separator = ',', digit = 3) {
+  return String(num).replace(
+    new RegExp(`\\B(?=(\\d{${digit}})+(?!\\d))`, 'g'),
+    separator,
+  )
+}

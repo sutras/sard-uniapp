@@ -12,7 +12,12 @@
 // 5. 统一导出全局组件类型: packages/sard-uniapp/src/global.d.ts
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
-import { type _TemplateSlots, type _TemplateProps } from './common'
+import {
+  type _TemplateProps,
+  type _TemplateSlots,
+  type _TemplateEmits,
+  type _TemplateExpose,
+} from './common'
 
 defineOptions({
   options: {
@@ -25,11 +30,17 @@ const props = withDefaults(defineProps<_TemplateProps>(), {})
 
 defineSlots<_TemplateSlots>()
 
-defineEmits(['click'])
+defineEmits<_TemplateEmits>()
 
 const bem = createBem('_template')
 
 // main
+
+defineExpose<_TemplateExpose>({
+  reset: () => {
+    void 0
+  },
+})
 
 // others
 const _templateClass = computed(() => {

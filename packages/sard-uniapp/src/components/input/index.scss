@@ -111,6 +111,12 @@
       color: var(--sar-disabled-color);
     }
   }
+
+  @include m(readonly) {
+    @include e(control) {
+      pointer-events: none;
+    }
+  }
 }
 
 /* #ifdef WEB */
