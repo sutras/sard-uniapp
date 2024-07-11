@@ -156,8 +156,16 @@ const menus = [
         name: 'count-down',
       },
       {
+        title: 'CountTo 数字滚动',
+        name: 'count-to',
+      },
+      {
         title: 'List 列表',
         name: 'list',
+      },
+      {
+        title: 'LuckyDraw 幸运抽奖',
+        name: 'lucky-draw',
       },
       {
         title: 'Empty 空状态',
@@ -250,7 +258,7 @@ const menus = [
         name: 'load-more',
       },
       {
-        title: 'Notify 通知栏',
+        title: 'Notify 消息通知',
         name: 'notify',
       },
       {
@@ -276,6 +284,19 @@ const menus = [
       {
         title: 'Toast 轻提示',
         name: 'toast',
+      },
+    ],
+  },
+  {
+    title: '活动组件',
+    children: [
+      {
+        title: 'LuckyDraw 幸运抽奖',
+        name: 'lucky-draw',
+      },
+      {
+        title: 'Marquee 跑马灯',
+        name: 'marquee',
       },
     ],
   },

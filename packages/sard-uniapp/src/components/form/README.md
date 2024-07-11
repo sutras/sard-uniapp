@@ -127,6 +127,12 @@ import FormItem from 'sard-uniapp/components/form-item/form-item.vue'
 
 @code('${DEMO_PATH}/form/demo/ScrollToFirstError.vue')
 
+### toast 显示验证错误信息
+
+通过设置 `showError` 属性隐藏默认验证错误信息，再通过 toast 显示 `validate()` 方法 `catch` 回调中的信息。
+
+@code('${DEMO_PATH}/form/demo/ToastValidateError.vue')
+
 ## API
 
 ### FormProps

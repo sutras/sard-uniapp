@@ -1,12 +1,11 @@
 <template>
-  <view :class="searchClass" :style="searchStyle">
+  <view :class="searchClass" :style="searchStyle" @click="onClick">
     <view v-if="$slots.prepend" :class="bem.e('prepend')">
       <slot name="prepend"></slot>
     </view>
     <view :class="bem.e('input-wrapper')">
       <sar-input
         :model-value="innerValue"
-        @update:model-value="onInput"
         clearable
         confirm-type="search"
         showClearOnlyFocus
@@ -16,6 +15,8 @@
         borderless
         :root-class="inputClass"
         :root-style="inputStyle"
+        :focus="focus"
+        @update:model-value="onInput"
         @confirm="onConfirm"
       >
         <template #prepend>
@@ -100,6 +101,10 @@ const onConfirm = () => {
 const onCancel = () => {
   innerValue.value = ''
   emit('cancel')
+}
+
+const onClick = (event: any) => {
+  emit('click', event)
 }
 
 // others

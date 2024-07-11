@@ -4,6 +4,10 @@
       <DemoBasic />
     </doc-demo>
 
+    <doc-demo title="异步数据" full>
+      <DemoReset />
+    </doc-demo>
+
     <doc-demo title="强制滚动" full>
       <DemoScrollable />
     </doc-demo>
@@ -44,6 +48,7 @@
 
 <script setup lang="ts">
 import DemoBasic from './demo/Basic.vue'
+import DemoReset from './demo/Reset.vue'
 import DemoScrollable from './demo/Scrollable.vue'
 import DemoUnScrollable from './demo/UnScrollable.vue'
 import DemoWrap from './demo/Wrap.vue'

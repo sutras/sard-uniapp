@@ -270,14 +270,14 @@ export default {
             index: 'avatar',
             children: [
               {
-                title: 'Avatar 头像',
-                path: 'avatar',
-                filePath: getComponentPath('avatar'),
-              },
-              {
                 title: 'Accordion 手风琴',
                 path: 'accordion',
                 filePath: getComponentPath('accordion'),
+              },
+              {
+                title: 'Avatar 头像',
+                path: 'avatar',
+                filePath: getComponentPath('avatar'),
               },
               {
                 title: 'Badge 徽标',
@@ -300,14 +300,19 @@ export default {
                 filePath: getComponentPath('count-down'),
               },
               {
-                title: 'List 列表',
-                path: 'list',
-                filePath: getComponentPath('list'),
+                title: 'CountTo 数字滚动',
+                path: 'count-to',
+                filePath: getComponentPath('count-to'),
               },
               {
                 title: 'Empty 空状态',
                 path: 'empty',
                 filePath: getComponentPath('empty'),
+              },
+              {
+                title: 'List 列表',
+                path: 'list',
+                filePath: getComponentPath('list'),
               },
               {
                 title: 'NoticeBar 公告栏',
@@ -421,7 +426,7 @@ export default {
                 filePath: getComponentPath('load-more'),
               },
               {
-                title: 'Notify 通知栏',
+                title: 'Notify 消息通知',
                 path: 'notify',
                 filePath: getComponentPath('notify'),
               },
@@ -454,6 +459,24 @@ export default {
                 title: 'Toast 轻提示',
                 path: 'toast',
                 filePath: getComponentPath('toast'),
+              },
+            ],
+          },
+          {
+            type: 'group',
+            title: '活动组件',
+            path: 'activities',
+            index: 'lucky-draw',
+            children: [
+              {
+                title: 'LuckyDraw 幸运抽奖',
+                path: 'lucky-draw',
+                filePath: getComponentPath('lucky-draw'),
+              },
+              {
+                title: 'Marquee 跑马灯',
+                path: 'marquee',
+                filePath: getComponentPath('marquee'),
               },
             ],
           },

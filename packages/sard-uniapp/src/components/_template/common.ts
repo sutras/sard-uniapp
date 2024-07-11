@@ -12,3 +12,7 @@ export interface _TemplateSlots {
 export interface _TemplateEmits {
   (e: 'click', event: any): void
 }
+
+export interface _TemplateExpose {
+  reset: () => void
+}

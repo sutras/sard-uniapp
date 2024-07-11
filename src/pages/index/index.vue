@@ -25,7 +25,7 @@ const desc = ref('Uniapp UI 组件库')
 </script>
 
 <style lang="scss">
-@use '@/index.scss' as *;
+@use '@/style/index.scss' as *;
 
 @include bem(index) {
   @include e(header) {

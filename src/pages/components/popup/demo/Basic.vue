@@ -38,7 +38,7 @@ const onOverlayClick = () => {
 </script>
 
 <style lang="scss">
-@use '@/index.scss' as *;
+@use '@/style/index.scss' as *;
 
 @include bem(popup) {
   @include e(content) {

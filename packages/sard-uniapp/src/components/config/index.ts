@@ -43,6 +43,12 @@ export const defaultConfig = {
     autoStart: true,
     format: 'HH:mm:ss',
   },
+  countTo: {
+    value: 0,
+    precision: 0,
+    separatorDigit: 3,
+    duration: 2000,
+  },
   datetimePicker: {
     type: 'yMd',
   },
@@ -111,6 +117,11 @@ export const defaultConfig = {
   },
   loading: {
     type: 'circular' as const,
+  },
+  marquee: {
+    direction: 'vertical' as const,
+    delay: 1000,
+    speed: 50,
   },
   noticeBar: {
     delay: 1000,
@@ -200,6 +211,7 @@ export const defaultConfig = {
   },
   search: {
     shape: 'square' as const,
+    focus: false,
   },
   shareSheet: {
     overlayClosable: true,

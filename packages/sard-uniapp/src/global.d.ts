@@ -16,6 +16,7 @@ import SarCheckboxGroup from './components/checkbox-group/checkbox-group.vue'
 import SarCol from './components/col/col.vue'
 import SarCollapse from './components/collapse/collapse.vue'
 import SarCountDown from './components/count-down/count-down.vue'
+import SarCountTo from './components/count-to/count-to.vue'
 import SarDatetimePicker from './components/datetime-picker/datetime-picker.vue'
 import SarDatetimePickerInput from './components/datetime-picker-input/datetime-picker-input.vue'
 import SarDialog from './components/dialog/dialog.vue'
@@ -36,6 +37,7 @@ import SarList from './components/list/list.vue'
 import SarListItem from './components/list-item/list-item.vue'
 import SarLoading from './components/loading/loading.vue'
 import SarLoadMore from './components/load-more/load-more.vue'
+import SarMarquee from './components/marquee/marquee.vue'
 import SarMenu from './components/menu/menu.vue'
 import SarNavbar from './components/navbar/navbar.vue'
 import SarNavbarItem from './components/navbar-item/navbar-item.vue'
@@ -100,6 +102,7 @@ declare module '@vue/runtime-core' {
     SarCol: typeof SarCol
     SarCollapse: typeof SarCollapse
     SarCountDown: typeof SarCountDown
+    SarCountTo: typeof SarCountTo
     SarDatetimePicker: typeof SarDatetimePicker
     SarDatetimePickerInput: typeof SarDatetimePickerInput
     SarDialog: typeof SarDialog
@@ -120,6 +123,7 @@ declare module '@vue/runtime-core' {
     SarListItem: typeof SarListItem
     SarLoading: typeof SarLoading
     SarLoadMore: typeof SarLoadMore
+    SarMarquee: typeof SarMarquee
     SarMenu: typeof SarMenu
     SarNavbar: typeof SarNavbar
     SarNavbarItem: typeof SarNavbarItem

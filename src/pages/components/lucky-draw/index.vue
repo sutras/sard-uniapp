@@ -1,0 +1,29 @@
+<template>
+  <doc-page>
+    <doc-demo title="九宫格">
+      <DemoBasicGrid />
+    </doc-demo>
+    <doc-demo title="自定义宫格行列">
+      <DemoGridSize />
+    </doc-demo>
+    <doc-demo title="大转盘">
+      <DemoWheel />
+    </doc-demo>
+    <doc-demo title="老虎机">
+      <DemoSlotMechine />
+    </doc-demo>
+  </doc-page>
+</template>
+
+<script setup lang="ts">
+import DemoBasicGrid from './demo/BasicGrid.vue'
+import DemoGridSize from './demo/GridSize.vue'
+import DemoWheel from './demo/Wheel.vue'
+import DemoSlotMechine from './demo/SlotMechine.vue'
+</script>
+
+<style lang="scss" scoped>
+// :deep() {
+
+// }
+</style>

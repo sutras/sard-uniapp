@@ -104,6 +104,12 @@
           hover
           @click="navigateTo('ScrollToFirstError')"
         />
+        <sar-list-item
+          title="toast显示验证错误信息"
+          arrow
+          hover
+          @click="navigateTo('ToastValidateError')"
+        />
       </sar-list>
     </doc-demo>
   </doc-page>

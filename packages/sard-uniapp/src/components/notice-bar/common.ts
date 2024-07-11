@@ -29,3 +29,7 @@ export interface NoticeBarEmits {
   (e: 'click', event: any): void
   (e: 'close'): void
 }
+
+export interface NoticeBarExpose {
+  update: () => void
+}

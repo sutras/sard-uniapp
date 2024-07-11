@@ -18,6 +18,16 @@ import NoticeBar from 'sard-uniapp/components/notice-bar/notice-bar.vue'
 
 @code('${DEMO_PATH}/notice-bar/demo/Basic.vue')
 
+### 异步数据
+
+`NoticeBar` 组件是通过 `animation` 来实现高效的滚动动画的，
+会根据内容宽度动态设置动画时长，以实现固定速率滚动。
+
+如果 `NoticeBar` 挂载时机比插槽内容靠前，即插槽内容数据需要通过接口异步获取再渲染的，
+需要手动调用 `update` 方法来更新动画时长。
+
+@code('${DEMO_PATH}/notice-bar/demo/Reset.vue')
+
 ### 强制滚动
 
 设置 `scrollable="always"` 属性时，无论公告栏内容多少都会滚动。
@@ -76,21 +86,21 @@ import NoticeBar from 'sard-uniapp/components/notice-bar/notice-bar.vue'
 
 ### NoticeBarProps
 
-| 属性           | 描述                                     | 类型                          | 默认值 |
-| -------------- | ---------------------------------------- | ----------------------------- | ------ |
-| root-class     | 组件根元素类名                           | string                        | -      |
-| root-style     | 组件根元素样式                           | StyleValue                    | -      |
-| color          | 自定义颜色                               | string                        | -      |
-| background     | 自定义背景色                             | string                        | -      |
-| hide-left-icon | 隐藏左边图标                             | boolean                       | false  |
-| delay          | 动画延迟时间 (ms)                        | number                        | 1000   |
-| speed          | 滚动速率 (px/s)                          | number                        | 50     |
-| scrollable     | 是否开启滚动播放，内容长度溢出时默认开启 | 'auto' \| 'never' \| 'always' | 'auto' |
-| wrap           | 是否开启文本换行                         | boolean                       | false  |
-| closable       | 是否显示关闭按钮                         | boolean                       | false  |
-| linkable       | 是否展示右侧箭头                         | boolean                       | false  |
-| visible        | 是否显示公告栏                           | boolean                       | true   |
-| vertical       | 搭配 `Swipe` 组件实现垂直滚动            | boolean                       | false  |
+| 属性           | 描述                                                | 类型                          | 默认值 |
+| -------------- | --------------------------------------------------- | ----------------------------- | ------ |
+| root-class     | 组件根元素类名                                      | string                        | -      |
+| root-style     | 组件根元素样式                                      | StyleValue                    | -      |
+| color          | 自定义颜色                                          | string                        | -      |
+| background     | 自定义背景色                                        | string                        | -      |
+| hide-left-icon | 隐藏左边图标                                        | boolean                       | false  |
+| delay          | 挂载后，延迟动画时间（单位 ms），避免进入页面时卡顿 | number                        | 1000   |
+| speed          | 滚动速率 (px/s)                                     | number                        | 50     |
+| scrollable     | 是否开启滚动播放，内容长度溢出时默认开启            | 'auto' \| 'never' \| 'always' | 'auto' |
+| wrap           | 是否开启文本换行                                    | boolean                       | false  |
+| closable       | 是否显示关闭按钮                                    | boolean                       | false  |
+| linkable       | 是否展示右侧箭头                                    | boolean                       | false  |
+| visible        | 是否显示公告栏                                      | boolean                       | true   |
+| vertical       | 搭配 `Swipe` 组件实现垂直滚动                       | boolean                       | false  |
 
 ### NoticeBarSlots
 
@@ -104,8 +114,14 @@ import NoticeBar from 'sard-uniapp/components/notice-bar/notice-bar.vue'
 
 | 事件  | 描述               | 类型                 |
 | ----- | ------------------ | -------------------- |
-| click | 点击通知栏时触发   | (event: any) => void |
+| click | 点击公告栏时触发   | (event: any) => void |
 | close | 点击关闭按钮时触发 | () => void           |
+
+### NoticeBarExpose
+
+| 属性   | 描述         | 类型       |
+| ------ | ------------ | ---------- |
+| update | 重置滚动时长 | () => void |
 
 ## 主题定制
 

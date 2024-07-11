@@ -82,10 +82,6 @@ export const formItemPropsDefaults = {
   required: undefined,
 }
 
-// export const formItemPropsDefaults = {
-//   required: undefined,
-// }
-
 export interface FormItemSlots {
   default?(props: Record<string, never>): any
   label?(props: Record<string, never>): any

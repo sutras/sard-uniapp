@@ -15,6 +15,7 @@ export interface SearchProps {
   align?: 'left' | 'center' | 'right'
   cancel?: string
   search?: string
+  focus?: boolean
 }
 
 export const searchPropsDefaults = defaultConfig.search
@@ -30,4 +31,5 @@ export interface SearchEmits {
   (e: 'update:model-value', value: string): void
   (e: 'cancel'): void
   (e: 'search', value: string): void
+  (e: 'click', event: any): void
 }

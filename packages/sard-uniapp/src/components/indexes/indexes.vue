@@ -28,13 +28,13 @@ import {
   nextTick,
 } from 'vue'
 import {
+  type NodeRect,
   classNames,
   stringifyStyle,
   createBem,
   uniqid,
   getBoundingClientRect,
   matchScrollVisible,
-  type NodeRect,
   isNullish,
 } from '../../utils'
 import {
@@ -107,10 +107,6 @@ const scrollTo = (name: string | number) => {
   }
 }
 
-defineExpose<IndexesExpose>({
-  scrollTo,
-})
-
 const onScroll = (event: any) => {
   memoScrollTop.value = event.detail.scrollTop
 
@@ -171,14 +167,20 @@ const getAllAnchorRect = async () => {
   return sortedAllRect
 }
 
+const update = () => {
+  getAllAnchorRect().then((rect) => {
+    anchorRectList.value = rect
+    if (!isNullish(props.current)) {
+      scrollTo(props.current)
+    } else {
+      innerCurrent.value = anchorNames.value[0]
+    }
+  })
+}
+
 onMounted(() => {
   nextTick(() => {
-    getAllAnchorRect().then((rect) => {
-      anchorRectList.value = rect
-      if (!isNullish(props.current)) {
-        scrollTo(props.current)
-      }
-    })
+    update()
   })
 })
 
@@ -192,6 +194,11 @@ const onNavSelect = (name: string | number) => {
   scrollTo(name)
   emit('change', name)
 }
+
+defineExpose<IndexesExpose>({
+  scrollTo,
+  update,
+})
 
 // others
 const indexesClass = computed(() => {

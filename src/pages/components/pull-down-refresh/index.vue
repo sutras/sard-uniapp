@@ -16,6 +16,7 @@
             margin: 0 32rpx 10rpx;
             height: 40px;
             border: 1px solid var(--sar-border-color);
+            border-radius: var(--sar-rounded);
           "
         >
           {{ item }}

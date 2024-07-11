@@ -17,10 +17,11 @@
     "strictNullChecks": true,
     "jsx": "preserve",
     "paths": {
-      "@/*": ["src/*"]
+      "@/*": ["src/*"],
+      "sard-uniapp": ["packages/sard-uniapp/src"]
     }
   },
-  "include": ["src/**/*", "src/**/*.vue"],
+  "include": ["src/**/*", "src/**/*.vue", "packages/**/*", "packages/**/*.vue"],
   "exclude": [
     "**/dist/**",
     "**/docs/**",

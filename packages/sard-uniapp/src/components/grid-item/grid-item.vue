@@ -1,7 +1,11 @@
 <template>
-  <view :class="classNames(bem.e('item'), rootClass)" :style="itemStyle">
+  <view :class="itemClass" :style="itemStyle">
     <view :class="bem.e('wrapper')">
-      <view :class="bem.e('content')" @click="onClick">
+      <view
+        :class="classNames(bem.e('content'), contentClass)"
+        :style="stringifyStyle(contentStyle)"
+        @click="onClick"
+      >
         <slot>
           <view :class="bem.e('icon')">
             <slot name="icon">
@@ -61,6 +65,10 @@ const onClick = (event: any) => {
 }
 
 // others
+const itemClass = computed(() => {
+  return classNames(bem.e('item'), props.rootClass)
+})
+
 const itemStyle = computed(() => {
   const width = (1 / context.columns) * 100 + '%'
 
