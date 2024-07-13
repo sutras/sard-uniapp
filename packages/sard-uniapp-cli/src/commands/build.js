@@ -90,6 +90,10 @@ async function compileTsAndGenerateVueType() {
   }
 }
 
+async function copyLwa() {
+  await copySrcToDist('./**/lwa.slim.*')
+}
+
 function doCompileVue(code, filePath) {
   let wxsMatch = ''
   code = code.replace(/<script.*?lang="wxs".*?><\/script>/, (m) => {
@@ -229,6 +233,7 @@ export async function build() {
   const steps = [
     [deleteOutDir, `已删除 ${outDir} 目录`],
     [compileTsAndGenerateVueType, `已完成 ts 文件编译以及生成 vue 类型文件`],
+    [copyLwa, `已完成 lwa 拷贝`],
     [compileVue, `已完成 vue 文件编译`],
     [handleGlobalComponent, `已完成全局组件类型处理`],
     [copyScss, `已完成 scss 拷贝`],
