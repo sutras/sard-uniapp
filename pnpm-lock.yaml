@@ -60,7 +60,7 @@ importers:
         specifier: ^1.0.0
         version: 1.0.0
       vue:
-        specifier: ^3.4.27
+        specifier: ^3.4.21
         version: 3.4.27(typescript@5.4.5)
       vue-i18n:
         specifier: ^9.8.0
@@ -147,9 +147,6 @@ importers:
       '@dcloudio/types':
         specifier: ^3.4.8
         version: 3.4.8
-      lwa:
-        specifier: ^0.2.2
-        version: 0.2.2
       vue:
         specifier: ^3.4.27
         version: 3.4.27(typescript@5.4.5)
@@ -3988,9 +3985,6 @@ packages:
   lru-cache@6.0.0:
     resolution: {integrity: sha512-Jo6dJ04CmSjuznwJSS3pUeWmd/H0ffTlkXXgwZi+eq1UCmqQwCh+eLsYOYCwY991i2Fah4h1BEMCx4qThGbsiA==}
     engines: {node: '>=10'}
-
-  lwa@0.2.2:
-    resolution: {integrity: sha512-GLsY2454DX2qpTEHyfMNh9LuqTFKaYbJvvfa8507M1LSlxg0GZQR+oduC+X5U3TyHrcbtIVXLH34Q+iLJpfd9A==}
 
   lz-string@1.5.0:
     resolution: {integrity: sha512-h5bgJWpxJNswbU7qCrV0tIKQCaS3blPDrqKWx+QxzuzL1zGUzij9XCWLrSLsJPu5t+eWA/ycetzYAO5IOMcWAQ==}
@@ -10520,8 +10514,6 @@ snapshots:
   lru-cache@6.0.0:
     dependencies:
       yallist: 4.0.0
-
-  lwa@0.2.2: {}
 
   lz-string@1.5.0: {}
 

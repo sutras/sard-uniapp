@@ -30,7 +30,7 @@ onMounted(() => {
   setTimeout(() => {
     data.value = [...genData(), ...genData()]
     nextTick(() => {
-      marqueeRef.value.update()
+      marqueeRef.value?.update()
     })
   }, 500)
 })

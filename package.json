@@ -5,9 +5,11 @@
     "dev": "pnpm -F sard-uniapp run dev",
     "build:site": "pnpm -F sard-uniapp run build:site",
     "preview": "pnpm -F sard-uniapp run preview",
-    "build": "pnpm -F sard-uniapp run build",
     "deploy": "pnpm -F sard-uniapp run deploy",
+    "build": "pnpm -F sard-uniapp run build",
     "release": "pnpm -F sard-uniapp run release",
+    "buildAndRelease": "npm run build && npm run release",
+    "push": "git push origin && git push gitee && git push origin --tags && git push gitee --tags",
     "test": "pnpm -F sard-uniapp run test",
     "prepare": "husky install",
     "lint:eslint": "eslint --cache --max-warnings 0  \"**/*.{ts,tsx,js,jsx,mjs,cjs,vue}\" --fix",
@@ -73,7 +75,7 @@
     "region-data": "^1.2.1",
     "sard-uniapp": "workspace:*",
     "tel-area-code": "^1.0.0",
-    "vue": "^3.4.27",
+    "vue": "^3.4.21",
     "vue-i18n": "^9.8.0"
   },
   "devDependencies": {

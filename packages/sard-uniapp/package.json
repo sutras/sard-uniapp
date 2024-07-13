@@ -2,7 +2,7 @@
   "id": "sard-uniapp",
   "name": "sard-uniapp",
   "displayName": "sard-uniapp",
-  "version": "1.2.0",
+  "version": "1.2.1",
   "type": "module",
   "description": "sard-uniapp 是一套基于 Uniapp + Vue3 框架开发的兼容多端的 UI 组件库",
   "keywords": [
@@ -114,8 +114,5 @@
   },
   "engines": {
     "HBuilderX": "^3.6.0"
-  },
-  "dependencies": {
-    "lwa": "^0.2.2"
   }
 }

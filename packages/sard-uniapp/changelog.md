@@ -1,3 +1,7 @@
+## [1.2.1-alpha2](https://github.com/sutras/sard-uniapp/compare/v1.2.0...v1.2.1-alpha2) (2024-07-12)
+
+
+
 # [1.2.0](https://github.com/sutras/sard-uniapp/compare/v1.1.7...v1.2.0) (2024-07-11)
 
 

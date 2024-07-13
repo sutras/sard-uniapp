@@ -4,9 +4,8 @@
 
 <script setup lang="ts">
 import { computed, onUnmounted, ref, watch } from 'vue'
-import { addSeparator } from '../../utils'
+import { addSeparator, createAnimation, type Timeline } from '../../utils'
 import { type CountToProps, countToPropsDefaults } from './common'
-import { createAnimation, type Timeline } from 'lwa'
 
 defineOptions({
   options: {
