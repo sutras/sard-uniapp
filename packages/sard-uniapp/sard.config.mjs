@@ -182,6 +182,11 @@ export default {
                 filePath: getComponentPath('checkbox'),
               },
               {
+                title: 'CheckboxInput 复选输入框',
+                path: 'checkbox-input',
+                filePath: getComponentPath('checkbox-input'),
+              },
+              {
                 title: 'DatetimePicker 日期时间选择器',
                 path: 'datetime-picker',
                 filePath: getComponentPath('datetime-picker'),
@@ -230,6 +235,11 @@ export default {
                 title: 'Radio 单选按钮',
                 path: 'radio',
                 filePath: getComponentPath('radio'),
+              },
+              {
+                title: 'RadioInput 单选输入框',
+                path: 'radio-input',
+                filePath: getComponentPath('radio-input'),
               },
               {
                 title: 'Rate 评分',
@@ -409,6 +419,11 @@ export default {
                 title: 'ActionSheet 动作面板',
                 path: 'action-sheet',
                 filePath: getComponentPath('action-sheet'),
+              },
+              {
+                title: 'Alert 警告提示',
+                path: 'alert',
+                filePath: getComponentPath('alert'),
               },
               {
                 title: 'Dialog 对话框',

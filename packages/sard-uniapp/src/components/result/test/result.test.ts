@@ -61,9 +61,8 @@ describe('Result', () => {
     )
 
     expect(
-      wrapper
-        .find('.sar-icon.demo-icons.demo-icons-info-circle-fill')
-        .attributes().style,
+      wrapper.find('.sar-icon.demo-icons.demo-icons-emoji-smile').attributes()
+        .style,
     ).includes('color: red;')
   })
 })

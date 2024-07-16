@@ -4,13 +4,30 @@
       <view v-if="$slots.prepend" :class="bem.e('prepend')">
         <slot name="prepend"></slot>
       </view>
+      <view
+        v-if="type === 'textarea' && innerValue === '' && placeholder"
+        :class="
+          classNames(
+            bem.e('placeholder'),
+            bem.em('placeholder', 'textarea'),
+            bem.em('placeholder', 'input-min-height', inputMinHeight),
+            placeholderClass,
+          )
+        "
+        :style="placeholderStyle"
+      >
+        {{ placeholder }}
+      </view>
       <textarea
         v-if="type === 'textarea'"
-        :class="classNames(bem.e('control'), bem.em('control', 'textarea'))"
+        :class="
+          classNames(
+            bem.e('control'),
+            bem.em('control', 'textarea'),
+            bem.em('control', 'input-min-height', inputMinHeight),
+          )
+        "
         :value="innerValue"
-        :placeholder="placeholder"
-        :placeholder-style="placeholderStyle"
-        :placeholder-class="classNames(bem.e('placeholder'), placeholderClass)"
         :disabled="isDisabled || isReadonly"
         :maxlength="maxlength"
         :focus="focus"

@@ -56,6 +56,12 @@ import RadioGroup from 'sard-uniapp/components/radio-group/radio-group.vue'
 
 @code('${DEMO_PATH}/radio/demo/Icon.vue')
 
+### 自动渲染单选按钮
+
+使用 `options` 属性设置可选项。
+
+@code('${DEMO_PATH}/radio/demo/GroupOptions.vue')
+
 ### 自定义 UI
 
 如果只想使用单选的逻辑，并想自定义 UI，可以使用单选按钮组的 `custom` 插槽。
@@ -103,18 +109,37 @@ import RadioGroup from 'sard-uniapp/components/radio-group/radio-group.vue'
 
 ### RadioGroupProps
 
-| 属性                  | 描述             | 类型                       | 默认值     |
-| --------------------- | ---------------- | -------------------------- | ---------- |
-| root-class            | 组件根元素类名   | string                     | -          |
-| root-style            | 组件根元素样式   | StyleValue                 | -          |
-| model-value (v-model) | 指定选中的选项   | any                        | -          |
-| disabled              | 禁用状态         | boolean                    | -          |
-| readonly              | 只读状态         | boolean                    | -          |
-| size                  | 图标的尺寸       | string                     | -          |
-| type                  | 图标类型         | 'circle' \| 'record'       | 'circle'   |
-| checked-color         | 选中时图标的颜色 | string                     | -          |
-| direction             | 排列方向         | 'horizontal' \| 'vertical' | 'vertical' |
-| validate-event        | 是否触发表单验证 | boolean                    | true       |
+| 属性                  | 描述                                  | 类型                       | 默认值                           |
+| --------------------- | ------------------------------------- | -------------------------- | -------------------------------- |
+| root-class            | 组件根元素类名                        | string                     | -                                |
+| root-style            | 组件根元素样式                        | StyleValue                 | -                                |
+| model-value (v-model) | 指定选中的选项                        | any                        | -                                |
+| disabled              | 禁用状态                              | boolean                    | -                                |
+| readonly              | 只读状态                              | boolean                    | -                                |
+| size                  | 图标的尺寸                            | string                     | -                                |
+| type                  | 图标类型                              | 'circle' \| 'record'       | 'circle'                         |
+| checked-color         | 选中时图标的颜色                      | string                     | -                                |
+| direction             | 排列方向                              | 'horizontal' \| 'vertical' | 'vertical'                       |
+| validate-event        | 是否触发表单验证                      | boolean                    | true                             |
+| options               | 自动设置单选按钮                      | RadioGroupOption[]         | -                                |
+| option-keys           | 自定义 options 的 label、value 的字段 | RadioGroupOptionKeys       | {label: 'label', value: 'value'} |
+
+### RadioGroupOption
+
+```ts
+export interface RadioGroupOption {
+  [key: PropertyKey]: any
+}
+```
+
+### RadioGroupOptionKeys
+
+```ts
+export interface RadioGroupOptionKeys {
+  label?: string
+  value?: string
+}
+```
 
 ### RadioGroupSlots
 

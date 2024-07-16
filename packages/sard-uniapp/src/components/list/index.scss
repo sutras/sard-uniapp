@@ -40,6 +40,12 @@
     }
   }
 
+  @include m(not-card) {
+    @include e(content) {
+      border-radius: 0;
+    }
+  }
+
   @include m(card, inlaid) {
     @include e(content) {
       &::before {

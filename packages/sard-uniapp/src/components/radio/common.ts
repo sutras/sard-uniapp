@@ -24,6 +24,20 @@ export interface RadioEmits {
   (e: 'click', event: any): void
 }
 
+export const defaultOptionKeys = {
+  label: 'label',
+  value: 'value',
+}
+
+export interface RadioGroupOption {
+  [key: PropertyKey]: any
+}
+
+export interface RadioGroupOptionKeys {
+  label?: string
+  value?: string
+}
+
 export interface RadioGroupProps {
   rootStyle?: StyleValue
   rootClass?: string
@@ -35,6 +49,8 @@ export interface RadioGroupProps {
   checkedColor?: string
   direction?: 'horizontal' | 'vertical'
   validateEvent?: boolean
+  options?: RadioGroupOption[]
+  optionKeys?: RadioGroupOptionKeys
 }
 
 export const radioGroupPropsDefaults = defaultConfig.radioGroup

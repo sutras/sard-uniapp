@@ -28,6 +28,10 @@
       <DemoIcon />
     </doc-demo>
 
+    <doc-demo title="自动渲染单选按钮">
+      <DemoGroupOptions />
+    </doc-demo>
+
     <doc-demo title="自定义 UI">
       <DemoCustom />
     </doc-demo>
@@ -42,6 +46,7 @@ import DemoSize from './demo/Size.vue'
 import DemoColor from './demo/Color.vue'
 import DemoType from './demo/Type.vue'
 import DemoIcon from './demo/Icon.vue'
+import DemoGroupOptions from './demo/GroupOptions.vue'
 import DemoCustom from './demo/Custom.vue'
 </script>
 

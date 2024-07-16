@@ -78,6 +78,7 @@
     color: var(--sar-list-item-value-color);
     text-align: right;
     word-wrap: break-word;
+    word-break: break-word;
   }
 
   @include e(arrow) {

@@ -9,12 +9,23 @@
       :toggle="toggle"
       :value="innerValue"
     ></slot>
-    <slot v-else></slot>
+    <slot v-else>
+      <template v-if="options">
+        <sar-checkbox
+          v-for="option in options"
+          :key="option[fieldKeys.value]"
+          :value="option[fieldKeys.value]"
+          :validate-event="false"
+        >
+          {{ option[fieldKeys.label] }}
+        </sar-checkbox>
+      </template>
+    </slot>
   </view>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, provide, toRef, reactive } from 'vue'
+import { ref, watch, provide, toRef, reactive, computed } from 'vue'
 import {
   type CheckboxGroupProps,
   type CheckboxGroupSlots,
@@ -22,9 +33,11 @@ import {
   type CheckboxContext,
   checkboxContextSymbol,
   checkboxGroupPropsDefaults,
+  defaultOptionKeys,
 } from '../checkbox/common'
 import { classNames, createBem, stringifyStyle } from '../../utils'
 import { useFormItemContext } from '../form/common'
+import SarCheckbox from '../checkbox/checkbox.vue'
 
 defineOptions({
   options: {
@@ -46,6 +59,10 @@ const bem = createBem('checkbox-group')
 
 // main
 const formItemContext = useFormItemContext()
+
+const fieldKeys = computed(() => {
+  return Object.assign({}, defaultOptionKeys, props.optionKeys)
+})
 
 const innerValue = ref(props.modelValue || [])
 

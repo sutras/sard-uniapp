@@ -9,7 +9,7 @@
         <sar-input
           v-model="formState.username"
           placeholder="请输入手机号"
-          borderless
+          inlaid
         />
       </sar-form-item>
 
@@ -23,9 +23,11 @@
             v-model="formState.password"
             type="password"
             placeholder="请输入短信验证码"
-            borderless
+            inlaid
           />
-          <sar-button type="pale-text">发送验证码</sar-button>
+          <sar-button type="pale-text" root-style="height: 100%">
+            发送验证码
+          </sar-button>
         </view>
       </sar-form-item>
 
@@ -65,13 +67,3 @@ const submitForm = () => {
     })
 }
 </script>
-
-<style lang="scss" scoped>
-.form {
-  padding: 32rpx;
-}
-.form-item {
-  padding-left: 0;
-  padding-right: 0;
-}
-</style>

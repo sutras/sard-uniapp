@@ -46,7 +46,6 @@ describe('Search', () => {
       }),
     )
 
-    // console.log(wrapper.html())
     expect(wrapper.find('.sar-search__append .sar-button').text()).toBe('取消')
     await wrapper.find('.sar-search__append .sar-button').trigger('click')
 

@@ -32,6 +32,10 @@
       <DemoDirection />
     </doc-demo>
 
+    <doc-demo title="自动渲染复选框">
+      <DemoGroupOptions />
+    </doc-demo>
+
     <doc-demo title="自定义">
       <DemoCustom />
     </doc-demo>
@@ -47,6 +51,7 @@ import DemoType from './demo/Type.vue'
 import DemoIcon from './demo/Icon.vue'
 import DemoGroup from './demo/Group.vue'
 import DemoDirection from './demo/Direction.vue'
+import DemoGroupOptions from './demo/GroupOptions.vue'
 import DemoCustom from './demo/Custom.vue'
 </script>
 

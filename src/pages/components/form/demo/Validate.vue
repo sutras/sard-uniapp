@@ -39,24 +39,26 @@
         <sar-switch v-model="ruleForm.delivery" />
       </sar-form-item>
       <sar-form-item label="Activity type" name="type">
-        <sar-checkbox-group v-model="ruleForm.type">
-          <sar-checkbox value="Online activities" label="Online activities" />
-          <sar-checkbox
-            value="Promotion activities"
-            label="Promotion activities"
-          />
-          <sar-checkbox value="Offline activities" label="Offline activities" />
-          <sar-checkbox
-            value="Simple brand exposure"
-            label="Simple brand exposure"
-          />
-        </sar-checkbox-group>
+        <sar-checkbox-input
+          v-model="ruleForm.type"
+          placeholder="Pick Activity type"
+          :options="[
+            { label: 'Online activities', value: 'Online activities' },
+            { label: 'Promotion activities', value: 'Promotion activities' },
+            { label: 'Offline activities', value: 'Offline activities' },
+            { label: 'Simple brand exposure', value: 'Simple brand exposure' },
+          ]"
+        />
       </sar-form-item>
       <sar-form-item label="Resources" name="resource">
-        <sar-radio-group v-model="ruleForm.resource">
-          <sar-radio label="Sponsorship" value="Sponsorship" />
-          <sar-radio label="Venue" value="Venue" />
-        </sar-radio-group>
+        <sar-radio-input
+          v-model="ruleForm.resource"
+          placeholder="Pick Resources"
+          :options="[
+            { label: 'Sponsor', value: 'Sponsor' },
+            { label: 'Venue', value: 'Venue' },
+          ]"
+        />
       </sar-form-item>
       <sar-form-item label="Activity form" name="desc">
         <sar-input v-model="ruleForm.desc" type="textarea" />

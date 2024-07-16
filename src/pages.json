@@ -25,6 +25,12 @@
       }
     },
     {
+      "path": "pages/components/alert/index",
+      "style": {
+        "navigationBarTitleText": "Alert 警告提示"
+      }
+    },
+    {
       "path": "pages/components/avatar/index",
       "style": {
         "navigationBarTitleText": "Avatar 头像"
@@ -76,6 +82,12 @@
       "path": "pages/components/checkbox/index",
       "style": {
         "navigationBarTitleText": "Checkbox 复选框"
+      }
+    },
+    {
+      "path": "pages/components/checkbox-input/index",
+      "style": {
+        "navigationBarTitleText": "CheckboxInput 复选输入框"
       }
     },
     {
@@ -412,6 +424,12 @@
       "path": "pages/components/radio/index",
       "style": {
         "navigationBarTitleText": "Radio 单选按钮"
+      }
+    },
+    {
+      "path": "pages/components/radio-input/index",
+      "style": {
+        "navigationBarTitleText": "RadioInput 单选输入框"
       }
     },
     {

@@ -1,0 +1,59 @@
+@use '../style/base' as *;
+
+@include bem(alert) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    padding: var(--sar-alert-paddding-y) var(--sar-alert-paddding-x);
+    font-size: var(--sar-alert-font-size);
+
+    @each $type,
+      $color
+        in (
+          primary: (
+            var(--sar-primary),
+            var(--sar-primary-rgb),
+          ),
+          success: (
+            var(--sar-success),
+            var(--sar-success-rgb),
+          ),
+          warning: (
+            var(--sar-warning),
+            var(--sar-warning-rgb),
+          ),
+          danger: (
+            var(--sar-danger),
+            var(--sar-danger-rgb),
+          )
+        )
+    {
+      @include m($type) {
+        color: nth($color, 1);
+        background-color: rgba(nth($color, 2), var(--sar-alert-bg-opacity));
+      }
+    }
+  }
+
+  @include e(icon) {
+    @include universal;
+    margin-right: var(--sar-alert-icon-margin-right);
+    line-height: 1;
+  }
+
+  @include e(content) {
+    @include universal;
+    flex: 1;
+    overflow: hidden;
+  }
+
+  @include e(close) {
+    @include universal;
+    font-size: var(--sar-alert-close-size);
+    padding: var(--sar-alert-close-padding);
+    margin: var(--sar-alert-close-margin) var(--sar-alert-close-margin)
+      var(--sar-alert-close-margin) 0;
+    cursor: pointer;
+  }
+}

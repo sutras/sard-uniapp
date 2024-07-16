@@ -62,6 +62,12 @@ import CheckboxGroup from 'sard-uniapp/components/checkbox-group/checkbox-group.
 
 @code('${DEMO_PATH}/checkbox/demo/Direction.vue')
 
+### 自动渲染复选框
+
+使用 `options` 属性设置可选项。
+
+@code('${DEMO_PATH}/checkbox/demo/GroupOptions.vue')
+
 ### 自定义 UI
 
 如果只想使用复选的逻辑，并想自定义 UI，可以使用复选框组的 `custom` 插槽。
@@ -112,17 +118,36 @@ import CheckboxGroup from 'sard-uniapp/components/checkbox-group/checkbox-group.
 
 ### CheckboxGroupProps
 
-| 属性                  | 描述             | 类型                 | 默认值   |
-| --------------------- | ---------------- | -------------------- | -------- |
-| root-class            | 组件根元素类名   | string               | -        |
-| root-style            | 组件根元素样式   | StyleValue           | -        |
-| model-value (v-model) | 指定选中的选项   | any[]                | -        |
-| disabled              | 禁用状态         | boolean              | -        |
-| readonly              | 只读状态         | boolean              | -        |
-| size                  | 图标的尺寸       | string               | -        |
-| type                  | 图标类型         | 'square' \| 'circle' | 'square' |
-| checked-color         | 选中时图标的颜色 | string               | -        |
-| validate-event        | 是否触发表单验证 | boolean              | true     |
+| 属性                  | 描述                                  | 类型                    | 默认值                           |
+| --------------------- | ------------------------------------- | ----------------------- | -------------------------------- |
+| root-class            | 组件根元素类名                        | string                  | -                                |
+| root-style            | 组件根元素样式                        | StyleValue              | -                                |
+| model-value (v-model) | 指定选中的选项                        | any[]                   | -                                |
+| disabled              | 禁用状态                              | boolean                 | -                                |
+| readonly              | 只读状态                              | boolean                 | -                                |
+| size                  | 图标的尺寸                            | string                  | -                                |
+| type                  | 图标类型                              | 'square' \| 'circle'    | 'square'                         |
+| checked-color         | 选中时图标的颜色                      | string                  | -                                |
+| validate-event        | 是否触发表单验证                      | boolean                 | true                             |
+| options               | 自动设置复选框                        | CheckboxGroupOption[]   | -                                |
+| option-keys           | 自定义 options 的 label、value 的字段 | CheckboxGroupOptionKeys | {label: 'label', value: 'value'} |
+
+### CheckboxGroupOption
+
+```ts
+export interface CheckboxGroupOption {
+  [key: PropertyKey]: any
+}
+```
+
+### CheckboxGroupOptionKeys
+
+```ts
+export interface CheckboxGroupOptionKeys {
+  label?: string
+  value?: string
+}
+```
 
 ### CheckboxGroupSlots
 
