@@ -6,6 +6,9 @@ export const defaultConfig = {
     overlayClosable: true,
     duration: 300,
   },
+  alert: {
+    type: 'primary' as const,
+  },
   avatar: {
     shape: 'circle' as const,
   },
@@ -36,6 +39,9 @@ export const defaultConfig = {
   },
   checkboxGroup: {
     direction: 'vertical' as const,
+    validateEvent: true,
+  },
+  checkboxInput: {
     validateEvent: true,
   },
   countDown: {
@@ -199,6 +205,10 @@ export const defaultConfig = {
   radioGroup: {
     direction: 'vertical' as const,
     validateEvent: true,
+  },
+  radioInput: {
+    validateEvent: true,
+    type: 'record' as const,
   },
   rate: {
     count: 5,

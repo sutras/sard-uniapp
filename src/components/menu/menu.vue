@@ -63,6 +63,10 @@ const menus = [
         name: 'checkbox',
       },
       {
+        title: 'CheckboxInput 复选输入框',
+        name: 'checkbox-input',
+      },
+      {
         title: 'DatetimePicker 日期时间选择器',
         name: 'datetime-picker',
       },
@@ -101,6 +105,10 @@ const menus = [
       {
         title: 'Radio 单选按钮',
         name: 'radio',
+      },
+      {
+        title: 'RadioInput 单选输入框',
+        name: 'radio-input',
       },
       {
         title: 'Rate 评分',
@@ -244,6 +252,10 @@ const menus = [
       {
         title: 'ActionSheet 动作面板',
         name: 'action-sheet',
+      },
+      {
+        title: 'Alert 警告提示',
+        name: 'alert',
       },
       {
         title: 'Dialog 对话框',

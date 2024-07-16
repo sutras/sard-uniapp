@@ -33,6 +33,7 @@ export interface InputProps {
   fixed?: boolean
   showConfirmBar?: boolean
   disableDefaultPadding?: boolean
+  inputMinHeight?: boolean
 
   // input
   type?:

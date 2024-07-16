@@ -96,13 +96,6 @@ const confirmDisabled = computed(() => {
   return !value || (Array.isArray(value) && value.length === 0)
 })
 
-const onConfirm = () => {
-  innerValue.value = popoutValue.value
-  emit('update:model-value', popoutValue.value)
-
-  inputValue.value = getInputValue()
-}
-
 const onChange = (value: any) => {
   popoutValue.value = value
 
@@ -110,6 +103,13 @@ const onChange = (value: any) => {
     onConfirm()
     innerVisible.value = false
   }
+}
+
+const onConfirm = () => {
+  innerValue.value = popoutValue.value
+  emit('update:model-value', popoutValue.value)
+
+  inputValue.value = getInputValue()
 }
 
 // input

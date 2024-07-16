@@ -8,8 +8,11 @@
       :readonly="isReadonly"
       :disabled="isDisabled"
       :clearable="clearable"
-      @clear="onClear"
       :validate-event="false"
+      :type="multiline ? 'textarea' : undefined"
+      :auto-height="multiline"
+      :input-min-height="multiline"
+      @clear="onClear"
     >
       <template #append>
         <view :class="bem.e('append')">

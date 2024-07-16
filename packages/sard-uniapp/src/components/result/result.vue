@@ -3,7 +3,7 @@
     <slot name="icon">
       <view :class="iconClass">
         <sar-icon
-          :name="mapStatusIcon[status]"
+          :name="icon || mapStatusIcon[status]"
           :family="iconFamily"
           :color="iconColor"
         />

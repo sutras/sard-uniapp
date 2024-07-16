@@ -29,6 +29,20 @@ export interface CheckboxEmits {
   (e: 'update:checked', checked: boolean): void
 }
 
+export const defaultOptionKeys = {
+  label: 'label',
+  value: 'value',
+}
+
+export interface CheckboxGroupOption {
+  [key: PropertyKey]: any
+}
+
+export interface CheckboxGroupOptionKeys {
+  label?: string
+  value?: string
+}
+
 export interface CheckboxGroupProps {
   rootStyle?: StyleValue
   rootClass?: string
@@ -40,6 +54,8 @@ export interface CheckboxGroupProps {
   checkedColor?: string
   direction?: 'horizontal' | 'vertical'
   validateEvent?: boolean
+  options?: CheckboxGroupOption[]
+  optionKeys?: CheckboxGroupOptionKeys
 }
 
 export const checkboxGroupPropsDefaults = defaultConfig.checkboxGroup

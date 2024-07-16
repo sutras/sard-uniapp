@@ -9,6 +9,7 @@ export interface PopoutInputProps {
   disabled?: boolean
   clearable?: boolean
   loading?: boolean
+  multiline?: boolean
 }
 
 export interface PopoutInputEmits {

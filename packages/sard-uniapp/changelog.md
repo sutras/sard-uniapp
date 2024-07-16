@@ -1,9 +1,10 @@
-## [1.2.1](https://github.com/sutras/sard-uniapp/compare/v1.2.0...v1.2.1) (2024-07-13)
+## [1.2.2](https://github.com/sutras/sard-uniapp/compare/v1.2.0...v1.2.2) (2024-07-13)
 
 
 ### Bug Fixes
 
 * 修复pnpm非扁平化依赖包下lwa依赖问题 close [#32](https://github.com/sutras/sard-uniapp/issues/32) ([5868e16](https://github.com/sutras/sard-uniapp/commit/5868e16587e8664705789e2e791c264f2a7d22f5))
+* lwa copy ([7dc350a](https://github.com/sutras/sard-uniapp/commit/7dc350a09f3d10e4bf9f08733e70e1ec73d15b26))
 
 
 

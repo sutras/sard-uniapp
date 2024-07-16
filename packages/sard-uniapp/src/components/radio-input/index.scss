@@ -1,0 +1,7 @@
+@use '../style/base' as *;
+
+@include bem(radio-input) {
+  @include e(scroll) {
+    max-height: var(--sar-radio-input-max-height);
+  }
+}

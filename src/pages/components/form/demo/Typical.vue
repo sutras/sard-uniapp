@@ -43,24 +43,26 @@
         <sar-switch v-model="form.delivery" />
       </sar-form-item>
       <sar-form-item label="Activity type">
-        <sar-checkbox-group v-model="form.type">
-          <sar-checkbox value="Online activities" label="Online activities" />
-          <sar-checkbox
-            value="Promotion activities"
-            label="Promotion activities"
-          />
-          <sar-checkbox value="Offline activities" label="Offline activities" />
-          <sar-checkbox
-            value="Simple brand exposure"
-            label="Simple brand exposure"
-          />
-        </sar-checkbox-group>
+        <sar-checkbox-input
+          v-model="form.type"
+          placeholder="Pick Activity type"
+          :options="[
+            { label: 'Online activities', value: 'Online activities' },
+            { label: 'Promotion activities', value: 'Promotion activities' },
+            { label: 'Offline activities', value: 'Offline activities' },
+            { label: 'Simple brand exposure', value: 'Simple brand exposure' },
+          ]"
+        />
       </sar-form-item>
       <sar-form-item label="Resources">
-        <sar-radio-group v-model="form.resource">
-          <sar-radio value="Sponsor" label="Sponsor" />
-          <sar-radio value="Venue" label="Venue" />
-        </sar-radio-group>
+        <sar-radio-input
+          v-model="form.resource"
+          placeholder="Pick Resources"
+          :options="[
+            { label: 'Sponsor', value: 'Sponsor' },
+            { label: 'Venue', value: 'Venue' },
+          ]"
+        />
       </sar-form-item>
       <sar-form-item label="Activity form" label-valign="start">
         <sar-input

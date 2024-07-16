@@ -49,6 +49,7 @@
     padding: 0;
     border-width: 0;
     font-size: var(--sar-input-control-font-size);
+    line-height: var(--sar-input-control-line-height);
 
     @include m(input) {
       height: var(--sar-input-control-input-height);
@@ -58,10 +59,30 @@
       height: var(--sar-input-control-textarea-height);
       min-height: var(--sar-input-control-textarea-height);
     }
+
+    @include m(input-min-height) {
+      min-height: var(--sar-input-control-input-height);
+      line-height: var(--sar-input-control-input-height);
+    }
   }
 
   @include e(placeholder) {
     color: var(--sar-input-placeholder-color);
+    line-height: var(--sar-input-control-line-height);
+
+    @include m(textarea) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    @include m(input-min-height) {
+      line-height: var(--sar-input-control-input-height);
+    }
   }
 
   @include e(prepend, append) {

@@ -3,6 +3,7 @@ import '@vue/runtime-core'
 import SarAccordion from './components/accordion/accordion.vue'
 import SarAccordionItem from './components/accordion-item/accordion-item.vue'
 import SarActionSheet from './components/action-sheet/action-sheet.vue'
+import SarAlert from './components/alert/alert.vue'
 import SarAvatar from './components/avatar/avatar.vue'
 import SarBadge from './components/badge/badge.vue'
 import SarButton from './components/button/button.vue'
@@ -13,6 +14,7 @@ import SarCascader from './components/cascader/cascader.vue'
 import SarCascaderInput from './components/cascader-input/cascader-input.vue'
 import SarCheckbox from './components/checkbox/checkbox.vue'
 import SarCheckboxGroup from './components/checkbox-group/checkbox-group.vue'
+import SarCheckboxInput from './components/checkbox-input/checkbox-input.vue'
 import SarCol from './components/col/col.vue'
 import SarCollapse from './components/collapse/collapse.vue'
 import SarCountDown from './components/count-down/count-down.vue'
@@ -59,6 +61,7 @@ import SarProgressCircle from './components/progress-circle/progress-circle.vue'
 import SarPullDownRefresh from './components/pull-down-refresh/pull-down-refresh.vue'
 import SarRadio from './components/radio/radio.vue'
 import SarRadioGroup from './components/radio-group/radio-group.vue'
+import SarRadioInput from './components/radio-input/radio-input.vue'
 import SarRate from './components/rate/rate.vue'
 import SarResult from './components/result/result.vue'
 import SarRow from './components/row/row.vue'
@@ -87,8 +90,9 @@ declare module '@vue/runtime-core' {
   // GlobalComponents for Volar
   export interface GlobalComponents {
     SarAccordion: typeof SarAccordion
-    SarActionSheet: typeof SarActionSheet
     SarAccordionItem: typeof SarAccordionItem
+    SarActionSheet: typeof SarActionSheet
+    SarAlert: typeof SarAlert
     SarAvatar: typeof SarAvatar
     SarBadge: typeof SarBadge
     SarButton: typeof SarButton
@@ -99,6 +103,7 @@ declare module '@vue/runtime-core' {
     SarCascaderInput: typeof SarCascaderInput
     SarCheckbox: typeof SarCheckbox
     SarCheckboxGroup: typeof SarCheckboxGroup
+    SarCheckboxInput: typeof SarCheckboxInput
     SarCol: typeof SarCol
     SarCollapse: typeof SarCollapse
     SarCountDown: typeof SarCountDown
@@ -145,6 +150,7 @@ declare module '@vue/runtime-core' {
     SarPullDownRefresh: typeof SarPullDownRefresh
     SarRadio: typeof SarRadio
     SarRadioGroup: typeof SarRadioGroup
+    SarRadioInput: typeof SarRadioInput
     SarRate: typeof SarRate
     SarResult: typeof SarResult
     SarRow: typeof SarRow

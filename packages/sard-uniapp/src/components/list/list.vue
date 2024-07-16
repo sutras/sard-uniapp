@@ -45,6 +45,7 @@ const listClass = computed(() => {
   return classNames(
     bem.b(),
     bem.m('card', props.card),
+    bem.m('not-card', !props.card),
     bem.m('inlaid', props.inlaid),
     props.rootClass,
   )
