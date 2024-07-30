@@ -57,7 +57,7 @@ import Keyboard from 'sard-uniapp/components/keyboard/keyboard.vue'
 | 事件      | 描述                 | 类型                  |
 | --------- | -------------------- | --------------------- |
 | input     | 可输入按键点击时触发 | (key: string) => void |
-| backspace | 点击删除按钮时触发   | () => void            |
+| delete    | 点击删除按钮时触发   | () => void            |
 
 ### KeyBoardExpose
 
