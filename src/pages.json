@@ -421,6 +421,12 @@
       }
     },
     {
+      "path": "pages/components/qrcode/index",
+      "style": {
+        "navigationBarTitleText": "Qrcode 二维码"
+      }
+    },
+    {
       "path": "pages/components/radio/index",
       "style": {
         "navigationBarTitleText": "Radio 单选按钮"

@@ -13,11 +13,11 @@
       <template v-if="options">
         <sar-radio
           v-for="option in options"
-          :key="option[fieldKeys.value]"
-          :value="option[fieldKeys.value]"
+          :key="isPrimitive(option) ? option : option[fieldKeys.value]"
+          :value="isPrimitive(option) ? option : option[fieldKeys.value]"
           :validate-event="false"
         >
-          {{ option[fieldKeys.label] }}
+          {{ isPrimitive(option) ? option : option[fieldKeys.label] }}
         </sar-radio>
       </template>
     </slot>
@@ -35,7 +35,7 @@ import {
   radioGroupPropsDefaults,
   defaultOptionKeys,
 } from '../radio/common'
-import { classNames, stringifyStyle, createBem } from '../../utils'
+import { classNames, stringifyStyle, createBem, isPrimitive } from '../../utils'
 import { useFormItemContext } from '../form/common'
 import SarRadio from '../radio/radio.vue'
 

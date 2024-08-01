@@ -172,6 +172,13 @@ class NodesRef {
   scrollOffset(callback: any) {
     callback?.(scrollOffsetCallbackParam)
   }
+
+  node(callback: any) {
+    callback?.({
+      node: null,
+    })
+    return new SelectorQuery()
+  }
 }
 
 class SelectorQuery {

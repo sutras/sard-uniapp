@@ -13,11 +13,11 @@
       <template v-if="options">
         <sar-checkbox
           v-for="option in options"
-          :key="option[fieldKeys.value]"
-          :value="option[fieldKeys.value]"
+          :key="isPrimitive(option) ? option : option[fieldKeys.value]"
+          :value="isPrimitive(option) ? option : option[fieldKeys.value]"
           :validate-event="false"
         >
-          {{ option[fieldKeys.label] }}
+          {{ isPrimitive(option) ? option : option[fieldKeys.label] }}
         </sar-checkbox>
       </template>
     </slot>
@@ -35,7 +35,7 @@ import {
   checkboxGroupPropsDefaults,
   defaultOptionKeys,
 } from '../checkbox/common'
-import { classNames, createBem, stringifyStyle } from '../../utils'
+import { classNames, createBem, isPrimitive, stringifyStyle } from '../../utils'
 import { useFormItemContext } from '../form/common'
 import SarCheckbox from '../checkbox/checkbox.vue'
 

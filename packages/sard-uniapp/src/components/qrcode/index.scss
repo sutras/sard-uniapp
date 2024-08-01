@@ -1,0 +1,17 @@
+@use '../style/base' as *;
+
+@include bem(qrcode) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(canvas) {
+    display: none;
+  }
+
+  @include e(image) {
+    @include universal;
+    width: 100%;
+    height: 100%;
+  }
+}

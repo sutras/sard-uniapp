@@ -2,7 +2,7 @@
   "id": "sard-uniapp",
   "name": "sard-uniapp",
   "displayName": "sard-uniapp",
-  "version": "1.3.0",
+  "version": "1.4.0",
   "type": "module",
   "description": "sard-uniapp 是一套基于 Uniapp + Vue3 框架开发的兼容多端的 UI 组件库",
   "keywords": [
@@ -33,6 +33,7 @@
     "@vitejs/plugin-vue": "^4.2.3",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue/test-utils": "^2.4.6",
+    "canvas": "^2.11.2",
     "region-data": "^1.2.1",
     "vitest": "^1.0.4"
   },

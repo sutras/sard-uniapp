@@ -1,7 +1,9 @@
 <template>
-  <sar-card title="朝天子·咏喇叭">
-    喇叭，唢呐，曲儿小腔儿大。官船来往乱如麻，全仗你抬声价。
-    军听了军愁，民听了民怕。哪里去辨甚么真共假？
-    眼见的吹翻了这家，吹伤了那家，只吹的水尽鹅飞罢！
+  <sar-card title="Trumpet to the Son of Heaven">
+    Trumpet, suona, small song, large cavity. The official ships are in chaos,
+    all because of your bid. The army listened to the army, and the people
+    listened to the people. Where to tell what is true and what is false? The
+    sight blows over this house, blows the other one, only blows the water all
+    the geese fly!
   </sar-card>
 </template>

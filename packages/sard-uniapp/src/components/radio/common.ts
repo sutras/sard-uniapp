@@ -29,9 +29,13 @@ export const defaultOptionKeys = {
   value: 'value',
 }
 
-export interface RadioGroupOption {
-  [key: PropertyKey]: any
-}
+export type RadioGroupOption =
+  | {
+      [key: PropertyKey]: any
+    }
+  | string
+  | number
+  | boolean
 
 export interface RadioGroupOptionKeys {
   label?: string

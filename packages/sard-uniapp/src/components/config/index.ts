@@ -202,6 +202,16 @@ export const defaultConfig = {
     transitionDuration: 300,
     doneDuration: 0,
   },
+  qrcode: {
+    ecl: 'M' as const,
+    size: '320rpx',
+    canvasSize: 400,
+    type: 'canvas' as const,
+    text: '',
+    color: '#000',
+    bgColor: '#fff',
+    quietZoneModules: 2,
+  },
   radioGroup: {
     direction: 'vertical' as const,
     validateEvent: true,

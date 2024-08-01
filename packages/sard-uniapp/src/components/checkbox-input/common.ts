@@ -1,10 +1,11 @@
-import { type CheckboxGroupProps } from '../checkbox/common'
+import {
+  type CheckboxGroupOption,
+  type CheckboxGroupProps,
+} from '../checkbox/common'
 import { type PopoutInputProps } from '../popout-input/common'
 import { defaultConfig } from '../config'
 
-export interface CheckboxInputOption {
-  [key: PropertyKey]: any
-}
+export type CheckboxInputOption = CheckboxGroupOption
 
 export interface CheckboxInputProps
   extends CheckboxGroupProps,

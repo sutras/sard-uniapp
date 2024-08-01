@@ -1,5 +1,5 @@
 <p align="center">
-    <img alt="logo" src="https://fastly.jsdelivr.net/npm/@sard/assets/logo.svg" width="120" height="120" style="margin-bottom: 10px;">
+  <img alt="logo" src="https://fastly.jsdelivr.net/npm/@sard/assets/logo.svg" width="120" height="120" style="margin-bottom: 10px;">
 </p>
 
 <h1 align="center">Sard Uniapp</h1>
@@ -25,7 +25,7 @@
 
 ## 特性
 
-- 🧩 60+个高质量组件，覆盖移动端主流场景
+- 🧩 70+个高质量组件，覆盖移动端主流场景
 - 💪 支持一套代码同时开发 H5 / 小程序 / App
 - 🌿 支持按需引入和 `Tree Shaking`
 - 📖 详尽的文档和案例展示

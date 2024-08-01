@@ -135,9 +135,13 @@ import CheckboxGroup from 'sard-uniapp/components/checkbox-group/checkbox-group.
 ### CheckboxGroupOption
 
 ```ts
-export interface CheckboxGroupOption {
-  [key: PropertyKey]: any
-}
+export type CheckboxGroupOption =
+  | {
+      [key: PropertyKey]: any
+    }
+  | string
+  | number
+  | boolean
 ```
 
 ### CheckboxGroupOptionKeys
