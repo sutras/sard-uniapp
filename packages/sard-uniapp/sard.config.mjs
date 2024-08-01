@@ -355,6 +355,11 @@ export default {
                 filePath: getComponentPath('progress-circle'),
               },
               {
+                title: 'Qrcode 二维码',
+                path: 'qrcode',
+                filePath: getComponentPath('qrcode'),
+              },
+              {
                 title: 'SwiperDot 轮播图指示点',
                 path: 'swiper-dot',
                 filePath: getComponentPath('swiper-dot'),

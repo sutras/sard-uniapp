@@ -7,7 +7,7 @@ import { resolve } from 'path'
 
 const vitestConfig = vitestDefineConfig({
   test: {
-    include: ['./src/**/test/*.test.*'],
+    include: ['./src/**/*.test.*'],
     environment: 'happy-dom',
     setupFiles: ['./vitest.setup.ts'],
     alias: {

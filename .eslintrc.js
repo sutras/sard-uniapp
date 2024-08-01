@@ -32,6 +32,7 @@ module.exports = {
     '@typescript-eslint/no-empty-interface': 'off',
     '@typescript-eslint/no-this-alias': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
+    'no-constant-condition': 'off',
   },
   globals: {
     process: true,

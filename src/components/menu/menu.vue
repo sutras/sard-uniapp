@@ -204,6 +204,10 @@ const menus = [
         name: 'progress-circle',
       },
       {
+        title: 'Qrcode 二维码',
+        name: 'qrcode',
+      },
+      {
         title: 'SwiperDot 轮播图指示点',
         name: 'swiper-dot',
       },

@@ -60,3 +60,12 @@ export function isUndefined(target: any): target is undefined {
 export function isNullish(target: any): target is null | undefined {
   return target === null || target === undefined
 }
+
+/**
+ * @description: 判断是否为原始类型
+ * @param {any} target
+ * @return {boolean}
+ */
+export function isPrimitive(target: any): target is string | number | boolean {
+  return isString(target) || isNumber(target) || isBoolean(target)
+}

@@ -34,9 +34,13 @@ export const defaultOptionKeys = {
   value: 'value',
 }
 
-export interface CheckboxGroupOption {
-  [key: PropertyKey]: any
-}
+export type CheckboxGroupOption =
+  | {
+      [key: PropertyKey]: any
+    }
+  | string
+  | number
+  | boolean
 
 export interface CheckboxGroupOptionKeys {
   label?: string

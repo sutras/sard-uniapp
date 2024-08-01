@@ -1,5 +1,3 @@
-import '@vue/runtime-core'
-
 import SarAccordion from './components/accordion/accordion.vue'
 import SarAccordionItem from './components/accordion-item/accordion-item.vue'
 import SarActionSheet from './components/action-sheet/action-sheet.vue'
@@ -59,6 +57,7 @@ import SarPopup from './components/popup/popup.vue'
 import SarProgressBar from './components/progress-bar/progress-bar.vue'
 import SarProgressCircle from './components/progress-circle/progress-circle.vue'
 import SarPullDownRefresh from './components/pull-down-refresh/pull-down-refresh.vue'
+import SarQrcode from './components/qrcode/qrcode.vue'
 import SarRadio from './components/radio/radio.vue'
 import SarRadioGroup from './components/radio-group/radio-group.vue'
 import SarRadioInput from './components/radio-input/radio-input.vue'
@@ -86,8 +85,7 @@ import SarToast from './components/toast/toast.vue'
 import SarToastAgent from './components/toast-agent/toast-agent.vue'
 import SarUpload from './components/upload/upload.vue'
 
-declare module '@vue/runtime-core' {
-  // GlobalComponents for Volar
+declare module 'vue' {
   export interface GlobalComponents {
     SarAccordion: typeof SarAccordion
     SarAccordionItem: typeof SarAccordionItem
@@ -148,6 +146,7 @@ declare module '@vue/runtime-core' {
     SarProgressBar: typeof SarProgressBar
     SarProgressCircle: typeof SarProgressCircle
     SarPullDownRefresh: typeof SarPullDownRefresh
+    SarQrcode: typeof SarQrcode
     SarRadio: typeof SarRadio
     SarRadioGroup: typeof SarRadioGroup
     SarRadioInput: typeof SarRadioInput

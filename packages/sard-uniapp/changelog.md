@@ -1,3 +1,16 @@
+# [1.4.0-beta](https://github.com/sutras/sard-uniapp/compare/v1.3.0...v1.4.0-beta) (2024-08-01)
+
+
+
+# [1.3.0](https://github.com/sutras/sard-uniapp/compare/v1.2.2...v1.3.0) (2024-07-16)
+
+
+### Features
+
+* 新增radio-input, checkbox-input, alert组件 ([a2d24fc](https://github.com/sutras/sard-uniapp/commit/a2d24fc080337df2f39d6abdc887517adf8428c1))
+
+
+
 ## [1.2.2](https://github.com/sutras/sard-uniapp/compare/v1.2.0...v1.2.2) (2024-07-13)
 
 

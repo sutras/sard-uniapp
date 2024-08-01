@@ -1,5 +1,6 @@
 <template>
   <sar-toast-agent />
+  <sar-dialog-agent />
   <view :class="classNames(bem.b(), bem.m('emphasis', emphasis))">
     <slot></slot>
   </view>

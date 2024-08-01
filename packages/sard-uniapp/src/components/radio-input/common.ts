@@ -1,10 +1,8 @@
-import { type RadioGroupProps } from '../radio/common'
+import { type RadioGroupOption, type RadioGroupProps } from '../radio/common'
 import { type PopoutInputProps } from '../popout-input/common'
 import { defaultConfig } from '../config'
 
-export interface RadioInputOption {
-  [key: PropertyKey]: any
-}
+export type RadioInputOption = RadioGroupOption
 
 export interface RadioInputProps
   extends RadioGroupProps,
