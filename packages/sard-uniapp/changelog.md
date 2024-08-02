@@ -1,4 +1,9 @@
-# [1.4.0-beta](https://github.com/sutras/sard-uniapp/compare/v1.3.0...v1.4.0-beta) (2024-08-01)
+# [1.4.0](https://github.com/sutras/sard-uniapp/compare/v1.3.0...v1.4.0) (2024-08-01)
+
+
+### Features
+
+* add qrcode ([8d5d8ba](https://github.com/sutras/sard-uniapp/commit/8d5d8ba50b250fbe1bb76da84e4368aae2276b4d))
 
 
 

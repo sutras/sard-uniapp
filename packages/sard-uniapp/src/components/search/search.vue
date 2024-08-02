@@ -18,6 +18,9 @@
         :focus="focus"
         @update:model-value="onInput"
         @confirm="onConfirm"
+        @clear="onClear"
+        @focus="onFocus"
+        @blur="onBlur"
       >
         <template #prepend>
           <slot name="input-prepend">
@@ -105,6 +108,18 @@ const onCancel = () => {
 
 const onClick = (event: any) => {
   emit('click', event)
+}
+
+const onClear = () => {
+  emit('clear')
+}
+
+const onFocus = (event: any) => {
+  emit('focus', event)
+}
+
+const onBlur = (event: any) => {
+  emit('blur', event)
 }
 
 // others

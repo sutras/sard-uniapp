@@ -32,4 +32,7 @@ export interface SearchEmits {
   (e: 'cancel'): void
   (e: 'search', value: string): void
   (e: 'click', event: any): void
+  (e: 'clear'): void
+  (e: 'focus', event: any): void
+  (e: 'blur', event: any): void
 }

@@ -195,4 +195,17 @@
       }
     }
   }
+
+  sup {
+    display: inline-block;
+    padding: 2px 4px;
+    font-size: var(--doc-text-xs);
+    font-family: var(--doc-font-sans-serif);
+    line-height: 1.2;
+    font-weight: 400;
+    color: var(--doc-primary);
+    border-radius: var(--doc-rounded-xs);
+    background-color: rgba(var(--doc-primary-rgb), 0.1);
+    transform: translateY(4px);
+  }
 }
