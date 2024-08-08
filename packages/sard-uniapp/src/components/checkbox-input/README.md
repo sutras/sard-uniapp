@@ -1,4 +1,4 @@
-# CheckboxInput 复选输入框<sup>1.3+</sup>
+# CheckboxInput 复选输入框 <sup>1.3+</sup>
 
 ## 介绍
 

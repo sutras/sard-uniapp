@@ -10,7 +10,7 @@ export const ROOT_DIR = resolve(
 export const CWD = process.cwd()
 
 // sard config
-export const SARD_CONFIG_FILENAME = 'sard.config.mjs'
+export const SARD_CONFIG_FILENAME = 'sard.config.json'
 export const sardConfig = getSardConfig()
 export const MAIN_FILE_NAME = 'main.ts'
 

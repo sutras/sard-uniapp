@@ -33,6 +33,7 @@ module.exports = {
     '@typescript-eslint/no-this-alias': 'off',
     '@typescript-eslint/no-explicit-any': 'off',
     'no-constant-condition': 'off',
+    '@typescript-eslint/no-non-null-assertion': 'off',
   },
   globals: {
     process: true,

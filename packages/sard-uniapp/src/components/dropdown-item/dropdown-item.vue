@@ -91,7 +91,7 @@ import {
   createBem,
   uniqid,
   getBoundingClientRect,
-  getViewportSize,
+  getWindowInfo,
   isNullish,
 } from '../../utils'
 import SarPopup from '../popup/popup.vue'
@@ -175,7 +175,7 @@ const popupInset = ref('')
 const awayInset = ref('')
 
 const setPosition = async () => {
-  const viewportSize = await getViewportSize()
+  const windowInfo = await getWindowInfo()
   const itemRect = await getBoundingClientRect(`#${itemId}`, instance)
 
   const nextPopupInset: Record<string, any> = {
@@ -198,11 +198,11 @@ const setPosition = async () => {
 
     nextAwayInset.top = 0
     nextAwayInset.bottom = `calc(${
-      viewportSize.height - itemRect.bottom
+      windowInfo.windowHeight - itemRect.bottom
     }px + var(--window-top))`
   } else {
     nextPopupInset.top = 0
-    nextPopupInset.bottom = `${viewportSize.height - itemRect.top}px`
+    nextPopupInset.bottom = `${windowInfo.windowHeight - itemRect.top}px`
 
     nextAwayInset.top = `calc(${itemRect.bottom}px + var(--window-top))`
     nextAwayInset.bottom = 0

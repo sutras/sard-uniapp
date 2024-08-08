@@ -45,7 +45,7 @@ import {
   getViewportScrollInfo,
   getBoundingClientRect,
   getScrollIntoViewValue,
-  getViewportSize,
+  getWindowInfo,
 } from '../../utils'
 import { type VdaliteFailResult, type Rule } from '../form/Validator'
 import {
@@ -237,14 +237,14 @@ const fieldId = uniqid()
 const instance = getCurrentInstance()
 
 const scrollToField = async () => {
-  const [scrollInfo, fieldRect, viewportSize] = await Promise.all([
+  const [scrollInfo, fieldRect, windowInfo] = await Promise.all([
     getViewportScrollInfo(),
     getBoundingClientRect(`#${fieldId}`, instance),
-    getViewportSize(),
+    getWindowInfo(),
   ])
 
   const scrollTop = getScrollIntoViewValue(
-    viewportSize.height,
+    windowInfo.windowHeight,
     scrollInfo.scrollTop,
     fieldRect.height,
     fieldRect.top + scrollInfo.scrollTop,

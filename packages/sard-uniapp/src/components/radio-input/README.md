@@ -1,4 +1,4 @@
-# RadioInput 单选输入框<sup>1.3+</sup>
+# RadioInput 单选输入框 <sup>1.3+</sup>
 
 ## 介绍
 

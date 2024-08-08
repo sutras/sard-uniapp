@@ -1,0 +1,34 @@
+@use '../style/base' as *;
+
+@include bem(floating-bubble) {
+  @include b() {
+    @include universal;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: var(--sar-floating-bubble-z-index);
+    justify-content: center;
+    align-items: center;
+    width: var(--sar-floating-bubble-size);
+    height: var(--sar-floating-bubble-size);
+    border-radius: var(--sar-rounded-full);
+    color: var(--sar-floating-bubble-color);
+    background-color: var(--sar-floating-bubble-bg);
+    box-shadow: var(--sar-floating-bubble-shadow);
+    opacity: 0;
+    cursor: pointer;
+
+    &:active {
+      opacity: var(--sar-floating-bubble-active-opacity);
+      transition: none;
+    }
+
+    @include m(initialized) {
+      opacity: 1;
+    }
+
+    @include m(animated) {
+      transition: transform var(--sar-floating-bubble-duration);
+    }
+  }
+}

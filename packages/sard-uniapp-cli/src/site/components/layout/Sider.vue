@@ -18,7 +18,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, h } from 'vue'
+import { computed, h, onMounted, VNode, watch } from 'vue'
 import { useRoute, RouterLink, RouteRecordRaw } from 'vue-router'
 import Sideslip from './Sideslip.vue'
 
@@ -27,7 +27,7 @@ const props = defineProps<{
 }>()
 
 const emit = defineEmits<{
-  (e: 'update:visible', visible: boolean)
+  (e: 'update:visible', visible: boolean): any
 }>()
 
 const innerVisible = computed({
@@ -67,14 +67,14 @@ const renderLink = (item: RouteRecordRaw) => {
         {
           class: 'doc-sidenav-link-title',
         },
-        item.meta.title as string,
+        item.meta!.title as string,
       ),
   )
 }
 
-const renderItems = (items: RouteRecordRaw[]) => {
-  return items.map((item, i) => {
-    if (item.meta.type === 'group') {
+const renderItems = (items: RouteRecordRaw[]): VNode[] => {
+  return items.map<VNode>((item, i): any => {
+    if (item.meta!.type === 'group') {
       return [
         h(
           'div',
@@ -82,7 +82,7 @@ const renderItems = (items: RouteRecordRaw[]) => {
             key: i,
             class: 'doc-sidenav-title',
           },
-          item.meta.title as string,
+          item.meta!.title as string,
         ),
         Array.isArray(item.children) && item.children.length > 0
           ? renderItems(item.children)
@@ -99,6 +99,31 @@ function Items() {
     ? renderItems(sidebarRoutes.value)
     : null
 }
+
+function scrollIntoView() {
+  const activeLink = document.querySelector('.doc-sidenav-link.active')
+  if (activeLink) {
+    activeLink.scrollIntoView({
+      block: 'nearest',
+      behavior: 'instant',
+    })
+  }
+}
+
+onMounted(() => {
+  scrollIntoView()
+})
+
+const route = useRoute()
+
+watch(
+  () => route.path,
+  () => {
+    setTimeout(() => {
+      scrollIntoView()
+    }, 150)
+  },
+)
 </script>
 
 <style lang="scss">

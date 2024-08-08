@@ -1,4 +1,4 @@
-# Marquee 跑马灯<sup>1.2+</sup>
+# Marquee 跑马灯 <sup>1.2+</sup>
 
 ## 介绍
 

@@ -11,7 +11,12 @@
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
-import { type TagProps, type TagSlots, tagPropsDefaults } from './common'
+import {
+  type TagProps,
+  type TagSlots,
+  type TagEmits,
+  tagPropsDefaults,
+} from './common'
 
 defineOptions({
   options: {
@@ -24,7 +29,7 @@ const props = withDefaults(defineProps<TagProps>(), tagPropsDefaults)
 
 defineSlots<TagSlots>()
 
-defineEmits(['click', 'close'])
+defineEmits<TagEmits>()
 
 const bem = createBem('tag')
 

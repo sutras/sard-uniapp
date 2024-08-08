@@ -1,6 +1,6 @@
 import fse from 'fs-extra'
 import fs from 'fs/promises'
-import path, { resolve } from 'node:path'
+import path from 'node:path'
 import { CWD, sardConfig } from '../utils/constants.js'
 import child_process from 'child_process'
 import { glob } from 'glob'
@@ -11,9 +11,9 @@ import esbuild from 'esbuild'
 
 const { build: buildConfig } = sardConfig
 
-const outDir = resolve(CWD, buildConfig.outDir)
-const srcDir = resolve(CWD, buildConfig.srcDir)
-const uniModulesDir = resolve(CWD, buildConfig.uniModulesDir)
+const outDir = path.resolve(CWD, buildConfig.outDir)
+const srcDir = path.resolve(CWD, buildConfig.srcDir)
+const uniModulesDir = path.resolve(CWD, buildConfig.uniModulesDir)
 
 async function deleteOutDir() {
   await rimraf(outDir)

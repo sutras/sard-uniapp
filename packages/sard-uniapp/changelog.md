@@ -1,3 +1,16 @@
+# [1.5.0-rc](https://github.com/sutras/sard-uniapp/compare/v1.4.1...v1.5.0-rc) (2024-08-08)
+
+
+
+## [1.4.1](https://github.com/sutras/sard-uniapp/compare/v1.4.0...v1.4.1) (2024-08-02)
+
+
+### Features
+
+* search组件新增clear, focus, blur事件 ([05dc641](https://github.com/sutras/sard-uniapp/commit/05dc641947e83a6d9e9c92b46cfc33135116eb22))
+
+
+
 # [1.4.0](https://github.com/sutras/sard-uniapp/compare/v1.3.0...v1.4.0) (2024-08-01)
 
 

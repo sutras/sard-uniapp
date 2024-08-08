@@ -1,4 +1,4 @@
-# CountTo 数字滚动<sup>1.2+</sup>
+# CountTo 数字滚动 <sup>1.2+</sup>
 
 ## 介绍
 

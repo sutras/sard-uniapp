@@ -1,4 +1,4 @@
-# Qrcode 二维码<sup>1.4+</sup>
+# Qrcode 二维码 <sup>1.4+</sup>
 
 ## 介绍
 

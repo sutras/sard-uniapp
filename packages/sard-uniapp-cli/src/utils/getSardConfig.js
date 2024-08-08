@@ -1,6 +1,6 @@
 import path from 'node:path'
+import fs from 'node:fs'
 import { deepMerge } from './deepMerge.js'
-import { pathToFileURL } from 'node:url'
 
 const defaultSardConfig = {
   name: '',
@@ -35,8 +35,8 @@ const defaultSardConfig = {
   },
 }
 
-const { default: customConfig } = await import(
-  pathToFileURL(path.resolve(process.cwd(), './sard.config.mjs'))
+const customConfig = JSON.parse(
+  fs.readFileSync(path.resolve(process.cwd(), './sard.config.json'), 'utf8'),
 )
 
 export function getSardConfig() {

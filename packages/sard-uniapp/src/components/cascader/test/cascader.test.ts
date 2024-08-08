@@ -4,6 +4,7 @@ import { h } from 'vue'
 
 import Cascader from '../cascader.vue'
 import { getRegionData } from 'region-data'
+import { type CascaderOption } from '../common'
 
 describe('Cascader', () => {
   const regionData = getRegionData()
@@ -27,7 +28,7 @@ describe('Cascader', () => {
       .find('.sar-cascader__pane:last-child .sar-cascader__option:nth-child(4)')
       .trigger('click')
 
-    expect(wrapper.emitted('update:model-value')[0][0]).toBe(440106)
+    expect(wrapper.emitted('update:model-value')![0][0]).toBe(440106)
 
     expect(
       wrapper
@@ -65,7 +66,7 @@ describe('Cascader', () => {
       )
       .trigger('click')
 
-    expect(wrapper.emitted('update:model-value')[1][0]).toBe(130104)
+    expect(wrapper.emitted('update:model-value')![1][0]).toBe(130104)
 
     expect(
       wrapper
@@ -81,14 +82,8 @@ describe('Cascader', () => {
   })
 
   test('async', async () => {
-    interface Option {
-      label: string
-      value: number | string
-      children?: Option[]
-    }
-
-    const onSelect = (option: Option, columnIndex: number) => {
-      if (columnIndex < 2 && option.children?.length === 0) {
+    const onSelect = (option: CascaderOption, tabIndex: number) => {
+      if (tabIndex < 2 && option.children?.length === 0) {
         setTimeout(() => {
           option.children = Array(10)
             .fill(0)
@@ -96,7 +91,7 @@ describe('Cascader', () => {
               return {
                 label: option.label + '-label' + i,
                 value: option.value + '-' + i,
-                children: columnIndex < 1 ? [] : undefined,
+                children: tabIndex < 1 ? [] : undefined,
               }
             })
 
@@ -165,7 +160,7 @@ describe('Cascader', () => {
       )
       .trigger('click')
 
-    expect(wrapper.emitted('update:model-value')[0][0]).toBe('0-0-0')
+    expect(wrapper.emitted('update:model-value')![0][0]).toBe('0-0-0')
   })
 
   test('slot', async () => {

@@ -1,0 +1,22 @@
+// #variables
+page {
+  --sar-fab-z-index: 1000;
+  --sar-fab-right: 48rpx;
+  --sar-fab-bottom: 96rpx;
+  --sar-fab-mask: var(--sar-mask-illegible);
+  --sar-fab-duration: var(--sar-duration-fast);
+
+  --sar-fab-item-gap: 32rpx;
+  --sar-fab-item-active-opacity: var(--sar-active-opacity);
+
+  --sar-fab-item-btn-size: 96rpx;
+  --sar-fab-item-btn-font-size: 48rpx;
+  --sar-fab-item-btn-color: var(--sar-white);
+  --sar-fab-item-btn-bg: var(--sar-primary);
+  --sar-fab-item-btn-shadow: var(--sar-shadow-lg);
+
+  --sar-fab-item-name-gap: 16rpx;
+  --sar-fab-item-name-font-size: var(--sar-text-base);
+  --sar-fab-item-name-color: var(--sar-white);
+}
+// #endvariables

@@ -11,7 +11,11 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
-import { type NavbarItemProps, type NavbarItemSlots } from '../navbar/common'
+import {
+  type NavbarItemProps,
+  type NavbarItemSlots,
+  type NavbarItemEmits,
+} from '../navbar/common'
 
 defineOptions({
   options: {
@@ -24,7 +28,7 @@ const props = withDefaults(defineProps<NavbarItemProps>(), {})
 
 defineSlots<NavbarItemSlots>()
 
-defineEmits(['click'])
+defineEmits<NavbarItemEmits>()
 
 const bem = createBem('navbar')
 

@@ -1,4 +1,4 @@
-import { resolve } from 'node:path'
+import nodePath from 'node:path'
 import { normalizePath } from 'vite'
 import {
   DEFAULT_README_NAME,
@@ -16,11 +16,11 @@ function deepMapRoutes(routes) {
       routes
         .map(({ path, filePath, children, title, index, type, hidden }) => {
           if (filePath && !MD_PATH_R.test(filePath)) {
-            filePath = resolve(filePath, DEFAULT_README_NAME)
+            filePath = nodePath.resolve(CWD, filePath, DEFAULT_README_NAME)
           }
 
           if (filePath) {
-            filePath = normalizePath(resolve(CWD, filePath))
+            filePath = normalizePath(nodePath.resolve(CWD, filePath))
           }
 
           const currentPath = path.startsWith('/')

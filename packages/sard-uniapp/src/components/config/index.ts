@@ -82,6 +82,16 @@ export const defaultConfig = {
   empty: {
     icon: 'empty',
   },
+  fab: {
+    overlayClosable: false,
+    hideName: false,
+    duration: 150,
+  },
+  floatingBubble: {
+    axis: 'y' as const,
+    gapX: 24,
+    gapY: 24,
+  },
   form: {
     validateTrigger: 'change' as const,
     validateOnRuleChange: true,
