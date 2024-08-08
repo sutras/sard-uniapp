@@ -1,0 +1,95 @@
+@use '../style/base' as *;
+
+@include bem(fab) {
+  @include b() {
+    @include universal;
+    position: fixed;
+    right: var(--sar-fab-right);
+    bottom: var(--sar-fab-bottom);
+    z-index: var(--sar-fab-z-index);
+    gap: var(--sar-fab-item-gap);
+  }
+
+  @include e(content) {
+    @include universal;
+    gap: var(--sar-fab-item-gap);
+  }
+
+  @include m(zoom-enter-from, zoom-leave-to) {
+    opacity: 0;
+    transform: scale(0.4);
+  }
+
+  @include m(zoom-enter-to, zoom-leave-from) {
+    opacity: 1;
+    transform: scale(1);
+  }
+
+  @include m(zoom-enter-active, zoom-leave-active) {
+    transition: transform var(--sar-fab-duration) ease-out,
+      opacity var(--sar-fab-duration) ease-out;
+  }
+
+  @include e(item) {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--sar-fab-item-name-gap);
+    cursor: pointer;
+
+    &:active {
+      opacity: var(--sar-fab-item-active-opacity);
+    }
+
+    @include m(entry) {
+      @include e(item-btn) {
+        transition: transform var(--sar-fab-duration);
+      }
+    }
+  }
+
+  @include e(item-name) {
+    @include universal;
+    font-size: var(--sar-fab-item-name-font-size);
+    color: var(--sar-fab-item-name-color);
+  }
+
+  @include e(item-btn) {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    width: var(--sar-fab-item-btn-size);
+    height: var(--sar-fab-item-btn-size);
+    border-radius: var(--sar-rounded-full);
+    font-size: var(--sar-fab-item-btn-font-size);
+    color: var(--sar-fab-item-btn-color);
+    background-color: var(--sar-fab-item-btn-bg);
+    box-shadow: var(--sar-fab-item-btn-shadow);
+  }
+
+  @include m(top) {
+    flex-direction: column-reverse;
+  }
+
+  @include m(left) {
+    align-items: flex-start;
+
+    @include e(item) {
+      flex-direction: row-reverse;
+    }
+  }
+
+  @include m(right) {
+    align-items: flex-end;
+  }
+
+  @include m(visible) {
+    @include e(item) {
+      @include m(entry) {
+        @include e(item-btn) {
+          transform: rotate(45deg);
+        }
+      }
+    }
+  }
+}

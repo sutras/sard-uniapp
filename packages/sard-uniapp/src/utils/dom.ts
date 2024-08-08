@@ -131,17 +131,28 @@ export function getBoundingClientRect(
 
 /**
  * 获取可使用窗口尺寸
- * @returns Promise<{width: number; height: number}>
+ * @returns Promise<WindowInfo>
  */
-export function getViewportSize() {
-  return new Promise<{ width: number; height: number }>((resolve) => {
+export function getWindowInfo() {
+  return new Promise<WindowInfo>((resolve) => {
     uni.getSystemInfo().then((res) => {
       resolve({
-        width: res.windowWidth,
-        height: res.windowHeight,
+        windowWidth: res.windowWidth,
+        windowHeight: res.windowHeight,
+        windowTop: res.windowTop,
+        windowBottom: res.windowBottom,
+        statusBarHeight: res.statusBarHeight || 0,
       })
     })
   })
+}
+
+export interface WindowInfo {
+  windowWidth: number
+  windowHeight: number
+  windowTop: number
+  windowBottom: number
+  statusBarHeight: number
 }
 
 export interface ViewportScrollInfo {

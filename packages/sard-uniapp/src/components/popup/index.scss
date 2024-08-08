@@ -46,7 +46,7 @@
     }
 
     @include m(fade-enter-active, fade-leave-active) {
-      transition: opacity var(--sar-popup-duration) ease;
+      transition: opacity var(--sar-popup-duration) ease-in-out;
     }
 
     // zoom

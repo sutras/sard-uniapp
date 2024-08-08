@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils'
 import { h } from 'vue'
 
 import ShareSheet from '../share-sheet.vue'
+import { type ShareSheetItem } from '../common'
 
 const itemList = [
   {
@@ -146,7 +147,9 @@ describe('ShareSheet', () => {
 
     await wrapper.find('.sar-share-sheet__item:last-child').trigger('click')
     expect(wrapper.emitted()).toHaveProperty('select')
-    expect(wrapper.emitted().select[0][0].name).toBe('Facebook')
+    expect(wrapper.emitted<[ShareSheetItem]>().select[0][0].name).toBe(
+      'Facebook',
+    )
   })
 
   test('multipleRow', async () => {

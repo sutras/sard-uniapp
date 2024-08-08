@@ -8,13 +8,13 @@ export interface CardProps {
   footer?: string
 }
 
-export interface CardEmits {
-  (e: 'click', event: any): void
-}
-
 export interface CardSlots {
   default?(props: Record<string, never>): any
   title?(props: Record<string, never>): any
   extra?(props: Record<string, never>): any
   footer?(props: Record<string, never>): any
+}
+
+export interface CardEmits {
+  (e: 'click', event: any): void
 }

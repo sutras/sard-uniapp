@@ -1,4 +1,4 @@
-# Alert 警告提示<sup>1.3+</sup>
+# Alert 警告提示 <sup>1.3+</sup>
 
 ## 介绍
 

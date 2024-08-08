@@ -25,7 +25,7 @@ import {
   createBem,
   isVisibleEmpty,
 } from '../../utils'
-import { type CardProps, type CardSlots } from './common'
+import { type CardProps, type CardSlots, type CardEmits } from './common'
 
 defineOptions({
   options: {
@@ -38,7 +38,7 @@ const props = withDefaults(defineProps<CardProps>(), {})
 
 const slots = defineSlots<CardSlots>()
 
-defineEmits(['click'])
+defineEmits<CardEmits>()
 
 const bem = createBem('card')
 

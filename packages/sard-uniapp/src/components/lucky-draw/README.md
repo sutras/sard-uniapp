@@ -1,4 +1,4 @@
-# LuckyDraw 幸运抽奖<sup>1.2+</sup>
+# LuckyDraw 幸运抽奖 <sup>1.2+</sup>
 
 ## 介绍
 

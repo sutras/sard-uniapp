@@ -41,13 +41,13 @@
 <script setup lang="ts">
 import { computed, ref, getCurrentInstance, reactive } from 'vue'
 import {
+  type NodeRect,
   classNames,
   stringifyStyle,
   createBem,
   uniqid,
   getBoundingClientRect,
   minmax,
-  type NodeRect,
   toTouchEvent,
 } from '../../utils'
 import {
