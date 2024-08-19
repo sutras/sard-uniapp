@@ -33,7 +33,7 @@
           @touchmove.stop.prevent="onTouchMove($event, 0)"
           @touchend="onTouchEnd($event)"
           @touchcancel="onTouchEnd($event)"
-          @mousedown="onMouseDown($event, 0)"
+          @mousedown="onMouseDown0"
         >
           <slot name="start-thumb" :value="rangeValue[0]">
             <view :class="bem.e('thumb')" :style="thumbStyle"></view>
@@ -53,7 +53,7 @@
           @touchmove.stop.prevent="onTouchMove($event, 1)"
           @touchend="onTouchEnd($event)"
           @touchcancel="onTouchEnd($event)"
-          @mousedown="onMouseDown($event, 1)"
+          @mousedown="onMouseDown1"
         >
           <slot name="end-thumb" :value="rangeValue[1]">
             <view :class="bem.e('thumb')" :style="thumbStyle"></view>
@@ -92,7 +92,6 @@ import {
   mround,
   arrayEqual,
   toArray,
-  toTouchEvent,
 } from '../../utils'
 import { useFormContext, useFormItemContext } from '../form/common'
 import {
@@ -101,6 +100,7 @@ import {
   type SliderEmits,
   sliderPropsDefaults,
 } from './common'
+import { useMouseDown } from '../../use'
 
 defineOptions({
   options: {
@@ -289,27 +289,15 @@ const onTouchEnd = (event: TouchEvent) => {
   emit('drag-end', event)
 }
 
-const onMouseDown = (event: MouseEvent, index: number) => {
-  // #ifdef WEB
-  const info = uni.getSystemInfoSync()
+const onMouseDown0 = useMouseDown(
+  (event) => onTouchStart(event, 0),
+  (event) => onTouchMove(event, 0),
+)
 
-  onTouchStart(toTouchEvent(event, info.windowTop), index)
-
-  const moveHandler = (event: MouseEvent) => {
-    event.preventDefault()
-    event.stopPropagation()
-
-    onTouchMove(toTouchEvent(event, info.windowTop), index)
-  }
-  const upHandler = () => {
-    onTouchEnd(event as unknown as TouchEvent)
-    document.removeEventListener('mouseup', upHandler)
-    document.removeEventListener('mousemove', moveHandler)
-  }
-  document.addEventListener('mousemove', moveHandler)
-  document.addEventListener('mouseup', upHandler)
-  // #endif
-}
+const onMouseDown1 = useMouseDown(
+  (event) => onTouchStart(event, 1),
+  (event) => onTouchMove(event, 1),
+)
 
 const rangeValue = computed(() => {
   let startValue: number

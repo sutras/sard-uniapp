@@ -13,11 +13,11 @@
       <template v-if="options">
         <sar-checkbox
           v-for="option in options"
-          :key="isPrimitive(option) ? option : option[fieldKeys.value]"
-          :value="isPrimitive(option) ? option : option[fieldKeys.value]"
+          :key="getMayPrimitiveOption(option, fieldKeys.value)"
+          :value="getMayPrimitiveOption(option, fieldKeys.value)"
           :validate-event="false"
         >
-          {{ isPrimitive(option) ? option : option[fieldKeys.label] }}
+          {{ getMayPrimitiveOption(option, fieldKeys.label) }}
         </sar-checkbox>
       </template>
     </slot>
@@ -35,7 +35,12 @@ import {
   checkboxGroupPropsDefaults,
   defaultOptionKeys,
 } from '../checkbox/common'
-import { classNames, createBem, isPrimitive, stringifyStyle } from '../../utils'
+import {
+  classNames,
+  createBem,
+  getMayPrimitiveOption,
+  stringifyStyle,
+} from '../../utils'
 import { useFormItemContext } from '../form/common'
 import SarCheckbox from '../checkbox/checkbox.vue'
 
@@ -84,16 +89,17 @@ const toggle: CheckboxContext['toggle'] = (value) => {
 
   innerValue.value = nextValue
   emit('update:model-value', nextValue)
+  emit('change', nextValue)
 }
 
 provide<CheckboxContext>(
   checkboxContextSymbol,
   reactive({
-    disabled: toRef(props, 'disabled'),
-    readonly: toRef(props, 'readonly'),
-    size: toRef(props, 'size'),
-    type: toRef(props, 'type'),
-    checkedColor: toRef(props, 'checkedColor'),
+    disabled: toRef(() => props.disabled),
+    readonly: toRef(() => props.readonly),
+    size: toRef(() => props.size),
+    type: toRef(() => props.type),
+    checkedColor: toRef(() => props.checkedColor),
     value: innerValue,
     toggle,
   }),

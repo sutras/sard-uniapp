@@ -1,0 +1,17 @@
+// #variables
+page {
+  --sar-back-top-right: 48rpx;
+  --sar-back-top-bottom: 96rpx;
+  --sar-back-top-z-index: 1000;
+  --sar-back-top-height: 96rpx;
+  --sar-back-top-min-width: 96rpx;
+  --sar-back-top-padding-x: 24rpx;
+  --sar-back-top-border-radius: var(--sar-rounded-full);
+  --sar-back-top-font-size: 48rpx;
+  --sar-back-top-color: var(--sar-white);
+  --sar-back-top-bg: var(--sar-primary);
+  --sar-back-top-box-shadow: var(--sar-shadow-lg);
+  --sar-back-top-active-opacity: var(--sar-active-opacity);
+  --sar-back-top-duration: var(--sar-duration);
+}
+// #endvariables

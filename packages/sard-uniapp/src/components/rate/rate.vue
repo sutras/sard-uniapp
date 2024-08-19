@@ -24,7 +24,7 @@
           :class="bem.e('star-void')"
           :style="
             stringifyStyle({
-              color: voidColor,
+              color: isDisabled ? undefined : voidColor,
             })
           "
         >
@@ -37,7 +37,7 @@
           :class="bem.e('star')"
           :style="
             stringifyStyle({
-              color,
+              color: isDisabled ? undefined : color,
               width: item.width,
             })
           "
@@ -61,11 +61,11 @@ import {
   uniqid,
   getBoundingClientRect,
   type NodeRect,
-  toTouchEvent,
 } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
 import { type RateProps, type RateEmits, ratePropsDefaults } from './common'
+import { useMouseDown } from '../../use'
 
 defineOptions({
   options: {
@@ -214,24 +214,7 @@ const onTouchMove = (event: TouchEvent) => {
   }
 }
 
-const onMouseDown = () => {
-  // #ifdef WEB
-  onTouchStart()
-
-  const moveHandler = (event: MouseEvent) => {
-    event.preventDefault()
-    event.stopPropagation()
-
-    onTouchMove(toTouchEvent(event))
-  }
-  const upHandler = () => {
-    document.removeEventListener('mouseup', upHandler)
-    document.removeEventListener('mousemove', moveHandler)
-  }
-  document.addEventListener('mousemove', moveHandler)
-  document.addEventListener('mouseup', upHandler)
-  // #endif
-}
+const onMouseDown = useMouseDown(onTouchStart, onTouchMove)
 
 // others
 const rateClass = computed(() => {

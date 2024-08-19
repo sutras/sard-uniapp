@@ -15,7 +15,7 @@
     color: var(--sar-checkbox-icon-color);
     transition: color var(--sar-checkbox-icon-transition-duration);
 
-    @include m(checked) {
+    @include m(checked, indeterminate) {
       color: var(--sar-checkbox-icon-checked-color);
     }
   }
@@ -27,14 +27,14 @@
   }
 
   @include m(readonly) {
-    cursor: default;
+    cursor: unset;
   }
 
   @include m(disabled) {
     cursor: var(--sar-disabled-cursor);
 
     @include e(icon) {
-      @include disabled;
+      color: var(--sar-checkbox-icon-disabled-color);
     }
 
     @include e(label) {

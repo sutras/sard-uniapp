@@ -5,11 +5,6 @@
 </template>
 
 <script setup lang="ts">
-// 1. 替换 _template
-// 2. 替换 _Template
-// 3. 统一导出css变量: packages/sard-uniapp/src/index.scss
-// 4. 统一导出接口: packages/sard-uniapp/src/index.ts
-// 5. 统一导出全局组件类型: packages/sard-uniapp/src/global.d.ts
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import {

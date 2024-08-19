@@ -1,5 +1,6 @@
 import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
+import { type TransitionHookName } from '../../use'
 
 export interface DialogProps {
   rootStyle?: StyleValue
@@ -29,4 +30,5 @@ export interface DialogEmits {
   (e: 'close'): void
   (e: 'cancel'): void
   (e: 'confirm'): void
+  (e: 'visible-hook', name: TransitionHookName): void
 }

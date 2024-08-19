@@ -1,0 +1,29 @@
+// #variables
+page {
+  --sar-timeline-item-header-width: 96rpx;
+
+  --sar-timeline-item-line-width: 1px;
+  --sar-timeline-item-line-dotted-before-height: 14rpx;
+  --sar-timeline-item-line-color: var(--sar-border-color);
+
+  --sar-timeline-item-icon-wrapper-margin-y: 6rpx;
+
+  --sar-timeline-item-icon-font-size: 48rpx;
+  --sar-timeline-item-icon-color: var(--sar-quaternary-bg);
+
+  --sar-timeline-item-dot-size: 16rpx;
+  --sar-timeline-item-dot-bg: var(--sar-tertiary-bg);
+
+  --sar-timeline-item-body-padding-top: 6rpx;
+  --sar-timeline-item-body-padding-bottom: 48rpx;
+
+  --sar-timeline-item-title-margin-bottom: 12rpx;
+  --sar-timeline-item-title-font-size: var(--sar-text-lg);
+
+  --sar-timeline-item-description-margin-bottom: 12rpx;
+  --sar-timeline-item-description-font-size: var(--sar-text-base);
+
+  --sar-timeline-item-time-font-size: var(--sar-text-sm);
+  --sar-timeline-item-time-color: var(--sar-tertiary-color);
+}
+// #endvariables

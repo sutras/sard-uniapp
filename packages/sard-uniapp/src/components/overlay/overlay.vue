@@ -44,8 +44,8 @@ const onClick = (event: any) => {
 
 const { realVisible, transitionClass, onTransitionEnd } = useTransition(
   reactive({
-    visible: toRef(props, 'visible'),
-    duration: toRef(props, 'duration'),
+    visible: toRef(() => props.visible),
+    duration: toRef(() => props.duration),
     prefix: bem.m(''),
   }),
 )

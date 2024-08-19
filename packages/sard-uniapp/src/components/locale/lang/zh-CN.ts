@@ -98,4 +98,12 @@ export default {
     confirm: '确定',
     cancel: '取消',
   },
+  tree: {
+    addSibling: '添加下一节点',
+    addChild: '添加子节点',
+    addRoot: '添加根节点',
+    removeNode: '删除节点',
+    edit: '编辑节点',
+    please: '请输入标题',
+  },
 }

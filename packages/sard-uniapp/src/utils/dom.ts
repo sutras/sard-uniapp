@@ -212,7 +212,7 @@ export async function matchScrollVisible(
 
 export function toTouchEvent(event: MouseEvent | TouchEvent, windowTop = 0) {
   if (!('touches' in event)) {
-    ;(event as any).touches = [
+    ;(event as any).touches = (event as any).changedTouches = [
       {
         clientX: event.clientX,
         clientY: event.clientY - windowTop,

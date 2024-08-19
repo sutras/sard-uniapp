@@ -37,6 +37,7 @@ export interface FormProps {
   showError?: boolean
   scrollToFirstError?: boolean
   scrollIntoViewOptions?: ScrollIntoViewOptions
+  scrollDuration?: number
 
   disabled?: boolean
   readonly?: boolean
@@ -114,6 +115,7 @@ export interface FormContext {
   addField: (context: FormItemContext) => void
   removeField: (context: FormItemContext) => void
   validator: Validator
+  scrollDuration: number
 }
 
 export interface FormItemContext {

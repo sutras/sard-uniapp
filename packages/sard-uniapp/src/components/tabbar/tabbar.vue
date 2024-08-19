@@ -50,8 +50,8 @@ const select: TabbarContext['select'] = (name) => {
 provide<TabbarContext>(
   tabbarContextSymbol,
   reactive({
-    color: toRef(props, 'color'),
-    activeColor: toRef(props, 'activeColor'),
+    color: toRef(() => props.color),
+    activeColor: toRef(() => props.activeColor),
     current: innerCurrent,
     select,
   }),

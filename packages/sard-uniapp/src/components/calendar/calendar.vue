@@ -119,9 +119,9 @@ const emit = defineEmits<CalendarEmits>()
 
 const bem = createBem('calendar')
 
-// main
 const { t } = useTranslate('calendar')
 
+// main
 const minDate = computed(() => {
   return props.min || getMinDate(props.severalMonths)
 })

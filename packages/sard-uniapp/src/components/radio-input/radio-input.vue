@@ -33,13 +33,16 @@
             <sar-list inlaid>
               <sar-list-item
                 v-for="option in options"
-                :key="option[fieldKeys.value]"
-                :title="option[fieldKeys.label]"
+                :key="getMayPrimitiveOption(option, fieldKeys.value)"
+                :title="getMayPrimitiveOption(option, fieldKeys.label)"
                 hover
-                @click="toggle(option[fieldKeys.value])"
+                @click="toggle(getMayPrimitiveOption(option, fieldKeys.value))"
               >
                 <template #value>
-                  <sar-radio readonly :value="option[fieldKeys.value]" />
+                  <sar-radio
+                    readonly
+                    :value="getMayPrimitiveOption(option, fieldKeys.value)"
+                  />
                 </template>
               </sar-list-item>
             </sar-list>
@@ -56,6 +59,8 @@ import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarPopout from '../popout/popout.vue'
 import SarRadioGroup from '../radio-group/radio-group.vue'
 import SarRadio from '../radio/radio.vue'
+import SarList from '../list/list.vue'
+import SarListItem from '../list-item/list-item.vue'
 import { type RadioGroupOptionKeys, defaultOptionKeys } from '../radio/common'
 import {
   type RadioInputProps,
@@ -63,7 +68,7 @@ import {
   type RadioInputOption,
   radioInputPropsDefaults,
 } from './common'
-import { createBem, isNullish } from '../../utils'
+import { createBem, getMayPrimitiveOption, isNullish } from '../../utils'
 import { useFormItemContext } from '../form/common'
 
 defineOptions({
@@ -130,11 +135,12 @@ function getOutletText(
   optionKeys: Required<RadioGroupOptionKeys>,
   value: any,
 ) {
-  return (
-    options.find((option) => option[optionKeys.value] === value)?.[
-      optionKeys.label
-    ] || ''
+  const option = options.find(
+    (option) => getMayPrimitiveOption(option, optionKeys.value) === value,
   )
+  return isNullish(option)
+    ? ''
+    : getMayPrimitiveOption(option, optionKeys.label)
 }
 
 function getInputValue() {

@@ -2,7 +2,11 @@
   <view :class="radioClass" :style="stringifyStyle(rootStyle)" @click="onClick">
     <view :class="iconClass" :style="iconStyle">
       <slot name="icon" :checked="innerChecked">
-        <sar-icon v-if="!$slots.icon" :name="iconName" />
+        <sar-check-icon
+          shape="circle"
+          :type="checkIconType"
+          :disabled="isDisabled"
+        />
       </slot>
     </view>
     <view v-if="$slots.default || label" :class="labelClass">
@@ -12,7 +16,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide, inject } from 'vue'
+import { computed, provide, inject, watch, ref } from 'vue'
 import { classNames, createBem, stringifyStyle } from '../../utils'
 import {
   type RadioProps,
@@ -20,9 +24,8 @@ import {
   type RadioEmits,
   type RadioContext,
   radioContextSymbol,
-  mapTypeIcon,
 } from './common'
-import SarIcon from '../icon/icon.vue'
+import SarCheckIcon from '../check-icon/check-icon.vue'
 import { useFormContext } from '../form/common'
 
 defineOptions({
@@ -44,9 +47,9 @@ const bem = createBem('radio')
 const groupContext = inject<RadioContext | null>(radioContextSymbol, null)
 const formContext = useFormContext()
 
-const innerChecked = computed(() => {
-  return !!groupContext && groupContext.value === props.value
-})
+const innerChecked = ref(
+  groupContext ? groupContext.value === props.value : props.checked,
+)
 
 const isDisabled = computed(() => {
   return formContext?.disabled || groupContext?.disabled || props.disabled
@@ -56,9 +59,29 @@ const isReadonly = computed(() => {
   return formContext?.readonly || groupContext?.readonly || props.readonly
 })
 
+if (groupContext) {
+  watch(
+    () => groupContext.value,
+    () => {
+      innerChecked.value = groupContext.value === props.value
+    },
+  )
+} else {
+  watch(
+    () => props.checked,
+    () => {
+      innerChecked.value = props.checked
+    },
+  )
+}
+
 const onClick = (event: any) => {
   if (!isDisabled.value && !isReadonly.value) {
-    groupContext?.toggle(props.value)
+    if (groupContext) {
+      groupContext.toggle(props.value)
+    } else {
+      innerChecked.value = true
+    }
   }
   emit('click', event)
 }
@@ -76,9 +99,9 @@ const radioClass = computed(() => {
   )
 })
 
-const iconName = computed(() => {
+const checkIconType = computed(() => {
   const type = props.type ?? groupContext?.type ?? 'circle'
-  return mapTypeIcon[type][innerChecked.value ? 1 : 0]
+  return innerChecked.value ? (type === 'circle' ? 'check' : 'dot') : 'empty'
 })
 
 const iconColor = computed(() => {

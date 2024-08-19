@@ -126,12 +126,12 @@
     "title": "数据展示",
     "children": [
       {
-        "title": "Avatar 头像",
-        "name": "avatar"
-      },
-      {
         "title": "Accordion 手风琴",
         "name": "accordion"
+      },
+      {
+        "title": "Avatar 头像",
+        "name": "avatar"
       },
       {
         "title": "Badge 徽标",
@@ -154,16 +154,16 @@
         "name": "count-to"
       },
       {
+        "title": "Empty 空状态",
+        "name": "empty"
+      },
+      {
         "title": "List 列表",
         "name": "list"
       },
       {
         "title": "LuckyDraw 幸运抽奖",
         "name": "lucky-draw"
-      },
-      {
-        "title": "Empty 空状态",
-        "name": "empty"
       },
       {
         "title": "NoticeBar 公告栏",
@@ -200,12 +200,24 @@
       {
         "title": "Tag 标签",
         "name": "tag"
+      },
+      {
+        "title": "Timeline 时间轴",
+        "name": "timeline"
+      },
+      {
+        "title": "Tree 树形",
+        "name": "tree"
       }
     ]
   },
   {
     "title": "导航组件",
     "children": [
+      {
+        "title": "BackTop 回到顶部",
+        "name": "back-top"
+      },
       {
         "title": "Dropdown 下拉菜单",
         "name": "dropdown"

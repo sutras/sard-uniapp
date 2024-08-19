@@ -1,9 +1,9 @@
 // #variables
 page {
-  --sar-popover-duration: var(--sar-duration);
+  --sar-popover-duration: var(--sar-duration-fast);
   --sar-popover-bg: var(--sar-emphasis-bg);
   --sar-popover-box-shadow: var(--sar-shadow-xl);
-  --sar-popover-min-width: 240rpx;
+  --sar-popover-min-width: 160rpx;
   --sar-popover-border-radius: var(--sar-rounded);
 
   --sar-popover-dark-bg: var(--sar-gray-800);

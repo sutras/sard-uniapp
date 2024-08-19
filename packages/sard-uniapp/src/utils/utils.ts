@@ -1,5 +1,5 @@
 import { toKebabCase } from './case'
-import { isPlainObject } from './is'
+import { isPlainObject, isPrimitive } from './is'
 
 /**
  * @description: 确保目标是一个数组
@@ -825,4 +825,26 @@ export function addSeparator(num: number | string, separator = ',', digit = 3) {
     new RegExp(`\\B(?=(\\d{${digit}})+(?!\\d))`, 'g'),
     separator,
   )
+}
+
+export interface Coord {
+  x: number
+  y: number
+}
+
+export function getDistanceBetweenTwoPoints(c1: Coord, c2: Coord) {
+  return Math.sqrt(Math.pow(c1.x - c2.x, 2) + Math.pow(c1.y - c2.y, 2))
+}
+
+export function getMayPrimitiveOption(
+  option:
+    | string
+    | number
+    | boolean
+    | {
+        [key: PropertyKey]: any
+      },
+  key: string,
+) {
+  return isPrimitive(option) ? option : option[key]
 }

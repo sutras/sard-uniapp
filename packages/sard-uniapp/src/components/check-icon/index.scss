@@ -1,0 +1,30 @@
+@use '../style/base' as *;
+
+@include bem(check-icon) {
+  @include b() {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    width: var(--sar-check-icon-size);
+    height: var(--sar-check-icon-size);
+    border: 1px solid var(--sar-check-icon-border-color);
+
+    @include m(square) {
+      border-radius: var(--sar-check-icon-square-border-radius);
+    }
+
+    @include m(circle) {
+      border-radius: 50%;
+    }
+
+    @include m(check, dot, dash) {
+      border-color: transparent;
+    }
+
+    @include m(disabled) {
+      color: var(--sar-check-icon-disabled-color);
+      background-color: var(--sar-check-icon-disabled-bg);
+      border-color: var(--sar-check-icon-disabled-border-color);
+    }
+  }
+}

@@ -40,8 +40,8 @@ const gutter = computed(() => {
 provide<GridContext>(
   gridSymbol,
   reactive({
-    columns: toRef(props, 'columns'),
-    gap: toRef(props, 'gap'),
+    columns: toRef(() => props.columns),
+    gap: toRef(() => props.gap),
     gutter,
   }),
 )

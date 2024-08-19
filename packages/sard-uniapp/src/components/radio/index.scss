@@ -27,14 +27,14 @@
   }
 
   @include m(readonly) {
-    cursor: default;
+    cursor: unset;
   }
 
   @include m(disabled) {
     cursor: var(--sar-disabled-cursor);
 
     @include e(icon) {
-      @include disabled;
+      color: var(--sar-radio-icon-disabled-color);
     }
 
     @include e(label) {

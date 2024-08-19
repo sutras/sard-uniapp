@@ -48,14 +48,13 @@ import {
   uniqid,
   getBoundingClientRect,
   minmax,
-  toTouchEvent,
 } from '../../utils'
 import {
   type IndexesNavProps,
   type IndexesNavSlots,
   type IndexesNavEmits,
 } from '../indexes/common'
-import { useTransition } from '../../use'
+import { useMouseDown, useTransition } from '../../use'
 import { defaultConfig } from '../config'
 
 defineOptions({
@@ -145,26 +144,7 @@ const onTouchEnd = () => {
   currentItemIndex = null
 }
 
-const onMouseDown = (event: MouseEvent) => {
-  // #ifdef WEB
-  const info = uni.getSystemInfoSync()
-
-  onTouchStart(toTouchEvent(event, info.windowTop))
-
-  const moveHandler = (event: MouseEvent) => {
-    event.preventDefault()
-
-    onTouchMove(toTouchEvent(event, info.windowTop))
-  }
-  const upHandler = () => {
-    onTouchEnd()
-    document.removeEventListener('mouseup', upHandler)
-    document.removeEventListener('mousemove', moveHandler)
-  }
-  document.addEventListener('mousemove', moveHandler)
-  document.addEventListener('mouseup', upHandler)
-  // #endif
-}
+const onMouseDown = useMouseDown(onTouchStart, onTouchMove, onTouchEnd)
 
 // others
 const navClass = computed(() => {

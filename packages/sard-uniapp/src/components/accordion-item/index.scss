@@ -24,17 +24,6 @@
     padding: var(--sar-accordion-item-header-padding-y)
       var(--sar-accordion-item-header-padding-x);
     cursor: pointer;
-
-    @include m-not(disabled) {
-      &:active {
-        background-color: var(--sar-accordion-active-bg);
-      }
-    }
-
-    @include m(disabled) {
-      cursor: not-allowed;
-      @include disabled;
-    }
   }
 
   @include e(title) {
@@ -60,6 +49,23 @@
       @include border-top(var(--sar-accordion-border-color));
       left: var(--sar-accordion-item-body-padding-x);
       right: var(--sar-accordion-item-body-padding-x);
+    }
+  }
+
+  @include m(disabled) {
+    @include e(header) {
+      cursor: not-allowed;
+    }
+    @include e(title, arrow) {
+      color: var(--sar-disabled-color);
+    }
+  }
+
+  @include m-not(disabled) {
+    @include e(header) {
+      &:active {
+        background-color: var(--sar-accordion-active-bg);
+      }
     }
   }
 }

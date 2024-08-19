@@ -6,6 +6,7 @@ export type IconType = 'circle' | 'record'
 export interface RadioProps {
   rootStyle?: StyleValue
   rootClass?: string
+  checked?: boolean
   value?: any
   label?: string
   disabled?: boolean
@@ -65,8 +66,8 @@ export interface RadioGroupSlots {
 }
 
 export interface RadioGroupEmits {
-  (e: 'click', event: any): void
   (e: 'update:model-value', value: any): void
+  (e: 'change', value: any): void
 }
 
 export interface RadioContext {
@@ -80,8 +81,3 @@ export interface RadioContext {
 }
 
 export const radioContextSymbol = Symbol('radio-context')
-
-export const mapTypeIcon = {
-  record: ['circle', 'record-circle'],
-  circle: ['circle', 'check-circle-fill'],
-}

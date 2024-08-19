@@ -2,7 +2,7 @@ import { describe, expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h } from 'vue'
 
-import Button from '../Button.vue'
+import Button from '../button.vue'
 
 describe('Button', () => {
   test('create', async () => {

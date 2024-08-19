@@ -36,6 +36,48 @@
       }
     },
     {
+      "path": "pages/components/back-top/demo/Basic",
+      "style": {
+        "navigationBarTitleText": "基础用法"
+      }
+    },
+    {
+      "path": "pages/components/back-top/demo/CustomContent",
+      "style": {
+        "navigationBarTitleText": "自定义按钮内容"
+      }
+    },
+    {
+      "path": "pages/components/back-top/demo/Duration",
+      "style": {
+        "navigationBarTitleText": "滚动时长"
+      }
+    },
+    {
+      "path": "pages/components/back-top/demo/Position",
+      "style": {
+        "navigationBarTitleText": "按钮位置"
+      }
+    },
+    {
+      "path": "pages/components/back-top/demo/ScrollView",
+      "style": {
+        "navigationBarTitleText": "scroll-view 组件滚动"
+      }
+    },
+    {
+      "path": "pages/components/back-top/demo/VisibleHeight",
+      "style": {
+        "navigationBarTitleText": "可见时的高度"
+      }
+    },
+    {
+      "path": "pages/components/back-top/index",
+      "style": {
+        "navigationBarTitleText": "BackTop 回到顶部"
+      }
+    },
+    {
       "path": "pages/components/badge/index",
       "style": {
         "navigationBarTitleText": "Badge 徽标"
@@ -534,9 +576,75 @@
       }
     },
     {
+      "path": "pages/components/timeline/index",
+      "style": {
+        "navigationBarTitleText": "Timeline 时间轴"
+      }
+    },
+    {
       "path": "pages/components/toast/index",
       "style": {
         "navigationBarTitleText": "Toast 轻提示"
+      }
+    },
+    {
+      "path": "pages/components/tree/demo/Accordion",
+      "style": {
+        "navigationBarTitleText": "手风琴"
+      }
+    },
+    {
+      "path": "pages/components/tree/demo/Basic",
+      "style": {
+        "navigationBarTitleText": "基础用法"
+      }
+    },
+    {
+      "path": "pages/components/tree/demo/CheckStrictly",
+      "style": {
+        "navigationBarTitleText": "严格选择"
+      }
+    },
+    {
+      "path": "pages/components/tree/demo/DefaultExpandedAndChecked",
+      "style": {
+        "navigationBarTitleText": "默认展开以及默认选中"
+      }
+    },
+    {
+      "path": "pages/components/tree/demo/Draggable",
+      "style": {
+        "navigationBarTitleText": "可拖拽的"
+      }
+    },
+    {
+      "path": "pages/components/tree/demo/Editable",
+      "style": {
+        "navigationBarTitleText": "可编辑的"
+      }
+    },
+    {
+      "path": "pages/components/tree/demo/Filter",
+      "style": {
+        "navigationBarTitleText": "树节点过滤"
+      }
+    },
+    {
+      "path": "pages/components/tree/demo/Selectable",
+      "style": {
+        "navigationBarTitleText": "可选择的"
+      }
+    },
+    {
+      "path": "pages/components/tree/demo/StrictFilter",
+      "style": {
+        "navigationBarTitleText": "严格的树节点过滤"
+      }
+    },
+    {
+      "path": "pages/components/tree/index",
+      "style": {
+        "navigationBarTitleText": "Tree 树形"
       }
     },
     {

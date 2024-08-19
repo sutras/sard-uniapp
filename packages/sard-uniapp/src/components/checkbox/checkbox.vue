@@ -2,7 +2,11 @@
   <view :class="checkboxClass" :style="checkboxStyle" @click="onClick">
     <view :class="iconClass" :style="iconStyle">
       <slot name="icon" :checked="innerChecked">
-        <sar-icon v-if="!$slots.icon" :name="iconName" />
+        <sar-check-icon
+          :shape="checkIconShape"
+          :type="checkIconType"
+          :disabled="isDisabled"
+        />
       </slot>
     </view>
     <view v-if="$slots.default || label" :class="labelClass">
@@ -20,10 +24,9 @@ import {
   type CheckboxEmits,
   type CheckboxContext,
   checkboxContextSymbol,
-  mapTypeIcon,
   checkboxPropsDefaults,
 } from './common'
-import SarIcon from '../icon/icon.vue'
+import SarCheckIcon from '../check-icon/check-icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
 
 defineOptions({
@@ -86,6 +89,7 @@ const onClick = (event: any) => {
     } else {
       innerChecked.value = !innerChecked.value
       emit('update:checked', innerChecked.value)
+      emit('change', innerChecked.value)
     }
   }
   emit('click', event)
@@ -108,9 +112,12 @@ const checkboxStyle = computed(() => {
   return stringifyStyle(props.rootStyle)
 })
 
-const iconName = computed(() => {
-  const type = props.type ?? groupContext?.type ?? 'square'
-  return mapTypeIcon[type][innerChecked.value ? 1 : 0]
+const checkIconShape = computed(() => {
+  return props.type ?? groupContext?.type ?? 'square'
+})
+
+const checkIconType = computed(() => {
+  return innerChecked.value ? 'check' : props.indeterminate ? 'dash' : 'empty'
 })
 
 const iconColor = computed(() => {
@@ -123,6 +130,7 @@ const iconClass = computed(() => {
   return classNames(
     bem.e('icon'),
     bem.em('icon', 'checked', innerChecked.value),
+    bem.em('icon', 'indeterminate', props.indeterminate),
   )
 })
 

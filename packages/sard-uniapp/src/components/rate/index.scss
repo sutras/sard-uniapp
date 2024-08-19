@@ -43,12 +43,18 @@
 
   @include m(readonly) {
     @include e(item) {
-      cursor: default;
+      cursor: unset;
     }
   }
 
   @include m(disabled) {
-    @include disabled;
+    @include e(star-void) {
+      color: var(--sar-disabled-border-color);
+    }
+
+    @include e(star) {
+      color: var(--sar-disabled-color);
+    }
 
     @include e(item) {
       cursor: not-allowed;

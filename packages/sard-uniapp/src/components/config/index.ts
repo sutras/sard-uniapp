@@ -12,6 +12,9 @@ export const defaultConfig = {
   avatar: {
     shape: 'circle' as const,
   },
+  backTop: {
+    visibleHeight: 200,
+  },
   badge: {
     value: 0,
     max: 99,
@@ -191,7 +194,7 @@ export const defaultConfig = {
     refGap: 10,
     viewportGap: 10,
     transparent: true,
-    duration: 300,
+    duration: 150,
   },
   popup: {
     duration: 300,
@@ -307,6 +310,11 @@ export const defaultConfig = {
   },
   toastAgent: {
     id: 'toast',
+  },
+  tree: {
+    defaultExpandAll: false,
+    filterMode: 'lenient' as const,
+    accordion: false,
   },
   upload: {
     accept: 'image' as const,

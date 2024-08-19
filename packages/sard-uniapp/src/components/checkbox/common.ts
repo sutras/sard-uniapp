@@ -7,6 +7,7 @@ export interface CheckboxProps {
   rootStyle?: StyleValue
   rootClass?: string
   checked?: boolean
+  indeterminate?: boolean
   value?: any
   label?: string
   disabled?: boolean
@@ -27,6 +28,7 @@ export interface CheckboxSlots {
 export interface CheckboxEmits {
   (e: 'click', event: any): void
   (e: 'update:checked', checked: boolean): void
+  (e: 'change', checked: boolean): void
 }
 
 export const defaultOptionKeys = {
@@ -72,6 +74,7 @@ export interface CheckboxGroupSlots {
 export interface CheckboxGroupEmits {
   (e: 'click', event: any): void
   (e: 'update:model-value', value: any[]): void
+  (e: 'change', value: any[]): void
 }
 
 export interface CheckboxContext {
@@ -85,8 +88,3 @@ export interface CheckboxContext {
 }
 
 export const checkboxContextSymbol = Symbol('checkbox-context')
-
-export const mapTypeIcon = {
-  square: ['square', 'check-square-fill'],
-  circle: ['circle', 'check-circle-fill'],
-}

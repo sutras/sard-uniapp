@@ -1,0 +1,94 @@
+@use '../style/base' as *;
+
+@include bem(timeline-item) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+
+    &:first-child {
+      @include e(line) {
+        @include m(before) {
+          opacity: 0;
+        }
+      }
+    }
+
+    &:last-child {
+      @include e(line) {
+        @include m(after) {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  @include e(header) {
+    @include universal;
+    align-items: center;
+    flex: none;
+    width: var(--sar-timeline-item-header-width);
+  }
+
+  @include e(icon-wrapper) {
+    @include universal;
+    margin: var(--sar-timeline-item-icon-wrapper-margin-y) 0;
+  }
+
+  @include e(icon) {
+    @include universal;
+    font-size: var(--sar-timeline-item-icon-font-size);
+    line-height: var(--sar-leading-none);
+    color: var(--sar-timeline-item-icon-color);
+  }
+
+  @include e(dot) {
+    width: var(--sar-timeline-item-dot-size);
+    height: var(--sar-timeline-item-dot-size);
+    border-radius: 50%;
+    background-color: var(--sar-timeline-item-dot-bg);
+  }
+
+  @include e(line) {
+    @include universal;
+    width: var(--sar-timeline-item-line-width);
+    background-color: var(--sar-timeline-item-line-color);
+
+    @include m(after) {
+      flex: 1;
+    }
+  }
+
+  @include m(dotted) {
+    @include e(line) {
+      @include m(before) {
+        height: var(--sar-timeline-item-line-dotted-before-height);
+      }
+    }
+  }
+
+  @include e(body) {
+    @include universal;
+    flex: 1;
+    padding-top: var(--sar-timeline-item-body-padding-top);
+    padding-bottom: var(--sar-timeline-item-body-padding-bottom);
+  }
+
+  @include e(title) {
+    @include universal;
+    margin-bottom: var(--sar-timeline-item-title-margin-bottom);
+    font-size: var(--sar-timeline-item-title-font-size);
+    font-weight: var(--sar-font-bold);
+  }
+
+  @include e(description) {
+    @include universal;
+    margin-bottom: var(--sar-timeline-item-description-margin-bottom);
+    font-size: var(--sar-timeline-item-description-font-size);
+  }
+
+  @include e(time) {
+    @include universal;
+    font-size: var(--sar-timeline-item-time-font-size);
+    color: var(--sar-timeline-item-time-color);
+  }
+}
