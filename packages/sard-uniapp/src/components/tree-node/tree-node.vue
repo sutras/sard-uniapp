@@ -40,9 +40,9 @@
         v-if="treeContext.editable"
         :id="editId"
         :class="editClass"
-        @touchstart.stop="onEditTouchStart"
-        @touchend.stop="onEditTouchEnd"
-        @touchcancel.stop="onEditTouchEnd"
+        @touchstart.stop.prevent="onEditTouchStart"
+        @touchend="onEditTouchEnd"
+        @touchcancel="onEditTouchEnd"
         @mousedown.stop="onEditMouseDown"
         @click.stop
       >
@@ -70,7 +70,7 @@
 
   <sar-tree-branch
     v-if="!isLeaf && node.expanded"
-    :nodes="node.children! || []"
+    :nodes="node.children || []"
   />
 
   <sar-popover
