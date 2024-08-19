@@ -1,4 +1,4 @@
-# [1.6.0-rc2](https://github.com/sutras/sard-uniapp/compare/v1.5.0...v1.6.0-rc2) (2024-08-19)
+# [1.6.0](https://github.com/sutras/sard-uniapp/compare/v1.5.0...v1.6.0) (2024-08-19)
 
 
 ### Features
