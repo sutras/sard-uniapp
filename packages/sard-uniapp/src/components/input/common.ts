@@ -11,7 +11,7 @@ export interface InputProps {
   cursorSpacing?: number
   cursor?: number
   confirmType?: 'send' | 'search' | 'next' | 'go' | 'done'
-  confirmHold?: number
+  confirmHold?: boolean
   selectionStart?: number
   selectionEnd?: number
   adjustPosition?: boolean
