@@ -32,6 +32,7 @@
     @include universal;
     font-size: var(--sar-grid-item-text-font-size);
     line-height: var(--sar-grid-item-text-line-height);
+    text-align: center;
   }
 
   @include m(square) {

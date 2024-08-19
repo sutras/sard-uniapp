@@ -41,7 +41,7 @@ const gutter = computed(() => {
 provide<RowContext>(
   rowSymbol,
   reactive({
-    gap: toRef(props, 'gap'),
+    gap: toRef(() => props.gap),
     gutter,
   }),
 )

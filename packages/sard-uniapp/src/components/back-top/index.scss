@@ -1,0 +1,34 @@
+@use '../style/base' as *;
+
+@include bem(back-top) {
+  @include b() {
+    @include universal;
+    position: fixed;
+    right: var(--sar-back-top-right);
+    bottom: var(--sar-back-top-bottom);
+    z-index: var(--sar-back-top-z-index);
+    justify-content: center;
+    align-items: center;
+    min-width: var(--sar-back-top-min-width);
+    height: var(--sar-back-top-height);
+    padding: 0 var(--sar-back-top-padding-x);
+    border-radius: var(--sar-back-top-border-radius);
+    font-size: var(--sar-back-top-font-size);
+    color: var(--sar-back-top-color);
+    background-color: var(--sar-back-top-bg);
+    box-shadow: var(--sar-back-top-box-shadow);
+    cursor: pointer;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity var(--sar-back-top-duration);
+
+    &:active {
+      opacity: var(--sar-back-top-active-opacity);
+    }
+
+    @include m(visible) {
+      pointer-events: auto;
+      opacity: 1;
+    }
+  }
+}

@@ -86,6 +86,7 @@ import RadioGroup from 'sard-uniapp/components/radio-group/radio-group.vue'
 | ------------- | ------------------------------------ | -------------------- | -------- |
 | root-class    | 组件根元素类名                       | string               | -        |
 | root-style    | 组件根元素样式                       | StyleValue           | -        |
+| checked       | 是否选中                             | boolean              | false    |
 | value         | 单选按钮的值，配合单选按钮组一起使用 | any                  | -        |
 | label         | 单选按钮标签                         | string               | -        |
 | disabled      | 禁用状态                             | boolean              | -        |
@@ -157,6 +158,7 @@ export interface RadioGroupOptionKeys {
 | 事件               | 描述                   | 类型                 |
 | ------------------ | ---------------------- | -------------------- |
 | update:model-value | 单选按钮组值改变时触发 | (value: any) => void |
+| change             | 单选按钮组值改变时触发 | (value: any) => void |
 
 ## 主题定制
 

@@ -98,4 +98,12 @@ export default {
     confirm: 'Ok',
     cancel: 'Cancel',
   },
+  tree: {
+    addSibling: 'Add sibling node',
+    addChild: 'Add child node',
+    addRoot: 'Add root node',
+    removeNode: 'Remove node',
+    edit: 'Edit node',
+    please: 'Please input title',
+  },
 }

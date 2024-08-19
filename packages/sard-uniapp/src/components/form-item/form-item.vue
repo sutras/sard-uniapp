@@ -59,7 +59,6 @@ import {
   useFormContext,
   formItemPropsDefaults,
 } from '../form/common'
-import { defaultConfig } from '../config'
 
 defineOptions({
   options: {
@@ -254,8 +253,7 @@ const scrollToField = async () => {
   uni.pageScrollTo({
     scrollTop,
     duration:
-      formContext.scrollIntoViewOptions?.duration ??
-      defaultConfig.form.scrollDuration,
+      formContext.scrollIntoViewOptions?.duration ?? formContext.scrollDuration,
   })
 }
 
@@ -268,7 +266,7 @@ const onChange = () => {
 }
 
 const context: FormItemContext = reactive({
-  name: toRef(props, 'name'),
+  name: toRef(() => props.name),
   validateMessage,
   validateState,
   validate,

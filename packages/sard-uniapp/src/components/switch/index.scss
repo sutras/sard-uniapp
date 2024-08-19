@@ -17,16 +17,17 @@
     }
 
     @include m(disabled) {
-      @include disabled;
+      opacity: var(--sar-disabled-opacity);
+      cursor: not-allowed;
     }
 
     @include m(readonly) {
-      cursor: default;
+      cursor: unset;
     }
 
     @include m(loading) {
       opacity: var(--sar-switch-is-loading-opacity);
-      cursor: not-allowed;
+      cursor: wait;
     }
   }
 

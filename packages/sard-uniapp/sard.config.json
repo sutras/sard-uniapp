@@ -1,6 +1,8 @@
 {
   "name": "Sard",
-  "styles": ["assets/index.scss"],
+  "styles": [
+    "assets/index.scss"
+  ],
   "base": "/sard-uniapp-docs/",
   "publicDir": "public",
   "buildSite": {
@@ -21,7 +23,9 @@
     "outDir": "dist",
     "uniModulesDir": "../../src/uni_modules",
     "uniName": "sard-uniapp",
-    "external": ["vue"]
+    "external": [
+      "vue"
+    ]
   },
   "site": {
     "title": "Sard Uniapp",
@@ -343,6 +347,16 @@
                 "title": "Tag 标签",
                 "path": "tag",
                 "filePath": "src/components/tag"
+              },
+              {
+                "title": "Timeline 时间轴",
+                "path": "timeline",
+                "filePath": "src/components/timeline"
+              },
+              {
+                "title": "Tree 树形",
+                "path": "tree",
+                "filePath": "src/components/tree"
               }
             ]
           },
@@ -352,6 +366,11 @@
             "path": "navigation",
             "index": "dropdown",
             "children": [
+              {
+                "title": "BackTop 回到顶部",
+                "path": "back-top",
+                "filePath": "src/components/back-top"
+              },
               {
                 "title": "Dropdown 下拉菜单",
                 "path": "dropdown",

@@ -1,0 +1,42 @@
+// #variables
+page {
+  --sar-tree-border-color: var(--sar-border-color);
+  --sar-tree-bg: var(--sar-emphasis-bg);
+  --sar-tree-duration: var(--sar-duration);
+
+  --sar-tree-node-height: 80rpx;
+  --sar-tree-node-padding-x: 32rpx;
+  --sar-tree-node-padding-y: 20rpx;
+  --sar-tree-node-bg: var(--sar-emphasis-bg);
+  --sar-tree-node-active-bg: var(--sar-active-bg);
+  --sar-tree-node-dragging-bg: var(--sar-mask-white-legible);
+  --sar-tree-node-dragging-shadow: 0 0 1px 1px rgb(0 0 0 / 0.2),
+    0 1px 10px rgb(0 0 0 / 0.2);
+
+  --sar-tree-toolbar-margin-right: -24rpx;
+
+  --sar-tree-indent-width: 48rpx;
+
+  --sar-tree-arrow-padding-x: 24rpx;
+  --sar-tree-arrow-font-size: 24rpx;
+  --sar-tree-arrow-color: var(--sar-tertiary-color);
+  --sar-tree-arrow-duration: var(--sar-duration);
+
+  --sar-tree-selection-padding-x: 24rpx;
+
+  --sar-tree-edit-padding-x: 24rpx;
+  --sar-tree-edit-font-size: 36rpx;
+  --sar-tree-edit-color: var(--sar-quaternary-color);
+  --sar-tree-edit-active-opacity: var(--sar-active-opacity);
+
+  --sar-tree-level-btn-padding-x: 24rpx;
+  --sar-tree-level-btn-font-size: 36rpx;
+  --sar-tree-level-btn-color: var(--sar-quaternary-color);
+  --sar-tree-level-btn-active-opacity: var(--sar-active-opacity);
+
+  --sar-tree-drag-padding-x: 24rpx;
+  --sar-tree-drag-font-size: 36rpx;
+  --sar-tree-drag-color: var(--sar-quaternary-color);
+  --sar-tree-drag-active-opacity: var(--sar-active-opacity);
+}
+// #endvariables

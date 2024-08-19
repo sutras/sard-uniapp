@@ -39,14 +39,13 @@
 
   @include m(disabled) {
     @include e(select) {
-      cursor: not-allowed;
-      color: var(--sar-disabled-color);
+      @include disabled-text;
     }
   }
 
   @include m(readonly) {
     @include e(select) {
-      cursor: default;
+      cursor: unset;
     }
   }
 }

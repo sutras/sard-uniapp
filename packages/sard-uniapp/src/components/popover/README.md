@@ -90,7 +90,7 @@ import PopoverReference from 'sard-uniapp/components/popover-reference/popover-r
 | refGap       | 气泡弹出框与`reference`元素的间距，单位 px | number                     | 10         |
 | viewport-gap | 气泡弹出框距与视窗的间距，单位 px          | number                     | 10         |
 | transparent  | 遮罩是否透明                               | boolean                    | true       |
-| duration     | 显隐动画时长，单位 ms                      | number                     | 300        |
+| duration     | 显隐动画时长，单位 ms                      | number                     | 150        |
 
 ### PopoverSlots
 

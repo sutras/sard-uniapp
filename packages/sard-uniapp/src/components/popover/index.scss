@@ -18,7 +18,12 @@
   @include e(content) {
     @include universal;
     z-index: 1;
-    min-width: var(--sar-popover-min-width);
+  }
+
+  @include m(vertical) {
+    @include e(content) {
+      min-width: var(--sar-popover-min-width);
+    }
   }
 
   @include e(arrow) {

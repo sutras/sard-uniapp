@@ -6,7 +6,7 @@
     >
       <sar-icon v-if="icon" :name="icon" :family="iconFamily" />
     </view>
-    <view :class="bem.e('text')">
+    <view v-if="text" :class="bem.e('text')">
       {{ text }}
     </view>
   </view>

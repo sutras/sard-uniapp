@@ -6,7 +6,7 @@
     @overlay-click="onOverlayClick"
     @before-enter="onBeforeEnter"
     @after-leave="onAfterLeave"
-    @visible-hook="onVisiblecallVisibleHook"
+    @visible-hook="onVisibleHook"
   >
     <view :class="popoutClass" :style="popoutStyle" @transitionend.stop>
       <view :class="classNames(bem.e('header'), bem.em('header', props.type))">
@@ -149,7 +149,7 @@ const onAfterLeave = () => {
 
 const callVisibleHook = usePopupVisibleHookProvide()
 
-const onVisiblecallVisibleHook = (name: TransitionHookName) => {
+const onVisibleHook = (name: TransitionHookName) => {
   emit('visible-hook', name)
   callVisibleHook(name)
 }

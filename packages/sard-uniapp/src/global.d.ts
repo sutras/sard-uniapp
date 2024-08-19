@@ -5,6 +5,7 @@ declare module 'vue' {
     SarActionSheet: typeof import('./components/action-sheet/action-sheet.vue').default
     SarAlert: typeof import('./components/alert/alert.vue').default
     SarAvatar: typeof import('./components/avatar/avatar.vue').default
+    SarBackTop: typeof import('./components/back-top/back-top.vue').default
     SarBadge: typeof import('./components/badge/badge.vue').default
     SarButton: typeof import('./components/button/button.vue').default
     SarCalendar: typeof import('./components/calendar/calendar.vue').default
@@ -85,8 +86,11 @@ declare module 'vue' {
     SarTabbarItem: typeof import('./components/tabbar-item/tabbar-item.vue').default
     SarTabs: typeof import('./components/tabs/tabs.vue').default
     SarTag: typeof import('./components/tag/tag.vue').default
+    SarTimeline: typeof import('./components/timeline/timeline.vue').default
+    SarTimelineItem: typeof import('./components/timeline-item/timeline-item.vue').default
     SarToast: typeof import('./components/toast/toast.vue').default
     SarToastAgent: typeof import('./components/toast-agent/toast-agent.vue').default
+    SarTree: typeof import('./components/tree/tree.vue').default
     SarUpload: typeof import('./components/upload/upload.vue').default
   }
 }

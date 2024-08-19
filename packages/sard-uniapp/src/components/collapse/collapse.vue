@@ -92,6 +92,7 @@ const collapseStyle = computed(() => {
   return stringifyStyle(
     {
       height: collapseHeight.value,
+      overflow: collapseHeight.value === 'auto' ? 'visible' : 'hidden',
     },
     props.rootStyle,
   )

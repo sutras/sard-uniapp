@@ -5,6 +5,7 @@ export interface MenuOption {
   disabled?: boolean
   icon?: string
   iconFamily?: string
+  [prop: PropertyKey]: any
 }
 
 export interface MenuProps {

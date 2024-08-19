@@ -57,11 +57,11 @@ const unregister: DropdownContext['unregister'] = (instance) => {
 provide<DropdownContext>(
   dropdownContextSymbol,
   reactive({
-    direction: toRef(props, 'direction'),
-    disabled: toRef(props, 'disabled'),
-    awayClosable: toRef(props, 'awayClosable'),
-    overlayClosable: toRef(props, 'overlayClosable'),
-    duration: toRef(props, 'duration'),
+    direction: toRef(() => props.direction),
+    disabled: toRef(() => props.disabled),
+    awayClosable: toRef(() => props.awayClosable),
+    overlayClosable: toRef(() => props.overlayClosable),
+    duration: toRef(() => props.duration),
     hideOthers,
     register,
     unregister,

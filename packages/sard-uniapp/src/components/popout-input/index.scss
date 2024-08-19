@@ -39,7 +39,7 @@
   }
 
   @include m(readonly, loading) {
-    cursor: default;
+    cursor: unset;
   }
 
   @include m(disabled) {

@@ -128,7 +128,7 @@ const getAndSetPosition = async () => {
 const { realVisible, transitionClass, onTransitionEnd } = useTransition(
   reactive({
     visible: transitionVisible,
-    duration: toRef(props, 'duration'),
+    duration: toRef(() => props.duration),
     prefix: bem.m(''),
   }),
 )
@@ -207,6 +207,7 @@ const popoverClass = computed(() => {
   return classNames(
     bem.b(),
     bem.m(props.theme),
+    bem.m(props.direction),
     transitionClass.value,
     props.rootClass,
   )

@@ -23,7 +23,7 @@
     cursor: pointer;
 
     @include m(readonly) {
-      cursor: default;
+      cursor: unset;
     }
 
     @include m(disabled) {

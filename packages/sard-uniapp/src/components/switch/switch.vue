@@ -101,6 +101,7 @@ const switchClass = computed(() => {
     bem.m('checked', isChecked.value),
     bem.m('readonly', isReadonly.value),
     bem.m('disabled', isDisabled.value),
+    bem.m('loading', innerLoading.value),
     props.rootClass,
   )
 })

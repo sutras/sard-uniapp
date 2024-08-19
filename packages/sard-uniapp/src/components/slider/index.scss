@@ -218,11 +218,15 @@
   }
 
   @include m(readonly) {
-    cursor: default;
+    cursor: unset;
   }
 
   @include m(disabled) {
-    @include disabled;
+    cursor: not-allowed;
+
+    @include e(piece) {
+      background-color: var(--sar-disabled-color);
+    }
   }
 
   @include m(readonly, disabled) {

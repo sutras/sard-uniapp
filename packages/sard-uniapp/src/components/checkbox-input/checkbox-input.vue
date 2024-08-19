@@ -33,15 +33,15 @@
             <sar-list inlaid>
               <sar-list-item
                 v-for="option in options"
-                :key="option[fieldKeys.value]"
-                :title="option[fieldKeys.label]"
+                :key="getMayPrimitiveOption(option, fieldKeys.value)"
+                :title="getMayPrimitiveOption(option, fieldKeys.label)"
                 hover
-                @click="toggle(option[fieldKeys.value])"
+                @click="toggle(getMayPrimitiveOption(option, fieldKeys.value))"
               >
                 <template #value>
                   <sar-checkbox
                     readonly
-                    :value="option[fieldKeys.value]"
+                    :value="getMayPrimitiveOption(option, fieldKeys.value)"
                     :validate-event="false"
                   />
                 </template>
@@ -60,6 +60,8 @@ import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarPopout from '../popout/popout.vue'
 import SarCheckboxGroup from '../checkbox-group/checkbox-group.vue'
 import SarCheckbox from '../checkbox/checkbox.vue'
+import SarList from '../list/list.vue'
+import SarListItem from '../list-item/list-item.vue'
 import {
   type CheckboxGroupOptionKeys,
   defaultOptionKeys,
@@ -70,7 +72,7 @@ import {
   type CheckboxInputOption,
   checkboxInputPropsDefaults,
 } from './common'
-import { createBem, isNullish } from '../../utils'
+import { createBem, getMayPrimitiveOption, isNullish } from '../../utils'
 import { useFormItemContext } from '../form/common'
 
 defineOptions({
@@ -135,8 +137,10 @@ function getOutletText(
   value: any[],
 ) {
   return options
-    .filter((option) => value.includes(option[optionKeys.value]))
-    .map((option) => option[optionKeys.label])
+    .filter((option) =>
+      value.includes(getMayPrimitiveOption(option, optionKeys.value)),
+    )
+    .map((option) => getMayPrimitiveOption(option, optionKeys.label))
     .join(', ')
 }
 

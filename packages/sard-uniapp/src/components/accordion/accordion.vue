@@ -64,7 +64,7 @@ provide<AccoridonContext>(
   accoridonContextSymbol,
   reactive({
     value: innerValue,
-    multiple: toRef(props, 'multiple'),
+    multiple: toRef(() => props.multiple),
     toggle,
   }),
 )

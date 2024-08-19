@@ -88,19 +88,20 @@ import CheckboxGroup from 'sard-uniapp/components/checkbox-group/checkbox-group.
 
 ### CheckboxProps
 
-| 属性              | 描述                             | 类型                 | 默认值   |
-| ----------------- | -------------------------------- | -------------------- | -------- |
-| root-class        | 组件根元素类名                   | string               | -        |
-| root-style        | 组件根元素样式                   | StyleValue           | -        |
-| checked (v-model) | 是否选中                         | boolean              | false    |
-| value             | 复选框的值，配合复选框组一起使用 | any                  | -        |
-| label             | 复选框标签                       | string               | -        |
-| disabled          | 禁用状态                         | boolean              | -        |
-| readonly          | 只读状态                         | boolean              | -        |
-| size              | 图标的尺寸                       | string               | -        |
-| type              | 图标类型                         | 'square' \| 'circle' | 'square' |
-| checked-color     | 选中时图标的颜色                 | string               | -        |
-| validate-event    | 是否触发表单验证                 | boolean              | true     |
+| 属性                          | 描述                             | 类型                 | 默认值   |
+| ----------------------------- | -------------------------------- | -------------------- | -------- |
+| root-class                    | 组件根元素类名                   | string               | -        |
+| root-style                    | 组件根元素样式                   | StyleValue           | -        |
+| checked (v-model)             | 是否选中                         | boolean              | false    |
+| indeterminate <sup>1.6+</sup> | 是否处于不确定状态               | boolean              | false    |
+| value                         | 复选框的值，配合复选框组一起使用 | any                  | -        |
+| label                         | 复选框标签                       | string               | -        |
+| disabled                      | 禁用状态                         | boolean              | -        |
+| readonly                      | 只读状态                         | boolean              | -        |
+| size                          | 图标的尺寸                       | string               | -        |
+| type                          | 图标类型                         | 'square' \| 'circle' | 'square' |
+| checked-color                 | 选中时图标的颜色                 | string               | -        |
+| validate-event                | 是否触发表单验证                 | boolean              | true     |
 
 ### CheckboxSlots
 
@@ -115,6 +116,7 @@ import CheckboxGroup from 'sard-uniapp/components/checkbox-group/checkbox-group.
 | -------------- | ------------------ | -------------------------- |
 | click          | 点击时触发         | (event: any) => void       |
 | update:checked | 选中状态改变时触发 | (checked: boolean) => void |
+| change         | 选中状态改变时触发 | (checked: boolean) => void |
 
 ### CheckboxGroupProps
 
@@ -165,6 +167,7 @@ export interface CheckboxGroupOptionKeys {
 | 事件               | 描述                 | 类型                   |
 | ------------------ | -------------------- | ---------------------- |
 | update:model-value | 复选框组值改变时触发 | (value: any[]) => void |
+| change             | 复选框组值改变时触发 | (value: any[]) => void |
 
 ## 主题定制
 

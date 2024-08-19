@@ -12,6 +12,7 @@ import { toast, type MenuOption } from 'sard-uniapp'
 const options = [
   {
     text: '选项1',
+    disabled: true,
   },
   {
     text: '选项2',

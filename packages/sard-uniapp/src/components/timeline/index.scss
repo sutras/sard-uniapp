@@ -1,0 +1,7 @@
+@use '../style/base' as *;
+
+@include bem(timeline) {
+  @include b() {
+    @include universal;
+  }
+}

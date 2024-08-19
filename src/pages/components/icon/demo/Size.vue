@@ -1,3 +1,3 @@
 <template>
-  <sar-icon name="search" size="64rpx" />
+  <sar-icon name="image" size="64rpx" />
 </template>

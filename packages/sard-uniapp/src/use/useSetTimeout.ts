@@ -10,11 +10,11 @@ export function useSetTimeout(callback: (...args: any[]) => any) {
     }
   }
 
-  const doSomethingLater = (duration: number) => {
+  const doSomethingLater = (duration: number, ...args: any[]) => {
     cancel()
     timer = setTimeout(() => {
       timer = null
-      callback()
+      callback(...args)
     }, duration)
   }
 

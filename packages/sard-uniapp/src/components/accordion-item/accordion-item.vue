@@ -1,11 +1,6 @@
 <template>
   <view :class="accordionItemClass" :style="accordionItemStyle">
-    <view
-      :class="
-        classNames(bem.e('header'), bem.em('header', 'disabled', disabled))
-      "
-      @click="onClick"
-    >
+    <view :class="classNames(bem.e('header'))" @click="onClick">
       <view :class="bem.e('title')">{{ title }}</view>
       <view v-if="value" :class="bem.e('value')">{{ value }}</view>
       <view :class="bem.e('arrow')">
@@ -76,7 +71,7 @@ const arrowName = computed(() => {
 })
 
 const accordionItemClass = computed(() => {
-  return classNames(bem.b(), props.rootClass)
+  return classNames(bem.b(), bem.m('disabled', props.disabled), props.rootClass)
 })
 
 const accordionItemStyle = computed(() => {

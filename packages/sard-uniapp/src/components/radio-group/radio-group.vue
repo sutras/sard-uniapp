@@ -13,11 +13,11 @@
       <template v-if="options">
         <sar-radio
           v-for="option in options"
-          :key="isPrimitive(option) ? option : option[fieldKeys.value]"
-          :value="isPrimitive(option) ? option : option[fieldKeys.value]"
+          :key="getMayPrimitiveOption(option, fieldKeys.value)"
+          :value="getMayPrimitiveOption(option, fieldKeys.value)"
           :validate-event="false"
         >
-          {{ isPrimitive(option) ? option : option[fieldKeys.label] }}
+          {{ getMayPrimitiveOption(option, fieldKeys.label) }}
         </sar-radio>
       </template>
     </slot>
@@ -35,7 +35,12 @@ import {
   radioGroupPropsDefaults,
   defaultOptionKeys,
 } from '../radio/common'
-import { classNames, stringifyStyle, createBem, isPrimitive } from '../../utils'
+import {
+  classNames,
+  stringifyStyle,
+  createBem,
+  getMayPrimitiveOption,
+} from '../../utils'
 import { useFormItemContext } from '../form/common'
 import SarRadio from '../radio/radio.vue'
 
@@ -78,17 +83,21 @@ watch(
 )
 
 const toggle: RadioContext['toggle'] = (value) => {
-  emit('update:model-value', value)
+  if (value !== innerValue.value) {
+    innerValue.value = value
+    emit('update:model-value', value)
+    emit('change', value)
+  }
 }
 
 provide<RadioContext>(
   radioContextSymbol,
   reactive({
-    disabled: toRef(props, 'disabled'),
-    readonly: toRef(props, 'readonly'),
-    size: toRef(props, 'size'),
-    type: toRef(props, 'type'),
-    checkedColor: toRef(props, 'checkedColor'),
+    disabled: toRef(() => props.disabled),
+    readonly: toRef(() => props.readonly),
+    size: toRef(() => props.size),
+    type: toRef(() => props.type),
+    checkedColor: toRef(() => props.checkedColor),
     value: innerValue,
     toggle,
   }),

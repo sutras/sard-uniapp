@@ -1,0 +1,13 @@
+@use '../style/base' as *;
+
+@include bem(tree) {
+  @include b() {
+    @include universal;
+    background-color: var(--sar-tree-bg);
+    transition: height var(--sar-tree-duration);
+  }
+
+  @include e(input-wrapper) {
+    padding: var(--sar-dialog-body-padding-y) var(--sar-dialog-body-padding-x);
+  }
+}

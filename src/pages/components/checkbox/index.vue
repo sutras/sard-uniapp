@@ -39,6 +39,10 @@
     <doc-demo title="自定义">
       <DemoCustom />
     </doc-demo>
+
+    <doc-demo title="不确定状态">
+      <DemoIndeterminate />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -53,6 +57,7 @@ import DemoGroup from './demo/Group.vue'
 import DemoDirection from './demo/Direction.vue'
 import DemoGroupOptions from './demo/GroupOptions.vue'
 import DemoCustom from './demo/Custom.vue'
+import DemoIndeterminate from './demo/Indeterminate.vue'
 </script>
 
 <style lang="scss" scoped>

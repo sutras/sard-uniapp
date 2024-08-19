@@ -33,7 +33,7 @@
     }
 
     @include m(disabled) {
-      @include disabled;
+      @include disabled-text;
     }
 
     @include m-not(disabled, current) {

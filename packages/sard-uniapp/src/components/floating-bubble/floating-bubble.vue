@@ -22,7 +22,6 @@ import {
   classNames,
   stringifyStyle,
   createBem,
-  toTouchEvent,
   getBoundingClientRect,
   uniqid,
   getWindowInfo,
@@ -34,7 +33,7 @@ import {
   type FloatingBubbleEmits,
   floatingBubblePropsDefaults,
 } from './common'
-import { useSetTimeout } from '../../use'
+import { useMouseDown, useSetTimeout } from '../../use'
 
 defineOptions({
   options: {
@@ -194,26 +193,7 @@ const onTouchEnd = () => {
   bubbleRect = undefined
 }
 
-const onMouseDown = (event: MouseEvent) => {
-  // #ifdef WEB
-  const info = uni.getSystemInfoSync()
-
-  onTouchStart(toTouchEvent(event, info.windowTop))
-
-  const moveHandler = (event: MouseEvent) => {
-    event.preventDefault()
-
-    onTouchMove(toTouchEvent(event, info.windowTop))
-  }
-  const upHandler = () => {
-    onTouchEnd()
-    document.removeEventListener('mouseup', upHandler)
-    document.removeEventListener('mousemove', moveHandler)
-  }
-  document.addEventListener('mousemove', moveHandler)
-  document.addEventListener('mouseup', upHandler)
-  // #endif
-}
+const onMouseDown = useMouseDown(onTouchStart, onTouchMove, onTouchEnd)
 
 const onClick = (event: any) => {
   emit('click', event)

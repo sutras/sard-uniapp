@@ -1,0 +1,110 @@
+@use '../style/base' as *;
+
+@include bem(tree) {
+  @include e(node) {
+    @include universal;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: var(--sar-tree-node-height);
+    transition: transform var(--sar-tree-duration),
+      opacity var(--sar-tree-duration);
+
+    flex-direction: row;
+    align-items: center;
+    padding: var(--sar-tree-node-padding-y) var(--sar-tree-node-padding-x);
+    background-color: var(--sar-tree-node-bg);
+
+    &::after {
+      @include border-bottom(var(--sar-tree-border-color));
+    }
+
+    @include m(active) {
+      background-color: var(--sar-tree-node-active-bg);
+    }
+
+    @include m(dragging) {
+      z-index: 1;
+      background-color: var(--sar-tree-node-dragging-bg);
+      box-shadow: var(--sar-tree-node-dragging-shadow);
+      transition: none;
+    }
+  }
+
+  @include e(arrow) {
+    @include universal;
+    margin: calc(var(--sar-tree-node-padding-y) * -1) 0
+      calc(var(--sar-tree-node-padding-y) * -1)
+      calc(var(--sar-tree-arrow-padding-x) * -1);
+    padding: var(--sar-tree-node-padding-y) var(--sar-tree-arrow-padding-x);
+    font-size: var(--sar-tree-arrow-font-size);
+    color: var(--sar-tree-arrow-color);
+    transition: transform var(--sar-tree-arrow-duration);
+
+    @include m(expanded) {
+      transform: rotate(90deg);
+    }
+
+    @include m(is-leaf) {
+      visibility: hidden;
+    }
+  }
+
+  @include e(selection) {
+    @include universal;
+    margin: calc(var(--sar-tree-node-padding-y) * -1) 0
+      calc(var(--sar-tree-node-padding-y) * -1)
+      calc(var(--sar-tree-selection-padding-x) * -1);
+    padding: var(--sar-tree-node-padding-y) var(--sar-tree-selection-padding-x);
+    cursor: pointer;
+
+    @include m(disabled) {
+      cursor: not-allowed;
+    }
+  }
+
+  @include e(toolbar) {
+    @include universal;
+    flex-direction: row;
+    margin-left: auto;
+    margin-right: var(--sar-tree-toolbar-margin-right);
+  }
+
+  @include e(edit) {
+    @include universal;
+    margin: calc(var(--sar-tree-node-padding-y) * -1) 0;
+    padding: var(--sar-tree-node-padding-y) var(--sar-tree-edit-padding-x);
+    font-size: var(--sar-tree-edit-font-size);
+    color: var(--sar-tree-edit-color);
+    cursor: pointer;
+
+    &:active {
+      opacity: var(--sar-tree-edit-active-opacity);
+    }
+  }
+
+  @include e(drag) {
+    @include universal;
+    justify-content: center;
+    margin: calc(var(--sar-tree-node-padding-y) * -1) 0;
+    padding: var(--sar-tree-node-padding-y) var(--sar-tree-drag-padding-x);
+    font-size: var(--sar-tree-drag-font-size);
+    line-height: var(--sar-leading-none);
+    color: var(--sar-tree-drag-color);
+    cursor: pointer;
+
+    &:active {
+      opacity: var(--sar-tree-drag-active-opacity);
+    }
+  }
+
+  @include e(level-btn) {
+    @include universal;
+    position: absolute;
+    top: 50%;
+    left: 0;
+    font-size: var(--sar-tree-arrow-padding-x);
+    transform: translateY(-50%) scale(0.8);
+  }
+}

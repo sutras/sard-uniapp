@@ -2,9 +2,10 @@
   <sar-popup
     effect="zoom"
     :visible="visible"
-    @overlay-click="onOverlayClick"
     :duration="duration"
     :root-style="{ maxWidth: 'var(--sar-dialog-max-width)' }"
+    @overlay-click="onOverlayClick"
+    @visible-hook="onVisibleHook"
   >
     <view :class="dialogClass" :style="dialogStyle">
       <view v-if="headed" :class="bem.e('header')">
@@ -81,6 +82,7 @@ import {
   dialogPropsDefaults,
 } from './common'
 import { type ButtonProps } from '../button'
+import { type TransitionHookName } from '../../use'
 
 defineOptions({
   options: {
@@ -188,6 +190,10 @@ const buttonProps = computed(() => {
     [p in 'cancel' | 'confirm']: ButtonProps
   }
 })
+
+const onVisibleHook = (name: TransitionHookName) => {
+  emit('visible-hook', name)
+}
 
 // others
 const dialogClass = computed(() => {

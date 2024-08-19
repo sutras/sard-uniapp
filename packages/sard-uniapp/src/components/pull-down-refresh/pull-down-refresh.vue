@@ -74,12 +74,7 @@
 
 <script setup lang="ts">
 import { computed, onMounted, ref, watch } from 'vue'
-import {
-  classNames,
-  stringifyStyle,
-  createBem,
-  toTouchEvent,
-} from '../../utils'
+import { classNames, stringifyStyle, createBem } from '../../utils'
 import {
   type PullDownRefreshProps,
   type PullDownRefreshSlots,
@@ -88,7 +83,7 @@ import {
   type PullDownRefreshStatus,
   pullDownRefreshPropsDefaults,
 } from './common'
-import { useSetTimeout } from '../../use'
+import { useMouseDown, useSetTimeout } from '../../use'
 import SarLoading from '../loading/loading.vue'
 
 const touch: any = {}
@@ -220,24 +215,7 @@ const onTouchEnd = () => {
   }
 }
 
-const onMouseDown = (event: MouseEvent) => {
-  // #ifdef H5
-  const info = uni.getSystemInfoSync()
-
-  onTouchStart(toTouchEvent(event, info.windowTop))
-
-  const moveHandler = (event: MouseEvent) => {
-    onTouchMove(toTouchEvent(event, info.windowTop))
-  }
-  const upHandler = () => {
-    onTouchEnd()
-    document.removeEventListener('mouseup', upHandler)
-    document.removeEventListener('mousemove', moveHandler)
-  }
-  document.addEventListener('mousemove', moveHandler)
-  document.addEventListener('mouseup', upHandler)
-  // #endif
-}
+const onMouseDown = useMouseDown(onTouchStart, onTouchMove, onTouchEnd)
 
 const canRefresh = ref(true)
 
