@@ -8,6 +8,9 @@ import Clipboard from 'clipboard'
 
 function generateTool(wrapper: Element) {
   const codeEl = wrapper.querySelector('code')
+  if (!codeEl) {
+    return
+  }
   const button = document.createElement('button') as HTMLButtonElement & {
     timer: number
   }
@@ -15,7 +18,7 @@ function generateTool(wrapper: Element) {
   wrapper.insertBefore(button, wrapper.firstChild)
 
   const clipboard = new Clipboard(button, {
-    text: () => codeEl.textContent,
+    text: () => codeEl.textContent || '',
   })
 
   clipboard.on('success', () => {
@@ -29,7 +32,9 @@ function generateTool(wrapper: Element) {
 
 function destroyTool(wrapper: Element) {
   const button = wrapper.querySelector('.doc-copy')
-  button.remove()
+  if (button) {
+    button.remove()
+  }
 }
 
 export function useCodeTool() {

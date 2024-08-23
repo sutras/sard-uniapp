@@ -1,5 +1,4 @@
 import MarkdownIt from 'markdown-it'
-import fs from 'fs-extra'
 import { MD_PATH_R } from '../utils/constants.js'
 import { hlCallback } from '../utils/highlight.js'
 import genHash from '../utils/genHash.js'
@@ -9,7 +8,7 @@ const renderStrategies = {
   markdown(code) {
     const html = code
       // 转义模板字符串
-      .replace(/([`])/g, '\\$1')
+      .replace(/([`\\])/g, '\\$1')
 
       // 转义大括号
       .replace(/([{}])/g, (m) => {
@@ -39,10 +38,6 @@ const renderStrategies = {
 }
 
 function transform(code, id, md) {
-  if (!MD_PATH_R.test(id)) {
-    return
-  }
-
   code = compileAtRule(id, code)
 
   const html = md.render(code)
@@ -61,7 +56,7 @@ function transform(code, id, md) {
   return content
 }
 
-export function VitePluginMarkdown(vuePlugin) {
+export function VitePluginMarkdown() {
   const md = new MarkdownIt({
     html: true,
     highlight: hlCallback,
@@ -71,22 +66,20 @@ export function VitePluginMarkdown(vuePlugin) {
     name: 'VitePluginMarkdown',
     enforce: 'pre',
     transform(code, id) {
+      if (!MD_PATH_R.test(id)) {
+        return
+      }
       return transform(code, id, md)
     },
 
-    // md热更新
     async handleHotUpdate(ctx) {
-      const { file } = ctx
-      if (!MD_PATH_R.test(file)) {
+      if (!MD_PATH_R.test(ctx.file)) {
         return
       }
-      const code = await fs.readFile(file, 'utf-8')
-      const compiledCode = transform(code, file, md)
-
-      return vuePlugin.handleHotUpdate({
-        ...ctx,
-        read: () => compiledCode,
-      })
+      const rawRead = ctx.read
+      ctx.read = async () => {
+        return transform(await rawRead(), ctx.file, md)
+      }
     },
   }
 }
