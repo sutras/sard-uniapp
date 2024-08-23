@@ -1,13 +1,8 @@
 # 快速上手
 
-## 前提条件
-
-使用 `sard-uniapp` 组件库的`uniapp` 项目需要通过命令行的方式创建。因为通过 `HBuilderX` 创建的项目，其依赖的很多软件包版本过低，在使用 `sard-uniapp` 的过程中可能会有错误。
-
-`uniapp`项目创建文档：
-<a href="https://uniapp.dcloud.net.cn/quickstart-cli.html" target="_blank">https://uniapp.dcloud.net.cn/quickstart-cli.html</a>
-
 ## 安装
+
+`sard-uniapp` 支持通过命令行以及插件市场导入 `HBuilderX` 的方式安装。
 
 ### NPM
 
@@ -27,13 +22,13 @@ npm install sard-uniapp
 
 ### HBuilderX
 
-#### 安装 sass
+#### 升级 sass
 
-```bash
-npm install sass -D
-```
+`HBuilderX` 内置了 `sass` 包，但如果 `sass` 包的版本低于 `1.57.0`，可通过以下方法升级内置的 `sass` 版本：
 
-#### 安装 sard-uniapp
+<a href="https://github.com/sutras/sard-uniapp/issues/44" target="_blank">https://github.com/sutras/sard-uniapp/issues/44</a>
+
+#### 导入 sard-uniapp
 
 使用 `HBuilderX` 开发的用户，可以在 `uni-app` 插件市场通过 `uni_modules` 的形式进行安装。
 
@@ -94,6 +89,8 @@ export default defineConfig({
 
 ### 配置全局组件类型
 
+在 `vscode` 中使用时，为了有组件的类型提示和自动填充，需要配置全局组件类型声明。
+
 `tsconfig.json`
 
 ```json
@@ -120,7 +117,7 @@ export default defineConfig({
 
 ### HBuilderX
 
-如果你是通过插件市场导入到 `HBuilderX` 的，需要修改一下组件路径：
+如果你是通过插件市场导入到 `HBuilderX` 的，需要修改引入路径：
 
 `App.vue`
 

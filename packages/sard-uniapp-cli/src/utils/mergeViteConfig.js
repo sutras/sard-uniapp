@@ -18,10 +18,6 @@ import {
 } from './constants.js'
 import { deepMerge } from './deepMerge.js'
 
-const vuePlugin = createVuePlugin({
-  include: [/.vue$/, /.md$/],
-})
-
 export function mergeViteConfig(options) {
   return deepMerge({
     configFile: false,
@@ -29,10 +25,12 @@ export function mergeViteConfig(options) {
       VitePluginIndexHtml(),
       VitePluginSardConfig(),
       VitePluginRouter(),
-      VitePluginMarkdown(vuePlugin),
+      VitePluginMarkdown(),
       VitePluginMobile(),
       VitePluginStyles(),
-      vuePlugin,
+      createVuePlugin({
+        include: [/.vue$/, /.md$/],
+      }),
       VitePluginRestart({
         restart: [resolve(CWD, SARD_CONFIG_FILENAME)],
         onRestart() {

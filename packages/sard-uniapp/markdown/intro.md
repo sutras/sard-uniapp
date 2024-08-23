@@ -8,7 +8,7 @@
 
 ## 特性
 
-- 🧩 60+个高质量组件，覆盖移动端主流场景
+- 🧩 70+个高质量组件，覆盖移动端主流场景
 - 💪 支持一套代码同时开发 H5 / 小程序 / App
 - 🌿 支持按需引入和 `Tree Shaking`
 - 📖 详尽的文档和案例展示
@@ -25,7 +25,7 @@
   <th>
     <div align="center">
       <img
-        src="https://fastly.jsdelivr.net/npm/@sard/assets/h5.png"
+        src="https://fastly.jsdelivr.net/npm/@sard/assets@latest/h5.png"
         alt="H5"
         width="144"
         height="144"
@@ -36,7 +36,7 @@
   <th>
     <div align="center">
       <img
-        src="https://fastly.jsdelivr.net/npm/@sard/assets/mp-weixin.jpg"
+        src="https://fastly.jsdelivr.net/npm/@sard/assets@latest/mp-weixin.jpg"
         alt="微信小程序"
         width="144"
         height="144"
@@ -47,7 +47,7 @@
   <th>
     <div align="center">
       <img
-        src="https://fastly.jsdelivr.net/npm/@sard/assets@1.5.1/android.png"
+        src="https://fastly.jsdelivr.net/npm/@sard/assets@latest/android.png"
         alt="android"
         width="144"
         height="144"
