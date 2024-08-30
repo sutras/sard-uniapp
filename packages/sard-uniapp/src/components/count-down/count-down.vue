@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue'
+import { computed, onBeforeUnmount, onMounted, ref, watch } from 'vue'
 import {
   type CountDownProps,
   type CountDownSlots,
@@ -102,5 +102,9 @@ onMounted(() => {
   if (props.autoStart) {
     start()
   }
+})
+
+onBeforeUnmount(() => {
+  pause()
 })
 </script>
