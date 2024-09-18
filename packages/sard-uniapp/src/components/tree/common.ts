@@ -59,7 +59,7 @@ export interface TreeProps {
   filterMethod?: (value: string, node: TreeStateNode) => boolean
 }
 
-export const treePropsDefaults = {
+export const defaultTreeProps = {
   ...defaultConfig.tree,
   data: () => [],
 }

@@ -14,7 +14,7 @@ import {
   type CountDownCurrentTime,
   getCurrentTime,
   formatTime,
-  countDownPropsDefaults,
+  defaultCountDownProps,
 } from './common'
 
 defineOptions({
@@ -24,10 +24,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(
-  defineProps<CountDownProps>(),
-  countDownPropsDefaults,
-)
+const props = withDefaults(defineProps<CountDownProps>(), defaultCountDownProps)
 
 defineSlots<CountDownSlots>()
 

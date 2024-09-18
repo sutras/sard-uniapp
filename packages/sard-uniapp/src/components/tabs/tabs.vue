@@ -54,7 +54,7 @@ import {
   type TabsEmits,
   type TabContext,
   tabContextSymbol,
-  tabsPropsDefaults,
+  defaultTabsProps,
 } from './common'
 import SarTab from '../tab/tab.vue'
 import { usePopupEnter } from '../popup/common'
@@ -66,7 +66,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<TabsProps>(), tabsPropsDefaults)
+const props = withDefaults(defineProps<TabsProps>(), defaultTabsProps)
 
 defineSlots<TabsSlots>()
 

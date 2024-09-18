@@ -25,7 +25,7 @@ export interface CascaderProps {
   labelRender?: (option: CascaderOption) => string
 }
 
-export const cascaderPropsDefaults = {
+export const defaultCascaderProps = {
   options: () => [],
 }
 

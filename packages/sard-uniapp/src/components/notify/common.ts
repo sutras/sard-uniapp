@@ -14,7 +14,7 @@ export interface NotifyProps {
   duration?: number
 }
 
-export const notifyPropsDefaults = defaultConfig.notify
+export const defaultNotifyProps = defaultConfig.notify
 
 export interface NotifyEmits {
   (e: 'click', event: any): void

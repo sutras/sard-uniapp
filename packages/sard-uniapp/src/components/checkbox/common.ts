@@ -18,7 +18,7 @@ export interface CheckboxProps {
   validateEvent?: boolean
 }
 
-export const checkboxPropsDefaults = defaultConfig.checkbox
+export const defaultCheckboxProps = defaultConfig.checkbox
 
 export interface CheckboxSlots {
   default?(props: Record<string, never>): any
@@ -64,7 +64,7 @@ export interface CheckboxGroupProps {
   optionKeys?: CheckboxGroupOptionKeys
 }
 
-export const checkboxGroupPropsDefaults = defaultConfig.checkboxGroup
+export const defaultCheckboxGroupProps = defaultConfig.checkboxGroup
 
 export interface CheckboxGroupSlots {
   default?(props: Record<string, never>): any

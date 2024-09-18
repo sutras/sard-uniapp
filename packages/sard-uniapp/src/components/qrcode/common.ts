@@ -14,4 +14,4 @@ export interface QrcodeProps {
   quietZoneModules?: number
 }
 
-export const qrcodePropsDefaults = defaultConfig.qrcode
+export const defaultQrcodeProps = defaultConfig.qrcode

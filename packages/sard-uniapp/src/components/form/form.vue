@@ -23,7 +23,7 @@ import {
   type FormExpose,
   formContextSymbol,
   FieldValidateError,
-  formPropsDefaults,
+  defaultFormProps,
 } from './common'
 import { Validator } from './Validator'
 import { useTranslate } from '../locale'
@@ -35,7 +35,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<FormProps>(), formPropsDefaults)
+const props = withDefaults(defineProps<FormProps>(), defaultFormProps)
 
 defineSlots<FormSlots>()
 

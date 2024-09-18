@@ -21,7 +21,7 @@ export interface TagProps {
   closable?: boolean
 }
 
-export const tagPropsDefaults = defaultConfig.tag
+export const defaultTagProps = defaultConfig.tag
 
 export interface TagSlots {
   default?(props: Record<string, never>): any

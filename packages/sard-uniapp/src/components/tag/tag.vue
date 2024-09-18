@@ -15,7 +15,7 @@ import {
   type TagProps,
   type TagSlots,
   type TagEmits,
-  tagPropsDefaults,
+  defaultTagProps,
 } from './common'
 
 defineOptions({
@@ -25,7 +25,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<TagProps>(), tagPropsDefaults)
+const props = withDefaults(defineProps<TagProps>(), defaultTagProps)
 
 defineSlots<TagSlots>()
 

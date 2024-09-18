@@ -19,7 +19,7 @@ export interface TabsProps {
   scrollable?: boolean
 }
 
-export const tabsPropsDefaults = defaultConfig.tabs
+export const defaultTabsProps = defaultConfig.tabs
 
 export interface TabsSlots {
   default?(props: Record<string, never>): any

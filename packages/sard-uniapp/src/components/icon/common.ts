@@ -10,4 +10,4 @@ export interface IconProps {
   color?: string
 }
 
-export const iconPropsDefaults = defaultConfig.icon
+export const defaultIconProps = defaultConfig.icon

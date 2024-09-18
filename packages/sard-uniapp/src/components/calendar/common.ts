@@ -33,7 +33,7 @@ export interface CalendarProps {
   severalMonths?: boolean
 }
 
-export const calendarPropsDefaults = defaultConfig.calendar
+export const defaultCalendarProps = defaultConfig.calendar
 
 export interface CalendarEmits {
   (e: 'update:model-value', value: Date | Date[]): void

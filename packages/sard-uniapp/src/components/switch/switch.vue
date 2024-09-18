@@ -14,7 +14,7 @@ import { useFormContext, useFormItemContext } from '../form/common'
 import {
   type SwitchProps,
   type SwitchEmits,
-  switchPropsDefaults,
+  defaultSwitchProps,
 } from './common'
 
 defineOptions({
@@ -24,7 +24,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<SwitchProps>(), switchPropsDefaults)
+const props = withDefaults(defineProps<SwitchProps>(), defaultSwitchProps)
 
 const emit = defineEmits<SwitchEmits>()
 

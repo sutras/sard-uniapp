@@ -17,7 +17,7 @@ export interface NoticeBarProps {
   vertical?: boolean
 }
 
-export const noticeBarPropsDefaults = defaultConfig.noticeBar
+export const defaultNoticeBarProps = defaultConfig.noticeBar
 
 export interface NoticeBarSlots {
   default?(props: Record<string, never>): any

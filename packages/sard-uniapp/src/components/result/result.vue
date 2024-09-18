@@ -30,7 +30,7 @@ import {
   type ResultProps,
   type ResultSlots,
   mapStatusIcon,
-  resultPropsDefaults,
+  defaultResultProps,
 } from './common'
 
 defineOptions({
@@ -40,7 +40,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<ResultProps>(), resultPropsDefaults)
+const props = withDefaults(defineProps<ResultProps>(), defaultResultProps)
 
 defineSlots<ResultSlots>()
 

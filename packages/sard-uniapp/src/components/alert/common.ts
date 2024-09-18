@@ -11,7 +11,7 @@ export interface AlertProps {
   background?: string
 }
 
-export const alertPropsDefaults = defaultConfig.alert
+export const defaultAlertProps = defaultConfig.alert
 
 export interface AlertSlots {
   default?(props: Record<string, never>): any

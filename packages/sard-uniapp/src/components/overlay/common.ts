@@ -11,7 +11,7 @@ export interface OverlayProps {
   transparent?: boolean
 }
 
-export const overlayPropsDefaults = defaultConfig.overlay
+export const defaultOverlayProps = defaultConfig.overlay
 
 export interface OverlaySlots {
   default?(props: Record<string, never>): any

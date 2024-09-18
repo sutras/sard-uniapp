@@ -13,7 +13,7 @@ import {
   type DropdownSlots,
   type DropdownContext,
   dropdownContextSymbol,
-  dropdownPropsDefaults,
+  defaultDropdownProps,
 } from './common'
 
 defineOptions({
@@ -23,7 +23,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<DropdownProps>(), dropdownPropsDefaults)
+const props = withDefaults(defineProps<DropdownProps>(), defaultDropdownProps)
 
 defineSlots<DropdownSlots>()
 

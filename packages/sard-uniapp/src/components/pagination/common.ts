@@ -15,7 +15,7 @@ export interface PaginationProps {
   multiCount?: number
 }
 
-export const paginationPropsDefaults = defaultConfig.pagination
+export const defaultPaginationProps = defaultConfig.pagination
 
 export interface PaginationSlots {
   prev?(props: Record<string, never>): any

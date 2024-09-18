@@ -13,7 +13,7 @@ export interface GridProps {
   direction?: 'horizontal' | 'vertical'
 }
 
-export const gridPropsDefaults = defaultConfig.grid
+export const defaultGridProps = defaultConfig.grid
 
 export interface GridSlots {
   default?(props: Record<string, never>): any

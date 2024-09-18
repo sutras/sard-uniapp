@@ -11,7 +11,7 @@ export interface RadioInputProps
   title?: string
 }
 
-export const radioInputPropsDefaults = {
+export const defaultRadioInputProps = {
   ...defaultConfig.radioInput,
   options: () => [],
 }

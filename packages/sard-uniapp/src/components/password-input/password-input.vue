@@ -39,7 +39,7 @@ import { useFormContext, useFormItemContext } from '../form/common'
 import {
   type PasswordInputProps,
   type PasswordInputEmits,
-  passwordInputPropsDefaults,
+  defaultPasswordInputProps,
 } from './common'
 
 defineOptions({
@@ -51,7 +51,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<PasswordInputProps>(),
-  passwordInputPropsDefaults,
+  defaultPasswordInputProps,
 )
 
 const emit = defineEmits<PasswordInputEmits>()

@@ -13,7 +13,7 @@ import {
   type TabbarEmits,
   type TabbarContext,
   tabbarContextSymbol,
-  tabbarPropsDefaults,
+  defaultTabbarProps,
 } from './common'
 
 defineOptions({
@@ -23,7 +23,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<TabbarProps>(), tabbarPropsDefaults)
+const props = withDefaults(defineProps<TabbarProps>(), defaultTabbarProps)
 
 defineSlots<TabbarSlots>()
 

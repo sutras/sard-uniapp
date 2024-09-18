@@ -25,7 +25,7 @@ import {
   letterArray,
   strategies,
   getColumnData,
-  datetimePickerPropsDefaults,
+  defaultDatetimePickerProps,
 } from './common'
 import { useTranslate } from '../locale'
 
@@ -38,7 +38,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<DatetimePickerProps>(),
-  datetimePickerPropsDefaults,
+  defaultDatetimePickerProps,
 )
 
 const emit = defineEmits<DatetimePickerEmits>()

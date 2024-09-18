@@ -84,7 +84,7 @@ import {
   type ShareSheetProps,
   type ShareSheetEmits,
   type ShareSheetItem,
-  shareSheetPropsDefaults,
+  defaultShareSheetProps,
 } from './common'
 
 defineOptions({
@@ -96,7 +96,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<ShareSheetProps>(),
-  shareSheetPropsDefaults,
+  defaultShareSheetProps,
 )
 
 const emit = defineEmits<ShareSheetEmits>()

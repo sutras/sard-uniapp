@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, isFileUrl, createBem } from '../../utils'
-import { type IconProps, iconPropsDefaults } from './common'
+import { type IconProps, defaultIconProps } from './common'
 
 defineOptions({
   options: {
@@ -16,7 +16,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<IconProps>(), iconPropsDefaults)
+const props = withDefaults(defineProps<IconProps>(), defaultIconProps)
 
 const bem = createBem('icon')
 

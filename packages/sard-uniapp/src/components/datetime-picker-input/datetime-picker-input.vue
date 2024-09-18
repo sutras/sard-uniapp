@@ -48,7 +48,7 @@ import {
 import {
   type DatetimePickerInputProps,
   type DatetimePickerInputEmits,
-  datetimePickerInputPropsDefaults,
+  defaultDatetimePickerInputProps,
   mapTypeFormat,
 } from './common'
 import { useFormItemContext } from '../form/common'
@@ -62,7 +62,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<DatetimePickerInputProps>(),
-  datetimePickerInputPropsDefaults,
+  defaultDatetimePickerInputProps,
 )
 
 const emit = defineEmits<DatetimePickerInputEmits>()

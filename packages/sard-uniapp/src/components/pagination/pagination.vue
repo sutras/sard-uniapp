@@ -55,7 +55,7 @@ import {
   type PaginationSlots,
   type PaginationEmits,
   getPageRange,
-  paginationPropsDefaults,
+  defaultPaginationProps,
 } from './common'
 
 defineOptions({
@@ -69,7 +69,7 @@ const { t } = useTranslate('pagination')
 
 const props = withDefaults(
   defineProps<PaginationProps>(),
-  paginationPropsDefaults,
+  defaultPaginationProps,
 )
 
 defineSlots<PaginationSlots>()

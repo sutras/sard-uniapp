@@ -21,7 +21,7 @@ export interface PopupProps {
   transparent?: boolean
 }
 
-export const popupPropsDefaults = defaultConfig.popup
+export const defaultPopupProps = defaultConfig.popup
 
 export interface PopupSlots {
   default?(props: Record<string, never>): any

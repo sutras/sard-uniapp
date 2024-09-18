@@ -39,7 +39,7 @@ import {
   getOptionsByIndexes,
   getMaySingleValueByOptions,
   getValueOrLabelByOption,
-  pickerPropsDefaults,
+  defaultPickerProps,
 } from './common'
 
 defineOptions({
@@ -49,7 +49,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<PickerProps>(), pickerPropsDefaults)
+const props = withDefaults(defineProps<PickerProps>(), defaultPickerProps)
 
 const emit = defineEmits<PickerEmits>()
 

@@ -51,7 +51,7 @@ import { useTranslate } from '../locale'
 import {
   type CalendarInputProps,
   type CalendarInputEmits,
-  calendarInputPropsDefaults,
+  defaultCalendarInputProps,
 } from './common'
 import { useFormItemContext } from '../form/common'
 
@@ -64,7 +64,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<CalendarInputProps>(),
-  calendarInputPropsDefaults,
+  defaultCalendarInputProps,
 )
 
 const emit = defineEmits<CalendarInputEmits>()

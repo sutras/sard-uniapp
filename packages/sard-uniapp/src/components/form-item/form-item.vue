@@ -57,7 +57,7 @@ import {
   type FormItemExpose,
   formItemContextSymbol,
   useFormContext,
-  formItemPropsDefaults,
+  defaultFormItemProps,
 } from '../form/common'
 
 defineOptions({
@@ -67,7 +67,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<FormItemProps>(), formItemPropsDefaults)
+const props = withDefaults(defineProps<FormItemProps>(), defaultFormItemProps)
 
 defineSlots<FormItemSlots>()
 

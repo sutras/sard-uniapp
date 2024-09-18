@@ -19,7 +19,7 @@ import {
   type OverlayProps,
   type OverlaySlots,
   type OverlayEmits,
-  overlayPropsDefaults,
+  defaultOverlayProps,
 } from './common'
 
 defineOptions({
@@ -29,7 +29,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<OverlayProps>(), overlayPropsDefaults)
+const props = withDefaults(defineProps<OverlayProps>(), defaultOverlayProps)
 
 defineSlots<OverlaySlots>()
 

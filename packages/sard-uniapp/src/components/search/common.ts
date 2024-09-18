@@ -18,7 +18,7 @@ export interface SearchProps {
   focus?: boolean
 }
 
-export const searchPropsDefaults = defaultConfig.search
+export const defaultSearchProps = defaultConfig.search
 
 export interface SearchSlots {
   prepend?(props: Record<string, never>): any

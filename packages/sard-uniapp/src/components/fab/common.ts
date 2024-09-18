@@ -18,7 +18,7 @@ export interface FabProps {
   duration?: number
 }
 
-export const fabPropsDefaults = {
+export const defaultFabProps = {
   ...defaultConfig.fab,
   itemList: () => [],
 }

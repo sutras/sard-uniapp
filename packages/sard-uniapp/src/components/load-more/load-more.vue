@@ -24,7 +24,7 @@ import {
   type LoadMoreProps,
   type LoadMoreSlots,
   type LoadMoreEmits,
-  loadMorePropsDefaults,
+  defaultLoadMoreProps,
 } from './common'
 import { useTranslate } from '../locale'
 import SarLoading from '../loading/loading.vue'
@@ -36,7 +36,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<LoadMoreProps>(), loadMorePropsDefaults)
+const props = withDefaults(defineProps<LoadMoreProps>(), defaultLoadMoreProps)
 
 defineSlots<LoadMoreSlots>()
 

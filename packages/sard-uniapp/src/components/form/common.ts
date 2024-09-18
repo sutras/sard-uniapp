@@ -44,7 +44,10 @@ export interface FormProps {
   card?: boolean
 }
 
-export const formPropsDefaults = defaultConfig.form
+export const defaultFormProps = defaultConfig.form as Omit<
+  typeof defaultConfig.form,
+  'validateTrigger'
+>
 
 export interface FormSlots {
   default?(props: Record<string, never>): any
@@ -78,7 +81,7 @@ export interface FormItemProps {
   inlaid?: boolean
 }
 
-export const formItemPropsDefaults = {
+export const defaultFormItemProps = {
   ...defaultConfig.formItem,
   required: undefined,
 }

@@ -66,7 +66,7 @@ import {
   type RadioInputProps,
   type RadioInputEmits,
   type RadioInputOption,
-  radioInputPropsDefaults,
+  defaultRadioInputProps,
 } from './common'
 import { createBem, getMayPrimitiveOption, isNullish } from '../../utils'
 import { useFormItemContext } from '../form/common'
@@ -80,7 +80,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<RadioInputProps>(),
-  radioInputPropsDefaults,
+  defaultRadioInputProps,
 )
 
 const emit = defineEmits<RadioInputEmits>()

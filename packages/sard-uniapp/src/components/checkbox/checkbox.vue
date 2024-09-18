@@ -24,7 +24,7 @@ import {
   type CheckboxEmits,
   type CheckboxContext,
   checkboxContextSymbol,
-  checkboxPropsDefaults,
+  defaultCheckboxProps,
 } from './common'
 import SarCheckIcon from '../check-icon/check-icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
@@ -36,7 +36,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<CheckboxProps>(), checkboxPropsDefaults)
+const props = withDefaults(defineProps<CheckboxProps>(), defaultCheckboxProps)
 
 defineSlots<CheckboxSlots>()
 

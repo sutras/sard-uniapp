@@ -32,7 +32,7 @@ import {
   type RadioGroupEmits,
   type RadioContext,
   radioContextSymbol,
-  radioGroupPropsDefaults,
+  defaultRadioGroupProps,
   defaultOptionKeys,
 } from '../radio/common'
 import {
@@ -53,7 +53,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<RadioGroupProps>(),
-  radioGroupPropsDefaults,
+  defaultRadioGroupProps,
 )
 
 defineSlots<RadioGroupSlots>()

@@ -14,7 +14,7 @@ export interface CheckboxInputProps
   title?: string
 }
 
-export const checkboxInputPropsDefaults = {
+export const defaultCheckboxInputProps = {
   ...defaultConfig.checkboxInput,
   options: () => [],
 }

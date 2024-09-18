@@ -8,4 +8,4 @@ export interface CountToProps {
   duration?: number
 }
 
-export const countToPropsDefaults = defaultConfig.countTo
+export const defaultCountToProps = defaultConfig.countTo

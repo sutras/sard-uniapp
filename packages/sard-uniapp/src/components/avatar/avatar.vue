@@ -21,7 +21,7 @@ import SarIcon from '../icon/icon.vue'
 import {
   type AvatarProps,
   type AvatarSlots,
-  avatarPropsDefaults,
+  defaultAvatarProps,
 } from './common'
 
 defineOptions({
@@ -31,7 +31,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<AvatarProps>(), avatarPropsDefaults)
+const props = withDefaults(defineProps<AvatarProps>(), defaultAvatarProps)
 
 defineSlots<AvatarSlots>()
 

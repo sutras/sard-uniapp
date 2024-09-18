@@ -23,7 +23,7 @@ import SarIcon from '../icon/icon.vue'
 import {
   type ProgressBarProps,
   type ProgressBarSlots,
-  progressBarPropsDefaults,
+  defaultProgressBarProps,
 } from './common'
 
 defineOptions({
@@ -35,7 +35,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<ProgressBarProps>(),
-  progressBarPropsDefaults,
+  defaultProgressBarProps,
 )
 
 defineSlots<ProgressBarSlots>()

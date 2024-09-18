@@ -7,7 +7,7 @@ export interface KeyboardProps {
   type?: 'number' | 'digit' | 'idcard' | 'random' | 'plate'
 }
 
-export const keyboardPropsDefaults = defaultConfig.keyboard
+export const defaultKeyboardProps = defaultConfig.keyboard
 
 export interface KeyboardSlots {
   default?(props: Record<string, never>): any

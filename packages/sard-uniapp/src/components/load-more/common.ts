@@ -12,7 +12,7 @@ export interface LoadMoreProps {
   errorText?: string
 }
 
-export const loadMorePropsDefaults = {
+export const defaultLoadMoreProps = {
   status: 'incomplete' as const,
 }
 

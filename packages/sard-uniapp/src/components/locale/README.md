@@ -8,9 +8,8 @@
 
 `sard-uniapp` 提供了 `setLocale` 函数来切换当前使用的语言。
 
-`main.ts`
-
 ```ts
+// main.ts
 import { setLocale } from 'sard-uniapp'
 import enUS from 'sard-uniapp/components/locale/lang/en-US'
 

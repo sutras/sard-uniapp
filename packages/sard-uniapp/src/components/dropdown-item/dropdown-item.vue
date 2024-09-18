@@ -105,7 +105,7 @@ import {
   type DropdownContext,
   type DropdownOption,
   dropdownContextSymbol,
-  dropdownItemPropsDefaults,
+  defaultDropdownItemProps,
 } from '../dropdown/common'
 
 defineOptions({
@@ -117,7 +117,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<DropdownItemProps>(),
-  dropdownItemPropsDefaults,
+  defaultDropdownItemProps,
 )
 
 defineSlots<DropdownItemSlots>()

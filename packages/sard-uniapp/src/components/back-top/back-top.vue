@@ -13,7 +13,7 @@ import {
   type BackTopProps,
   type BackTopSlots,
   type BackTopEmits,
-  backTopPropsDefaults,
+  defaultBackTopProps,
 } from './common'
 import SarIcon from '../icon/icon.vue'
 
@@ -24,7 +24,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<BackTopProps>(), backTopPropsDefaults)
+const props = withDefaults(defineProps<BackTopProps>(), defaultBackTopProps)
 
 defineSlots<BackTopSlots>()
 

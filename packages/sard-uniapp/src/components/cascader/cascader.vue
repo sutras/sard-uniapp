@@ -90,7 +90,7 @@ import {
   type CascaderTab,
   defaultFieldKeys,
   getSelectedOptionsByValue,
-  cascaderPropsDefaults,
+  defaultCascaderProps,
 } from './common'
 
 defineOptions({
@@ -100,7 +100,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<CascaderProps>(), cascaderPropsDefaults)
+const props = withDefaults(defineProps<CascaderProps>(), defaultCascaderProps)
 
 defineSlots<CascaderSlots>()
 

@@ -73,7 +73,7 @@ export interface InputProps {
   validateEvent?: boolean
 }
 
-export const inputPropsDefaults = defaultConfig.input
+export const defaultInputProps = defaultConfig.input
 
 export interface InputSlots {
   prepend?(props: Record<string, never>): any

@@ -22,7 +22,7 @@ import SarDialog from '../dialog/dialog.vue'
 import {
   type DialogAgentProps,
   type DialogImperative,
-  dialogAgentPropsDefaults,
+  defaultDialogAgentProps,
   imperativeName,
 } from './common'
 import { useImperative } from '../../use/useImperative'
@@ -36,7 +36,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<DialogAgentProps>(),
-  dialogAgentPropsDefaults,
+  defaultDialogAgentProps,
 )
 
 // main

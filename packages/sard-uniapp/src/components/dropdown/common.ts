@@ -11,7 +11,7 @@ export interface DropdownProps {
   duration?: number
 }
 
-export const dropdownPropsDefaults = defaultConfig.dropdown
+export const defaultDropdownProps = defaultConfig.dropdown
 
 export interface DropdownSlots {
   default?(props: Record<string, never>): any
@@ -35,7 +35,7 @@ export interface DropdownItemProps {
   placeholder?: string
 }
 
-export const dropdownItemPropsDefaults = {
+export const defaultDropdownItemProps = {
   options: () => [],
 }
 

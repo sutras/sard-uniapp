@@ -17,7 +17,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
-import { type BadgeProps, type BadgeSlots, badgePropsDefaults } from './common'
+import { type BadgeProps, type BadgeSlots, defaultBadgeProps } from './common'
 
 defineOptions({
   options: {
@@ -26,7 +26,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<BadgeProps>(), badgePropsDefaults)
+const props = withDefaults(defineProps<BadgeProps>(), defaultBadgeProps)
 
 const slots = defineSlots<BadgeSlots>()
 

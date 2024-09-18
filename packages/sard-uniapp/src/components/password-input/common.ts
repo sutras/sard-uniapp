@@ -16,7 +16,7 @@ export interface PasswordInputProps {
   validateEvent?: boolean
 }
 
-export const passwordInputPropsDefaults = defaultConfig.passwordInput
+export const defaultPasswordInputProps = defaultConfig.passwordInput
 
 export interface PasswordInputEmits {
   (e: 'update:model-value', value: string): void

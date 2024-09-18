@@ -55,7 +55,7 @@ import {
   type UploadFile,
   type UploadFileItem,
   type ChainNode,
-  uploadPropsDefaults,
+  defaultUploadProps,
 } from './common'
 import { useFormContext, useFormItemContext } from '../form/common'
 
@@ -66,7 +66,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<UploadProps>(), uploadPropsDefaults)
+const props = withDefaults(defineProps<UploadProps>(), defaultUploadProps)
 
 defineSlots<UploadSlots>()
 

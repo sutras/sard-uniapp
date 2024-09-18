@@ -19,7 +19,7 @@ import {
   type AlertProps,
   type AlertSlots,
   type AlertEmits,
-  alertPropsDefaults,
+  defaultAlertProps,
   mapTypeIcon,
 } from './common'
 import SarIcon from '../icon/icon.vue'
@@ -31,7 +31,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<AlertProps>(), alertPropsDefaults)
+const props = withDefaults(defineProps<AlertProps>(), defaultAlertProps)
 
 defineSlots<AlertSlots>()
 

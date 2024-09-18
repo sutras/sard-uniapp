@@ -63,7 +63,7 @@ import { useFormContext, useFormItemContext } from '../form/common'
 import {
   type StepperProps,
   type StepperEmits,
-  stepperPropsDefaults,
+  defaultStepperProps,
 } from './common'
 
 defineOptions({
@@ -73,7 +73,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<StepperProps>(), stepperPropsDefaults)
+const props = withDefaults(defineProps<StepperProps>(), defaultStepperProps)
 
 const emit = defineEmits<StepperEmits>()
 

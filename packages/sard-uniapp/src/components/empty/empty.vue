@@ -21,7 +21,7 @@ import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useTranslate } from '../locale'
-import { type EmptyProps, type EmptySlots, emptyPropsDefaults } from './common'
+import { type EmptyProps, type EmptySlots, defaultEmptyProps } from './common'
 
 defineOptions({
   options: {
@@ -31,7 +31,7 @@ defineOptions({
 })
 
 const { t } = useTranslate('empty')
-const props = withDefaults(defineProps<EmptyProps>(), emptyPropsDefaults)
+const props = withDefaults(defineProps<EmptyProps>(), defaultEmptyProps)
 
 defineSlots<EmptySlots>()
 

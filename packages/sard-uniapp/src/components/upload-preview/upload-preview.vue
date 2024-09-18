@@ -67,7 +67,7 @@ import SarLoading from '../loading/loading.vue'
 import {
   type UploadPreviewProps,
   type UploadPreviewEmits,
-  uploadPreviewPropsDefaults,
+  defaultUploadPreviewProps,
 } from '../upload/common'
 
 defineOptions({
@@ -79,7 +79,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<UploadPreviewProps>(),
-  uploadPreviewPropsDefaults,
+  defaultUploadPreviewProps,
 )
 
 const emit = defineEmits<UploadPreviewEmits>()

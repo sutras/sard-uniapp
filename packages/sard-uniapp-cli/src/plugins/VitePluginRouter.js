@@ -81,6 +81,9 @@ const router = createRouter({
       path: '/',
       component: BasicLayout,
       children: ${routesStr}
+    },{
+      path: '/:pathMatch(.*)*',
+      redirect: '/',
     }
   ]
 })

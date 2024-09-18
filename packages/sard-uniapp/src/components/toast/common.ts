@@ -14,7 +14,7 @@ export interface ToastProps {
   duration?: number
 }
 
-export const toastPropsDefaults = defaultConfig.toast
+export const defaultToastProps = defaultConfig.toast
 
 export interface ToastEmits {
   (e: 'update:visible', visible: boolean): void

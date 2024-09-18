@@ -28,7 +28,7 @@ import {
   type PopupProps,
   type PopupSlots,
   type PopupEmits,
-  popupPropsDefaults,
+  defaultPopupProps,
   usePopupVisibleHookProvide,
 } from './common'
 
@@ -39,7 +39,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<PopupProps>(), popupPropsDefaults)
+const props = withDefaults(defineProps<PopupProps>(), defaultPopupProps)
 
 defineSlots<PopupSlots>()
 

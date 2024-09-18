@@ -4,14 +4,14 @@ import {
   getImperatives,
 } from '../../use/useImperative'
 import { defaultConfig } from '../config'
-import { type ToastProps, toastPropsDefaults } from '../toast/common'
+import { type ToastProps, defaultToastProps } from '../toast/common'
 
 export interface ToastAgentProps extends ToastProps {
   id?: string
 }
 
-export const toastAgentPropsDefaults = {
-  ...toastPropsDefaults,
+export const defaultToastAgentProps = {
+  ...defaultToastProps,
   ...defaultConfig.toastAgent,
 }
 

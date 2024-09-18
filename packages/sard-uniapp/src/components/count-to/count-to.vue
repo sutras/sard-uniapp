@@ -5,7 +5,7 @@
 <script setup lang="ts">
 import { computed, onUnmounted, ref, watch } from 'vue'
 import { addSeparator, createAnimation, type Timeline } from '../../utils'
-import { type CountToProps, countToPropsDefaults } from './common'
+import { type CountToProps, defaultCountToProps } from './common'
 
 defineOptions({
   options: {
@@ -14,7 +14,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<CountToProps>(), countToPropsDefaults)
+const props = withDefaults(defineProps<CountToProps>(), defaultCountToProps)
 
 // main
 const number = ref(0)

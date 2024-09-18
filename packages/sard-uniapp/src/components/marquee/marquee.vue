@@ -19,7 +19,7 @@ import {
   type MarqueeProps,
   type MarqueeSlots,
   type MarqueeExpose,
-  marqueePropsDefaults,
+  defaultMarqueeProps,
 } from './common'
 import { useSetTimeout } from '../../use'
 
@@ -30,7 +30,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<MarqueeProps>(), marqueePropsDefaults)
+const props = withDefaults(defineProps<MarqueeProps>(), defaultMarqueeProps)
 
 defineSlots<MarqueeSlots>()
 

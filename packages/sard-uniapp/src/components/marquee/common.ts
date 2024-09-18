@@ -9,7 +9,7 @@ export interface MarqueeProps {
   speed?: number
 }
 
-export const marqueePropsDefaults = defaultConfig.marquee
+export const defaultMarqueeProps = defaultConfig.marquee
 
 export interface MarqueeSlots {
   default?(props: Record<string, never>): any
