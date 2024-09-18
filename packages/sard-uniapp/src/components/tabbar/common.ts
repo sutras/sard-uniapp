@@ -10,7 +10,7 @@ export interface TabbarProps {
   bordered?: boolean
 }
 
-export const tabbarPropsDefaults = defaultConfig.tabbar
+export const defaultTabbarProps = defaultConfig.tabbar
 
 export interface TabbarSlots {
   default?(props: Record<string, never>): any

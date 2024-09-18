@@ -42,7 +42,7 @@ import {
   type NoticeBarSlots,
   type NoticeBarEmits,
   type NoticeBarExpose,
-  noticeBarPropsDefaults,
+  defaultNoticeBarProps,
 } from './common'
 import { useSetTimeout } from '../../use'
 
@@ -53,10 +53,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(
-  defineProps<NoticeBarProps>(),
-  noticeBarPropsDefaults,
-)
+const props = withDefaults(defineProps<NoticeBarProps>(), defaultNoticeBarProps)
 
 defineSlots<NoticeBarSlots>()
 

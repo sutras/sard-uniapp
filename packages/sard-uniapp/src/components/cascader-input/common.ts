@@ -11,7 +11,7 @@ export interface CascaderInputProps
   validateEvent?: boolean
 }
 
-export const cascaderInputPropsDefaults = defaultConfig.cascaderInput
+export const defaultCascaderInputProps = defaultConfig.cascaderInput
 
 export interface CascaderInputSlots {
   top?(props: { tabIndex: number }): any

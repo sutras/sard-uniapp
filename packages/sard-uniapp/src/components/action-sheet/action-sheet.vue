@@ -55,7 +55,7 @@ import {
   type ActionSheetItem,
   type ActionSheetProps,
   type ActionSheetEmits,
-  actionSheetPropsDefaults,
+  defaultActionSheetProps,
 } from './common'
 
 defineOptions({
@@ -67,7 +67,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<ActionSheetProps>(),
-  actionSheetPropsDefaults,
+  defaultActionSheetProps,
 )
 
 const emit = defineEmits<ActionSheetEmits>()

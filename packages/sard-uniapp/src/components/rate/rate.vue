@@ -64,7 +64,7 @@ import {
 } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
-import { type RateProps, type RateEmits, ratePropsDefaults } from './common'
+import { type RateProps, type RateEmits, defaultRateProps } from './common'
 import { useMouseDown } from '../../use'
 
 defineOptions({
@@ -74,7 +74,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<RateProps>(), ratePropsDefaults)
+const props = withDefaults(defineProps<RateProps>(), defaultRateProps)
 
 const emit = defineEmits<RateEmits>()
 

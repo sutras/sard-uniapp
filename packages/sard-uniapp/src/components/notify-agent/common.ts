@@ -1,4 +1,4 @@
-import { type NotifyProps, notifyPropsDefaults } from '../notify/common'
+import { type NotifyProps, defaultNotifyProps } from '../notify/common'
 import { defaultConfig } from '../config'
 import {
   getAllImperatives,
@@ -10,8 +10,8 @@ export interface NotifyAgentProps extends NotifyProps {
   id?: string
 }
 
-export const notifyAgentPropsDefaults = {
-  ...notifyPropsDefaults,
+export const defaultNotifyAgentProps = {
+  ...defaultNotifyProps,
   ...defaultConfig.notifyAgent,
 }
 

@@ -15,7 +15,7 @@ export interface SkeletonProps {
   animated?: boolean
 }
 
-export const skeletonPropsDefaults = defaultConfig.skeleton
+export const defaultSkeletonProps = defaultConfig.skeleton
 
 export interface SkeletonSlots {
   default?(props: Record<string, never>): any

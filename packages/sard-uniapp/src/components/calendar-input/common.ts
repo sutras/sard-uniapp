@@ -11,7 +11,7 @@ export interface CalendarInputProps
   validateEvent?: boolean
 }
 
-export const calendarInputPropsDefaults = {
+export const defaultCalendarInputProps = {
   ...defaultConfig.calendarInput,
   ...defaultConfig.calendar,
 }

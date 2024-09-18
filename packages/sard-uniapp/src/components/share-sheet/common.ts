@@ -14,7 +14,7 @@ export interface ShareSheetProps {
   duration?: number
 }
 
-export const shareSheetPropsDefaults = defaultConfig.shareSheet
+export const defaultShareSheetProps = defaultConfig.shareSheet
 
 export interface ShareSheetEmits {
   (e: 'update:visible', visible: boolean): void

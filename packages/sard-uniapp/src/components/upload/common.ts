@@ -45,7 +45,10 @@ export interface UploadProps {
   validateEvent?: boolean
 }
 
-export const uploadPropsDefaults = defaultConfig.upload
+export const defaultUploadProps = defaultConfig.upload as Omit<
+  typeof defaultConfig.upload,
+  'sourceType' | 'sizeType'
+>
 
 export interface UploadSlots {
   select?(props: Record<string, never>): any
@@ -77,7 +80,7 @@ export interface UploadPreviewProps {
   readonly?: boolean
 }
 
-export const uploadPreviewPropsDefaults = defaultConfig.uploadPreview
+export const defaultUploadPreviewProps = defaultConfig.uploadPreview
 
 export interface UploadPreviewEmits {
   (e: 'image-click', index: number): void

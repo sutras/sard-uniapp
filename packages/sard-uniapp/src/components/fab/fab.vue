@@ -45,7 +45,7 @@ import { classNames, stringifyStyle, createBem, isNullish } from '../../utils'
 import {
   type FabProps,
   type FabEmits,
-  fabPropsDefaults,
+  defaultFabProps,
   FabItem,
 } from './common'
 import { useTransition, useZIndex } from '../../use'
@@ -59,7 +59,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<FabProps>(), fabPropsDefaults)
+const props = withDefaults(defineProps<FabProps>(), defaultFabProps)
 
 const emit = defineEmits<FabEmits>()
 

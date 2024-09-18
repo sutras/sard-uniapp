@@ -117,7 +117,7 @@ import {
   chineseKeys,
   englishKeys,
   getRandomKeys,
-  keyboardPropsDefaults,
+  defaultKeyboardProps,
 } from './common'
 import SarIcon from '../icon/icon.vue'
 
@@ -128,7 +128,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<KeyboardProps>(), keyboardPropsDefaults)
+const props = withDefaults(defineProps<KeyboardProps>(), defaultKeyboardProps)
 
 defineSlots<KeyboardSlots>()
 

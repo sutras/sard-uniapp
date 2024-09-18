@@ -12,7 +12,7 @@ export interface ProgressCircleProps {
   status?: 'success' | 'warning' | 'error'
 }
 
-export const progressCircleDefaults = defaultConfig.progressCircle
+export const defaultProgressCircle = defaultConfig.progressCircle
 
 export interface ProgressCircleSlots {
   default?(props: Record<string, never>): any

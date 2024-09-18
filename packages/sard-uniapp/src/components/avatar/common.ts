@@ -12,7 +12,7 @@ export interface AvatarProps {
   src?: string
 }
 
-export const avatarPropsDefaults = defaultConfig.avatar
+export const defaultAvatarProps = defaultConfig.avatar
 
 export interface AvatarSlots {
   default?(props: Record<string, never>): any

@@ -22,7 +22,7 @@ import SarIcon from '../icon/icon.vue'
 import {
   type ProgressCircleProps,
   type ProgressCircleSlots,
-  progressCircleDefaults,
+  defaultProgressCircle,
 } from './common'
 
 defineOptions({
@@ -34,7 +34,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<ProgressCircleProps>(),
-  progressCircleDefaults,
+  defaultProgressCircle,
 )
 
 defineSlots<ProgressCircleSlots>()

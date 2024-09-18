@@ -126,7 +126,7 @@ import {
   type InputProps,
   type InputSlots,
   type InputEmits,
-  inputPropsDefaults,
+  defaultInputProps,
 } from './common'
 
 defineOptions({
@@ -136,7 +136,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<InputProps>(), inputPropsDefaults)
+const props = withDefaults(defineProps<InputProps>(), defaultInputProps)
 
 defineSlots<InputSlots>()
 

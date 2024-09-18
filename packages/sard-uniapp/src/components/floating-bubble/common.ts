@@ -11,7 +11,7 @@ export interface FloatingBubbleProps {
   offset?: { x: number; y: number }
 }
 
-export const floatingBubblePropsDefaults = defaultConfig.floatingBubble
+export const defaultFloatingBubbleProps = defaultConfig.floatingBubble
 
 export interface FloatingBubbleSlots {
   default?(props: Record<string, never>): any

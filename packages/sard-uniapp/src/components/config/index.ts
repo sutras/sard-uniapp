@@ -1,5 +1,41 @@
-import { reactive } from 'vue'
-import { type App, provide, inject } from 'vue'
+import { type AvatarProps } from '../avatar'
+import { type AlertProps } from '../alert'
+import { type ButtonProps } from '../button'
+import { type CalendarProps } from '../calendar'
+import { type CheckboxGroupProps } from '../checkbox'
+import { type DialogProps } from '../dialog'
+import { type DropdownProps } from '../dropdown'
+import { type FloatingBubbleProps } from '../floating-bubble'
+import { type FormProps } from '../form'
+import { type GridProps } from '../grid'
+import { type KeyboardProps } from '../keyboard'
+import { type ListItemProps } from '../list'
+import { type LoadingProps } from '../loading'
+import { type MarqueeProps } from '../marquee'
+import { type NoticeBarProps } from '../notice-bar'
+import { type NotifyProps } from '../notify'
+import { type PaginationProps } from '../pagination'
+import { type PasswordInputProps } from '../password-input'
+import { type PopoutProps } from '../popout'
+import { type PopoverProps } from '../popover'
+import { type PopupProps } from '../popup'
+import { type QrcodeProps } from '../qrcode'
+import { type RadioGroupProps } from '../radio'
+import { type RadioInputProps } from '../radio-input'
+import { type ResultProps } from '../result'
+import { type SearchProps } from '../search'
+import { type StepperProps } from '../stepper'
+import { type StepsProps } from '../steps'
+import { type SwiperDotProps } from '../swiper-dot'
+import { type TabsProps } from '../tabs'
+import { type TagProps } from '../tag'
+import { type ToastProps } from '../toast'
+import { type TreeProps } from '../tree'
+import { type UploadPreviewProps, type UploadProps } from '../upload'
+
+type DeepPartial<T> = {
+  [P in keyof T]?: T[P] extends Record<any, any> ? DeepPartial<T[P]> : T[P]
+}
 
 export const defaultConfig = {
   actionSheet: {
@@ -7,10 +43,10 @@ export const defaultConfig = {
     duration: 300,
   },
   alert: {
-    type: 'primary' as const,
+    type: 'primary' as AlertProps['type'],
   },
   avatar: {
-    shape: 'circle' as const,
+    shape: 'circle' as AvatarProps['shape'],
   },
   backTop: {
     visibleHeight: 200,
@@ -20,12 +56,12 @@ export const defaultConfig = {
     max: 99,
   },
   button: {
-    type: 'default' as const,
-    theme: 'primary' as const,
-    size: 'medium' as const,
+    type: 'default' as ButtonProps['type'],
+    theme: 'primary' as ButtonProps['theme'],
+    size: 'medium' as ButtonProps['size'],
   },
   calendar: {
-    type: 'single' as const,
+    type: 'single' as CalendarProps['type'],
     maxDays: Number.MAX_SAFE_INTEGER,
     weekStartsOn: 0,
   },
@@ -41,7 +77,7 @@ export const defaultConfig = {
     validateEvent: true,
   },
   checkboxGroup: {
-    direction: 'vertical' as const,
+    direction: 'vertical' as CheckboxGroupProps['direction'],
     validateEvent: true,
   },
   checkboxInput: {
@@ -66,7 +102,7 @@ export const defaultConfig = {
   },
   dialog: {
     headed: true,
-    buttonType: 'round' as const,
+    buttonType: 'round' as DialogProps['buttonType'],
     showCancel: true,
     showConfirm: true,
     overlayClosable: true,
@@ -76,7 +112,7 @@ export const defaultConfig = {
     id: 'dialog',
   },
   dropdown: {
-    direction: 'down' as const,
+    direction: 'down' as DropdownProps['direction'],
     disabled: false,
     awayClosable: true,
     overlayClosable: true,
@@ -91,17 +127,17 @@ export const defaultConfig = {
     duration: 150,
   },
   floatingBubble: {
-    axis: 'y' as const,
+    axis: 'y' as FloatingBubbleProps['axis'],
     gapX: 24,
     gapY: 24,
   },
   form: {
-    validateTrigger: 'change' as const,
+    validateTrigger: 'change' as FormProps['validateTrigger'],
     validateOnRuleChange: true,
-    direction: 'horizontal' as const,
-    labelAlign: 'start' as const,
-    labelValign: 'center' as const,
-    starPosition: 'left' as const,
+    direction: 'horizontal' as FormProps['direction'],
+    labelAlign: 'start' as FormProps['labelAlign'],
+    labelValign: 'center' as FormProps['labelValign'],
+    starPosition: 'left' as FormProps['starPosition'],
     showError: true,
     scrollDuration: 150,
   },
@@ -110,7 +146,7 @@ export const defaultConfig = {
   },
   grid: {
     columns: 4,
-    direction: 'vertical' as const,
+    direction: 'vertical' as GridProps['direction'],
   },
   icon: {
     name: '',
@@ -129,28 +165,28 @@ export const defaultConfig = {
     validateEvent: true,
   },
   keyboard: {
-    type: 'number' as const,
+    type: 'number' as KeyboardProps['type'],
   },
   listItem: {
-    arrowDirection: 'right' as const,
+    arrowDirection: 'right' as ListItemProps['arrowDirection'],
   },
   loading: {
-    type: 'circular' as const,
+    type: 'circular' as LoadingProps['type'],
   },
   marquee: {
-    direction: 'vertical' as const,
+    direction: 'vertical' as MarqueeProps['direction'],
     delay: 1000,
     speed: 50,
   },
   noticeBar: {
     delay: 1000,
     speed: 50,
-    scrollable: 'auto' as const,
+    scrollable: 'auto' as NoticeBarProps['scrollable'],
     visible: true,
   },
   notify: {
-    type: 'primary' as const,
-    position: 'top' as const,
+    type: 'primary' as NotifyProps['type'],
+    position: 'top' as NotifyProps['position'],
     duration: 300,
     timeout: 3000,
   },
@@ -165,12 +201,12 @@ export const defaultConfig = {
     pageSize: 10,
     current: 1,
     pageButtonCount: 5,
-    type: 'multi' as const,
+    type: 'multi' as PaginationProps['type'],
     multiCount: 5,
   },
   passwordInput: {
     length: 6,
-    type: 'border' as const,
+    type: 'border' as PasswordInputProps['type'],
     validateEvent: true,
   },
   picker: {
@@ -180,7 +216,7 @@ export const defaultConfig = {
     validateEvent: true,
   },
   popout: {
-    type: 'loose' as const,
+    type: 'loose' as PopoutProps['type'],
     showConfirm: true,
     showClose: true,
     showFooter: true,
@@ -188,9 +224,9 @@ export const defaultConfig = {
     duration: 300,
   },
   popover: {
-    position: 'bottom' as const,
-    direction: 'vertical' as const,
-    theme: 'light' as const,
+    position: 'bottom' as PopoverProps['position'],
+    direction: 'vertical' as PopoverProps['direction'],
+    theme: 'light' as PopoverProps['theme'],
     refGap: 10,
     viewportGap: 10,
     transparent: true,
@@ -198,7 +234,7 @@ export const defaultConfig = {
   },
   popup: {
     duration: 300,
-    effect: 'fade' as const,
+    effect: 'fade' as PopupProps['effect'],
     overlay: true,
   },
   progressBar: {
@@ -216,22 +252,22 @@ export const defaultConfig = {
     doneDuration: 0,
   },
   qrcode: {
-    ecl: 'M' as const,
+    ecl: 'M' as QrcodeProps['ecl'],
     size: '320rpx',
     canvasSize: 400,
-    type: 'canvas' as const,
+    type: 'canvas' as QrcodeProps['type'],
     text: '',
     color: '#000',
     bgColor: '#fff',
     quietZoneModules: 2,
   },
   radioGroup: {
-    direction: 'vertical' as const,
+    direction: 'vertical' as RadioGroupProps['direction'],
     validateEvent: true,
   },
   radioInput: {
     validateEvent: true,
-    type: 'record' as const,
+    type: 'record' as RadioInputProps['type'],
   },
   rate: {
     count: 5,
@@ -240,10 +276,10 @@ export const defaultConfig = {
     validateEvent: true,
   },
   result: {
-    status: 'info' as const,
+    status: 'info' as ResultProps['status'],
   },
   search: {
-    shape: 'square' as const,
+    shape: 'square' as SearchProps['shape'],
     focus: false,
   },
   shareSheet: {
@@ -264,24 +300,24 @@ export const defaultConfig = {
     min: Number.MIN_SAFE_INTEGER,
     max: Number.MAX_SAFE_INTEGER,
     step: 1,
-    inputType: 'number' as const,
+    inputType: 'number' as StepperProps['inputType'],
     press: true,
     pressTime: 350,
     interval: 150,
     validateEvent: true,
-    size: 'medium' as const,
+    size: 'medium' as StepperProps['size'],
   },
   steps: {
     current: 0,
     center: false,
-    direction: 'horizontal' as const,
+    direction: 'horizontal' as StepsProps['direction'],
     finishIcon: 'check-circle-fill',
     processIcon: 'circle',
     waitIcon: 'circle',
     errorIcon: 'x-circle',
   },
   swiperDot: {
-    type: 'dot' as const,
+    type: 'dot' as SwiperDotProps['type'],
     current: 0,
     total: 0,
     field: 'title',
@@ -295,15 +331,15 @@ export const defaultConfig = {
     bordered: true,
   },
   tabs: {
-    type: 'line' as const,
+    type: 'line' as TabsProps['type'],
   },
   tag: {
-    theme: 'default' as const,
-    size: 'medium' as const,
+    theme: 'default' as TagProps['theme'],
+    size: 'medium' as TagProps['size'],
   },
   toast: {
-    type: 'text' as const,
-    position: 'center' as const,
+    type: 'text' as ToastProps['type'],
+    position: 'center' as ToastProps['position'],
     overlay: false,
     timeout: 1500,
     duration: 300,
@@ -313,13 +349,13 @@ export const defaultConfig = {
   },
   tree: {
     defaultExpandAll: false,
-    filterMode: 'lenient' as const,
+    filterMode: 'lenient' as TreeProps['filterMode'],
     accordion: false,
   },
   upload: {
-    accept: 'image' as const,
-    sourceType: () => ['album', 'camera'] as ('album' | 'camera')[],
-    sizeType: () => ['original', 'compressed'] as ('original' | 'compressed')[],
+    accept: 'image' as UploadProps['accept'],
+    sourceType: () => ['album', 'camera'] as UploadProps['sourceType'],
+    sizeType: () => ['original', 'compressed'] as UploadProps['sizeType'],
     maxDuration: 60,
     maxCount: Number.MAX_SAFE_INTEGER,
     maxSize: Number.MAX_SAFE_INTEGER,
@@ -327,7 +363,7 @@ export const defaultConfig = {
     validateEvent: true,
   },
   uploadPreview: {
-    status: 'pending' as const,
+    status: 'pending' as UploadPreviewProps['status'],
   },
 }
 
@@ -357,10 +393,16 @@ export function setConfig(...optionsArgs: DeepPartial<ConfigOptions>[]) {
 
 export function getDurationConfig(duration: number) {
   return {
+    actionSheet: {
+      duration,
+    },
     dialog: {
       duration,
     },
     dropdown: {
+      duration,
+    },
+    fab: {
       duration,
     },
     notify: {
@@ -385,36 +427,4 @@ export function getDurationConfig(duration: number) {
       duration,
     },
   }
-}
-
-export type ConfigContext = DeepPartial<ConfigOptions>
-
-export const configContextSymbol = Symbol('config-context')
-
-type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends Record<any, any> ? DeepPartial<T[P]> : T[P]
-}
-
-export function Config(
-  app: App,
-  options: DeepPartial<ConfigOptions> = {},
-): any {
-  app.provide<DeepPartial<ConfigOptions>>(
-    configContextSymbol,
-    reactive(options),
-  )
-}
-
-export function useConfigContext() {
-  return inject<ConfigContext | null>(configContextSymbol, null)
-}
-
-export function useProvideConfigContext(
-  options: DeepPartial<ConfigOptions> = {},
-) {
-  const context = useConfigContext()
-  provide<ConfigContext>(
-    configContextSymbol,
-    Object.assign({}, context, options),
-  )
 }

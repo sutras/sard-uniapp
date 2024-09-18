@@ -81,7 +81,7 @@ import {
   type PullDownRefreshEmits,
   type PullDownRefreshExpose,
   type PullDownRefreshStatus,
-  pullDownRefreshPropsDefaults,
+  defaultPullDownRefreshProps,
 } from './common'
 import { useMouseDown, useSetTimeout } from '../../use'
 import SarLoading from '../loading/loading.vue'
@@ -97,7 +97,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<PullDownRefreshProps>(),
-  pullDownRefreshPropsDefaults,
+  defaultPullDownRefreshProps,
 )
 
 defineSlots<PullDownRefreshSlots>()

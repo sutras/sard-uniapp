@@ -98,7 +98,7 @@ import {
   type SliderProps,
   type SliderSlots,
   type SliderEmits,
-  sliderPropsDefaults,
+  defaultSliderProps,
 } from './common'
 import { useMouseDown } from '../../use'
 
@@ -109,7 +109,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<SliderProps>(), sliderPropsDefaults)
+const props = withDefaults(defineProps<SliderProps>(), defaultSliderProps)
 
 defineSlots<SliderSlots>()
 

@@ -22,7 +22,7 @@ export interface RateProps {
   validateEvent?: boolean
 }
 
-export const ratePropsDefaults = defaultConfig.rate
+export const defaultRateProps = defaultConfig.rate
 
 export interface RateEmits {
   (e: 'update:model-value', value: number): void

@@ -79,7 +79,7 @@ import {
   type DialogProps,
   type DialogEmits,
   type DialogSlots,
-  dialogPropsDefaults,
+  defaultDialogProps,
 } from './common'
 import { type ButtonProps } from '../button'
 import { type TransitionHookName } from '../../use'
@@ -91,7 +91,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<DialogProps>(), dialogPropsDefaults)
+const props = withDefaults(defineProps<DialogProps>(), defaultDialogProps)
 
 defineSlots<DialogSlots>()
 

@@ -19,7 +19,7 @@ export interface DialogProps {
   duration?: number
 }
 
-export const dialogPropsDefaults = defaultConfig.dialog
+export const defaultDialogProps = defaultConfig.dialog
 
 export interface DialogSlots {
   default?(props: Record<string, never>): any

@@ -57,7 +57,7 @@ import {
   type PopoverContext,
   type ReferenceExpose,
   popoverContextSymbol,
-  popoverPropsDefaults,
+  defaultPopoverProps,
 } from './common'
 
 defineOptions({
@@ -67,7 +67,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<PopoverProps>(), popoverPropsDefaults)
+const props = withDefaults(defineProps<PopoverProps>(), defaultPopoverProps)
 
 defineSlots<PopoverSlots>()
 

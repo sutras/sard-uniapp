@@ -1,4 +1,4 @@
-import { type DialogProps, dialogPropsDefaults } from '../dialog/common'
+import { type DialogProps, defaultDialogProps } from '../dialog/common'
 import { defaultConfig } from '../config'
 import {
   getAllImperatives,
@@ -10,8 +10,8 @@ export interface DialogAgentProps extends DialogProps {
   id?: string
 }
 
-export const dialogAgentPropsDefaults = {
-  ...dialogPropsDefaults,
+export const defaultDialogAgentProps = {
+  ...defaultDialogProps,
   ...defaultConfig.dialogAgent,
 }
 

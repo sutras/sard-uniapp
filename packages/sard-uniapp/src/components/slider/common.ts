@@ -26,7 +26,7 @@ export interface SliderProps {
   validateEvent?: boolean
 }
 
-export const sliderPropsDefaults = defaultConfig.slider
+export const defaultSliderProps = defaultConfig.slider
 
 export interface SliderSlots {
   'start-thumb'?(props: { value: number }): any

@@ -20,7 +20,7 @@ export interface PopoverProps {
   duration?: number
 }
 
-export const popoverPropsDefaults = defaultConfig.popover
+export const defaultPopoverProps = defaultConfig.popover
 
 export interface PopoverSlots {
   default?(props: Record<string, never>): any

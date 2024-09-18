@@ -21,7 +21,7 @@ import {
   type NotifyAgentProps,
   type NotifyImperative,
   imperativeName,
-  notifyAgentPropsDefaults,
+  defaultNotifyAgentProps,
 } from './common'
 import { useImperative } from '../../use/useImperative'
 
@@ -34,7 +34,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<NotifyAgentProps>(),
-  notifyAgentPropsDefaults,
+  defaultNotifyAgentProps,
 )
 
 // main

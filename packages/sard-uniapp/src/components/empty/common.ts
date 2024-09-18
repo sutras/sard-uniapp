@@ -10,7 +10,7 @@ export interface EmptyProps {
   iconSize?: string
 }
 
-export const emptyPropsDefaults = defaultConfig.empty
+export const defaultEmptyProps = defaultConfig.empty
 
 export interface EmptySlots {
   default?(props: Record<string, never>): any

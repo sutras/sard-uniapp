@@ -1,8 +1,6 @@
 {
   "name": "Sard",
-  "styles": [
-    "assets/index.scss"
-  ],
+  "styles": ["assets/index.scss"],
   "base": "/sard-uniapp-docs/",
   "publicDir": "public",
   "buildSite": {
@@ -23,9 +21,7 @@
     "outDir": "dist",
     "uniModulesDir": "../../src/uni_modules",
     "uniName": "sard-uniapp",
-    "external": [
-      "vue"
-    ]
+    "external": ["vue"]
   },
   "site": {
     "title": "Sard Uniapp",
@@ -55,7 +51,7 @@
         "children": [
           {
             "type": "group",
-            "title": "指引",
+            "title": "基础",
             "path": "/guide",
             "index": "intro",
             "children": [
@@ -68,7 +64,15 @@
                 "title": "快速上手",
                 "path": "quickstart",
                 "filePath": "markdown/quickstart.md"
-              },
+              }
+            ]
+          },
+          {
+            "type": "group",
+            "title": "进阶",
+            "path": "/guide",
+            "index": "intro",
+            "children": [
               {
                 "title": "国际化",
                 "path": "i18n",
@@ -78,6 +82,11 @@
                 "title": "暗黑模式",
                 "path": "dark-mode",
                 "filePath": "markdown/dark-mode.md"
+              },
+              {
+                "title": "全局配置",
+                "path": "config",
+                "filePath": "markdown/config.md"
               }
             ]
           }

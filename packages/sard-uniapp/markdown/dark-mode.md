@@ -9,9 +9,8 @@
 
 `sard-uniapp` 暗黑主题是通过 `prefers-color-scheme` 媒体查询特性实现的，并提供了暗黑主题的样式文件 `dark.scss`，将其置于全局样式文件之后便可随着系统或浏览器的主题变化而修改颜色。
 
-`App.vue`
-
 ```html
+<!-- App.vue -->
 <style lang="scss">
   @import 'sard-uniapp/index.scss';
   @import 'sard-uniapp/dark.scss';

@@ -12,7 +12,7 @@ export interface ResultProps {
   description?: string
 }
 
-export const resultPropsDefaults = defaultConfig.result
+export const defaultResultProps = defaultConfig.result
 
 export interface ResultSlots {
   default?(props: Record<string, never>): any

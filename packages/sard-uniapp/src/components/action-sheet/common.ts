@@ -13,7 +13,7 @@ export interface ActionSheetProps {
   duration?: number
 }
 
-export const actionSheetPropsDefaults = defaultConfig.actionSheet
+export const defaultActionSheetProps = defaultConfig.actionSheet
 
 export interface ActionSheetEmits {
   (e: 'update:visible', visible: boolean): void

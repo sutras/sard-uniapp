@@ -22,7 +22,7 @@ export interface ButtonProps {
   background?: string
 }
 
-export const buttonPropsDefaults = defaultConfig.button
+export const defaultButtonProps = defaultConfig.button
 
 export interface ButtonSlots {
   default?(props: Record<string, never>): any

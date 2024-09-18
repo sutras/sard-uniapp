@@ -14,7 +14,7 @@ import {
   uniqid,
   qrcode,
 } from '../../utils'
-import { qrcodePropsDefaults, type QrcodeProps } from './common'
+import { defaultQrcodeProps, type QrcodeProps } from './common'
 
 defineOptions({
   options: {
@@ -23,7 +23,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<QrcodeProps>(), qrcodePropsDefaults)
+const props = withDefaults(defineProps<QrcodeProps>(), defaultQrcodeProps)
 
 const bem = createBem('qrcode')
 

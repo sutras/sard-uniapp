@@ -58,7 +58,7 @@ export interface RadioGroupProps {
   optionKeys?: RadioGroupOptionKeys
 }
 
-export const radioGroupPropsDefaults = defaultConfig.radioGroup
+export const defaultRadioGroupProps = defaultConfig.radioGroup
 
 export interface RadioGroupSlots {
   default?(props: Record<string, never>): any

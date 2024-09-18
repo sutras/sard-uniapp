@@ -11,4 +11,4 @@ export interface SwiperDotProps {
   field?: string
 }
 
-export const swiperDotPropsDefaults = defaultConfig.swiperDot
+export const defaultSwiperDotProps = defaultConfig.swiperDot

@@ -22,7 +22,7 @@ import {
   type MenuProps,
   type MenuEmits,
   type MenuOption,
-  menuPropsDefaults,
+  defaultMenuProps,
 } from './common'
 
 defineOptions({
@@ -32,7 +32,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<MenuProps>(), menuPropsDefaults)
+const props = withDefaults(defineProps<MenuProps>(), defaultMenuProps)
 
 const emit = defineEmits<MenuEmits>()
 

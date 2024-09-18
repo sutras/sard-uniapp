@@ -24,7 +24,7 @@ export interface DatetimePickerProps {
   ) => string | void | undefined
 }
 
-export const datetimePickerPropsDefaults = defaultConfig.datetimePicker
+export const defaultDatetimePickerProps = defaultConfig.datetimePicker
 
 export interface DatetimePickerEmits {
   (e: 'update:model-value', date: Date): void

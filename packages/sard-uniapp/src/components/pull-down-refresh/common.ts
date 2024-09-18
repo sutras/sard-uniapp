@@ -20,7 +20,7 @@ export interface PullDownRefreshProps {
   disabled?: boolean
 }
 
-export const pullDownRefreshPropsDefaults = {
+export const defaultPullDownRefreshProps = {
   ...defaultConfig.pullDownRefresh,
   loading: false,
   disabled: false,

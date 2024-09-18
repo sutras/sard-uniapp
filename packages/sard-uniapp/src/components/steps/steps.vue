@@ -36,7 +36,7 @@
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
-import { type StepsProps, type StepsStatus, stepsPropsDefaults } from './common'
+import { type StepsProps, type StepsStatus, defaultStepsProps } from './common'
 
 defineOptions({
   options: {
@@ -45,7 +45,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<StepsProps>(), stepsPropsDefaults)
+const props = withDefaults(defineProps<StepsProps>(), defaultStepsProps)
 
 const getStatus = (current: number, index: number) => {
   return index < current

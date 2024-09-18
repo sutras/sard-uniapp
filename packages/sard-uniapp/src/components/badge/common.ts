@@ -13,7 +13,7 @@ export interface BadgeProps {
   fixed?: boolean
 }
 
-export const badgePropsDefaults = defaultConfig.badge
+export const defaultBadgeProps = defaultConfig.badge
 
 export interface BadgeSlots {
   default?(props: Record<string, never>): any

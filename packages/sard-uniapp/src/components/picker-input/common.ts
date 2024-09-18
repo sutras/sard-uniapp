@@ -1,4 +1,4 @@
-import { pickerPropsDefaults, type PickerProps } from '../picker/common'
+import { defaultPickerProps, type PickerProps } from '../picker/common'
 import { type PopoutInputProps } from '../popout-input/common'
 import { defaultConfig } from '../config'
 
@@ -10,8 +10,8 @@ export interface PickerInputProps
   validateEvent?: boolean
 }
 
-export const pickerInputPropsDefaults = {
-  ...pickerPropsDefaults,
+export const defaultPickerInputProps = {
+  ...defaultPickerProps,
   ...defaultConfig.pickerInput,
 }
 

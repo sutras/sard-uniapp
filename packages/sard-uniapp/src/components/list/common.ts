@@ -31,7 +31,7 @@ export interface ListItemProps {
   iconFamily?: string
 }
 
-export const listItemPropsDefaults = defaultConfig.listItem
+export const defaultListItemProps = defaultConfig.listItem
 
 export interface ListItemEmits {
   (e: 'click', event: any): void

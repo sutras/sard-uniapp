@@ -17,7 +17,7 @@ export interface SwitchProps {
   validateEvent?: boolean
 }
 
-export const switchPropsDefaults = defaultConfig.switch
+export const defaultSwitchProps = defaultConfig.switch
 
 export interface SwitchEmits {
   (e: 'click', event: any): void

@@ -11,7 +11,7 @@ export interface DatetimePickerInputProps
   validateEvent?: boolean
 }
 
-export const datetimePickerInputPropsDefaults = {
+export const defaultDatetimePickerInputProps = {
   ...defaultConfig.datetimePicker,
   ...defaultConfig.datetimePickerInput,
 }

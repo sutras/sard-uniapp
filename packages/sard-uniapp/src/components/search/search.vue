@@ -64,7 +64,7 @@ import {
   type SearchProps,
   type SearchSlots,
   type SearchEmits,
-  searchPropsDefaults,
+  defaultSearchProps,
 } from './common'
 
 defineOptions({
@@ -74,7 +74,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<SearchProps>(), searchPropsDefaults)
+const props = withDefaults(defineProps<SearchProps>(), defaultSearchProps)
 
 defineSlots<SearchSlots>()
 

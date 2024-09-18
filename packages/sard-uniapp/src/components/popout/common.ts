@@ -22,7 +22,7 @@ export interface PopoutProps {
   ) => boolean | undefined | Promise<any>
 }
 
-export const popoutPropsDefaults = defaultConfig.popout
+export const defaultPopoutProps = defaultConfig.popout
 
 export interface PopoutSlots {
   default?(props: Record<string, never>): any

@@ -22,7 +22,7 @@ export interface StepperProps {
   size?: 'small' | 'medium'
 }
 
-export const stepperPropsDefaults = defaultConfig.stepper
+export const defaultStepperProps = defaultConfig.stepper
 
 export interface StepperEmits {
   (e: 'update:model-value', value: number | string | undefined): void

@@ -49,7 +49,7 @@ import {
   type TreeCleanNode,
   defaultNodeKeys,
   treeContextSymbol,
-  treePropsDefaults,
+  defaultTreeProps,
 } from './common'
 import SarTreeBranch from '../tree-branch/tree-branch.vue'
 import SarPopover from '../popover/popover.vue'
@@ -70,7 +70,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<TreeProps>(), treePropsDefaults)
+const props = withDefaults(defineProps<TreeProps>(), defaultTreeProps)
 
 const bem = createBem('tree')
 

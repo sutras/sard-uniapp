@@ -26,7 +26,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
-import { type SwiperDotProps, swiperDotPropsDefaults } from './common'
+import { type SwiperDotProps, defaultSwiperDotProps } from './common'
 
 defineOptions({
   options: {
@@ -35,10 +35,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(
-  defineProps<SwiperDotProps>(),
-  swiperDotPropsDefaults,
-)
+const props = withDefaults(defineProps<SwiperDotProps>(), defaultSwiperDotProps)
 
 const bem = createBem('swiper-dot')
 

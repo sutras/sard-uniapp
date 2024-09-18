@@ -92,7 +92,7 @@ import {
 import {
   type CalendarProps,
   type CalendarEmits,
-  calendarPropsDefaults,
+  defaultCalendarProps,
   getMaxDate,
   getMinDate,
   sortDates,
@@ -113,7 +113,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<CalendarProps>(), calendarPropsDefaults)
+const props = withDefaults(defineProps<CalendarProps>(), defaultCalendarProps)
 
 const emit = defineEmits<CalendarEmits>()
 

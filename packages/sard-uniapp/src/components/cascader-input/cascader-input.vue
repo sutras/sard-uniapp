@@ -53,7 +53,7 @@ import {
   type CascaderInputProps,
   type CascaderInputSlots,
   type CascaderInputEmits,
-  cascaderInputPropsDefaults,
+  defaultCascaderInputProps,
 } from './common'
 import { useFormItemContext } from '../form/common'
 
@@ -66,7 +66,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<CascaderInputProps>(),
-  cascaderInputPropsDefaults,
+  defaultCascaderInputProps,
 )
 
 defineSlots<CascaderInputSlots>()

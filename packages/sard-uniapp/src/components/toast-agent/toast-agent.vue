@@ -20,7 +20,7 @@ import {
   type ToastAgentProps,
   type ToastImperative,
   imperativeName,
-  toastAgentPropsDefaults,
+  defaultToastAgentProps,
 } from './common'
 import { useImperative } from '../../use/useImperative'
 
@@ -33,7 +33,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<ToastAgentProps>(),
-  toastAgentPropsDefaults,
+  defaultToastAgentProps,
 )
 
 // main

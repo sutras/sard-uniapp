@@ -98,7 +98,7 @@ import {
   type PopoutProps,
   type PopoutSlots,
   type PopoutEmits,
-  popoutPropsDefaults,
+  defaultPopoutProps,
 } from './common'
 
 defineOptions({
@@ -108,7 +108,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<PopoutProps>(), popoutPropsDefaults)
+const props = withDefaults(defineProps<PopoutProps>(), defaultPopoutProps)
 
 defineSlots<PopoutSlots>()
 

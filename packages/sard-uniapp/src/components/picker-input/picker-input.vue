@@ -50,7 +50,7 @@ import { isNullish, toArray } from '../../utils'
 import {
   type PickerInputProps,
   type PickerInputEmits,
-  pickerInputPropsDefaults,
+  defaultPickerInputProps,
 } from './common'
 import { useFormItemContext } from '../form/common'
 
@@ -63,7 +63,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<PickerInputProps>(),
-  pickerInputPropsDefaults,
+  defaultPickerInputProps,
 )
 
 const emit = defineEmits<PickerInputEmits>()

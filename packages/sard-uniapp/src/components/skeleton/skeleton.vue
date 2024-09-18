@@ -28,7 +28,7 @@ import SarSkeletonParagraph from '../skeleton-paragraph/skeleton-paragraph.vue'
 import {
   type SkeletonProps,
   type SkeletonSlots,
-  skeletonPropsDefaults,
+  defaultSkeletonProps,
 } from './common'
 
 defineOptions({
@@ -38,7 +38,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<SkeletonProps>(), skeletonPropsDefaults)
+const props = withDefaults(defineProps<SkeletonProps>(), defaultSkeletonProps)
 
 defineSlots<SkeletonSlots>()
 

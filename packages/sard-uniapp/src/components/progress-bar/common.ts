@@ -15,7 +15,7 @@ export interface ProgressBarProps {
   status?: 'success' | 'warning' | 'error'
 }
 
-export const progressBarPropsDefaults = defaultConfig.progressBar
+export const defaultProgressBarProps = defaultConfig.progressBar
 
 export interface ProgressBarSlots {
   default?(props: Record<string, never>): any

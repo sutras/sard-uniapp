@@ -12,7 +12,7 @@ import {
   type GridProps,
   type GridSlots,
   gridSymbol,
-  gridPropsDefaults,
+  defaultGridProps,
 } from './common'
 
 defineOptions({
@@ -22,7 +22,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<GridProps>(), gridPropsDefaults)
+const props = withDefaults(defineProps<GridProps>(), defaultGridProps)
 
 defineSlots<GridSlots>()
 

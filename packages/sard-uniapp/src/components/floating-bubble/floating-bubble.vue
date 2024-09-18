@@ -31,7 +31,7 @@ import {
   type FloatingBubbleProps,
   type FloatingBubbleSlots,
   type FloatingBubbleEmits,
-  floatingBubblePropsDefaults,
+  defaultFloatingBubbleProps,
 } from './common'
 import { useMouseDown, useSetTimeout } from '../../use'
 
@@ -44,7 +44,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<FloatingBubbleProps>(),
-  floatingBubblePropsDefaults,
+  defaultFloatingBubbleProps,
 )
 
 defineSlots<FloatingBubbleSlots>()

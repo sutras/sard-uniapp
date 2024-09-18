@@ -1,3 +1,22 @@
+# [1.7.0](https://github.com/sutras/sard-uniapp/compare/v1.6.1...v1.7.0) (2024-09-18)
+
+
+### Features
+
+* 新增全局配置 ([9390127](https://github.com/sutras/sard-uniapp/commit/93901273d0b347aa03587fa5fd834d36ba158356))
+
+
+
+## [1.6.1](https://github.com/sutras/sard-uniapp/compare/v1.6.0...v1.6.1) (2024-08-30)
+
+
+### Bug Fixes
+
+* count-down stop timer before unmount ([be96b3d](https://github.com/sutras/sard-uniapp/commit/be96b3da62544250a45031f7f1e68d42652a37de))
+* fix type of 'confirm-hold' in sard-input ([1ac21df](https://github.com/sutras/sard-uniapp/commit/1ac21dfff5d01a83ab1e0205256c36fb53c1b821))
+
+
+
 # [1.6.0](https://github.com/sutras/sard-uniapp/compare/v1.5.0...v1.6.0) (2024-08-19)
 
 

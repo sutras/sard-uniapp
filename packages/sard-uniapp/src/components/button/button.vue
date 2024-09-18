@@ -30,7 +30,7 @@ import {
   type ButtonProps,
   type ButtonSlots,
   type ButtonEmits,
-  buttonPropsDefaults,
+  defaultButtonProps,
 } from './common'
 
 defineOptions({
@@ -40,7 +40,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<ButtonProps>(), buttonPropsDefaults)
+const props = withDefaults(defineProps<ButtonProps>(), defaultButtonProps)
 
 defineSlots<ButtonSlots>()
 

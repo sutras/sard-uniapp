@@ -7,7 +7,7 @@ export interface CountDownProps {
   millisecond?: boolean
 }
 
-export const countDownPropsDefaults = defaultConfig.countDown
+export const defaultCountDownProps = defaultConfig.countDown
 
 export interface CountDownSlots {
   default?(props: { time: CountDownCurrentTime }): any

@@ -17,7 +17,7 @@ import {
   type NotifyExpose,
   type NotifyProps,
   type NotifyEmits,
-  notifyPropsDefaults,
+  defaultNotifyProps,
 } from './common'
 import SarPopup from '../popup/popup.vue'
 import { type PopupProps } from '../popup/common'
@@ -29,7 +29,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<NotifyProps>(), notifyPropsDefaults)
+const props = withDefaults(defineProps<NotifyProps>(), defaultNotifyProps)
 
 const emit = defineEmits<NotifyEmits>()
 

@@ -43,9 +43,8 @@ npm install sard-uniapp
 在 web 开发环境使用 `sard-uniapp` 时，为避免 `vite` 依赖预构建缓存 `sard-uniapp` 部分文件导致出现问题，
 需要在预构建中强制排除对 `sard-uniapp` 的依赖。
 
-`vite.config.ts`
-
 ```ts
+// vite.config.ts
 export default defineConfig({
   optimizeDeps: {
     exclude: ['sard-uniapp'],
@@ -59,9 +58,8 @@ export default defineConfig({
 
 #### NPM
 
-`pages.json`
-
 ```json
+// pages.json
 {
   "easycom": {
     "custom": {
@@ -75,9 +73,8 @@ export default defineConfig({
 
 如果你是通过插件市场导入到 `HBuilderX` 的，需要修改一下组件路径：
 
-`pages.json`
-
 ```json
+// pages.json
 {
   "easycom": {
     "custom": {
@@ -91,9 +88,8 @@ export default defineConfig({
 
 在 `vscode` 中使用时，为了有组件的类型提示和自动填充，需要配置全局组件类型声明。
 
-`tsconfig.json`
-
 ```json
+// tsconfig.json
 {
   "compilerOptions": {
     "types": ["sard-uniapp/global"]
@@ -107,9 +103,8 @@ export default defineConfig({
 
 ### NPM
 
-`App.vue`
-
 ```html
+<!-- App.vue -->
 <style lang="scss">
   @import 'sard-uniapp/index.scss';
 </style>
@@ -119,9 +114,8 @@ export default defineConfig({
 
 如果你是通过插件市场导入到 `HBuilderX` 的，需要修改引入路径：
 
-`App.vue`
-
 ```html
+<!-- App.vue -->
 <style lang="scss">
   @import '@/uni_modules/sard-uniapp/index.scss';
 </style>

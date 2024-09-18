@@ -70,7 +70,7 @@ import {
   type CheckboxInputProps,
   type CheckboxInputEmits,
   type CheckboxInputOption,
-  checkboxInputPropsDefaults,
+  defaultCheckboxInputProps,
 } from './common'
 import { createBem, getMayPrimitiveOption, isNullish } from '../../utils'
 import { useFormItemContext } from '../form/common'
@@ -84,7 +84,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<CheckboxInputProps>(),
-  checkboxInputPropsDefaults,
+  defaultCheckboxInputProps,
 )
 
 const emit = defineEmits<CheckboxInputEmits>()

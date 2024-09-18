@@ -10,7 +10,7 @@ export interface BackTopProps {
   bottom?: string
 }
 
-export const backTopPropsDefaults = {
+export const defaultBackTopProps = {
   ...defaultConfig.backTop,
   scrollTop: 0,
 }

@@ -16,7 +16,7 @@ export interface MenuProps {
   theme?: 'dark' | 'light'
 }
 
-export const menuPropsDefaults = {
+export const defaultMenuProps = {
   options: () => [],
 }
 

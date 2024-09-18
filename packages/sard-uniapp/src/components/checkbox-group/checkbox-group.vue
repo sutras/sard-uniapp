@@ -32,7 +32,7 @@ import {
   type CheckboxGroupEmits,
   type CheckboxContext,
   checkboxContextSymbol,
-  checkboxGroupPropsDefaults,
+  defaultCheckboxGroupProps,
   defaultOptionKeys,
 } from '../checkbox/common'
 import {
@@ -53,7 +53,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<CheckboxGroupProps>(),
-  checkboxGroupPropsDefaults,
+  defaultCheckboxGroupProps,
 )
 
 defineSlots<CheckboxGroupSlots>()

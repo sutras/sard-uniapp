@@ -46,7 +46,7 @@ import {
 import {
   type LoadingProps,
   type LoadingSlots,
-  loadingPropsDefaults,
+  defaultLoadingProps,
 } from './common'
 
 defineOptions({
@@ -56,7 +56,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<LoadingProps>(), loadingPropsDefaults)
+const props = withDefaults(defineProps<LoadingProps>(), defaultLoadingProps)
 
 defineSlots<LoadingSlots>()
 

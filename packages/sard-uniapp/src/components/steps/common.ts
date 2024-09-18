@@ -25,4 +25,4 @@ export interface StepsProps {
   errorIcon?: string
 }
 
-export const stepsPropsDefaults = defaultConfig.steps
+export const defaultStepsProps = defaultConfig.steps

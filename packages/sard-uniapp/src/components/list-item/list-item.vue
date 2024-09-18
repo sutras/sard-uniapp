@@ -53,7 +53,7 @@ import {
   type ListItemProps,
   type ListItemSlots,
   type ListItemEmits,
-  listItemPropsDefaults,
+  defaultListItemProps,
 } from '../list/common'
 
 defineOptions({
@@ -63,7 +63,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<ListItemProps>(), listItemPropsDefaults)
+const props = withDefaults(defineProps<ListItemProps>(), defaultListItemProps)
 
 const slots = defineSlots<ListItemSlots>()
 
