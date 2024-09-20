@@ -8,6 +8,7 @@ import { type DropdownProps } from '../dropdown'
 import { type FloatingBubbleProps } from '../floating-bubble'
 import { type FormProps } from '../form'
 import { type GridProps } from '../grid'
+import { type InputProps } from '../input'
 import { type KeyboardProps } from '../keyboard'
 import { type ListItemProps } from '../list'
 import { type LoadingProps } from '../loading'
@@ -163,6 +164,12 @@ export const defaultConfig = {
     disableDefaultPadding: true,
     modelValue: '',
     validateEvent: true,
+    cursorSpacing: 30,
+    confirmType: 'done' as InputProps['confirmType'],
+    cursor: -1,
+    selectionStart: -1,
+    selectionEnd: -1,
+    inputmode: 'text' as InputProps['inputmode'],
   },
   keyboard: {
     type: 'number' as KeyboardProps['type'],
