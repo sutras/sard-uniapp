@@ -60,6 +60,9 @@ export const defaultConfig = {
     type: 'default' as ButtonProps['type'],
     theme: 'primary' as ButtonProps['theme'],
     size: 'medium' as ButtonProps['size'],
+    hoverStopPropagation: false,
+    lang: 'en',
+    showMessageCard: false,
   },
   calendar: {
     type: 'single' as CalendarProps['type'],
