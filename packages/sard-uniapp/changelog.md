@@ -1,9 +1,18 @@
+## [1.7.1](https://github.com/sutras/sard-uniapp/compare/v1.7.0...v1.7.1) (2024-09-20)
+
+
+### Bug Fixes
+
+* 修复 input 获取焦点时的光标位置 ([b952ac3](https://github.com/sutras/sard-uniapp/commit/b952ac3ad5fad3a8c824f3613e6b3b69919bc6b1))
+
+
+
 # [1.7.0](https://github.com/sutras/sard-uniapp/compare/v1.6.1...v1.7.0) (2024-09-18)
 
 
 ### Features
 
-* 新增全局配置 ([9390127](https://github.com/sutras/sard-uniapp/commit/93901273d0b347aa03587fa5fd834d36ba158356))
+* 新增全局配置 ([c426117](https://github.com/sutras/sard-uniapp/commit/c4261171903d56740920e6930693a797cbb6309f))
 
 
 

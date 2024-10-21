@@ -72,6 +72,26 @@ import Button from 'sard-uniapp/components/button/button.vue'
 | color        | 自定义文字颜色 | string                                                                   | -          |
 | background   | 自定义背景颜色 | string                                                                   | -          |
 
+### ButtonProps（小程序能力）
+
+<a href="https://uniapp.dcloud.net.cn/component/button.html" target="blank">uniapp 文档</a>。
+
+| 属性                   | 描述                                                                                                                                                           | 类型    | 默认值       |
+| ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------------ |
+| form-type              | 用于 <form> 组件，点击分别会触发 <form> 组件的 submit/reset 事件                                                                                               | string  | -            |
+| open-type              | 开放能力                                                                                                                                                       | string  | -            |
+| app-parameter          | 打开 APP 时，向 APP 传递的参数，open-type=launchApp 时有效                                                                                                     | string  | -            |
+| hover-stop-propagation | 指定是否阻止本节点的祖先节点出现点击态                                                                                                                         | boolean | false        |
+| lang                   | 指定返回用户信息的语言，zh_CN 简体中文，zh_TW 繁体中文，en 英文。                                                                                              | string  | 'en'         |
+| session-from           | 会话来源，open-type="contact"时有效                                                                                                                            | string  | -            |
+| send-message-title     | 会话内消息卡片标题，open-type="contact"时有效                                                                                                                  | string  | 当前标题     |
+| send-message-path      | 会话内消息卡片点击跳转小程序路径，open-type="contact"时有效                                                                                                    | string  | 当前分享路径 |
+| send-message-img       | 会话内消息卡片图片，open-type="contact"时有效                                                                                                                  | string  | 截图         |
+| show-message-card      | 是否显示会话内消息卡片，设置此参数为 true，用户进入客服会话会在右下角显示"可能要发送的小程序"提示，用户点击后可以快速发送小程序消息，open-type="contact"时有效 | boolean | false        |
+| group-id               | 打开群资料卡时，传递的群号                                                                                                                                     | string  | -            |
+| guild-id               | 打开频道页面时，传递的频道号                                                                                                                                   | string  | -            |
+| public-id              | 打开公众号资料卡时，传递的号码                                                                                                                                 | string  | -            |
+
 ### ButtonSlots
 
 | 插槽    | 描述           | 属性 |
@@ -83,6 +103,26 @@ import Button from 'sard-uniapp/components/button/button.vue'
 | 事件  | 描述                                   | 类型                 |
 | ----- | -------------------------------------- | -------------------- |
 | click | 点击按钮时触发，加载和禁用状态不会触发 | (event: any) => void |
+
+### ButtonEmits（小程序能力）
+
+<a href="https://uniapp.dcloud.net.cn/component/button.html" target="blank">uniapp 文档</a>。
+
+| 事件                      | 描述                                                                                         | 类型                 |
+| ------------------------- | -------------------------------------------------------------------------------------------- | -------------------- |
+| getphonenumber            | 获取用户手机号回调                                                                           | (event: any) => void |
+| getuserinfo               | 用户点击该按钮时，会返回获取到的用户信息，从返回参数的 detail 中获取到的值同 uni.getUserInfo | (event: any) => void |
+| error                     | 当使用开放能力时，发生错误的回调                                                             | (event: any) => void |
+| opensetting               | 在打开授权设置页并关闭后回调                                                                 | (event: any) => void |
+| launchapp                 | 从小程序打开 App 成功的回调                                                                  | (event: any) => void |
+| contact                   | 客服消息回调                                                                                 | (event: any) => void |
+| chooseavatar              | 获取用户头像回调                                                                             | (event: any) => void |
+| agreeprivacyauthorization | 用户同意隐私协议事件回调，open-type="agreePrivacyAuthorization"时有效                        | (event: any) => void |
+| addgroupapp               | 添加群应用的回调                                                                             | (event: any) => void |
+| chooseaddress             | 调起用户编辑并选择收货地址的回调                                                             | (event: any) => void |
+| chooseinvoicetitle        | 用户选择发票抬头的回调                                                                       | (event: any) => void |
+| subscribe                 | 订阅消息授权回调                                                                             | (event: any) => void |
+| login                     | 登录回调                                                                                     | (event: any) => void |
 
 ## 主题定制
 
