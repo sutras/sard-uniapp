@@ -30,12 +30,12 @@
   },
   "devDependencies": {
     "@sard/uniapp-cli": "workspace:*",
-    "@vitejs/plugin-vue": "^4.2.3",
+    "@vitejs/plugin-vue": "^4.6.2",
     "@vitejs/plugin-vue-jsx": "^3.1.0",
     "@vue/test-utils": "^2.4.6",
     "canvas": "^2.11.2",
-    "region-data": "^1.2.1",
-    "vitest": "^1.0.4"
+    "region-data": "^1.2.3",
+    "vitest": "^1.6.0"
   },
   "author": "wuzhitao",
   "license": "MIT",

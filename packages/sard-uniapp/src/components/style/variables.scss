@@ -73,12 +73,12 @@ page {
   --sar-neutral-rgb: var(--sar-gray-700-rgb);
 
   // # 主题色 深文本
-  --sar-primary-text: #{darken($sar-blue, 20%)};
-  --sar-secondary-text: #{darken($sar-gray-600, 20%)};
-  --sar-success-text: #{darken($sar-green, 10%)};
-  --sar-info-text: #{darken($sar-cyan, 20%)};
-  --sar-warning-text: #{darken($sar-yellow, 20%)};
-  --sar-danger-text: #{darken($sar-red, 20%)};
+  --sar-primary-text: #{color.scale($sar-blue, $blackness: 20%)};
+  --sar-secondary-text: #{color.scale($sar-gray-600, $blackness: 20%)};
+  --sar-success-text: #{color.scale($sar-green, $blackness: 10%)};
+  --sar-info-text: #{color.scale($sar-cyan, $blackness: 20%)};
+  --sar-warning-text: #{color.scale($sar-yellow, $blackness: 20%)};
+  --sar-danger-text: #{color.scale($sar-red, $blackness: 20%)};
 
   // # 灰度场景色
   --sar-body-color: var(--sar-gray-900);
