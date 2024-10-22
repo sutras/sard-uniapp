@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '../style/base' as *;
 
 $sar-tag-sizes: (
@@ -33,7 +34,7 @@ $sar-tag-sizes: (
 
   // 主题
   @each $theme, $value in $sar-theme-colors {
-    $color: nth($value, 1);
+    $color: list.nth($value, 1);
 
     @include m($theme) {
       background-color: $color;

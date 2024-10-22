@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '../style/base' as *;
 
 @include bem(button) {
@@ -91,8 +92,8 @@
 
   // # 主题色
   @each $theme, $value in $sar-theme-colors {
-    $color: nth($value, 1);
-    $color-rgb: nth($value, 2);
+    $color: list.nth($value, 1);
+    $color-rgb: list.nth($value, 2);
 
     // ## 默认类型
     @include m(default-#{$theme}) {

@@ -16,6 +16,6 @@ onUnmounted(() => {
 })
 </script>
 
-<style>
-@import url('./index.scss');
+<style lang="scss">
+@import './index.scss';
 </style>

@@ -1,3 +1,4 @@
+@use 'sass:list';
 @use '../style/base' as *;
 
 @include bem(alert) {
@@ -30,8 +31,11 @@
         )
     {
       @include m($type) {
-        color: nth($color, 1);
-        background-color: rgba(nth($color, 2), var(--sar-alert-bg-opacity));
+        color: list.nth($color, 1);
+        background-color: rgba(
+          list.nth($color, 2),
+          var(--sar-alert-bg-opacity)
+        );
       }
     }
   }

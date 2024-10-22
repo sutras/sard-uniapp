@@ -1,3 +1,3 @@
-@import '../doc/index.scss';
-@import '../alerts/index.scss';
-@import '../code-tool/index.scss';
+@use '../doc/index.scss' as *;
+@use '../alerts/index.scss' as *;
+@use '../code-tool/index.scss' as *;

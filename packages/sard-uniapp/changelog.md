@@ -1,3 +1,12 @@
+## [1.8.1](https://github.com/sutras/sard-uniapp/compare/v1.8.0...v1.8.1) (2024-10-22)
+
+
+### Bug Fixes
+
+* 修复局部导入组件未注册问题 ([5337b11](https://github.com/sutras/sard-uniapp/commit/5337b119d15b77db76be13c7e33a10cdc4b02d7d))
+
+
+
 # [1.8.0](https://github.com/sutras/sard-uniapp/compare/v1.7.1...v1.8.0) (2024-10-21)
 
 
