@@ -1,3 +1,12 @@
+# [1.8.0](https://github.com/sutras/sard-uniapp/compare/v1.7.1...v1.8.0) (2024-10-21)
+
+
+### Features
+
+* 按钮添加小程序能力 ([c395f86](https://github.com/sutras/sard-uniapp/commit/c395f86308c05ab2a515aa1833b65e87969cf537))
+
+
+
 ## [1.7.1](https://github.com/sutras/sard-uniapp/compare/v1.7.0...v1.7.1) (2024-09-20)
 
 

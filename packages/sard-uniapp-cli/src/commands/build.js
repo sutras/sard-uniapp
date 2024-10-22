@@ -94,6 +94,20 @@ async function copyLwa() {
   await copySrcToDist('./**/lwa.slim.*')
 }
 
+function geAllComponentName(script) {
+  return script.match(/(?<=import\s+)\w+(?=\s+from\s+"[^"]+\.vue")/g)
+}
+
+function insertComponents(code, components) {
+  return code.replace(/(?<=defineComponent\(\{\n)/, () => {
+    return (
+      `  components: {\n` +
+      `${components.map((item) => `    ${item},\n`).join('')}` +
+      `  },\n`
+    )
+  })
+}
+
 function doCompileVue(code, filePath) {
   let wxsMatch = ''
   code = code.replace(/<script.*?lang="wxs".*?><\/script>/, (m) => {
@@ -115,7 +129,7 @@ function doCompileVue(code, filePath) {
     // 转义uniapp条件注释，避免被esbuild删掉
     .replace(/\/\/ #/g, '//! #')
 
-  const transformedScript = esbuild
+  let transformedScript = esbuild
     .transformSync(compiledScript, {
       loader: 'ts',
       legalComments: 'inline',
@@ -127,6 +141,11 @@ function doCompileVue(code, filePath) {
 
   if (wxsMatch) {
     compiledVue += `<!-- #ifdef MP-WEIXIN -->\n${wxsMatch}\n<!-- #endif -->\n\n`
+  }
+
+  const components = geAllComponentName(transformedScript)
+  if (components) {
+    transformedScript = insertComponents(transformedScript, components)
   }
 
   compiledVue += `<script>\n${transformedScript}</script>\n`
