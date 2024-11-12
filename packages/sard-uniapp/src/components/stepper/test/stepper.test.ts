@@ -12,18 +12,18 @@ describe('Stepper', () => {
       }),
     )
 
-    expect(wrapper.find('input').element.value).toBe(undefined)
+    expect(wrapper.find('input').element.value).toBe('')
 
     await wrapper.find('.sar-stepper__button_increase').trigger('click')
-    expect(wrapper.find('input').element.value).toBe(1)
+    expect(wrapper.find('input').element.value).toBe('1')
 
     await wrapper.find('.sar-stepper__button_decrease').trigger('click')
-    expect(wrapper.find('input').element.value).toBe(0)
+    expect(wrapper.find('input').element.value).toBe('0')
 
     await wrapper.setProps({
       modelValue: 3,
     })
-    expect(wrapper.find('input').element.value).toBe(3)
+    expect(wrapper.find('input').element.value).toBe('3')
   })
 
   test('minMax', async () => {
@@ -38,16 +38,16 @@ describe('Stepper', () => {
     await wrapper.find('.sar-stepper__button_increase').trigger('click')
     await wrapper.find('.sar-stepper__button_increase').trigger('click')
     await wrapper.find('.sar-stepper__button_increase').trigger('click')
-    expect(wrapper.find('input').element.value).toBe(3)
+    expect(wrapper.find('input').element.value).toBe('3')
     await wrapper.find('.sar-stepper__button_increase').trigger('click')
-    expect(wrapper.find('input').element.value).toBe(3)
+    expect(wrapper.find('input').element.value).toBe('3')
 
     await wrapper.find('.sar-stepper__button_decrease').trigger('click')
     await wrapper.find('.sar-stepper__button_decrease').trigger('click')
     await wrapper.find('.sar-stepper__button_decrease').trigger('click')
-    expect(wrapper.find('input').element.value).toBe(0)
+    expect(wrapper.find('input').element.value).toBe('0')
     await wrapper.find('.sar-stepper__button_decrease').trigger('click')
-    expect(wrapper.find('input').element.value).toBe(0)
+    expect(wrapper.find('input').element.value).toBe('0')
   })
 
   test('step', async () => {
@@ -59,21 +59,21 @@ describe('Stepper', () => {
     )
 
     await wrapper.find('.sar-stepper__button_increase').trigger('click')
-    expect(wrapper.find('input').element.value).toBe(5)
+    expect(wrapper.find('input').element.value).toBe('5')
     await wrapper.find('.sar-stepper__button_increase').trigger('click')
-    expect(wrapper.find('input').element.value).toBe(10)
+    expect(wrapper.find('input').element.value).toBe('10')
 
     await wrapper.setProps({
       modelValue: 12,
     })
-    expect(wrapper.find('input').element.value).toBe(12)
+    expect(wrapper.find('input').element.value).toBe('12')
 
     await wrapper.find('.sar-stepper__button_decrease').trigger('click')
-    expect(wrapper.find('input').element.value).toBe(7)
+    expect(wrapper.find('input').element.value).toBe('7')
     await wrapper.find('.sar-stepper__button_decrease').trigger('click')
-    expect(wrapper.find('input').element.value).toBe(2)
+    expect(wrapper.find('input').element.value).toBe('2')
     await wrapper.find('.sar-stepper__button_decrease').trigger('click')
-    expect(wrapper.find('input').element.value).toBe(-3)
+    expect(wrapper.find('input').element.value).toBe('-3')
   })
 
   test('readonly', async () => {
