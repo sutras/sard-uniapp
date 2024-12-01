@@ -3,7 +3,7 @@
     :class="[
       'doc-layout',
       {
-        'doc-layout-with-sider': row,
+        'doc-layout-horizontal': row,
       },
     ]"
   >
@@ -21,9 +21,10 @@ defineProps({
 .doc-layout {
   display: flex;
   flex-direction: column;
+  flex: 1;
+}
 
-  &-with-sider {
-    flex-direction: row;
-  }
+.doc-layout-horizontal {
+  flex-direction: row;
 }
 </style>

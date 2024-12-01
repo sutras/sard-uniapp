@@ -3,14 +3,18 @@
     <Header @sidebar-toggle="onSidebarToggle"></Header>
     <Layout row>
       <Sider v-model:visible="siderVisible"></Sider>
-      <Content>
-        <Main>
-          <router-view></router-view>
-        </Main>
+      <Layout>
+        <Layout row>
+          <Content>
+            <Main>
+              <router-view></router-view>
+            </Main>
+          </Content>
+          <Mobile></Mobile>
+          <Catalog></Catalog>
+        </Layout>
         <Footer></Footer>
-      </Content>
-      <Mobile></Mobile>
-      <Catalog></Catalog>
+      </Layout>
     </Layout>
   </Layout>
 </template>

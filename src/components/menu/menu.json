@@ -162,10 +162,6 @@
         "name": "list"
       },
       {
-        "title": "LuckyDraw 幸运抽奖",
-        "name": "lucky-draw"
-      },
-      {
         "title": "NoticeBar 公告栏",
         "name": "notice-bar"
       },
