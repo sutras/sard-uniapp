@@ -126,7 +126,6 @@ useResize(() => {
 
   @media (min-width: 769px) {
     display: flex;
-    margin-left: auto;
 
     &-header {
       display: none;
@@ -134,6 +133,10 @@ useResize(() => {
 
     &-body {
       display: flex;
+    }
+
+    &-right {
+      margin-left: auto;
     }
   }
 }
