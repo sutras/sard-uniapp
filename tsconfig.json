@@ -7,7 +7,7 @@
     "sourceMap": true,
     "baseUrl": ".",
     "lib": ["esnext", "dom"],
-    "types": ["@dcloudio/types", "sard-uniapp/src/global"],
+    "types": ["@dcloudio/types", "./src/lib/global.d.ts"],
     "ignoreDeprecations": "5.0",
     "esModuleInterop": true,
     "moduleResolution": "Node",
@@ -17,11 +17,17 @@
     "strictNullChecks": true,
     "jsx": "preserve",
     "paths": {
-      "@/*": ["src/*"],
-      "sard-uniapp": ["packages/sard-uniapp/src"]
+      "@/*": ["./src/*"],
+      "sard-uniapp": ["./src/lib"],
+      "sard-uniapp/*": ["./src/lib/*"]
     }
   },
-  "include": ["src/**/*", "src/**/*.vue", "packages/**/*", "packages/**/*.vue"],
+  "include": [
+    "./src/**/*",
+    "./src/**/*.vue",
+    "./packages/**/*",
+    "./packages/**/*.vue"
+  ],
   "exclude": [
     "**/dist/**",
     "**/docs/**",

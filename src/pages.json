@@ -398,7 +398,7 @@
     {
       "path": "pages/components/notify/index",
       "style": {
-        "navigationBarTitleText": "Notify 通知"
+        "navigationBarTitleText": "Notify 消息通知"
       }
     },
     {
@@ -524,7 +524,7 @@
     {
       "path": "pages/components/slider/index",
       "style": {
-        "navigationBarTitleText": "Slider 滑动器"
+        "navigationBarTitleText": "Slider 滑块"
       }
     },
     {
@@ -664,7 +664,7 @@
   },
   "easycom": {
     "custom": {
-      "^sar-(.*)": "sard-uniapp/components/$1/$1.vue",
+      "^sar-(.*)": "@/lib/components/$1/$1.vue",
       "^doc-(.*)": "@/components/$1/$1.vue"
     }
   }
