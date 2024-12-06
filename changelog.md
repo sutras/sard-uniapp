@@ -1,6 +1,11 @@
 ## [1.8.2](https://github.com/sutras/sard-uniapp/compare/v1.8.1...v1.8.2) (2024-12-06)
 
 
+### Bug Fixes
+
+* **PopoutInput:** 只读时隐藏箭头 ([0efcdf7](https://github.com/sutras/sard-uniapp/commit/0efcdf77f39778521b8fe7d2b66c84b7a88496c5))
+
+
 
 ## [1.8.1](https://github.com/sutras/sard-uniapp/compare/v1.8.0...v1.8.1) (2024-10-22)
 

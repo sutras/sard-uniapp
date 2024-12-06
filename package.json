@@ -109,7 +109,7 @@
     "eslint-plugin-vue": "^9.32.0",
     "glob": "^11.0.0",
     "globals": "^15.13.0",
-    "husky": "^8.0.3",
+    "husky": "^9.1.7",
     "inquirer": "^9.3.7",
     "lint-staged": "^13.3.0",
     "lodash-es": "^4.17.21",
