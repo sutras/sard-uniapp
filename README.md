@@ -44,28 +44,16 @@
 git clone https://github.com/sutras/sard-uniapp.git
 ```
 
-### 全局安装 pnpm（如果未安装）
+### 安装依赖
 
 ```bash
-npm install -g pnpm
+npm install
 ```
-
-### 使用 pnpm 安装依赖
-
-```bash
-pnpm install
-```
-
-### 修改 @dcloudio 源码
-
-安装完依赖，需要修改@dcloudio 里面的一个地方，具体参考以下文档中的第一个问题（“热更新无效”）：
-
-[https://zhuanlan.zhihu.com/p/665000866](https://zhuanlan.zhihu.com/p/665000866)
 
 ### 运行开发环境
 
 ```bash
-pnpm run dev
+npm run dev
 ```
 
 运行上面命令后会生成四个链接：
@@ -75,4 +63,40 @@ Local:   http://localhost:5173/sard-uniapp-docs/mobile/    （演示）
 Network: http://192.168.1.121:5173/sard-uniapp-docs/mobile/ (局域网演示）
 Local:   http://localhost:7761/sard-uniapp-docs/           （文档）
 Network: http://192.168.1.121:7761/sard-uniapp-docs/       （局域网文档）
+```
+
+### 测试
+
+```bash
+npm run test
+```
+
+### 构建文档站点
+
+```bash
+npm run build:site
+```
+
+### 预览构建的文档站点
+
+```bash
+npm run preview
+```
+
+### 构建组件库
+
+```bash
+npm run build
+```
+
+### 部署文档站点到 github pages
+
+```bash
+npm run deploy
+```
+
+### 发布组件库到 npm
+
+```bash
+npm run release
 ```
