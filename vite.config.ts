@@ -1,5 +1,6 @@
-import { defineConfig, type PluginOption, type ViteDevServer } from 'vite'
+import { defineConfig, type PluginOption } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
+import path from 'node:path'
 import { transformIndexHtmlPlugin } from './transformIndexHtmlPlugin'
 
 function vitePluginUncommentWxs(files: string[]): PluginOption {
@@ -17,18 +18,6 @@ function vitePluginUncommentWxs(files: string[]): PluginOption {
   }
 }
 
-function vitePluginWatchNodeModules() {
-  return {
-    name: 'vitePluginWatchNodeModules',
-    configureServer: (server: ViteDevServer): void => {
-      server.watcher.options = {
-        ...server.watcher.options,
-        ignored: [/node_modules\/(?!sard-uniapp).*/, '**/.git/**'],
-      }
-    },
-  }
-}
-
 // https://vitejs.dev/config/
 export default defineConfig({
   optimizeDeps: {
@@ -39,13 +28,16 @@ export default defineConfig({
     vitePluginUncommentWxs(['pull-down-refresh.vue']),
     uni(),
     transformIndexHtmlPlugin(),
-    vitePluginWatchNodeModules(),
   ],
   resolve: {
     alias: [
       {
         find: /^sard-uniapp/,
-        replacement: 'sard-uniapp/src',
+        replacement: path.resolve(process.cwd(), './src/lib'),
+      },
+      {
+        find: /^sard-uniapp$/,
+        replacement: path.resolve(process.cwd(), './src/lib/index.ts'),
       },
     ],
   },

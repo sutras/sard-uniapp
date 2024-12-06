@@ -1,0 +1,72 @@
+@use 'sass:color';
+@use 'sass:math';
+@use './configuration' as *;
+
+// scss原生并没有提供字符串的替换函数，需自己编写函数来实现这个功能
+@function str-replace($string, $search, $replace) {
+  $index: str-index($string, $search);
+
+  @if $index {
+    @return str-slice($string, 1, $index - 1) + $replace +
+      str-replace(
+        str-slice($string, $index + str-length($search)),
+        $search,
+        $replace
+      );
+  }
+
+  @return $string;
+}
+
+// 把svg字符串编码成符合浏览器css规则的字符串
+@function encode-svg($str) {
+  @return str-replace($str, '#', '%23');
+}
+
+// 把一个数四舍五入到指定位数小数
+@function tofixed($n, $digits: 0) {
+  @return math.div(round($n * math.pow(10, $digits)), math.pow(10, $digits));
+}
+
+// 从一个颜色提取出rgb组成一个字符串，通过赋值给一个css变量，
+// 以便将此变量和一个透明度组成一个rgba从而实现自定义一个颜色的透明度。
+@function extractRGB($color) {
+  @return '#{color.red($color)},#{color.green($color)},#{color.blue($color)}';
+}
+
+@function bem-ns($str) {
+  @return $sar-namespace + $sar-block-separator + $str;
+}
+
+@function bem($b, $e: null, $m: null) {
+  $result: '.' + $sar-namespace + $sar-block-separator + $b;
+  @if $e {
+    $result: $result + $sar-element-separator + $e;
+  }
+  @if $m {
+    $result: $result + $sar-modifier-separator + $m;
+  }
+  @return $result;
+}
+
+@function str-split($string, $separator) {
+  // empty array/list
+  $split-arr: ();
+  // first index of separator in string
+  $index: str-index($string, $separator);
+  // loop through string
+  @while $index != null {
+    // get the substring from the first character to the separator
+    $item: str-slice($string, 1, $index - 1);
+    // push item to array
+    $split-arr: append($split-arr, $item);
+    // remove item and separator from string
+    $string: str-slice($string, $index + 1);
+    // find new index of separator
+    $index: str-index($string, $separator);
+  }
+  // add the remaining string to list (the last item)
+  $split-arr: append($split-arr, $string);
+
+  @return $split-arr;
+}

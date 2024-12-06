@@ -3,3 +3,8 @@ dist/
 docs/
 uni_modules/
 changelog.md
+lwa.slim.js
+pnpm-lock.yaml
+pnpm-workspace.yaml
+src/manifest.json
+.hbuilderx/launch.json
