@@ -21,6 +21,7 @@ export default defineConfig({
       icon: 'github',
       branch: 'gh-pages',
       repo: 'https://github.com/sutras/sard-uniapp.git',
+      docsRepo: 'https://github.com/sutras/sard-uniapp-docs.git',
       url: 'https://github.com/sutras/sard-uniapp',
     },
     {
@@ -28,6 +29,7 @@ export default defineConfig({
       icon: 'gitee',
       branch: 'gh-pages',
       repo: 'https://gitee.com/sutras/sard-uniapp.git',
+      docsRepo: 'https://gitee.com/sutras/sard-uniapp-docs.git',
       url: 'https://gitee.com/sutras/sard-uniapp',
       pages: 'https://gitee.com/sutras/sard-uniapp/pages',
     },

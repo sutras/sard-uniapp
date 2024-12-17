@@ -4,7 +4,7 @@
       <DemoType />
     </doc-demo>
 
-    <doc-demo title="按钮颜色">
+    <doc-demo title="按钮主题色">
       <DemoTheme />
     </doc-demo>
 

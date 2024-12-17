@@ -36,7 +36,7 @@ import CheckboxGroup from 'sard-uniapp/components/checkbox-group/checkbox-group.
 
 @code('${DEMO_PATH}/checkbox/demo/Size.vue')
 
-### 自定义颜色
+### 图标颜色
 
 使用 `checked-color` 属性设置选中时的图标颜色。
 
@@ -88,6 +88,10 @@ import CheckboxGroup from 'sard-uniapp/components/checkbox-group/checkbox-group.
 复选框组里面 `checkbox` 组件，会自动判断选中状态；可以给 `checkbox` 组件添加 `readonly` 属性以便将点击操作交给其他组件。
 
 @code('${DEMO_PATH}/checkbox/demo/Custom3.vue')
+
+### 不确定状态
+
+@code('${DEMO_PATH}/checkbox/demo/Indeterminate.vue')
 
 ## API
 

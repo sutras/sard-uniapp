@@ -49,7 +49,7 @@ import CountDown from 'sard-uniapp/components/count-down/count-down.vue'
 
 ### 验证码倒计时
 
-下面代码演示了获取验证码需求中倒计时配合按钮的使用。
+下面代码演示了获取验证码场景中倒计时配合按钮的使用。
 
 @code('${DEMO_PATH}/count-down/demo/Captcha.vue')
 

@@ -12,7 +12,7 @@
       <DemoSize />
     </doc-demo>
 
-    <doc-demo title="图片类型图标">
+    <doc-demo title="自定义图标">
       <DemoIcon />
     </doc-demo>
 

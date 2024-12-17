@@ -48,7 +48,7 @@ import PullDownRefresh from 'sard-uniapp/components/pull-down-refresh/pull-down-
 
 @code('${DEMO_PATH}/pull-down-refresh/demo/ScrollView.vue')
 
-### 使用插槽
+### 自定义插槽
 
 通过使用插槽可以自定义不同状态的提示信息。
 

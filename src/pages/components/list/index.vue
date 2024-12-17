@@ -16,7 +16,7 @@
       <DemoSlot />
     </doc-demo>
 
-    <doc-demo title="分组" full>
+    <doc-demo title="列表标题和描述" full>
       <DemoGroup />
     </doc-demo>
 
