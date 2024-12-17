@@ -43,6 +43,12 @@ import TabbarItem from 'sard-uniapp/components/tabbar-item/tabbar-item.vue'
 
 @code('${DEMO_PATH}/tabbar/demo/Badge.vue')
 
+### 中间鼓起
+
+通过覆盖默认插槽自定义标签结构和样式。
+
+@code('${DEMO_PATH}/tabbar/demo/Bulge.vue')
+
 ## API
 
 ### TabbarProps

@@ -115,7 +115,7 @@
     "lodash-es": "^4.17.21",
     "prettier": "^2.8.8",
     "region-data": "^1.2.3",
-    "sard-cli": "^1.0.2",
+    "sard-cli": "^1.0.3",
     "sass": "^1.43.4",
     "tel-area-code": "^1.0.1",
     "ts-custom-error": "^3.3.1",

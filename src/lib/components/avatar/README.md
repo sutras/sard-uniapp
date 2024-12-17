@@ -55,7 +55,7 @@ import Avatar from 'sard-uniapp/components/avatar/avatar.vue'
 
 ### 额外内容
 
-`extra` 属性可以展示例如徽标等组件。要使徽标固定在圆角形状头像右上角边边上可以使用 `14.6447%` 的固定值。
+`extra` 属性可以展示例如徽标等组件。要使徽标固定在圆角形状头像右上角边上可以使用 `14.6447%` 的固定值。
 
 @code('${DEMO_PATH}/avatar/demo/Extra.vue')
 
