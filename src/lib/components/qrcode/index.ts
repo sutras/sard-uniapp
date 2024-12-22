@@ -1,1 +1,1 @@
-export type { QrcodeProps } from './common'
+export type { QrcodeProps, QrcodeSlots, QrcodeECL } from './common'

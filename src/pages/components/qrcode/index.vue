@@ -16,6 +16,10 @@
       <DemoColor />
     </doc-demo>
 
+    <doc-demo title="添加图标">
+      <DemoIcon />
+    </doc-demo>
+
     <doc-demo title="安静区域模块数">
       <DemoQuietZoneModules />
     </doc-demo>
@@ -31,6 +35,7 @@ import DemoBasic from './demo/Basic.vue'
 import DemoDisplaySize from './demo/DisplaySize.vue'
 import DemoCanvasSize from './demo/CanvasSize.vue'
 import DemoColor from './demo/Color.vue'
+import DemoIcon from './demo/Icon.vue'
 import DemoQuietZoneModules from './demo/QuietZoneModules.vue'
 import DemoECL from './demo/ECL.vue'
 </script>

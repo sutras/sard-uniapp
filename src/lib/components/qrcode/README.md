@@ -20,7 +20,7 @@ import Qrcode from 'sard-uniapp/components/qrcode/qrcode.vue'
 
 ### 基础使用
 
-设置 `text` 属性即可渲染一个二维码图片。
+设置 `text` 属性即可渲染一个二维码图片。其内部通过 `canvas` 来绘制二维码，但最终的呈现是以图片的形式，因此可以覆盖任何东西在二维码上面。
 
 @code('${DEMO_PATH}/qrcode/demo/Basic.vue')
 
@@ -42,6 +42,12 @@ import Qrcode from 'sard-uniapp/components/qrcode/qrcode.vue'
 通过设置 `bg-color` 自定义二维码亮模块颜色，即背景颜色。
 
 @code('${DEMO_PATH}/qrcode/demo/Color.vue')
+
+### 添加图标
+
+图标可以直接定位到二维码上面。
+
+@code('${DEMO_PATH}/qrcode/demo/Icon.vue')
 
 ### 安静区域模块数
 
@@ -81,3 +87,9 @@ import Qrcode from 'sard-uniapp/components/qrcode/qrcode.vue'
 | color              | 二维码颜色         | string                   | #000   |
 | bg-color           | 二维码背景颜色     | string                   | #fff   |
 | quiet-zone-modules | 安静区域模块数     | number                   | 2      |
+
+### QrcodeSlots
+
+| 插槽    | 描述           | 属性 |
+| ------- | -------------- | ---- |
+| default | 自定义额外内容 | -    |
