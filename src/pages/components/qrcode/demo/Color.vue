@@ -6,7 +6,7 @@
     />
 
     <sar-qrcode
-      root-style="margin-top: 20rpx"
+      root-style="margin-left: 20rpx"
       text="https://sutras.github.io/sard-uniapp-docs/mobile/"
       bg-color="#91ffde"
     />

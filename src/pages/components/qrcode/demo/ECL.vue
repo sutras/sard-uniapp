@@ -10,13 +10,14 @@
       :options="eclOptions"
       direction="horizontal"
       root-style="margin-top: 20rpx"
-    ></sar-radio-group>
+    />
   </view>
 </template>
 
 <script lang="ts" setup>
+import { type QrcodeECL } from 'sard-uniapp'
 import { ref } from 'vue'
 
-const eclOptions = ['L', 'M', 'Q', 'H']
-const ecl = ref('M')
+const eclOptions: QrcodeECL[] = ['L', 'M', 'Q', 'H']
+const ecl = ref<QrcodeECL>('M')
 </script>

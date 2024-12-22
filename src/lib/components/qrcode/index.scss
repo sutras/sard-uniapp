@@ -3,10 +3,15 @@
 @include bem(qrcode) {
   @include b() {
     @include universal;
+    display: inline-flex;
   }
 
-  @include e(canvas) {
-    display: none;
+  @include e(canvas-wrapper) {
+    position: fixed;
+    left: -999999px;
+    opacity: 0;
+    pointer-events: none;
+    touch-action: none;
   }
 
   @include e(image) {

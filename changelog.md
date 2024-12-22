@@ -1,3 +1,12 @@
+# [1.9.0](https://github.com/sutras/sard-uniapp/compare/v1.8.2...v1.9.0) (2024-12-22)
+
+
+### Features
+
+* 新增表格组件 ([f2d0db6](https://github.com/sutras/sard-uniapp/commit/f2d0db61ab595a281590f9b840c25beea6dd4fe7))
+
+
+
 ## [1.8.2](https://github.com/sutras/sard-uniapp/compare/v1.8.1...v1.8.2) (2024-12-06)
 
 
@@ -103,8 +112,8 @@
 
 ### Bug Fixes
 
-* 修复pnpm非扁平化依赖包下lwa依赖问题 close [#32](https://github.com/sutras/sard-uniapp/issues/32) ([5868e16](https://github.com/sutras/sard-uniapp/commit/5868e16587e8664705789e2e791c264f2a7d22f5))
 * lwa copy ([7dc350a](https://github.com/sutras/sard-uniapp/commit/7dc350a09f3d10e4bf9f08733e70e1ec73d15b26))
+* 修复pnpm非扁平化依赖包下lwa依赖问题 close [#32](https://github.com/sutras/sard-uniapp/issues/32) ([5868e16](https://github.com/sutras/sard-uniapp/commit/5868e16587e8664705789e2e791c264f2a7d22f5))
 
 
 
@@ -240,8 +249,8 @@
 
 ### Features
 
-* 新增基础组件 ([8e6385e](https://github.com/sutras/sard-uniapp/commit/8e6385edfd0406aba96920eb1ee68432f1c714f9))
 * **global:** 新增组件 ([5c65aab](https://github.com/sutras/sard-uniapp/commit/5c65aab0860885324b93cac83817905f3a0df66c))
+* 新增基础组件 ([8e6385e](https://github.com/sutras/sard-uniapp/commit/8e6385edfd0406aba96920eb1ee68432f1c714f9))
 
 
 
