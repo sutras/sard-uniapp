@@ -120,7 +120,7 @@ export function getBoundingClientRect(
   return new Promise<NodeRect>((resolve) => {
     uni
       .createSelectorQuery()
-      .in(instance)
+      .in(instance?.proxy)
       .select(selector)
       .boundingClientRect((data) => {
         resolve(data as NodeRect)

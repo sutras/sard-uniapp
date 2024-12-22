@@ -1,14 +1,15 @@
-@mixin border-base($color) {
+@mixin border-base {
   position: absolute;
   z-index: 1;
   pointer-events: none;
+  touch-action: none;
   opacity: 1;
   content: '';
   @content;
 }
 
 @mixin border-vertical-base($color) {
-  @include border-base($color) {
+  @include border-base {
     left: 0;
     right: 0;
     transform: scaleY(0.5);
@@ -17,7 +18,7 @@
 }
 
 @mixin border-horizontal-base($color) {
-  @include border-base($color) {
+  @include border-base {
     top: 0;
     bottom: 0;
     transform: scaleX(0.5);
@@ -72,6 +73,7 @@
   transform: scale(0.5);
   transform-origin: center;
   pointer-events: none;
+  touch-action: none;
   content: '';
   @content;
 }

@@ -110,6 +110,24 @@
           hover
           @click="navigateTo('ToastValidateError')"
         />
+        <sar-list-item
+          title="手机号登录"
+          arrow
+          hover
+          @click="navigateTo('MobileLogin')"
+        />
+        <sar-list-item
+          title="修改密码"
+          arrow
+          hover
+          @click="navigateTo('ChangePassword')"
+        />
+        <sar-list-item
+          title="忘记密码"
+          arrow
+          hover
+          @click="navigateTo('ForgetPassword')"
+        />
       </sar-list>
     </doc-demo>
   </doc-page>

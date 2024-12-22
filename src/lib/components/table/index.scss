@@ -1,0 +1,10 @@
+@use '../style/base' as *;
+
+@include bem(table) {
+  @include b() {
+    @include universal;
+    display: inline-flex;
+    min-width: 100%;
+    background-color: var(--sar-table-bg);
+  }
+}

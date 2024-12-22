@@ -288,6 +288,24 @@
       }
     },
     {
+      "path": "pages/components/form/demo/MobileLogin",
+      "style": {
+        "navigationBarTitleText": "手机号登录"
+      }
+    },
+    {
+      "path": "pages/components/form/demo/ChangePassword",
+      "style": {
+        "navigationBarTitleText": "修改密码"
+      }
+    },
+    {
+      "path": "pages/components/form/demo/ForgetPassword",
+      "style": {
+        "navigationBarTitleText": "忘记密码"
+      }
+    },
+    {
       "path": "pages/components/form/demo/Typical",
       "style": {
         "navigationBarTitleText": "典型表单"
@@ -561,6 +579,18 @@
       "path": "pages/components/tabbar/index",
       "style": {
         "navigationBarTitleText": "Tabbar 标签栏"
+      }
+    },
+    {
+      "path": "pages/components/table/index",
+      "style": {
+        "navigationBarTitleText": "Table 表格"
+      }
+    },
+    {
+      "path": "pages/components/table/demo/FullScreen",
+      "style": {
+        "navigationBarTitleText": "等级特权"
       }
     },
     {

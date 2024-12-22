@@ -1,0 +1,21 @@
+@use '../style/base' as *;
+
+@include bem(table) {
+  @include e(fixation) {
+    @include universal;
+
+    @include m(bordered) {
+      &::after {
+        @include border-surround(var(--sar-table-border-color));
+        z-index: 4;
+      }
+    }
+
+    @include m(underline) {
+      &::after {
+        @include border-bottom(var(--sar-table-border-color));
+        z-index: 4;
+      }
+    }
+  }
+}

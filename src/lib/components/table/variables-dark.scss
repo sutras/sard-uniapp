@@ -1,0 +1,8 @@
+@use '../style/base' as *;
+
+// #variables
+@include theme-dark {
+  --sar-table-fixed-left-shadow: inset 10px 0 10px -10px rgba(0, 0, 0, 0.75);
+  --sar-table-fixed-right-shadow: inset -10px 0 10px -10px rgba(0, 0, 0, 0.75);
+}
+// #endvariables

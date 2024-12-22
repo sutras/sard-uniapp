@@ -85,6 +85,7 @@
 
 <script lang="ts" setup>
 import { reactive } from 'vue'
+import { toast } from 'sard-uniapp'
 
 // do not use same name with ref
 const form = reactive({
@@ -99,6 +100,6 @@ const form = reactive({
 })
 
 const onSubmit = () => {
-  console.log('submit!')
+  toast('submit!')
 }
 </script>

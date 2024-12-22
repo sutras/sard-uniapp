@@ -138,6 +138,24 @@ import FormItem from 'sard-uniapp/components/form-item/form-item.vue'
 
 @code('${DEMO_PATH}/form/demo/ToastValidateError.vue')
 
+### 手机号登录
+
+演示了常用的手机号登录的表单实现。
+
+@code('${DEMO_PATH}/form/demo/MobileLogin.vue')
+
+### 修改密码
+
+演示了常用的修改密码的表单实现。
+
+@code('${DEMO_PATH}/form/demo/ChangePassword.vue')
+
+### 忘记密码
+
+演示了常用的忘记密码的表单实现。
+
+@code('${DEMO_PATH}/form/demo/ForgetPassword.vue')
+
 ## API
 
 ### FormProps
