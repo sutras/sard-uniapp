@@ -178,6 +178,7 @@ const limitSizeNode: ChainNode = (fileList: UploadFileItem[], next) => {
   if (valid.length) {
     innerValue.value = [...innerValue.value, ...valid]
     emit('update:model-value', innerValue.value)
+    emit('change', innerValue.value)
     next(valid)
   }
 }
@@ -245,6 +246,7 @@ const onRemove = (index: number, item: UploadFileItem) => {
   const list = innerValue.value.filter((_, i) => i !== index)
   innerValue.value = list
   emit('update:model-value', list)
+  emit('change', list)
   emit('remove', index, item)
 }
 

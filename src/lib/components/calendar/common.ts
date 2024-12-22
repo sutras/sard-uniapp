@@ -37,6 +37,7 @@ export const defaultCalendarProps = defaultConfig.calendar
 
 export interface CalendarEmits {
   (e: 'update:model-value', value: Date | Date[]): void
+  (e: 'change', value: Date | Date[]): void
 }
 
 export interface CalendarMonthProps {

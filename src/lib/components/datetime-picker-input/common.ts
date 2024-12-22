@@ -19,6 +19,7 @@ export const defaultDatetimePickerInputProps = {
 export interface DatetimePickerInputEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'update:model-value', date: Date | undefined): void
+  (e: 'change', date: Date | undefined): void
 }
 
 export const mapTypeFormat = {

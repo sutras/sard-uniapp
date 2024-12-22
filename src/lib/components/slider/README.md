@@ -121,12 +121,13 @@ import Slider from 'sard-uniapp/components/slider/slider.vue'
 
 ### SliderEmits
 
-| 事件               | 描述                             | 类型                                |
-| ------------------ | -------------------------------- | ----------------------------------- |
-| update:model-value | 滑块值实时改变时触发             | (value: number \| number[]) => void |
-| change             | 滑块点击或拖动结束且值改变时触发 | (value: number \| number[]) => void |
-| drag-start         | 开始拖动时触发                   | (event: TouchEvent) => void         |
-| drag-end           | 结束拖动时触发                   | (event: TouchEvent) => void         |
+| 事件                    | 描述                             | 类型                                |
+| ----------------------- | -------------------------------- | ----------------------------------- |
+| update:model-value      | 滑块值实时改变时触发             | (value: number \| number[]) => void |
+| input <sup>1.9.2+</sup> | 滑块值实时改变时触发             | (value: number \| number[]) => void |
+| change                  | 滑块点击或拖动结束且值改变时触发 | (value: number \| number[]) => void |
+| drag-start              | 开始拖动时触发                   | (event: TouchEvent) => void         |
+| drag-end                | 结束拖动时触发                   | (event: TouchEvent) => void         |
 
 ## 主题定制
 

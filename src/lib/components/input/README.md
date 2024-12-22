@@ -151,15 +151,17 @@ import Input from 'sard-uniapp/components/input/input.vue'
 
 ### InputEmits
 
-| 事件                 | 描述                       | 类型                    |
-| -------------------- | -------------------------- | ----------------------- |
-| update:model-value   | 输入框值改变时触发         | (value: string) => void |
-| clear                | 点击清除按钮时触发         | () => void              |
-| focus                | 聚焦时触发                 | (event: any) => void    |
-| blur                 | 失焦时触发                 | (event: any) => void    |
-| linechange           | 输入框行数变化时触发       | (event: any) => void    |
-| confirm              | 点击完成时触发             | (event: any) => void    |
-| keyboardheightchange | 键盘高度发生变化的时候触发 | (event: any) => void    |
+| 事件                     | 描述                           | 类型                    |
+| ------------------------ | ------------------------------ | ----------------------- |
+| update:model-value       | 输入框值改变时触发             | (value: string) => void |
+| input <sup>1.9.2+</sup>  | 输入框值改变时触发             | (value: string) => void |
+| change <sup>1.9.2+</sup> | 键盘非聚焦状态且内容改变时触发 | (value: string) => void |
+| clear                    | 点击清除按钮时触发             | () => void              |
+| focus                    | 聚焦时触发                     | (event: any) => void    |
+| blur                     | 失焦时触发                     | (event: any) => void    |
+| linechange               | 输入框行数变化时触发           | (event: any) => void    |
+| confirm                  | 点击完成时触发                 | (event: any) => void    |
+| keyboardheightchange     | 键盘高度发生变化的时候触发     | (event: any) => void    |
 
 ## 主题定制
 

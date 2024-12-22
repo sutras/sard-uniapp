@@ -35,6 +35,7 @@ export interface SliderSlots {
 
 export interface SliderEmits {
   (e: 'update:model-value', value: number | number[]): void
+  (e: 'input', value: number | number[]): void
   (e: 'change', value: number | number[]): void
   (e: 'drag-start', event: TouchEvent): void
   (e: 'drag-end', event: TouchEvent): void

@@ -1,5 +1,5 @@
 <template>
-  <sar-upload v-model="fileList" :after-read="afterRead" />
+  <sar-upload v-model="fileList" :after-read="afterRead" @change="onChange" />
 </template>
 
 <script setup lang="ts">
@@ -28,5 +28,9 @@ const afterRead = (fileItem: UploadFileItem) => {
       fileItem.status = 'failed'
       fileList.value = [...fileList.value]
     })
+}
+
+const onChange = (value: any) => {
+  console.log('change', value)
 }
 </script>

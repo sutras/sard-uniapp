@@ -44,7 +44,8 @@ import PickerInput from 'sard-uniapp/components/picker-input/picker-input.vue'
 
 ### PickerInputEmits
 
-| 事件               | 描述                       | 类型                       |
-| ------------------ | -------------------------- | -------------------------- |
-| update:model-value | 选择器输入组件值改变时触发 | (value: any) => void       |
-| update:visible     | 弹出框显隐时触发           | (visible: boolean) => void |
+| 事件                     | 描述                       | 类型                       |
+| ------------------------ | -------------------------- | -------------------------- |
+| update:model-value       | 选择器输入组件值改变时触发 | (value: any) => void       |
+| change <sup>1.9.2+</sup> | 选择器输入组件值改变时触发 | (value: any) => void       |
+| update:visible           | 弹出框显隐时触发           | (visible: boolean) => void |

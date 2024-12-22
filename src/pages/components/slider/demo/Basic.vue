@@ -1,14 +1,17 @@
 <template>
-  <sar-slider v-model="value" @change="onChange" />
+  <sar-slider v-model="value" @input="onInput" @change="onChange" />
 </template>
 
 <script setup lang="ts">
-import { toast } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const value = ref(50)
 
-const onChange = (value: number) => {
-  toast(value)
+const onInput = (value: any) => {
+  console.log('input', value)
+}
+
+const onChange = (value: any) => {
+  console.log('change', value)
 }
 </script>

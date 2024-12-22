@@ -98,15 +98,17 @@ import Search from 'sard-uniapp/components/search/search.vue'
 
 ### SearchEmits
 
-| 事件                    | 描述               | 类型                    |
-| ----------------------- | ------------------ | ----------------------- |
-| update:model-value      | 输入框值改变时触发 | (value: string) => void |
-| cancel                  | 点击取消按钮时触发 | () => void              |
-| search                  | 点击确定按钮时触发 | (value: string) => void |
-| click                   | 点击组件时触发     | (event: any) => void    |
-| clear <sup>1.4.1+</sup> | 点击清除按钮时触发 | () => void              |
-| focus <sup>1.4.1+</sup> | 聚焦时触发         | (event: any) => void    |
-| blur <sup>1.4.1+</sup>  | 失焦时触发         | (event: any) => void    |
+| 事件                     | 描述                           | 类型                    |
+| ------------------------ | ------------------------------ | ----------------------- |
+| update:model-value       | 输入框值改变时触发             | (value: string) => void |
+| input <sup>1.9.2+</sup>  | 输入框值改变时触发             | (value: string) => void |
+| change <sup>1.9.2+</sup> | 键盘非聚焦状态且内容改变时触发 | (value: string) => void |
+| cancel                   | 点击取消按钮时触发             | () => void              |
+| search                   | 点击确定按钮时触发             | (value: string) => void |
+| click                    | 点击组件时触发                 | (event: any) => void    |
+| clear <sup>1.4.1+</sup>  | 点击清除按钮时触发             | () => void              |
+| focus <sup>1.4.1+</sup>  | 聚焦时触发                     | (event: any) => void    |
+| blur <sup>1.4.1+</sup>   | 失焦时触发                     | (event: any) => void    |
 
 ## 主题定制
 

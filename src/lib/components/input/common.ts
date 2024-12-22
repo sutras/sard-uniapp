@@ -83,6 +83,8 @@ export interface InputSlots {
 
 export interface InputEmits {
   (e: 'update:model-value', value: string): void
+  (e: 'change', value: string): void
+  (e: 'input', value: string): void
   (e: 'clear'): void
   (e: 'focus', event: any): void
   (e: 'blur', event: any): void

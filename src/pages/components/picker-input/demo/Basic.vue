@@ -7,6 +7,7 @@
         placeholder="请选择性别"
         clearable
         :columns="columns"
+        @change="onChange"
       />
     </sar-list-item>
 
@@ -40,4 +41,8 @@ const columns = [
     label: '其他',
   },
 ]
+
+const onChange = (value: any) => {
+  console.log('change', value)
+}
 </script>

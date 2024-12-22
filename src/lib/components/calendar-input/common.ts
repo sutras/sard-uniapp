@@ -19,4 +19,5 @@ export const defaultCalendarInputProps = {
 export interface CalendarInputEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'update:model-value', value: Date | Date[] | undefined): void
+  (e: 'change', value: Date | Date[] | undefined): void
 }

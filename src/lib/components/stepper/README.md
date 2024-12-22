@@ -80,11 +80,12 @@ import Stepper from 'sard-uniapp/components/stepper/stepper.vue'
 
 ### StepperEmits
 
-| 事件               | 描述               | 类型                                           |
-| ------------------ | ------------------ | ---------------------------------------------- |
-| update:model-value | 输入框值改变时触发 | (value: number \| string \| undefined) => void |
-| focus              | 输入框聚焦时触发   | (event: any) => void                           |
-| blur               | 输入框失焦时触发   | (event: any) => void                           |
+| 事件                     | 描述               | 类型                                           |
+| ------------------------ | ------------------ | ---------------------------------------------- |
+| update:model-value       | 输入框值改变时触发 | (value: number \| string \| undefined) => void |
+| change <sup>1.9.2+</sup> | 输入框值改变时触发 | (value: number \| string \| undefined) => void |
+| focus                    | 输入框聚焦时触发   | (event: any) => void                           |
+| blur                     | 输入框失焦时触发   | (event: any) => void                           |
 
 ## 主题定制
 

@@ -162,6 +162,7 @@ const innerValue = ref(String(props.modelValue ?? ''))
 const setInnerValue = (value: string) => {
   innerValue.value = value
   emit('update:model-value', value)
+  emit('input', value)
 }
 
 watch(
@@ -190,7 +191,10 @@ watch([() => props.focus, () => props.focused], () => {
   innerFocused.value = props.focus || props.focused
 })
 
+let oldValue = ''
+
 const onFocus = (event: any) => {
+  oldValue = innerValue.value
   innerFocused.value = true
   emit('focus', event)
 }
@@ -200,6 +204,9 @@ const onBlur = (event: any) => {
   emit('blur', event)
   if (props.validateEvent) {
     formItemContext?.onBlur()
+  }
+  if (oldValue !== innerValue.value) {
+    emit('change', innerValue.value)
   }
 }
 

@@ -87,6 +87,7 @@ const onInput = (event: any) => {
   const value = event.detail.value
   innerValue.value = value
   emit('update:model-value', value)
+  emit('change', value)
   return value
 }
 

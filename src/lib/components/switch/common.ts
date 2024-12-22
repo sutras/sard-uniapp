@@ -22,5 +22,6 @@ export const defaultSwitchProps = defaultConfig.switch
 export interface SwitchEmits {
   (e: 'click', event: any): void
   (e: 'update:model-value', value: any): void
+  (e: 'change', value: any): void
   (e: 'update:loading', loading: boolean): void
 }

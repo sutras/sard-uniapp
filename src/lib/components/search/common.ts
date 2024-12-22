@@ -29,6 +29,8 @@ export interface SearchSlots {
 
 export interface SearchEmits {
   (e: 'update:model-value', value: string): void
+  (e: 'input', value: string): void
+  (e: 'change', value: string): void
   (e: 'cancel'): void
   (e: 'search', value: string): void
   (e: 'click', event: any): void

@@ -197,6 +197,7 @@ const onSliderClick = async (event: MouseEvent | TouchEvent) => {
   if (nextValue !== undefined) {
     innerValue.value = nextValue
     emit('update:model-value', nextValue)
+    emit('input', nextValue)
     emit('change', nextValue)
   }
 }
@@ -273,6 +274,7 @@ const onTouchMove = (event: TouchEvent, index: number) => {
 
     innerValue.value = nextValue
     emit('update:model-value', nextValue)
+    emit('input', nextValue)
   }
 }
 
@@ -283,10 +285,11 @@ const onTouchEnd = (event: TouchEvent) => {
     return
   }
 
+  emit('drag-end', event)
+
   if (!arrayEqual(toArray(downValue), toArray(innerValue.value))) {
     emit('change', innerValue.value)
   }
-  emit('drag-end', event)
 }
 
 const onMouseDown0 = useMouseDown(

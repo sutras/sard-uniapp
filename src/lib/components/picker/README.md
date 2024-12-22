@@ -62,9 +62,10 @@ import Picker from 'sard-uniapp/components/picker/picker.vue'
 
 ### PickerEmits
 
-| 事件               | 描述                 | 类型                                                                     |
-| ------------------ | -------------------- | ------------------------------------------------------------------------ |
-| update:model-value | 选中的选项改变时触发 | (value: any, selectedOptions: PickerOption[], indexes: number[]) => void |
+| 事件                     | 描述                 | 类型                                                                     |
+| ------------------------ | -------------------- | ------------------------------------------------------------------------ |
+| update:model-value       | 选中的选项改变时触发 | (value: any, selectedOptions: PickerOption[], indexes: number[]) => void |
+| change <sup>1.9.2+</sup> | 选中的选项改变时触发 | (value: any, selectedOptions: PickerOption[], indexes: number[]) => void |
 
 ### PickerOption
 

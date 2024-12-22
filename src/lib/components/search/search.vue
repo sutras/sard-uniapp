@@ -17,6 +17,7 @@
         :root-style="inputStyle"
         :focus="focus"
         @update:model-value="onInput"
+        @change="onChange"
         @confirm="onConfirm"
         @clear="onClear"
         @focus="onFocus"
@@ -95,6 +96,11 @@ watch(
 const onInput = (value: string) => {
   innerValue.value = value
   emit('update:model-value', value)
+  emit('input', value)
+}
+
+const onChange = (value: string) => {
+  emit('change', value)
 }
 
 const onConfirm = () => {

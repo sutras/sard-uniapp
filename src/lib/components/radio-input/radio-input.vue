@@ -123,6 +123,7 @@ const onChange = (value: any) => {
 const onConfirm = () => {
   innerValue.value = popoutValue.value
   emit('update:model-value', popoutValue.value)
+  emit('change', popoutValue.value)
 
   inputValue.value = getInputValue()
 }
@@ -171,6 +172,7 @@ const onClear = () => {
   inputValue.value = ''
   innerValue.value = undefined
   emit('update:model-value', undefined)
+  emit('change', undefined)
 }
 
 // visible

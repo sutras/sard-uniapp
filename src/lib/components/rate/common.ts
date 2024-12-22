@@ -26,4 +26,5 @@ export const defaultRateProps = defaultConfig.rate
 
 export interface RateEmits {
   (e: 'update:model-value', value: number): void
+  (e: 'change', value: number): void
 }

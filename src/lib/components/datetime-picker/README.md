@@ -64,9 +64,10 @@ import DatetimePicker from 'sard-uniapp/components/datetime-picker/datetime-pick
 
 ### DatetimePickerEmits
 
-| 事件               | 描述                 | 类型                 |
-| ------------------ | -------------------- | -------------------- |
-| update:model-value | 选中的选项改变时触发 | (date: Date) => void |
+| 事件                     | 描述                 | 类型                 |
+| ------------------------ | -------------------- | -------------------- |
+| update:model-value       | 选中的选项改变时触发 | (date: Date) => void |
+| change <sup>1.9.2+</sup> | 选中的选项改变时触发 | (date: Date) => void |
 
 ### DatetimeLetter
 

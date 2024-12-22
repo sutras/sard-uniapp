@@ -328,6 +328,7 @@ const onDayClick = (date: Date) => {
   if (nextValue !== undefined) {
     innerValue.value = nextValue
     emit('update:model-value', nextValue)
+    emit('change', nextValue)
   }
 }
 

@@ -170,5 +170,6 @@ const onChange = (value: number[]) => {
   innerValue.value = nextValue
   updateColumns(nextValue)
   emit('update:model-value', nextValue)
+  emit('change', nextValue)
 }
 </script>

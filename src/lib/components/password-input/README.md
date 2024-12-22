@@ -74,10 +74,11 @@ import PasswordInput from 'sard-uniapp/components/password-input/password-input.
 
 ### PasswordInputEmits
 
-| 事件               | 描述                  | 类型                       |
-| ------------------ | --------------------- | -------------------------- |
-| update:model-value | 输入框值改变时触发    | (value: string) => void    |
-| updat:focused      | 输入框聚焦/失焦时触发 | (focused: boolean) => void |
+| 事件                     | 描述                  | 类型                       |
+| ------------------------ | --------------------- | -------------------------- |
+| update:model-value       | 输入框值改变时触发    | (value: string) => void    |
+| change <sup>1.9.2+</sup> | 输入框值改变时触发    | (value: string) => void    |
+| updat:focused            | 输入框聚焦/失焦时触发 | (focused: boolean) => void |
 
 ## 主题定制
 

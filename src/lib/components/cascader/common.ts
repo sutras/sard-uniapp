@@ -39,6 +39,7 @@ export interface CascaderEmits {
     value: string | number,
     selectedOptions: CascaderOption[],
   ): void
+  (e: 'change', value: string | number, selectedOptions: CascaderOption[]): void
   (e: 'select', option: CascaderOption, tabIndex: number): void
 }
 

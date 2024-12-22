@@ -26,6 +26,7 @@ export const defaultStepperProps = defaultConfig.stepper
 
 export interface StepperEmits {
   (e: 'update:model-value', value: number | string | undefined): void
+  (e: 'change', value: number | string | undefined): void
   (e: 'focus', event: any): void
   (e: 'blur', event: any): void
 }
