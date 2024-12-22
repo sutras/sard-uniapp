@@ -7,6 +7,7 @@
         placeholder="请选择"
         clearable
         :options="options"
+        @change="onChange"
       />
     </sar-list-item>
 
@@ -34,4 +35,8 @@ const options = Array(10)
       label: `选项${i + 1}`,
     }
   })
+
+const onChange = (value: any) => {
+  console.log('change', value)
+}
 </script>

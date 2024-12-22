@@ -9,6 +9,7 @@
         :options="options"
         :field-keys="fieldKeys"
         :loading="loading"
+        @change="onChange"
       />
     </sar-list-item>
 
@@ -40,4 +41,8 @@ setTimeout(() => {
 const value = ref<number | undefined>(440111)
 
 const fieldKeys = { label: 'name', value: 'code' }
+
+const onChange = (value: any) => {
+  console.log('change', value)
+}
 </script>

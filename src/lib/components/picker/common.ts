@@ -34,6 +34,12 @@ export interface PickerEmits {
     selectedOptions: PickerOption[],
     indexes: number[],
   ): void
+  (
+    e: 'change',
+    value: any,
+    selectedOptions: PickerOption[],
+    indexes: number[],
+  ): void
 }
 
 export const defaultOptionKeys = {

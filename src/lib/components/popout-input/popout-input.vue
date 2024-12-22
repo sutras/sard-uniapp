@@ -77,6 +77,7 @@ const innerValue = ref(props.modelValue)
 const setInnerValue = (value: string) => {
   innerValue.value = value
   emit('update:model-value', value)
+  emit('change', value)
 }
 
 watch(

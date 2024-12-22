@@ -20,5 +20,6 @@ export const defaultPasswordInputProps = defaultConfig.passwordInput
 
 export interface PasswordInputEmits {
   (e: 'update:model-value', value: string): void
+  (e: 'change', value: string): void
   (e: 'updat:focused', focused: boolean): void
 }

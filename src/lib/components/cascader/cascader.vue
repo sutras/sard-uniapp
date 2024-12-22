@@ -201,6 +201,11 @@ const onOptionClick = (option: CascaderOption, tabIndex: number) => {
       nextValue,
       nextTabs.map((tab) => tab.selected) as CascaderOption[],
     )
+    emit(
+      'change',
+      nextValue,
+      nextTabs.map((tab) => tab.selected) as CascaderOption[],
+    )
   }
 
   tempValue = option[mergedFieldKeys.value.value]

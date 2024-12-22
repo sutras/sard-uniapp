@@ -63,10 +63,11 @@ import { Cascader } from 'sard'
 
 ### CascaderEmits
 
-| 事件               | 描述                   | 类型                                                                 |
-| ------------------ | ---------------------- | -------------------------------------------------------------------- |
-| update:model-value | 全部选项选择完成后触发 | (value: string \| number, selectedOptions: CascaderOption[]) => void |
-| select             | 选中某一项时触发       | (option: CascaderOption, tabIndex: number) => void                   |
+| 事件                     | 描述                   | 类型                                                                 |
+| ------------------------ | ---------------------- | -------------------------------------------------------------------- |
+| update:model-value       | 全部选项选择完成后触发 | (value: string \| number, selectedOptions: CascaderOption[]) => void |
+| change <sup>1.9.2+</sup> | 全部选项选择完成后触发 | (value: string \| number, selectedOptions: CascaderOption[]) => void |
+| select                   | 选中某一项时触发       | (option: CascaderOption, tabIndex: number) => void                   |
 
 ### CascaderOption
 

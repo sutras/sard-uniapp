@@ -1,3 +1,12 @@
+## [1.9.1](https://github.com/sutras/sard-uniapp/compare/v1.9.0...v1.9.1) (2024-12-22)
+
+
+### Bug Fixes
+
+* 修复qrcode 在app端报错的问题 ([c74cad5](https://github.com/sutras/sard-uniapp/commit/c74cad5cbe7dd733843713fd3500e15236719583))
+
+
+
 # [1.9.0](https://github.com/sutras/sard-uniapp/compare/v1.8.2...v1.9.0) (2024-12-22)
 
 

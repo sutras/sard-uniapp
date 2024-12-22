@@ -56,6 +56,7 @@ export interface UploadSlots {
 
 export interface UploadEmits {
   (e: 'update:model-value', value: UploadFileItem[]): void
+  (e: 'change', value: UploadFileItem[]): void
   (e: 'remove', index: number, item: UploadFileItem): void
 }
 

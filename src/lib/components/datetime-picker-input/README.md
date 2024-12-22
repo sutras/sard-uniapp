@@ -78,7 +78,8 @@ const mapTypeFormat = {
 
 ### DatetimePickerInputEmits
 
-| 事件               | 描述                         | 类型                               |
-| ------------------ | ---------------------------- | ---------------------------------- |
-| update:model-value | 日期时间输入组件值改变时触发 | (value: Date \| undefined) => void |
-| update:visible     | 弹出框显隐时触发             | (visible: boolean) => void         |
+| 事件                     | 描述                         | 类型                               |
+| ------------------------ | ---------------------------- | ---------------------------------- |
+| update:model-value       | 日期时间输入组件值改变时触发 | (value: Date \| undefined) => void |
+| change <sup>1.9.2+</sup> | 日期时间输入组件值改变时触发 | (value: Date \| undefined) => void |
+| update:visible           | 弹出框显隐时触发             | (visible: boolean) => void         |

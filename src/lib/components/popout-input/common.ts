@@ -15,5 +15,6 @@ export interface PopoutInputProps {
 export interface PopoutInputEmits {
   (e: 'click', event: any): void
   (e: 'update:model-value', value: string): void
+  (e: 'change', value: string): void
   (e: 'clear'): void
 }

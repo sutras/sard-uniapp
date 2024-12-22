@@ -93,6 +93,7 @@ const onClick = async (event: any) => {
 
   innerValue.value = nextValue
   emit('update:model-value', nextValue)
+  emit('change', nextValue)
 }
 
 const switchClass = computed(() => {

@@ -110,6 +110,7 @@ watch(
 const setInnerValue = (value: number | undefined) => {
   innerValue.value = value
   emit('update:model-value', value)
+  emit('change', value)
 }
 
 const setValueEnsureSafe = (value: number) => {

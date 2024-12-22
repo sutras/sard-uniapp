@@ -159,6 +159,7 @@ const onClick = async (event: MouseEvent | TouchEvent, index: number) => {
   if (nextValue !== undefined && nextValue !== innerValue.value) {
     innerValue.value = nextValue
     emit('update:model-value', nextValue)
+    emit('change', nextValue)
   }
 }
 
@@ -211,6 +212,7 @@ const onTouchMove = (event: TouchEvent) => {
   if (nextValue !== undefined && nextValue !== innerValue.value) {
     innerValue.value = nextValue
     emit('update:model-value', nextValue)
+    emit('change', nextValue)
   }
 }
 

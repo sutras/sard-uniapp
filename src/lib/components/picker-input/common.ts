@@ -18,4 +18,5 @@ export const defaultPickerInputProps = {
 export interface PickerInputEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'update:model-value', value: any): void
+  (e: 'change', value: any): void
 }

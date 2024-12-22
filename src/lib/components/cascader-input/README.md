@@ -51,8 +51,9 @@ import CascaderInput from 'sard-uniapp/components/cascader-input/cascader-input.
 
 ### CascaderInputEmits
 
-| 事件               | 描述                     | 类型                                                                 |
-| ------------------ | ------------------------ | -------------------------------------------------------------------- |
-| update:model-value | 级联输入组件值改变时触发 | (value: string \| number, selectedOptions: CascaderOption[]) => void |
-| update:visible     | 弹出框显隐时触发         | (visible: boolean) => void                                           |
-| select             | 选择级联选择某一项时触发 | (option: CascaderOption, tabIndex: number) => void                   |
+| 事件                     | 描述                     | 类型                                                                 |
+| ------------------------ | ------------------------ | -------------------------------------------------------------------- |
+| update:model-value       | 级联输入组件值改变时触发 | (value: string \| number, selectedOptions: CascaderOption[]) => void |
+| change <sup>1.9.2+</sup> | 级联输入组件值改变时触发 | (value: string \| number, selectedOptions: CascaderOption[]) => void |
+| update:visible           | 弹出框显隐时触发         | (visible: boolean) => void                                           |
+| select                   | 选择级联选择某一项时触发 | (option: CascaderOption, tabIndex: number) => void                   |

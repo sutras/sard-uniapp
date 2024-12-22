@@ -1,7 +1,7 @@
 <template>
   <sar-list card>
     <sar-list-item>
-      <sar-calendar v-model="value" />
+      <sar-calendar v-model="value" @change="onChange" />
     </sar-list-item>
     <sar-list-item title="当前值：" :value="value?.toLocaleString()" />
     <sar-list-item title="设置为今天" arrow hover @click="value = new Date()" />
@@ -13,4 +13,8 @@
 import { ref } from 'vue'
 
 const value = ref<Date | undefined>(new Date())
+
+const onChange = (value: any) => {
+  console.log('change', value)
+}
 </script>

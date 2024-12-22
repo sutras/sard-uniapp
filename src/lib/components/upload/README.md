@@ -105,10 +105,11 @@ import Upload from 'sard-uniapp/components/upload/upload.vue'
 
 ### ButtonEmits
 
-| 事件               | 描述                     | 类型                                          |
-| ------------------ | ------------------------ | --------------------------------------------- |
-| update:model-value | 选择的文件列表改变时触发 | (value: UploadFileItem[]) => void             |
-| remove             | 删除文件时触发           | (index: number, item: UploadFileItem) => void |
+| 事件                     | 描述                     | 类型                                          |
+| ------------------------ | ------------------------ | --------------------------------------------- |
+| update:model-value       | 选择的文件列表改变时触发 | (value: UploadFileItem[]) => void             |
+| change <sup>1.9.2+</sup> | 选择的文件列表改变时触发 | (value: UploadFileItem[]) => void             |
+| remove                   | 删除文件时触发           | (index: number, item: UploadFileItem) => void |
 
 ### UploadFileItem
 

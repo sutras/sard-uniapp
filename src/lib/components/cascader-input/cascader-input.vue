@@ -107,6 +107,7 @@ const onChange = (value: any) => {
 const onConfirm = () => {
   innerValue.value = popoutValue.value
   emit('update:model-value', popoutValue.value)
+  emit('change', popoutValue.value)
 
   inputValue.value = getInputValue()
 }

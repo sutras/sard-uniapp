@@ -75,11 +75,12 @@ import Switch from 'sard-uniapp/components/switch/switch.vue'
 
 ### SwitchEmits
 
-| 事件               | 描述                                   | 类型                       |
-| ------------------ | -------------------------------------- | -------------------------- |
-| click              | 点击按钮时触发，加载和禁用状态不会触发 | (event: any) => void       |
-| update:model-value | 开关状态切换时触发                     | (value: any) => void       |
-| update:loading     | 加载状态切换时触发                     | (loading: boolean) => void |
+| 事件                     | 描述                                   | 类型                       |
+| ------------------------ | -------------------------------------- | -------------------------- |
+| click                    | 点击按钮时触发，加载和禁用状态不会触发 | (event: any) => void       |
+| update:model-value       | 开关状态切换时触发                     | (value: any) => void       |
+| change <sup>1.9.2+</sup> | 开关状态切换时触发                     | (value: any) => void       |
+| update:loading           | 加载状态切换时触发                     | (loading: boolean) => void |
 
 ## 主题定制
 

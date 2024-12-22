@@ -40,10 +40,11 @@ import RadioInput from 'sard-uniapp/components/radio-input/radio-input.vue'
 
 ### RadioInputEmits
 
-| 事件               | 描述                     | 类型                              |
-| ------------------ | ------------------------ | --------------------------------- |
-| update:model-value | 单选输入组件值改变时触发 | (value: any \| undefined) => void |
-| update:visible     | 弹出框显隐时触发         | (visible: boolean) => void        |
+| 事件                     | 描述                     | 类型                              |
+| ------------------------ | ------------------------ | --------------------------------- |
+| update:model-value       | 单选输入组件值改变时触发 | (value: any \| undefined) => void |
+| change <sup>1.9.2+</sup> | 单选输入组件值改变时触发 | (value: any \| undefined) => void |
+| update:visible           | 弹出框显隐时触发         | (visible: boolean) => void        |
 
 ## 主题定制
 

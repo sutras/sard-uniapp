@@ -145,6 +145,7 @@ const onChange = (event: any) => {
 
   innerValue.value = nextValue
   emit('update:model-value', nextValue, selectedOptions, indexes)
+  emit('change', nextValue, selectedOptions, indexes)
 }
 
 const getRenderedColumns = () => {

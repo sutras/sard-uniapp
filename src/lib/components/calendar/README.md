@@ -93,9 +93,10 @@ import Calendar from 'sard-uniapp/components/calendar/calendar.vue'
 
 ### CalendarEmits
 
-| 事件               | 描述                     | 类型                            |
-| ------------------ | ------------------------ | ------------------------------- |
-| update:model-value | 点击并选中任意日期时触发 | (value: Date \| Date[]) => void |
+| 事件                     | 描述                     | 类型                            |
+| ------------------------ | ------------------------ | ------------------------------- |
+| update:model-value       | 点击并选中任意日期时触发 | (value: Date \| Date[]) => void |
+| change <sup>1.9.2+</sup> | 点击并选中任意日期时触发 | (value: Date \| Date[]) => void |
 
 ### CalendarType
 

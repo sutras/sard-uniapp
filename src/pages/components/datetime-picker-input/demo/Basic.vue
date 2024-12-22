@@ -7,6 +7,7 @@
         placeholder="请选择日期"
         clearable
         type="yMd"
+        @change="onChange"
       />
     </sar-list-item>
 
@@ -29,4 +30,8 @@ import { ref } from 'vue'
 import { formatDate } from 'sard-uniapp'
 
 const date = ref<Date>()
+
+const onChange = (value: any) => {
+  console.log('change', value)
+}
 </script>

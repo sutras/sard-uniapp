@@ -40,10 +40,11 @@ import CheckboxInput from 'sard-uniapp/components/checkbox-input/checkbox-input.
 
 ### CheckboxInputEmits
 
-| 事件               | 描述                     | 类型                                |
-| ------------------ | ------------------------ | ----------------------------------- |
-| update:model-value | 复选输入组件值改变时触发 | (value: any[] \| undefined) => void |
-| update:visible     | 弹出框显隐时触发         | (visible: boolean) => void          |
+| 事件                     | 描述                     | 类型                                |
+| ------------------------ | ------------------------ | ----------------------------------- |
+| update:model-value       | 复选输入组件值改变时触发 | (value: any[] \| undefined) => void |
+| change <sup>1.9.2+</sup> | 复选输入组件值改变时触发 | (value: any[] \| undefined) => void |
+| update:visible           | 弹出框显隐时触发         | (visible: boolean) => void          |
 
 ## 主题定制
 

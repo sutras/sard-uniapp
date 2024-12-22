@@ -48,7 +48,8 @@ import CalendarInput from 'sard-uniapp/components/calendar-input/calendar-input.
 
 ### CalendarInputEmits
 
-| 事件               | 描述                     | 类型                                         |
-| ------------------ | ------------------------ | -------------------------------------------- |
-| update:model-value | 日历输入组件值改变时触发 | (value: Date \| Date[] \| undefined) => void |
-| update:visible     | 弹出框显隐时触发         | (visible: boolean) => void                   |
+| 事件                     | 描述                     | 类型                                         |
+| ------------------------ | ------------------------ | -------------------------------------------- |
+| update:model-value       | 日历输入组件值改变时触发 | (value: Date \| Date[] \| undefined) => void |
+| change <sup>1.9.2+</sup> | 日历输入组件值改变时触发 | (value: Date \| Date[] \| undefined) => void |
+| update:visible           | 弹出框显隐时触发         | (visible: boolean) => void                   |

@@ -1,7 +1,7 @@
 <template>
   <sar-list card>
     <sar-list-item>
-      <sar-datetime-picker v-model="date" type="yMd" />
+      <sar-datetime-picker v-model="date" type="yMd" @change="onChange" />
     </sar-list-item>
     <sar-list-item
       title="当前值："
@@ -22,4 +22,8 @@ import { ref } from 'vue'
 import { formatDate } from 'sard-uniapp'
 
 const date = ref<Date>()
+
+const onChange = (value: any) => {
+  console.log('change', value)
+}
 </script>

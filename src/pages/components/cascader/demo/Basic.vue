@@ -5,6 +5,7 @@
         v-model="value"
         :options="regionData"
         :field-keys="{ label: 'name', value: 'code' }"
+        @change="onChange"
       />
     </sar-list-item>
     <sar-list-item title="当前值：" :value="String(value)" />
@@ -24,4 +25,8 @@ import { getRegionData } from 'region-data'
 
 const regionData = getRegionData()
 const value = ref<number | undefined>(150102)
+
+const onChange = (value: any) => {
+  console.log('change', value)
+}
 </script>

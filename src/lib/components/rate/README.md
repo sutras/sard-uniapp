@@ -94,9 +94,10 @@ import Rate from 'sard-uniapp/components/rate/rate.vue'
 
 ### RateEmits
 
-| 事件               | 描述               | 类型                    |
-| ------------------ | ------------------ | ----------------------- |
-| update:model-value | 选中的值改变时触发 | (value: number) => void |
+| 事件                     | 描述               | 类型                    |
+| ------------------------ | ------------------ | ----------------------- |
+| update:model-value       | 选中的值改变时触发 | (value: number) => void |
+| change <sup>1.9.2+</sup> | 选中的值改变时触发 | (value: number) => void |
 
 ## 主题定制
 

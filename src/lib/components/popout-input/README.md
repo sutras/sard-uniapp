@@ -41,11 +41,12 @@ import PopoutInput from 'sard-uniapp/components/popout-input/popout-input.vue'
 
 ### PopoutInputEmits
 
-| 事件               | 描述                               | 类型                    |
-| ------------------ | ---------------------------------- | ----------------------- |
-| click              | 点击输入框时触发，只读和禁用不触发 | () => void              |
-| update:model-value | 输入框值改变时触发                 | (value: string) => void |
-| clear              | 点击清除按钮时触发                 | () => void              |
+| 事件                     | 描述                               | 类型                    |
+| ------------------------ | ---------------------------------- | ----------------------- |
+| click                    | 点击输入框时触发，只读和禁用不触发 | () => void              |
+| update:model-value       | 输入框值改变时触发                 | (value: string) => void |
+| change <sup>1.9.2+</sup> | 输入框值改变时触发                 | (value: string) => void |
+| clear                    | 点击清除按钮时触发                 | () => void              |
 
 ## 主题定制
 
