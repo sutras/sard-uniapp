@@ -12,7 +12,7 @@ const defaultBem = {
   modifierSeparator: '_',
 }
 
-type IsType = boolean | number | string | null
+type IsType = boolean | number | string | null | undefined | object
 
 export function createBemStruct(config: BemConfig) {
   const { namespace, blockSeparator, elementSeparator, modifierSeparator } =

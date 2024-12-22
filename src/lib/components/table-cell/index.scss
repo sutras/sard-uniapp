@@ -1,0 +1,90 @@
+@use '../style/base' as *;
+
+@include bem(table) {
+  @include e(cell) {
+    @include universal;
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+
+    @include m(bold) {
+      font-weight: var(--sar-font-bold);
+    }
+
+    @include m(fixed-left, fixed-right) {
+      position: sticky;
+      z-index: 2;
+      background-color: var(--sar-table-cell-fixed-bg);
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        width: 20rpx;
+        overflow-x: hidden;
+        overflow-y: hidden;
+        box-shadow: none;
+        touch-action: none;
+        pointer-events: none;
+      }
+    }
+
+    @include m(fixed-left) {
+      left: 0;
+
+      &::before {
+        right: -20rpx;
+      }
+    }
+
+    @include m(fixed-right) {
+      right: 0;
+
+      &::before {
+        left: -20rpx;
+      }
+    }
+  }
+
+  @include m(bordered) {
+    @include e(cell) {
+      &::after {
+        @include border-bottom-right(var(--sar-table-border-color));
+        right: 0;
+        bottom: 0;
+        left: -100%;
+        top: -100%;
+        transform-origin: right bottom;
+      }
+    }
+  }
+
+  @include m(underline) {
+    @include e(cell) {
+      &::after {
+        @include border-bottom(var(--sar-table-border-color));
+      }
+    }
+  }
+
+  @include m(scroll-middle, scroll-right) {
+    @include e(cell) {
+      @include m(fixed-left) {
+        &::before {
+          box-shadow: var(--sar-table-fixed-left-shadow);
+        }
+      }
+    }
+  }
+
+  @include m(scroll-middle, scroll-left) {
+    @include e(cell) {
+      @include m(fixed-right) {
+        &::before {
+          box-shadow: var(--sar-table-fixed-right-shadow);
+        }
+      }
+    }
+  }
+}

@@ -4,19 +4,15 @@ import child_process from 'node:child_process'
 import path from 'node:path'
 import fs from 'node:fs/promises'
 import { kebabCase, upperFirst, camelCase } from 'lodash-es'
-import { fileURLToPath } from 'node:url'
 
-const __dirname = fileURLToPath(path.dirname(import.meta.url))
+const libDir = path.resolve(process.cwd(), 'src/lib')
+const srcDir = path.resolve(process.cwd(), 'src')
 
 async function copyComponentDir(destDir: string) {
   return new Promise<void>((resolve, reject) => {
-    const srcDir = path.resolve(
-      __dirname,
-      '..',
-      'packages/sard-uniapp/src/components/_template',
-    )
+    const sourceDir = path.resolve(libDir, 'components/_template')
 
-    child_process.exec(`cp -rf ${srcDir} ${destDir}`, (error) => {
+    child_process.exec(`cp -rf ${sourceDir} ${destDir}`, (error) => {
       if (error) {
         reject(error)
       } else {
@@ -28,16 +24,8 @@ async function copyComponentDir(destDir: string) {
 
 async function copyDemoDir(kebabCaseName: string) {
   return new Promise<void>((resolve, reject) => {
-    const srcDir = path.resolve(
-      __dirname,
-      '..',
-      'src/pages/components/_template',
-    )
-    const destDir = path.resolve(
-      __dirname,
-      '..',
-      `src/pages/components/${kebabCaseName}`,
-    )
+    const sourceDir = path.resolve(srcDir, 'pages/components/_template')
+    const destDir = path.resolve(srcDir, `pages/components/${kebabCaseName}`)
 
     fs.access(destDir)
       .then(() => {
@@ -45,7 +33,7 @@ async function copyDemoDir(kebabCaseName: string) {
         resolve()
       })
       .catch(() => {
-        child_process.exec(`cp -rf ${srcDir} ${destDir}`, (error) => {
+        child_process.exec(`cp -rf ${sourceDir} ${destDir}`, (error) => {
           if (error) {
             reject(error)
           } else {
@@ -109,72 +97,63 @@ async function replaceComponentName(
 }
 
 async function exportCssVariable(kebabCaseName: string) {
-  await replaceFileContent(
-    path.resolve(__dirname, '..', 'packages/sard-uniapp/src/index.scss'),
-    (content) => {
-      return (
-        [
-          ...new Set(
-            content
-              .trim()
-              .split(/\n+/)
-              .concat([
-                `@use './components/${kebabCaseName}/variables.scss' as *;`,
-              ])
-              .sort(),
-          ),
-        ].join('\n') + '\n'
-      )
-    },
-  )
+  await replaceFileContent(path.resolve(libDir, 'index.scss'), (content) => {
+    return (
+      [
+        ...new Set(
+          content
+            .trim()
+            .split(/\n+/)
+            .concat([
+              `@use './components/${kebabCaseName}/variables.scss' as *;`,
+            ])
+            .sort(),
+        ),
+      ].join('\n') + '\n'
+    )
+  })
 }
 
 async function exportComponent(kebabCaseName: string) {
-  await replaceFileContent(
-    path.resolve(__dirname, '..', 'packages/sard-uniapp/src/index.ts'),
-    (content) => {
-      return (
-        [
-          ...new Set(
-            content
-              .trim()
-              .split(/\n+/)
-              .concat([`export * from './components/${kebabCaseName}'`])
-              .sort(),
-          ),
-        ].join('\n') + '\n'
-      )
-    },
-  )
+  await replaceFileContent(path.resolve(libDir, 'index.ts'), (content) => {
+    return (
+      [
+        ...new Set(
+          content
+            .trim()
+            .split(/\n+/)
+            .concat([`export * from './components/${kebabCaseName}'`])
+            .sort(),
+        ),
+      ].join('\n') + '\n'
+    )
+  })
 }
 
 async function declareGlobalComponent(
   kebabCaseName: string,
   pascalCaseName: string,
 ) {
-  await replaceFileContent(
-    path.resolve(__dirname, '..', 'packages/sard-uniapp/src/global.d.ts'),
-    (content) => {
-      return (
-        `declare module 'vue' {\n  export interface GlobalComponents {\n` +
-        [
-          ...new Set(
-            content
-              .split(/[{}]/)[2]
-              .trim()
-              .split('\n')
-              .map((item) => item.trim())
-              .concat([
-                `Sar${pascalCaseName}: typeof import('./components/${kebabCaseName}/${kebabCaseName}.vue').default`,
-              ])
-              .sort()
-              .map((item) => `    ${item}`),
-          ),
-        ].join('\n') +
-        `\n  }\n}\n\nexport {}\n`
-      )
-    },
-  )
+  await replaceFileContent(path.resolve(libDir, 'global.d.ts'), (content) => {
+    return (
+      `declare module 'vue' {\n  export interface GlobalComponents {\n` +
+      [
+        ...new Set(
+          content
+            .split(/[{}]/)[2]
+            .trim()
+            .split('\n')
+            .map((item) => item.trim())
+            .concat([
+              `Sar${pascalCaseName}: typeof import('./components/${kebabCaseName}/${kebabCaseName}.vue').default`,
+            ])
+            .sort()
+            .map((item) => `    ${item}`),
+        ),
+      ].join('\n') +
+      `\n  }\n}\n\nexport {}\n`
+    )
+  })
 }
 
 async function addDemoRoute(
@@ -182,33 +161,30 @@ async function addDemoRoute(
   pascalCaseName: string,
   cnName: string,
 ) {
-  await replaceFileContent(
-    path.resolve(__dirname, '..', 'src/pages.json'),
-    (content) => {
-      const obj = JSON.parse(content)
-      if (obj.pages.find((item) => item.path.includes(`/${kebabCaseName}/`))) {
-        consola.warn(`已存在同名组件: ${kebabCaseName}`)
-      } else {
-        obj.pages.push({
-          path: `pages/components/${kebabCaseName}/index`,
-          style: {
-            navigationBarTitleText: `${pascalCaseName} ${cnName}`,
-          },
-        })
-        obj.pages.sort((a, b) => {
-          const indexPath = 'pages/index/index'
-          return a.path === indexPath
-            ? -1
-            : b.path === indexPath
-            ? 1
-            : a.path < b.path
-            ? -1
-            : 1
-        })
-      }
-      return JSON.stringify(obj, null, 2)
-    },
-  )
+  await replaceFileContent(path.resolve(srcDir, 'pages.json'), (content) => {
+    const obj = JSON.parse(content)
+    if (obj.pages.find((item) => item.path.includes(`/${kebabCaseName}/`))) {
+      consola.warn(`已存在同名组件: ${kebabCaseName}`)
+    } else {
+      obj.pages.push({
+        path: `pages/components/${kebabCaseName}/index`,
+        style: {
+          navigationBarTitleText: `${pascalCaseName} ${cnName}`,
+        },
+      })
+      obj.pages.sort((a, b) => {
+        const indexPath = 'pages/index/index'
+        return a.path === indexPath
+          ? -1
+          : b.path === indexPath
+          ? 1
+          : a.path < b.path
+          ? -1
+          : 1
+      })
+    }
+    return JSON.stringify(obj, null, 2)
+  })
 }
 
 async function addDemoMenu(
@@ -218,7 +194,7 @@ async function addDemoMenu(
   cnName: string,
 ) {
   await replaceFileContent(
-    path.resolve(__dirname, '..', 'src/components/menu/menu.json'),
+    path.resolve(srcDir, 'components/menu/menu.json'),
     (content) => {
       const obj = JSON.parse(content)
       const group = obj.find((item) => item.title === groupCnName)
@@ -297,11 +273,7 @@ export async function addComponent() {
   const pascalCaseName = upperFirst(camelCaseName)
   const cnName = compForm.cnName
 
-  const compDir = path.resolve(
-    __dirname,
-    '..',
-    `packages/sard-uniapp/src/components/${kebabCaseName}`,
-  )
+  const compDir = path.resolve(libDir, `components/${kebabCaseName}`)
 
   try {
     await fs.access(compDir)

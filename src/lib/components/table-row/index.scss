@@ -1,0 +1,15 @@
+@use '../style/base' as *;
+
+@include bem(table) {
+  @include e(row) {
+    @include universal;
+    flex-direction: row;
+
+    @include m(fixed) {
+      position: sticky;
+      top: 0;
+      z-index: 3;
+      background-color: var(--sar-table-row-fixed-bg);
+    }
+  }
+}

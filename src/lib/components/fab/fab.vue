@@ -40,7 +40,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref } from 'vue'
+import { computed, reactive, ref, toRef } from 'vue'
 import { classNames, stringifyStyle, createBem, isNullish } from '../../utils'
 import {
   type FabProps,
@@ -73,7 +73,7 @@ const [zIndex, increaseZIndex] = useZIndex()
 const { realVisible, transitionClass, onTransitionEnd } = useTransition(
   reactive({
     visible,
-    duration: props.duration,
+    duration: toRef(() => props.duration),
     prefix: bem.m('zoom-'),
   }),
 )

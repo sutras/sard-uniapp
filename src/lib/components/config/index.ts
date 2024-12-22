@@ -340,6 +340,10 @@ export const defaultConfig = {
   tabbar: {
     bordered: true,
   },
+  table: {
+    bordered: false,
+    underline: false,
+  },
   tabs: {
     type: 'line' as TabsProps['type'],
   },

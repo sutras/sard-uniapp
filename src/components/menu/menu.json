@@ -194,6 +194,10 @@
         "name": "swiper-dot"
       },
       {
+        "title": "Table 表格",
+        "name": "table"
+      },
+      {
         "title": "Tag 标签",
         "name": "tag"
       },

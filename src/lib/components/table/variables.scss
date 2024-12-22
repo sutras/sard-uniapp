@@ -1,0 +1,12 @@
+// #variables
+page {
+  --sar-table-border-color: var(--sar-border-color);
+  --sar-table-bg: var(--sar-emphasis-bg);
+
+  --sar-table-row-fixed-bg: var(--sar-emphasis-bg);
+
+  --sar-table-cell-fixed-bg: var(--sar-emphasis-bg);
+  --sar-table-fixed-left-shadow: inset 10px 0 10px -10px rgba(0, 0, 0, 0.15);
+  --sar-table-fixed-right-shadow: inset -10px 0 10px -10px rgba(0, 0, 0, 0.15);
+}
+// #endvariables

@@ -157,6 +157,7 @@ const uniObject = {
   createSelectorQuery() {
     return new SelectorQuery()
   },
+  onWindowResize() {},
 }
 
 class NodesRef {
