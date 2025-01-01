@@ -1,3 +1,12 @@
+# [1.10.0](https://github.com/sutras/sard-uniapp/compare/v1.9.2...v1.10.0) (2025-01-01)
+
+
+### Features
+
+* 新增 Space 组件, 新增 Dialog 组件的按钮配置, 新增 valueFormat 属性, 修复已知问题 ([7648ea6](https://github.com/sutras/sard-uniapp/commit/7648ea65937c5af9a2b6a8cfa9c5b70ade14ef65))
+
+
+
 ## [1.9.2](https://github.com/sutras/sard-uniapp/compare/v1.9.1...v1.9.2) (2024-12-22)
 
 
