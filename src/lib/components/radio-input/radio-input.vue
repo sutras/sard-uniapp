@@ -27,7 +27,7 @@
           :direction="direction"
           :validate-event="false"
           :model-value="popoutValue"
-          @update:model-value="onChange"
+          @change="onChange"
         >
           <template #custom="{ toggle }">
             <sar-list inlaid>

@@ -1,6 +1,7 @@
 import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 import { type TransitionHookName } from '../../use'
+import { type ButtonProps } from '../button'
 
 export interface DialogProps {
   rootStyle?: StyleValue
@@ -17,6 +18,9 @@ export interface DialogProps {
   overlayClosable?: boolean
   beforeClose?: (type: 'close' | 'cancel' | 'confirm') => any | Promise<any>
   duration?: number
+  cancelProps?: ButtonProps
+  confirmProps?: ButtonProps
+  id?: string
 }
 
 export const defaultDialogProps = defaultConfig.dialog

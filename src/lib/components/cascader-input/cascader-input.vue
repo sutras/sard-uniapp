@@ -23,7 +23,7 @@
       <sar-cascader
         v-if="already"
         :model-value="popoutValue"
-        @update:model-value="onChange"
+        @change="onChange"
         :options="options"
         :field-keys="fieldKeys"
         :placeholder="hintText"

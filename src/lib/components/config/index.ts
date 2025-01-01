@@ -25,6 +25,7 @@ import { type RadioGroupProps } from '../radio'
 import { type RadioInputProps } from '../radio-input'
 import { type ResultProps } from '../result'
 import { type SearchProps } from '../search'
+import { type SpaceProps } from '../space'
 import { type StepperProps } from '../stepper'
 import { type StepsProps } from '../steps'
 import { type SwiperDotProps } from '../swiper-dot'
@@ -72,6 +73,7 @@ export const defaultConfig = {
   calendarInput: {
     showConfirm: true,
     validateEvent: true,
+    outletFormat: 'YYYY-MM-DD',
   },
   cascaderInput: {
     showConfirm: true,
@@ -305,6 +307,10 @@ export const defaultConfig = {
     max: 100,
     step: 1,
     validateEvent: true,
+  },
+  space: {
+    direction: 'horizontal' as SpaceProps['direction'],
+    size: 'middle' as SpaceProps['size'],
   },
   stepper: {
     min: Number.MIN_SAFE_INTEGER,

@@ -14,7 +14,7 @@
             placeholderClass,
           )
         "
-        :style="placeholderStyle"
+        :style="mergedPlaceholderStyle"
       >
         {{ placeholder }}
       </view>
@@ -60,7 +60,7 @@
         :class="classNames(bem.e('control'), bem.em('control', 'input'))"
         :value="innerValue"
         :placeholder="placeholder"
-        :placeholder-style="placeholderStyle"
+        :placeholder-style="mergedPlaceholderStyle"
         :placeholder-class="classNames(bem.e('placeholder'), placeholderClass)"
         :disabled="isDisabled || isReadonly"
         :maxlength="maxlength"
@@ -284,6 +284,15 @@ const controlStyle = computed(() => {
     minHeight: props.minHeight,
     height: !props.autoHeight && props.minHeight,
   })
+})
+
+const mergedPlaceholderStyle = computed(() => {
+  return stringifyStyle(
+    {
+      color: 'var(--sar-input-placeholder-color)',
+    },
+    props.placeholderStyle,
+  )
 })
 </script>
 

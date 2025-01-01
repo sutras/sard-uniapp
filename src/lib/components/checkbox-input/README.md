@@ -29,7 +29,7 @@ import CheckboxInput from 'sard-uniapp/components/checkbox-input/checkbox-input.
 
 ### CheckboxInputProps
 
-继承 [`CheckboxGroupProps`](./#/components/checkbox#CheckboxGroupProps) 并有以下额外属性：
+继承 [`CheckboxGroupProps`](./checkbox#CheckboxGroupProps) 并有以下额外属性：
 
 | 属性              | 描述                                    | 类型    | 默认值 |
 | ----------------- | --------------------------------------- | ------- | ------ |

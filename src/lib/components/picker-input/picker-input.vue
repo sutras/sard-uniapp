@@ -22,7 +22,7 @@
       <sar-picker
         v-if="already"
         :model-value="popoutValue"
-        @update:model-value="onChange"
+        @change="onChange"
         :columns="columns"
         :option-keys="optionKeys"
         :immediate-change="immediateChange"

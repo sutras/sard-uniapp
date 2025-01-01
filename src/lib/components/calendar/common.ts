@@ -20,7 +20,7 @@ export interface CalendarProps {
   rootStyle?: StyleValue
   rootClass?: string
   type?: CalendarType
-  modelValue?: Date | Date[]
+  modelValue?: Date | Date[] | string | string[]
   min?: Date
   max?: Date
   currentDate?: Date
@@ -31,13 +31,14 @@ export interface CalendarProps {
   formatter?: (day: CalendarDay) => void
   allowSameDay?: boolean
   severalMonths?: boolean
+  valueFormat?: string
 }
 
 export const defaultCalendarProps = defaultConfig.calendar
 
 export interface CalendarEmits {
-  (e: 'update:model-value', value: Date | Date[]): void
-  (e: 'change', value: Date | Date[]): void
+  (e: 'update:model-value', value: Date | Date[] | string | string[]): void
+  (e: 'change', value: Date | Date[] | string | string[]): void
 }
 
 export interface CalendarMonthProps {

@@ -1,3 +1,12 @@
+## [1.9.2](https://github.com/sutras/sard-uniapp/compare/v1.9.1...v1.9.2) (2024-12-22)
+
+
+### Features
+
+* 表单组件新增change事件 ([58f2fa8](https://github.com/sutras/sard-uniapp/commit/58f2fa88e59f4b28b23592cf9ff17e2353a9ae37))
+
+
+
 ## [1.9.1](https://github.com/sutras/sard-uniapp/compare/v1.9.0...v1.9.1) (2024-12-22)
 
 

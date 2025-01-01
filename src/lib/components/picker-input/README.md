@@ -29,7 +29,7 @@ import PickerInput from 'sard-uniapp/components/picker-input/picker-input.vue'
 
 ### PickerInputProps
 
-继承 [`PickerProps`](./#/components/picker#PickerProps) 并有以下额外属性：
+继承 [`PickerProps`](./picker#PickerProps) 并有以下额外属性：
 
 | 属性              | 描述                                    | 类型    | 默认值 |
 | ----------------- | --------------------------------------- | ------- | ------ |

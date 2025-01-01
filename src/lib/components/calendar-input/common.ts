@@ -8,6 +8,7 @@ export interface CalendarInputProps
   visible?: boolean
   title?: string
   showConfirm?: boolean
+  outletFormat?: string
   validateEvent?: boolean
 }
 
@@ -18,6 +19,9 @@ export const defaultCalendarInputProps = {
 
 export interface CalendarInputEmits {
   (e: 'update:visible', visible: boolean): void
-  (e: 'update:model-value', value: Date | Date[] | undefined): void
-  (e: 'change', value: Date | Date[] | undefined): void
+  (
+    e: 'update:model-value',
+    value: Date | Date[] | string | string[] | undefined,
+  ): void
+  (e: 'change', value: Date | Date[] | string | string[] | undefined): void
 }

@@ -29,7 +29,7 @@ import CascaderInput from 'sard-uniapp/components/cascader-input/cascader-input.
 
 ### CascaderInputProps
 
-继承 [`CascaderProps`](./#/components/cascader#CascaderProps) 并有以下额外属性：
+继承 [`CascaderProps`](./cascader#CascaderProps) 并有以下额外属性：
 
 | 属性              | 描述                                     | 类型    | 默认值 |
 | ----------------- | ---------------------------------------- | ------- | ------ |

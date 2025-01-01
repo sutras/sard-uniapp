@@ -43,6 +43,7 @@
           :theme="buttonProps.cancel.theme"
           :size="buttonProps.cancel.size"
           :round="buttonProps.confirm.round"
+          v-bind="cancelProps"
           @click="onCancel"
         >
           {{ cancelText || t('cancel') }}
@@ -59,6 +60,7 @@
           :theme="buttonProps.confirm.theme"
           :size="buttonProps.confirm.size"
           :round="buttonProps.confirm.round"
+          v-bind="confirmProps"
           @click="onConfirm"
         >
           {{ confirmText || t('confirm') }}
