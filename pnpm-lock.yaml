@@ -156,8 +156,8 @@ importers:
         specifier: ^1.2.3
         version: 1.2.3
       sard-cli:
-        specifier: ^1.0.3
-        version: 1.0.3(@types/node@22.10.1)(postcss@8.4.49)(terser@5.36.0)(tsx@4.19.2)
+        specifier: ^1.0.4
+        version: 1.0.4(@types/node@22.10.1)(postcss@8.4.49)(terser@5.36.0)(tsx@4.19.2)
       sass:
         specifier: ^1.43.4
         version: 1.43.4
@@ -1226,7 +1226,6 @@ packages:
   '@esbuild/darwin-x64@0.21.5':
     resolution: {integrity: sha512-se/JjF8NlmKVG4kNIuyWMV/22ZaerB+qaSi5MdrXtd6R08kvs2qCN4C09miupktDitvh8jRFflwGFBQcxZRjbw==}
     engines: {node: '>=12'}
-    cpu: [x64]
     os: [darwin]
 
   '@esbuild/darwin-x64@0.23.1':
@@ -5466,8 +5465,8 @@ packages:
   safer-buffer@2.1.2:
     resolution: {integrity: sha512-YZo3K82SD7Riyi0E1EQPojLz7kpepnSQI9IyPbHHg1XXXevb5dJI7tpyN2ADxGcQbHG7vcyRHk0cbwqcQriUtg==}
 
-  sard-cli@1.0.3:
-    resolution: {integrity: sha512-MFo2GAhrszlVR6WKGhrOinFafstbpMHMPGjPF0HqHoutmwm+V2RjTDBZyFojZPCdRdMD5b8CbejbUMWU9/a8kQ==}
+  sard-cli@1.0.4:
+    resolution: {integrity: sha512-sZCWU3SofxTJFZeVbOB5Mz1INq1RTxpPuQUDe7EpaVt4OsVuWkIsIGp4l+3yIB9ZJNkKAL0ZTYA6k/RA09WRqw==}
     hasBin: true
 
   sass@1.43.4:
@@ -12607,11 +12606,12 @@ snapshots:
 
   safer-buffer@2.1.2: {}
 
-  sard-cli@1.0.3(@types/node@22.10.1)(postcss@8.4.49)(terser@5.36.0)(tsx@4.19.2):
+  sard-cli@1.0.4(@types/node@22.10.1)(postcss@8.4.49)(terser@5.36.0)(tsx@4.19.2):
     dependencies:
       '@vitejs/plugin-vue': 5.2.1(vite@6.0.2(@types/node@22.10.1)(sass@1.81.1)(terser@5.36.0)(tsx@4.19.2))(vue@3.5.13(typescript@5.6.2))
       autoprefixer: 10.4.20(postcss@8.4.49)
       chalk: 5.3.0
+      chokidar: 4.0.1
       clipboard: 2.0.11
       commander: 12.1.0
       consola: 3.2.3

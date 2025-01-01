@@ -23,7 +23,7 @@
       <sar-calendar
         v-if="already"
         :model-value="popoutValue"
-        @update:model-value="onChange"
+        @change="onChange"
         :type="type"
         :min="min"
         :max="max"
@@ -35,6 +35,7 @@
         :formatter="formatter"
         :allow-same-day="allowSameDay"
         :several-months="severalMonths"
+        :value-format="valueFormat"
       />
     </template>
   </sar-popout>
@@ -45,7 +46,7 @@ import { ref, watch, computed } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarCalendar from '../calendar/calendar.vue'
 import SarPopout from '../popout/popout.vue'
-import { formatDate } from '../../utils'
+import { formatDate, isString, parseDate } from '../../utils'
 import { type CalendarType } from '../calendar/common'
 import { useTranslate } from '../locale'
 import {
@@ -116,20 +117,30 @@ const onConfirm = () => {
 // input
 const inputValue = ref('')
 
-const format = 'YYYY-MM-DD'
-
 const { t } = useTranslate('calendar')
 
-function getOutletText(date: Date | Date[], type: CalendarType) {
+function getOutletTextMayByStr(date: string | Date) {
+  if (isString(date) && props.valueFormat) {
+    date = parseDate(date, props.valueFormat)
+  }
+  if (date instanceof Date) {
+    return formatDate(date, props.outletFormat)
+  }
+  return date
+}
+
+function getOutletText(
+  date: Date | Date[] | string | string[],
+  type: CalendarType,
+) {
   if (type === 'single') {
-    return formatDate(date as Date, format)
+    return getOutletTextMayByStr(date as string | Date)
   }
 
   if (type === 'range') {
-    return `${formatDate((date as Date[])[0], format)} ${t('to')} ${formatDate(
-      (date as Date[])[1],
-      format,
-    )}`
+    return `${getOutletTextMayByStr((date as string[] | Date[])[0])} ${t(
+      'to',
+    )} ${getOutletTextMayByStr((date as string[] | Date[])[1])}`
   }
 
   if (type === 'multiple') {
@@ -165,6 +176,7 @@ const onClear = () => {
   inputValue.value = ''
   innerValue.value = undefined
   emit('update:model-value', undefined)
+  emit('change', undefined)
 }
 
 // visible

@@ -77,6 +77,7 @@ declare module 'vue' {
     SarSkeletonParagraph: typeof import('./components/skeleton-paragraph/skeleton-paragraph.vue').default
     SarSkeletonTitle: typeof import('./components/skeleton-title/skeleton-title.vue').default
     SarSlider: typeof import('./components/slider/slider.vue').default
+    SarSpace: typeof import('./components/space/space.vue').default
     SarStepper: typeof import('./components/stepper/stepper.vue').default
     SarSteps: typeof import('./components/steps/steps.vue').default
     SarSwiperDot: typeof import('./components/swiper-dot/swiper-dot.vue').default
@@ -85,8 +86,8 @@ declare module 'vue' {
     SarTabbar: typeof import('./components/tabbar/tabbar.vue').default
     SarTabbarItem: typeof import('./components/tabbar-item/tabbar-item.vue').default
     SarTable: typeof import('./components/table/table.vue').default
-    SarTableRow: typeof import('./components/table-row/table-row.vue').default
     SarTableCell: typeof import('./components/table-cell/table-cell.vue').default
+    SarTableRow: typeof import('./components/table-row/table-row.vue').default
     SarTabs: typeof import('./components/tabs/tabs.vue').default
     SarTag: typeof import('./components/tag/tag.vue').default
     SarTimeline: typeof import('./components/timeline/timeline.vue').default

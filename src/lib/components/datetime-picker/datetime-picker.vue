@@ -4,13 +4,13 @@
     :root-style="stringifyStyle(rootStyle)"
     :columns="columns"
     :model-value="pickerValue"
-    @update:model-value="onChange"
+    @change="onChange"
   />
 </template>
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { classNames, stringifyStyle } from '../../utils'
+import { classNames, formatDate, parseDate, stringifyStyle } from '../../utils'
 import SarPicker from '../picker/picker.vue'
 import {
   type DatetimePickerProps,
@@ -118,13 +118,20 @@ const getDateByPickerValue = (value: number[]) => {
   return date
 }
 
-const normalizeValue = (value: Date | undefined | null) => {
-  value = value ?? new Date()
-  return value.getTime() < minDate.value.getTime()
+const toDate = (date: Date | string) => {
+  if (date instanceof Date) {
+    return date
+  }
+  return parseDate(date, props.valueFormat)
+}
+
+const normalizeValue = (value: Date | string | undefined | null) => {
+  const date = value ? toDate(value) : new Date()
+  return date.getTime() < minDate.value.getTime()
     ? minDate.value
-    : value.getTime() > maxDate.value.getTime()
+    : date.getTime() > maxDate.value.getTime()
     ? maxDate.value
-    : value
+    : date
 }
 
 // main
@@ -141,13 +148,17 @@ const maxDate = computed(() => {
 
 const innerValue = ref(normalizeValue(props.modelValue))
 
+let currentEmitValue: string | Date = innerValue.value
+
 watch(
   () => props.modelValue,
   () => {
-    innerValue.value = normalizeValue(props.modelValue)
+    if (currentEmitValue !== props.modelValue) {
+      innerValue.value = normalizeValue(props.modelValue)
 
-    if (props.modelValue) {
-      updateColumns(props.modelValue)
+      if (props.modelValue) {
+        updateColumns(innerValue.value)
+      }
     }
   },
 )
@@ -168,8 +179,15 @@ const columns = ref(createColumnData(innerType.value, innerValue.value))
 const onChange = (value: number[]) => {
   const nextValue = getDateByPickerValue(value)
   innerValue.value = nextValue
+
+  const emitValue = props.valueFormat
+    ? formatDate(nextValue, props.valueFormat)
+    : nextValue
+
+  currentEmitValue = emitValue
+
   updateColumns(nextValue)
-  emit('update:model-value', nextValue)
-  emit('change', nextValue)
+  emit('update:model-value', emitValue)
+  emit('change', emitValue)
 }
 </script>

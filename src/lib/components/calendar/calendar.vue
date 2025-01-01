@@ -88,6 +88,8 @@ import {
   getPrevMonthDate,
   getNextMonthDate,
   toArray,
+  parseDate,
+  formatDate,
 } from '../../utils'
 import {
   type CalendarProps,
@@ -133,16 +135,36 @@ const maxDate = computed(() => {
     : maxDate
 })
 
+const toDate = (date: Date | string) => {
+  if (date instanceof Date) {
+    return date
+  }
+  return parseDate(date, props.valueFormat)
+}
+
+const makeDate = (date: Date | Date[] | string | string[]) => {
+  return Array.isArray(date) ? date.map((item) => toDate(item)) : toDate(date)
+}
+
+const normalizeValue = (
+  value: string | string[] | Date | Date[] | undefined,
+) => {
+  return value ? makeDate(value) : props.type === 'single' ? undefined : []
+}
+
 const innerValue = ref<Date | Date[] | undefined>(
-  props.modelValue ?? (props.type === 'single' ? undefined : []),
+  normalizeValue(props.modelValue),
 )
+
+let currentEmitValue: string | string[] | Date | Date[] | undefined =
+  innerValue.value
 
 watch(
   () => props.modelValue,
   () => {
-    if (innerValue.value !== props.modelValue) {
-      innerValue.value =
-        props.modelValue ?? (props.type === 'single' ? undefined : [])
+    if (currentEmitValue !== props.modelValue) {
+      innerValue.value = normalizeValue(props.modelValue)
+      currentEmitValue = props.modelValue
     }
   },
 )
@@ -150,7 +172,7 @@ watch(
 const getInitialCurrentDate = () => {
   let date = new Date()
 
-  const value = toArray(props.modelValue)[0]
+  const value = toArray(innerValue.value)[0]
   if (value) {
     date = value
   }
@@ -327,8 +349,17 @@ const onDayClick = (date: Date) => {
 
   if (nextValue !== undefined) {
     innerValue.value = nextValue
-    emit('update:model-value', nextValue)
-    emit('change', nextValue)
+
+    const emitValue = props.valueFormat
+      ? Array.isArray(nextValue)
+        ? nextValue.map((item) => formatDate(item, props.valueFormat))
+        : formatDate(nextValue, props.valueFormat)
+      : nextValue
+
+    currentEmitValue = emitValue
+
+    emit('update:model-value', emitValue)
+    emit('change', emitValue)
   }
 }
 

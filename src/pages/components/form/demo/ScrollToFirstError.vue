@@ -5,6 +5,7 @@
       ref="formRef"
       scroll-to-first-error
       :scroll-into-view-options="{
+        startOffset: 50,
         endOffset: footerHeight,
         position,
       }"

@@ -1,19 +1,5 @@
 <template>
-  <sar-dialog
-    :root-style="innerProps.rootStyle"
-    :root-class="innerProps.rootClass"
-    v-model:visible="innerProps.visible"
-    :title="innerProps.title"
-    :message="innerProps.message"
-    :headed="innerProps.headed"
-    :button-type="innerProps.buttonType"
-    :show-cancel="innerProps.showCancel"
-    :cancel-text="innerProps.cancelText"
-    :show-confirm="innerProps.showConfirm"
-    :confirm-text="innerProps.confirmText"
-    :overlay-closable="innerProps.overlayClosable"
-    :before-close="innerProps.beforeClose"
-  />
+  <sar-dialog v-bind="innerProps" v-model:visible="innerProps.visible" />
 </template>
 
 <script setup lang="ts">

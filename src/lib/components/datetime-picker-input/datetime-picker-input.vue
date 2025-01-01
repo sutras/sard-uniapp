@@ -22,12 +22,13 @@
       <sar-datetime-picker
         v-if="already"
         :model-value="popoutValue"
-        @update:model-value="onChange"
+        @change="onChange"
         :type="type"
         :min="min"
         :max="max"
         :filter="filter"
         :formatter="formatter"
+        :value-format="valueFormat"
       />
     </template>
   </sar-popout>
@@ -38,7 +39,7 @@ import { ref, watch, computed } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarPopout from '../popout/popout.vue'
 import SarDatetimePicker from '../datetime-picker/datetime-picker.vue'
-import { formatDate, isNullish } from '../../utils'
+import { formatDate, isNullish, isString, parseDate } from '../../utils'
 import { TransitionHookName } from '../../use'
 import {
   getInitialValue,
@@ -85,7 +86,7 @@ watch(
 
 const popoutValue = ref(props.modelValue)
 
-const onChange = (value: Date) => {
+const onChange = (value: Date | string) => {
   popoutValue.value = value
 }
 
@@ -121,20 +122,22 @@ const onConfirm = () => {
 // input
 const inputValue = ref('')
 
-function getOutletText(value: Date) {
-  if (!value) {
-    return ''
+function getOutletText(value: Date | string) {
+  if (isString(value) && props.valueFormat) {
+    value = parseDate(value, props.valueFormat)
   }
-
-  return formatDate(
-    value,
-    props.outletFormat ||
-      mapTypeFormat[props.type as keyof typeof mapTypeFormat],
-  )
+  if (value instanceof Date) {
+    return formatDate(
+      value,
+      props.outletFormat ||
+        mapTypeFormat[props.type as keyof typeof mapTypeFormat],
+    )
+  }
+  return value
 }
 
 function getInputValue() {
-  if (isNullish(innerValue.value)) {
+  if (!innerValue.value) {
     return ''
   }
   return getOutletText(innerValue.value)

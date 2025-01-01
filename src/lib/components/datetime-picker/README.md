@@ -51,23 +51,24 @@ import DatetimePicker from 'sard-uniapp/components/datetime-picker/datetime-pick
 
 ### DatetimePickerProps
 
-| 属性        | 描述                                         | 类型                                                                                                            | 默认值 |
-| ----------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------ |
-| root-class  | 组件根元素类名                               | string                                                                                                          | -      |
-| root-style  | 组件根元素样式                               | StyleValue                                                                                                      | -      |
-| type        | 设置每一列要展示的数据类型，每个字母对应一列 | string                                                                                                          | 'yMd'  |
-| min         | 可选的最小日期                               | Date                                                                                                            | 十年前 |
-| max         | 可选的最大日期                               | Date                                                                                                            | 十年后 |
-| model-value | 当前选中的日期                               | Date                                                                                                            | -      |
-| filter      | 选项的过滤函数                               | (letter: DatetimeLetter, value: number, date: Date, index: number) => boolean                                   | -      |
-| formatter   | 选项的格式化函数                             | (letter: DatetimeLetter, option: DatetimeColumnOption, date: Date, index: number) => string \| void \|undefined | -      |
+| 属性                          | 描述                                         | 类型                                                                                                            | 默认值 |
+| ----------------------------- | -------------------------------------------- | --------------------------------------------------------------------------------------------------------------- | ------ |
+| root-class                    | 组件根元素类名                               | string                                                                                                          | -      |
+| root-style                    | 组件根元素样式                               | StyleValue                                                                                                      | -      |
+| type                          | 设置每一列要展示的数据类型，每个字母对应一列 | string [详见特殊符号](#DatetimeLetter)                                                                          | 'yMd'  |
+| min                           | 可选的最小日期                               | Date                                                                                                            | 十年前 |
+| max                           | 可选的最大日期                               | Date                                                                                                            | 十年后 |
+| model-value                   | 当前选中的日期                               | Date \| string                                                                                                  | -      |
+| filter                        | 选项的过滤函数                               | (letter: DatetimeLetter, value: number, date: Date, index: number) => boolean                                   | -      |
+| formatter                     | 选项的格式化函数                             | (letter: DatetimeLetter, option: DatetimeColumnOption, date: Date, index: number) => string \| void \|undefined | -      |
+| value-format <sup>1.10+</sup> | 绑定值的格式，不指定则绑定值为 Date 对象     | string [详见特殊符号](../guide/date#日期格式特殊符号)                                                           | -      |
 
 ### DatetimePickerEmits
 
-| 事件                     | 描述                 | 类型                 |
-| ------------------------ | -------------------- | -------------------- |
-| update:model-value       | 选中的选项改变时触发 | (date: Date) => void |
-| change <sup>1.9.2+</sup> | 选中的选项改变时触发 | (date: Date) => void |
+| 事件                     | 描述                 | 类型                           |
+| ------------------------ | -------------------- | ------------------------------ |
+| update:model-value       | 选中的选项改变时触发 | (date: Date \| string) => void |
+| change <sup>1.9.2+</sup> | 选中的选项改变时触发 | (date: Date \| string) => void |
 
 ### DatetimeLetter
 

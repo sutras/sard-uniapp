@@ -5,11 +5,10 @@ import { defaultConfig } from '../config'
 export interface DatetimePickerProps {
   rootStyle?: StyleValue
   rootClass?: string
-
   type?: string
   min?: Date
   max?: Date
-  modelValue?: Date
+  modelValue?: Date | string
   filter?: (
     letter: DatetimeLetter,
     value: number,
@@ -22,13 +21,14 @@ export interface DatetimePickerProps {
     date: Date,
     index: number,
   ) => string | void | undefined
+  valueFormat?: string
 }
 
 export const defaultDatetimePickerProps = defaultConfig.datetimePicker
 
 export interface DatetimePickerEmits {
-  (e: 'update:model-value', date: Date): void
-  (e: 'change', date: Date): void
+  (e: 'update:model-value', date: Date | string): void
+  (e: 'change', date: Date | string): void
 }
 
 export interface DatetimeColumnOption {

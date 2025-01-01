@@ -3,7 +3,7 @@
     <sar-input
       inlaid
       :model-value="innerValue"
-      @update:model-value="onChange"
+      @change="onChange"
       :placeholder="placeholder"
       :readonly="isReadonly"
       :disabled="isDisabled"

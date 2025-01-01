@@ -1,11 +1,7 @@
 <template>
   <sar-list card>
     <sar-list-item>
-      <sar-cascader
-        :options="options"
-        @select="onSelect"
-        @update:model-value="onChange"
-      />
+      <sar-cascader :options="options" @select="onSelect" @change="onChange" />
     </sar-list-item>
   </sar-list>
 </template>

@@ -198,6 +198,12 @@
       }
     },
     {
+      "path": "pages/components/form/demo/ChangePassword",
+      "style": {
+        "navigationBarTitleText": "修改密码"
+      }
+    },
+    {
       "path": "pages/components/form/demo/ComplexDynamicFormItem",
       "style": {
         "navigationBarTitleText": "复杂的动态增减表单项"
@@ -252,6 +258,12 @@
       }
     },
     {
+      "path": "pages/components/form/demo/ForgetPassword",
+      "style": {
+        "navigationBarTitleText": "忘记密码"
+      }
+    },
+    {
       "path": "pages/components/form/demo/LabelWidth",
       "style": {
         "navigationBarTitleText": "Label 宽度"
@@ -261,6 +273,12 @@
       "path": "pages/components/form/demo/Login",
       "style": {
         "navigationBarTitleText": "登录框"
+      }
+    },
+    {
+      "path": "pages/components/form/demo/MobileLogin",
+      "style": {
+        "navigationBarTitleText": "手机号登录"
       }
     },
     {
@@ -285,24 +303,6 @@
       "path": "pages/components/form/demo/ToastValidateError",
       "style": {
         "navigationBarTitleText": "toast显示验证错误信息"
-      }
-    },
-    {
-      "path": "pages/components/form/demo/MobileLogin",
-      "style": {
-        "navigationBarTitleText": "手机号登录"
-      }
-    },
-    {
-      "path": "pages/components/form/demo/ChangePassword",
-      "style": {
-        "navigationBarTitleText": "修改密码"
-      }
-    },
-    {
-      "path": "pages/components/form/demo/ForgetPassword",
-      "style": {
-        "navigationBarTitleText": "忘记密码"
       }
     },
     {
@@ -546,6 +546,12 @@
       }
     },
     {
+      "path": "pages/components/space/index",
+      "style": {
+        "navigationBarTitleText": "Space 间距"
+      }
+    },
+    {
       "path": "pages/components/stepper/index",
       "style": {
         "navigationBarTitleText": "Stepper 步进器"
@@ -582,15 +588,15 @@
       }
     },
     {
-      "path": "pages/components/table/index",
-      "style": {
-        "navigationBarTitleText": "Table 表格"
-      }
-    },
-    {
       "path": "pages/components/table/demo/FullScreen",
       "style": {
         "navigationBarTitleText": "等级特权"
+      }
+    },
+    {
+      "path": "pages/components/table/index",
+      "style": {
+        "navigationBarTitleText": "Table 表格"
       }
     },
     {

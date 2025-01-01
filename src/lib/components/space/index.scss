@@ -1,0 +1,38 @@
+@use '../style/base' as *;
+
+@include bem(space) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(element) {
+    @include universal;
+
+    @include m(modifier) {
+    }
+  }
+
+  @include m(vertical) {
+    flex-direction: column;
+  }
+
+  @include m(horizontal) {
+    flex-direction: row;
+  }
+
+  @include m(small) {
+    gap: var(--sar-space-small-gap);
+  }
+
+  @include m(middle) {
+    gap: var(--sar-space-middle-gap);
+  }
+
+  @include m(large) {
+    gap: var(--sar-space-large-gap);
+  }
+
+  @include m(wrap) {
+    flex-wrap: wrap;
+  }
+}

@@ -1,3 +1,4 @@
+import { escapeRegExp } from './regexp'
 import { minmax } from './utils'
 
 // 判断是否为闰年
@@ -66,31 +67,93 @@ export function getOffsetDaysFromFirstDay(
   return (weekOnFirstDay - weekStartsOn + 7) % 7
 }
 
-// 根据传入的占位符返回格式化后的日期
-export function formatDate(date: Date, formatStr = 'YYYY-MM-DD HH:mm:ss') {
-  const regexp = /YYYY|YY|MM|M|DD|D|HH|H|hh|h|mm|m|ss|s|SSS/g
+const dateTokensReg = /(YYYY|YY|MM|M|DD|D|HH|H|hh|h|mm|m|ss|s|SSS)/g
 
-  const matches = {
-    YYYY: (date: Date) => String(date.getFullYear()).padStart(4, '0'),
-    YY: (date: Date) => String(date.getFullYear()).slice(-2),
-    MM: (date: Date) => String(date.getMonth() + 1).padStart(2, '0'),
-    M: (date: Date) => String(date.getMonth() + 1),
-    DD: (date: Date) => String(date.getDate()).padStart(2, '0'),
-    D: (date: Date) => String(date.getDate()),
-    HH: (date: Date) => String(date.getHours()).padStart(2, '0'),
-    H: (date: Date) => String(date.getHours()),
-    hh: (date: Date) => String(date.getHours() % 24).padStart(2, '0'),
-    h: (date: Date) => String(date.getHours() % 24),
-    mm: (date: Date) => String(date.getMinutes()).padStart(2, '0'),
-    m: (date: Date) => String(date.getMinutes()),
-    ss: (date: Date) => String(date.getSeconds()).padStart(2, '0'),
-    s: (date: Date) => String(date.getSeconds()),
-    SSS: (date: Date) => String(date.getMilliseconds()).padStart(3, '0'),
+const dateGetters = {
+  YYYY: (date: Date) => String(date.getFullYear()).padStart(4, '0'),
+  YY: (date: Date) => String(date.getFullYear()).slice(-2),
+  MM: (date: Date) => String(date.getMonth() + 1).padStart(2, '0'),
+  M: (date: Date) => String(date.getMonth() + 1),
+  DD: (date: Date) => String(date.getDate()).padStart(2, '0'),
+  D: (date: Date) => String(date.getDate()),
+  HH: (date: Date) => String(date.getHours()).padStart(2, '0'),
+  H: (date: Date) => String(date.getHours()),
+  hh: (date: Date) => String(date.getHours() % 24).padStart(2, '0'),
+  h: (date: Date) => String(date.getHours() % 24),
+  mm: (date: Date) => String(date.getMinutes()).padStart(2, '0'),
+  m: (date: Date) => String(date.getMinutes()),
+  ss: (date: Date) => String(date.getSeconds()).padStart(2, '0'),
+  s: (date: Date) => String(date.getSeconds()),
+  SSS: (date: Date) => String(date.getMilliseconds()).padStart(3, '0'),
+}
+
+// 根据传入的占位符返回格式化后的日期
+export function formatDate(date: Date, format = 'YYYY-MM-DD HH:mm:ss') {
+  return format.replace(dateTokensReg, (match) => {
+    return dateGetters[match as keyof typeof dateGetters](date)
+  })
+}
+
+const defaultTokenFrags = ['YYYY', 'MM', 'DD', 'HH', 'mm', 'ss', 'SSS']
+
+const dateSetters = {
+  YYYY: (date: Date, year: number) => date.setFullYear(year),
+  YY: (date: Date, year: number) => date.setFullYear(year),
+  MM: (date: Date, month: number) => date.setMonth(month - 1),
+  M: (date: Date, month: number) => date.setMonth(month - 1),
+  DD: (date: Date, d: number) => date.setDate(d),
+  D: (date: Date, d: number) => date.setDate(d),
+  HH: (date: Date, hours: number) => date.setHours(hours),
+  H: (date: Date, hours: number) => date.setHours(hours),
+  hh: (date: Date, hours: number) => date.setHours(hours),
+  h: (date: Date, hours: number) => date.setHours(hours),
+  mm: (date: Date, minutes: number) => date.setMinutes(minutes),
+  m: (date: Date, minutes: number) => date.setMinutes(minutes),
+  ss: (date: Date, seconds: number) => date.setSeconds(seconds),
+  s: (date: Date, seconds: number) => date.setSeconds(seconds),
+  SSS: (date: Date, milliseconds: number) => date.setMilliseconds(milliseconds),
+}
+
+function parseDateWithoutFormat(value: string) {
+  const numbers = value.split(/\D+/).filter(Boolean)
+  const tokens = defaultTokenFrags.slice(0, numbers.length)
+  const date = new Date(0, 0)
+  tokens.forEach((token, i) => {
+    dateSetters[token as keyof typeof dateSetters](date, Number(numbers[i]))
+  })
+  return date
+}
+
+// 解析日期的字符串表示形式，并返回 Date 实例对象
+export function parseDate(value: string, format?: string) {
+  if (!format) {
+    return parseDateWithoutFormat(value)
   }
 
-  return formatStr.replace(regexp, (match) => {
-    return matches[match as keyof typeof matches](date)
+  const frags = format.split(dateTokensReg)
+  const reg = new RegExp(
+    '^' +
+      frags
+        .filter((_, i) => i % 2 === 0)
+        .map((item) => escapeRegExp(item))
+        .join('(.*)') +
+      '$',
+  )
+  const dateFrags = reg.exec(value)?.slice(1)
+
+  if (!dateFrags) {
+    return parseDateWithoutFormat(value)
+  }
+
+  const tokenFrags = frags.filter((_, i) => i % 2 !== 0)
+
+  const date = new Date(0)
+
+  tokenFrags.forEach((token, i) => {
+    dateSetters[token as keyof typeof dateSetters](date, Number(dateFrags[i]))
   })
+
+  return date
 }
 
 // 限定日期范围
