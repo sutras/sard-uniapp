@@ -11,10 +11,10 @@ export interface RadioInputProps
   title?: string
 }
 
-export const defaultRadioInputProps = {
+export const defaultRadioInputProps = () => ({
   ...defaultConfig.radioInput,
   options: () => [],
-}
+})
 
 export interface RadioInputEmits {
   (e: 'update:visible', visible: boolean): void

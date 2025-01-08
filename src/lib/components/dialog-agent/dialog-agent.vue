@@ -22,7 +22,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<DialogAgentProps>(),
-  defaultDialogAgentProps,
+  defaultDialogAgentProps(),
 )
 
 // main

@@ -84,7 +84,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<CheckboxInputProps>(),
-  defaultCheckboxInputProps,
+  defaultCheckboxInputProps(),
 )
 
 const emit = defineEmits<CheckboxInputEmits>()

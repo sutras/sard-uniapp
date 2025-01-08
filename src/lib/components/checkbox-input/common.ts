@@ -14,10 +14,10 @@ export interface CheckboxInputProps
   title?: string
 }
 
-export const defaultCheckboxInputProps = {
+export const defaultCheckboxInputProps = () => ({
   ...defaultConfig.checkboxInput,
   options: () => [],
-}
+})
 
 export interface CheckboxInputEmits {
   (e: 'update:visible', visible: boolean): void

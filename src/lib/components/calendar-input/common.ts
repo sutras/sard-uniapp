@@ -12,10 +12,10 @@ export interface CalendarInputProps
   validateEvent?: boolean
 }
 
-export const defaultCalendarInputProps = {
+export const defaultCalendarInputProps = () => ({
   ...defaultConfig.calendarInput,
   ...defaultConfig.calendar,
-}
+})
 
 export interface CalendarInputEmits {
   (e: 'update:visible', visible: boolean): void

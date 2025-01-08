@@ -10,10 +10,10 @@ export interface ToastAgentProps extends ToastProps {
   id?: string
 }
 
-export const defaultToastAgentProps = {
+export const defaultToastAgentProps = () => ({
   ...defaultToastProps,
   ...defaultConfig.toastAgent,
-}
+})
 
 export const imperativeName = 'toast'
 

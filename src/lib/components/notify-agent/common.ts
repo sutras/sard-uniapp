@@ -10,10 +10,10 @@ export interface NotifyAgentProps extends NotifyProps {
   id?: string
 }
 
-export const defaultNotifyAgentProps = {
+export const defaultNotifyAgentProps = () => ({
   ...defaultNotifyProps,
   ...defaultConfig.notifyAgent,
-}
+})
 
 export const imperativeName = 'notify'
 

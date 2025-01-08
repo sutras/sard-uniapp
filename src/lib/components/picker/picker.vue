@@ -49,7 +49,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<PickerProps>(), defaultPickerProps)
+const props = withDefaults(defineProps<PickerProps>(), defaultPickerProps())
 
 const emit = defineEmits<PickerEmits>()
 

@@ -22,10 +22,10 @@ export interface PickerProps {
   immediateChange?: boolean
 }
 
-export const defaultPickerProps = {
+export const defaultPickerProps = () => ({
   ...defaultConfig.picker,
   columns: () => [],
-}
+})
 
 export interface PickerEmits {
   (

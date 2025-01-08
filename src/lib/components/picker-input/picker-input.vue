@@ -63,7 +63,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<PickerInputProps>(),
-  defaultPickerInputProps,
+  defaultPickerInputProps(),
 )
 
 const emit = defineEmits<PickerInputEmits>()

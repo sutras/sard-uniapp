@@ -63,7 +63,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<DatetimePickerInputProps>(),
-  defaultDatetimePickerInputProps,
+  defaultDatetimePickerInputProps(),
 )
 
 const emit = defineEmits<DatetimePickerInputEmits>()

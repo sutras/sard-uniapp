@@ -10,10 +10,10 @@ export interface DialogAgentProps extends DialogProps {
   id?: string
 }
 
-export const defaultDialogAgentProps = {
+export const defaultDialogAgentProps = () => ({
   ...defaultDialogProps,
   ...defaultConfig.dialogAgent,
-}
+})
 
 export const imperativeName = 'dialog'
 

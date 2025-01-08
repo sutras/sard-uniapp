@@ -10,10 +10,10 @@ export interface PickerInputProps
   validateEvent?: boolean
 }
 
-export const defaultPickerInputProps = {
-  ...defaultPickerProps,
+export const defaultPickerInputProps = () => ({
+  ...defaultPickerProps(),
   ...defaultConfig.pickerInput,
-}
+})
 
 export interface PickerInputEmits {
   (e: 'update:visible', visible: boolean): void

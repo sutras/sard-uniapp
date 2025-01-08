@@ -18,10 +18,10 @@ export interface FabProps {
   duration?: number
 }
 
-export const defaultFabProps = {
+export const defaultFabProps = () => ({
   ...defaultConfig.fab,
   itemList: () => [],
-}
+})
 
 export interface FabEmits {
   (e: 'click', event: any): void
