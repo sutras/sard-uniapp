@@ -24,7 +24,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<BackTopProps>(), defaultBackTopProps)
+const props = withDefaults(defineProps<BackTopProps>(), defaultBackTopProps())
 
 defineSlots<BackTopSlots>()
 

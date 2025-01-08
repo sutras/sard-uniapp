@@ -97,7 +97,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<PullDownRefreshProps>(),
-  defaultPullDownRefreshProps,
+  defaultPullDownRefreshProps(),
 )
 
 defineSlots<PullDownRefreshSlots>()

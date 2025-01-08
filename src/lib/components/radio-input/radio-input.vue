@@ -80,7 +80,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<RadioInputProps>(),
-  defaultRadioInputProps,
+  defaultRadioInputProps(),
 )
 
 const emit = defineEmits<RadioInputEmits>()

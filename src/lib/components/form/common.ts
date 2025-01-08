@@ -81,10 +81,10 @@ export interface FormItemProps {
   inlaid?: boolean
 }
 
-export const defaultFormItemProps = {
+export const defaultFormItemProps = () => ({
   ...defaultConfig.formItem,
   required: undefined,
-}
+})
 
 export interface FormItemSlots {
   default?(props: Record<string, never>): any

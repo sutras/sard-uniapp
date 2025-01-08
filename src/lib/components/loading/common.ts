@@ -15,11 +15,11 @@ export interface LoadingProps {
   progress?: number
 }
 
-export const defaultLoadingProps = {
+export const defaultLoadingProps = () => ({
   ...defaultConfig.loading,
   animated: true,
   progress: 1,
-}
+})
 
 export interface LoadingSlots {
   default?(props: Record<string, never>): any

@@ -34,7 +34,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<NotifyAgentProps>(),
-  defaultNotifyAgentProps,
+  defaultNotifyAgentProps(),
 )
 
 // main

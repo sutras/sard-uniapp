@@ -67,7 +67,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<FormItemProps>(), defaultFormItemProps)
+const props = withDefaults(defineProps<FormItemProps>(), defaultFormItemProps())
 
 defineSlots<FormItemSlots>()
 

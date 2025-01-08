@@ -59,10 +59,10 @@ export interface TreeProps {
   filterMethod?: (value: string, node: TreeStateNode) => boolean
 }
 
-export const defaultTreeProps = {
+export const defaultTreeProps = () => ({
   ...defaultConfig.tree,
   data: () => [],
-}
+})
 
 export interface TreeExpose {
   setExpanded: (key: string | number, expanded: boolean) => void

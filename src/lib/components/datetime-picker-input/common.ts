@@ -12,10 +12,10 @@ export interface DatetimePickerInputProps
   validateEvent?: boolean
 }
 
-export const defaultDatetimePickerInputProps = {
+export const defaultDatetimePickerInputProps = () => ({
   ...defaultConfig.datetimePicker,
   ...defaultConfig.datetimePickerInput,
-}
+})
 
 export interface DatetimePickerInputEmits {
   (e: 'update:visible', visible: boolean): void

@@ -33,7 +33,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<ToastAgentProps>(),
-  defaultToastAgentProps,
+  defaultToastAgentProps(),
 )
 
 // main

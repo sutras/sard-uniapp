@@ -70,7 +70,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<TreeProps>(), defaultTreeProps)
+const props = withDefaults(defineProps<TreeProps>(), defaultTreeProps())
 
 const bem = createBem('tree')
 

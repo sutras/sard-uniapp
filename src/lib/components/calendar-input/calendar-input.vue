@@ -65,7 +65,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<CalendarInputProps>(),
-  defaultCalendarInputProps,
+  defaultCalendarInputProps(),
 )
 
 const emit = defineEmits<CalendarInputEmits>()

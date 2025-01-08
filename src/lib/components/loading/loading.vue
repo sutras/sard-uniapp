@@ -56,7 +56,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<LoadingProps>(), defaultLoadingProps)
+const props = withDefaults(defineProps<LoadingProps>(), defaultLoadingProps())
 
 defineSlots<LoadingSlots>()
 

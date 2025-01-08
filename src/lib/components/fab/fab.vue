@@ -59,7 +59,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<FabProps>(), defaultFabProps)
+const props = withDefaults(defineProps<FabProps>(), defaultFabProps())
 
 const emit = defineEmits<FabEmits>()
 

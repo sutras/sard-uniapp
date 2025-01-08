@@ -10,10 +10,10 @@ export interface BackTopProps {
   bottom?: string
 }
 
-export const defaultBackTopProps = {
+export const defaultBackTopProps = () => ({
   ...defaultConfig.backTop,
   scrollTop: 0,
-}
+})
 
 export interface BackTopSlots {
   default?(props: Record<string, never>): any
