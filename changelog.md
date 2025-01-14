@@ -1,3 +1,12 @@
+## [1.10.1](https://github.com/sutras/sard-uniapp/compare/v1.10.0...v1.10.1) (2025-01-08)
+
+
+### Bug Fixes
+
+* 修复全局配置问题 ([dcd319c](https://github.com/sutras/sard-uniapp/commit/dcd319c51453c6aa7c13dfedfbc2bf47eb3bb409))
+
+
+
 # [1.10.0](https://github.com/sutras/sard-uniapp/compare/v1.9.2...v1.10.0) (2025-01-01)
 
 
