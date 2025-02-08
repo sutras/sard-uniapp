@@ -101,6 +101,13 @@ export default defineConfig({
 }
 ```
 
+如果是使用 `WebStorm`，则需要在 `main.ts` 文件中导入 `global.d.ts` 文件。
+
+```ts
+// main.ts
+import 'sard-uniapp/global.d.ts
+```
+
 ## 引入全局样式
 
 全局样式文件定义了所有组件共用的一些 `css` 变量。
