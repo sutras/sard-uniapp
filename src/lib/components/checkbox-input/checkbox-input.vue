@@ -173,6 +173,7 @@ const onClear = () => {
   inputValue.value = ''
   innerValue.value = undefined
   emit('update:model-value', undefined)
+  emit('change', undefined)
 }
 
 // visible

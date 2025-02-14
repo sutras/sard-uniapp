@@ -22,11 +22,12 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { getRegionData } from 'region-data'
+import { type CascaderOption } from 'sard-uniapp'
 
 const regionData = getRegionData()
 const value = ref<number | undefined>(150102)
 
-const onChange = (value: any) => {
-  console.log('change', value)
+const onChange = (value: any, selectedOptions: CascaderOption[]) => {
+  console.log('change', value, selectedOptions)
 }
 </script>
