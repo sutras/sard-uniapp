@@ -19,7 +19,7 @@ export interface CascaderInputSlots {
 
 export interface CascaderInputEmits {
   (e: 'update:visible', visible: boolean): void
-  (e: 'update:model-value', value: any): void
-  (e: 'change', value: any): void
+  (e: 'update:model-value', value: any, selectedOptions: CascaderOption[]): void
+  (e: 'change', value: any, selectedOptions: CascaderOption[]): void
   (e: 'select', option: CascaderOption, tabIndex: number): void
 }

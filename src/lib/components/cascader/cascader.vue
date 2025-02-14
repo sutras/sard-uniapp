@@ -138,7 +138,7 @@ const updateTabs = () => {
           selected: option,
         }
 
-        nextOptions = option.children
+        nextOptions = option[mergedFieldKeys.value.children]
 
         return tab
       })

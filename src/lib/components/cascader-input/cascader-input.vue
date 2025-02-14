@@ -90,13 +90,15 @@ watch(
 )
 
 const popoutValue = ref(props.modelValue)
+const popoutOptions = ref<CascaderOption[]>([])
 
 watch(innerValue, () => {
   popoutValue.value = innerValue.value
 })
 
-const onChange = (value: any) => {
+const onChange = (value: any, selectedOptions: CascaderOption[]) => {
   popoutValue.value = value
+  popoutOptions.value = selectedOptions
 
   if (!props.showConfirm && !isNullish(popoutValue.value)) {
     onConfirm()
@@ -106,8 +108,8 @@ const onChange = (value: any) => {
 
 const onConfirm = () => {
   innerValue.value = popoutValue.value
-  emit('update:model-value', popoutValue.value)
-  emit('change', popoutValue.value)
+  emit('update:model-value', popoutValue.value, popoutOptions.value)
+  emit('change', popoutValue.value, popoutOptions.value)
 
   inputValue.value = getInputValue()
 }
@@ -166,7 +168,8 @@ watch(
 const onClear = () => {
   inputValue.value = ''
   innerValue.value = undefined
-  emit('update:model-value', undefined)
+  emit('update:model-value', undefined, [])
+  emit('change', undefined, [])
 }
 
 // visible
