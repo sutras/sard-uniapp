@@ -18,7 +18,7 @@ group:
 ```html
 <!-- App.vue -->
 <style lang="scss">
-  @import 'sard-uniapp/index.scss';
-  @import 'sard-uniapp/dark.scss';
+  @use 'sard-uniapp/index.scss';
+  @use 'sard-uniapp/dark.scss';
 </style>
 ```

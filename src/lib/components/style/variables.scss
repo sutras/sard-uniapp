@@ -18,17 +18,17 @@ page {
   --sar-black: #{$sar-black};
 
   // # 灰度值 rgb
-  --sar-white-rgb: #{extractRGB($sar-white)};
-  --sar-gray-100-rgb: #{extractRGB($sar-gray-100)};
-  --sar-gray-200-rgb: #{extractRGB($sar-gray-200)};
-  --sar-gray-300-rgb: #{extractRGB($sar-gray-300)};
-  --sar-gray-400-rgb: #{extractRGB($sar-gray-400)};
-  --sar-gray-500-rgb: #{extractRGB($sar-gray-500)};
-  --sar-gray-600-rgb: #{extractRGB($sar-gray-600)};
-  --sar-gray-700-rgb: #{extractRGB($sar-gray-700)};
-  --sar-gray-800-rgb: #{extractRGB($sar-gray-800)};
-  --sar-gray-900-rgb: #{extractRGB($sar-gray-900)};
-  --sar-black-rgb: #{extractRGB($sar-black)};
+  --sar-white-rgb: #{hex-to-rgb($sar-white)};
+  --sar-gray-100-rgb: #{hex-to-rgb($sar-gray-100)};
+  --sar-gray-200-rgb: #{hex-to-rgb($sar-gray-200)};
+  --sar-gray-300-rgb: #{hex-to-rgb($sar-gray-300)};
+  --sar-gray-400-rgb: #{hex-to-rgb($sar-gray-400)};
+  --sar-gray-500-rgb: #{hex-to-rgb($sar-gray-500)};
+  --sar-gray-600-rgb: #{hex-to-rgb($sar-gray-600)};
+  --sar-gray-700-rgb: #{hex-to-rgb($sar-gray-700)};
+  --sar-gray-800-rgb: #{hex-to-rgb($sar-gray-800)};
+  --sar-gray-900-rgb: #{hex-to-rgb($sar-gray-900)};
+  --sar-black-rgb: #{hex-to-rgb($sar-black)};
 
   // # 基础颜色
   --sar-blue: #{$sar-blue};
@@ -43,16 +43,16 @@ page {
   --sar-cyan: #{$sar-cyan};
 
   // # 基础颜色 rgb
-  --sar-blue-rgb: #{extractRGB($sar-blue)};
-  --sar-indigo-rgb: #{extractRGB($sar-indigo)};
-  --sar-purple-rgb: #{extractRGB($sar-purple)};
-  --sar-pink-rgb: #{extractRGB($sar-pink)};
-  --sar-red-rgb: #{extractRGB($sar-red)};
-  --sar-orange-rgb: #{extractRGB($sar-orange)};
-  --sar-yellow-rgb: #{extractRGB($sar-yellow)};
-  --sar-green-rgb: #{extractRGB($sar-green)};
-  --sar-teal-rgb: #{extractRGB($sar-teal)};
-  --sar-cyan-rgb: #{extractRGB($sar-cyan)};
+  --sar-blue-rgb: #{hex-to-rgb($sar-blue)};
+  --sar-indigo-rgb: #{hex-to-rgb($sar-indigo)};
+  --sar-purple-rgb: #{hex-to-rgb($sar-purple)};
+  --sar-pink-rgb: #{hex-to-rgb($sar-pink)};
+  --sar-red-rgb: #{hex-to-rgb($sar-red)};
+  --sar-orange-rgb: #{hex-to-rgb($sar-orange)};
+  --sar-yellow-rgb: #{hex-to-rgb($sar-yellow)};
+  --sar-green-rgb: #{hex-to-rgb($sar-green)};
+  --sar-teal-rgb: #{hex-to-rgb($sar-teal)};
+  --sar-cyan-rgb: #{hex-to-rgb($sar-cyan)};
 
   // # 主题色
   --sar-primary: var(--sar-blue);

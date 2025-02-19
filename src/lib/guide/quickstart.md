@@ -117,7 +117,7 @@ import 'sard-uniapp/global.d.ts
 ```html
 <!-- App.vue -->
 <style lang="scss">
-  @import 'sard-uniapp/index.scss';
+  @use 'sard-uniapp/index.scss';
 </style>
 ```
 
@@ -128,7 +128,7 @@ import 'sard-uniapp/global.d.ts
 ```html
 <!-- App.vue -->
 <style lang="scss">
-  @import '@/uni_modules/sard-uniapp/index.scss';
+  @use '@/uni_modules/sard-uniapp/index.scss';
 </style>
 ```
 

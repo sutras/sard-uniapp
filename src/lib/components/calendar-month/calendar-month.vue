@@ -217,5 +217,5 @@ const onDayClick = (day: CalendarDay) => {
 </script>
 
 <style lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>

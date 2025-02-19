@@ -1,4 +1,5 @@
 @use 'sass:list';
+@use 'sass:map';
 @use '../style/base' as *;
 
 $sar-tag-sizes: (
@@ -53,9 +54,9 @@ $sar-tag-sizes: (
   // 尺寸
   @each $size, $value in $sar-tag-sizes {
     @include m($size) {
-      padding: map-get($value, padding);
-      font-size: map-get($value, font-size);
-      border-radius: map-get($value, border-radius);
+      padding: map.get($value, padding);
+      font-size: map.get($value, font-size);
+      border-radius: map.get($value, border-radius);
     }
   }
 

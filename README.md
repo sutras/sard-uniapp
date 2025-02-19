@@ -114,7 +114,7 @@ npm run release
 - 提交
 - 给提交打标签
 - 运行 `npm run buildAndRelease` 打包组件库并发布到 npm
-- 发布到 uniapp 插件市场
+- 使用 HBuilderX 发布到 uniapp 插件市场
 - 运行 `npm run push` 推送代码和标签
 - 运行 `npm run build:site` 打包文档（如果文档有修改）
 - 运行 `npm run deploy` 部署文档（如果文档有修改）

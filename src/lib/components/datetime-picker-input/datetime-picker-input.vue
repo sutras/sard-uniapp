@@ -108,8 +108,11 @@ const maxDate = computed(() => {
 })
 
 const onConfirm = () => {
-  if (isNullish(popoutValue.value)) {
-    popoutValue.value = getInitialValue(minDate.value, maxDate.value)
+  if (!popoutValue.value) {
+    const initialValue = getInitialValue(minDate.value, maxDate.value)
+    popoutValue.value = props.valueFormat
+      ? formatDate(initialValue, props.valueFormat)
+      : initialValue
   }
 
   innerValue.value = popoutValue.value

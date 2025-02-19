@@ -1,3 +1,12 @@
+## [1.10.2](https://github.com/sutras/sard-uniapp/compare/v1.10.1...v1.10.2) (2025-02-19)
+
+
+### Bug Fixes
+
+* 修复 cascader, cascader-input 组件 ([e964e40](https://github.com/sutras/sard-uniapp/commit/e964e400452e873713a95b9a07cbe4e1459113cc))
+
+
+
 ## [1.10.1](https://github.com/sutras/sard-uniapp/compare/v1.10.0...v1.10.1) (2025-01-08)
 
 
