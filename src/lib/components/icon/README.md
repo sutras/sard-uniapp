@@ -61,7 +61,7 @@ import Icon from 'sard-uniapp/components/icon/icon.vue'
 
 ```html
 <style lang="scss">
-  @import './demo-icons.css';
+  @use './demo-icons.css';
 </style>
 ```
 

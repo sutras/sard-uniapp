@@ -82,5 +82,5 @@ const wrapperStyle = computed(() => {
 </script>
 
 <style lang="scss">
-@import './index.scss';
+@use './index.scss';
 </style>

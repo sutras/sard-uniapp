@@ -3,8 +3,8 @@
     <view v-for="(translateY, index) in offset" :key="index" class="reel-box">
       <view class="reel" :style="{ transform: `translateY(${translateY}%)` }">
         <view
-          v-for="prize in renderedPrizes"
-          :key="prize.id"
+          v-for="(prize, index) in renderedPrizes"
+          :key="index"
           class="prize-item"
         >
           <view class="prize-icon">

@@ -2,7 +2,7 @@
   "id": "sard-uniapp",
   "name": "sard-uniapp",
   "displayName": "sard-uniapp",
-  "version": "1.10.2",
+  "version": "1.10.3",
   "description": "sard-uniapp 是一套基于 Uniapp + Vue3 框架开发的兼容多端的 UI 组件库",
   "main": "index.js",
   "scripts": {
@@ -116,7 +116,7 @@
     "prettier": "^2.8.8",
     "region-data": "^1.2.3",
     "sard-cli": "^1.0.9",
-    "sass": "^1.49.11",
+    "sass": "^1.85.0",
     "tel-area-code": "^1.0.1",
     "ts-custom-error": "^3.3.1",
     "tsx": "^4.19.2",
