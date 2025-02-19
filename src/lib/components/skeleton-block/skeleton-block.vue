@@ -42,5 +42,5 @@ const skeletonBlockStyle = computed(() => {
 </script>
 
 <style lang="scss">
-@use './index.scss';
+@import './index.scss';
 </style>

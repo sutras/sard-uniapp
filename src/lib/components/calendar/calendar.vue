@@ -67,12 +67,15 @@
     type="compact"
     @confirm="onPickerConfirm"
   >
-    <sar-datetime-picker
-      type="yM"
-      v-model="pickerValue"
-      :min="minDate"
-      :max="maxDate"
-    />
+    <template #visible="{ already }">
+      <sar-datetime-picker
+        v-if="already"
+        type="yM"
+        v-model="pickerValue"
+        :min="minDate"
+        :max="maxDate"
+      />
+    </template>
   </sar-popout>
 </template>
 
@@ -385,5 +388,5 @@ const calendarStyle = computed(() => {
 </script>
 
 <style lang="scss">
-@use './index.scss';
+@import './index.scss';
 </style>

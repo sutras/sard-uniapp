@@ -20,6 +20,19 @@ group:
 npm install sass -D
 ```
 
+@info
+为了消除可能的控制台警告信息，可以安装 `sass@1.69.7` 及以下版本。
+
+```bash
+Deprecation Warning [import]: Sass @import rules are deprecated and will be removed in Dart Sass 3.0.0.
+```
+
+```bash
+DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
+```
+
+@endinfo
+
 #### 安装 sard-uniapp
 
 ```bash
@@ -108,6 +121,19 @@ export default defineConfig({
 import 'sard-uniapp/global.d.ts
 ```
 
+### 配置 `mp-alipay` 端样式隔离方式
+
+`sard-uniapp` 组件样式隔离方式需要设置为 `shared`，默认情况下，`uniapp` 编译到 `mp-alipay` 时并不会在组件配置文件中设置 `"styleIsolation": "shared"`，而是需要在 `manifest.json` 文件中进行配置：
+
+```json
+// manifest.json
+{
+  "mp-alipay": {
+    "styleIsolation": "shared"
+  }
+}
+```
+
 ## 引入全局样式
 
 全局样式文件定义了所有组件共用的一些 `css` 变量。
@@ -117,7 +143,7 @@ import 'sard-uniapp/global.d.ts
 ```html
 <!-- App.vue -->
 <style lang="scss">
-  @use 'sard-uniapp/index.scss';
+  @import 'sard-uniapp/index.scss';
 </style>
 ```
 
@@ -128,7 +154,7 @@ import 'sard-uniapp/global.d.ts
 ```html
 <!-- App.vue -->
 <style lang="scss">
-  @use '@/uni_modules/sard-uniapp/index.scss';
+  @import '@/uni_modules/sard-uniapp/index.scss';
 </style>
 ```
 

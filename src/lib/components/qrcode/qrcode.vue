@@ -118,7 +118,9 @@ const drawQrcodeInOthers = () => {
   const margin = moduleSize * props.quietZoneModules
   const context = canvas.getContext('2d') as CanvasRenderingContext2D
 
-  const path2D = (canvas as any).createPath2D
+  const path2D = (context as any).createPath2D
+    ? (context as any).createPath2D()
+    : (canvas as any).createPath2D
     ? (canvas as any).createPath2D()
     : new Path2D()
 
@@ -193,5 +195,5 @@ const qrcodeStyle = computed(() => {
 </script>
 
 <style lang="scss">
-@use './index.scss';
+@import './index.scss';
 </style>

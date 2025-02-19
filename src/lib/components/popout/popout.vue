@@ -18,15 +18,16 @@
             :loading="loading.cancel"
             @click="onCancel"
           >
-            <slot name="cancel">
-              {{ cancelText || t('cancel') }}
-            </slot>
+            <template v-if="cancelText">{{ cancelText }}</template>
+            <slot v-else-if="$slots.cancel" name="cancel"></slot>
+            <template v-else>{{ t('cancel') }}</template>
           </sar-button>
         </view>
         <view :class="bem.e('title')">
-          <slot name="title">
+          <template v-if="title">
             <text :class="bem.e('title-text')">{{ title }}</text>
-          </slot>
+          </template>
+          <slot v-else-if="$slots.title" name="title"></slot>
         </view>
         <view v-if="type === 'compact'" :class="bem.e('button-wrap')">
           <sar-button
@@ -37,9 +38,9 @@
             :disabled="confirmDisabled"
             @click="onConfirm"
           >
-            <slot name="confirm">
-              {{ confirmText || t('confirm') }}
-            </slot>
+            <template v-if="confirmText">{{ confirmText }}</template>
+            <slot v-else-if="$slots.confirm" name="confirm"></slot>
+            <template v-else>{{ t('confirm') }}</template>
           </sar-button>
         </view>
         <view
@@ -63,9 +64,9 @@
           :loading="loading.cancel"
           @click="onCancel"
         >
-          <slot name="cancel">
-            {{ cancelText || t('cancel') }}
-          </slot>
+          <template v-if="cancelText">{{ cancelText }}</template>
+          <slot v-else-if="$slots.cancel" name="cancel"></slot>
+          <template v-else>{{ t('cancel') }}</template>
         </sar-button>
         <sar-button
           v-if="showConfirm"
@@ -76,9 +77,9 @@
           :disabled="confirmDisabled"
           @click="onConfirm"
         >
-          <slot name="confirm">
-            {{ confirmText || t('confirm') }}
-          </slot>
+          <template v-if="confirmText">{{ confirmText }}</template>
+          <slot v-else-if="$slots.confirm" name="confirm"></slot>
+          <template v-else>{{ t('confirm') }}</template>
         </sar-button>
       </view>
     </view>
@@ -214,5 +215,5 @@ const popoutStyle = computed(() => {
 </script>
 
 <style lang="scss">
-@use './index.scss';
+@import './index.scss';
 </style>

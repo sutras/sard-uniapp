@@ -50,6 +50,7 @@
     border-width: 0;
     font-size: var(--sar-input-control-font-size);
     line-height: var(--sar-input-control-line-height);
+    background-color: transparent;
 
     @include m(input) {
       height: var(--sar-input-control-input-height);

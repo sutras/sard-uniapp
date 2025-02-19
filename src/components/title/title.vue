@@ -18,7 +18,7 @@ const bem = createBem('title')
 </script>
 
 <style lang="scss">
-@use '@/style/index.scss' as *;
+@import '@/style/index.scss';
 
 @include bem(title) {
   @include b() {

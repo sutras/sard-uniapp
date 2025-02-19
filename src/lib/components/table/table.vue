@@ -71,7 +71,7 @@ onMounted(() => {
   nextTick(setTableRect)
 })
 
-uni.onWindowResize(setTableRect)
+uni.onWindowResize?.(setTableRect)
 
 // fixed row
 const fixedRow = computed(() => {
