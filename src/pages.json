@@ -696,7 +696,10 @@
     "backgroundColor": "@bgColor",
     "backgroundTextStyle": "@bgTxtStyle",
     "backgroundColorTop": "@bgColorTop",
-    "backgroundColorBottom": "@bgColorBottom"
+    "backgroundColorBottom": "@bgColorBottom",
+    "mp-alipay": {
+      "allowsBounceVertical": "NO"
+    }
   },
   "easycom": {
     "custom": {

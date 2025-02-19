@@ -54,6 +54,7 @@
         @keyboardheightchange="onKeyboardheightchange"
         :auto-height="autoHeight"
         :style="controlStyle"
+        :show-count="false"
       />
       <input
         v-else
@@ -297,5 +298,5 @@ const mergedPlaceholderStyle = computed(() => {
 </script>
 
 <style lang="scss">
-@use './index.scss';
+@import './index.scss';
 </style>

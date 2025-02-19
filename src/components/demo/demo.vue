@@ -34,7 +34,7 @@ const bem = createBem('demo')
 </script>
 
 <style lang="scss">
-@use '@/style/index.scss' as *;
+@import '@/style/index.scss';
 
 @include bem(demo) {
   @include b() {
