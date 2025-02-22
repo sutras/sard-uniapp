@@ -3,6 +3,7 @@ dist/
 docs/
 uni_modules/
 changelog.md
+CHANGELOG.md
 lwa.slim.js
 pnpm-lock.yaml
 pnpm-workspace.yaml

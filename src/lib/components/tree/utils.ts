@@ -1,4 +1,4 @@
-import { TreeStateNode } from './common'
+import { type TreeStateNode } from './common'
 
 export function recurDescendant(
   node: TreeStateNode,

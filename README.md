@@ -40,6 +40,10 @@
 
 本项目基于 [MIT](https://zh.wikipedia.org/wiki/MIT%E8%A8%B1%E5%8F%AF%E8%AD%89) 协议，请自由地享受和参与开源。
 
+## 更新日志
+
+<a href="https://github.com/sutras/sard-uniapp/blob/main/CHANGELOG.md">更新日志</a>
+
 ## 如何维护
 
 ### 克隆仓库到本地
@@ -110,14 +114,16 @@ npm run release
 - 修复问题
 - 测试
 - 修改版本号
-- 暂存
-- 提交
-- 给提交打标签
-- 运行 `npm run buildAndRelease` 打包组件库并发布到 npm
+- 暂存、提交 `git commit -a -m 'fix: '`
+- 给提交打标签 `npm run tag`
+- 生成 changelog `npm run changelog`
+- 暂存、提交 changelog `git commit -a -m 'chore: changelog'`
+- 打包组件库 `npm run build`
+- 发布到 npm `npm run release`
 - 使用 HBuilderX 发布到 uniapp 插件市场
-- 运行 `npm run push` 推送代码和标签
-- 运行 `npm run build:site` 打包文档（如果文档有修改）
-- 运行 `npm run deploy` 部署文档（如果文档有修改）
+- 推送代码和标签 `npm run push`
+- 打包文档（如果文档有修改）`npm run build:site`
+- 部署文档（如果文档有修改）`npm run deploy`
 - 更新 gitee 上的文档（如果文档有修改）
 
 ## 新增组件流程
@@ -128,7 +134,7 @@ npm run release
 - 编写组件文档
 - 编写测试用例
 - 使用实际项目本地安装测试 `pnpm link ../sard-uniapp`
-- 从上面的“修复问题流程”第三部“修改版本号”开始走一遍
+- 从上面的“修复问题流程”第三个步骤“修改版本号”开始走一遍
 
 ## 打包安卓包流程
 
