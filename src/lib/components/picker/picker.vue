@@ -66,26 +66,32 @@ const columnsType = computed(() => {
 
 const innerValue = ref(props.modelValue)
 
-const columnIndexes = ref(
-  getIndexesByValue(toArray(innerValue.value), props.columns, fieldKeys.value),
-)
-
 watch(
   () => props.modelValue,
   () => {
     innerValue.value = props.modelValue
+  },
+)
 
-    if (!isNullish(props.modelValue) && props.modelValue !== '') {
+// columnIndexes
+const columnIndexes = ref<number[]>([])
+
+watch(
+  [innerValue, () => props.columns, fieldKeys],
+  () => {
+    if (!isNullish(innerValue.value) && innerValue.value !== '') {
       const indexes = getIndexesByValue(
-        toArray(props.modelValue),
+        toArray(innerValue.value),
         props.columns,
         fieldKeys.value,
       )
-
       if (!arrayEqual(indexes, columnIndexes.value)) {
         columnIndexes.value = indexes
       }
     }
+  },
+  {
+    immediate: true,
   },
 )
 
@@ -148,6 +154,7 @@ const onChange = (event: any) => {
   emit('change', nextValue, selectedOptions, indexes)
 }
 
+// renderedColumns
 const getRenderedColumns = () => {
   switch (columnsType.value) {
     case 'single':
