@@ -127,10 +127,10 @@ const toDate = (date: Date | string) => {
 
 const normalizeValue = (value: Date | string | undefined | null) => {
   const date = value ? toDate(value) : new Date()
-  return date.getTime() < minDate.value.getTime()
-    ? minDate.value
-    : date.getTime() > maxDate.value.getTime()
-    ? maxDate.value
+  return date < minDate.value
+    ? new Date(minDate.value)
+    : date > maxDate.value
+    ? new Date(maxDate.value)
     : date
 }
 
@@ -163,6 +163,27 @@ watch(
   },
 )
 
+const emitChange = () => {
+  const emitValue = props.valueFormat
+    ? formatDate(innerValue.value, props.valueFormat)
+    : innerValue.value
+
+  currentEmitValue = emitValue
+
+  emit('update:model-value', emitValue)
+  emit('change', emitValue)
+}
+
+watch([minDate, maxDate], () => {
+  const value = normalizeValue(innerValue.value)
+
+  innerValue.value = value
+  updateColumns(value)
+  if (value !== innerValue.value) {
+    emitChange()
+  }
+})
+
 const pickerValue = computed(() => {
   return innerType.value.map((letter) => {
     return strategies[letter][4](innerValue.value)
@@ -179,15 +200,7 @@ const columns = ref(createColumnData(innerType.value, innerValue.value))
 const onChange = (value: number[]) => {
   const nextValue = getDateByPickerValue(value)
   innerValue.value = nextValue
-
-  const emitValue = props.valueFormat
-    ? formatDate(nextValue, props.valueFormat)
-    : nextValue
-
-  currentEmitValue = emitValue
-
   updateColumns(nextValue)
-  emit('update:model-value', emitValue)
-  emit('change', emitValue)
+  emitChange()
 }
 </script>
