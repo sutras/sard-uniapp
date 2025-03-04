@@ -162,6 +162,18 @@
       }
     },
     {
+      "path": "pages/components/datetime-range-picker-input/index",
+      "style": {
+        "navigationBarTitleText": "DatetimeRangePickerInput 日期时间范围输入框"
+      }
+    },
+    {
+      "path": "pages/components/datetime-range-picker/index",
+      "style": {
+        "navigationBarTitleText": "DatetimeRangePicker 日期时间范围选择器"
+      }
+    },
+    {
       "path": "pages/components/dialog/index",
       "style": {
         "navigationBarTitleText": "Dialog 对话框"

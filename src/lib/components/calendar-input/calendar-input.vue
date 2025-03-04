@@ -138,9 +138,10 @@ function getOutletText(
   }
 
   if (type === 'range') {
-    return `${getOutletTextMayByStr((date as string[] | Date[])[0])} ${t(
-      'to',
-    )} ${getOutletTextMayByStr((date as string[] | Date[])[1])}`
+    return [
+      getOutletTextMayByStr((date as string[] | Date[])[0]),
+      getOutletTextMayByStr((date as string[] | Date[])[1]),
+    ].join(` ${t('to')} `)
   }
 
   if (type === 'multiple') {

@@ -22,6 +22,8 @@ declare module 'vue' {
     SarCountTo: typeof import('./components/count-to/count-to.vue').default
     SarDatetimePicker: typeof import('./components/datetime-picker/datetime-picker.vue').default
     SarDatetimePickerInput: typeof import('./components/datetime-picker-input/datetime-picker-input.vue').default
+    SarDatetimeRangePicker: typeof import('./components/datetime-range-picker/datetime-range-picker.vue').default
+    SarDatetimeRangePickerInput: typeof import('./components/datetime-range-picker-input/datetime-range-picker-input.vue').default
     SarDialog: typeof import('./components/dialog/dialog.vue').default
     SarDialogAgent: typeof import('./components/dialog-agent/dialog-agent.vue').default
     SarDropdown: typeof import('./components/dropdown/dropdown.vue').default

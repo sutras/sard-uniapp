@@ -28,6 +28,9 @@ export default {
     m: '',
     s: '',
   },
+  datetimeRangePickerInput: {
+    to: 'to',
+  },
   dialog: {
     confirm: 'Ok',
     cancel: 'Cancel',

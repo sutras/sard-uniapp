@@ -28,6 +28,9 @@ export default {
     m: '分',
     s: '秒',
   },
+  datetimeRangePickerInput: {
+    to: '至',
+  },
   dialog: {
     confirm: '确定',
     cancel: '取消',
