@@ -39,6 +39,14 @@
           placeholder="Pick a time"
         />
       </sar-form-item>
+      <sar-form-item label="Active date range">
+        <sar-datetime-range-picker-input
+          v-model="form.date3"
+          type="hms"
+          :tabs="['start', 'end']"
+          placeholder="Pick a time"
+        />
+      </sar-form-item>
       <sar-form-item label="Instant delivery">
         <sar-switch v-model="form.delivery" />
       </sar-form-item>
@@ -93,6 +101,7 @@ const form = reactive({
   region: '',
   date1: undefined,
   date2: undefined,
+  date3: undefined,
   delivery: false,
   type: [],
   resource: '',

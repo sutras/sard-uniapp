@@ -19,7 +19,7 @@
     @visible-hook="onVisibleHook"
   >
     <template #visible="{ already }">
-      <sar-datetime-picker
+      <sar-datetime-range-picker
         v-if="already"
         :model-value="popoutValue"
         @change="onChange"
@@ -29,30 +29,32 @@
         :filter="filter"
         :formatter="formatter"
         :value-format="valueFormat"
+        :tabs="tabs"
       />
     </template>
   </sar-popout>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue'
+import { computed, ref, watch } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarPopout from '../popout/popout.vue'
-import SarDatetimePicker from '../datetime-picker/datetime-picker.vue'
+import SarDatetimeRangePicker from '../datetime-range-picker/datetime-range-picker.vue'
 import { formatDate, isNullish, isString, parseDate, toDate } from '../../utils'
 import { TransitionHookName } from '../../use'
 import {
   getInitialValue,
-  getMinDate,
   getMaxDate,
+  getMinDate,
 } from '../datetime-picker/common'
 import {
-  type DatetimePickerInputProps,
-  type DatetimePickerInputEmits,
-  defaultDatetimePickerInputProps,
-  mapTypeFormat,
+  type DatetimeRangePickerInputProps,
+  type DatetimeRangePickerInputEmits,
+  defaultDatetimeRangePickerInputProps,
 } from './common'
+import { mapTypeFormat } from '../datetime-picker-input/common'
 import { useFormItemContext } from '../form/common'
+import { useTranslate } from '../locale'
 
 defineOptions({
   options: {
@@ -62,11 +64,11 @@ defineOptions({
 })
 
 const props = withDefaults(
-  defineProps<DatetimePickerInputProps>(),
-  defaultDatetimePickerInputProps(),
+  defineProps<DatetimeRangePickerInputProps>(),
+  defaultDatetimeRangePickerInputProps(),
 )
 
-const emit = defineEmits<DatetimePickerInputEmits>()
+const emit = defineEmits<DatetimeRangePickerInputEmits>()
 
 // main
 const formItemContext = useFormItemContext()
@@ -86,7 +88,7 @@ watch(
 
 const popoutValue = ref(props.modelValue)
 
-const onChange = (value: Date | string) => {
+const onChange = (value: (Date | string)[]) => {
   popoutValue.value = value
 }
 
@@ -105,16 +107,18 @@ const minDate = computed(() =>
 )
 
 const maxDate = computed(() => {
-  const maxDate = toDate(props.max || getMaxDate())
+  const maxDate = toDate(props.max || getMaxDate(), props.valueFormat)
   return maxDate < minDate.value ? new Date(minDate.value) : maxDate
 })
 
 const onConfirm = () => {
   if (!popoutValue.value) {
     const initialValue = getInitialValue(minDate.value, maxDate.value)
-    popoutValue.value = props.valueFormat
+    const singleValue = props.valueFormat
       ? formatDate(initialValue, props.valueFormat)
       : initialValue
+
+    popoutValue.value = [singleValue, singleValue]
   }
 
   innerValue.value = popoutValue.value
@@ -127,22 +131,34 @@ const onConfirm = () => {
 // input
 const inputValue = ref('')
 
-function getOutletText(value: Date | string) {
-  if (isString(value) && props.valueFormat) {
-    value = parseDate(value, props.valueFormat)
+const { t } = useTranslate('datetimeRangePickerInput')
+
+function getOutletTextMayByStr(date: string | Date) {
+  if (isString(date) && props.valueFormat) {
+    date = parseDate(date, props.valueFormat)
   }
-  if (value instanceof Date) {
+  if (date instanceof Date) {
     return formatDate(
-      value,
+      date,
       props.outletFormat ||
         mapTypeFormat[props.type as keyof typeof mapTypeFormat],
     )
   }
-  return value
+  return date
+}
+
+function getOutletText(value: (Date | string)[]) {
+  return [
+    getOutletTextMayByStr(value[0]),
+    getOutletTextMayByStr(value[1]),
+  ].join(` ${t('to')} `)
 }
 
 function getInputValue() {
-  if (!innerValue.value) {
+  if (
+    !innerValue.value ||
+    (Array.isArray(innerValue.value) && innerValue.value.length === 0)
+  ) {
     return ''
   }
   return getOutletText(innerValue.value)

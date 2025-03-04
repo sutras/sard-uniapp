@@ -156,6 +156,14 @@ export function parseDate(value: string, format?: string) {
   return date
 }
 
+// 确保返回一个Date对象，如果传递字符串，则使用 parseDate 解析
+export function toDate(date: Date | string, valueFormat?: string) {
+  if (date instanceof Date) {
+    return date
+  }
+  return parseDate(date, valueFormat)
+}
+
 // 限定日期范围
 export function minmaxDate(date: Date, minDate: Date, maxDate: Date) {
   return new Date(minmax(date.getTime(), minDate.getTime(), maxDate.getTime()))

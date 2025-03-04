@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { classNames, formatDate, parseDate, stringifyStyle } from '../../utils'
+import { classNames, formatDate, stringifyStyle, toDate } from '../../utils'
 import SarPicker from '../picker/picker.vue'
 import {
   type DatetimePickerProps,
@@ -118,15 +118,8 @@ const getDateByPickerValue = (value: number[]) => {
   return date
 }
 
-const toDate = (date: Date | string) => {
-  if (date instanceof Date) {
-    return date
-  }
-  return parseDate(date, props.valueFormat)
-}
-
 const normalizeValue = (value: Date | string | undefined | null) => {
-  const date = value ? toDate(value) : new Date()
+  const date = value ? toDate(value, props.valueFormat) : new Date()
   return date < minDate.value
     ? new Date(minDate.value)
     : date > maxDate.value
@@ -139,10 +132,12 @@ const innerType = computed(() => {
   return props.type.split('') as DatetimeLetter[]
 })
 
-const minDate = computed(() => props.min || getMinDate())
+const minDate = computed(() =>
+  toDate(props.min || getMinDate(), props.valueFormat),
+)
 
 const maxDate = computed(() => {
-  const maxDate = props.max || getMaxDate()
+  const maxDate = toDate(props.max || getMaxDate())
   return maxDate < minDate.value ? new Date(minDate.value) : maxDate
 })
 
@@ -175,11 +170,12 @@ const emitChange = () => {
 }
 
 watch([minDate, maxDate], () => {
+  const oldDate = toDate(innerValue.value, props.valueFormat)
   const value = normalizeValue(innerValue.value)
 
   innerValue.value = value
   updateColumns(value)
-  if (value !== innerValue.value) {
+  if (value.getTime() !== oldDate.getTime()) {
     emitChange()
   }
 })
@@ -198,6 +194,8 @@ let maxValues: number[] = []
 const columns = ref(createColumnData(innerType.value, innerValue.value))
 
 const onChange = (value: number[]) => {
+  // 快速滑动有概率得到undefine，需要确保为数值
+  value = value.map((item) => item || 0)
   const nextValue = getDateByPickerValue(value)
   innerValue.value = nextValue
   updateColumns(nextValue)

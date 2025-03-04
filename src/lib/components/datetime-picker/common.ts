@@ -6,8 +6,8 @@ export interface DatetimePickerProps {
   rootStyle?: StyleValue
   rootClass?: string
   type?: string
-  min?: Date
-  max?: Date
+  min?: Date | string
+  max?: Date | string
   modelValue?: Date | string
   filter?: (
     letter: DatetimeLetter,

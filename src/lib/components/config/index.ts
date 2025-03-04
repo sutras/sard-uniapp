@@ -106,6 +106,12 @@ export const defaultConfig = {
   datetimePickerInput: {
     validateEvent: true,
   },
+  datetimeRangePicker: {
+    type: 'yMd',
+  },
+  datetimeRangePickerInput: {
+    validateEvent: true,
+  },
   dialog: {
     headed: true,
     buttonType: 'round' as DialogProps['buttonType'],

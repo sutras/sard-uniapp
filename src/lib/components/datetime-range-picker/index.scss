@@ -1,0 +1,26 @@
+@use '../style/base' as *;
+
+@include bem(datetime-range-picker) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(container) {
+    @include universal;
+    overflow: hidden;
+  }
+
+  @include e(wrapper) {
+    @include universal;
+    width: 100%;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    transition: transform var(--sar-cascader-wrapper-duration);
+  }
+
+  @include e(pane) {
+    @include universal;
+    width: 100%;
+    flex: none;
+  }
+}

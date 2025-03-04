@@ -65,6 +65,14 @@
         "name": "datetime-picker-input"
       },
       {
+        "title": "DatetimeRangePicker 日期时间范围选择器",
+        "name": "datetime-range-picker"
+      },
+      {
+        "title": "DatetimeRangePickerInput 日期时间范围输入框",
+        "name": "datetime-range-picker-input"
+      },
+      {
         "title": "Form 表单",
         "name": "form"
       },
