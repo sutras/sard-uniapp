@@ -11,6 +11,10 @@
     <doc-demo title="绑定值的格式">
       <DemoValueFormat />
     </doc-demo>
+
+    <doc-demo title="min、max 联动">
+      <DemoRange />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -18,6 +22,7 @@
 import DemoBasic from './demo/Basic.vue'
 import DemoOutletFormat from './demo/OutletFormat.vue'
 import DemoValueFormat from './demo/ValueFormat.vue'
+import DemoRange from './demo/Range.vue'
 </script>
 
 <style lang="scss" scoped>

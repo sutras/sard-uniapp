@@ -76,19 +76,39 @@
     }
 
     // slide
-    @include m(slide-top-enter-from, slide-top-leave-to) {
+    @include m(
+      slide-top-enter-from,
+      slide-top-leave-to,
+      slide-top-keep,
+      slide-top-after-leave-keep
+    ) {
       transform: translate3d(0, -100%, 0);
     }
 
-    @include m(slide-right-enter-from, slide-right-leave-to) {
+    @include m(
+      slide-right-enter-from,
+      slide-right-leave-to,
+      slide-right-keep,
+      slide-right-after-leave-keep
+    ) {
       transform: translate3d(100%, 0, 0);
     }
 
-    @include m(slide-bottom-enter-from, slide-bottom-leave-to) {
+    @include m(
+      slide-bottom-enter-from,
+      slide-bottom-leave-to,
+      slide-bottom-keep,
+      slide-bottom-after-leave-keep
+    ) {
       transform: translate3d(0, 100%, 0);
     }
 
-    @include m(slide-left-enter-from, slide-left-leave-to) {
+    @include m(
+      slide-left-enter-from,
+      slide-left-leave-to,
+      slide-left-keep,
+      slide-left-after-leave-keep
+    ) {
       transform: translate3d(-100%, 0, 0);
     }
 

@@ -37,6 +37,14 @@ import DatetimePickerInput from 'sard-uniapp/components/datetime-picker-input/da
 
 @code('${DEMO_PATH}/datetime-picker-input/demo/ValueFormat.vue')
 
+### min、max 联动
+
+可以通过 `min` 和 `max` 属性使两个选择器联动。
+
+选择日期时间范围，使用 `DatetimeRangePickerInput` 是更好的选择。
+
+@code('${DEMO_PATH}/datetime-picker-input/demo/Range.vue')
+
 ## API
 
 ### DatetimePickerInputProps

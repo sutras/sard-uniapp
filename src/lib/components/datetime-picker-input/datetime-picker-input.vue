@@ -12,6 +12,7 @@
   <sar-popout
     :root-class="rootClass"
     :root-style="rootStyle"
+    keep-render
     :visible="innerVisible"
     @update:visible="onVisible"
     :title="title ?? placeholder"
@@ -107,6 +108,27 @@ const minDate = computed(() =>
 const maxDate = computed(() => {
   const maxDate = toDate(props.max || getMaxDate())
   return maxDate < minDate.value ? new Date(minDate.value) : maxDate
+})
+
+const normalizeValue = (value: Date | string | undefined | null) => {
+  const date = value ? toDate(value, props.valueFormat) : new Date()
+  return date < minDate.value
+    ? new Date(minDate.value)
+    : date > maxDate.value
+    ? new Date(maxDate.value)
+    : date
+}
+
+watch([minDate, maxDate], () => {
+  if (innerValue.value) {
+    const oldDate = toDate(innerValue.value, props.valueFormat)
+    const value = normalizeValue(innerValue.value)
+
+    if (value.getTime() !== oldDate.getTime()) {
+      popoutValue.value = value
+      onConfirm()
+    }
+  }
 })
 
 const onConfirm = () => {
