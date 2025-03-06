@@ -1,3 +1,12 @@
+## [1.11.1](https://github.com/sutras/sard-uniapp/compare/v1.11.0...v1.11.1) (2025-03-06)
+
+
+### Bug Fixes
+
+* 修复日期时间选择器min, max联动问题 ([81d9256](https://github.com/sutras/sard-uniapp/commit/81d9256c872b5711664abf1e8ff75de3b146f3da))
+
+
+
 # [1.11.0](https://github.com/sutras/sard-uniapp/compare/v1.10.4...v1.11.0) (2025-03-04)
 
 
