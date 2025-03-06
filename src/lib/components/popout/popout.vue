@@ -3,6 +3,7 @@
     effect="slide-bottom"
     :visible="visible"
     :duration="duration"
+    :keep-render="keepRender"
     @overlay-click="onOverlayClick"
     @before-enter="onBeforeEnter"
     @after-leave="onAfterLeave"

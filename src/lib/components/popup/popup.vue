@@ -20,7 +20,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, toRef } from 'vue'
+import { computed, reactive, ref, toRef } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import { type UseTransitionOptions, useTransition, useZIndex } from '../../use'
 import SarOverlay from '../overlay/overlay.vue'
@@ -52,6 +52,10 @@ const [zIndex, increaseZIndex] = useZIndex()
 
 const callVisibleHook = usePopupVisibleHookProvide()
 
+const keepRenderClass = ref(
+  props.keepRender ? bem.m(props.effect) + '-keep' : '',
+)
+
 const onVisibleHook: UseTransitionOptions['onVisibleHook'] = (name) => {
   callVisibleHook(name)
   emit('visible-hook', name)
@@ -59,6 +63,11 @@ const onVisibleHook: UseTransitionOptions['onVisibleHook'] = (name) => {
 
   if (name === 'before-enter') {
     increaseZIndex()
+  }
+
+  if (props.keepRender) {
+    keepRenderClass.value =
+      name === 'after-leave' ? bem.m(props.effect) + '-' + name + '-keep' : ''
   }
 }
 
@@ -82,13 +91,14 @@ const popupClass = computed(() => {
     bem.m(props.effect),
     props.rootClass,
     transitionClass.value,
+    keepRenderClass.value,
   )
 })
 
 const popupStyle = computed(() => {
   return stringifyStyle(props.rootStyle, {
     zIndex: zIndex.value,
-    display: realVisible.value ? 'flex' : 'none',
+    display: props.keepRender || realVisible.value ? 'flex' : 'none',
     transitionDuration: props.duration + 'ms',
   })
 })

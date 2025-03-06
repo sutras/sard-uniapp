@@ -19,6 +19,7 @@ export interface PopupProps {
   overlayStyle?: string
   background?: string
   transparent?: boolean
+  keepRender?: boolean
 }
 
 export const defaultPopupProps = defaultConfig.popup

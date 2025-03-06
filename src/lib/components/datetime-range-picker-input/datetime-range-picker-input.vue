@@ -12,6 +12,7 @@
   <sar-popout
     :root-class="rootClass"
     :root-style="rootStyle"
+    keep-render
     :visible="innerVisible"
     @update:visible="onVisible"
     :title="title ?? placeholder"

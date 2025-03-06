@@ -20,6 +20,7 @@ export interface PopoutProps {
   beforeClose?: (
     type: 'close' | 'cancel' | 'confirm',
   ) => boolean | undefined | Promise<any>
+  keepRender?: boolean
 }
 
 export const defaultPopoutProps = defaultConfig.popout
