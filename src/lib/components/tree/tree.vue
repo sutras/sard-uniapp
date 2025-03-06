@@ -1,6 +1,8 @@
 <template>
   <view :class="treeClass" :style="treeStyle">
-    <sar-tree-branch :nodes="treeData" />
+    <template v-for="(node, index) of treeData" :key="node.key">
+      <sar-tree-node v-if="node.visible" :index="index" :node="node" />
+    </template>
   </view>
 
   <sar-popover
@@ -51,7 +53,7 @@ import {
   treeContextSymbol,
   defaultTreeProps,
 } from './common'
-import SarTreeBranch from '../tree-branch/tree-branch.vue'
+import SarTreeNode from '../tree-node/tree-node.vue'
 import SarPopover from '../popover/popover.vue'
 import { usePopover } from '../popover'
 import SarInput from '../input/input.vue'
