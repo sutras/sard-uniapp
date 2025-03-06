@@ -1,3 +1,12 @@
+## [1.11.2](https://github.com/sutras/sard-uniapp/compare/v1.11.1...v1.11.2) (2025-03-06)
+
+
+### Bug Fixes
+
+* 修复tree组件递归引用问题 ([25c48b7](https://github.com/sutras/sard-uniapp/commit/25c48b7d57fd178ea9a08688757da41b1394d297))
+
+
+
 ## [1.11.1](https://github.com/sutras/sard-uniapp/compare/v1.11.0...v1.11.1) (2025-03-06)
 
 
