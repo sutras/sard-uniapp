@@ -68,10 +68,13 @@
     </view>
   </view>
 
-  <sar-tree-branch
-    v-if="!isLeaf && node.expanded"
-    :nodes="node.children || []"
-  />
+  <template
+    v-if="!isLeaf && node.expanded && node.children && node.children.length > 0"
+  >
+    <template v-for="(node, index) of node.children" :key="node.key">
+      <sar-tree-node v-if="node.visible" :index="index" :node="node" />
+    </template>
+  </template>
 
   <sar-popover
     v-if="treeContext.draggable"
@@ -103,7 +106,6 @@ import {
   treeContextSymbol,
 } from '../tree/common'
 import { useMouseDown, useSimulatedClick, useSimulatedPress } from '../../use'
-import SarTreeBranch from '../tree-branch/tree-branch.vue'
 import SarIcon from '../icon/icon.vue'
 import SarCheckbox from '../checkbox/checkbox.vue'
 import SarPopover from '../popover/popover.vue'
@@ -112,6 +114,7 @@ import { getNodeLevel, recurDescendant } from '../tree/utils'
 import { type MenuOption } from '../menu/common'
 
 defineOptions({
+  name: 'SarTreeNode',
   options: {
     virtualHost: true,
     styleIsolation: 'shared',

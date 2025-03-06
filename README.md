@@ -114,7 +114,8 @@ npm run release
 - 修复问题
 - 测试
 - 修改版本号
-- 暂存、提交 `git commit -a -m 'fix: '`
+- 暂存 `git add .`
+- 提交 `git commit -m 'fix: '`
 - 给提交打标签 `npm run tag`
 - 生成 changelog `npm run changelog`
 - 暂存、提交 changelog `git commit -a -m 'chore: changelog'`
