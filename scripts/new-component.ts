@@ -1,48 +1,12 @@
 import inquirer from 'inquirer'
 import consola from 'consola'
-import child_process from 'node:child_process'
 import path from 'node:path'
 import fs from 'node:fs/promises'
+import fse from 'fs-extra'
 import { kebabCase, upperFirst, camelCase } from 'lodash-es'
 
 const libDir = path.resolve(process.cwd(), 'src/lib')
 const srcDir = path.resolve(process.cwd(), 'src')
-
-async function copyComponentDir(destDir: string) {
-  return new Promise<void>((resolve, reject) => {
-    const sourceDir = path.resolve(libDir, 'components/_template')
-
-    child_process.exec(`cp -rf ${sourceDir} ${destDir}`, (error) => {
-      if (error) {
-        reject(error)
-      } else {
-        resolve()
-      }
-    })
-  })
-}
-
-async function copyDemoDir(kebabCaseName: string) {
-  return new Promise<void>((resolve, reject) => {
-    const sourceDir = path.resolve(srcDir, 'pages/components/_template')
-    const destDir = path.resolve(srcDir, `pages/components/${kebabCaseName}`)
-
-    fs.access(destDir)
-      .then(() => {
-        consola.warn(`目录已存在: ${destDir}`)
-        resolve()
-      })
-      .catch(() => {
-        child_process.exec(`cp -rf ${sourceDir} ${destDir}`, (error) => {
-          if (error) {
-            reject(error)
-          } else {
-            resolve()
-          }
-        })
-      })
-  })
-}
 
 async function replaceFileContent(
   filePath: string,
@@ -53,46 +17,241 @@ async function replaceFileContent(
   await fs.writeFile(filePath, content)
 }
 
-async function replaceComponentName(
+async function createComponent(
   compDir: string,
   kebabCaseName: string,
   camelCaseName: string,
   pascalCaseName: string,
   cnName: string,
+  groupCnName: string,
 ) {
-  await fs.rename(
-    path.resolve(compDir, '_template.vue'),
+  // *.vue
+  await fse.outputFile(
     path.resolve(compDir, `${kebabCaseName}.vue`),
+    `<template>
+  <view :class="${camelCaseName}Class" :style="${camelCaseName}Style">
+    <slot></slot>
+  </view>
+</template>
+
+<script setup lang="ts">
+import { computed } from 'vue'
+import { classNames, stringifyStyle, createBem } from '../../utils'
+import {
+  type ${pascalCaseName}Props,
+  type ${pascalCaseName}Slots,
+  type ${pascalCaseName}Emits,
+  type ${pascalCaseName}Expose,
+} from './common'
+
+defineOptions({
+  options: {
+    virtualHost: true,
+    styleIsolation: 'shared',
+  },
+})
+
+const props = withDefaults(defineProps<${pascalCaseName}Props>(), {})
+
+defineSlots<${pascalCaseName}Slots>()
+
+defineEmits<${pascalCaseName}Emits>()
+
+const bem = createBem('${camelCaseName}')
+
+// main
+
+defineExpose<${pascalCaseName}Expose>({
+  reset: () => {
+    void 0
+  },
+})
+
+// others
+const ${camelCaseName}Class = computed(() => {
+  return classNames(bem.b(), props.rootClass)
+})
+
+const ${camelCaseName}Style = computed(() => {
+  return stringifyStyle(props.rootStyle)
+})
+</script>
+
+<style lang="scss">
+@import './index.scss';
+</style>
+`,
   )
-  await replaceFileContent(
-    path.resolve(compDir, `${kebabCaseName}.vue`),
-    (content) => {
-      return content
-        .replaceAll('_template', camelCaseName)
-        .replaceAll('_Template', pascalCaseName)
-        .replace(/(?<=createBem\(').*?(?='\))/, kebabCaseName)
-    },
+
+  // common.ts
+  await fse.outputFile(
+    path.resolve(compDir, `common.ts`),
+    `import { type StyleValue } from 'vue'
+
+export interface ${pascalCaseName}Props {
+  rootStyle?: StyleValue
+  rootClass?: string
+}
+
+export interface ${pascalCaseName}Slots {
+  default?(props: Record<string, never>): any
+}
+
+export interface ${pascalCaseName}Emits {
+  (e: 'click', event: any): void
+}
+
+export interface ${pascalCaseName}Expose {
+  reset: () => void
+}
+`,
   )
-  await replaceFileContent(path.resolve(compDir, 'common.ts'), (content) => {
-    return content.replaceAll('_Template', pascalCaseName)
-  })
-  await replaceFileContent(path.resolve(compDir, 'index.scss'), (content) => {
-    return content.replaceAll('_template', kebabCaseName)
-  })
-  await replaceFileContent(path.resolve(compDir, 'index.ts'), (content) => {
-    return content.replaceAll('_Template', pascalCaseName)
-  })
-  await replaceFileContent(path.resolve(compDir, 'README.md'), (content) => {
-    return content
-      .replaceAll('Template', pascalCaseName)
-      .replaceAll('template', kebabCaseName)
-      .replaceAll('默认模板', cnName)
-  })
-  await replaceFileContent(
-    path.resolve(compDir, 'variables.scss'),
-    (content) => {
-      return content.replaceAll('template', kebabCaseName)
-    },
+
+  // index.scss
+  await fse.outputFile(
+    path.resolve(compDir, `index.scss`),
+    `@use '../style/base' as *;
+
+@include bem(${camelCaseName}) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(element) {
+    @include universal;
+
+    @include m(modifier) {
+    }
+  }
+
+  @include m(modifier) {
+  }
+}
+`,
+  )
+
+  // index.ts
+  await fse.outputFile(
+    path.resolve(compDir, `index.ts`),
+    `export type {
+  ${pascalCaseName}Props,
+  ${pascalCaseName}Slots,
+  ${pascalCaseName}Emits,
+  ${pascalCaseName}Expose,
+} from './common'
+`,
+  )
+
+  // README.md
+  await fse.outputFile(
+    path.resolve(compDir, `README.md`),
+    `---
+nav: 组件
+title: ${pascalCaseName}
+subtitle: ${cnName}
+group: ${groupCnName}
+---
+
+## 介绍
+
+${kebabCaseName}
+
+## 引入
+
+\`\`\`ts
+import ${pascalCaseName} from 'sard-uniapp/components/${kebabCaseName}/${kebabCaseName}.vue'
+\`\`\`
+
+## 代码演示
+
+### 基础使用
+
+@code('\${DEMO_PATH}/${kebabCaseName}/demo/Basic.vue')
+
+## API
+
+### ${pascalCaseName}Props
+
+| 属性       | 描述           | 类型       | 默认值 |
+| ---------- | -------------- | ---------- | ------ |
+| root-class | 组件根元素类名 | string     | -      |
+| root-style | 组件根元素样式 | StyleValue | -      |
+
+### ${pascalCaseName}Slots
+
+| 插槽    | 描述           | 属性 |
+| ------- | -------------- | ---- |
+| default | 自定义默认内容 | -    |
+
+### ${pascalCaseName}Emits
+
+| 事件  | 描述       | 类型                 |
+| ----- | ---------- | -------------------- |
+| click | 点击时触发 | (event: any) => void |
+
+### ${pascalCaseName}Expose
+
+| 属性  | 描述         | 类型       |
+| ----- | ------------ | ---------- |
+| reset | 重置滚动时长 | () => void |
+
+## 主题定制
+
+### CSS 变量
+
+@code('./variables.scss#variables')
+`,
+  )
+
+  // variables.scss
+  await fse.outputFile(
+    path.resolve(compDir, `variables.scss`),
+    `// #variables
+page {
+  --sar-sidebar-bg: #fff;
+}
+// #endvariables
+`,
+  )
+}
+
+async function createDemo(kebabCaseName: string, camelCaseName: string) {
+  const demoDir = path.resolve(srcDir, `pages/components/${kebabCaseName}`)
+
+  try {
+    await fs.access(demoDir)
+    consola.error(`案例目录已存在: ${demoDir}`)
+    process.exit(1)
+  } catch {
+    void 0
+  }
+
+  // index.vue
+  await fse.outputFile(
+    path.resolve(demoDir, `index.vue`),
+    `<template>
+  <doc-page>
+    <doc-demo title="基础使用">
+      <DemoBasic />
+    </doc-demo>
+  </doc-page>
+</template>
+
+<script setup lang="ts">
+import DemoBasic from './demo/Basic.vue'
+</script>
+
+<style lang="scss" scoped></style>
+`,
+  )
+
+  // Basic.vue
+  await fse.outputFile(
+    path.resolve(demoDir, `demo/Basic.vue`),
+    `<template>
+  <sar-${camelCaseName}></sar-${camelCaseName}>
+</template>
+`,
   )
 }
 
@@ -220,7 +379,7 @@ async function addDemoMenu(
   )
 }
 
-export async function addComponent() {
+async function newComponent() {
   const compForm = await inquirer.prompt([
     {
       type: 'input',
@@ -284,19 +443,19 @@ export async function addComponent() {
   }
 
   const steps = [
-    ['拷贝组件目录', () => copyComponentDir(compDir)],
-    ['拷贝案例目录', () => copyDemoDir(kebabCaseName)],
     [
-      '替换组件名',
+      '创建组件源码等相关文件',
       () =>
-        replaceComponentName(
+        createComponent(
           compDir,
           kebabCaseName,
           camelCaseName,
           pascalCaseName,
           cnName,
+          groupCnName,
         ),
     ],
+    ['创建案例相关文件', () => createDemo(kebabCaseName, camelCaseName)],
     ['导出css变量模块', () => exportCssVariable(kebabCaseName)],
     ['导出组件模块', () => exportComponent(kebabCaseName)],
     [
@@ -318,4 +477,4 @@ export async function addComponent() {
   consola.success('成功新增组件')
 }
 
-addComponent()
+newComponent()
