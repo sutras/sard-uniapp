@@ -1,27 +1,42 @@
 <template>
   <view :class="navbarClass" :style="navbarStyle">
-    <view v-if="$slots.left" :class="bem.e('left')">
-      <slot name="left"></slot>
-    </view>
-    <view :class="bem.e('content')">
-      <slot>
-        <view :class="bem.e('title')">
-          <slot name="title">
-            {{ title }}
+    <view :class="bem.e('fixation')">
+      <sar-status-bar v-if="statusBar" />
+      <view :class="bem.e('wrapper')">
+        <view v-if="$slots.left || showBack" :class="bem.e('left')">
+          <sar-navbar-item
+            v-if="showBack"
+            icon="left"
+            :text="backText"
+            @click="onBack"
+          />
+          <slot name="left"></slot>
+        </view>
+        <view :class="bem.e('content')">
+          <slot>
+            <view :class="bem.e('title')">
+              <slot name="title">
+                {{ title }}
+              </slot>
+            </view>
           </slot>
         </view>
-      </slot>
+        <view v-if="$slots.right" :class="bem.e('right')">
+          <slot name="right"></slot>
+        </view>
+      </view>
     </view>
-    <view v-if="$slots.right" :class="bem.e('right')">
-      <slot name="right"></slot>
-    </view>
+    <sar-navbar-pit v-if="fixed" />
   </view>
 </template>
 
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
-import { type NavbarProps, type NavbarSlots } from './common'
+import { type NavbarEmits, type NavbarProps, type NavbarSlots } from './common'
+import SarNavbarItem from '../navbar-item/navbar-item.vue'
+import SarStatusBar from '../status-bar/status-bar.vue'
+import SarNavbarPit from '../navbar-pit/navbar-pit.vue'
 
 defineOptions({
   options: {
@@ -34,9 +49,14 @@ const props = withDefaults(defineProps<NavbarProps>(), {})
 
 const slots = defineSlots<NavbarSlots>()
 
+const emit = defineEmits<NavbarEmits>()
+
 const bem = createBem('navbar')
 
 // main
+const onBack = (event: any) => {
+  emit('back', event)
+}
 
 // others
 const navbarClass = computed(() => {
@@ -44,6 +64,7 @@ const navbarClass = computed(() => {
     bem.b(),
     bem.m('flow', props.flow),
     bem.m('custom', !!slots.default),
+    bem.m('fixed', props.fixed),
     props.rootClass,
   )
 })

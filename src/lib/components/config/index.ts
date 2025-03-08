@@ -45,7 +45,7 @@ export const defaultConfig = {
 
   actionSheet: {
     overlayClosable: true,
-    duration: 300,
+    duration: 250,
   },
   alert: {
     type: 'primary' as AlertProps['type'],
@@ -121,7 +121,7 @@ export const defaultConfig = {
     showCancel: true,
     showConfirm: true,
     overlayClosable: true,
-    duration: 300,
+    duration: 200,
   },
   dialogAgent: {
     id: 'dialog',
@@ -208,14 +208,14 @@ export const defaultConfig = {
   notify: {
     type: 'primary' as NotifyProps['type'],
     position: 'top' as NotifyProps['position'],
-    duration: 300,
+    duration: 250,
     timeout: 3000,
   },
   notifyAgent: {
     id: 'notify',
   },
   overlay: {
-    duration: 300,
+    duration: 250,
   },
   pagination: {
     total: 0,
@@ -242,7 +242,7 @@ export const defaultConfig = {
     showClose: true,
     showFooter: true,
     overlayClosable: true,
-    duration: 300,
+    duration: 250,
   },
   popover: {
     position: 'bottom' as PopoverProps['position'],
@@ -254,7 +254,7 @@ export const defaultConfig = {
     duration: 150,
   },
   popup: {
-    duration: 300,
+    duration: 250,
     effect: 'fade' as PopupProps['effect'],
     overlay: true,
   },
@@ -288,7 +288,7 @@ export const defaultConfig = {
   },
   radioInput: {
     validateEvent: true,
-    type: 'record' as RadioInputProps['type'],
+    type: 'circle' as RadioInputProps['type'],
   },
   rate: {
     count: 5,
@@ -305,7 +305,7 @@ export const defaultConfig = {
   },
   shareSheet: {
     overlayClosable: true,
-    duration: 300,
+    duration: 250,
   },
   skeleton: {
     rows: 3,
@@ -320,6 +320,9 @@ export const defaultConfig = {
   space: {
     direction: 'horizontal' as SpaceProps['direction'],
     size: 'middle' as SpaceProps['size'],
+  },
+  statusBar: {
+    height: '',
   },
   stepper: {
     min: Number.MIN_SAFE_INTEGER,
@@ -371,7 +374,7 @@ export const defaultConfig = {
     position: 'center' as ToastProps['position'],
     overlay: false,
     timeout: 1500,
-    duration: 300,
+    duration: 200,
   },
   toastAgent: {
     id: 'toast',
@@ -419,8 +422,6 @@ export function setConfig(...optionsArgs: DeepPartial<ConfigOptions>[]) {
   optionsArgs.forEach((options) => {
     extendProps(defaultConfig, options)
   })
-
-  console.log(defaultConfig)
 }
 
 export function getDurationConfig(duration: number) {

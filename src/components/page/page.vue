@@ -1,6 +1,20 @@
 <template>
   <sar-toast-agent />
   <sar-dialog-agent />
+  <sar-notify-agent status-bar />
+
+  <sar-navbar
+    :title="title"
+    show-back
+    fixed
+    :flow="isAlipay"
+    status-bar
+    :root-style="{
+      '--sar-navbar-bg': 'var(--sar-body-bg)',
+      '--sar-navbar-item-color': 'var(--sar-body-color)',
+    }"
+    @back="onBack"
+  />
   <view :class="classNames(bem.b(), bem.m('emphasis', emphasis))">
     <slot></slot>
   </view>
@@ -8,13 +22,18 @@
 
 <script setup lang="ts">
 import { createBem } from '@/utils'
-import { classNames } from 'sard-uniapp'
+import { classNames, isAlipay } from 'sard-uniapp'
 
 defineProps<{
   emphasis?: boolean
+  title?: string
 }>()
 
 const bem = createBem('page')
+
+const onBack = () => {
+  uni.navigateBack()
+}
 </script>
 
 <style lang="scss">
