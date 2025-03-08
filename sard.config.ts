@@ -13,6 +13,7 @@ export default defineConfig({
   },
   codeAlias: {
     DEMO_PATH: path.resolve(process.cwd(), 'src/pages/components'),
+    COMP_PATH: path.resolve(process.cwd(), 'src/lib/components'),
   },
   mobile: true,
   git: [
