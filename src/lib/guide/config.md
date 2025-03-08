@@ -45,3 +45,7 @@ setConfig(getDurationConfig(0), {
   },
 })
 ```
+
+## 完整默认配置
+
+@code('${COMP_PATH}/config/index.ts#defaultConfig')

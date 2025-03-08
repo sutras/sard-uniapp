@@ -1,12 +1,16 @@
 import { ref } from 'vue'
+import { defaultConfig } from '../components/config'
 
-let globalZIndex = 1000
+let currentZIndex = 0
 
 export function useZIndex() {
-  const zIndex = ref(globalZIndex)
+  if (currentZIndex === 0) {
+    currentZIndex = defaultConfig.initialZIndex
+  }
+  const zIndex = ref(currentZIndex)
 
   function increase() {
-    zIndex.value = globalZIndex = globalZIndex + 1
+    zIndex.value = currentZIndex = currentZIndex + 1
   }
 
   return [zIndex, increase] as const

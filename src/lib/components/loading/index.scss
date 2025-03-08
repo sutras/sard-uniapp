@@ -71,7 +71,7 @@ $sar-loading-scale-number: 12;
     width: 100%;
     height: 100%;
 
-    &:before {
+    &::before {
       display: flex;
       width: var(--sar-loading-scale-width);
       min-width: var(--sar-loading-scale-min-width);

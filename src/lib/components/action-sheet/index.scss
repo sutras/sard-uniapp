@@ -40,7 +40,7 @@
     cursor: pointer;
 
     &:not(:first-child) {
-      &:before {
+      &::before {
         @include border-top(var(--sar-action-sheet-border-color));
       }
     }

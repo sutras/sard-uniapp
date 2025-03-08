@@ -38,8 +38,11 @@ import { type UploadPreviewProps, type UploadProps } from '../upload'
 type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Record<any, any> ? DeepPartial<T[P]> : T[P]
 }
-
+// #defaultConfig
 export const defaultConfig = {
+  // 全局初始 zIndex
+  initialZIndex: 1000,
+
   actionSheet: {
     overlayClosable: true,
     duration: 300,
@@ -128,7 +131,7 @@ export const defaultConfig = {
     disabled: false,
     awayClosable: true,
     overlayClosable: true,
-    duration: 300,
+    duration: 200,
   },
   empty: {
     icon: 'empty',
@@ -392,29 +395,32 @@ export const defaultConfig = {
     status: 'pending' as UploadPreviewProps['status'],
   },
 }
+// #enddefaultConfig
 
 export type ConfigOptions = typeof defaultConfig
 
-function extendProps(
-  source: Record<string, Record<string, any>>,
-  target: Record<string, Record<string, any>>,
-) {
-  for (const name in target) {
-    const sourceProps = source[name]
-    const targetProps = target[name]
-    if (sourceProps) {
-      for (const prop in targetProps) {
-        const targetValue = targetProps[prop]
-        sourceProps[prop] = targetValue
+function extendProps(source: object, target: object) {
+  Object.keys(target).forEach((key) => {
+    if (key in source) {
+      const sourceValue = source[key as keyof typeof source]
+      const targetValue = target[key as keyof typeof target]
+      if (targetValue !== undefined && targetValue !== null) {
+        if (typeof sourceValue !== 'object') {
+          source[key as keyof typeof source] = targetValue
+        } else if (typeof targetValue === 'object') {
+          extendProps(sourceValue, targetValue)
+        }
       }
     }
-  }
+  })
 }
 
 export function setConfig(...optionsArgs: DeepPartial<ConfigOptions>[]) {
   optionsArgs.forEach((options) => {
     extendProps(defaultConfig, options)
   })
+
+  console.log(defaultConfig)
 }
 
 export function getDurationConfig(duration: number) {
