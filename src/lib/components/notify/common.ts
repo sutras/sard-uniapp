@@ -12,6 +12,7 @@ export interface NotifyProps {
   position?: 'top' | 'bottom'
   timeout?: number
   duration?: number
+  statusBar?: boolean
 }
 
 export const defaultNotifyProps = defaultConfig.notify
