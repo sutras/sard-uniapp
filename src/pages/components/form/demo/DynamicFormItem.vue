@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="添加/删除表单项">
     <sar-form ref="formRef" :model="dynamicValidateForm">
       <sar-form-item
         name="email"

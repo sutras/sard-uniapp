@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="Label 宽度">
     <sar-form :model="formState" ref="formRef" label-width="200rpx">
       <sar-form-item label="Activity name">
         <sar-input v-model="formState.name" />

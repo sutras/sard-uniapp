@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="BackTop 回到顶部">
     <doc-demo>
       <sar-list card>
         <sar-list-item

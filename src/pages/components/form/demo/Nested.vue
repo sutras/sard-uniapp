@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="嵌套结构与校验信息">
     <sar-form :model="formState" ref="formRef">
       <sar-form-item
         :name="['user', 'name']"

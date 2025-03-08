@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="严格的树节点过滤">
     <view style="padding: 32rpx; background: var(--sar-emphasis-bg)">
       <sar-input v-model="searchString" placeholder="请输入过滤关键词" />
     </view>

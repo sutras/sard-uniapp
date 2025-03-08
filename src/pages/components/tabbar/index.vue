@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="Tabbar 标签栏">
     <doc-demo title="基础使用" full>
       <DemoBasic />
     </doc-demo>

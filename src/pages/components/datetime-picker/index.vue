@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="DatetimePicker 日期时间选择器">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

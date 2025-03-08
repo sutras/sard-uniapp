@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="DatetimePickerInput 日期时间输入框">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

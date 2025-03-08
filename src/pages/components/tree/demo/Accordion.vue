@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="手风琴">
     <sar-tree
       :data="treeData"
       :node-keys="{ title: 'name', key: 'code' }"

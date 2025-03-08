@@ -1,5 +1,5 @@
 <template>
-  <doc-page emphasis>
+  <doc-page emphasis title="Timeline 时间轴">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

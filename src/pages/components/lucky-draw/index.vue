@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="LuckyDraw 幸运抽奖">
     <doc-demo title="九宫格">
       <DemoBasicGrid />
     </doc-demo>

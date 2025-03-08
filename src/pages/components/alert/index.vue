@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="Alert 警告提示">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

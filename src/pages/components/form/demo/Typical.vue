@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="典型表单">
     <sar-form :model="form" label-width="240rpx">
       <sar-form-item label="Activity name">
         <sar-input

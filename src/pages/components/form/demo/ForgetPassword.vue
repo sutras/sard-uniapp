@@ -1,5 +1,5 @@
 <template>
-  <doc-page emphasis>
+  <doc-page emphasis title="忘记密码">
     <sar-form
       ref="formRef"
       :model="formState"

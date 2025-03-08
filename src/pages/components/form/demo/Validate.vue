@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="表单校验">
     <sar-form ref="ruleFormRef" :model="ruleForm" :rules="rules">
       <sar-form-item label="Activity name" name="name">
         <sar-input inlaid v-model="ruleForm.name" placeholder="Activity name" />

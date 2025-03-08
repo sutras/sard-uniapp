@@ -1,7 +1,11 @@
 <template>
-  <doc-page>
+  <doc-page title="Navbar 头部导航">
     <doc-demo title="基础使用" full>
       <DemoBasic />
+    </doc-demo>
+
+    <doc-demo title="返回按钮" full>
+      <DemoBack />
     </doc-demo>
 
     <doc-demo title="导航项" full>
@@ -15,14 +19,25 @@
     <doc-demo title="自定义内容" full>
       <DemoContent />
     </doc-demo>
+
+    <doc-demo title="背景色" full>
+      <DemoBackground />
+    </doc-demo>
+
+    <doc-demo title="文本颜色" full>
+      <DemoColor />
+    </doc-demo>
   </doc-page>
 </template>
 
 <script setup lang="ts">
 import DemoBasic from './demo/Basic.vue'
+import DemoBack from './demo/Back.vue'
 import DemoItem from './demo/Item.vue'
 import DemoFlow from './demo/Flow.vue'
 import DemoContent from './demo/Content.vue'
+import DemoBackground from './demo/Background.vue'
+import DemoColor from './demo/Color.vue'
 </script>
 
 <style lang="scss" scoped>

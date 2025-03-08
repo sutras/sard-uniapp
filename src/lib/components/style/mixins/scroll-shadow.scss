@@ -1,0 +1,40 @@
+@use './bem' as *;
+
+@mixin scroll-shadow {
+  position: relative;
+
+  &::before,
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    z-index: 10;
+    height: 20rpx;
+    overflow: hidden;
+    box-shadow: none;
+    touch-action: none;
+    pointer-events: none;
+    transition: box-shadow var(--sar-duration);
+  }
+
+  &::before {
+    top: 0;
+  }
+
+  &::after {
+    bottom: 0;
+  }
+
+  @include m(center, end) {
+    &::before {
+      box-shadow: var(--sar-scroll-shadow-start);
+    }
+  }
+
+  @include m(center, start) {
+    &::after {
+      box-shadow: var(--sar-scroll-shadow-end);
+    }
+  }
+}

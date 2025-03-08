@@ -1,5 +1,8 @@
 export const systemInfo = uni.getSystemInfoSync()
 
-export const isApp = systemInfo.uniPlatform === 'app'
-export const isWeb = systemInfo.uniPlatform === 'web'
-export const isMp = systemInfo.uniPlatform.startsWith('mp-')
+const platform = systemInfo.uniPlatform
+
+export const isApp = platform === 'app'
+export const isWeb = platform === 'web'
+export const isMp = platform.startsWith('mp-')
+export const isAlipay = platform === 'mp-alipay'

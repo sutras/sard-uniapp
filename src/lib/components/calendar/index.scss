@@ -14,7 +14,6 @@
     @include universal;
     z-index: 1;
     flex: none;
-    margin-bottom: var(--sar-calendar-header-margin-bottom);
 
     &::after {
       @include border-bottom(var(--sar-border-color));
@@ -56,15 +55,16 @@
     @include universal;
     z-index: 0;
     flex: none;
+
+    @include scroll-shadow;
   }
 
   @include m(several) {
-    @include e(header) {
-      box-shadow: var(--sar-shadow-lg);
-    }
-
     @include e(body) {
       height: 360px;
+    }
+    @include e(scroll) {
+      height: 100%;
     }
   }
 }

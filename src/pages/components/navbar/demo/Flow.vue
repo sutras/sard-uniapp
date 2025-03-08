@@ -1,20 +1,12 @@
 <template>
   <sar-navbar title="发现" flow>
     <template #left>
-      <sar-navbar-item>
-        <sar-icon family="demo-icons" name="list-task" size="40rpx" />
-      </sar-navbar-item>
+      <sar-navbar-item icon="list-task" icon-family="demo-icons" />
     </template>
     <template #right>
-      <sar-navbar-item>
-        <sar-icon family="demo-icons" name="share" size="36rpx" />
-      </sar-navbar-item>
-      <sar-navbar-item>
-        <sar-icon family="demo-icons" name="star" size="40rpx" />
-      </sar-navbar-item>
-      <sar-navbar-item>
-        <sar-icon family="demo-icons" name="heart" size="36rpx" />
-      </sar-navbar-item>
+      <sar-navbar-item icon="share" icon-family="demo-icons" />
+      <sar-navbar-item icon="star" icon-family="demo-icons" />
+      <sar-navbar-item icon="heart" icon-family="demo-icons" />
     </template>
   </sar-navbar>
 </template>

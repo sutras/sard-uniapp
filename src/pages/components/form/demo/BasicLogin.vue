@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="简单登录框">
     <sar-form :model="formState" ref="formRef">
       <sar-form-item
         label="Username"

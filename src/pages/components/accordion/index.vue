@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="Accordion 手风琴">
     <doc-demo title="基础使用" full>
       <DemoBasic />
     </doc-demo>

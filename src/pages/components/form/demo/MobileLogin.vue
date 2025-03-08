@@ -1,5 +1,5 @@
 <template>
-  <doc-page emphasis>
+  <doc-page emphasis title="手机号登录">
     <sar-form
       ref="formRef"
       :model="formState"

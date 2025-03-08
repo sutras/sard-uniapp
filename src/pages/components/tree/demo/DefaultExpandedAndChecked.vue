@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="默认展开以及默认选中">
     <sar-tree
       :data="treeData"
       :node-keys="{ title: 'name', key: 'code' }"

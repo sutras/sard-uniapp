@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="自定义校验规则">
     <sar-form ref="ruleFormRef" :model="ruleForm" :rules="rules">
       <sar-form-item label="Password" name="pass">
         <sar-input v-model="ruleForm.pass" type="password" />

@@ -1,5 +1,5 @@
 <template>
-  <doc-page emphasis>
+  <doc-page emphasis title="AreaCodeSearch 选择国家/地区">
     <view
       style="
         display: flex;

@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="方向与对齐">
     <doc-demo>
       <doc-title>排列方向</doc-title>
       <sar-radio-group v-model="direction" direction="horizontal">

@@ -19,37 +19,51 @@
     @confirm="onConfirm"
   >
     <template #visible="{ already }">
-      <scroll-view v-if="already" scroll-y :class="bem.e('scroll')">
-        <sar-checkbox-group
-          :size="size"
-          :type="type"
-          :checkedColor="checkedColor"
-          :direction="direction"
-          :validate-event="false"
-          :model-value="popoutValue"
-          @change="onChange"
+      <view v-if="already" :class="containerClass">
+        <scroll-view
+          :class="bem.e('scroll')"
+          scroll-y
+          trap-scroll
+          :upper-threshold="0"
+          :lower-threshold="0"
+          :throttle="false"
+          @scroll="onScroll"
+          @scrolltoupper="onScrolltoupper"
+          @scrolltolower="onScrolltolower"
         >
-          <template #custom="{ toggle }">
-            <sar-list inlaid>
-              <sar-list-item
-                v-for="option in options"
-                :key="getMayPrimitiveOption(option, fieldKeys.value)"
-                :title="getMayPrimitiveOption(option, fieldKeys.label)"
-                hover
-                @click="toggle(getMayPrimitiveOption(option, fieldKeys.value))"
-              >
-                <template #value>
-                  <sar-checkbox
-                    readonly
-                    :value="getMayPrimitiveOption(option, fieldKeys.value)"
-                    :validate-event="false"
-                  />
-                </template>
-              </sar-list-item>
-            </sar-list>
-          </template>
-        </sar-checkbox-group>
-      </scroll-view>
+          <sar-checkbox-group
+            :size="size"
+            :type="type"
+            :checkedColor="checkedColor"
+            :direction="direction"
+            :validate-event="false"
+            :model-value="popoutValue"
+            @change="onChange"
+          >
+            <template #custom="{ toggle }">
+              <sar-list inlaid>
+                <sar-list-item
+                  v-for="option in options"
+                  :key="getMayPrimitiveOption(option, fieldKeys.value)"
+                  :title="getMayPrimitiveOption(option, fieldKeys.label)"
+                  hover
+                  @click="
+                    toggle(getMayPrimitiveOption(option, fieldKeys.value))
+                  "
+                >
+                  <template #value>
+                    <sar-checkbox
+                      readonly
+                      :value="getMayPrimitiveOption(option, fieldKeys.value)"
+                      :validate-event="false"
+                    />
+                  </template>
+                </sar-list-item>
+              </sar-list>
+            </template>
+          </sar-checkbox-group>
+        </scroll-view>
+      </view>
     </template>
   </sar-popout>
 </template>
@@ -72,8 +86,14 @@ import {
   type CheckboxInputOption,
   defaultCheckboxInputProps,
 } from './common'
-import { createBem, getMayPrimitiveOption, isNullish } from '../../utils'
+import {
+  classNames,
+  createBem,
+  getMayPrimitiveOption,
+  isNullish,
+} from '../../utils'
 import { useFormItemContext } from '../form/common'
+import { useScrollSide } from '../../use'
 
 defineOptions({
   options: {
@@ -195,6 +215,17 @@ const onInputClick = () => {
   innerVisible.value = true
   emit('update:visible', true)
 }
+
+// scroll
+const { scrollSide, onScroll, onScrolltoupper, onScrolltolower } =
+  useScrollSide()
+
+const containerClass = computed(() => {
+  return classNames(
+    bem.e('container'),
+    bem.em('container', scrollSide.value, scrollSide.value),
+  )
+})
 </script>
 
 <style lang="scss">

@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="Fab 悬浮按钮">
     <doc-demo>
       <sar-radio-group v-model="currentDemo">
         <template #custom="{ toggle }">

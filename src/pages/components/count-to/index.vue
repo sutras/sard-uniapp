@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="CountTo 数字滚动">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="可选择的">
     <sar-list>
       <sar-list-item
         hover

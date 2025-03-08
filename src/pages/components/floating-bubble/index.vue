@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="FloatingBubble 浮动气泡">
     <doc-demo>
       <sar-radio-group v-model="currentDemo">
         <template #custom="{ toggle }">

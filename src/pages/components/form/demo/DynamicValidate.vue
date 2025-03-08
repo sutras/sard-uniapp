@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="动态校验规则">
     <sar-form ref="formRef" :model="formState">
       <sar-form-item
         label="Username"

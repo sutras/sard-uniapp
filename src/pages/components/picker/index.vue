@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="Picker 选择器">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

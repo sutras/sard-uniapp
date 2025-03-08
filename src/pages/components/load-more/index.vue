@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="LoadMore 加载更多">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

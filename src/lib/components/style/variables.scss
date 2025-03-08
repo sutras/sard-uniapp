@@ -158,6 +158,9 @@ page {
   --sar-shadow-2xl: 0 10px 50px -12px rgb(0 0 0 / 0.25);
   --sar-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
 
+  --sar-scroll-shadow-start: inset 0 10px 10px -10px rgba(0, 0, 0, 0.15);
+  --sar-scroll-shadow-end: inset 0 -10px 10px -10px rgba(0, 0, 0, 0.15);
+
   // # 黑色遮罩
   --sar-mask-legible: rgba(0, 0, 0, 0.1);
   --sar-mask: rgba(0, 0, 0, 0.5);

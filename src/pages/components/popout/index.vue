@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="Popout 弹出框">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

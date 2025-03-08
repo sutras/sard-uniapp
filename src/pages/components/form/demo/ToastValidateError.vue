@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="toast显示验证错误信息">
     <sar-form ref="formRef" :model="formState" class="form" :showError="false">
       <sar-form-item
         name="username"

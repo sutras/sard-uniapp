@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="Dialog 对话框">
     <sar-dialog-agent />
 
     <doc-demo title="基础使用">

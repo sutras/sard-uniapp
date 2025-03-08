@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="可编辑的">
     <sar-button @click="addRootNode" root-style="margin: 32rpx">
       添加根节点
     </sar-button>
