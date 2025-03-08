@@ -5,6 +5,10 @@ export interface NavbarProps {
   rootClass?: string
   title?: string
   flow?: boolean
+  showBack?: boolean
+  backText?: string
+  fixed?: boolean
+  statusBar?: boolean
 }
 
 export interface NavbarSlots {
@@ -14,9 +18,18 @@ export interface NavbarSlots {
   right?(props: Record<string, never>): any
 }
 
+export interface NavbarEmits {
+  (e: 'back', event: any): void
+}
+
 export interface NavbarItemProps {
   rootStyle?: StyleValue
   rootClass?: string
+  text?: string
+  icon?: string
+  iconFamily?: string
+  iconSize?: string
+  reverse?: boolean
 }
 
 export interface NavbarItemSlots {

@@ -8,13 +8,23 @@
     height: 100%;
     align-items: center;
     justify-content: center;
+    gap: var(--sar-navbar-item-gap);
     padding: 0 var(--sar-navbar-item-padding-x);
     font-size: var(--sar-navbar-item-font-size);
     color: var(--sar-navbar-item-color);
     cursor: pointer;
+    line-height: 1;
 
     &:active {
       opacity: var(--sar-navbar-item-active-opacity);
     }
+
+    @include e(item-icon) {
+      font-size: var(--sar-navbar-item-icon-size);
+    }
+  }
+
+  @include m(reverse) {
+    flex-direction: row-reverse;
   }
 }

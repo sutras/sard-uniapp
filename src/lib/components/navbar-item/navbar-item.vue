@@ -4,7 +4,17 @@
     :style="navbarStyle"
     @click="$emit('click', $event)"
   >
-    <slot></slot>
+    <slot>
+      <sar-icon
+        v-if="icon"
+        :class="bem.e('item-icon')"
+        :name="icon"
+        :family="iconFamily"
+        :size="iconSize"
+      />
+
+      <text v-if="text" :class="bem.e('item-text')">{{ text }}</text>
+    </slot>
   </view>
 </template>
 
@@ -36,7 +46,11 @@ const bem = createBem('navbar')
 
 // others
 const navbarClass = computed(() => {
-  return classNames(bem.e('item'), props.rootClass)
+  return classNames(
+    bem.e('item'),
+    bem.m('reverse', props.reverse),
+    props.rootClass,
+  )
 })
 
 const navbarStyle = computed(() => {
