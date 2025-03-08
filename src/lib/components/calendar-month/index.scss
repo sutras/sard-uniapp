@@ -4,6 +4,7 @@
 @include bem(calendar) {
   @include e(month) {
     @include universal;
+    padding: var(--sar-calendar-month-padding);
   }
 
   @include e(days) {

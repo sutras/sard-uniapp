@@ -1,5 +1,5 @@
 <template>
-  <doc-page emphasis>
+  <doc-page title="Empty 空状态">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="Style 样式">
     <doc-demo title="基础颜色">
       <DemoBasic />
     </doc-demo>

@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="复杂的动态增减表单项">
     <sar-form ref="formRef" :model="dynamicValidateForm">
       <sar-form-item
         name="area"

@@ -1,5 +1,5 @@
 <template>
-  <doc-page emphasis>
+  <doc-page emphasis title="ProgressCircle 环形进度条">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

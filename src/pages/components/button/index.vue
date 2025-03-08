@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="Button 按钮">
     <doc-demo title="按钮类型">
       <DemoType />
     </doc-demo>

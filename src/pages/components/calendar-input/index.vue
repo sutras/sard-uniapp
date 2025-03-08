@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="CalendarInput 日历输入框">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

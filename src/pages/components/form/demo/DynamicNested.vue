@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="动态增减嵌套字段">
     <sar-form ref="formRef" :model="dynamicValidateForm">
       <sar-form-item
         v-for="(user, index) in dynamicValidateForm.users"

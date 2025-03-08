@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="Steps 步骤条">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

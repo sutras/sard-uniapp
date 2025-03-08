@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="多表单联动">
     <sar-form ref="formRef" :model="formState" label-width="200rpx">
       <sar-form-item
         name="group"

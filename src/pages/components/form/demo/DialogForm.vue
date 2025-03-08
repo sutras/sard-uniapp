@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="弹出层中的新建表单">
     <doc-demo>
       <sar-button @click="visible = true">New Collection</sar-button>
     </doc-demo>

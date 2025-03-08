@@ -39,26 +39,38 @@
         </view>
       </view>
     </view>
-    <scroll-view :scroll-y="severalMonths" :class="bem.e('body')">
-      <sar-calendar-month
-        v-for="(month, i) in months"
-        :key="i"
-        :year="month[0]"
-        :month="month[1]"
-        :type="type"
-        :min-date="minDate"
-        :max-date="maxDate"
-        :current-dates="currentDates"
-        :formatter="formatter"
-        :disabled-date="disabledDate"
-        :today-number="todayNumber"
-        :week-starts-on="weekStartsOn"
-        :several-months="severalMonths"
-        :t="t"
-        :bem="bem"
-        @day-click="onDayClick"
-      />
-    </scroll-view>
+    <view :class="bodyClass">
+      <scroll-view
+        :class="bem.e('scroll')"
+        :scroll-y="severalMonths"
+        trap-scroll
+        :upper-threshold="0"
+        :lower-threshold="0"
+        :throttle="false"
+        @scroll="onScroll"
+        @scrolltoupper="onScrolltoupper"
+        @scrolltolower="onScrolltolower"
+      >
+        <sar-calendar-month
+          v-for="(month, i) in months"
+          :key="i"
+          :year="month[0]"
+          :month="month[1]"
+          :type="type"
+          :min-date="minDate"
+          :max-date="maxDate"
+          :current-dates="currentDates"
+          :formatter="formatter"
+          :disabled-date="disabledDate"
+          :today-number="todayNumber"
+          :week-starts-on="weekStartsOn"
+          :several-months="severalMonths"
+          :t="t"
+          :bem="bem"
+          @day-click="onDayClick"
+        />
+      </scroll-view>
+    </view>
   </view>
 
   <sar-popout
@@ -110,6 +122,7 @@ import { useTranslate } from '../locale'
 import SarCalendarMonth from '../calendar-month/calendar-month.vue'
 import SarPopout from '../popout/popout.vue'
 import SarDatetimePicker from '../datetime-picker/datetime-picker.vue'
+import { useScrollSide } from '../../use'
 
 defineOptions({
   options: {
@@ -370,6 +383,17 @@ const onDayClick = (date: Date) => {
 const inPopup = useInPopup()
 const preventPageScroll = computed(() => {
   return inPopup && !props.severalMonths
+})
+
+// scroll
+const { scrollSide, onScroll, onScrolltoupper, onScrolltolower } =
+  useScrollSide()
+
+const bodyClass = computed(() => {
+  return classNames(
+    bem.e('body'),
+    bem.em('body', scrollSide.value, scrollSide.value),
+  )
 })
 
 // others

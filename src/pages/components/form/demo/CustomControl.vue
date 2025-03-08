@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="自定义表单控件">
     <sar-form :model="formState" ref="formRef">
       <sar-form-item
         name="price"

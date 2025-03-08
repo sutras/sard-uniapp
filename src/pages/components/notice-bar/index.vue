@@ -1,5 +1,5 @@
 <template>
-  <doc-page emphasis>
+  <doc-page emphasis title="NoticeBar 公告栏">
     <doc-demo title="基础使用" full>
       <DemoBasic />
     </doc-demo>

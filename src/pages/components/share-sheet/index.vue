@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="ShareSheet 分享面板">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

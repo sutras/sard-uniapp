@@ -1,6 +1,5 @@
 <template>
-  <doc-page>
-    <sar-notify-agent />
+  <doc-page title="Notify 消息通知">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

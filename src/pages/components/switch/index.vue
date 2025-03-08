@@ -1,5 +1,5 @@
 <template>
-  <doc-page emphasis>
+  <doc-page emphasis title="Switch 开关">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

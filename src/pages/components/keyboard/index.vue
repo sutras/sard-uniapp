@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="Keyboard 键盘">
     <doc-demo title="数字键盘" full>
       <DemoNumber />
     </doc-demo>

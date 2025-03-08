@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="表单只读和禁用">
     <sar-list>
       <sar-list-item title="只读">
         <template #value>

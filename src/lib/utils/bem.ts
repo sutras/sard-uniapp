@@ -25,13 +25,13 @@ export function createBemStruct(config: BemConfig) {
       b() {
         return prefix
       },
-      e(element: string | number | undefined, is?: IsType) {
+      e(element: string | number | undefined | null, is?: IsType) {
         if (arguments.length === 2 && !is) {
           return ''
         }
         return prefix + elementSeparator + element
       },
-      m(modifier: string | number | undefined, is?: IsType) {
+      m(modifier: string | number | undefined | null, is?: IsType) {
         if (arguments.length === 2 && !is) {
           return ''
         }
@@ -39,7 +39,7 @@ export function createBemStruct(config: BemConfig) {
       },
       em(
         element: string | number,
-        modifier: string | number | undefined,
+        modifier: string | number | undefined | null,
         is?: IsType,
       ) {
         if (arguments.length === 3 && !is) {
@@ -53,7 +53,7 @@ export function createBemStruct(config: BemConfig) {
         block: string | number,
         element?: string | number,
         modifier?: string | number,
-        is?: boolean | number | string | null,
+        is?: boolean | number | string | undefined | null,
       ) {
         if (arguments.length === 4 && !is) {
           return ''

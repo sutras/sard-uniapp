@@ -1,5 +1,5 @@
 <template>
-  <doc-page>
+  <doc-page title="SwiperDot 轮播图指示点">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>

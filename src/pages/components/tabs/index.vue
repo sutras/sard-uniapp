@@ -1,5 +1,5 @@
 <template>
-  <doc-page emphasis>
+  <doc-page emphasis title="Tabs 标签页">
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>
