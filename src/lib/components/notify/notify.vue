@@ -5,7 +5,10 @@
     :effect="effect"
     :duration="duration"
   >
-    <view :class="notifyClass" :style="notifyStyle">{{ message }}</view>
+    <view :class="notifyClass" :style="notifyStyle">
+      <sar-status-bar v-if="position === 'top' && statusBar" />
+      <view :class="bem.e('content')">{{ message }}</view>
+    </view>
   </sar-popup>
 </template>
 
@@ -21,6 +24,7 @@ import {
 } from './common'
 import SarPopup from '../popup/popup.vue'
 import { type PopupProps } from '../popup/common'
+import SarStatusBar from '../status-bar/status-bar.vue'
 
 defineOptions({
   options: {

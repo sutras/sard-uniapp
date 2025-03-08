@@ -1,0 +1,8 @@
+@use '../style/base' as *;
+
+@include bem(statusBar) {
+  @include b() {
+    @include universal;
+    height: var(--status-bar-height);
+  }
+}

@@ -45,7 +45,7 @@ import { notify } from 'sard-uniapp'
 
 ### 自定义时长
 
-`duration` 设为 0 后会一直显示。
+`timeout` 设为 0 后会一直显示。
 
 @code('${DEMO_PATH}/notify/demo/Duration.vue')
 
@@ -59,16 +59,17 @@ import { notify } from 'sard-uniapp'
 
 ### NotifyProps
 
-| 属性              | 描述                                  | 类型                                           | 默认值    |
-| ----------------- | ------------------------------------- | ---------------------------------------------- | --------- |
-| type              | 加载类型                              | 'primary' \| 'success' \| 'warning' \| 'error' | 'primary' |
-| message           | 通知内容                              | string                                         | -         |
-| color             | 字体颜色                              | string                                         | -         |
-| background        | 背景色                                | string                                         | -         |
-| visible (v-model) | 是否显示通知                          | boolean                                        | -         |
-| position          | 通知放置的位置                        | 'top' \| 'bottom'                              | 'top'     |
-| timeout           | 展示时长(ms)，值为 0 时，通知不会消失 | number                                         | 3000      |
-| duration          | 显隐动画时长，单位 ms                 | number                                         | 300       |
+| 属性                        | 描述                                        | 类型                                           | 默认值    |
+| --------------------------- | ------------------------------------------- | ---------------------------------------------- | --------- |
+| type                        | 加载类型                                    | 'primary' \| 'success' \| 'warning' \| 'error' | 'primary' |
+| message                     | 通知内容                                    | string                                         | -         |
+| color                       | 字体颜色                                    | string                                         | -         |
+| background                  | 背景色                                      | string                                         | -         |
+| visible (v-model)           | 是否显示通知                                | boolean                                        | -         |
+| position                    | 通知放置的位置                              | 'top' \| 'bottom'                              | 'top'     |
+| timeout                     | 展示时长(ms)，值为 0 时，通知不会消失       | number                                         | 3000      |
+| duration                    | 显隐动画时长，单位 ms                       | number                                         | 300       |
+| status-bar <sup>1.12+</sup> | 是否包含状态栏，自定义导航栏时应设为 `true` | boolean                                        | false     |
 
 ### NotifyAgentProps / NotifyOptions
 
