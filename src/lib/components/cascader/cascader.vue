@@ -20,7 +20,7 @@
           :class="bem.e('pane')"
         >
           <view :class="bem.e('options')">
-            <scroll-view scroll-y :class="bem.e('scroll')">
+            <scroll-view scroll-y trap-scroll :class="bem.e('scroll')">
               <view
                 v-for="(option, optionIndex) in tab.options"
                 :key="optionIndex"
