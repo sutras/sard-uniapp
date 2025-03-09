@@ -26,6 +26,7 @@ import {
   provide,
   watch,
   nextTick,
+  shallowRef,
 } from 'vue'
 import {
   type NodeRect,
@@ -66,94 +67,27 @@ const bem = createBem('indexes')
 // main
 const innerCurrent = ref(props.current)
 
-watch(
-  () => props.current,
-  () => {
-    if (
-      !isNullish(props.current) &&
-      anchorNames.value.includes(props.current)
-    ) {
-      innerCurrent.value = props.current
-      scrollTo(props.current)
-    }
-  },
-)
-
-// scroll
-const instance = getCurrentInstance()
-const scrollViewId = uniqid()
-const scrollViewRect = ref<NodeRect>()
-const scrollTop = ref<number | undefined>(0)
-const memoScrollTop = ref(0)
-let lockScroll = false
-
-const [unLockScrollLater] = useSetTimeout(() => {
-  lockScroll = false
-})
-
-const scrollTo = (name: string | number) => {
-  if (!scrollViewRect.value) {
-    return
-  }
-  lockScroll = true
-  unLockScrollLater(150)
-  const item = anchorRectList.value.find((item) => item[0] === name)
-  if (item) {
-    const offset = item[1].top - scrollViewRect.value.top
-    scrollTop.value = undefined
-    nextTick(() => {
-      scrollTop.value = offset
-    })
-  }
-}
-
-const onScroll = (event: any) => {
-  memoScrollTop.value = event.detail.scrollTop
-
-  if (lockScroll || !scrollViewRect.value) {
-    return
-  }
-  matchScrollVisible(
-    anchorRectList.value.map((item) => item[1]),
-    (index) => {
-      const name = anchorRectList.value[index][0]
-      if (name !== innerCurrent.value) {
-        innerCurrent.value = name
-        emit('change', name)
-      }
-    },
-    {
-      offset: scrollViewRect.value.top + memoScrollTop.value,
-    },
-  )
-}
-
-onMounted(() => {
-  getBoundingClientRect(`#${scrollViewId}`, instance).then((rect) => {
-    scrollViewRect.value = rect
-  })
-})
-
 // anchor
-const anchorRectList = ref<[string | number, NodeRect][]>([])
+const anchorRectList = shallowRef<[string | number, NodeRect][]>([])
 
-const anchorMap = ref<
-  Record<string, Parameters<IndexesContext['register']>[1]>
->({})
+const anchorMap: Record<
+  string | number,
+  Parameters<IndexesContext['register']>[1]
+> = {}
 
 provide<IndexesContext>(indexesContextSymbol, {
   register(name, expose) {
-    anchorMap.value[name] = expose
+    anchorMap[name] = expose
   },
   unregister(name) {
-    delete anchorMap.value[name]
+    delete anchorMap[name]
   },
 })
 
 const getAllAnchorRect = async () => {
   const allRect = await Promise.all(
-    Object.keys(anchorMap.value).map((name) => {
-      const { getRect } = anchorMap.value[name]
+    Object.keys(anchorMap).map((name) => {
+      const { getRect } = anchorMap[name]
       return new Promise<[string | number, NodeRect]>((resolve) => {
         getRect().then((rect) => {
           resolve([name, rect])
@@ -167,22 +101,110 @@ const getAllAnchorRect = async () => {
   return sortedAllRect
 }
 
-const update = () => {
-  getAllAnchorRect().then((rect) => {
-    anchorRectList.value = rect
-    if (!isNullish(props.current)) {
-      scrollTo(props.current)
-    } else {
-      innerCurrent.value = anchorNames.value[0]
-    }
+const calcRect = async () => {
+  const scrollViewRect = await getBoundingClientRect(
+    `#${scrollViewId}`,
+    instance,
+  )
+
+  anchorRectList.value = (await getAllAnchorRect()).map(([name, rect]) => {
+    return [
+      name,
+      {
+        ...rect,
+        top: rect.top - scrollViewRect.top + memoScrollTop,
+        bottom: rect.bottom - scrollViewRect.top + memoScrollTop,
+      },
+    ]
   })
 }
 
+const update = async () => {
+  await calcRect()
+
+  if (innerCurrent.value) {
+    scrollTo(innerCurrent.value)
+  }
+}
+
+const initialize = async () => {
+  await calcRect()
+
+  if (isNullish(innerCurrent.value)) {
+    innerCurrent.value = anchorRectList.value[0][0]
+  }
+  scrollTo(innerCurrent.value)
+}
+
 onMounted(() => {
-  nextTick(() => {
-    update()
-  })
+  initialize()
 })
+
+// scroll
+const instance = getCurrentInstance()
+const scrollViewId = uniqid()
+const scrollTop = ref<number | undefined>(0)
+let memoScrollTop = 0
+let lockScroll = false
+
+const [unLockScrollLater] = useSetTimeout(() => {
+  lockScroll = false
+})
+
+const scrollTo = (name: string | number) => {
+  if (anchorRectList.value.length > 0) {
+    const item = anchorRectList.value.find((item) => item[0] === name)
+    if (item) {
+      const offset = item[1].top
+      scrollTop.value = undefined
+      nextTick(() => {
+        scrollTop.value = offset
+      })
+
+      lockScroll = true
+      unLockScrollLater(150)
+    }
+  }
+}
+
+const onScroll = (event: any) => {
+  memoScrollTop = event.detail.scrollTop
+  if (lockScroll) {
+    return
+  }
+  calcPosition(memoScrollTop)
+}
+
+const calcPosition = (offset: number) => {
+  matchScrollVisible(
+    anchorRectList.value.map((item) => item[1]),
+    (index) => {
+      const name = anchorRectList.value[index][0]
+      if (name !== innerCurrent.value) {
+        innerCurrent.value = name
+        emit('change', name)
+      }
+    },
+    {
+      offset,
+    },
+  )
+}
+
+// outside
+watch(
+  () => props.current,
+  () => {
+    if (
+      !isNullish(props.current) &&
+      anchorNames.value.includes(props.current) &&
+      props.current !== innerCurrent.value
+    ) {
+      innerCurrent.value = props.current
+      scrollTo(props.current)
+    }
+  },
+)
 
 // nav
 const anchorNames = computed(() => {
@@ -195,11 +217,6 @@ const onNavSelect = (name: string | number) => {
   emit('change', name)
 }
 
-defineExpose<IndexesExpose>({
-  scrollTo,
-  update,
-})
-
 // others
 const indexesClass = computed(() => {
   return classNames(bem.b(), props.rootClass)
@@ -207,6 +224,11 @@ const indexesClass = computed(() => {
 
 const indexesStyle = computed(() => {
   return stringifyStyle(props.rootStyle)
+})
+
+defineExpose<IndexesExpose>({
+  scrollTo,
+  update,
 })
 </script>
 

@@ -1,42 +1,54 @@
 <template>
-  <doc-page emphasis title="AreaCode 选择国家/地区">
-    <view
-      style="
-        display: flex;
-        flex-direction: column;
-        height: calc(100vh - var(--window-top));
-      "
-    >
-      <sar-search
-        root-style="flex: none; cursor: pointer"
-        placeholder="搜索"
-        shape="round"
-        readonly
-        align="center"
-        @click="toAreaCodeSearch"
-      />
-      <sar-indexes root-style="flex: 1; overflow: hidden">
-        <view v-for="section in sectionList" :key="section.anchor">
-          <sar-indexes-anchor :name="section.anchor"></sar-indexes-anchor>
-          <sar-list inlaid>
-            <sar-list-item
-              v-for="item in section.children"
-              :key="item.code"
-              :title="item.title"
-              hover
-              @click="onSelect(item.code)"
-            />
-          </sar-list>
-        </view>
-        <view style="height: env(safe-area-inset-bottom)"></view>
-      </sar-indexes>
-    </view>
-  </doc-page>
+  <sar-popout
+    v-model:visible="innerVisible"
+    title="请选择区号"
+    :show-footer="false"
+    keep-render
+  >
+    <template #visible="{ already }">
+      <template v-if="already">
+        <sar-search
+          root-style="cursor: pointer"
+          placeholder="搜索"
+          shape="round"
+          readonly
+          align="center"
+          @click="searchVisible = true"
+        />
+        <sar-indexes root-style="height: 70vh">
+          <view v-for="section in sectionList" :key="section.anchor">
+            <sar-indexes-anchor :name="section.anchor"></sar-indexes-anchor>
+            <sar-list inlaid>
+              <sar-list-item
+                v-for="item in section.children"
+                :key="item.code"
+                :title="item.title"
+                hover
+                @click="onSelect(item.code)"
+              />
+            </sar-list>
+          </view>
+        </sar-indexes>
+      </template>
+    </template>
+  </sar-popout>
+
+  <AreaCodeSearch v-model:visible="searchVisible" @select="onSelect" />
 </template>
 
 <script setup lang="ts">
-import areaCode from 'tel-area-code/data.json'
-import { getCurrentInstance, ref } from 'vue'
+import areaCode from 'tel-area-code'
+import { computed, ref } from 'vue'
+import AreaCodeSearch from './AreaCodeSearch.vue'
+
+const props = defineProps<{
+  visible?: boolean
+}>()
+
+const emit = defineEmits<{
+  (e: 'update:visible', visible: boolean): void
+  (e: 'select', code: string): void
+}>()
 
 interface SectionItem {
   title: string
@@ -73,28 +85,20 @@ const getSectionList = () => {
 
 const sectionList = ref<Section[]>(getSectionList())
 
-const eventChannel = (
-  getCurrentInstance()?.proxy as any
-).getOpenerEventChannel() as any
+// visible
+const innerVisible = computed({
+  get() {
+    return props.visible
+  },
+  set(value) {
+    emit('update:visible', value)
+  },
+})
+
+const searchVisible = ref(false)
 
 const onSelect = (code: string) => {
-  uni.navigateBack({
-    success: () => {
-      eventChannel.emit('selectAreaCode', {
-        code,
-      })
-    },
-  })
-}
-
-const toAreaCodeSearch = () => {
-  uni.navigateTo({
-    url: `/pages/components/indexes/demo/AreaCodeSearch`,
-    events: {
-      selectAreaCode: (data: any) => {
-        onSelect(data.code)
-      },
-    },
-  })
+  innerVisible.value = false
+  emit('select', code)
 }
 </script>
