@@ -15,7 +15,7 @@
       :class="
         classNames(
           bem.e('nav-item'),
-          bem.em('nav-item', 'active', name === current),
+          bem.em('nav-item', 'active', name === innerCurrent),
         )
       "
     >
@@ -32,14 +32,14 @@
       @transitionend="onTransitionEnd"
     >
       <view :class="bem.e('hint-text')">
-        {{ current }}
+        {{ innerCurrent }}
       </view>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import { computed, ref, getCurrentInstance, reactive } from 'vue'
+import { computed, ref, getCurrentInstance, reactive, watch } from 'vue'
 import {
   type NodeRect,
   classNames,
@@ -79,8 +79,19 @@ const itemSize = 20
 const navId = uniqid()
 const navRect = ref<NodeRect>()
 const hintVisible = ref(false)
-let currentItemIndex: null | number = null
 let moved = false
+
+const innerCurrent = ref<number | string | undefined>()
+
+watch(
+  () => props.current,
+  (current) => {
+    innerCurrent.value = current
+  },
+  {
+    immediate: true,
+  },
+)
 
 const getNavRect = async () => {
   navRect.value = await getBoundingClientRect(`#${navId}`, instance)
@@ -96,7 +107,9 @@ const { realVisible, transitionClass, onTransitionEnd } = useTransition(
 
 const hintTop = computed(() => {
   let index =
-    props.current !== undefined ? props.anchors.indexOf(props.current) : -1
+    innerCurrent.value !== undefined
+      ? props.anchors.indexOf(innerCurrent.value)
+      : -1
   if (index < 0) {
     index = 0
   }
@@ -104,7 +117,7 @@ const hintTop = computed(() => {
   return index * itemSize + itemSize / 2 + 'px'
 })
 
-const update = (touch: Touch) => {
+const calcPosition = (touch: Touch) => {
   if (!navRect.value) {
     return
   }
@@ -114,17 +127,20 @@ const update = (touch: Touch) => {
     0,
     props.anchors.length - 1,
   )
-  if (itemIndex !== currentItemIndex) {
-    currentItemIndex = itemIndex
-    emit('select', props.anchors[itemIndex])
+  const current = props.anchors[itemIndex]
+
+  if (current !== innerCurrent.value) {
+    innerCurrent.value = current
+    emit('select', current)
   }
 }
 
 const onTouchStart = async (event: TouchEvent) => {
   hintVisible.value = true
+  moved = false
   await getNavRect()
   if (!moved) {
-    update(event.touches[0])
+    calcPosition(event.touches[0])
   }
 }
 
@@ -134,14 +150,12 @@ const onTouchMove = (event: TouchEvent) => {
     return
   }
 
-  update(event.touches[0])
+  calcPosition(event.touches[0])
 }
 
 const onTouchEnd = () => {
   hintVisible.value = false
-  moved = false
   navRect.value = undefined
-  currentItemIndex = null
 }
 
 const onMouseDown = useMouseDown(onTouchStart, onTouchMove, onTouchEnd)
