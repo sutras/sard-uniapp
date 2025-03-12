@@ -3,3 +3,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
 }
+
+@mixin line-clamp($line) {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  -webkit-line-clamp: $line;
+}

@@ -48,6 +48,7 @@ declare module 'vue' {
     SarMenu: typeof import('./components/menu/menu.vue').default
     SarNavbar: typeof import('./components/navbar/navbar.vue').default
     SarNavbarItem: typeof import('./components/navbar-item/navbar-item.vue').default
+    SarNavbarPit: typeof import('./components/navbar-pit/navbar-pit.vue').default
     SarNoticeBar: typeof import('./components/notice-bar/notice-bar.vue').default
     SarNotify: typeof import('./components/notify/notify.vue').default
     SarNotifyAgent: typeof import('./components/notify-agent/notify-agent.vue').default
@@ -71,8 +72,12 @@ declare module 'vue' {
     SarRate: typeof import('./components/rate/rate.vue').default
     SarResult: typeof import('./components/result/result.vue').default
     SarRow: typeof import('./components/row/row.vue').default
+    SarScrollSpy: typeof import('./components/scroll-spy/scroll-spy.vue').default
+    SarScrollSpyAnchor: typeof import('./components/scroll-spy-anchor/scroll-spy-anchor.vue').default
     SarSearch: typeof import('./components/search/search.vue').default
     SarShareSheet: typeof import('./components/share-sheet/share-sheet.vue').default
+    SarSidebar: typeof import('./components/sidebar/sidebar.vue').default
+    SarSidebarItem: typeof import('./components/sidebar-item/sidebar-item.vue').default
     SarSkeleton: typeof import('./components/skeleton/skeleton.vue').default
     SarSkeletonAvatar: typeof import('./components/skeleton-avatar/skeleton-avatar.vue').default
     SarSkeletonBlock: typeof import('./components/skeleton-block/skeleton-block.vue').default
@@ -80,6 +85,7 @@ declare module 'vue' {
     SarSkeletonTitle: typeof import('./components/skeleton-title/skeleton-title.vue').default
     SarSlider: typeof import('./components/slider/slider.vue').default
     SarSpace: typeof import('./components/space/space.vue').default
+    SarStatusBar: typeof import('./components/status-bar/status-bar.vue').default
     SarStepper: typeof import('./components/stepper/stepper.vue').default
     SarSteps: typeof import('./components/steps/steps.vue').default
     SarSwiperDot: typeof import('./components/swiper-dot/swiper-dot.vue').default
