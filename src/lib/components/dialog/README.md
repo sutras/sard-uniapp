@@ -89,12 +89,21 @@ import { dialog } from 'sard-uniapp'
 
 ### DialogEmits
 
-| 事件           | 描述                     | 类型                       |
-| -------------- | ------------------------ | -------------------------- |
-| update:visible | 对话框显隐时触发         | (visible: boolean) => void |
-| close          | 点击关闭按钮或遮罩时触发 | () => void                 |
-| cancel         | 点击取消按钮时触发       | () => void                 |
-| confirm        | 点击确定按钮时触发       | () => void                 |
+| 事件                             | 描述                        | 类型                               |
+| -------------------------------- | --------------------------- | ---------------------------------- |
+| update:visible                   | 对话框显隐时触发            | (visible: boolean) => void         |
+| close                            | 点击关闭按钮或遮罩时触发    | () => void                         |
+| cancel                           | 点击取消按钮时触发          | () => void                         |
+| confirm                          | 点击确定按钮时触发          | () => void                         |
+| visible-hook                     | 入场/退场动画状态改变时触发 | (name: TransitionHookName) => void |
+| before-enter <sup>1.12+</sup>    | 入场动画开始前触发          | () => void                         |
+| enter <sup>1.12+</sup>           | 入场动画开始时触发          | () => void                         |
+| after-enter <sup>1.12+</sup>     | 入场动画结束时触发          | () => void                         |
+| enter-cancelled <sup>1.12+</sup> | 入场动画取消时触发          | () => void                         |
+| before-leave <sup>1.12+</sup>    | 退场动画开始前触发          | () => void                         |
+| leave <sup>1.12+</sup>           | 退场动画开始时触发          | () => void                         |
+| after-leave <sup>1.12+</sup>     | 退场动画结束时触发          | () => void                         |
+| leave-cancelled <sup>1.12+</sup> | 退场动画取消时触发          | () => void                         |
 
 ### DialogAgentProps / DialogOptions
 

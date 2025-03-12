@@ -47,17 +47,18 @@ import Popup from 'sard-uniapp/components/popup/popup.vue'
 
 ### PopupEmits
 
-| 事件            | 描述               | 类型                 |
-| --------------- | ------------------ | -------------------- |
-| overlay-click   | 点击遮罩时触发     | (event: any) => void |
-| before-enter    | 入场动画开始前触发 | () => void           |
-| enter           | 入场动画开始时触发 | () => void           |
-| after-enter     | 入场动画结束时触发 | () => void           |
-| enter-cancelled | 入场动画取消时触发 | () => void           |
-| before-leave    | 退场动画开始前触发 | () => void           |
-| leave           | 退场动画开始时触发 | () => void           |
-| after-leave     | 退场动画结束时触发 | () => void           |
-| leave-cancelled | 退场动画取消时触发 | () => void           |
+| 事件            | 描述                        | 类型                               |
+| --------------- | --------------------------- | ---------------------------------- |
+| overlay-click   | 点击遮罩时触发              | (event: any) => void               |
+| visible-hook    | 入场/退场动画状态改变时触发 | (name: TransitionHookName) => void |
+| before-enter    | 入场动画开始前触发          | () => void                         |
+| enter           | 入场动画开始时触发          | () => void                         |
+| after-enter     | 入场动画结束时触发          | () => void                         |
+| enter-cancelled | 入场动画取消时触发          | () => void                         |
+| before-leave    | 退场动画开始前触发          | () => void                         |
+| leave           | 退场动画开始时触发          | () => void                         |
+| after-leave     | 退场动画结束时触发          | () => void                         |
+| leave-cancelled | 退场动画取消时触发          | () => void                         |
 
 ## 主题定制
 

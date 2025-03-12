@@ -70,9 +70,10 @@ import TabbarItem from 'sard-uniapp/components/tabbar-item/tabbar-item.vue'
 
 ### TabbarEmits
 
-| 事件           | 描述           | 类型                                |
-| -------------- | -------------- | ----------------------------------- |
-| update:current | 切换标签时触发 | (current: number \| string) => void |
+| 事件                    | 描述           | 类型                             |
+| ----------------------- | -------------- | -------------------------------- |
+| update:current          | 切换标签时触发 | (name: number \| string) => void |
+| change <sup>1.12+</sup> | 切换标签时触发 | (name: number \| string) => void |
 
 ### TabbarItemProps
 

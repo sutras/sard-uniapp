@@ -1,6 +1,6 @@
 import { type StyleValue } from 'vue'
-import { type TransitionHookName } from '../../use'
 import { defaultConfig } from '../config'
+import { type TransitionHookEmits } from '../popup/common'
 
 export interface PopoutProps {
   rootStyle?: StyleValue
@@ -33,10 +33,9 @@ export interface PopoutSlots {
   visible?(props: { whole: boolean; already: boolean }): any
 }
 
-export interface PopoutEmits {
+export interface PopoutEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'close'): void
   (e: 'cancel'): void
   (e: 'confirm'): void
-  (e: 'visible-hook', name: TransitionHookName): void
 }

@@ -1,7 +1,7 @@
 import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
-import { type TransitionHookName } from '../../use'
 import { type ButtonProps } from '../button'
+import { type TransitionHookEmits } from '../popup/common'
 
 export interface DialogProps {
   rootStyle?: StyleValue
@@ -29,10 +29,9 @@ export interface DialogSlots {
   default?(props: Record<string, never>): any
 }
 
-export interface DialogEmits {
+export interface DialogEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'close'): void
   (e: 'cancel'): void
   (e: 'confirm'): void
-  (e: 'visible-hook', name: TransitionHookName): void
 }

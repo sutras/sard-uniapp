@@ -195,6 +195,7 @@ const buttonProps = computed(() => {
 
 const onVisibleHook = (name: TransitionHookName) => {
   emit('visible-hook', name)
+  emit(name as any)
 }
 
 // others

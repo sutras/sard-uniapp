@@ -17,7 +17,13 @@
         />
         <sar-indexes root-style="height: 70vh">
           <view v-for="section in sectionList" :key="section.anchor">
-            <sar-indexes-anchor :name="section.anchor"></sar-indexes-anchor>
+            <sar-indexes-anchor
+              :name="section.anchor"
+              root-style="height: 0; overflow: hidden;"
+            />
+            <sar-indexes-anchor>
+              {{ section.anchor }}
+            </sar-indexes-anchor>
             <sar-list inlaid>
               <sar-list-item
                 v-for="item in section.children"

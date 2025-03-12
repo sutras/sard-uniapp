@@ -152,8 +152,9 @@ const onAfterLeave = () => {
 const callVisibleHook = usePopupVisibleHookProvide()
 
 const onVisibleHook = (name: TransitionHookName) => {
-  emit('visible-hook', name)
   callVisibleHook(name)
+  emit('visible-hook', name)
+  emit(name as any)
 }
 
 const loading = ref({
