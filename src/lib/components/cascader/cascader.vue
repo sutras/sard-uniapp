@@ -76,7 +76,12 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
+import {
+  classNames,
+  stringifyStyle,
+  createBem,
+  isEmptyBinding,
+} from '../../utils'
 import { useTranslate } from '../locale'
 import SarTabs from '../tabs/tabs.vue'
 import SarIcon from '../icon/icon.vue'
@@ -115,7 +120,7 @@ const { t } = useTranslate('cascader')
 const updateTabs = () => {
   let nextTabs: CascaderTab[] | undefined
 
-  if (tempValue === undefined) {
+  if (isEmptyBinding(tempValue)) {
     nextTabs = [
       {
         options: props.options || [],
@@ -253,7 +258,7 @@ watch(
   () => {
     innerValue.value = props.modelValue
 
-    if (props.modelValue !== undefined) {
+    if (!isEmptyBinding(props.modelValue)) {
       if (
         tabs.value.some(
           (tab) =>

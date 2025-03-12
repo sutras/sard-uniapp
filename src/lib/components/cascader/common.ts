@@ -37,10 +37,10 @@ export interface CascaderEmits {
   (
     e: 'update:model-value',
     value: string | number,
-    selectedOptions: CascaderOption[],
+    selectedOptions: any[],
   ): void
-  (e: 'change', value: string | number, selectedOptions: CascaderOption[]): void
-  (e: 'select', option: CascaderOption, tabIndex: number): void
+  (e: 'change', value: string | number, selectedOptions: any[]): void
+  (e: 'select', option: any, tabIndex: number): void
 }
 
 export interface CascaderTab {
