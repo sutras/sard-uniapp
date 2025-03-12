@@ -1,0 +1,15 @@
+@use '../style/base' as *;
+
+@include bem(sidebar) {
+  @include b() {
+    @include universal;
+    width: var(--sar-sidebar-width);
+    background: var(--sar-sidebar-bg);
+  }
+
+  @include e(content) {
+    @include universal;
+
+    min-height: 100%;
+  }
+}
