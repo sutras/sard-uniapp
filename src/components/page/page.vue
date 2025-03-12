@@ -3,19 +3,23 @@
   <sar-dialog-agent />
   <sar-notify-agent status-bar />
 
-  <sar-navbar
-    :title="title"
-    show-back
-    fixed
-    :flow="isAlipay"
-    status-bar
-    :root-style="{
-      '--sar-navbar-bg': 'var(--sar-body-bg)',
-      '--sar-navbar-item-color': 'var(--sar-body-color)',
-    }"
-    @back="onBack"
-  />
-  <view :class="classNames(bem.b(), bem.m('emphasis', emphasis))">
+  <view
+    :class="classNames(bem.b(), bem.m('emphasis', emphasis))"
+    :style="{ padding }"
+  >
+    <sar-navbar
+      :title="title"
+      show-back
+      fixed
+      :flow="isAlipay"
+      status-bar
+      :root-style="{
+        '--sar-navbar-bg': navbarBg || 'var(--sar-body-bg)',
+        '--sar-navbar-item-color': 'var(--sar-body-color)',
+      }"
+      @back="onBack"
+    />
+
     <slot></slot>
   </view>
 </template>
@@ -27,6 +31,8 @@ import { classNames, isAlipay } from 'sard-uniapp'
 defineProps<{
   emphasis?: boolean
   title?: string
+  navbarBg?: string
+  padding?: string
 }>()
 
 const bem = createBem('page')

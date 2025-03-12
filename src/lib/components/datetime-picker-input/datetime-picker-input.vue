@@ -17,7 +17,7 @@
     @update:visible="onVisible"
     :title="title ?? placeholder"
     @confirm="onConfirm"
-    @visible-hook="onVisibleHook"
+    @enter="onEnter"
   >
     <template #visible="{ already }">
       <sar-datetime-picker
@@ -41,7 +41,6 @@ import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarPopout from '../popout/popout.vue'
 import SarDatetimePicker from '../datetime-picker/datetime-picker.vue'
 import { formatDate, isNullish, isString, parseDate, toDate } from '../../utils'
-import { TransitionHookName } from '../../use'
 import {
   getInitialValue,
   getMinDate,
@@ -91,12 +90,8 @@ const onChange = (value: Date | string) => {
   popoutValue.value = value
 }
 
-const onVisibleHook = (name: TransitionHookName) => {
-  if (
-    name === 'enter' &&
-    !isNullish(innerValue.value) &&
-    popoutValue.value !== innerValue.value
-  ) {
+const onEnter = () => {
+  if (!isNullish(innerValue.value) && popoutValue.value !== innerValue.value) {
     popoutValue.value = innerValue.value
   }
 }

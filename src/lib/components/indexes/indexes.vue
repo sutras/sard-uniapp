@@ -7,7 +7,9 @@
       :scroll-top="scrollTop"
       @scroll="onScroll"
     >
-      <slot></slot>
+      <view>
+        <slot></slot>
+      </view>
     </scroll-view>
     <sar-indexes-nav
       :anchors="anchorNames"
@@ -20,23 +22,19 @@
 <script setup lang="ts">
 import {
   computed,
-  onMounted,
   getCurrentInstance,
-  ref,
+  nextTick,
+  onMounted,
   provide,
   watch,
-  nextTick,
-  shallowRef,
 } from 'vue'
 import {
-  type NodeRect,
   classNames,
   stringifyStyle,
   createBem,
+  isNullish,
   uniqid,
   getBoundingClientRect,
-  matchScrollVisible,
-  isNullish,
 } from '../../utils'
 import {
   type IndexesProps,
@@ -46,7 +44,7 @@ import {
   type IndexesExpose,
   indexesContextSymbol,
 } from './common'
-import { useSetTimeout } from '../../use'
+import { useScrollSpy } from '../../use'
 import SarIndexesNav from '../indexes-nav/indexes-nav.vue'
 
 defineOptions({
@@ -65,133 +63,41 @@ const emit = defineEmits<IndexesEmits>()
 const bem = createBem('indexes')
 
 // main
-const innerCurrent = ref(props.current)
+const scrollViewId = uniqid()
 
-// anchor
-const anchorRectList = shallowRef<[string | number, NodeRect][]>([])
+const instance = getCurrentInstance()
 
-const anchorMap: Record<
-  string | number,
-  Parameters<IndexesContext['register']>[1]
-> = {}
+const {
+  scrollTop,
+  innerCurrent,
+  anchorRectList,
+  register,
+  unregister,
+  onScroll,
+  scrollTo,
+  update,
+  initialize,
+} = useScrollSpy({
+  defaultCurrent: props.current,
+  getSpiedRect() {
+    return getBoundingClientRect(`#${scrollViewId}`, instance)
+  },
+  onChange(name) {
+    emit('change', name)
+  },
+})
 
 provide<IndexesContext>(indexesContextSymbol, {
-  register(name, expose) {
-    anchorMap[name] = expose
-  },
-  unregister(name) {
-    delete anchorMap[name]
-  },
+  register,
+  unregister,
 })
-
-const getAllAnchorRect = async () => {
-  const allRect = await Promise.all(
-    Object.keys(anchorMap).map((name) => {
-      const { getRect } = anchorMap[name]
-      return new Promise<[string | number, NodeRect]>((resolve) => {
-        getRect().then((rect) => {
-          resolve([name, rect])
-        })
-      })
-    }),
-  )
-  const sortedAllRect = allRect.sort((a, b) => {
-    return a[1].top - b[1].top
-  })
-  return sortedAllRect
-}
-
-const calcRect = async () => {
-  const scrollViewRect = await getBoundingClientRect(
-    `#${scrollViewId}`,
-    instance,
-  )
-
-  anchorRectList.value = (await getAllAnchorRect()).map(([name, rect]) => {
-    return [
-      name,
-      {
-        ...rect,
-        top: rect.top - scrollViewRect.top + memoScrollTop,
-        bottom: rect.bottom - scrollViewRect.top + memoScrollTop,
-      },
-    ]
-  })
-}
-
-const update = async () => {
-  await calcRect()
-
-  if (innerCurrent.value) {
-    scrollTo(innerCurrent.value)
-  }
-}
-
-const initialize = async () => {
-  await calcRect()
-
-  if (isNullish(innerCurrent.value)) {
-    innerCurrent.value = anchorRectList.value[0][0]
-  }
-  scrollTo(innerCurrent.value)
-}
 
 onMounted(() => {
-  initialize()
+  nextTick(() => {
+    initialize()
+  })
 })
 
-// scroll
-const instance = getCurrentInstance()
-const scrollViewId = uniqid()
-const scrollTop = ref<number | undefined>(0)
-let memoScrollTop = 0
-let lockScroll = false
-
-const [unLockScrollLater] = useSetTimeout(() => {
-  lockScroll = false
-})
-
-const scrollTo = (name: string | number) => {
-  if (anchorRectList.value.length > 0) {
-    const item = anchorRectList.value.find((item) => item[0] === name)
-    if (item) {
-      const offset = item[1].top
-      scrollTop.value = undefined
-      nextTick(() => {
-        scrollTop.value = offset
-      })
-
-      lockScroll = true
-      unLockScrollLater(150)
-    }
-  }
-}
-
-const onScroll = (event: any) => {
-  memoScrollTop = event.detail.scrollTop
-  if (lockScroll) {
-    return
-  }
-  calcPosition(memoScrollTop)
-}
-
-const calcPosition = (offset: number) => {
-  matchScrollVisible(
-    anchorRectList.value.map((item) => item[1]),
-    (index) => {
-      const name = anchorRectList.value[index][0]
-      if (name !== innerCurrent.value) {
-        innerCurrent.value = name
-        emit('change', name)
-      }
-    },
-    {
-      offset,
-    },
-  )
-}
-
-// outside
 watch(
   () => props.current,
   () => {

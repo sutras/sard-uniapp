@@ -26,6 +26,10 @@
       {
         "title": "Space 间距",
         "name": "space"
+      },
+      {
+        "title": "StatusBar 状态栏",
+        "name": "status-bar"
       }
     ]
   },
@@ -202,6 +206,10 @@
         "name": "qrcode"
       },
       {
+        "title": "ScrollSpy 滚动监听",
+        "name": "scroll-spy"
+      },
+      {
         "title": "SwiperDot 轮播图指示点",
         "name": "swiper-dot"
       },
@@ -245,6 +253,10 @@
       {
         "title": "Pagination 分页",
         "name": "pagination"
+      },
+      {
+        "title": "Sidebar 侧边导航",
+        "name": "sidebar"
       },
       {
         "title": "Steps 步骤条",

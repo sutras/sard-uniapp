@@ -45,6 +45,7 @@ watch(
 const select: TabbarContext['select'] = (name) => {
   innerCurrent.value = name
   emit('update:current', name)
+  emit('change', name)
 }
 
 provide<TabbarContext>(

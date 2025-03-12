@@ -54,7 +54,6 @@ export interface TabContext {
       getRect: () => Promise<NodeRect>
     },
   ) => void
-
   unregister: (name: string | number) => void
 }
 

@@ -21,7 +21,6 @@ onHide(() => {
   display: none;
 }
 
-:root,
 page {
   min-height: calc(100vh - var(--window-top) - var(--window-bottom));
   color: var(--sar-body-color);

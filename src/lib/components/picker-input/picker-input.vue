@@ -17,7 +17,7 @@
     @update:visible="onVisible"
     :title="title ?? placeholder"
     @confirm="onConfirm"
-    @visible-hook="onVisibleHook"
+    @enter="onEnter"
   >
     <template #visible="{ already }">
       <sar-picker
@@ -46,7 +46,6 @@ import {
   type PickerOption,
   type PickerOptionKeys,
 } from '../picker/common'
-import { type TransitionHookName } from '../../use'
 import { isNullish, toArray } from '../../utils'
 import {
   type PickerInputProps,
@@ -95,9 +94,8 @@ const onChange = (value: any) => {
   popoutValue.value = value
 }
 
-const onVisibleHook = (name: TransitionHookName) => {
+const onEnter = () => {
   if (
-    name === 'enter' &&
     !isNullish(innerValue.value) &&
     innerValue.value !== '' &&
     popoutValue.value !== innerValue.value

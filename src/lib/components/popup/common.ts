@@ -28,8 +28,7 @@ export interface PopupSlots {
   default?(props: Record<string, never>): any
 }
 
-export interface PopupEmits {
-  (e: 'overlay-click', event: any): void
+export interface TransitionHookEmits {
   (e: 'before-enter'): void
   (e: 'enter'): void
   (e: 'after-enter'): void
@@ -39,6 +38,10 @@ export interface PopupEmits {
   (e: 'after-leave'): void
   (e: 'leave-cancelled'): void
   (e: 'visible-hook', name: TransitionHookName): void
+}
+
+export interface PopupEmits extends TransitionHookEmits {
+  (e: 'overlay-click', event: any): void
 }
 
 export interface PopupContext {

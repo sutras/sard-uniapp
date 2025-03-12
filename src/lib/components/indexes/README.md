@@ -50,16 +50,17 @@ import IndexesAnchor from 'sard-uniapp/components/indexes-anchor/indexes-anchor.
 
 ### IndexesEmits
 
-| 事件   | 描述               | 类型                             |
-| ------ | ------------------ | -------------------------------- |
-| change | 索引发生变更时触发 | (name: number \| string) => void |
+| 事件                            | 描述               | 类型                             |
+| ------------------------------- | ------------------ | -------------------------------- |
+| update:current <sup>1.12+</sup> | 索引发生变更时触发 | (name: number \| string) => void |
+| change                          | 索引发生变更时触发 | (name: number \| string) => void |
 
 ### IndexesExpose
 
-| 属性     | 描述                                                       | 类型                             |
-| -------- | ---------------------------------------------------------- | -------------------------------- |
-| scrollTo | 滚动到指定锚点                                             | (name: string \| number) => void |
-| update   | 更新锚点；当异步获取锚点数据或数据变动时需要手动调用此方法 | () => void                       |
+| 属性     | 描述           | 类型                             |
+| -------- | -------------- | -------------------------------- |
+| scrollTo | 滚动到指定锚点 | (name: string \| number) => void |
+| update   | 更新锚点位置   | () => void                       |
 
 ### IndexesAnchorProps
 

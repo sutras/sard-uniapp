@@ -12,6 +12,7 @@ export interface IndexesSlots {
 }
 
 export interface IndexesEmits {
+  (e: 'update:current', name: number | string): void
   (e: 'change', name: number | string): void
 }
 
@@ -23,7 +24,7 @@ export interface IndexesExpose {
 export interface IndexesAnchorProps {
   rootStyle?: StyleValue
   rootClass?: string
-  name: string | number
+  name?: string | number
 }
 
 export interface IndexesAnchorSlots {
@@ -44,14 +45,7 @@ export interface IndexesNavEmits {
 }
 
 export interface IndexesContext {
-  register: (
-    name: string | number,
-    expose: {
-      getRect: () => Promise<NodeRect>
-      id: string
-    },
-  ) => void
-
+  register: (name: string | number, getRect: () => Promise<NodeRect>) => void
   unregister: (name: string | number) => void
 }
 

@@ -18,6 +18,7 @@ export interface TabbarSlots {
 
 export interface TabbarEmits {
   (e: 'update:current', current: number | string): void
+  (e: 'change', current: number | string): void
 }
 
 export interface TabbarItemProps {

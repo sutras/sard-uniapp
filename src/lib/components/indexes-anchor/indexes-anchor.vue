@@ -14,6 +14,7 @@ import {
   createBem,
   getBoundingClientRect,
   uniqid,
+  isNullish,
 } from '../../utils'
 import {
   type IndexesAnchorProps,
@@ -50,10 +51,9 @@ const getRect = () => {
 }
 
 onBeforeMount(() => {
-  context.register(props.name, {
-    getRect,
-    id: anchorId,
-  })
+  if (!isNullish(props.name)) {
+    context.register(props.name, getRect)
+  }
 })
 
 // others
