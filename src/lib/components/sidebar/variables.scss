@@ -1,0 +1,20 @@
+// #variables
+page {
+  --sar-sidebar-bg: var(--sar-body-bg);
+  --sar-sidebar-width: 184rpx;
+
+  --sar-sidebar-item-padding-x: 40rpx;
+  --sar-sidebar-item-padding-y: 28rpx;
+  --sar-sidebar-item-font-size: var(--sar-text-sm);
+  --sar-sidebar-item-color: var(--sar-secondary-color);
+  --sar-sidebar-item-active-bg: var(--sar-emphasis-bg);
+  --sar-sidebar-item-active-color: var(--sar-emphasis-color);
+  --sar-sidebar-item-active-font-weight: var(--sar-font-normal);
+
+  --sar-sidebar-line-width: 6rpx;
+  --sar-sidebar-line-height: 24rpx;
+  --sar-sidebar-line-bg: var(--sar-primary);
+
+  --sar-sidebar-round-size: 12rpx;
+}
+// #endvariables

@@ -101,7 +101,11 @@
         "mergeVirtualHostAttributes" : true,
         "darkmode" : true,
         "themeLocation" : "theme.json",
-        "libVersion" : "latest"
+        "libVersion" : "latest",
+        "lazyCodeLoading": "requiredComponents",
+        "rendererOptions": {
+            "skyline": {}
+        }
     },
     "mp-alipay" : {
         "usingComponents" : true,

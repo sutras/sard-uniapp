@@ -309,6 +309,15 @@ export function isRenderVisible(value: any) {
   )
 }
 
+/**
+ * @description: 判断是否绑定为空值
+ * @param {any} target
+ * @return {boolean}
+ */
+export function isEmptyBinding(target: any): target is '' | null | undefined {
+  return target === null || target === undefined || target === ''
+}
+
 export interface DebounceOptions {
   leading?: boolean
   trailing?: boolean
@@ -846,4 +855,10 @@ export function getMayPrimitiveOption(
   key: string,
 ) {
   return isPrimitive(option) ? option : option[key]
+}
+
+export async function sleep(time: number) {
+  return new Promise((resolve) => {
+    setTimeout(resolve, time)
+  })
 }

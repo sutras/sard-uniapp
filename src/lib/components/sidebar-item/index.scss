@@ -1,0 +1,70 @@
+@use '../style/base' as *;
+
+@include bem(sidebar-item) {
+  @include b() {
+    @include universal;
+    padding: var(--sar-sidebar-item-padding-y) var(--sar-sidebar-item-padding-x);
+    cursor: pointer;
+    font-size: var(--sar-sidebar-item-font-size);
+    line-height: var(--sar-leading-snug);
+    color: var(--sar-sidebar-item-color);
+    text-align: center;
+
+    @include m(current) {
+      font-weight: var(--sar-sidebar-item-active-font-weight);
+      color: var(--sar-sidebar-item-active-color);
+      background: var(--sar-sidebar-item-active-bg);
+    }
+
+    @include m(disabled) {
+      @include disabled-text;
+    }
+  }
+
+  @include e(title) {
+    @include line-clamp(2);
+  }
+
+  @include e(line) {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: var(--sar-sidebar-line-width);
+    height: var(--sar-sidebar-line-height);
+    transform: translateY(-50%);
+    background: var(--sar-sidebar-line-bg);
+  }
+
+  @include e(round-top, round-bottom) {
+    position: absolute;
+    right: 0;
+    width: var(--sar-sidebar-round-size);
+    height: var(--sar-sidebar-round-size);
+    background: var(--sar-sidebar-item-active-bg);
+    pointer-events: none;
+
+    &::before {
+      content: '';
+      display: flex;
+      width: 100%;
+      height: 100%;
+      background-color: var(--sar-sidebar-bg);
+    }
+  }
+
+  @include e(round-top) {
+    bottom: 100%;
+
+    &::before {
+      border-bottom-right-radius: 100%;
+    }
+  }
+
+  @include e(round-bottom) {
+    top: 100%;
+
+    &::before {
+      border-top-right-radius: 100%;
+    }
+  }
+}

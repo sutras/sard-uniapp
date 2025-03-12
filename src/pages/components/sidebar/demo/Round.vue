@@ -1,5 +1,5 @@
 <template>
-  <sar-sidebar v-model:current="current">
+  <sar-sidebar v-model:current="current" round>
     <sar-sidebar-item name="1" title="标签名称" />
     <sar-sidebar-item name="2" title="标签名称" />
     <sar-sidebar-item name="3" title="标签名称" />

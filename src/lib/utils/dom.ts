@@ -191,20 +191,25 @@ export async function matchScrollVisible(
   const { offset: optionOffset = 0, errorValue = 3 } = options
   const offset = optionOffset + errorValue
 
-  for (let i = 0, l = rects.length; i < l; i++) {
-    const rect = rects[i]
+  const convertedRect = rects.map((rect, i) => {
+    return {
+      top: rect.top,
+      bottom: i < rects.length - 1 ? rects[i + 1].top : 0,
+    }
+  })
 
-    if (i === 0) {
-      if (rect.top > offset) {
-        return callback(i)
-      }
-    } else if (i > 0 && i < l - 1) {
-      if (rect.top > offset) {
-        return callback(i - 1)
-      } else if (rect.top <= offset && rect.bottom > offset) {
-        return callback(i)
-      }
-    } else {
+  for (let i = 0, l = convertedRect.length; i < l; i++) {
+    const rect = convertedRect[i]
+
+    if (i === 0 && rect.top > offset) {
+      return callback(0)
+    }
+
+    if (rect.top <= offset && rect.bottom > offset) {
+      return callback(i)
+    }
+
+    if (i === l - 1 && rect.bottom <= offset) {
       return callback(i)
     }
   }
