@@ -31,6 +31,7 @@ import {
   uniqid,
   qrcode,
   isApp,
+  getNode,
 } from '../../utils'
 import { defaultQrcodeProps, type QrcodeProps } from './common'
 
@@ -164,20 +165,11 @@ watch(
   },
 )
 
-onMounted(() => {
+onMounted(async () => {
   if (isApp) {
     contextRef.value = uni.createCanvasContext(canvasId, instance)
   } else {
-    uni
-      .createSelectorQuery()
-      .in(instance)
-      .select(`#${canvasId}`)
-      .node((res) => {
-        if (res && res.node) {
-          canvasRef.value = res.node
-        }
-      })
-      .exec()
+    canvasRef.value = await getNode(`#${canvasId}`, instance)
   }
 })
 

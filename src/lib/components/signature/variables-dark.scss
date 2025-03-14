@@ -1,0 +1,7 @@
+@use '../style/base' as *;
+
+// #variables
+@include theme-dark {
+  --sar-signature-canvas-bg: var(--sar-gray-900);
+}
+// #endvariables

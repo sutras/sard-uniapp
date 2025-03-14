@@ -121,6 +121,10 @@
         "name": "search"
       },
       {
+        "title": "Signature 签名",
+        "name": "signature"
+      },
+      {
         "title": "Slider 滑块",
         "name": "slider"
       },

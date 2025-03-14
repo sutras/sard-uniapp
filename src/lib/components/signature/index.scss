@@ -1,0 +1,109 @@
+@use '../style/base' as *;
+
+@include bem(signature) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(body) {
+    @include universal;
+    width: 100%;
+    height: var(--sar-signature-canvas-height);
+  }
+
+  @include e(canvas-content) {
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(canvas) {
+    width: 100%;
+    height: 100%;
+    background-color: var(--sar-signature-canvas-bg);
+  }
+
+  @include e(covert-canvas) {
+    position: fixed;
+    left: 200vw;
+  }
+
+  @include e(footer) {
+    @include universal;
+    margin-top: 20rpx;
+  }
+
+  @include e(footer-content) {
+    @include universal;
+    flex-direction: row;
+  }
+
+  @include e(button-group) {
+    @include universal;
+    flex-direction: row;
+    margin-left: auto;
+    gap: 20rpx;
+  }
+
+  @include m(full) {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--sar-signature-full-bg);
+    touch-action: none;
+
+    @include e(content) {
+      @include universal;
+      flex: 1;
+      min-height: 0;
+      flex-direction: row-reverse;
+    }
+
+    @include e(body) {
+      width: calc(100vw - var(--sar-signature-side-width));
+      height: 100%;
+      padding: var(--sar-signature-full-gap) var(--sar-signature-full-gap)
+        calc(var(--sar-signature-full-gap) + env(safe-area-inset-bottom)) 0;
+    }
+
+    @include e(footer) {
+      position: relative;
+      width: var(--sar-signature-side-width);
+      height: 100%;
+      margin-top: 0;
+    }
+
+    @include e(footer-content) {
+      position: absolute;
+      right: 100%;
+      bottom: 0;
+      width: 100vh;
+      height: var(--sar-signature-side-width);
+      padding-left: var(--sar-signature-full-gap);
+      padding-right: calc(
+        var(--sar-signature-full-gap) + env(safe-area-inset-bottom)
+      );
+      align-items: center;
+      transform-origin: right bottom;
+      transform: rotate(90deg);
+    }
+  }
+
+  @include m(fade-enter-from, fade-leave-to) {
+    opacity: 0;
+  }
+
+  @include m(fade-enter-to, fade-leave-from) {
+    opacity: 1;
+  }
+
+  @include m(fade-enter-active, fade-leave-active) {
+    transition: opacity 0s ease;
+  }
+
+  @include m(hidden) {
+    left: 200vw;
+    opacity: 0;
+  }
+}

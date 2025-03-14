@@ -15,6 +15,7 @@
 
 <script setup lang="ts">
 import {
+  getWindowInfo,
   toast,
   usePopover,
   type MenuOption,
@@ -29,14 +30,14 @@ const popover = usePopover()
 const onBottomCenter = () => {
   position.value = 'bottom'
   popover.show(() => {
-    const info = uni.getSystemInfoSync()
+    const { windowWidth, windowHeight } = getWindowInfo()
     return {
-      width: info.windowWidth,
+      width: windowWidth,
       height: 10,
       left: 0,
-      right: info.windowWidth,
-      top: info.windowHeight - 10,
-      bottom: info.windowHeight,
+      right: windowWidth,
+      top: windowHeight - 10,
+      bottom: windowHeight,
     }
   })
 }
@@ -44,14 +45,14 @@ const onBottomCenter = () => {
 const onBottomEnd = () => {
   position.value = 'bottom-end'
   popover.show(() => {
-    const info = uni.getSystemInfoSync()
+    const { windowWidth, windowHeight } = getWindowInfo()
     return {
       width: 10,
       height: 10,
-      left: info.windowWidth - 10,
-      right: info.windowWidth,
-      top: info.windowHeight - 10,
-      bottom: info.windowHeight,
+      left: windowWidth - 10,
+      right: windowWidth,
+      top: windowHeight - 10,
+      bottom: windowHeight,
     }
   })
 }
@@ -59,12 +60,12 @@ const onBottomEnd = () => {
 const onTopCenter = () => {
   position.value = 'top'
   popover.show(() => {
-    const info = uni.getSystemInfoSync()
+    const { windowWidth } = getWindowInfo()
     return {
-      width: info.windowWidth,
+      width: windowWidth,
       height: 10,
       left: 0,
-      right: info.windowWidth,
+      right: windowWidth,
       top: 0,
       bottom: 10,
     }

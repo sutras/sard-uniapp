@@ -101,6 +101,11 @@ export default {
     confirm: '确定',
     cancel: '取消',
   },
+  signature: {
+    submit: '确定',
+    clear: '清空',
+    cancel: '取消',
+  },
   tree: {
     addSibling: '添加下一节点',
     addChild: '添加子节点',

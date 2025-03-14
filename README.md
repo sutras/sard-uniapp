@@ -129,7 +129,8 @@ npm run release
 
 ## 新增组件流程
 
-- 运行 `npm run nc` 命令自动创建组件
+- 运行 `npm run nc` 命令创建组件
+- 运行 `npm run nsc` 命令创建子组件
 - 编写组件代码
 - 编写案例代码
 - 编写组件文档

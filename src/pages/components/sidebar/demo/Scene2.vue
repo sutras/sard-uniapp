@@ -103,9 +103,10 @@
 </template>
 
 <script setup lang="ts">
+import { getWindowInfo } from 'sard-uniapp'
 import { ref } from 'vue'
 
-const statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px'
+const statusBarHeight = getWindowInfo().statusBarHeight + 'px'
 const navbarHeight = `calc(${statusBarHeight} + var(--sar-navbar-height))`
 const scrollViewHeight = `calc(100vh - ${navbarHeight})`
 const stickyTop = `var(--sar-tabs-tab-height)`

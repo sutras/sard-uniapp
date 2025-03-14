@@ -101,6 +101,11 @@ export default {
     confirm: 'Ok',
     cancel: 'Cancel',
   },
+  signature: {
+    submit: 'Ok',
+    clear: 'Clear',
+    cancel: 'Cancel',
+  },
   tree: {
     addSibling: 'Add sibling node',
     addChild: 'Add child node',

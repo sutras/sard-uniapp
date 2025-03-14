@@ -58,10 +58,12 @@ import StatusBar from 'sard-uniapp/components/status-bar/status-bar.vue'
 
 ### StatusBarProps
 
-| 属性       | 描述           | 类型       | 默认值 |
-| ---------- | -------------- | ---------- | ------ |
-| root-class | 组件根元素类名 | string     | -      |
-| root-style | 组件根元素样式 | StyleValue | -      |
+| 属性       | 描述                 | 类型       | 默认值 |
+| ---------- | -------------------- | ---------- | ------ |
+| root-class | 组件根元素类名       | string     | -      |
+| root-style | 组件根元素样式       | StyleValue | -      |
+| height     | 手动设置状态栏高度， | string     | -      |
+| reverse    | 设置宽度而不是高度   | boolean    | false  |
 
 ### StatusBarSlots
 
