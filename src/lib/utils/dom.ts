@@ -131,28 +131,27 @@ export function getBoundingClientRect(
 
 /**
  * 获取可使用窗口尺寸
- * @returns Promise<WindowInfo>
  */
-export function getWindowInfo() {
-  return new Promise<WindowInfo>((resolve) => {
-    uni.getSystemInfo().then((res) => {
-      resolve({
-        windowWidth: res.windowWidth,
-        windowHeight: res.windowHeight,
-        windowTop: res.windowTop,
-        windowBottom: res.windowBottom,
-        statusBarHeight: res.statusBarHeight || 0,
-      })
-    })
-  })
-}
+export function getWindowInfo(): UniNamespace.GetWindowInfoResult {
+  if (uni.getWindowInfo) {
+    return uni.getWindowInfo()
+  }
 
-export interface WindowInfo {
-  windowWidth: number
-  windowHeight: number
-  windowTop: number
-  windowBottom: number
-  statusBarHeight: number
+  const info = uni.getSystemInfoSync()
+
+  return {
+    pixelRatio: info.pixelRatio,
+    screenWidth: info.screenWidth,
+    screenHeight: info.screenHeight,
+    windowWidth: info.windowWidth,
+    windowHeight: info.windowHeight,
+    statusBarHeight: info.statusBarHeight || 0,
+    windowTop: info.windowTop,
+    windowBottom: info.windowBottom,
+    safeArea: info.safeArea!,
+    safeAreaInsets: info.safeAreaInsets!,
+    screenTop: 0,
+  }
 }
 
 export interface ViewportScrollInfo {
@@ -225,4 +224,20 @@ export function toTouchEvent(event: MouseEvent | TouchEvent, windowTop = 0) {
     ]
   }
   return event as TouchEvent
+}
+
+export function getNode<T = any>(
+  selector: string,
+  instance: ComponentInternalInstance | null,
+) {
+  return new Promise<T>((resolve) => {
+    uni
+      .createSelectorQuery()
+      .in(instance?.proxy)
+      .select(selector)
+      .node((res) => {
+        resolve(res?.node)
+      })
+      .exec()
+  })
 }

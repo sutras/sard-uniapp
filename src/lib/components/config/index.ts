@@ -307,6 +307,13 @@ export const defaultConfig = {
     overlayClosable: true,
     duration: 250,
   },
+  signature: {
+    lineWidth: 3,
+    fullScreen: false,
+    color: '#000',
+    type: 'png' as const,
+    duration: 150,
+  },
   skeleton: {
     rows: 3,
     loading: true,

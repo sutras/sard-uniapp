@@ -78,6 +78,7 @@ declare module 'vue' {
     SarShareSheet: typeof import('./components/share-sheet/share-sheet.vue').default
     SarSidebar: typeof import('./components/sidebar/sidebar.vue').default
     SarSidebarItem: typeof import('./components/sidebar-item/sidebar-item.vue').default
+    SarSignature: typeof import('./components/signature/signature.vue').default
     SarSkeleton: typeof import('./components/skeleton/skeleton.vue').default
     SarSkeletonAvatar: typeof import('./components/skeleton-avatar/skeleton-avatar.vue').default
     SarSkeletonBlock: typeof import('./components/skeleton-block/skeleton-block.vue').default

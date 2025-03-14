@@ -29,11 +29,11 @@
 </template>
 
 <script setup lang="ts">
-import { toast } from 'sard-uniapp'
+import { getWindowInfo, toast } from 'sard-uniapp'
 import areaCode from 'tel-area-code'
 import { ref } from 'vue'
 
-const statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px'
+const statusBarHeight = getWindowInfo().statusBarHeight + 'px'
 const navbarHeight = `calc(${statusBarHeight} + var(--sar-navbar-height))`
 const indexesHeight = `calc(100vh - ${navbarHeight})`
 

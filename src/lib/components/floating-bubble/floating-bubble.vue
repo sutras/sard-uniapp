@@ -18,7 +18,6 @@
 import { computed, getCurrentInstance, onMounted, ref, watch } from 'vue'
 import {
   type NodeRect,
-  type WindowInfo,
   classNames,
   stringifyStyle,
   createBem,
@@ -58,7 +57,7 @@ const instance = getCurrentInstance()
 const bubbleId = uniqid()
 
 let bubbleRect: NodeRect | undefined
-let windowInfo: WindowInfo | undefined
+const { windowWidth, windowHeight, windowTop } = getWindowInfo()
 let downCoord = {
   x: 0,
   y: 0,
@@ -89,24 +88,18 @@ function getMinX() {
 }
 
 function getMaxX() {
-  return windowInfo!.windowWidth - props.gapX - bubbleRect!.width
+  return windowWidth - props.gapX - bubbleRect!.width
 }
 
 function getMinY() {
-  return props.gapY + windowInfo!.windowTop
+  return props.gapY + windowTop
 }
 
 function getMaxY() {
-  return (
-    windowInfo!.windowHeight -
-    props.gapY -
-    bubbleRect!.height +
-    windowInfo!.windowTop
-  )
+  return windowHeight - props.gapY - bubbleRect!.height + windowTop
 }
 
 onMounted(async () => {
-  windowInfo = await getWindowInfo()
   bubbleRect = await getBoundingClientRect(`#${bubbleId}`, instance)
 
   position.value = props.offset ?? {
@@ -129,7 +122,7 @@ const onTouchStart = async (event: TouchEvent) => {
 }
 
 const onTouchMove = (event: TouchEvent) => {
-  if (!bubbleRect || !windowInfo) {
+  if (!bubbleRect) {
     return
   }
 
@@ -143,7 +136,7 @@ const onTouchMove = (event: TouchEvent) => {
     const deltaX = event.touches[0].clientX - downCoord.x
     const deltaY = event.touches[0].clientY - downCoord.y
     x = bubbleRect.left + deltaX
-    y = bubbleRect.top + deltaY + windowInfo.windowTop
+    y = bubbleRect.top + deltaY + windowTop
 
     x = minmax(x, getMinX(), getMaxX())
     y = minmax(y, getMinY(), getMaxY())
@@ -164,19 +157,13 @@ const onTouchMove = (event: TouchEvent) => {
 }
 
 const onTouchEnd = () => {
-  if (windowInfo && bubbleRect) {
+  if (bubbleRect) {
     if (props.magnet) {
       let { x, y } = position.value
       if (props.magnet === 'x') {
-        x =
-          x < (windowInfo.windowWidth - bubbleRect.width) / 2
-            ? getMinX()
-            : getMaxX()
+        x = x < (windowWidth - bubbleRect.width) / 2 ? getMinX() : getMaxX()
       } else if (props.magnet === 'y') {
-        y =
-          y < (windowInfo.windowHeight - bubbleRect.height) / 2
-            ? getMinY()
-            : getMaxY()
+        y = y < (windowHeight - bubbleRect.height) / 2 ? getMinY() : getMaxY()
       }
 
       const offset = {

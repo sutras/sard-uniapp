@@ -1,4 +1,4 @@
-import { toTouchEvent } from '../utils'
+import { getWindowInfo, toTouchEvent } from '../utils'
 
 export function useMouseDown(
   startCallback?: (event: TouchEvent) => void,
@@ -6,22 +6,23 @@ export function useMouseDown(
   endCallback?: (event: TouchEvent) => void,
 ) {
   return (event: MouseEvent) => {
+    console.log('onMouseDown', event)
     // #ifdef WEB
     if ('ontouchstart' in document) {
       return
     }
 
-    const info = uni.getSystemInfoSync()
+    const { windowTop } = getWindowInfo()
 
-    startCallback?.(toTouchEvent(event, info.windowTop))
+    startCallback?.(toTouchEvent(event, windowTop))
 
     const moveHandler = (event: MouseEvent) => {
       event.preventDefault()
-      moveCallback?.(toTouchEvent(event, info.windowTop))
+      moveCallback?.(toTouchEvent(event, windowTop))
     }
 
     const upHandler = (event: MouseEvent) => {
-      endCallback?.(toTouchEvent(event, info.windowTop))
+      endCallback?.(toTouchEvent(event, windowTop))
       document.removeEventListener('mousemove', moveHandler)
       document.removeEventListener('mouseup', upHandler)
     }

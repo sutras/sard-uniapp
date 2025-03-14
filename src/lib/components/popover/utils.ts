@@ -1,4 +1,4 @@
-import { minmax } from '../../utils'
+import { getWindowInfo, minmax } from '../../utils'
 
 export type Position =
   | 'top'
@@ -84,9 +84,7 @@ export function getPopoverPosition(
   const breadth = popperRect.width + refGap
   const thickness = popperRect.height + refGap
 
-  const systemInfo = uni.getSystemInfoSync()
-  const windowWidth = systemInfo.windowWidth
-  const windowHeight = systemInfo.windowHeight
+  const { windowWidth, windowHeight } = getWindowInfo()
 
   const gapBoundaries = {
     top: refRect.top - thickness - viewportGap,

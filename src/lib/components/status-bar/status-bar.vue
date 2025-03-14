@@ -6,12 +6,18 @@
 
 <script setup lang="ts">
 import { computed } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
+import {
+  classNames,
+  stringifyStyle,
+  createBem,
+  getWindowInfo,
+} from '../../utils'
 import {
   type StatusBarProps,
   type StatusBarSlots,
   type StatusBarEmits,
   type StatusBarExpose,
+  defaultStatusBarProps,
 } from './common'
 
 defineOptions({
@@ -21,7 +27,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<StatusBarProps>(), {})
+const props = withDefaults(defineProps<StatusBarProps>(), defaultStatusBarProps)
 
 defineSlots<StatusBarSlots>()
 
@@ -31,7 +37,7 @@ const bem = createBem('statusBar')
 
 // main
 const statusBarHeight = computed(() => {
-  return props.height || uni.getSystemInfoSync().statusBarHeight + 'px'
+  return props.height || getWindowInfo().statusBarHeight + 'px'
 })
 
 defineExpose<StatusBarExpose>()
@@ -43,7 +49,7 @@ const statusBarClass = computed(() => {
 
 const statusBarStyle = computed(() => {
   return stringifyStyle(props.rootStyle, {
-    height: statusBarHeight.value,
+    [props.reverse ? 'width' : 'height']: statusBarHeight.value,
   })
 })
 </script>

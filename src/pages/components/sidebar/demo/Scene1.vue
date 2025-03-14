@@ -59,9 +59,10 @@
 </template>
 
 <script setup lang="ts">
+import { getWindowInfo } from '@/lib'
 import { ref } from 'vue'
 
-const statusBarHeight = uni.getSystemInfoSync().statusBarHeight + 'px'
+const statusBarHeight = getWindowInfo().statusBarHeight + 'px'
 const navbarHeight = `calc(${statusBarHeight} + var(--sar-navbar-height))`
 const scrollViewHeight = `calc(100vh - ${navbarHeight})`
 

@@ -172,10 +172,10 @@
       "path": "pages/components/icon/index"
     },
     {
-      "path": "pages/components/indexes/index"
+      "path": "pages/components/indexes/demo/FullPage"
     },
     {
-      "path": "pages/components/indexes/demo/FullPage"
+      "path": "pages/components/indexes/index"
     },
     {
       "path": "pages/components/input/index"
@@ -286,6 +286,9 @@
     },
     {
       "path": "pages/components/sidebar/index"
+    },
+    {
+      "path": "pages/components/signature/index"
     },
     {
       "path": "pages/components/skeleton/index"
