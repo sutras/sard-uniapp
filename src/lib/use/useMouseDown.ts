@@ -6,7 +6,6 @@ export function useMouseDown(
   endCallback?: (event: TouchEvent) => void,
 ) {
   return (event: MouseEvent) => {
-    console.log('onMouseDown', event)
     // #ifdef WEB
     if ('ontouchstart' in document) {
       return

@@ -20,6 +20,8 @@ declare module 'vue' {
     SarCollapse: typeof import('./components/collapse/collapse.vue').default
     SarCountDown: typeof import('./components/count-down/count-down.vue').default
     SarCountTo: typeof import('./components/count-to/count-to.vue').default
+    SarCropImage: typeof import('./components/crop-image/crop-image.vue').default
+    SarCropImageAgent: typeof import('./components/crop-image-agent/crop-image-agent.vue').default
     SarDatetimePicker: typeof import('./components/datetime-picker/datetime-picker.vue').default
     SarDatetimePickerInput: typeof import('./components/datetime-picker-input/datetime-picker-input.vue').default
     SarDatetimeRangePicker: typeof import('./components/datetime-range-picker/datetime-range-picker.vue').default

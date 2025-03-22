@@ -71,3 +71,17 @@ export function getFileName(path: string, ext = true) {
   const name = path.match(/\/([^/]+)$/)?.[1] || ''
   return ext ? name : name.replace(/\.[^.]+$/, '')
 }
+
+export async function plusToDataURL(filePath: string) {
+  return new Promise<string>((resolve) => {
+    plus.io.resolveLocalFileSystemURL(filePath, (entry) => {
+      ;(entry as any).file((file: any) => {
+        const fileReader = new plus.io.FileReader()
+        fileReader.readAsDataURL(file, 'utf-8')
+        fileReader.onloadend = (evt) => {
+          resolve((evt.target as any).result)
+        }
+      })
+    })
+  })
+}

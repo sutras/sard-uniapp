@@ -103,6 +103,15 @@ export const defaultConfig = {
     separatorDigit: 3,
     duration: 2000,
   },
+  cropImage: {
+    duration: 150,
+    cropScale: '1:1',
+    type: 'png' as const,
+    quality: 0.92,
+  },
+  cropImageAgent: {
+    id: 'cropImage',
+  },
   datetimePicker: {
     type: 'yMd',
   },
@@ -311,8 +320,10 @@ export const defaultConfig = {
     lineWidth: 3,
     fullScreen: false,
     color: '#000',
-    type: 'png' as const,
     duration: 150,
+    type: 'png' as const,
+    target: 'dataURL' as const,
+    quality: 0.92,
   },
   skeleton: {
     rows: 3,

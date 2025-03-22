@@ -37,6 +37,7 @@ export default [
         process: true,
         module: true,
         uni: true,
+        plus: true,
       },
     },
   },

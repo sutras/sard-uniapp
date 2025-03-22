@@ -73,6 +73,9 @@
       "path": "pages/components/count-to/index"
     },
     {
+      "path": "pages/components/crop-image/index"
+    },
+    {
       "path": "pages/components/datetime-picker-input/index"
     },
     {

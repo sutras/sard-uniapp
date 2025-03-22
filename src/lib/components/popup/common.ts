@@ -14,6 +14,7 @@ export interface PopupProps {
     | 'slide-left'
     | 'zoom'
     | 'fade'
+    | 'full-fade'
   overlay?: boolean
   overlayClass?: string
   overlayStyle?: string

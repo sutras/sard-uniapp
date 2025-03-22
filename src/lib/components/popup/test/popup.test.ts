@@ -19,6 +19,11 @@ describe('Popover', () => {
     expect(wrapper.find('.sar-popup.sar-popup_fade').exists()).toBeTruthy()
 
     await wrapper.setProps({
+      effect: 'full-fade',
+    })
+    expect(wrapper.find('.sar-popup.sar-popup_full-fade').exists()).toBeTruthy()
+
+    await wrapper.setProps({
       effect: 'slide-top',
     })
     expect(wrapper.find('.sar-popup.sar-popup_slide-top').exists()).toBeTruthy()
