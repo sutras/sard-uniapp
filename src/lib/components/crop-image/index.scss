@@ -1,0 +1,79 @@
+@use '../style/base' as *;
+
+@include bem(crop-image) {
+  @include b() {
+    @include universal;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000;
+    touch-action: none;
+  }
+
+  @include e(sensor) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(focus) {
+    position: absolute;
+    transition: transform 0.15s;
+  }
+
+  @include e(puppet) {
+    position: relative;
+    transform-origin: top left;
+    transition: transform 0.15s;
+  }
+
+  @include e(image) {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    left: 50%;
+    top: 50%;
+  }
+
+  @include e(mask) {
+    position: absolute;
+    z-index: 10;
+    box-shadow: 0 0 0 9999vh rgba(45, 45, 45, 0.8);
+    pointer-events: none;
+  }
+
+  @include e(toolbar) {
+    @include universal;
+    position: absolute;
+    left: 32rpx;
+    right: 32rpx;
+    bottom: calc(env(safe-area-inset-bottom) + 32rpx);
+    z-index: 20;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  @include e(canvas-wrapper) {
+    position: fixed;
+    left: 200vw;
+  }
+
+  @include e(loading) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 30;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    justify-content: center;
+    align-items: center;
+    font-size: 60rpx;
+    color: #fff;
+    background-color: var(--sar-mask-illegible);
+    touch-action: none;
+  }
+}

@@ -58,6 +58,8 @@ const inbuiltIcons = [
   'pencil-square',
   'trash',
   'backtop',
+  'undo',
+  'rotate-left',
 ]
 
 const onClick = (name: string) => {

@@ -349,5 +349,14 @@
         "name": "marquee"
       }
     ]
+  },
+  {
+    "title": "工具组件",
+    "children": [
+      {
+        "title": "CropImage 裁剪图片",
+        "name": "crop-image"
+      }
+    ]
   }
 ]

@@ -4,7 +4,6 @@ import { defaultConfig } from '../config'
 export interface SignatureProps {
   rootStyle?: StyleValue
   rootClass?: string
-  type?: 'png' | 'jpg'
   color?: string
   lineWidth?: number
   background?: string
@@ -15,6 +14,9 @@ export interface SignatureProps {
   clearText?: string
   submitText?: string
   customNavbar?: boolean
+  type?: 'png' | 'jpg'
+  target?: 'dataURL' | 'filePath'
+  quality?: number
 }
 
 export const defaultSignatureProps = defaultConfig.signature

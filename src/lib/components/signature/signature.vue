@@ -40,8 +40,11 @@
         </view>
       </view>
 
-      <view :class="bem.e('footer')">
-        <view :class="bem.e('footer-content')">
+      <view :class="bem.e('footer')" :id="footerId">
+        <view
+          :class="bem.e('footer-content')"
+          :style="{ width: footerContentWidth }"
+        >
           <sar-status-bar v-if="fullScreen && customNavbar" reverse />
           <slot></slot>
           <view :class="bem.e('button-group')">
@@ -89,6 +92,7 @@ import {
   isWeb,
   isApp,
   isAlipay,
+  plusToDataURL,
 } from '../../utils'
 import {
   type SignatureProps,
@@ -123,6 +127,8 @@ const { t } = useTranslate('signature')
 
 const instance = getCurrentInstance()
 
+const dpr = getWindowInfo().pixelRatio
+
 const contentId = uniqid()
 
 const canvasCSSWidth = ref('')
@@ -156,8 +162,6 @@ const mapImageType = {
 
 const setCanvasSize = async () => {
   const bodyRect = await getBoundingClientRect(`#${contentId}`, instance)
-
-  const dpr = getWindowInfo().pixelRatio
 
   canvasWidth = bodyRect.width * dpr
   canvasHeight = bodyRect.height * dpr
@@ -347,9 +351,39 @@ const clear = () => {
   emit('clear')
 }
 
-const getRotateCanvasDataUrl = async () => {
-  const dpr = getWindowInfo().pixelRatio
+const getCanvasDataURL = async () => {
+  if (isApp) {
+    return await plusToDataURL(await getCanvasFilePath())
+  }
+  return canvas.toDataURL(mapImageType[props.type])
+}
 
+const getCanvasFilePath = async () => {
+  return await new Promise<string>((resolve) => {
+    const options = {
+      x: 0,
+      y: 0,
+      width: canvasWidth,
+      height: canvasHeight,
+      destWidth: canvasWidth,
+      destHeight: canvasHeight,
+      canvasId: canvasId,
+      canvas: canvas,
+      fileType: props.type,
+      quality: props.quality,
+      success(res: any) {
+        resolve(res.tempFilePath)
+      },
+    }
+    if (isAlipay) {
+      ;(canvas as any).toTempFilePath(options)
+    } else {
+      uni.canvasToTempFilePath(options)
+    }
+  })
+}
+
+const drawRotateCanvas = async () => {
   covertContext.clearRect(0, 0, covertCanvasWidth, covertCanvasHeight)
   covertContext.save()
   covertContext.scale(1 / dpr, 1 / dpr)
@@ -369,69 +403,64 @@ const getRotateCanvasDataUrl = async () => {
       })
     })
   }
+}
 
+const getRotateCanvasDataUrl = async () => {
   if (isApp) {
-    return await new Promise<string>((resolve) => {
-      uni.canvasToTempFilePath({
-        x: 0,
-        y: 0,
-        width: covertCanvasWidth,
-        height: covertCanvasHeight,
-        destWidth: covertCanvasWidth,
-        destHeight: covertCanvasHeight,
-        canvasId: covertCanvasId,
-        fileType: props.type,
-        success(res) {
-          resolve(res.tempFilePath)
-        },
-      })
-    })
-  } else if (isAlipay) {
-    return await new Promise<string>((resolve) => {
-      ;(covertCanvas as any).toTempFilePath({
-        x: 0,
-        y: 0,
-        width: covertCanvasWidth,
-        height: covertCanvasHeight,
-        destWidth: covertCanvasWidth,
-        destHeight: covertCanvasHeight,
-        fileType: props.type,
-        success(res: any) {
-          resolve(res.tempFilePath)
-        },
-      })
-    })
+    return await plusToDataURL(await getRotateCanvasFilePath())
   }
+
+  await drawRotateCanvas()
   return covertCanvas.toDataURL(mapImageType[props.type])
 }
 
-const getCanvasDataURL = async () => {
-  if (isApp) {
-    return await new Promise<string>((resolve) => {
-      uni.canvasToTempFilePath({
-        x: 0,
-        y: 0,
-        width: canvasWidth,
-        height: canvasHeight,
-        destWidth: canvasWidth,
-        destHeight: canvasHeight,
-        canvasId: canvasId,
-        fileType: props.type,
-        success(res) {
-          resolve(res.tempFilePath)
-        },
-      })
-    })
+const getRotateCanvasFilePath = async () => {
+  await drawRotateCanvas()
+
+  return await new Promise<string>((resolve) => {
+    const options = {
+      x: 0,
+      y: 0,
+      width: covertCanvasWidth,
+      height: covertCanvasHeight,
+      destWidth: covertCanvasWidth,
+      destHeight: covertCanvasHeight,
+      canvasId: covertCanvasId,
+      canvas: covertCanvas,
+      fileType: props.type,
+      quality: props.quality,
+      success(res: any) {
+        resolve(res.tempFilePath)
+      },
+    }
+    if (isAlipay) {
+      ;(canvas as any).toTempFilePath(options)
+    } else {
+      uni.canvasToTempFilePath(options)
+    }
+  })
+}
+
+const getCanvasTarget = async () => {
+  if (props.target === 'dataURL') {
+    return await getCanvasDataURL()
   }
-  return canvas.toDataURL(mapImageType[props.type])
+  return await getCanvasFilePath()
+}
+
+const getRotateCanvasTarget = async () => {
+  if (props.target === 'dataURL') {
+    return await getRotateCanvasDataUrl()
+  }
+  return await getRotateCanvasFilePath()
 }
 
 const submit = async () => {
   const dataURL = isEmpty
     ? ''
     : props.fullScreen
-    ? await getRotateCanvasDataUrl()
-    : await getCanvasDataURL()
+    ? await getRotateCanvasTarget()
+    : await getCanvasTarget()
 
   emit('submit', dataURL)
 
@@ -488,6 +517,7 @@ const { realVisible, transitionClass, onTransitionEnd } = useTransition(
             if (!fullScreenInitialled) {
               fullScreenInitialled = true
               await sleep(50)
+              setFooterContentWidth()
               await initialCanvas()
             }
             break
@@ -509,6 +539,16 @@ watch(
     immediate: true,
   },
 )
+
+// footer content size
+const footerContentWidth = ref('')
+
+const footerId = uniqid()
+
+const setFooterContentWidth = async () => {
+  const rect = await getBoundingClientRect(`#${footerId}`, instance)
+  footerContentWidth.value = rect.height + 'px'
+}
 
 // others
 const signatureClass = computed(() => {

@@ -1,5 +1,5 @@
 <template>
-  <sar-signature @submit="onSubmit"></sar-signature>
+  <sar-signature @submit="onSubmit" target="filePath"></sar-signature>
 
   <image v-if="dataURL" style="width: 100%" mode="widthFix" :src="dataURL" />
 </template>

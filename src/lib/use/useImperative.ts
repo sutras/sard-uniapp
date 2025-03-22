@@ -89,6 +89,7 @@ export function getAvailableImperative<T = any>(
         return imperativeItem.imperative as T
       }
     }
+    return imperativeItems[imperativeItems.length - 1]?.imperative
   }
 }
 
