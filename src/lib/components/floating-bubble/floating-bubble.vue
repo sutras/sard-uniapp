@@ -1,6 +1,5 @@
 <template>
   <view
-    :id="bubbleId"
     :class="floatingBubbleClass"
     :style="floatingBubbleStyle"
     @touchstart="onTouchStart"
@@ -57,7 +56,7 @@ const instance = getCurrentInstance()
 const bubbleId = uniqid()
 
 let bubbleRect: NodeRect | undefined
-const { windowWidth, windowHeight, windowTop } = getWindowInfo()
+const { windowWidth, windowHeight } = getWindowInfo()
 let downCoord = {
   x: 0,
   y: 0,
@@ -92,15 +91,15 @@ function getMaxX() {
 }
 
 function getMinY() {
-  return props.gapY + windowTop
+  return props.gapY + 44 + 25
 }
 
 function getMaxY() {
-  return windowHeight - props.gapY - bubbleRect!.height + windowTop
+  return windowHeight - props.gapY - bubbleRect!.height
 }
 
 onMounted(async () => {
-  bubbleRect = await getBoundingClientRect(`#${bubbleId}`, instance)
+  bubbleRect = await getBoundingClientRect(`.${bubbleId}`, instance)
 
   position.value = props.offset ?? {
     x: getMaxX(),
@@ -118,7 +117,7 @@ const onTouchStart = async (event: TouchEvent) => {
     x: event.touches[0].clientX,
     y: event.touches[0].clientY,
   }
-  bubbleRect = await getBoundingClientRect(`#${bubbleId}`, instance)
+  bubbleRect = await getBoundingClientRect(`.${bubbleId}`, instance)
 }
 
 const onTouchMove = (event: TouchEvent) => {
@@ -136,7 +135,7 @@ const onTouchMove = (event: TouchEvent) => {
     const deltaX = event.touches[0].clientX - downCoord.x
     const deltaY = event.touches[0].clientY - downCoord.y
     x = bubbleRect.left + deltaX
-    y = bubbleRect.top + deltaY + windowTop
+    y = bubbleRect.top + deltaY
 
     x = minmax(x, getMinX(), getMaxX())
     y = minmax(y, getMinY(), getMaxY())
@@ -193,6 +192,7 @@ const floatingBubbleClass = computed(() => {
     bem.m('animated', animated.value),
     bem.m('initialized', initialized.value),
     props.rootClass,
+    bubbleId,
   )
 })
 

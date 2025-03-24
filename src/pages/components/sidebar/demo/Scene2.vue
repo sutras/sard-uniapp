@@ -47,7 +47,7 @@
             :name="i"
             :title="item.title"
           />
-          <view style="height: 160rpx"></view>
+          <view style="height: 160rpx; flex: none"></view>
         </sar-sidebar>
 
         <view style="flex: 1; min-width: 0; margin: 0 20rpx">

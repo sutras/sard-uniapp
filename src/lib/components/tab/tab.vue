@@ -1,5 +1,5 @@
 <template>
-  <view :class="tabClass" :style="tabStyle" :id="tabId" @click="onClick">
+  <view :class="tabClass" :style="tabStyle" @click="onClick">
     <slot>
       {{ title }}
     </slot>
@@ -56,7 +56,7 @@ const isCurrent = computed(() => {
 const tabId = uniqid()
 
 const getRect = () => {
-  return getBoundingClientRect(`#${tabId}`, instance)
+  return getBoundingClientRect(`.${tabId}`, instance)
 }
 
 const select = () => {
@@ -93,6 +93,7 @@ const tabClass = computed(() => {
     bem.em('tab', 'current', isCurrent.value),
     bem.em('tab', 'disabled', props.disabled),
     props.rootClass,
+    tabId,
   )
 })
 

@@ -1,12 +1,12 @@
 <template>
-  <view :class="rootClass" :style="rootStyle" :id="anchorId">
+  <view :class="classNames(rootClass, anchorId)" :style="rootStyle">
     <slot></slot>
   </view>
 </template>
 
 <script setup lang="ts">
 import { inject, onBeforeMount, getCurrentInstance } from 'vue'
-import { getBoundingClientRect, uniqid } from '../../utils'
+import { classNames, getBoundingClientRect, uniqid } from '../../utils'
 import { type ScrollSpyAnchorProps, type ScrollSpyAnchorSlots } from './common'
 import {
   type ScrollSpyContext,
@@ -37,7 +37,7 @@ const anchorId = uniqid()
 const instance = getCurrentInstance()
 
 const getRect = () => {
-  return getBoundingClientRect(`#${anchorId}`, instance)
+  return getBoundingClientRect(`.${anchorId}`, instance)
 }
 
 onBeforeMount(() => {

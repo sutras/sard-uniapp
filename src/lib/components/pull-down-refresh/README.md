@@ -32,7 +32,7 @@ import PullDownRefresh from 'sard-uniapp/components/pull-down-refresh/pull-down-
 
 在页面生命周期 `onPageScroll` 中获取当前 `scrollTop` 的值，当为 0 时启用下拉刷新。
 
-@code('${DEMO_PATH}/pull-down-refresh/index.vue')
+@code('${DEMO_PATH}/pull-down-refresh/demo/Page.vue')
 
 ### 基于 scroll-view 的刷新
 

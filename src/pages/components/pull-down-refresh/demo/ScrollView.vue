@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <doc-page emphasis title="基于 scroll-view 的刷新" padding="20rpx">
     <sar-button @click="loading = !loading">toggle loading</sar-button>
     <scroll-view
       scroll-y
@@ -34,7 +34,7 @@
         </view>
       </sar-pull-down-refresh>
     </scroll-view>
-  </view>
+  </doc-page>
 </template>
 
 <script setup lang="ts">

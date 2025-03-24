@@ -4,7 +4,6 @@
     :scroll-top="scrollTop"
     :class="sidebarClass"
     :style="sidebarStyle"
-    :id="scrollViewId"
     @scroll="onScroll"
   >
     <view :class="bem.e('content')">
@@ -83,7 +82,7 @@ const scrollIntoView = async (name: string | number) => {
   const itemRect = await getRect()
 
   const scrollViewRect = await getBoundingClientRect(
-    `#${scrollViewId}`,
+    `.${scrollViewId}`,
     instance,
   )
 
@@ -132,7 +131,7 @@ provide<SidebarContext>(
 
 // others
 const sidebarClass = computed(() => {
-  return classNames(bem.b(), props.rootClass)
+  return classNames(bem.b(), props.rootClass, scrollViewId)
 })
 
 const sidebarStyle = computed(() => {

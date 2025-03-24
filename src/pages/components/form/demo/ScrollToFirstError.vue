@@ -1,5 +1,5 @@
 <template>
-  <doc-page title="滚动到第一个错误字段">
+  <doc-page title="滚动到第一个错误字段" padding="0">
     <sar-form
       :model="formState"
       ref="formRef"
@@ -21,8 +21,8 @@
       </sar-form-item>
     </sar-form>
 
-    <view style="height: 160rpx"></view>
-    <view class="footer">
+    <view :style="{ height: footerHeight + 'px' }"></view>
+    <view class="footer" :id="footerId">
       <sar-row gap="20rpx">
         <sar-col>
           <sar-button @click="onSubmit">Submit</sar-button>
@@ -44,14 +44,14 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, toRaw, getCurrentInstance } from 'vue'
+import { ref, toRaw, onMounted } from 'vue'
 import {
   toast,
+  uniqid,
   type FormExpose,
   type ScrollIntoViewPosition,
   type FieldValidateError,
 } from 'sard-uniapp'
-import { onMounted } from 'vue'
 
 const formState = ref(
   Array(10)
@@ -87,13 +87,13 @@ const onReset = () => {
 const position = ref<ScrollIntoViewPosition>('nearest')
 
 const footerHeight = ref(0)
-const instance = getCurrentInstance()
+
+const footerId = uniqid()
 
 onMounted(() => {
   uni
     .createSelectorQuery()
-    .in(instance)
-    .select('.footer')
+    .select(`#${footerId}`)
     .boundingClientRect((result: any) => {
       footerHeight.value = result.height
     })

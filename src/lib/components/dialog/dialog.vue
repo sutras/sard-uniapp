@@ -75,7 +75,14 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { classNames, stringifyStyle, createBem, noop } from '../../utils'
+import {
+  classNames,
+  stringifyStyle,
+  createBem,
+  noop,
+  isObject,
+  isFunction,
+} from '../../utils'
 import { useTranslate } from '../locale'
 import SarPopup from '../popup/popup.vue'
 import SarButton from '../button/button.vue'
@@ -124,9 +131,9 @@ const loading = ref({
 
 const perhapsClose = (type: 'close' | 'cancel' | 'confirm') => {
   emit(type as any)
-  if (typeof props.beforeClose === 'function') {
+  if (isFunction(props.beforeClose)) {
     const result = props.beforeClose(type)
-    if (result instanceof Promise) {
+    if (isObject(result) && isFunction(result.then)) {
       loading.value[type] = true
 
       return result

@@ -1,5 +1,5 @@
 <template>
-  <view :class="refClass" :style="refStyle" :id="referenceId" @click="onClick">
+  <view :class="refClass" :style="refStyle" @click="onClick">
     <slot></slot>
   </view>
 </template>
@@ -39,7 +39,7 @@ const instance = getCurrentInstance()
 const context = inject<PopoverContext>(popoverContextSymbol)
 
 const getRect = () => {
-  return getBoundingClientRect(`#${referenceId}`, instance)
+  return getBoundingClientRect(`.${referenceId}`, instance)
 }
 
 onMounted(() => {
@@ -55,7 +55,7 @@ const onClick = (event: any) => {
 
 // others
 const refClass = computed(() => {
-  return classNames(props.rootClass)
+  return classNames(props.rootClass, referenceId)
 })
 
 const refStyle = computed(() => {

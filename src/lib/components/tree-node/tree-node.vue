@@ -1,6 +1,5 @@
 <template>
   <view
-    :id="nodeId"
     :class="nodeClass"
     :style="nodeStyle"
     @touchstart="onNodeTouchStart"
@@ -247,7 +246,7 @@ const [
 const onDragTouchStart = async (event: TouchEvent) => {
   onDragSimulatedPressTouchStart(event)
   onDragSimulatedClickTouchStart(event)
-  nodeRect = await getBoundingClientRect(`#${nodeId}`, instance)
+  nodeRect = await getBoundingClientRect(`.${nodeId}`, instance)
 }
 
 const onDragTouchMove = (event: TouchEvent) => {
@@ -368,6 +367,7 @@ const nodeClass = computed(() => {
     bem.em('node', 'dragging', dragging.value),
     bem.em('node', 'selectable', treeContext.selectable),
     bem.em('node', 'active', nodeActive.value),
+    nodeId,
   )
 })
 

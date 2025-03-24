@@ -20,6 +20,8 @@
             :name="i"
             :title="item.title"
           />
+
+          <view style="height: env(safe-area-inset-bottom); flex: none"></view>
         </sar-sidebar>
 
         <view style="flex: 1; min-width: 0; margin: 0 20rpx">
