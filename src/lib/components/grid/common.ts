@@ -1,5 +1,6 @@
 import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
+import { type BadgeProps } from '../badge'
 
 export interface GridProps {
   rootStyle?: StyleValue
@@ -29,6 +30,9 @@ export interface GridItemProps {
   iconSize?: string
   iconColor?: string
   iconFamily?: string
+  dot?: boolean
+  badge?: number | string
+  badgeProps?: BadgeProps
 }
 
 export interface GridItemSlots {

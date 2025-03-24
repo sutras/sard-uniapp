@@ -68,6 +68,12 @@ import GridItem from 'sard-uniapp/components/grid-item/grid-item.vue'
 
 @code('${DEMO_PATH}/grid/demo/Clickable.vue')
 
+### 徽标提示
+
+添加点击态。
+
+@code('${DEMO_PATH}/grid/demo/Badge.vue')
+
 ### 自定义内容
 
 通过默认插槽可以自定义格子展示的内容。
@@ -98,17 +104,20 @@ import GridItem from 'sard-uniapp/components/grid-item/grid-item.vue'
 
 ### GridItemProps
 
-| 属性          | 描述                     | 类型       | 默认值 |
-| ------------- | ------------------------ | ---------- | ------ |
-| root-class    | 组件根元素类名           | string     | -      |
-| root-style    | 组件根元素样式           | StyleValue | -      |
-| content-class | 内容元素类名             | string     | -      |
-| content-style | 内容元素样式             | StyleValue | -      |
-| text          | 自定义文字内容           | string     | -      |
-| icon          | 图标名称，可以为图片路径 | string     | -      |
-| icon-size     | 图标尺寸                 | string     | -      |
-| icon-color    | 图标颜色                 | string     | -      |
-| icon-family   | 图标字体名称             | string     | -      |
+| 属性                         | 描述                       | 类型                             | 默认值 |
+| ---------------------------- | -------------------------- | -------------------------------- | ------ |
+| root-class                   | 组件根元素类名             | string                           | -      |
+| root-style                   | 组件根元素样式             | StyleValue                       | -      |
+| content-class                | 内容元素类名               | string                           | -      |
+| content-style                | 内容元素样式               | StyleValue                       | -      |
+| text                         | 自定义文字内容             | string                           | -      |
+| icon                         | 图标名称，可以为图片路径   | string                           | -      |
+| icon-size                    | 图标尺寸                   | string                           | -      |
+| icon-color                   | 图标颜色                   | string                           | -      |
+| icon-family                  | 图标字体名称               | string                           | -      |
+| dot <sup>1.12+</sup>         | 是否显示宫格项右上角小红点 | boolean                          | false  |
+| badge <sup>1.12+</sup>       | 宫格项右上角徽标的内容     | number \| string                 | -      |
+| badge-props <sup>1.12+</sup> | 自定义徽标属性             | [BadgeProps](./badge#BadgeProps) | -      |
 
 ### GridItemSlots
 

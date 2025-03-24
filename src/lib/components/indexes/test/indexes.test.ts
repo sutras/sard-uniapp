@@ -115,7 +115,7 @@ describe('Indexes', () => {
 
     expect(
       wrapper
-        .find(`.sar-indexes__scroll-view > div:nth-child(${QIndex + 1})`)
+        .find(`.sar-indexes__scroll-view > view > div:nth-child(${QIndex + 1})`)
         .find('.sar-list-item__title')
         .text(),
     ).toBe('青海省')
