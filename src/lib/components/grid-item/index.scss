@@ -23,6 +23,14 @@
     background-color: var(--sar-grid-bg);
   }
 
+  @include e(main) {
+    position: relative;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
+    flex: none;
+  }
+
   @include e(icon) {
     @include universal;
     font-size: var(--sar-grid-item-icon-size);
@@ -51,7 +59,7 @@
   }
 
   @include m(vertical) {
-    @include e(content) {
+    @include e(main) {
       flex-direction: column;
     }
 
@@ -61,7 +69,7 @@
   }
 
   @include m(horizontal) {
-    @include e(content) {
+    @include e(main) {
       flex-direction: row;
     }
 
@@ -71,7 +79,7 @@
   }
 
   @include m-intersect(vertical, reverse) {
-    @include e(content) {
+    @include e(main) {
       flex-direction: column-reverse;
     }
 
@@ -82,7 +90,7 @@
   }
 
   @include m-intersect(horizontal, reverse) {
-    @include e(content) {
+    @include e(main) {
       flex-direction: row-reverse;
     }
 

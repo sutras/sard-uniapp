@@ -32,6 +32,10 @@
       <DemoClickable />
     </doc-demo>
 
+    <doc-demo title="徽标提示">
+      <DemoBadge />
+    </doc-demo>
+
     <doc-demo title="自定义内容">
       <DemoCustom />
     </doc-demo>
@@ -47,6 +51,7 @@ import DemoGap from './demo/Gap.vue'
 import DemoHorizontal from './demo/Horizontal.vue'
 import DemoReverse from './demo/Reverse.vue'
 import DemoClickable from './demo/Clickable.vue'
+import DemoBadge from './demo/Badge.vue'
 import DemoCustom from './demo/Custom.vue'
 </script>
 

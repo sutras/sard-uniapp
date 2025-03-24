@@ -6,21 +6,24 @@
         :style="stringifyStyle(contentStyle)"
         @click="onClick"
       >
-        <slot>
-          <view :class="bem.e('icon')">
-            <slot name="icon">
-              <sar-icon
-                :name="icon"
-                :color="iconColor"
-                :size="iconSize"
-                :family="iconFamily"
-              />
-            </slot>
-          </view>
-          <view :class="bem.e('text')">
-            <slot name="text">{{ text }}</slot>
-          </view>
-        </slot>
+        <view :class="bem.e('main')">
+          <slot>
+            <view :class="bem.e('icon')">
+              <slot name="icon">
+                <sar-icon
+                  :name="icon"
+                  :color="iconColor"
+                  :size="iconSize"
+                  :family="iconFamily"
+                />
+              </slot>
+            </view>
+            <view :class="bem.e('text')">
+              <slot name="text">{{ text }}</slot>
+            </view>
+          </slot>
+          <sar-badge v-bind="mergedBadgeProps" fixed />
+        </view>
       </view>
     </view>
   </view>
@@ -37,6 +40,7 @@ import {
   gridSymbol,
 } from '../grid/common'
 import SarIcon from '../icon/icon.vue'
+import SarBadge from '../badge/badge.vue'
 
 defineOptions({
   options: {
@@ -63,6 +67,15 @@ if (!context) {
 const onClick = (event: any) => {
   emit('click', event)
 }
+
+// badge
+const mergedBadgeProps = computed(() => {
+  return {
+    dot: props.dot,
+    value: props.badge,
+    ...props.badgeProps,
+  }
+})
 
 // others
 const itemClass = computed(() => {

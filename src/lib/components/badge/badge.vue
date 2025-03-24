@@ -42,6 +42,8 @@ const innerValue = computed(() => {
     ? ''
     : typeof props.value === 'number' && props.value > props.max
     ? `${props.max}+`
+    : props.value === 0 && !props.showZero
+    ? ''
     : props.value
 })
 

@@ -173,4 +173,31 @@ describe('Grid', () => {
 
     expect(wrapper.find('.sar-grid__content').text()).toBe('content')
   })
+
+  test('badge', async () => {
+    const wrapper = mount(
+      h(Grid, null, () => [
+        h(GridItem, { dot: true, text: '文字', icon: 'image' }),
+        h(GridItem, { badge: 99 }),
+        h(GridItem, {
+          badge: 999,
+          badgeProps: {
+            max: 120,
+          },
+        }),
+      ]),
+    )
+
+    expect(
+      wrapper.find('.sar-grid__item:nth-child(1) .sar-badge').classes(),
+    ).includes('sar-badge_dot')
+
+    expect(wrapper.find('.sar-grid__item:nth-child(2) .sar-badge').text()).toBe(
+      '99',
+    )
+
+    expect(wrapper.find('.sar-grid__item:nth-child(3) .sar-badge').text()).toBe(
+      '120+',
+    )
+  })
 })
