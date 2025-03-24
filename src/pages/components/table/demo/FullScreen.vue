@@ -1,6 +1,7 @@
 <template>
+  <sar-status-bar />
   <view class="wrapper">
-    <sar-table height="calc(100vh - var(--window-top) - 15rpx)">
+    <sar-table :height="`calc(100vh - ${statusBarHeight}px)`">
       <sar-table-row fixed>
         <sar-table-cell
           v-for="(item, i) in columns"
@@ -35,6 +36,8 @@
 
 <script lang="ts" setup>
 import { columns, data } from './level-data'
+
+const statusBarHeight = uni.getWindowInfo().statusBarHeight
 
 const bgColor = [
   ['rgba(var(--sar-primary-rgb), 0.15)', 'rgba(var(--sar-primary-rgb), 0.05)'],

@@ -1,7 +1,6 @@
 <template>
   <doc-page title="Indexes 索引">
     <sar-indexes
-      ref="indexesRef"
       :root-style="{
         height: indexesHeight,
       }"

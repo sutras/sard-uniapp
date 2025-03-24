@@ -1,6 +1,5 @@
 <template>
   <scroll-view
-    :id="fixationId"
     :class="fixationClass"
     :style="fixationStyle"
     :scroll-y="scrollY"
@@ -17,7 +16,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance, onMounted, ref, watch } from 'vue'
+import {
+  computed,
+  getCurrentInstance,
+  onMounted,
+  ref,
+  watch,
+  nextTick,
+} from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -32,7 +38,6 @@ import {
   type TableFixationEmits,
   type TableScrollSide,
 } from '../table/common'
-import { nextTick } from 'vue'
 
 defineOptions({
   options: {
@@ -53,8 +58,16 @@ const bem = createBem('table')
 const scrollSide = ref<TableScrollSide | null>(null)
 
 const onScroll = (event: any) => {
-  if (event.detail.scrollLeft !== 0) {
-    scrollSide.value = 'middle'
+  const { scrollLeft, scrollWidth } = event.detail
+  const fixationWidth = fixationRect.value!.width
+
+  if (scrollWidth > fixationWidth) {
+    scrollSide.value =
+      scrollLeft < 1
+        ? 'left'
+        : scrollWidth - scrollLeft - fixationWidth < 1
+        ? 'right'
+        : 'middle'
   }
 }
 
@@ -89,10 +102,10 @@ onMounted(() => {
 })
 
 const setFixationRect = async () => {
-  fixationRect.value = await getBoundingClientRect(`#${fixationId}`, instance)
+  fixationRect.value = await getBoundingClientRect(`.${fixationId}`, instance)
 }
 
-uni.onWindowResize(setFixationRect)
+uni.onWindowResize?.(setFixationRect)
 
 watch(
   scrollSide,
@@ -111,6 +124,7 @@ const fixationClass = computed(() => {
     bem.em('fixation', 'bordered', props.bordered),
     bem.em('fixation', 'underline', props.underline),
     props.rootClass,
+    fixationId,
   )
 })
 
