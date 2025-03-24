@@ -250,6 +250,15 @@
       "path": "pages/components/pull-down-refresh/index"
     },
     {
+      "path": "pages/components/pull-down-refresh/demo/Page"
+    },
+    {
+      "path": "pages/components/pull-down-refresh/demo/ScrollView"
+    },
+    {
+      "path": "pages/components/pull-down-refresh/demo/Slot"
+    },
+    {
       "path": "pages/components/qrcode/index"
     },
     {

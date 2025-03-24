@@ -1,4 +1,4 @@
-import { getWindowInfo, toTouchEvent } from '../utils'
+import { toTouchEvent } from '../utils'
 
 export function useMouseDown(
   startCallback?: (event: TouchEvent) => void,
@@ -11,17 +11,15 @@ export function useMouseDown(
       return
     }
 
-    const { windowTop } = getWindowInfo()
-
-    startCallback?.(toTouchEvent(event, windowTop))
+    startCallback?.(toTouchEvent(event))
 
     const moveHandler = (event: MouseEvent) => {
       event.preventDefault()
-      moveCallback?.(toTouchEvent(event, windowTop))
+      moveCallback?.(toTouchEvent(event))
     }
 
     const upHandler = (event: MouseEvent) => {
-      endCallback?.(toTouchEvent(event, windowTop))
+      endCallback?.(toTouchEvent(event))
       document.removeEventListener('mousemove', moveHandler)
       document.removeEventListener('mouseup', upHandler)
     }

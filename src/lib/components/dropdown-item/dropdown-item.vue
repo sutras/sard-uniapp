@@ -2,7 +2,6 @@
   <view
     :class="dropdownItemClass"
     :style="dropdownItemStyle"
-    :id="itemId"
     @click="onItemClick"
   >
     <view v-if="label" :class="bem.e('label')">
@@ -175,8 +174,8 @@ const popupInset = ref('')
 const awayInset = ref('')
 
 const setPosition = async () => {
-  const windowInfo = await getWindowInfo()
-  const itemRect = await getBoundingClientRect(`#${itemId}`, instance)
+  const { windowHeight } = getWindowInfo()
+  const itemRect = await getBoundingClientRect(`.${itemId}`, instance)
 
   const nextPopupInset: Record<string, any> = {
     left: 0,
@@ -198,11 +197,11 @@ const setPosition = async () => {
 
     nextAwayInset.top = 0
     nextAwayInset.bottom = `calc(${
-      windowInfo.windowHeight - itemRect.bottom
+      windowHeight - itemRect.bottom
     }px + var(--window-top))`
   } else {
     nextPopupInset.top = 0
-    nextPopupInset.bottom = `${windowInfo.windowHeight - itemRect.top}px`
+    nextPopupInset.bottom = `${windowHeight - itemRect.top}px`
 
     nextAwayInset.top = `calc(${itemRect.bottom}px + var(--window-top))`
     nextAwayInset.bottom = 0
@@ -285,6 +284,7 @@ const dropdownItemClass = computed(() => {
     bem.m('show', wholeVisible.value),
     bem.m('disabled', context.disabled || props.disabled),
     props.rootClass,
+    itemId,
   )
 })
 

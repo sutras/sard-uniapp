@@ -77,6 +77,7 @@ import {
   createBem,
   noop,
   isFileUrl,
+  isFunction,
 } from '../../utils'
 import SarPopup from '../popup/popup.vue'
 import SarIcon from '../icon/icon.vue'
@@ -127,7 +128,7 @@ watch(
 )
 
 const perhapsClose = (type: 'close' | 'cancel' | 'select') => {
-  if (typeof props.beforeClose === 'function') {
+  if (isFunction(props.beforeClose)) {
     const result = props.beforeClose(type)
     if (result instanceof Promise) {
       return result

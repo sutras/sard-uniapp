@@ -1,5 +1,5 @@
 <template>
-  <sar-fab :item-list="itemList" top="96rpx" right="48rpx" />
+  <sar-fab :item-list="itemList" top="80px" right="48rpx" />
 </template>
 
 <script lang="ts" setup>

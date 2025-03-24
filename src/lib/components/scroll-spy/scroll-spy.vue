@@ -1,8 +1,7 @@
 <template>
   <scroll-view
-    :class="rootClass"
+    :class="classNames(props.rootClass, scrollViewId)"
     :style="rootStyle"
-    :id="scrollViewId"
     scroll-y
     :scroll-top="scrollTop"
     :upper-threshold="upperThreshold"
@@ -26,7 +25,12 @@ import {
   toRef,
   watch,
 } from 'vue'
-import { isNullish, uniqid, getBoundingClientRect } from '../../utils'
+import {
+  isNullish,
+  uniqid,
+  getBoundingClientRect,
+  classNames,
+} from '../../utils'
 import {
   type ScrollSpyProps,
   type ScrollSpySlots,
@@ -73,7 +77,7 @@ const {
     startOffset: toRef(() => props.offset) as unknown as number,
     defaultCurrent: props.current,
     getSpiedRect() {
-      return getBoundingClientRect(`#${scrollViewId}`, instance)
+      return getBoundingClientRect(`.${scrollViewId}`, instance)
     },
     onChange(name) {
       emit('update:current', name)

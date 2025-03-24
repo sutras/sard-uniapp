@@ -1,5 +1,5 @@
 <template>
-  <view :class="formItemClass" :style="formItemStyle" :id="fieldId">
+  <view :class="formItemClass" :style="formItemStyle">
     <view
       v-if="$slots.label || !isNullish(label)"
       :class="bem.e('label')"
@@ -238,7 +238,7 @@ const instance = getCurrentInstance()
 const scrollToField = async () => {
   const [scrollInfo, fieldRect, windowInfo] = await Promise.all([
     getViewportScrollInfo(),
-    getBoundingClientRect(`#${fieldId}`, instance),
+    getBoundingClientRect(`.${fieldId}`, instance),
     getWindowInfo(),
   ])
 
@@ -311,6 +311,7 @@ const formItemClass = computed(() => {
     bem.m(`valign-${props.labelValign || formContext.labelValign}`),
     bem.m(`star-${props.starPosition || formContext.starPosition}`),
     props.rootClass,
+    fieldId,
   )
 })
 

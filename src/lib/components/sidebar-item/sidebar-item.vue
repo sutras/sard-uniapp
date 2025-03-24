@@ -1,10 +1,5 @@
 <template>
-  <view
-    :class="sidebarItemClass"
-    :style="sidebarItemStyle"
-    :id="itemId"
-    @click="onClick"
-  >
+  <view :class="sidebarItemClass" :style="sidebarItemStyle" @click="onClick">
     <view v-if="isCurrent && context.round" :class="bem.e('round-top')"></view>
     <view v-if="isCurrent && context.line" :class="bem.e('line')"></view>
     <slot>
@@ -74,7 +69,7 @@ const isCurrent = computed(() => {
 const itemId = uniqid()
 
 const getRect = () => {
-  return getBoundingClientRect(`#${itemId}`, instance)
+  return getBoundingClientRect(`.${itemId}`, instance)
 }
 
 const select = () => {
@@ -109,6 +104,7 @@ const sidebarItemClass = computed(() => {
     bem.m('current', isCurrent.value),
     bem.m('disabled', props.disabled),
     props.rootClass,
+    itemId,
   )
 })
 

@@ -8,6 +8,17 @@ export function isPlainObject(target: any): target is Record<PropertyKey, any> {
 }
 
 /**
+ * @description: 判断是否为对象
+ * @param {any} target
+ * @return {boolean}
+ */
+export function isObject(
+  target: any,
+): target is object & { [key: PropertyKey]: any } {
+  return target !== null && typeof target === 'object'
+}
+
+/**
  * @description: 判断是否为函数
  * @param {any} target
  * @return {boolean}

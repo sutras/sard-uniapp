@@ -2,7 +2,6 @@
   <view
     :class="navClass"
     :style="navStyle"
-    :id="navId"
     @touchstart="onTouchStart"
     @touchmove.stop.prevent="onTouchMove"
     @touchend="onTouchEnd"
@@ -94,7 +93,7 @@ watch(
 )
 
 const getNavRect = async () => {
-  navRect.value = await getBoundingClientRect(`#${navId}`, instance)
+  navRect.value = await getBoundingClientRect(`.${navId}`, instance)
 }
 
 const { realVisible, transitionClass, onTransitionEnd } = useTransition(
@@ -162,7 +161,7 @@ const onMouseDown = useMouseDown(onTouchStart, onTouchMove, onTouchEnd)
 
 // others
 const navClass = computed(() => {
-  return classNames(bem.e('nav'))
+  return classNames(bem.e('nav'), navId)
 })
 
 const navStyle = computed(() => {

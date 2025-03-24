@@ -44,6 +44,7 @@ import {
   noop,
   isImageUrl,
   toArray,
+  isFunction,
 } from '../../utils'
 import SarUploadPreview from '../upload-preview/upload-preview.vue'
 import SarIcon from '../icon/icon.vue'
@@ -161,7 +162,7 @@ const limitSizeNode: ChainNode = (fileList: UploadFileItem[], next) => {
     const file = item.file
     if (
       file &&
-      ((typeof props.maxSize === 'function' && props.maxSize(file)) ||
+      ((isFunction(props.maxSize) && props.maxSize(file)) ||
         (file.size &&
           typeof props.maxSize === 'number' &&
           file.size > props.maxSize))

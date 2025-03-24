@@ -1,5 +1,5 @@
 <template>
-  <view :class="indexesAnchorClass" :style="indexesAnchorStyle" :id="anchorId">
+  <view :class="indexesAnchorClass" :style="indexesAnchorStyle">
     <slot>
       {{ name }}
     </slot>
@@ -47,7 +47,7 @@ const anchorId = uniqid()
 const instance = getCurrentInstance()
 
 const getRect = () => {
-  return getBoundingClientRect(`#${anchorId}`, instance)
+  return getBoundingClientRect(`.${anchorId}`, instance)
 }
 
 onBeforeMount(() => {
@@ -58,7 +58,7 @@ onBeforeMount(() => {
 
 // others
 const indexesAnchorClass = computed(() => {
-  return classNames(bem.e('anchor'), props.rootClass)
+  return classNames(bem.e('anchor'), props.rootClass, anchorId)
 })
 
 const indexesAnchorStyle = computed(() => {

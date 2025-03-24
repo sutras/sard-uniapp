@@ -5,7 +5,7 @@
 
   <view
     :class="classNames(bem.b(), bem.m('emphasis', emphasis))"
-    :style="{ padding }"
+    :style="{ padding: padding || '' }"
   >
     <sar-navbar
       :title="title"

@@ -1,5 +1,5 @@
 <template>
-  <view>
+  <doc-page emphasis title="自定义插槽" padding="20rpx">
     <scroll-view
       scroll-y
       style="
@@ -59,7 +59,7 @@
         </view>
       </sar-pull-down-refresh>
     </scroll-view>
-  </view>
+  </doc-page>
 </template>
 
 <script setup lang="ts">
