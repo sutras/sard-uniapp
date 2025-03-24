@@ -9,11 +9,17 @@
             :disabled="
               toMonthNumber(innerCurrentDate) <= toMonthNumber(minDate)
             "
+            :block="false"
             @click="onPrevMonthClick"
           >
             <sar-icon name="left" size="32rpx" />
           </sar-button>
-          <sar-button type="pale-text" theme="neutral" @click="onMonthClick">
+          <sar-button
+            type="pale-text"
+            theme="neutral"
+            :block="false"
+            @click="onMonthClick"
+          >
             {{
               t('monthTitle', {
                 year: innerCurrentDate.getFullYear(),
@@ -27,6 +33,7 @@
             :disabled="
               toMonthNumber(innerCurrentDate) >= toMonthNumber(maxDate)
             "
+            :block="false"
             @click="onNextMonthClick"
           >
             <sar-icon name="right" size="32rpx" />

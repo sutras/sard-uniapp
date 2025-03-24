@@ -27,6 +27,10 @@
     <doc-demo title="加载中">
       <DemoLoading />
     </doc-demo>
+
+    <doc-demo title="块级按钮">
+      <DemoBlock />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -38,6 +42,7 @@ import DemoRound from './demo/Round.vue'
 import DemoDisabled from './demo/Disabled.vue'
 import DemoSize from './demo/Size.vue'
 import DemoLoading from './demo/Loading.vue'
+import DemoBlock from './demo/Block.vue'
 </script>
 
 <style lang="scss" scoped>

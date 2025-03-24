@@ -17,6 +17,7 @@
             type="pale-text"
             theme="neutral"
             size="large"
+            block
             @click="onClose"
           >
             <sar-icon name="close" />
@@ -43,6 +44,7 @@
           :theme="buttonProps.cancel.theme"
           :size="buttonProps.cancel.size"
           :round="buttonProps.confirm.round"
+          block
           v-bind="cancelProps"
           @click="onCancel"
         >
@@ -60,6 +62,7 @@
           :theme="buttonProps.confirm.theme"
           :size="buttonProps.confirm.size"
           :round="buttonProps.confirm.round"
+          block
           v-bind="confirmProps"
           @click="onConfirm"
         >

@@ -35,6 +35,7 @@
           size="small"
           type="pale-text"
           color="white"
+          block
           @click="onCancel"
         >
           <text style="font-size: var(--sar-text-base); font-weight: bold">
@@ -45,6 +46,7 @@
           size="small"
           type="pale-text"
           color="white"
+          block
           @click="onReset"
         >
           <sar-icon name="undo" size="var(--sar-text-xl)" />
@@ -53,11 +55,12 @@
           size="small"
           type="pale-text"
           color="white"
+          block
           @click="onRotate"
         >
           <sar-icon name="rotate-left" size="var(--sar-text-xl)" />
         </sar-button>
-        <sar-button size="small" @click="onConfirm">
+        <sar-button size="small" block @click="onConfirm">
           <text style="font-weight: bold">确定</text>
         </sar-button>
       </view>

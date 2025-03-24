@@ -4,10 +4,10 @@
 @include bem(button) {
   @include b() {
     @include universal;
+    display: inline-flex;
     flex-direction: row;
     align-items: center;
     justify-content: center;
-    flex: auto;
     width: auto;
     margin: 0;
     border: none;
@@ -19,6 +19,11 @@
     user-select: none;
     cursor: pointer;
     overflow: visible;
+  }
+
+  @include m(block) {
+    display: flex;
+    flex: auto;
   }
 
   // border

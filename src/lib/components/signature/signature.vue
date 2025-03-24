@@ -52,14 +52,15 @@
               v-if="fullScreen"
               size="small"
               type="pale"
+              block
               @click="onCancel"
             >
               {{ cancelText || t('cancel') }}
             </sar-button>
-            <sar-button size="small" type="pale" @click="onClear">
+            <sar-button size="small" type="pale" block @click="onClear">
               {{ clearText || t('clear') }}
             </sar-button>
-            <sar-button size="small" @click="onSubmit">
+            <sar-button size="small" block @click="onSubmit">
               {{ submitText || t('submit') }}
             </sar-button>
           </view>

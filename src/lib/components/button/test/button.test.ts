@@ -121,4 +121,19 @@ describe('Button', () => {
 
     expect(wrapper.find('.sar-loading').exists()).toBe(true)
   })
+
+  test('block', async () => {
+    const wrapper = mount(
+      h(
+        Button,
+        {
+          block: true,
+        },
+        () => '默认',
+      ),
+    )
+
+    const classes = wrapper.find('.sar-button').classes()
+    expect(classes).toContain('sar-button_block')
+  })
 })
