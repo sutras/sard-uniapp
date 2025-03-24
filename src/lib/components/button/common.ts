@@ -20,6 +20,7 @@ export interface ButtonProps {
   loadingType?: 'clock' | 'circular'
   color?: string
   background?: string
+  block?: boolean
 
   // 小程序能力
   formType?: string

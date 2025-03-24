@@ -17,6 +17,7 @@
             theme="neutral"
             :root-class="classNames(bem.e('header-cancel'))"
             :loading="loading.cancel"
+            block
             @click="onCancel"
           >
             <template v-if="cancelText">{{ cancelText }}</template>
@@ -37,6 +38,7 @@
             :root-class="classNames(bem.e('header-confirm'))"
             :loading="loading.confirm"
             :disabled="confirmDisabled"
+            block
             @click="onConfirm"
           >
             <template v-if="confirmText">{{ confirmText }}</template>
@@ -49,7 +51,7 @@
           :class="bem.e('close')"
           @click="onCloseClick"
         >
-          <sar-button type="pale-text" theme="neutral" size="large">
+          <sar-button type="pale-text" theme="neutral" size="large" block>
             <sar-icon name="close" />
           </sar-button>
         </view>
@@ -63,6 +65,7 @@
           theme="primary"
           round
           :loading="loading.cancel"
+          block
           @click="onCancel"
         >
           <template v-if="cancelText">{{ cancelText }}</template>
@@ -76,6 +79,7 @@
           round
           :loading="loading.confirm"
           :disabled="confirmDisabled"
+          block
           @click="onConfirm"
         >
           <template v-if="confirmText">{{ confirmText }}</template>

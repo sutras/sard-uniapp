@@ -38,6 +38,7 @@
         v-if="cancel"
         type="pale-text"
         root-style="height: auto"
+        block
         @click="onCancel"
       >
         {{ cancel }}
@@ -46,6 +47,7 @@
         v-if="search"
         type="pale-text"
         root-style="height: auto"
+        block
         @click="onConfirm"
       >
         {{ search }}

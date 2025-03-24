@@ -67,6 +67,7 @@ export const defaultConfig = {
     hoverStopPropagation: false,
     lang: 'en',
     showMessageCard: false,
+    block: true,
   },
   calendar: {
     type: 'single' as CalendarProps['type'],
