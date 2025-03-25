@@ -20,6 +20,10 @@ export default {
   cascader: {
     pleaseSelect: 'Please select',
   },
+  cropImage: {
+    confirm: 'Ok',
+    cancel: 'Cancel',
+  },
   datetimePicker: {
     y: '',
     M: '',
@@ -102,7 +106,7 @@ export default {
     cancel: 'Cancel',
   },
   signature: {
-    submit: 'Ok',
+    confirm: 'Ok',
     clear: 'Clear',
     cancel: 'Cancel',
   },

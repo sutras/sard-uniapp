@@ -6,6 +6,7 @@ import Indexes from '../indexes.vue'
 import IndexesAnchor from '../../indexes-anchor/indexes-anchor.vue'
 import List from '../../list/list.vue'
 import ListItem from '../../list-item/list-item.vue'
+import { sleep } from '../../../utils'
 
 const indexList = [
   {
@@ -108,7 +109,7 @@ describe('Indexes', () => {
       ),
     )
 
-    await new Promise((resolve) => setTimeout(resolve, 50))
+    await sleep(50)
 
     const QIndex = indexList.findIndex((item) => item.anchor === 'Q')
     expect(wrapper.findAll('.sar-indexes__anchor')[QIndex].text()).toBe('Q')

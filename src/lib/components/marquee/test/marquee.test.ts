@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils'
 import { h } from 'vue'
 
 import Marquee from '../marquee.vue'
+import { sleep } from '../../../utils'
 
 const genData = () => {
   return '赵钱孙李周吴郑王'.split('').map((item) => `恭喜${item}**获得丰厚奖品`)
@@ -22,7 +23,7 @@ describe('Marquee', () => {
           }),
       ),
     )
-    await new Promise((resolve) => setTimeout(resolve, 50))
+    await sleep(50)
     expect(wrapper.find('.sar-marquee').exists()).toBe(true)
     expect(wrapper.find('.sar-marquee__wrapper').exists()).toBe(true)
   })
@@ -41,7 +42,7 @@ describe('Marquee', () => {
           }),
       ),
     )
-    await new Promise((resolve) => setTimeout(resolve, 50))
+    await sleep(50)
     expect(wrapper.find('.sar-marquee_horizontal').exists()).toBe(true)
   })
 })

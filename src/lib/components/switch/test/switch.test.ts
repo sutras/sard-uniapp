@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils'
 import { h } from 'vue'
 
 import Switch from '../switch.vue'
+import { sleep } from '../../../utils'
 
 describe('Switch', () => {
   test('basic', async () => {
@@ -93,7 +94,7 @@ describe('Switch', () => {
     expect(wrapper.find('.sar-switch').classes()).not.includes(
       'sar-switch_checked',
     )
-    await new Promise((resolve) => setTimeout(resolve, 1))
+    await sleep(1)
     expect(wrapper.find('.sar-switch').classes()).includes('sar-switch_checked')
   })
 })

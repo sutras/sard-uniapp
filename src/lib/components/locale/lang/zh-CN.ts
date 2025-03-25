@@ -20,6 +20,10 @@ export default {
   cascader: {
     pleaseSelect: '请选择',
   },
+  cropImage: {
+    confirm: '确定',
+    cancel: '取消',
+  },
   datetimePicker: {
     y: '年',
     M: '月',
@@ -102,7 +106,7 @@ export default {
     cancel: '取消',
   },
   signature: {
-    submit: '确定',
+    confirm: '确定',
     clear: '清空',
     cancel: '取消',
   },

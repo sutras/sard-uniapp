@@ -39,7 +39,7 @@
           @click="onCancel"
         >
           <text style="font-size: var(--sar-text-base); font-weight: bold">
-            取消
+            {{ cancelText || t('cancel') }}
           </text>
         </sar-button>
         <sar-button
@@ -61,7 +61,9 @@
           <sar-icon name="rotate-left" size="var(--sar-text-xl)" />
         </sar-button>
         <sar-button size="small" block @click="onConfirm">
-          <text style="font-weight: bold">确定</text>
+          <text style="font-weight: bold">
+            {{ confirmText || t('confirm') }}
+          </text>
         </sar-button>
       </view>
     </view>
@@ -83,7 +85,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance, onBeforeUnmount, ref } from 'vue'
+import { computed, getCurrentInstance, onBeforeUnmount, ref, watch } from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -106,9 +108,12 @@ import {
   type CropImageExpose,
   defaultCropImageProps,
 } from './common'
-import SarPopup from '../popup/popup.vue'
-import { watch } from 'vue'
 import { useDragPinch, useSetTimeout } from '../../use'
+import { useTranslate } from '../locale'
+import SarPopup from '../popup/popup.vue'
+import SarIcon from '../icon/icon.vue'
+import SarButton from '../button/button.vue'
+import SarLoading from '../loading/loading.vue'
 
 defineOptions({
   options: {
@@ -124,6 +129,8 @@ defineSlots<CropImageSlots>()
 const emit = defineEmits<CropImageEmits>()
 
 const bem = createBem('crop-image')
+
+const { t } = useTranslate('signature')
 
 // main
 
@@ -336,7 +343,7 @@ const inInertia = ref(false)
 
 const puppetStyle = computed(() => {
   const [width, height] = reversedCoverSize.value
-  const scale = imgWidth.value / width
+  const scale = imgWidth.value / width || 1
   const x = imgLeft.value
   const y = imgTop.value
 

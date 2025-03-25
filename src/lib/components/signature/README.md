@@ -20,7 +20,7 @@ import Signature from 'sard-uniapp/components/signature/signature.vue'
 
 ### 基础使用
 
-书写完签名，点击确定按钮会触发 `submit` 事件，并接收图片的 `dataURL` 或临时文件路径，如果没有书写或者点击了清空按钮，则会得到空字符串。
+书写完签名，点击确定按钮会触发 `confirm` 事件，并接收图片的 `dataURL` 或临时文件路径，如果没有书写或者点击了清空按钮，则会得到空字符串。
 
 @code('${DEMO_PATH}/signature/demo/Basic.vue')
 
@@ -52,22 +52,22 @@ import Signature from 'sard-uniapp/components/signature/signature.vue'
 
 ### SignatureProps
 
-| 属性        | 描述                       | 类型                    | 默认值    |
-| ----------- | -------------------------- | ----------------------- | --------- |
-| root-class  | 组件根元素类名             | string                  | -         |
-| root-style  | 组件根元素样式             | StyleValue              | -         |
-| color       | 笔触颜色                   | string                  | '#000'    |
-| line-width  | 线条宽度                   | number                  | 3         |
-| background  | 背景颜色                   | string                  | -         |
-| full-screen | 是否全屏展示               | boolean                 | false     |
-| visible     | 视屏时控制显隐             | boolean                 | false     |
-| duration    | 显隐持续时间               | number                  | 150       |
-| cancel-text | 取消按钮文案               | string                  | '取消'    |
-| clear-text  | 清空按钮文案               | string                  | '清空'    |
-| submit-text | 提交按钮文案               | string                  | '确定'    |
-| type        | 导出图片类型               | 'png' \| 'jpg'          | 'png'     |
-| target      | 提交事件回调接收的图片类型 | 'dataURL' \| 'filePath' | 'dataURL' |
-| quality     | 转换为 DataURL 时的质量    | number                  | 0.92      |
+| 属性         | 描述                           | 类型                    | 默认值    |
+| ------------ | ------------------------------ | ----------------------- | --------- |
+| root-class   | 组件根元素类名                 | string                  | -         |
+| root-style   | 组件根元素样式                 | StyleValue              | -         |
+| color        | 笔触颜色                       | string                  | '#000'    |
+| line-width   | 线条宽度                       | number                  | 3         |
+| background   | 背景颜色                       | string                  | -         |
+| full-screen  | 是否全屏展示                   | boolean                 | false     |
+| visible      | 视屏时控制显隐                 | boolean                 | false     |
+| duration     | 显隐持续时间                   | number                  | 150       |
+| cancel-text  | 取消按钮文案                   | string                  | '取消'    |
+| clear-text   | 清空按钮文案                   | string                  | '清空'    |
+| confirm-text | 确定按钮文案                   | string                  | '确定'    |
+| type         | 导出图片类型                   | 'png' \| 'jpg'          | 'png'     |
+| target       | confirm 事件回调接收的图片类型 | 'dataURL' \| 'filePath' | 'dataURL' |
+| quality      | 转换为 DataURL 时的质量        | number                  | 0.92      |
 
 ### SignatureSlots
 
@@ -80,17 +80,17 @@ import Signature from 'sard-uniapp/components/signature/signature.vue'
 | 事件           | 描述               | 类型                       |
 | -------------- | ------------------ | -------------------------- |
 | update:visible | 弹出框显隐时触发   | (visible: boolean) => void |
-| submit         | 点击确定按钮时触发 | (dataURL: string) => void  |
+| confirm        | 点击确定按钮时触发 | (dataURL: string) => void  |
 | clear          | 点击清空按钮时触发 | () => void                 |
 | cancel         | 点击取消按钮时触发 | () => void                 |
 
 ### SignatureExpose
 
-| 属性   | 描述                                                       | 类型       |
-| ------ | ---------------------------------------------------------- | ---------- |
-| resize | 外层元素大小或组件显示状态变化时，可以调用此方法来触发重绘 | () => void |
-| clear  | 可调用此方法来清除签名                                     | () => void |
-| submit | 触发 `submit` 事件，与点击确认按钮的效果等价               | () => void |
+| 属性    | 描述                                                       | 类型       |
+| ------- | ---------------------------------------------------------- | ---------- |
+| resize  | 外层元素大小或组件显示状态变化时，可以调用此方法来触发重绘 | () => void |
+| clear   | 可调用此方法来清除签名                                     | () => void |
+| confirm | 触发 `confirm` 事件，与点击确认按钮的效果等价              | () => void |
 
 ## 主题定制
 

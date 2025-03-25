@@ -5,7 +5,7 @@
     v-model:visible="visible"
     full-screen
     custom-navbar
-    @submit="onSubmit"
+    @confirm="onConfirm"
   >
     <view style="color: var(--sar-tertiary-color)">
       请在上面空白处手写您的签名
@@ -20,7 +20,7 @@ import { ref } from 'vue'
 
 const dataURL = ref('')
 
-const onSubmit = (url: string) => {
+const onConfirm = (url: string) => {
   dataURL.value = url
 }
 

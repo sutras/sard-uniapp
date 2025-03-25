@@ -120,7 +120,7 @@ export function useScrollSpy(options: UseScrollSpyOptions) {
     await calcRect()
 
     if (isNullish(innerCurrent.value)) {
-      innerCurrent.value = anchorRectList.value[0][0]
+      innerCurrent.value = anchorRectList.value[0]?.[0]
     }
     if (initialScroll) {
       scrollTo(innerCurrent.value)

@@ -60,8 +60,8 @@
             <sar-button size="small" type="pale" block @click="onClear">
               {{ clearText || t('clear') }}
             </sar-button>
-            <sar-button size="small" block @click="onSubmit">
-              {{ submitText || t('submit') }}
+            <sar-button size="small" block @click="onConfirm">
+              {{ confirmText || t('confirm') }}
             </sar-button>
           </view>
         </view>
@@ -123,9 +123,9 @@ const emit = defineEmits<SignatureEmits>()
 
 const bem = createBem('signature')
 
-// main
 const { t } = useTranslate('signature')
 
+// main
 const instance = getCurrentInstance()
 
 const dpr = getWindowInfo().pixelRatio
@@ -170,7 +170,7 @@ const setCanvasSize = async () => {
   covertCanvasWidth = canvasHeight
   covertCanvasHeight = canvasWidth
 
-  if (!isApp) {
+  if (!isApp && canvas) {
     canvas.width = canvasWidth
     canvas.height = canvasHeight
   }
@@ -183,7 +183,7 @@ const setCanvasSize = async () => {
   canvasCSSWidth.value = bodyRect.width + 'px'
   canvasCSSHeight.value = bodyRect.height + 'px'
 
-  if (!isApp) {
+  if (!isApp && covertCanvas) {
     covertCanvas.width = covertCanvasWidth
     covertCanvas.height = covertCanvasHeight
   }
@@ -210,10 +210,14 @@ const getCanvas = async () => {
     ) as unknown as CanvasRenderingContext2D
   } else {
     canvas = await getNode(`#${canvasId}`, instance)
-    context = canvas.getContext('2d') as CanvasRenderingContext2D
+    if (canvas) {
+      context = canvas.getContext('2d') as CanvasRenderingContext2D
+    }
 
     covertCanvas = await getNode(`#${covertCanvasId}`, instance)
-    covertContext = covertCanvas.getContext('2d') as CanvasRenderingContext2D
+    if (covertCanvas) {
+      covertContext = covertCanvas.getContext('2d') as CanvasRenderingContext2D
+    }
   }
 
   if (!props.fullScreen) {
@@ -331,16 +335,18 @@ const initialCanvas = async () => {
     await sleep(50)
   }
 
-  context.clearRect(0, 0, canvasWidth, canvasHeight)
-  if (isApp) {
-    ;(context as any).draw()
-  }
-
-  if (props.background) {
-    context.fillStyle = props.background
-    context.fillRect(0, 0, canvasWidth, canvasHeight)
+  if (context) {
+    context.clearRect(0, 0, canvasWidth, canvasHeight)
     if (isApp) {
       ;(context as any).draw()
+    }
+
+    if (props.background) {
+      context.fillStyle = props.background
+      context.fillRect(0, 0, canvasWidth, canvasHeight)
+      if (isApp) {
+        ;(context as any).draw()
+      }
     }
   }
 
@@ -456,14 +462,14 @@ const getRotateCanvasTarget = async () => {
   return await getRotateCanvasFilePath()
 }
 
-const submit = async () => {
+const confirm = async () => {
   const dataURL = isEmpty
     ? ''
     : props.fullScreen
     ? await getRotateCanvasTarget()
     : await getCanvasTarget()
 
-  emit('submit', dataURL)
+  emit('confirm', dataURL)
 
   if (props.fullScreen) {
     close()
@@ -484,8 +490,8 @@ const onClear = () => {
   clear()
 }
 
-const onSubmit = () => {
-  submit()
+const onConfirm = () => {
+  confirm()
 }
 
 const resize = () => {
@@ -576,7 +582,7 @@ const signatureStyle = computed(() => {
 
 defineExpose<SignatureExpose>({
   clear,
-  submit,
+  confirm,
   resize,
 })
 </script>

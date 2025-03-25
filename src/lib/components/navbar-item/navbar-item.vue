@@ -26,6 +26,7 @@ import {
   type NavbarItemSlots,
   type NavbarItemEmits,
 } from '../navbar/common'
+import SarIcon from '../icon/icon.vue'
 
 defineOptions({
   options: {
