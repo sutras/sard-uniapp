@@ -59,6 +59,8 @@
   @include e(canvas-wrapper) {
     position: fixed;
     left: 200vw;
+    width: 9999px;
+    height: 9999px;
   }
 
   @include e(loading) {

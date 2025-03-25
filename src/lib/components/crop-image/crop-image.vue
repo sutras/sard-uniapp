@@ -746,6 +746,11 @@ const onConfirm = () => {
       props.success?.(filePath)
     })
     .catch((err) => {
+      uni.showToast({
+        icon: 'none',
+        title: '错误' + err,
+        duration: 99999,
+      })
       props.fail?.(err)
     })
     .finally(() => {
