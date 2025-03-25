@@ -12,7 +12,7 @@ export interface SignatureProps {
   visible?: boolean
   cancelText?: string
   clearText?: string
-  submitText?: string
+  confirmText?: string
   customNavbar?: boolean
   type?: 'png' | 'jpg'
   target?: 'dataURL' | 'filePath'
@@ -27,7 +27,7 @@ export interface SignatureSlots {
 
 export interface SignatureEmits {
   (e: 'update:visible', visible: boolean): void
-  (e: 'submit', dataURL: string): void
+  (e: 'confirm', dataURL: string): void
   (e: 'clear'): void
   (e: 'cancel'): void
 }
@@ -35,5 +35,5 @@ export interface SignatureEmits {
 export interface SignatureExpose {
   resize: () => void
   clear: () => void
-  submit: () => void
+  confirm: () => void
 }

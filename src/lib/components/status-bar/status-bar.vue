@@ -33,7 +33,7 @@ defineSlots<StatusBarSlots>()
 
 defineEmits<StatusBarEmits>()
 
-const bem = createBem('statusBar')
+const bem = createBem('status-bar')
 
 // main
 const statusBarHeight = computed(() => {

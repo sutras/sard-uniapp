@@ -2,6 +2,7 @@ import { describe, expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
 import { h } from 'vue'
 import CountTo from '../count-to.vue'
+import { sleep } from '../../../utils'
 
 describe('CountTo', () => {
   test('basic', async () => {
@@ -12,7 +13,7 @@ describe('CountTo', () => {
       }),
     )
 
-    await new Promise((resolve) => setTimeout(resolve, 15))
+    await sleep(15)
     expect(wrapper.text()).toBe('500')
   })
 
@@ -25,7 +26,7 @@ describe('CountTo', () => {
       }),
     )
 
-    await new Promise((resolve) => setTimeout(resolve, 15))
+    await sleep(15)
     expect(wrapper.text()).toBe('500.00')
   })
 
@@ -39,7 +40,7 @@ describe('CountTo', () => {
       }),
     )
 
-    await new Promise((resolve) => setTimeout(resolve, 15))
+    await sleep(15)
     expect(wrapper.text()).toBe('5,000.00')
   })
 
@@ -54,7 +55,7 @@ describe('CountTo', () => {
       }),
     )
 
-    await new Promise((resolve) => setTimeout(resolve, 15))
+    await sleep(15)
     expect(wrapper.text()).toBe('5,0000.00')
   })
 
@@ -66,9 +67,9 @@ describe('CountTo', () => {
       }),
     )
 
-    await new Promise((resolve) => setTimeout(resolve, 2))
+    await sleep(2)
     expect(+wrapper.text()).toBeLessThan(500)
-    await new Promise((resolve) => setTimeout(resolve, 15))
+    await sleep(15)
     expect(+wrapper.text()).toEqual(500)
   })
 })

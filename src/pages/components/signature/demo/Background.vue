@@ -1,5 +1,5 @@
 <template>
-  <sar-signature background="#eee" @submit="onSubmit"></sar-signature>
+  <sar-signature background="#eee" @confirm="onConfirm"></sar-signature>
 
   <image v-if="dataURL" style="width: 100%" mode="widthFix" :src="dataURL" />
 </template>
@@ -9,7 +9,7 @@ import { ref } from 'vue'
 
 const dataURL = ref('')
 
-const onSubmit = (url: string) => {
+const onConfirm = (url: string) => {
   dataURL.value = url
 }
 </script>

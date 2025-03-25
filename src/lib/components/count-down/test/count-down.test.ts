@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils'
 import { h } from 'vue'
 
 import CountDown from '../count-down.vue'
+import { sleep } from '../../../utils'
 
 describe('CountDown', () => {
   test('time', async () => {
@@ -13,7 +14,7 @@ describe('CountDown', () => {
     )
 
     expect(wrapper.text()).toBe('02:00:00')
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    await sleep(1000)
     expect(wrapper.text()).toBe('01:59:59')
   })
 
@@ -25,7 +26,7 @@ describe('CountDown', () => {
       }),
     )
 
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    await sleep(1000)
     expect(wrapper.text()).toBe('02:00:00')
   })
 

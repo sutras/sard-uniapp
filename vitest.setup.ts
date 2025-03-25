@@ -129,6 +129,13 @@ const uniObject = {
       tempFiles: Reflect.get(globalThis, 'tempFiles'),
     })
   },
+  getImageInfo({ success }: any) {
+    success({
+      width: 220,
+      height: 220,
+      path: 'http://temp/1.jpg',
+    })
+  },
   chooseVideo() {
     void 0
   },

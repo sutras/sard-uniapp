@@ -15,6 +15,8 @@ export interface CropImageProps {
   complete?: () => void
   id?: string
   beforeCrop?: (width: number, height: number) => number
+  cancelText?: string
+  confirmText?: string
 }
 
 export const defaultCropImageProps = defaultConfig.cropImage

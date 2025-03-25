@@ -25,6 +25,11 @@ const vitestConfig = vitestDefineConfig({
     alias: {
       '@dcloudio/uni-app': resolve('./mocks/@dcloudio/uni-app.ts'),
     },
+    server: {
+      deps: {
+        inline: ['vitest-canvas-mock'],
+      },
+    },
   },
   esbuild: {
     jsxFactory: 'h',

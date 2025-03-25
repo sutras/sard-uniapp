@@ -4,6 +4,7 @@ import { h } from 'vue'
 
 import Accordion from '../accordion.vue'
 import AccordionItem from '../../accordion-item/accordion-item.vue'
+import { sleep } from '../../../utils'
 
 function createSlots() {
   return [
@@ -49,7 +50,7 @@ describe('Accordion', () => {
       ),
     )
     await wrapper.findAll('.sar-accordion-item__header')[1].trigger('click')
-    await new Promise((resolve) => setTimeout(resolve, 50))
+    await sleep(50)
     expect(
       wrapper
         .findAll('.sar-collapse')

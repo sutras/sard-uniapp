@@ -5,6 +5,7 @@ import { h } from 'vue'
 import Cascader from '../cascader.vue'
 import { getRegionData } from 'region-data'
 import { type CascaderOption } from '../common'
+import { sleep } from '../../../utils'
 
 describe('Cascader', () => {
   const regionData = getRegionData()
@@ -129,7 +130,7 @@ describe('Cascader', () => {
         .length,
     ).toBe(0)
 
-    await new Promise((resolve) => setTimeout(resolve, 0))
+    await sleep(50)
 
     expect(
       wrapper.findAll('.sar-cascader__pane:nth-child(2) .sar-cascader__option')
@@ -147,7 +148,7 @@ describe('Cascader', () => {
         .length,
     ).toBe(0)
 
-    await new Promise((resolve) => setTimeout(resolve, 0))
+    await sleep(0)
 
     expect(
       wrapper.findAll('.sar-cascader__pane:nth-child(2) .sar-cascader__option')
