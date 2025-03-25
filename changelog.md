@@ -1,3 +1,28 @@
+# [1.12.0](https://github.com/sutras/sard-uniapp/compare/v1.11.2...v1.12.0) (2025-03-25)
+
+
+### Bug Fixes
+
+* **cascader:** 允许空字符串作为未选择初始值 ([c0073ec](https://github.com/sutras/sard-uniapp/commit/c0073ec8b3bc285443fca6c17b86dbdb7976ec08))
+* 修复 table 组件右边固定阴影显示问题 ([4e7869a](https://github.com/sutras/sard-uniapp/commit/4e7869a70f60d4f9d6f01c68fdc90a00080adad9))
+* 修复cascader在支付宝端的展示问题 ([e5ab136](https://github.com/sutras/sard-uniapp/commit/e5ab136da081fbcfc6a8f07d00482231cd7270fe))
+* 修复因uniapp会修改元素id导致获取不到元素的问题 ([10dbfe0](https://github.com/sutras/sard-uniapp/commit/10dbfe0adf49f32f85d6902c7a255b7a84d400fe))
+
+
+### Features
+
+* button 组件新增 block 属性 ([bb4d39b](https://github.com/sutras/sard-uniapp/commit/bb4d39b0dd417273fcf9fac3f132a26332d6bd8d))
+* grid 组件新增 badge 相关属性 ([0c33247](https://github.com/sutras/sard-uniapp/commit/0c3324750a1ee48a9f2801e7e20defeddad70003))
+* navbar组件新增属性,修改样式 ([dc4e747](https://github.com/sutras/sard-uniapp/commit/dc4e7478dedeb4aaecb659b99eb9ecc9acfba2e6))
+* 新增 crop-image 组件 ([5b89f0e](https://github.com/sutras/sard-uniapp/commit/5b89f0ea3b5f09e28534222e4eecd9726ad03b97))
+* 新增 ScrollSpy 组件 ([d4c0e92](https://github.com/sutras/sard-uniapp/commit/d4c0e92d2a9aab60687f08b384937f5276e53c5e))
+* 新增 Sidebar 组件 ([4c1487a](https://github.com/sutras/sard-uniapp/commit/4c1487a9fa77f01ea0be962d64c49167afb29ece))
+* 新增 signature 组件 ([04b7bf8](https://github.com/sutras/sard-uniapp/commit/04b7bf84149c78ad336f0a23eac8a60b0f5b2396))
+* 新增 status-bar 组件 ([49339d7](https://github.com/sutras/sard-uniapp/commit/49339d79738e829a34edc4a83a237ed3814e24c1))
+* 新增 zIndex 全局配置 ([77802cd](https://github.com/sutras/sard-uniapp/commit/77802cd2c772bd3c6c67e8a09254a1e0b501cece))
+
+
+
 ## [1.11.2](https://github.com/sutras/sard-uniapp/compare/v1.11.1...v1.11.2) (2025-03-06)
 
 
