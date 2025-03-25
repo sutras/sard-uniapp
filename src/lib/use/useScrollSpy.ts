@@ -1,4 +1,4 @@
-import { computed, nextTick, ref, shallowRef } from 'vue'
+import { computed, ref, shallowRef } from 'vue'
 import { useSetTimeout } from './useSetTimeout'
 import { isNullish, matchScrollVisible, type NodeRect } from '../utils'
 
@@ -71,10 +71,7 @@ export function useScrollSpy(options: UseScrollSpyOptions) {
       const item = anchorRectList.value.find((item) => item[0] === name)
       if (item) {
         const offset = item[1].top
-        scrollTop.value = undefined
-        nextTick(() => {
-          scrollTop.value = offset - startOffset.value
-        })
+        scrollTop.value = offset - startOffset.value
 
         lockScroll = true
         unLockScrollLater(150)
