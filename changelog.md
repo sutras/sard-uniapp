@@ -1,3 +1,12 @@
+## [1.12.1](https://github.com/sutras/sard-uniapp/compare/v1.12.0...v1.12.1) (2025-03-29)
+
+
+### Bug Fixes
+
+* 移除 crop-image 组件 toast 提示，新增button组件 inline 属性 ([7510f84](https://github.com/sutras/sard-uniapp/commit/7510f84d354a6b0cddd950815ad09a480882db7a))
+
+
+
 # [1.12.0](https://github.com/sutras/sard-uniapp/compare/v1.11.2...v1.12.0) (2025-03-25)
 
 
