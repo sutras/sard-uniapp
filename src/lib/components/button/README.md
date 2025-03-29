@@ -71,20 +71,21 @@ import Button from 'sard-uniapp/components/button/button.vue'
 
 ### ButtonProps
 
-| 属性                   | 描述               | 类型                                                                     | 默认值     |
-| ---------------------- | ------------------ | ------------------------------------------------------------------------ | ---------- |
-| root-class             | 组件根元素类名     | string                                                                   | -          |
-| root-style             | 组件根元素样式     | StyleValue                                                               | -          |
-| type                   | 按钮类型           | 'default' \| 'pale' \| 'mild' \| 'outline' \| 'text' \| 'pale-text'      | 'default'  |
-| theme                  | 按钮主题色         | 'primary' \| 'secondary' \| 'success' \| 'info' \| 'warning' \| 'danger' | 'primary'  |
-| size                   | 按钮尺寸           | 'mini' \| 'small' \| 'medium' \| 'large'                                 | 'medium'   |
-| round                  | 圆角按钮           | boolean                                                                  | false      |
-| disabled               | 禁用按钮           | boolean                                                                  | false      |
-| loading                | 加载状态           | boolean                                                                  | false      |
-| loading-type           | 加载类型           | 'clock' \| 'circular'                                                    | 'circular' |
-| color                  | 自定义文字颜色     | string                                                                   | -          |
-| background             | 自定义背景颜色     | string                                                                   | -          |
-| block <sup>1.12+</sup> | 将按钮设为块级元素 | boolean                                                                  | true       |
+| 属性                      | 描述                                          | 类型                                                                     | 默认值     |
+| ------------------------- | --------------------------------------------- | ------------------------------------------------------------------------ | ---------- |
+| root-class                | 组件根元素类名                                | string                                                                   | -          |
+| root-style                | 组件根元素样式                                | StyleValue                                                               | -          |
+| type                      | 按钮类型                                      | 'default' \| 'pale' \| 'mild' \| 'outline' \| 'text' \| 'pale-text'      | 'default'  |
+| theme                     | 按钮主题色                                    | 'primary' \| 'secondary' \| 'success' \| 'info' \| 'warning' \| 'danger' | 'primary'  |
+| size                      | 按钮尺寸                                      | 'mini' \| 'small' \| 'medium' \| 'large'                                 | 'medium'   |
+| round                     | 圆角按钮                                      | boolean                                                                  | false      |
+| disabled                  | 禁用按钮                                      | boolean                                                                  | false      |
+| loading                   | 加载状态                                      | boolean                                                                  | false      |
+| loading-type              | 加载类型                                      | 'clock' \| 'circular'                                                    | 'circular' |
+| color                     | 自定义文字颜色                                | string                                                                   | -          |
+| background                | 自定义背景颜色                                | string                                                                   | -          |
+| block <sup>1.12+</sup>    | 将按钮设为块级元素                            | boolean                                                                  | true       |
+| inline <sup>1.12.1+</sup> | 设置为 true，则为行内块元素，否则取决于 block | boolean                                                                  | false      |
 
 ### ButtonProps（小程序能力）
 

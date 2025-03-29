@@ -102,9 +102,9 @@
         "darkmode" : true,
         "themeLocation" : "theme.json",
         "libVersion" : "latest",
-        "lazyCodeLoading": "requiredComponents",
-        "rendererOptions": {
-            "skyline": {}
+        "lazyCodeLoading" : "requiredComponents",
+        "rendererOptions" : {
+            "skyline" : {}
         }
     },
     "mp-alipay" : {
@@ -112,7 +112,7 @@
         "mergeVirtualHostAttributes" : true,
         "darkmode" : true,
         "themeLocation" : "theme.json",
-        "styleIsolation": "shared"
+        "styleIsolation" : "shared"
     },
     "mp-baidu" : {
         "usingComponents" : true,

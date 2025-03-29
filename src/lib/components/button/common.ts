@@ -21,6 +21,7 @@ export interface ButtonProps {
   color?: string
   background?: string
   block?: boolean
+  inline?: boolean
 
   // 小程序能力
   formType?: string
