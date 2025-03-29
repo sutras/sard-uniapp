@@ -136,4 +136,45 @@ describe('Button', () => {
     const classes = wrapper.find('.sar-button').classes()
     expect(classes).toContain('sar-button_block')
   })
+
+  test('inline', async () => {
+    const wrapper = mount(
+      h(
+        Button,
+        {
+          block: false,
+          inline: false,
+        },
+        () => '默认',
+      ),
+    )
+
+    expect(
+      wrapper.find('.sar-button').classes().includes('sar-button_block'),
+    ).toBeFalsy()
+
+    await wrapper.setProps({
+      block: false,
+      inline: true,
+    })
+    expect(
+      wrapper.find('.sar-button').classes().includes('sar-button_block'),
+    ).toBeFalsy()
+
+    await wrapper.setProps({
+      block: true,
+      inline: false,
+    })
+    expect(
+      wrapper.find('.sar-button').classes().includes('sar-button_block'),
+    ).toBeTruthy()
+
+    await wrapper.setProps({
+      block: true,
+      inline: true,
+    })
+    expect(
+      wrapper.find('.sar-button').classes().includes('sar-button_block'),
+    ).toBeFalsy()
+  })
 })

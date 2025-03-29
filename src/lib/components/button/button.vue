@@ -147,7 +147,7 @@ const buttonClass = computed(() => {
     bem.m('round', props.round),
     bem.m('disabled', isDisabled.value),
     bem.m('loading', props.loading),
-    bem.m('block', props.block),
+    bem.m('block', props.inline ? false : props.block),
     props.rootClass,
   )
 })
