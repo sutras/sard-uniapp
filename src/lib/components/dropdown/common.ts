@@ -45,6 +45,7 @@ export interface DropdownItemSlots {
 
 export interface DropdownItemEmits {
   (e: 'update:model-value', value: any): void
+  (e: 'change', value: any): void
   (e: 'update:visible', visible: boolean): void
 }
 

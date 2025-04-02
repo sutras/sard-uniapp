@@ -160,6 +160,7 @@ provide<TabContext>(
     select(name) {
       innerCurrent.value = name
       emit('update:current', name)
+      emit('change', name)
       scrollToTabQueue.value = name
     },
   }),

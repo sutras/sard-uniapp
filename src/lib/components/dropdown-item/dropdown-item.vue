@@ -228,6 +228,7 @@ const onOptionClick = (item: DropdownOption) => {
   if (item.value !== innerValue.value) {
     innerValue.value = item.value
     emit('update:model-value', item.value)
+    emit('change', item.value)
   }
   setInnerVisible(false)
 }

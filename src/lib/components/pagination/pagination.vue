@@ -120,6 +120,7 @@ const changeTo = (page: number) => {
   if (page !== innerCurrent.value) {
     innerCurrent.value = page
     emit('update:current', page)
+    emit('change', page)
   }
 }
 

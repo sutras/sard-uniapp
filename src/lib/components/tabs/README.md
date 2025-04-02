@@ -79,9 +79,10 @@ import Tab from 'sard-uniapp/components/tab/tab.vue'
 
 ### TabsEmits
 
-| 事件           | 描述                     | 类型                             |
-| -------------- | ------------------------ | -------------------------------- |
-| update:current | 当前激活的标签改变时触发 | (name: string \| number) => void |
+| 事件                      | 描述                     | 类型                             |
+| ------------------------- | ------------------------ | -------------------------------- |
+| update:current            | 当前激活的标签改变时触发 | (name: string \| number) => void |
+| change <sup>1.12.2+</sup> | 当前激活的标签改变时触发 | (name: string \| number) => void |
 
 ### TabProps / TabOption
 
