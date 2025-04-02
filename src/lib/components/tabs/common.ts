@@ -27,6 +27,7 @@ export interface TabsSlots {
 
 export interface TabsEmits {
   (e: 'update:current', name: string | number): void
+  (e: 'change', name: string | number): void
 }
 
 export interface TabProps {

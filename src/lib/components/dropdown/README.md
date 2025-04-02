@@ -98,10 +98,11 @@ import DropdownItem from 'sard-uniapp/components/dropdown-item/dropdown-item.vue
 
 ### DropdownItemEmits
 
-| 事件               | 描述               | 类型                       |
-| ------------------ | ------------------ | -------------------------- |
-| update:model-value | 选中菜单选项时触发 | (value: any) => void       |
-| update:visible     | 弹出框显隐时触发   | (visible: boolean) => void |
+| 事件                      | 描述               | 类型                       |
+| ------------------------- | ------------------ | -------------------------- |
+| update:model-value        | 选中菜单选项时触发 | (value: any) => void       |
+| change <sup>1.12.2+</sup> | 选中菜单选项时触发 | (value: any) => void       |
+| update:visible            | 弹出框显隐时触发   | (visible: boolean) => void |
 
 ### DropdownOption
 

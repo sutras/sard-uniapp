@@ -68,9 +68,10 @@ import Pagination from 'sard-uniapp/components/pagination/pagination.vue'
 
 ### PaginationEmits
 
-| 事件           | 描述           | 类型                   |
-| -------------- | -------------- | ---------------------- |
-| update:current | 页码改变时触发 | (page: number) => void |
+| 事件                      | 描述           | 类型                   |
+| ------------------------- | -------------- | ---------------------- |
+| update:current            | 页码改变时触发 | (page: number) => void |
+| change <sup>1.12.2+</sup> | 页码改变时触发 | (page: number) => void |
 
 ## 主题定制
 

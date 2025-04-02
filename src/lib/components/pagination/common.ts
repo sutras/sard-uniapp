@@ -24,6 +24,7 @@ export interface PaginationSlots {
 
 export interface PaginationEmits {
   (e: 'update:current', page: number): void
+  (e: 'change', page: number): void
 }
 
 /**

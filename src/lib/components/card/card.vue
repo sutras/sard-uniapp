@@ -1,5 +1,5 @@
 <template>
-  <view :class="cardClass" :style="cardStyle">
+  <view :class="cardClass" :style="cardStyle" @click="onClick">
     <view v-if="!headless" :class="bem.e('header')">
       <view :class="bem.e('title')">
         <slot name="title">{{ title }}</slot>
@@ -38,7 +38,7 @@ const props = withDefaults(defineProps<CardProps>(), {})
 
 const slots = defineSlots<CardSlots>()
 
-defineEmits<CardEmits>()
+const emit = defineEmits<CardEmits>()
 
 const bem = createBem('card')
 
@@ -55,6 +55,10 @@ const headless = computed(() => {
 const footless = computed(() => {
   return isVisibleEmpty(props.footer) && !slots.footer
 })
+
+const onClick = (event: any) => {
+  emit('click', event)
+}
 
 // others
 const cardClass = computed(() => {

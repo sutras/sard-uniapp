@@ -62,6 +62,12 @@ import Card from 'sard-uniapp/components/card/card.vue'
 | extra   | 自定义额外内容 | -    |
 | footer  | 自定义底部内容 | -    |
 
+### CardEmits
+
+| 事件                     | 描述           | 类型                 |
+| ------------------------ | -------------- | -------------------- |
+| click <sup>1.12.2+</sup> | 点击卡片时触发 | (event: any) => void |
+
 ## 主题定制
 
 ### CSS 变量
