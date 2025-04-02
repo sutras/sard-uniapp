@@ -1,3 +1,12 @@
+## [1.12.2](https://github.com/sutras/sard-uniapp/compare/v1.12.1...v1.12.2) (2025-04-02)
+
+
+### Features
+
+* tabs 等组件新增 change 事件, card 新增 click 事件 ([6c90a9e](https://github.com/sutras/sard-uniapp/commit/6c90a9e3d97864e66b4d5005947301fdfa4b9784))
+
+
+
 ## [1.12.1](https://github.com/sutras/sard-uniapp/compare/v1.12.0...v1.12.1) (2025-03-29)
 
 
