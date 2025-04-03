@@ -5,6 +5,14 @@
     @include universal;
     background-color: var(--sar-card-bg);
     border-radius: var(--sar-card-border-radius);
+
+    @include m(hover) {
+      cursor: pointer;
+
+      &:active {
+        background-color: var(--sar-card-active-bg);
+      }
+    }
   }
 
   @include e(header) {

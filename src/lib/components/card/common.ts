@@ -6,6 +6,7 @@ export interface CardProps {
   title?: string
   extra?: string
   footer?: string
+  hover?: boolean
 }
 
 export interface CardSlots {

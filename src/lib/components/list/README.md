@@ -26,7 +26,7 @@ import ListItem from 'sard-uniapp/components/list-item/list-item.vue'
 
 ### 可链接的
 
-设置`Linkable`属性会显示右边的箭头，并且会有点击状态。
+设置 `arrow` 属性会显示右边的箭头，设置 `hover` 属性会有点击状态。
 
 @code('${DEMO_PATH}/list/demo/Linkable.vue')
 

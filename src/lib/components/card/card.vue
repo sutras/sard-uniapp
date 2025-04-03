@@ -64,6 +64,7 @@ const onClick = (event: any) => {
 const cardClass = computed(() => {
   return classNames(
     bem.b(),
+    bem.m('hover', props.hover),
     bem.m('headless', headless.value),
     bem.m('footless', footless.value),
     props.rootClass,
