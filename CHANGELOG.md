@@ -1,3 +1,12 @@
+## [1.12.3](https://github.com/sutras/sard-uniapp/compare/v1.12.2...v1.12.3) (2025-04-03)
+
+
+### Features
+
+* card 组件新增点击态 ([cf7fbde](https://github.com/sutras/sard-uniapp/commit/cf7fbde33998fa003765eee7761228896a7766db))
+
+
+
 ## [1.12.2](https://github.com/sutras/sard-uniapp/compare/v1.12.1...v1.12.2) (2025-04-02)
 
 
