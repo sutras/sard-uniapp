@@ -41,17 +41,24 @@ import Card from 'sard-uniapp/components/card/card.vue'
 
 @code('${DEMO_PATH}/card/demo/Footer.vue')
 
+### 可点击的
+
+设置 `hover` 属性会有点击状态。
+
+@code('${DEMO_PATH}/card/demo/Hover.vue')
+
 ## API
 
 ### CardProps
 
-| 属性       | 描述           | 类型       | 默认值 |
-| ---------- | -------------- | ---------- | ------ |
-| root-class | 组件根元素类名 | string     | -      |
-| root-style | 组件根元素样式 | StyleValue | -      |
-| title      | 头部左边内容   | string     | -      |
-| extra      | 头部右边内容   | string     | -      |
-| footer     | 底部内容       | string     | -      |
+| 属性                     | 描述             | 类型       | 默认值 |
+| ------------------------ | ---------------- | ---------- | ------ |
+| root-class               | 组件根元素类名   | string     | -      |
+| root-style               | 组件根元素样式   | StyleValue | -      |
+| title                    | 头部左边内容     | string     | -      |
+| extra                    | 头部右边内容     | string     | -      |
+| footer                   | 底部内容         | string     | -      |
+| hover <sup>1.12.3+</sup> | 是否开启点击反馈 | boolean    | false  |
 
 ### CardSlots
 
