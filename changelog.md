@@ -1,3 +1,12 @@
+## [1.12.4](https://github.com/sutras/sard-uniapp/compare/v1.12.3...v1.12.4) (2025-04-14)
+
+
+### Features
+
+* tabbar-item 组件 icon 插槽新增 active 属性 ([0704e46](https://github.com/sutras/sard-uniapp/commit/0704e46cb1a87a27d62076bd962a3925086598e7))
+
+
+
 ## [1.12.3](https://github.com/sutras/sard-uniapp/compare/v1.12.2...v1.12.3) (2025-04-03)
 
 
