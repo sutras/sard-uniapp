@@ -2,7 +2,7 @@
   <view :class="tabbarItemClass" :style="tabbarItemStyle" @click="onClick">
     <slot>
       <view :class="bem.e('icon')">
-        <slot name="icon">
+        <slot name="icon" :active="isCurrent">
           <sar-icon :name="icon" :family="iconFamily" :size="iconSize" />
         </slot>
         <sar-badge v-if="badge || dot" :value="badge" :dot="dot" fixed />

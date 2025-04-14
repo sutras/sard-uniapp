@@ -35,7 +35,7 @@ export interface TabbarItemProps {
 
 export interface TabbarItemSlots {
   default?(props: Record<string, never>): any
-  icon?(props: Record<string, never>): any
+  icon?(props: { active: boolean }): any
 }
 
 export interface TabbarItemEmits {
