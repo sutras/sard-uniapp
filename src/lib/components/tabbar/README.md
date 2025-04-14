@@ -91,10 +91,10 @@ import TabbarItem from 'sard-uniapp/components/tabbar-item/tabbar-item.vue'
 
 ### TabbarItemSlots
 
-| 插槽    | 描述           | 属性 |
-| ------- | -------------- | ---- |
-| default | 自定义文本内容 | -    |
-| icon    | 自定义图标     | -    |
+| 插槽    | 描述           | 属性              |
+| ------- | -------------- | ----------------- |
+| default | 自定义文本内容 | -                 |
+| icon    | 自定义图标     | {active: boolean} |
 
 ### TabbarItemEmits
 
