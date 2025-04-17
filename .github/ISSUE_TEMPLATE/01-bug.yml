@@ -1,4 +1,4 @@
-name: 'Bug sard-uniapp 问题反馈'
+name: 'Bug 问题反馈'
 description: '反馈使用 sard-uniapp 过程中遇到的问题'
 labels: ['sard-uniapp']
 body:
