@@ -37,19 +37,31 @@ body:
       label: 项目创建方式
       description: 你如何创建的项目？
       options:
-        - HBuilderX
         - CLI命令行
+        - HBuilderX
         
+    validations:
+      required: true
+      
+
+  - type: textarea
+    id: sard-uniapp-dependencies
+    attributes:
+      label: sard-uniapp 版本
+      description: 请输入项目中使用的 sard-uniapp 版本
+      placeholder: |
+        sard-uniapp 版本
+
     validations:
       required: true
 
   - type: textarea
-    id: dependencies
+    id: uni-app-dependencies
     attributes:
-      label: 依赖版本
-      description: 请列出项目中使用的主要依赖及其版本号
+      label: uni-app 版本
+      description: 请输入项目中使用的 uni-app 版本
       placeholder: |
-        例如： sard-uniapp 和 uniapp 在 package.json 里的依赖版本、HBuilderX 的具体版本号
+        uni-app 版本
 
     validations:
       required: true
