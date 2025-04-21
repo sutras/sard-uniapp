@@ -1,3 +1,12 @@
+## [1.12.5](https://github.com/sutras/sard-uniapp/compare/v1.12.4...v1.12.5) (2025-04-21)
+
+
+### Bug Fixes
+
+* 修复 table 组件 sass 导入问题 ([2975683](https://github.com/sutras/sard-uniapp/commit/2975683448aa78612f1f40a7d25a0da41df091bf))
+
+
+
 ## [1.12.4](https://github.com/sutras/sard-uniapp/compare/v1.12.3...v1.12.4) (2025-04-14)
 
 
