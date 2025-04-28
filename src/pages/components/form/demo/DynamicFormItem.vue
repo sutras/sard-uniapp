@@ -31,9 +31,12 @@
       >
         <view style="display: flex; flex-direction: row; gap: 10rpx">
           <sar-input v-model="domain.value" />
-          <sar-button type="mild" @click.prevent="removeDomain(domain)">
-            Delete
-          </sar-button>
+          <sar-button
+            type="mild"
+            theme="danger"
+            icon="trash"
+            @click.prevent="removeDomain(domain)"
+          />
         </view>
       </sar-form-item>
       <sar-form-item>

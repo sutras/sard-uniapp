@@ -28,8 +28,12 @@
       <DemoLoading />
     </doc-demo>
 
-    <doc-demo title="块级按钮">
+    <doc-demo title="行内块按钮">
       <DemoBlock />
+    </doc-demo>
+
+    <doc-demo title="图标按钮">
+      <DemoIcon />
     </doc-demo>
   </doc-page>
 </template>
@@ -43,6 +47,7 @@ import DemoDisabled from './demo/Disabled.vue'
 import DemoSize from './demo/Size.vue'
 import DemoLoading from './demo/Loading.vue'
 import DemoBlock from './demo/Block.vue'
+import DemoIcon from './demo/Icon.vue'
 </script>
 
 <style lang="scss" scoped>

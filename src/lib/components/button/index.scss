@@ -56,6 +56,14 @@
       var(--sar-button-border-radius-mini),
       var(--sar-button-font-size-mini)
     );
+
+    @include e(icon) {
+      font-size: var(--sar-button-icon-size-mini);
+    }
+  }
+
+  @include m-intersect(mini, iconic) {
+    min-width: var(--sar-button-height-mini);
   }
 
   @include m(small) {
@@ -66,6 +74,14 @@
       var(--sar-button-border-radius-sm),
       var(--sar-button-font-size-sm)
     );
+
+    @include e(icon) {
+      font-size: var(--sar-button-icon-size-sm);
+    }
+  }
+
+  @include m-intersect(small, iconic) {
+    min-width: var(--sar-button-height-sm);
   }
 
   @include m(medium) {
@@ -76,6 +92,14 @@
       var(--sar-button-border-radius),
       var(--sar-button-font-size)
     );
+
+    @include e(icon) {
+      font-size: var(--sar-button-icon-size);
+    }
+  }
+
+  @include m-intersect(medium, iconic) {
+    min-width: var(--sar-button-height);
   }
 
   @include m(large) {
@@ -86,6 +110,14 @@
       var(--sar-button-border-radius-lg),
       var(--sar-button-font-size-lg)
     );
+
+    @include e(icon) {
+      font-size: var(--sar-button-icon-size-lg);
+    }
+  }
+
+  @include m-intersect(large, iconic) {
+    min-width: var(--sar-button-height-lg);
   }
 
   // ## 显示边框
@@ -186,11 +218,12 @@
     cursor: var(--sar-button-loading-cursor);
   }
 
-  @include e(loading) {
-    display: flex;
+  // # 图标
+  @include e(icon) {
+    display: inline-flex;
 
     @include m(with-slot) {
-      margin-right: var(--sar-button-loading-margin-right);
+      margin-right: var(--sar-button-icon-margin-right);
     }
   }
 }

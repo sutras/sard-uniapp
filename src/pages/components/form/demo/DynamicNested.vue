@@ -33,9 +33,13 @@
           >
             <sar-input inlaid v-model="user.last" placeholder="Last Name" />
           </sar-form-item>
-          <sar-button type="mild" size="small" @click="removeUser(user)">
-            <sar-icon name="minus" />
-          </sar-button>
+          <sar-button
+            type="mild"
+            icon="trash"
+            size="small"
+            theme="danger"
+            @click="removeUser(user)"
+          />
         </view>
       </sar-form-item>
       <sar-form-item>

@@ -33,15 +33,18 @@
     @login="onLogin"
   >
     <view
-      v-if="loading"
+      v-if="loading || icon"
       :class="
-        classNames(
-          bem.e('loading'),
-          bem.em('loading', 'with-slot', !!$slots.default),
-        )
+        classNames(bem.e('icon'), bem.em('icon', 'with-slot', !!$slots.default))
       "
     >
-      <sar-loading :type="loadingType" />
+      <sar-loading v-if="loading" :type="loadingType" />
+      <sar-icon
+        v-else-if="icon"
+        :name="icon"
+        :family="iconFamily"
+        :size="iconSize"
+      />
     </view>
     <slot></slot>
   </button>
@@ -51,6 +54,7 @@
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarLoading from '../loading/loading.vue'
+import SarIcon from '../icon/icon.vue'
 import { useFormContext } from '../form/common'
 import {
   type ButtonProps,
@@ -147,7 +151,8 @@ const buttonClass = computed(() => {
     bem.m('round', props.round),
     bem.m('disabled', isDisabled.value),
     bem.m('loading', props.loading),
-    bem.m('block', props.inline ? false : props.block),
+    bem.m('block', props.icon || props.inline ? false : props.block),
+    bem.m('iconic', !!props.icon || props.loading),
     props.rootClass,
   )
 })

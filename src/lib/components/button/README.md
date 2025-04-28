@@ -61,31 +61,40 @@ import Button from 'sard-uniapp/components/button/button.vue'
 
 @code('${DEMO_PATH}/button/demo/Loading.vue')
 
-### 块级按钮
+### 行内块按钮
 
-按钮默认是块级元素，可通过 `:block="false"` 设为行内块元素。也可通过[全局配置](../guide/config)默认将按钮设为行内块。
+按钮默认是块级元素，可通过 `inline` 设为行内块元素。
 
 @code('${DEMO_PATH}/button/demo/Block.vue')
+
+### 图标按钮
+
+可通过 `icon` 属性设置图标，相对于通过默认插槽添加图标，前者会有默认的样式，并可与 `loading` 相切换。在设置 `icon` 属性后，按钮会自动变为行内块。
+
+@code('${DEMO_PATH}/button/demo/Icon.vue')
 
 ## API
 
 ### ButtonProps
 
-| 属性                      | 描述                                          | 类型                                                                     | 默认值     |
-| ------------------------- | --------------------------------------------- | ------------------------------------------------------------------------ | ---------- |
-| root-class                | 组件根元素类名                                | string                                                                   | -          |
-| root-style                | 组件根元素样式                                | StyleValue                                                               | -          |
-| type                      | 按钮类型                                      | 'default' \| 'pale' \| 'mild' \| 'outline' \| 'text' \| 'pale-text'      | 'default'  |
-| theme                     | 按钮主题色                                    | 'primary' \| 'secondary' \| 'success' \| 'info' \| 'warning' \| 'danger' | 'primary'  |
-| size                      | 按钮尺寸                                      | 'mini' \| 'small' \| 'medium' \| 'large'                                 | 'medium'   |
-| round                     | 圆角按钮                                      | boolean                                                                  | false      |
-| disabled                  | 禁用按钮                                      | boolean                                                                  | false      |
-| loading                   | 加载状态                                      | boolean                                                                  | false      |
-| loading-type              | 加载类型                                      | 'clock' \| 'circular'                                                    | 'circular' |
-| color                     | 自定义文字颜色                                | string                                                                   | -          |
-| background                | 自定义背景颜色                                | string                                                                   | -          |
-| block <sup>1.12+</sup>    | 将按钮设为块级元素                            | boolean                                                                  | true       |
-| inline <sup>1.12.1+</sup> | 设置为 true，则为行内块元素，否则取决于 block | boolean                                                                  | false      |
+| 属性                         | 描述                                          | 类型                                                                     | 默认值     |
+| ---------------------------- | --------------------------------------------- | ------------------------------------------------------------------------ | ---------- |
+| root-class                   | 组件根元素类名                                | string                                                                   | -          |
+| root-style                   | 组件根元素样式                                | StyleValue                                                               | -          |
+| type                         | 按钮类型                                      | 'default' \| 'pale' \| 'mild' \| 'outline' \| 'text' \| 'pale-text'      | 'default'  |
+| theme                        | 按钮主题色                                    | 'primary' \| 'secondary' \| 'success' \| 'info' \| 'warning' \| 'danger' | 'primary'  |
+| size                         | 按钮尺寸                                      | 'mini' \| 'small' \| 'medium' \| 'large'                                 | 'medium'   |
+| round                        | 圆角按钮                                      | boolean                                                                  | false      |
+| disabled                     | 禁用按钮                                      | boolean                                                                  | false      |
+| loading                      | 加载状态                                      | boolean                                                                  | false      |
+| loading-type                 | 加载类型                                      | 'clock' \| 'circular'                                                    | 'circular' |
+| color                        | 自定义文字颜色                                | string                                                                   | -          |
+| background                   | 自定义背景颜色                                | string                                                                   | -          |
+| block <sup>1.12+</sup>       | 将按钮设为块级元素                            | boolean                                                                  | true       |
+| inline <sup>1.12.1+</sup>    | 设置为 true，则为行内块元素，否则取决于 block | boolean                                                                  | false      |
+| icon <sup>1.13+</sup>        | 图标名称                                      | string                                                                   | -          |
+| icon-family <sup>1.13+</sup> | 图标字体                                      | string                                                                   | -          |
+| icon-size <sup>1.13+</sup>   | 图标尺寸                                      | string                                                                   | -          |
 
 ### ButtonProps（小程序能力）
 

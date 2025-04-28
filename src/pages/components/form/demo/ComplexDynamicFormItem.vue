@@ -51,9 +51,13 @@
           >
             <sar-input inlaid placeholder="Price" v-model="sight.price" />
           </sar-form-item>
-          <sar-button type="mild" size="small" @click="removeSight(sight)">
-            <sar-icon name="minus" />
-          </sar-button>
+          <sar-button
+            type="mild"
+            icon="trash"
+            size="small"
+            theme="danger"
+            @click="removeSight(sight)"
+          />
         </view>
       </sar-form-item>
       <sar-form-item>
