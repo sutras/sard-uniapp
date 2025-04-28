@@ -1,0 +1,70 @@
+@use '../style/base' as *;
+
+@include bem(divider) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    margin: var(--sar-divider-margin-y) 0;
+    gap: var(--sar-divider-gap);
+    border-width: 0;
+    border-color: var(--sar-divider-border-color);
+    color: var(--sar-divider-color);
+
+    &::before,
+    &::after {
+      @include universal;
+      flex: 1;
+      border-color: inherit;
+      border-style: inherit;
+      border-width: 1px 0 0;
+      content: '';
+    }
+  }
+
+  @include m(only-line) {
+    &::after {
+      display: none;
+    }
+  }
+
+  @include m(left) {
+    &::before {
+      max-width: var(--sar-divider-left-width);
+    }
+  }
+
+  @include m(right) {
+    &::after {
+      max-width: var(--sar-divider-right-width);
+    }
+  }
+
+  @include m(vertical) {
+    display: inline-block;
+    height: var(--sar-divider-vertical-height);
+    margin: 0 var(--sar-divider-margin-x);
+    vertical-align: middle;
+
+    &::before {
+      height: 100%;
+      border-width: 0 0 0 1px;
+    }
+    &::after {
+      display: none;
+    }
+  }
+
+  @include m(hairline) {
+    &::before,
+    &::after {
+      transform: scaleY(0.5);
+    }
+  }
+
+  @include m-intersect(vertical, hairline) {
+    &::before {
+      transform: scaleX(0.5);
+    }
+  }
+}
