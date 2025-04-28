@@ -177,4 +177,29 @@ describe('Button', () => {
       wrapper.find('.sar-button').classes().includes('sar-button_block'),
     ).toBeFalsy()
   })
+
+  test('icon', async () => {
+    const wrapper = mount(
+      h(
+        Button,
+        {
+          icon: 'plus',
+        },
+        () => '默认',
+      ),
+    )
+
+    // block
+    const classes = wrapper.find('.sar-button').classes()
+    expect(classes).not.toContain('sar-button_block')
+
+    // toggle loading
+    expect(wrapper.find('.sari-plus').exists()).toBeTruthy()
+    expect(wrapper.find('.sar-loading').exists()).toBeFalsy()
+    await wrapper.setProps({
+      loading: true,
+    })
+    expect(wrapper.find('.sari-plus').exists()).toBeFalsy()
+    expect(wrapper.find('.sar-loading').exists()).toBeTruthy()
+  })
 })

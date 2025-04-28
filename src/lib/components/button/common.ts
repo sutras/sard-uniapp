@@ -22,6 +22,9 @@ export interface ButtonProps {
   background?: string
   block?: boolean
   inline?: boolean
+  icon?: string
+  iconFamily?: string
+  iconSize?: string
 
   // 小程序能力
   formType?: string
