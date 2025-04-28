@@ -1,0 +1,14 @@
+// #variables
+page {
+  --sar-divider-margin-y: 32rpx;
+  --sar-divider-margin-x: 16rpx;
+  --sar-divider-gap: 32rpx;
+
+  --sar-divider-color: var(--sar-tertiary-color);
+  --sar-divider-border-color: var(--sar-border-color);
+  --sar-divider-left-width: 10%;
+  --sar-divider-right-width: 10%;
+
+  --sar-divider-vertical-height: 1em;
+}
+// #endvariables
