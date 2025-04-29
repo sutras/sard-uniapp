@@ -16,6 +16,10 @@
     "title": "布局",
     "children": [
       {
+        "title": "Divider 分割线",
+        "name": "divider"
+      },
+      {
         "title": "Grid 宫格",
         "name": "grid"
       },
@@ -298,6 +302,10 @@
       {
         "title": "FloatingBubble 浮动气泡",
         "name": "floating-bubble"
+      },
+      {
+        "title": "FloatingPanel 浮动面板",
+        "name": "floating-panel"
       },
       {
         "title": "LoadMore 加载更多",
