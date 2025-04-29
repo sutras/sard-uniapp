@@ -34,6 +34,7 @@ import { type TagProps } from '../tag'
 import { type ToastProps } from '../toast'
 import { type TreeProps } from '../tree'
 import { type UploadPreviewProps, type UploadProps } from '../upload'
+import { type DividerProps } from '../divider'
 
 type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Record<any, any> ? DeepPartial<T[P]> : T[P]
@@ -68,6 +69,7 @@ export const defaultConfig = {
     lang: 'en',
     showMessageCard: false,
     block: true,
+    loadingType: undefined as LoadingProps['type'],
   },
   calendar: {
     type: 'single' as CalendarProps['type'],
@@ -136,6 +138,11 @@ export const defaultConfig = {
   dialogAgent: {
     id: 'dialog',
   },
+  divider: {
+    type: 'solid' as DividerProps['type'],
+    hairline: true,
+    position: 'center' as DividerProps['position'],
+  },
   dropdown: {
     direction: 'down' as DropdownProps['direction'],
     disabled: false,
@@ -155,6 +162,11 @@ export const defaultConfig = {
     axis: 'y' as FloatingBubbleProps['axis'],
     gapX: 24,
     gapY: 24,
+  },
+  floatingPanel: {
+    duration: 300,
+    contentDraggable: true,
+    safeAreaInsetBottom: true,
   },
   form: {
     validateTrigger: 'change' as FormProps['validateTrigger'],

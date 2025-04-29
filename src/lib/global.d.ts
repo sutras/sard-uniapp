@@ -28,11 +28,13 @@ declare module 'vue' {
     SarDatetimeRangePickerInput: typeof import('./components/datetime-range-picker-input/datetime-range-picker-input.vue').default
     SarDialog: typeof import('./components/dialog/dialog.vue').default
     SarDialogAgent: typeof import('./components/dialog-agent/dialog-agent.vue').default
+    SarDivider: typeof import('./components/divider/divider.vue').default
     SarDropdown: typeof import('./components/dropdown/dropdown.vue').default
     SarDropdownItem: typeof import('./components/dropdown-item/dropdown-item.vue').default
     SarEmpty: typeof import('./components/empty/empty.vue').default
     SarFab: typeof import('./components/fab/fab.vue').default
     SarFloatingBubble: typeof import('./components/floating-bubble/floating-bubble.vue').default
+    SarFloatingPanel: typeof import('./components/floating-panel/floating-panel.vue').default
     SarForm: typeof import('./components/form/form.vue').default
     SarFormItem: typeof import('./components/form-item/form-item.vue').default
     SarGrid: typeof import('./components/grid/grid.vue').default

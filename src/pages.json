@@ -91,6 +91,9 @@
       "path": "pages/components/dialog/index"
     },
     {
+      "path": "pages/components/divider/index"
+    },
+    {
       "path": "pages/components/dropdown/index"
     },
     {
@@ -101,6 +104,18 @@
     },
     {
       "path": "pages/components/floating-bubble/index"
+    },
+    {
+      "path": "pages/components/floating-panel/index"
+    },
+    {
+      "path": "pages/components/floating-panel/demo/Basic"
+    },
+    {
+      "path": "pages/components/floating-panel/demo/Anchors"
+    },
+    {
+      "path": "pages/components/floating-panel/demo/ContentDraggable"
     },
     {
       "path": "pages/components/form/demo/BasicLogin"
@@ -247,9 +262,6 @@
       "path": "pages/components/progress-circle/index"
     },
     {
-      "path": "pages/components/pull-down-refresh/index"
-    },
-    {
       "path": "pages/components/pull-down-refresh/demo/Page"
     },
     {
@@ -257,6 +269,9 @@
     },
     {
       "path": "pages/components/pull-down-refresh/demo/Slot"
+    },
+    {
+      "path": "pages/components/pull-down-refresh/index"
     },
     {
       "path": "pages/components/qrcode/index"

@@ -1,0 +1,12 @@
+// #variables
+page {
+  --sar-floating-panel-z-index: 1000;
+  --sar-floating-panel-bg: var(--sar-emphasis-bg);
+  --sar-floating-panel-border-radius: var(--sar-rounded-xl);
+
+  --sar-floating-panel-header-height: 64rpx;
+  --sar-floating-panel-bar-width: 40rpx;
+  --sar-floating-panel-bar-height: 6rpx;
+  --sar-floating-panel-bar-color: var(--sar-tertiary-bg);
+}
+// #endvariables

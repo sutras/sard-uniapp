@@ -1,0 +1,55 @@
+@use '../style/base' as *;
+
+@include bem(floating-panel) {
+  @include b() {
+    @include universal;
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    z-index: var(--sar-floating-panel-z-index);
+    width: 100vw;
+    border-top-left-radius: var(--sar-floating-panel-border-radius);
+    border-top-right-radius: var(--sar-floating-panel-border-radius);
+    background: var(--sar-floating-panel-bg);
+    will-change: transform;
+    touch-action: none;
+    transition-property: transform;
+
+    &::after {
+      position: absolute;
+      bottom: -100vh;
+      width: 100vw;
+      height: 100vh;
+      content: '';
+      background-color: inherit;
+    }
+
+    @include m(safe) {
+      padding-bottom: env(safe-area-inset-bottom);
+    }
+  }
+
+  @include e(header) {
+    @include universal;
+    flex: none;
+    justify-content: center;
+    align-items: center;
+    height: var(--sar-floating-panel-header-height);
+    user-select: none;
+    cursor: grab;
+  }
+
+  @include e(header-bar) {
+    @include universal;
+    width: var(--sar-floating-panel-bar-width);
+    height: var(--sar-floating-panel-bar-height);
+    background: var(--sar-floating-panel-bar-color);
+    border-radius: var(--sar-rounded-full);
+  }
+
+  @include e(body) {
+    @include universal;
+    flex: 1;
+    overflow: hidden;
+  }
+}
