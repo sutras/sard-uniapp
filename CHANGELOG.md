@@ -1,3 +1,14 @@
+# [1.13.0](https://github.com/sutras/sard-uniapp/compare/v1.12.5...v1.13.0) (2025-04-29)
+
+
+### Features
+
+* button 组件新增 icon 功能 ([53a54f5](https://github.com/sutras/sard-uniapp/commit/53a54f5e55d698d10f5a5e8009b3cc4d1d4529ea))
+* 新增 divider 组件 ([261b234](https://github.com/sutras/sard-uniapp/commit/261b234e0a963da6d3ff2dd85028df0d31ee812d))
+* 新增 FloatingPanel 组件 ([f879433](https://github.com/sutras/sard-uniapp/commit/f879433a93afd93df58baeed227ddbb9da6b1730))
+
+
+
 ## [1.12.5](https://github.com/sutras/sard-uniapp/compare/v1.12.4...v1.12.5) (2025-04-21)
 
 
