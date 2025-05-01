@@ -1,3 +1,12 @@
+## [1.13.1](https://github.com/sutras/sard-uniapp/compare/v1.13.0...v1.13.1) (2025-05-01)
+
+
+### Bug Fixes
+
+* 修复notify显示问题 ([f021622](https://github.com/sutras/sard-uniapp/commit/f02162261886743015ab9c0965213db7b1c0ab1f))
+
+
+
 # [1.13.0](https://github.com/sutras/sard-uniapp/compare/v1.12.5...v1.13.0) (2025-04-29)
 
 
