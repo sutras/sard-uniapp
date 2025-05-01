@@ -1,8 +1,17 @@
 <template>
   <sar-notify
     ref="elRef"
-    v-bind="notifyProps"
-    v-model:visible="notifyProps.visible"
+    v-model:visible="innerProps.visible"
+    :root-style="innerProps.rootStyle"
+    :root-class="innerProps.rootClass"
+    :type="innerProps.type"
+    :message="innerProps.message"
+    :color="innerProps.color"
+    :background="innerProps.background"
+    :position="innerProps.position"
+    :timeout="innerProps.timeout"
+    :duration="innerProps.duration"
+    :status-bar="innerProps.statusBar"
   />
 </template>
 
@@ -17,7 +26,6 @@ import {
   defaultNotifyAgentProps,
 } from './common'
 import { useImperative } from '../../use/useImperative'
-import { omit } from '../../utils'
 
 defineOptions({
   options: {
@@ -55,10 +63,6 @@ const imperative: NotifyImperative = {
     elRef.value?.cancelHide()
   },
 }
-
-const notifyProps = computed(() => {
-  return omit(innerProps.value, ['id'])
-})
 
 useImperative(
   imperativeName,
