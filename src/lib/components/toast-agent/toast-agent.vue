@@ -1,14 +1,16 @@
 <template>
   <sar-toast
+    ref="elRef"
+    v-model:visible="innerProps.visible"
     :root-style="innerProps.rootStyle"
     :root-class="innerProps.rootClass"
     :type="innerProps.type"
     :title="innerProps.title"
-    v-model:visible="innerProps.visible"
     :position="innerProps.position"
     :overlay="innerProps.overlay"
     :transparent="innerProps.transparent"
-    ref="elRef"
+    :timeout="innerProps.timeout"
+    :duration="innerProps.duration"
   />
 </template>
 
