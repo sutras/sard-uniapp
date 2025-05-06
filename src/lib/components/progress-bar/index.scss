@@ -20,7 +20,6 @@
     @include universal;
     flex-direction: row;
     align-items: center;
-    justify-content: flex-end;
     height: 100%;
     border-radius: var(--sar-progress-bar-border-radius);
     font-size: var(--sar-progress-bar-piece-font-size);
@@ -47,7 +46,8 @@
     }
 
     @include e(text) {
-      margin-left: 0;
+      margin-left: auto;
+      padding-left: var(--sar-progress-bar-text-margin-left);
       margin-right: var(--sar-progress-bar-text-margin-right);
       font-size: var(--sar-progress-bar-inside-text-font-size);
     }
