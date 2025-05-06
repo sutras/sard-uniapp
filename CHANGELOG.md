@@ -1,3 +1,12 @@
+## [1.13.2](https://github.com/sutras/sard-uniapp/compare/v1.13.1...v1.13.2) (2025-05-06)
+
+
+### Bug Fixes
+
+* 修复progress-bar inside 时显示问题 ([dd784e7](https://github.com/sutras/sard-uniapp/commit/dd784e73aab9be1237f6b78bf07f2d5b924e3e46))
+
+
+
 ## [1.13.1](https://github.com/sutras/sard-uniapp/compare/v1.13.0...v1.13.1) (2025-05-01)
 
 
