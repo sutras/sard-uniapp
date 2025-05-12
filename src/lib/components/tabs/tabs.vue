@@ -157,11 +157,13 @@ provide<TabContext>(
     unregister(name) {
       delete tabMap[name]
     },
-    select(name) {
+    select(name, initial?: boolean) {
       innerCurrent.value = name
-      emit('update:current', name)
-      emit('change', name)
       scrollToTabQueue.value = name
+      if (!initial) {
+        emit('update:current', name)
+        emit('change', name)
+      }
     },
   }),
 )

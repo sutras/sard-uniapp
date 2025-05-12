@@ -112,7 +112,7 @@ npm run release
 ## 修复问题流程
 
 - 修复问题
-- 测试
+- 测试 `npm run test`
 - 修改版本号
 - 暂存 `git add .`
 - 提交 `git commit -m 'fix: '`

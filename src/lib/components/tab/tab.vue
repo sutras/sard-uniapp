@@ -59,8 +59,8 @@ const getRect = () => {
   return getBoundingClientRect(`.${tabId}`, instance)
 }
 
-const select = () => {
-  context.select(props.name)
+const select = (initial?: boolean) => {
+  context.select(props.name, initial)
 }
 
 const onClick = (event: any) => {
@@ -77,7 +77,7 @@ onMounted(() => {
   })
   if (isCurrent.value) {
     nextTick(() => {
-      select()
+      select(true)
     })
   }
 })

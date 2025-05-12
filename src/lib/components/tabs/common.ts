@@ -48,7 +48,7 @@ export interface TabEmits {
 
 export interface TabContext {
   current: any
-  select: (name: string | number, rect?: NodeRect) => void
+  select: (name: string | number, initial?: boolean) => void
   register: (
     name: string | number,
     expose: {
