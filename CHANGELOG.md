@@ -1,3 +1,12 @@
+# [1.14.0](https://github.com/sutras/sard-uniapp/compare/v1.13.3...v1.14.0) (2025-05-12)
+
+
+### Features
+
+* cascader 新增 change-on-select 属性 ([71c1329](https://github.com/sutras/sard-uniapp/commit/71c13291780eea13ac7c198ae31a39e0dc49d531))
+
+
+
 ## [1.13.3](https://github.com/sutras/sard-uniapp/compare/v1.13.2...v1.13.3) (2025-05-12)
 
 
