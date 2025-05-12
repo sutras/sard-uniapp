@@ -189,33 +189,34 @@ const onOptionClick = (option: CascaderOption, tabIndex: number) => {
     nextTabs = nextTabs.slice(0, tabIndex + 1)
   }
 
-  if (!isLastOption(option)) {
+  const isLast = isLastOption(option)
+
+  if (!isLast) {
     const nextTab = {
       options: option[mergedFieldKeys.value.children],
       selected: null,
     }
     nextTabs.push(nextTab)
-    tabsCurrent.value = nextTabs.length - 1
-  } else {
-    // finish
-    tabsCurrent.value = tabIndex
-    const nextValue = option[mergedFieldKeys.value.value]
-    innerValue.value = nextValue
-    emit(
-      'update:model-value',
-      nextValue,
-      nextTabs.map((tab) => tab.selected) as CascaderOption[],
-    )
-    emit(
-      'change',
-      nextValue,
-      nextTabs.map((tab) => tab.selected) as CascaderOption[],
-    )
   }
+
+  tabsCurrent.value = isLast ? tabIndex : nextTabs.length - 1
 
   tempValue = option[mergedFieldKeys.value.value]
   tabs.value = nextTabs
   emit('select', option, tabIndex)
+
+  // finish
+  if (isLast || props.changeOnSelect) {
+    const nextValue = option[mergedFieldKeys.value.value]
+    innerValue.value = nextValue
+
+    const selectedOptions = nextTabs
+      .map((tab) => tab.selected)
+      .filter(Boolean) as CascaderOption[]
+
+    emit('update:model-value', nextValue, selectedOptions)
+    emit('change', nextValue, selectedOptions)
+  }
 }
 
 // main

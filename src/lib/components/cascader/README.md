@@ -23,6 +23,12 @@ import { Cascader } from 'sard'
 
 @code('${DEMO_PATH}/cascader/demo/Basic.vue')
 
+### 选择即改变
+
+设置 `change-on-select` 属性，允许只选中父级选项。
+
+@code('${DEMO_PATH}/cascader/demo/ChangeOnSelect.vue')
+
 ### 异步加载
 
 通过监听 `@select` 事件，获取当前选中的选项，将异步获取的数据作为 `children` 属性值， 再把组件的 `options` 更新一下，使组件重新渲染。如果选项的 `children` 是需要用户点击时再通过接口获取的， 此选项的 `children` 需初始化为空数组。
@@ -45,15 +51,16 @@ import { Cascader } from 'sard'
 
 ### CascaderProps
 
-| 属性                  | 描述                      | 类型                               | 默认值           |
-| --------------------- | ------------------------- | ---------------------------------- | ---------------- |
-| root-class            | 组件根元素类名            | string                             | -                |
-| root-style            | 组件根元素样式            | StyleValue                         | -                |
-| model-value (v-model) | 选中项的值                | string \| number                   | -                |
-| options               | 可选项数据源              | CascaderOption[]                   | []               |
-| field-keys            | 自定义 `options` 中的字段 | CascaderFieldKeys                  | defaultFieldKeys |
-| hint-text             | 未选中时的提示文案        | string                             | '请选择'         |
-| label-render          | 自定义可选项渲染          | (option: CascaderOption) => string | -                |
+| 属性                              | 描述                      | 类型                               | 默认值           |
+| --------------------------------- | ------------------------- | ---------------------------------- | ---------------- |
+| root-class                        | 组件根元素类名            | string                             | -                |
+| root-style                        | 组件根元素样式            | StyleValue                         | -                |
+| model-value (v-model)             | 选中项的值                | string \| number                   | -                |
+| options                           | 可选项数据源              | CascaderOption[]                   | []               |
+| field-keys                        | 自定义 `options` 中的字段 | CascaderFieldKeys                  | defaultFieldKeys |
+| hint-text                         | 未选中时的提示文案        | string                             | '请选择'         |
+| label-render                      | 自定义可选项渲染          | (option: CascaderOption) => string | -                |
+| change-on-select <sup>1.14+</sup> | 点击每级选项都会触发变化  | boolean                            | false            |
 
 ### CascaderSlots
 

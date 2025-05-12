@@ -23,11 +23,13 @@
       <sar-cascader
         v-if="already"
         :model-value="popoutValue"
-        @change="onChange"
         :options="options"
         :field-keys="fieldKeys"
-        :placeholder="hintText"
+        :hint-text="hintText"
+        :change-on-select="changeOnSelect"
+        :label-render="labelRender"
         @select="(option, tabIndex) => $emit('select', option, tabIndex)"
+        @change="onChange"
       >
         <template #top="{ tabIndex }">
           <slot name="top" :tab-index="tabIndex"></slot>
@@ -107,11 +109,13 @@ const onChange = (value: any, selectedOptions: CascaderOption[]) => {
 }
 
 const onConfirm = () => {
-  innerValue.value = popoutValue.value
-  emit('update:model-value', popoutValue.value, popoutOptions.value)
-  emit('change', popoutValue.value, popoutOptions.value)
+  if (popoutValue.value !== innerValue.value) {
+    innerValue.value = popoutValue.value
+    inputValue.value = getInputValue()
 
-  inputValue.value = getInputValue()
+    emit('update:model-value', innerValue.value, popoutOptions.value)
+    emit('change', innerValue.value, popoutOptions.value)
+  }
 }
 
 // input

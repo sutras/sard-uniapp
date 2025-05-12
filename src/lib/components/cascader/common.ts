@@ -23,6 +23,7 @@ export interface CascaderProps {
   fieldKeys?: CascaderFieldKeys
   hintText?: string
   labelRender?: (option: CascaderOption) => string
+  changeOnSelect?: boolean
 }
 
 export const defaultCascaderProps = {

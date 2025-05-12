@@ -4,6 +4,10 @@
       <DemoBasic />
     </doc-demo>
 
+    <doc-demo title="选择即改变">
+      <DemoChangeOnSelect />
+    </doc-demo>
+
     <doc-demo title="异步加载">
       <DemoAsync />
     </doc-demo>
@@ -20,6 +24,7 @@
 
 <script setup lang="ts">
 import DemoBasic from './demo/Basic.vue'
+import DemoChangeOnSelect from './demo/ChangeOnSelect.vue'
 import DemoAsync from './demo/Async.vue'
 import DemoOptionTop from './demo/OptionTop.vue'
 import DemoDisabled from './demo/Disabled.vue'
