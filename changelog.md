@@ -1,9 +1,18 @@
+## [1.13.3](https://github.com/sutras/sard-uniapp/compare/v1.13.2...v1.13.3) (2025-05-12)
+
+
+### Bug Fixes
+
+* 修复tabs组件初始触发change事件问题 ([f9a408b](https://github.com/sutras/sard-uniapp/commit/f9a408b77cd83dbe62498145daf197b958886c0d))
+
+
+
 ## [1.13.2](https://github.com/sutras/sard-uniapp/compare/v1.13.1...v1.13.2) (2025-05-06)
 
 
 ### Bug Fixes
 
-* 修复progress-bar inside 时显示问题 ([dd784e7](https://github.com/sutras/sard-uniapp/commit/dd784e73aab9be1237f6b78bf07f2d5b924e3e46))
+* 修复progress-bar inside 时显示问题 ([1e633ed](https://github.com/sutras/sard-uniapp/commit/1e633ed67b41558a122675bc9f35aeda76ecb569))
 
 
 
@@ -12,7 +21,7 @@
 
 ### Bug Fixes
 
-* 修复notify显示问题 ([f021622](https://github.com/sutras/sard-uniapp/commit/f02162261886743015ab9c0965213db7b1c0ab1f))
+* 修复notify显示问题 ([30d3f36](https://github.com/sutras/sard-uniapp/commit/30d3f36c2a9ca31fb2c9103b7195ccdf79bcbbb4))
 
 
 
@@ -21,9 +30,9 @@
 
 ### Features
 
-* button 组件新增 icon 功能 ([53a54f5](https://github.com/sutras/sard-uniapp/commit/53a54f5e55d698d10f5a5e8009b3cc4d1d4529ea))
-* 新增 divider 组件 ([261b234](https://github.com/sutras/sard-uniapp/commit/261b234e0a963da6d3ff2dd85028df0d31ee812d))
-* 新增 FloatingPanel 组件 ([f879433](https://github.com/sutras/sard-uniapp/commit/f879433a93afd93df58baeed227ddbb9da6b1730))
+* button 组件新增 icon 功能 ([ff69d30](https://github.com/sutras/sard-uniapp/commit/ff69d302b76c897acc4b639ed82708c6b45a00f1))
+* 新增 divider 组件 ([410fe89](https://github.com/sutras/sard-uniapp/commit/410fe895d91a0e811ea9631bb17059fdb10d44b0))
+* 新增 FloatingPanel 组件 ([ddb6561](https://github.com/sutras/sard-uniapp/commit/ddb6561ef72cc279a00b890703693298a20086f1))
 
 
 
@@ -32,7 +41,7 @@
 
 ### Bug Fixes
 
-* 修复 table 组件 sass 导入问题 ([2975683](https://github.com/sutras/sard-uniapp/commit/2975683448aa78612f1f40a7d25a0da41df091bf))
+* 修复 table 组件 sass 导入问题 ([238257e](https://github.com/sutras/sard-uniapp/commit/238257e1f7bf69c93e62688ebc7e11e8e1553e94))
 
 
 
@@ -41,7 +50,7 @@
 
 ### Features
 
-* tabbar-item 组件 icon 插槽新增 active 属性 ([0704e46](https://github.com/sutras/sard-uniapp/commit/0704e46cb1a87a27d62076bd962a3925086598e7))
+* tabbar-item 组件 icon 插槽新增 active 属性 ([4ccd9cc](https://github.com/sutras/sard-uniapp/commit/4ccd9cce425b57e434943cc410a47e4d12c78d6e))
 
 
 
@@ -50,7 +59,7 @@
 
 ### Features
 
-* card 组件新增点击态 ([cf7fbde](https://github.com/sutras/sard-uniapp/commit/cf7fbde33998fa003765eee7761228896a7766db))
+* card 组件新增点击态 ([0eef48e](https://github.com/sutras/sard-uniapp/commit/0eef48e9be15f12f43bc3b28c85ef86d0684c3e1))
 
 
 
@@ -59,7 +68,7 @@
 
 ### Features
 
-* tabs 等组件新增 change 事件, card 新增 click 事件 ([6c90a9e](https://github.com/sutras/sard-uniapp/commit/6c90a9e3d97864e66b4d5005947301fdfa4b9784))
+* tabs 等组件新增 change 事件, card 新增 click 事件 ([20fa21c](https://github.com/sutras/sard-uniapp/commit/20fa21c6b8de0992959befe2971708743c9f3d01))
 
 
 
@@ -68,7 +77,7 @@
 
 ### Bug Fixes
 
-* 移除 crop-image 组件 toast 提示，新增button组件 inline 属性 ([7510f84](https://github.com/sutras/sard-uniapp/commit/7510f84d354a6b0cddd950815ad09a480882db7a))
+* 移除 crop-image 组件 toast 提示，新增button组件 inline 属性 ([64e6474](https://github.com/sutras/sard-uniapp/commit/64e6474ca99b75cc95e99dfdd0d0ef91cac95322))
 
 
 
@@ -77,23 +86,23 @@
 
 ### Bug Fixes
 
-* **cascader:** 允许空字符串作为未选择初始值 ([c0073ec](https://github.com/sutras/sard-uniapp/commit/c0073ec8b3bc285443fca6c17b86dbdb7976ec08))
-* 修复 table 组件右边固定阴影显示问题 ([4e7869a](https://github.com/sutras/sard-uniapp/commit/4e7869a70f60d4f9d6f01c68fdc90a00080adad9))
-* 修复cascader在支付宝端的展示问题 ([e5ab136](https://github.com/sutras/sard-uniapp/commit/e5ab136da081fbcfc6a8f07d00482231cd7270fe))
-* 修复因uniapp会修改元素id导致获取不到元素的问题 ([10dbfe0](https://github.com/sutras/sard-uniapp/commit/10dbfe0adf49f32f85d6902c7a255b7a84d400fe))
+* **cascader:** 允许空字符串作为未选择初始值 ([428b3c5](https://github.com/sutras/sard-uniapp/commit/428b3c58bb08fad50dc0e235757e480372ea9ffa))
+* 修复 table 组件右边固定阴影显示问题 ([c6f0e88](https://github.com/sutras/sard-uniapp/commit/c6f0e887fdb5028d4f252790b01845e6be6dd59d))
+* 修复cascader在支付宝端的展示问题 ([3e713ac](https://github.com/sutras/sard-uniapp/commit/3e713ac2d2399e3e998a87cc2541b73c9137c836))
+* 修复因uniapp会修改元素id导致获取不到元素的问题 ([45b8070](https://github.com/sutras/sard-uniapp/commit/45b80701b829ddd1aa00f0dcbb031da6eab01742))
 
 
 ### Features
 
-* button 组件新增 block 属性 ([bb4d39b](https://github.com/sutras/sard-uniapp/commit/bb4d39b0dd417273fcf9fac3f132a26332d6bd8d))
-* grid 组件新增 badge 相关属性 ([0c33247](https://github.com/sutras/sard-uniapp/commit/0c3324750a1ee48a9f2801e7e20defeddad70003))
-* navbar组件新增属性,修改样式 ([dc4e747](https://github.com/sutras/sard-uniapp/commit/dc4e7478dedeb4aaecb659b99eb9ecc9acfba2e6))
-* 新增 crop-image 组件 ([5b89f0e](https://github.com/sutras/sard-uniapp/commit/5b89f0ea3b5f09e28534222e4eecd9726ad03b97))
-* 新增 ScrollSpy 组件 ([d4c0e92](https://github.com/sutras/sard-uniapp/commit/d4c0e92d2a9aab60687f08b384937f5276e53c5e))
-* 新增 Sidebar 组件 ([4c1487a](https://github.com/sutras/sard-uniapp/commit/4c1487a9fa77f01ea0be962d64c49167afb29ece))
-* 新增 signature 组件 ([04b7bf8](https://github.com/sutras/sard-uniapp/commit/04b7bf84149c78ad336f0a23eac8a60b0f5b2396))
-* 新增 status-bar 组件 ([49339d7](https://github.com/sutras/sard-uniapp/commit/49339d79738e829a34edc4a83a237ed3814e24c1))
-* 新增 zIndex 全局配置 ([77802cd](https://github.com/sutras/sard-uniapp/commit/77802cd2c772bd3c6c67e8a09254a1e0b501cece))
+* button 组件新增 block 属性 ([6b59144](https://github.com/sutras/sard-uniapp/commit/6b59144df3b15a12f9d4d19c711070a7f6d823a7))
+* grid 组件新增 badge 相关属性 ([4f697a3](https://github.com/sutras/sard-uniapp/commit/4f697a39debe00d14397c3a6db56bf1d661a101e))
+* navbar组件新增属性,修改样式 ([e6039b4](https://github.com/sutras/sard-uniapp/commit/e6039b4b1835a4062c9ce0a173e4666a8eb4fcc6))
+* 新增 crop-image 组件 ([9bd948a](https://github.com/sutras/sard-uniapp/commit/9bd948a8dafce3d3d3c11200e4cbba3d5c19466c))
+* 新增 ScrollSpy 组件 ([cefa8b4](https://github.com/sutras/sard-uniapp/commit/cefa8b429b2be108ef01f2dbf7edfafe90203dc0))
+* 新增 Sidebar 组件 ([608ec0d](https://github.com/sutras/sard-uniapp/commit/608ec0da2f48e537d40b3c098880ebbba8ac2e2b))
+* 新增 signature 组件 ([f75489d](https://github.com/sutras/sard-uniapp/commit/f75489d835c502f97218935a6f26f54f05ba6b0a))
+* 新增 status-bar 组件 ([e005b0c](https://github.com/sutras/sard-uniapp/commit/e005b0c1a5d7ec1725a47d5f21f24b0652d27de9))
+* 新增 zIndex 全局配置 ([7945ae9](https://github.com/sutras/sard-uniapp/commit/7945ae93a0f83be4cf9a090584e2235a58401f05))
 
 
 
@@ -102,7 +111,7 @@
 
 ### Bug Fixes
 
-* 修复tree组件递归引用问题 ([25c48b7](https://github.com/sutras/sard-uniapp/commit/25c48b7d57fd178ea9a08688757da41b1394d297))
+* 修复tree组件递归引用问题 ([0a789c6](https://github.com/sutras/sard-uniapp/commit/0a789c612bb6038d23e95bb3dbc154a4be1dc808))
 
 
 
@@ -111,7 +120,7 @@
 
 ### Bug Fixes
 
-* 修复日期时间选择器min, max联动问题 ([81d9256](https://github.com/sutras/sard-uniapp/commit/81d9256c872b5711664abf1e8ff75de3b146f3da))
+* 修复日期时间选择器min, max联动问题 ([fd6c351](https://github.com/sutras/sard-uniapp/commit/fd6c3511154ae736c471013d68f8addc74d06d2f))
 
 
 
@@ -120,12 +129,12 @@
 
 ### Bug Fixes
 
-* **datetime-picker:** 修改min, max属性后更新列数据 ([f58fef5](https://github.com/sutras/sard-uniapp/commit/f58fef592dd1102032aa999c5dbf887b8e25189d))
+* **datetime-picker:** 修改min, max属性后更新列数据 ([9b6b3f4](https://github.com/sutras/sard-uniapp/commit/9b6b3f4316028cd6453ce9a8b126d01e5d8473f8))
 
 
 ### Features
 
-* 新增 DatetimeRangePicker 和 DatetimeRangePickerInput 组件 ([7cf3eeb](https://github.com/sutras/sard-uniapp/commit/7cf3eebbd8ce5f1aa185a4a55425607ba8a4bbdc))
+* 新增 DatetimeRangePicker 和 DatetimeRangePickerInput 组件 ([8b3d6ee](https://github.com/sutras/sard-uniapp/commit/8b3d6ee7e844ebbe78f3b7232bc7a7e9ace27ecd))
 
 
 
@@ -134,7 +143,7 @@
 
 ### Bug Fixes
 
-* 使用 [@import](https://github.com/import) 导入scss, 兼容mp-alipay ([1830610](https://github.com/sutras/sard-uniapp/commit/1830610e17b29fd5f7e362d5c04a0ebcbb1ac772))
+* 使用 [@import](https://github.com/import) 导入scss, 兼容mp-alipay ([3e1b7b6](https://github.com/sutras/sard-uniapp/commit/3e1b7b69ed73f1b3421b2082bd25ed8df1f98a49))
 
 
 
@@ -143,8 +152,8 @@
 
 ### Bug Fixes
 
-* 修复 cascader, cascader-input 组件 ([e964e40](https://github.com/sutras/sard-uniapp/commit/e964e400452e873713a95b9a07cbe4e1459113cc))
-* 确保 DatetimePickerInput value 格式化, 移除sass警告 ([e8e326d](https://github.com/sutras/sard-uniapp/commit/e8e326d9db1b96bd542bff5a1a60276083d53fba))
+* 修复 cascader, cascader-input 组件 ([1ac846d](https://github.com/sutras/sard-uniapp/commit/1ac846d66bc91b5b7ed6bb5144e41b5e5082b58e))
+* 确保 DatetimePickerInput value 格式化, 移除sass警告 ([0ded8f9](https://github.com/sutras/sard-uniapp/commit/0ded8f9e33a176ddd5f0f2c5dbd90a2c79dfc163))
 
 
 
@@ -153,7 +162,7 @@
 
 ### Bug Fixes
 
-* 修复全局配置问题 ([dcd319c](https://github.com/sutras/sard-uniapp/commit/dcd319c51453c6aa7c13dfedfbc2bf47eb3bb409))
+* 修复全局配置问题 ([b05a52e](https://github.com/sutras/sard-uniapp/commit/b05a52e80e2fa14a4851c3fddfb64506f04325a7))
 
 
 
@@ -162,7 +171,7 @@
 
 ### Features
 
-* 新增 Space 组件, 新增 Dialog 组件的按钮配置, 新增 valueFormat 属性, 修复已知问题 ([7648ea6](https://github.com/sutras/sard-uniapp/commit/7648ea65937c5af9a2b6a8cfa9c5b70ade14ef65))
+* 新增 Space 组件, 新增 Dialog 组件的按钮配置, 新增 valueFormat 属性, 修复已知问题 ([69825ef](https://github.com/sutras/sard-uniapp/commit/69825efbc99a2767acb314fb8763f7f015d3ee3b))
 
 
 
@@ -171,7 +180,7 @@
 
 ### Features
 
-* 表单组件新增change事件 ([58f2fa8](https://github.com/sutras/sard-uniapp/commit/58f2fa88e59f4b28b23592cf9ff17e2353a9ae37))
+* 表单组件新增change事件 ([cc56e51](https://github.com/sutras/sard-uniapp/commit/cc56e5121e825e65ee573291ed07df18ad9d2d49))
 
 
 
@@ -180,7 +189,7 @@
 
 ### Bug Fixes
 
-* 修复qrcode 在app端报错的问题 ([c74cad5](https://github.com/sutras/sard-uniapp/commit/c74cad5cbe7dd733843713fd3500e15236719583))
+* 修复qrcode 在app端报错的问题 ([486a95f](https://github.com/sutras/sard-uniapp/commit/486a95fb0fa14acdb3df96958216dbca84d148c4))
 
 
 
@@ -189,7 +198,7 @@
 
 ### Features
 
-* 新增表格组件 ([f2d0db6](https://github.com/sutras/sard-uniapp/commit/f2d0db61ab595a281590f9b840c25beea6dd4fe7))
+* 新增表格组件 ([6649af4](https://github.com/sutras/sard-uniapp/commit/6649af4096b07d8b77d6fcd1f70abe8562cacd8b))
 
 
 
@@ -198,7 +207,7 @@
 
 ### Bug Fixes
 
-* **PopoutInput:** 只读时隐藏箭头 ([0efcdf7](https://github.com/sutras/sard-uniapp/commit/0efcdf77f39778521b8fe7d2b66c84b7a88496c5))
+* **PopoutInput:** 只读时隐藏箭头 ([28f29ac](https://github.com/sutras/sard-uniapp/commit/28f29ac4274f8d74e0f61bf62f04fcc1d8b4f64d))
 
 
 
@@ -207,7 +216,7 @@
 
 ### Bug Fixes
 
-* 修复局部导入组件未注册问题 ([5337b11](https://github.com/sutras/sard-uniapp/commit/5337b119d15b77db76be13c7e33a10cdc4b02d7d))
+* 修复局部导入组件未注册问题 ([225ff82](https://github.com/sutras/sard-uniapp/commit/225ff82510cd0c41fe932d0207bcfa2e824e9478))
 
 
 
@@ -216,7 +225,7 @@
 
 ### Features
 
-* 按钮添加小程序能力 ([c395f86](https://github.com/sutras/sard-uniapp/commit/c395f86308c05ab2a515aa1833b65e87969cf537))
+* 按钮添加小程序能力 ([a887361](https://github.com/sutras/sard-uniapp/commit/a887361fd35e758b271f23c3ad6a6d0404b19969))
 
 
 
@@ -225,7 +234,7 @@
 
 ### Bug Fixes
 
-* 修复 input 获取焦点时的光标位置 ([b952ac3](https://github.com/sutras/sard-uniapp/commit/b952ac3ad5fad3a8c824f3613e6b3b69919bc6b1))
+* 修复 input 获取焦点时的光标位置 ([820f248](https://github.com/sutras/sard-uniapp/commit/820f24898f47ff99c414d39f10ab5b9fcf05678b))
 
 
 
@@ -234,7 +243,7 @@
 
 ### Features
 
-* 新增全局配置 ([c426117](https://github.com/sutras/sard-uniapp/commit/c4261171903d56740920e6930693a797cbb6309f))
+* 新增全局配置 ([dbc6444](https://github.com/sutras/sard-uniapp/commit/dbc64443ec9528cc039be6631be927fc30592967))
 
 
 
@@ -243,8 +252,8 @@
 
 ### Bug Fixes
 
-* count-down stop timer before unmount ([be96b3d](https://github.com/sutras/sard-uniapp/commit/be96b3da62544250a45031f7f1e68d42652a37de))
-* fix type of 'confirm-hold' in sard-input ([1ac21df](https://github.com/sutras/sard-uniapp/commit/1ac21dfff5d01a83ab1e0205256c36fb53c1b821))
+* count-down stop timer before unmount ([5a0feb2](https://github.com/sutras/sard-uniapp/commit/5a0feb243384bd21022f930412161af36bd58ae1))
+* fix type of 'confirm-hold' in sard-input ([fd6209d](https://github.com/sutras/sard-uniapp/commit/fd6209d31a75a72d60c04cb7da927ca36b211594))
 
 
 
@@ -253,7 +262,7 @@
 
 ### Features
 
-* 新增Tree, Timeline, BackTop 组件 close [#36](https://github.com/sutras/sard-uniapp/issues/36), close [#41](https://github.com/sutras/sard-uniapp/issues/41), close 43 ([4b7a222](https://github.com/sutras/sard-uniapp/commit/4b7a222a55ca25e85026a9028717c61ea8b2bbea))
+* 新增Tree, Timeline, BackTop 组件 close [#36](https://github.com/sutras/sard-uniapp/issues/36), close [#41](https://github.com/sutras/sard-uniapp/issues/41), close 43 ([f0a0504](https://github.com/sutras/sard-uniapp/commit/f0a0504f03a8eac84f926e2e01a61bc31de59057))
 
 
 
@@ -262,7 +271,7 @@
 
 ### Features
 
-* 新增Fab, FloatingBubble 组件, 优化构建流程 close [#39](https://github.com/sutras/sard-uniapp/issues/39) ([d028d78](https://github.com/sutras/sard-uniapp/commit/d028d78f46f6966b83f823b9287bfcce02ba47a9))
+* 新增Fab, FloatingBubble 组件, 优化构建流程 close [#39](https://github.com/sutras/sard-uniapp/issues/39) ([fe28b0a](https://github.com/sutras/sard-uniapp/commit/fe28b0aeb3a60f8b4d3f74a7d16ceb0fb4ccf295))
 
 
 
@@ -271,7 +280,7 @@
 
 ### Features
 
-* search组件新增clear, focus, blur事件 ([05dc641](https://github.com/sutras/sard-uniapp/commit/05dc641947e83a6d9e9c92b46cfc33135116eb22))
+* search组件新增clear, focus, blur事件 ([5c4f9fe](https://github.com/sutras/sard-uniapp/commit/5c4f9febfc320acc38147e37779e964825f88692))
 
 
 
@@ -280,7 +289,7 @@
 
 ### Features
 
-* add qrcode ([8d5d8ba](https://github.com/sutras/sard-uniapp/commit/8d5d8ba50b250fbe1bb76da84e4368aae2276b4d))
+* add qrcode ([4c74b1e](https://github.com/sutras/sard-uniapp/commit/4c74b1e6c0618178699d78b7b39c6a66ac2ecce4))
 
 
 
@@ -289,7 +298,7 @@
 
 ### Features
 
-* 新增radio-input, checkbox-input, alert组件 ([a2d24fc](https://github.com/sutras/sard-uniapp/commit/a2d24fc080337df2f39d6abdc887517adf8428c1))
+* 新增radio-input, checkbox-input, alert组件 ([4d2198e](https://github.com/sutras/sard-uniapp/commit/4d2198ec97915630d025ed820fcedc5978e1748d))
 
 
 
@@ -298,8 +307,8 @@
 
 ### Bug Fixes
 
-* lwa copy ([7dc350a](https://github.com/sutras/sard-uniapp/commit/7dc350a09f3d10e4bf9f08733e70e1ec73d15b26))
-* 修复pnpm非扁平化依赖包下lwa依赖问题 close [#32](https://github.com/sutras/sard-uniapp/issues/32) ([5868e16](https://github.com/sutras/sard-uniapp/commit/5868e16587e8664705789e2e791c264f2a7d22f5))
+* lwa copy ([d2ecc78](https://github.com/sutras/sard-uniapp/commit/d2ecc788d364440f3a2b396b6222f7df96e40fa0))
+* 修复pnpm非扁平化依赖包下lwa依赖问题 close [#32](https://github.com/sutras/sard-uniapp/issues/32) ([904e6bd](https://github.com/sutras/sard-uniapp/commit/904e6bd15fc8d6a8fe6b329f26509cbbdc975700))
 
 
 
@@ -308,7 +317,7 @@
 
 ### Features
 
-* 新增Marquee, LuckyDraw, CountTo组件 ([61db992](https://github.com/sutras/sard-uniapp/commit/61db992aea95658b714ae4182526dff10ad54491))
+* 新增Marquee, LuckyDraw, CountTo组件 ([ce825ae](https://github.com/sutras/sard-uniapp/commit/ce825ae7cac423c75bcc036bf59916af5bd1ed8b))
 
 
 
@@ -317,7 +326,7 @@
 
 ### Bug Fixes
 
-* 修复表单内组件的禁用和只读问题 close [#27](https://github.com/sutras/sard-uniapp/issues/27) ([eee674c](https://github.com/sutras/sard-uniapp/commit/eee674c156687b25893cd0456b7050440ea1ad4d))
+* 修复表单内组件的禁用和只读问题 close [#27](https://github.com/sutras/sard-uniapp/issues/27) ([733f010](https://github.com/sutras/sard-uniapp/commit/733f010348cfb48e4d0c9470c7b9d977f082809c))
 
 
 
@@ -326,7 +335,7 @@
 
 ### Bug Fixes
 
-* 修复 notify 组件显示问题、优化文档 ([7ed66fd](https://github.com/sutras/sard-uniapp/commit/7ed66fd09870b24d485fd82ed6f152373b665f3c))
+* 修复 notify 组件显示问题、优化文档 ([34f09a6](https://github.com/sutras/sard-uniapp/commit/34f09a662ebceb1f610eb658a9b2089ee31290f7))
 
 
 
@@ -335,7 +344,7 @@
 
 ### Bug Fixes
 
-* 修复toast&dialog不显示问题 ([9e49c67](https://github.com/sutras/sard-uniapp/commit/9e49c6772e7d0cff8976133b1dc05fa69b51d7ea))
+* 修复toast&dialog不显示问题 ([37255c5](https://github.com/sutras/sard-uniapp/commit/37255c5994e5416b41997f7b336ec13593fafdb7))
 
 
 
@@ -344,7 +353,7 @@
 
 ### Bug Fixes
 
-* 修复input组件字数统计, dialog&toast组件不能显示的问题 close [#26](https://github.com/sutras/sard-uniapp/issues/26),[#24](https://github.com/sutras/sard-uniapp/issues/24) ([bb9ea25](https://github.com/sutras/sard-uniapp/commit/bb9ea253bde0963d3ff1a4f76eee72f5b0f57d0a))
+* 修复input组件字数统计, dialog&toast组件不能显示的问题 close [#26](https://github.com/sutras/sard-uniapp/issues/26),[#24](https://github.com/sutras/sard-uniapp/issues/24) ([fb31059](https://github.com/sutras/sard-uniapp/commit/fb31059cb4937cc4d2e47433905d485a38db92c4))
 
 
 
@@ -353,7 +362,7 @@
 
 ### Bug Fixes
 
-* 修复下拉刷新组件有时不触发的问题 close [#18](https://github.com/sutras/sard-uniapp/issues/18) ([3bbe3a9](https://github.com/sutras/sard-uniapp/commit/3bbe3a9986a2adccf7c067d73a6f2f30251e3532))
+* 修复下拉刷新组件有时不触发的问题 close [#18](https://github.com/sutras/sard-uniapp/issues/18) ([5ec5044](https://github.com/sutras/sard-uniapp/commit/5ec5044ffd58238651d380cb7d4debeea3bf6d80))
 
 
 
@@ -362,7 +371,7 @@
 
 ### Bug Fixes
 
-* 移除属性选择器  close [#23](https://github.com/sutras/sard-uniapp/issues/23) ([89ef3fc](https://github.com/sutras/sard-uniapp/commit/89ef3fcc72ec0f43ccd55cabb0dc013ebcbb8041))
+* 移除属性选择器  close [#23](https://github.com/sutras/sard-uniapp/issues/23) ([b3c0450](https://github.com/sutras/sard-uniapp/commit/b3c045022188366be5552bc84170dba2a432fd56))
 
 
 
@@ -371,8 +380,8 @@
 
 ### Bug Fixes
 
-* 修复upload-preview的image在h5环境下，没有宽度导致图片显示不全 ([e155724](https://github.com/sutras/sard-uniapp/commit/e1557244a1f708dbbb7732302c0dfe36b65c1776))
-* 修复upload组件图片预览问题 ([dd69007](https://github.com/sutras/sard-uniapp/commit/dd69007200c0b97ba92392d2b732836f41f77a05))
+* 修复upload-preview的image在h5环境下，没有宽度导致图片显示不全 ([71383d3](https://github.com/sutras/sard-uniapp/commit/71383d3cd338796aa9118613e993fa89f20e9897))
+* 修复upload组件图片预览问题 ([0552838](https://github.com/sutras/sard-uniapp/commit/0552838b427bdc58c82ae21cb70e73b7cc9b743c))
 
 
 
@@ -381,7 +390,7 @@
 
 ### Bug Fixes
 
-* 修复input组件字数统计问题 close [#19](https://github.com/sutras/sard-uniapp/issues/19) ([52160b3](https://github.com/sutras/sard-uniapp/commit/52160b32c38c2c02e66e2a2db0b28585a6d5a73f))
+* 修复input组件字数统计问题 close [#19](https://github.com/sutras/sard-uniapp/issues/19) ([4a63701](https://github.com/sutras/sard-uniapp/commit/4a63701223abe8aee49efbbf9212ec8ce8358dae))
 
 
 
@@ -394,7 +403,7 @@
 
 ### Features
 
-* 新增load-more组件, stepper组件新增size属性 ([f1e1c79](https://github.com/sutras/sard-uniapp/commit/f1e1c793939f51e94724d009ea07384630b6420b))
+* 新增load-more组件, stepper组件新增size属性 ([d8184c7](https://github.com/sutras/sard-uniapp/commit/d8184c7cc3ad7eb98b86511d3b1ec5b1cd1f3453))
 
 
 
@@ -403,7 +412,7 @@
 
 ### Features
 
-* 新增pull-down-refresh组件, slider组件新增时间, 重构loading组件, 其他优化 ([802816a](https://github.com/sutras/sard-uniapp/commit/802816aa4baa87279bf98bc3effe7139bcdfe7ed))
+* 新增pull-down-refresh组件, slider组件新增时间, 重构loading组件, 其他优化 ([c6dc6e4](https://github.com/sutras/sard-uniapp/commit/c6dc6e41c49a84e85310d64efd1889cd9a18aa0a))
 
 
 
@@ -412,7 +421,7 @@
 
 ### Bug Fixes
 
-* 修复打包组件缺少文件的问题 ([21c032f](https://github.com/sutras/sard-uniapp/commit/21c032f90c869f920beba95d668bbd22f19cf6b5))
+* 修复打包组件缺少文件的问题 ([915a6af](https://github.com/sutras/sard-uniapp/commit/915a6af9619a0c5fdafb8477bc96fd71ceabd512))
 
 
 
@@ -421,7 +430,7 @@
 
 ### Bug Fixes
 
-* **sard-uniapp:** 修复打包缺少tag组件的bug ([c78f26c](https://github.com/sutras/sard-uniapp/commit/c78f26c149b988e05d34254cbf0a884b8a05fc76))
+* **sard-uniapp:** 修复打包缺少tag组件的bug ([663ffde](https://github.com/sutras/sard-uniapp/commit/663ffdeb7b5cbdc527ee89e503cf1787a7ff2097))
 
 
 
