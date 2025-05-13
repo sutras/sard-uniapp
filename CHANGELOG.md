@@ -1,3 +1,12 @@
+## [1.14.1](https://github.com/sutras/sard-uniapp/compare/v1.14.0...v1.14.1) (2025-05-13)
+
+
+### Bug Fixes
+
+* 修复 popup 组件 transform+fixed 渲染问题 ([5d0bf10](https://github.com/sutras/sard-uniapp/commit/5d0bf106df39e9c48c84bd7f76c71bb9306070c9))
+
+
+
 # [1.14.0](https://github.com/sutras/sard-uniapp/compare/v1.13.3...v1.14.0) (2025-05-12)
 
 
