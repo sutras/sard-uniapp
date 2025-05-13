@@ -22,6 +22,10 @@
       <DemoContent />
     </doc-demo>
 
+    <doc-demo title="内容中包含弹出框">
+      <DemoPopupContent />
+    </doc-demo>
+
     <doc-demo title="自定义按钮属性">
       <DemoButtonProps />
     </doc-demo>
@@ -35,6 +39,7 @@ import DemoRound from './demo/Round.vue'
 import DemoHeaded from './demo/Headed.vue'
 import DemoContent from './demo/Content.vue'
 import DemoButtonProps from './demo/ButtonProps.vue'
+import DemoPopupContent from './demo/PopupContent.vue'
 </script>
 
 <style lang="scss" scoped>

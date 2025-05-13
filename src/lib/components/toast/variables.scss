@@ -1,7 +1,8 @@
 @use '../style/base' as *;
 
 // #variables
-page {
+page,
+.sar-portal {
   --sar-toast-top: 10%;
   --sar-toast-bottom: 10%;
 

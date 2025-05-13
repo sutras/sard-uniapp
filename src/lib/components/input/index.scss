@@ -69,6 +69,7 @@
 
   @include e(placeholder) {
     color: var(--sar-input-placeholder-color);
+    font-size: var(--sar-input-control-font-size);
     line-height: var(--sar-input-control-line-height);
 
     @include m(textarea) {

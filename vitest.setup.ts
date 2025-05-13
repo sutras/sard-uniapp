@@ -5,6 +5,8 @@ config.global.stubs = {
   ScrollView: h('div'),
   PickerView: h('div'),
   PickerViewColumn: h('div'),
+  RootPortal: h('div'),
+  teleport: true,
 }
 
 const systemInfo = {

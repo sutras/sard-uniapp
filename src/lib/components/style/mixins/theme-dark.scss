@@ -1,12 +1,14 @@
 @mixin theme-dark {
   @media (prefers-color-scheme: dark) {
-    page {
+    page,
+    .sar-portal {
       @content;
     }
   }
 
   /* #ifdef WEB */
-  :root[data-sard-theme='dark'] page {
+  :root[data-sard-theme='dark'] page,
+  :root[data-sard-theme='dark'] .sar-portal {
     @content;
   }
   /* #endif */

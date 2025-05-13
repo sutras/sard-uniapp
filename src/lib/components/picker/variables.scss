@@ -1,7 +1,8 @@
 @use '../style/base' as *;
 
 // #variables
-page {
+page,
+.sar-portal {
   --sar-picker-height: 480rpx;
 
   --sar-picker-item-height: 96rpx;

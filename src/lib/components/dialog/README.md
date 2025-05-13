@@ -55,6 +55,12 @@ import { dialog } from 'sard-uniapp'
 
 @code('${DEMO_PATH}/dialog/demo/Content.vue')
 
+### 内容中包含弹出框
+
+`v1.4.1` 起，对话框底层的 `Popup` 组件包裹在了 `root-portal` (小程序)和 `teleport` (H5)中，因此基于 `Popup` 的可弹出组件都可以相互嵌套使用，也可以放置在 `scroll-view` 里面。
+
+@code('${DEMO_PATH}/dialog/demo/PopupContent.vue')
+
 ### 自定义按钮属性
 
 使用 `cancelProps` 和 `confirmProps` 属性可以自定义取消和确定按钮组件的属性。
@@ -67,6 +73,10 @@ import { dialog } from 'sard-uniapp'
 
 | 属性                           | 描述                  | 类型              | 默认值  |
 | ------------------------------ | --------------------- | ----------------- | ------- |
+| root-class                     | 对话框根元素类名      | string            | -       |
+| root-style                     | 对话框根元素样式      | StyleValue        | -       |
+| popup-class <sup>1.14.1+</sup> | 弹窗框根元素类名      | string            | -       |
+| popup-style <sup>1.14.1+</sup> | 弹窗框根元素样式      | StyleValue        | -       |
 | visible (v-model)              | 是否可见              | boolean           | false   |
 | title                          | 标题                  | string            | -       |
 | message                        | 文本内容              | string            | -       |

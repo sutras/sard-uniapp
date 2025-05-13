@@ -1,5 +1,6 @@
 // #variables
-page {
+page,
+.sar-portal {
   --sar-popover-duration: var(--sar-duration-fast);
   --sar-popover-bg: var(--sar-emphasis-bg);
   --sar-popover-box-shadow: var(--sar-shadow-xl);

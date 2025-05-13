@@ -3,7 +3,8 @@
     effect="zoom"
     :visible="visible"
     :duration="duration"
-    :root-style="{ maxWidth: 'var(--sar-dialog-max-width)' }"
+    :root-class="popupClass"
+    :root-style="mergedPopupStyle"
     @overlay-click="onOverlayClick"
     @visible-hook="onVisibleHook"
   >
@@ -221,6 +222,13 @@ const dialogClass = computed(() => {
 
 const dialogStyle = computed(() => {
   return stringifyStyle(props.rootStyle)
+})
+
+const mergedPopupStyle = computed(() => {
+  return stringifyStyle(
+    { maxWidth: 'var(--sar-dialog-max-width)' },
+    props.popupStyle,
+  )
 })
 </script>
 

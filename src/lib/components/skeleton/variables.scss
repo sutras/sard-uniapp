@@ -1,5 +1,6 @@
 // #variables
-page {
+page,
+.sar-portal {
   --sar-skeleton-bg: var(--sar-secondary-bg);
   --sar-skeleton-border-radius: var(--sar-rounded-sm);
   --sar-skeleton-highlight-color: rgba(0, 0, 0, 0.08);

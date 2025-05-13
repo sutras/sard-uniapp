@@ -1,22 +1,36 @@
 <template>
-  <sar-overlay
-    v-if="overlay"
-    :visible="visible"
-    :duration="duration"
-    :z-index="zIndex"
-    :background="background"
-    :transparent="transparent"
-    :root-style="overlayStyle"
-    :root-class="overlayClass"
-    @click="onOverlayClick"
-  />
-  <view
-    :class="popupClass"
-    :style="popupStyle"
-    @transitionend="onTransitionEnd"
-  >
-    <slot></slot>
-  </view>
+  <!-- #ifdef WEB -->
+  <teleport to="body">
+    <!-- #endif -->
+    <!-- #ifdef MP -->
+    <root-portal>
+      <!-- #endif -->
+      <view class="sar-portal">
+        <sar-overlay
+          v-if="overlay"
+          :visible="visible"
+          :duration="duration"
+          :z-index="zIndex"
+          :background="background"
+          :transparent="transparent"
+          :root-style="overlayStyle"
+          :root-class="overlayClass"
+          @click="onOverlayClick"
+        />
+        <view
+          :class="popupClass"
+          :style="popupStyle"
+          @transitionend="onTransitionEnd"
+        >
+          <slot></slot>
+        </view>
+      </view>
+      <!-- #ifdef MP -->
+    </root-portal>
+    <!-- #endif -->
+    <!-- #ifdef WEB -->
+  </teleport>
+  <!-- #endif -->
 </template>
 
 <script setup lang="ts">

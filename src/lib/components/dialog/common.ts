@@ -6,6 +6,8 @@ import { type TransitionHookEmits } from '../popup/common'
 export interface DialogProps {
   rootStyle?: StyleValue
   rootClass?: string
+  popupStyle?: StyleValue
+  popupClass?: string
   visible?: boolean
   title?: string
   message?: string

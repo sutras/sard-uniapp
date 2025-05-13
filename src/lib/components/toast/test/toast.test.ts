@@ -40,7 +40,8 @@ describe('Toast', () => {
       position: 'top',
     })
     await Promise.resolve()
-    expect(wrapper.find('view').attributes().style).includes(
+
+    expect(wrapper.find('.sar-popup').attributes().style).includes(
       'top: var(--sar-toast-top)',
     )
     expect(wrapper.find('.sar-toast__title').text()).toBe('顶部位置')
@@ -49,7 +50,7 @@ describe('Toast', () => {
       position: 'bottom',
     })
     await Promise.resolve()
-    expect(wrapper.find('view').attributes().style).includes(
+    expect(wrapper.find('.sar-popup').attributes().style).includes(
       'top: auto; bottom: var(--sar-toast-bottom)',
     )
     expect(wrapper.find('.sar-toast__title').text()).toBe('底部位置')

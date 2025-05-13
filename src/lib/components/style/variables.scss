@@ -3,7 +3,8 @@
 @use './functions' as *;
 
 // #variables
-page {
+page,
+.sar-portal {
   // # 灰度值
   --sar-white: #{$sar-white};
   --sar-gray-100: #{$sar-gray-100};
