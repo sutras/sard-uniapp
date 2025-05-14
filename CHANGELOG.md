@@ -1,3 +1,12 @@
+## [1.14.2](https://github.com/sutras/sard-uniapp/compare/v1.14.1...v1.14.2) (2025-05-14)
+
+
+### Bug Fixes
+
+* 使 *-input 弹出式输入框组件只有一个根节点 ([91fe1c0](https://github.com/sutras/sard-uniapp/commit/91fe1c0af91cf0aef3f3e7429483613a743e0520))
+
+
+
 ## [1.14.1](https://github.com/sutras/sard-uniapp/compare/v1.14.0...v1.14.1) (2025-05-13)
 
 
