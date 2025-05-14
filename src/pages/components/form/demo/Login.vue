@@ -26,36 +26,22 @@
       </sar-form-item>
 
       <sar-form-item>
-        <view
-          style="
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-          "
-        >
+        <sar-space justify="between">
           <sar-form-item name="remember" inlaid>
             <sar-checkbox v-model:checked="formState.remember">
               Remember me
             </sar-checkbox>
           </sar-form-item>
-          <view>
-            <sar-button root-style="height: 60rpx" type="pale-text">
-              Forgot password
-            </sar-button>
-          </view>
-        </view>
+          <sar-button inline type="pale-text">Forgot password</sar-button>
+        </sar-space>
       </sar-form-item>
 
       <sar-form-item>
         <sar-button @click="submitForm" :disabled="disabled">Log in</sar-button>
-        <view style="display: flex; align-items: center">
+        <sar-space align="center" justify="end">
           <text>Or</text>
-          <view>
-            <sar-button root-style="height: 60rpx" type="pale-text">
-              register now!
-            </sar-button>
-          </view>
-        </view>
+          <sar-button inline type="pale-text">register now!</sar-button>
+        </sar-space>
       </sar-form-item>
     </sar-form>
   </doc-page>

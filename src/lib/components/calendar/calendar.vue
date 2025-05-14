@@ -78,24 +78,23 @@
         />
       </scroll-view>
     </view>
+    <sar-popout
+      v-if="!severalMonths"
+      v-model:visible="pickerVisible"
+      type="compact"
+      @confirm="onPickerConfirm"
+    >
+      <template #visible="{ already }">
+        <sar-datetime-picker
+          v-if="already"
+          type="yM"
+          v-model="pickerValue"
+          :min="minDate"
+          :max="maxDate"
+        />
+      </template>
+    </sar-popout>
   </view>
-
-  <sar-popout
-    v-if="!severalMonths"
-    v-model:visible="pickerVisible"
-    type="compact"
-    @confirm="onPickerConfirm"
-  >
-    <template #visible="{ already }">
-      <sar-datetime-picker
-        v-if="already"
-        type="yM"
-        v-model="pickerValue"
-        :min="minDate"
-        :max="maxDate"
-      />
-    </template>
-  </sar-popout>
 </template>
 
 <script setup lang="ts">

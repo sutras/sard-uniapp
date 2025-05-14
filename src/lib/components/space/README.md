@@ -59,14 +59,15 @@ import Space from 'sard-uniapp/components/space/space.vue'
 
 ### SpaceProps
 
-| 属性       | 描述             | 类型                                       | 默认值       |
-| ---------- | ---------------- | ------------------------------------------ | ------------ |
-| root-class | 组件根元素类名   | string                                     | -            |
-| root-style | 组件根元素样式   | StyleValue                                 | -            |
-| direction  | 排列的方向       | 'vertical' \| 'horizontal'                 | 'horizontal' |
-| size       | 间隔大小         | 'small' \| 'middle' \| 'large' \| string   | 'middle'     |
-| align      | 对齐的方式       | 'start' \| 'end' \| 'center' \| 'baseline' | -            |
-| wrap       | 设置是否自动折行 | boolean                                    | false        |
+| 属性                       | 描述             | 类型                                                             | 默认值       |
+| -------------------------- | ---------------- | ---------------------------------------------------------------- | ------------ |
+| root-class                 | 组件根元素类名   | string                                                           | -            |
+| root-style                 | 组件根元素样式   | StyleValue                                                       | -            |
+| direction                  | 排列的方向       | 'vertical' \| 'horizontal'                                       | 'horizontal' |
+| size                       | 间隔大小         | 'small' \| 'middle' \| 'large' \| string                         | 'middle'     |
+| align                      | 垂直排布方式     | 'start' \| 'end' \| 'center' \| 'baseline'                       | -            |
+| justify <sup>1.14.2+</sup> | 水平排布方式     | 'start' \| 'end' \| 'center' \| 'between'\| 'around' \| 'evenly' | -            |
+| wrap                       | 设置是否自动折行 | boolean                                                          | false        |
 
 ### SpaceSlots
 

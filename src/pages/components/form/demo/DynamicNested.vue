@@ -5,14 +5,7 @@
         v-for="(user, index) in dynamicValidateForm.users"
         :key="user.id"
       >
-        <view
-          style="
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            gap: 10rpx;
-          "
-        >
+        <sar-space align="center">
           <sar-form-item
             :name="['users', index, 'first']"
             :rules="{
@@ -34,17 +27,16 @@
             <sar-input inlaid v-model="user.last" placeholder="Last Name" />
           </sar-form-item>
           <sar-button
-            type="mild"
+            type="text"
             icon="trash"
             size="small"
             theme="danger"
             @click="removeUser(user)"
           />
-        </view>
+        </sar-space>
       </sar-form-item>
       <sar-form-item>
-        <sar-button type="outline" @click="addUser()">
-          <sar-icon name="plus" />
+        <sar-button type="outline" icon="plus" @click="addUser()">
           Add user
         </sar-button>
       </sar-form-item>
@@ -54,6 +46,7 @@
     </sar-form>
   </doc-page>
 </template>
+
 <script lang="ts" setup>
 import { toRaw, reactive, ref } from 'vue'
 import { toast, type FormExpose } from 'sard-uniapp'

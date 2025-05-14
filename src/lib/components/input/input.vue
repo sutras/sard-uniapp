@@ -1,5 +1,5 @@
 <template>
-  <view :class="inputClass" :style="inputStyle">
+  <view :class="inputClass" :style="inputStyle" @click="onClick">
     <view :class="bem.e('content')">
       <view v-if="$slots.prepend" :class="bem.e('prepend')">
         <slot name="prepend"></slot>
@@ -261,6 +261,10 @@ const onConfirm = (event: any) => {
 
 const onKeyboardheightchange = (event: any) => {
   emit('keyboardheightchange', event)
+}
+
+const onClick = (event: any) => {
+  emit('click', event)
 }
 
 // others

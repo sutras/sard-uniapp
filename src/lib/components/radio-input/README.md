@@ -31,12 +31,16 @@ import RadioInput from 'sard-uniapp/components/radio-input/radio-input.vue'
 
 继承 [`RadioGroupProps`](./radio#RadioGroupProps) 并有以下额外属性：
 
-| 属性              | 描述                                    | 类型    | 默认值 |
-| ----------------- | --------------------------------------- | ------- | ------ |
-| clearable         | 是否显示清空按钮                        | boolean | false  |
-| placeholder       | 输入框占位符内容                        | string  | -      |
-| visible (v-model) | 是否显示弹出框                          | boolean | -      |
-| title             | 弹出框标题，不设置则取 `placeholder` 值 | string  | -      |
+| 属性                            | 描述                                    | 类型       | 默认值 |
+| ------------------------------- | --------------------------------------- | ---------- | ------ |
+| root-class                      | 弹出式输入框根元素类名                  | string     | -      |
+| root-style                      | 弹出式输入框根元素样式                  | StyleValue | -      |
+| popout-class <sup>1.14.2+</sup> | 弹窗框根元素类名                        | string     | -      |
+| popout-style <sup>1.14.2+</sup> | 弹窗框根元素样式                        | StyleValue | -      |
+| clearable                       | 是否显示清空按钮                        | boolean    | false  |
+| placeholder                     | 输入框占位符内容                        | string     | -      |
+| visible (v-model)               | 是否显示弹出框                          | boolean    | -      |
+| title                           | 弹出框标题，不设置则取 `placeholder` 值 | string     | -      |
 
 ### RadioInputEmits
 

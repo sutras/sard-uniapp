@@ -5,40 +5,42 @@
     :readonly="readonly"
     :disabled="disabled"
     :clearable="clearable"
-    @clear="onClear"
-    @click="onInputClick"
-  />
-
-  <sar-popout
     :root-class="rootClass"
     :root-style="rootStyle"
-    :visible="innerVisible"
-    @update:visible="onVisible"
-    :title="title ?? placeholder"
-    :show-confirm="showConfirm"
-    :confirm-disabled="confirmDisabled"
-    @confirm="onConfirm"
+    @clear="onClear"
+    @click="onInputClick"
   >
-    <template #visible="{ already }">
-      <sar-calendar
-        v-if="already"
-        :model-value="popoutValue"
-        @change="onChange"
-        :type="type"
-        :min="min"
-        :max="max"
-        :current-date="currentDate"
-        :disabled-date="disabledDate"
-        :max-days="maxDays"
-        :over-max-days="overMaxDays"
-        :week-starts-on="weekStartsOn"
-        :formatter="formatter"
-        :allow-same-day="allowSameDay"
-        :several-months="severalMonths"
-        :value-format="valueFormat"
-      />
-    </template>
-  </sar-popout>
+    <sar-popout
+      :visible="innerVisible"
+      :title="title ?? placeholder"
+      :show-confirm="showConfirm"
+      :confirm-disabled="confirmDisabled"
+      :root-class="popoutClass"
+      :root-style="popoutStyle"
+      @update:visible="onVisible"
+      @confirm="onConfirm"
+    >
+      <template #visible="{ already }">
+        <sar-calendar
+          v-if="already"
+          :model-value="popoutValue"
+          @change="onChange"
+          :type="type"
+          :min="min"
+          :max="max"
+          :current-date="currentDate"
+          :disabled-date="disabledDate"
+          :max-days="maxDays"
+          :over-max-days="overMaxDays"
+          :week-starts-on="weekStartsOn"
+          :formatter="formatter"
+          :allow-same-day="allowSameDay"
+          :several-months="severalMonths"
+          :value-format="valueFormat"
+        />
+      </template>
+    </sar-popout>
+  </sar-popout-input>
 </template>
 
 <script setup lang="ts">

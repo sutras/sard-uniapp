@@ -1,6 +1,7 @@
 import { defaultConfig } from '../config'
 import { type DatetimeRangePickerProps } from '../datetime-range-picker/common'
 import { type PopoutInputProps } from '../popout-input/common'
+import { type StyleValue } from 'vue'
 
 export interface DatetimeRangePickerInputProps
   extends DatetimeRangePickerProps,
@@ -10,6 +11,8 @@ export interface DatetimeRangePickerInputProps
   outletFormat?: string
   valueFormat?: string
   validateEvent?: boolean
+  popoutClass?: string
+  popoutStyle?: StyleValue
 }
 
 export const defaultDatetimeRangePickerInputProps = () => ({

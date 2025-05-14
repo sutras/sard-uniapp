@@ -5,38 +5,40 @@
     :readonly="readonly"
     :disabled="disabled"
     :clearable="clearable"
-    @clear="onClear"
-    @click="onInputClick"
     :loading="loading"
-  />
-
-  <sar-popout
     :root-class="rootClass"
     :root-style="rootStyle"
-    :visible="innerVisible"
-    @update:visible="onVisible"
-    :title="title ?? placeholder"
-    :show-confirm="showConfirm"
-    @confirm="onConfirm"
+    @clear="onClear"
+    @click="onInputClick"
   >
-    <template #visible="{ already }">
-      <sar-cascader
-        v-if="already"
-        :model-value="popoutValue"
-        :options="options"
-        :field-keys="fieldKeys"
-        :hint-text="hintText"
-        :change-on-select="changeOnSelect"
-        :label-render="labelRender"
-        @select="(option, tabIndex) => $emit('select', option, tabIndex)"
-        @change="onChange"
-      >
-        <template #top="{ tabIndex }">
-          <slot name="top" :tab-index="tabIndex"></slot>
-        </template>
-      </sar-cascader>
-    </template>
-  </sar-popout>
+    <sar-popout
+      :visible="innerVisible"
+      :title="title ?? placeholder"
+      :show-confirm="showConfirm"
+      :root-class="popoutClass"
+      :root-style="popoutStyle"
+      @confirm="onConfirm"
+      @update:visible="onVisible"
+    >
+      <template #visible="{ already }">
+        <sar-cascader
+          v-if="already"
+          :model-value="popoutValue"
+          :options="options"
+          :field-keys="fieldKeys"
+          :hint-text="hintText"
+          :change-on-select="changeOnSelect"
+          :label-render="labelRender"
+          @select="(option, tabIndex) => $emit('select', option, tabIndex)"
+          @change="onChange"
+        >
+          <template #top="{ tabIndex }">
+            <slot name="top" :tab-index="tabIndex"></slot>
+          </template>
+        </sar-cascader>
+      </template>
+    </sar-popout>
+  </sar-popout-input>
 </template>
 
 <script setup lang="ts">

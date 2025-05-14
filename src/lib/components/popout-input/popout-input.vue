@@ -31,10 +31,12 @@
           @touchstart="onSealTouchStart"
           @touchend="onSealTouchEnd"
           @touchcancel="onSealTouchEnd"
-          @click="onClick"
+          @click="onSealClick"
         />
       </template>
     </sar-input>
+
+    <slot></slot>
   </view>
 </template>
 
@@ -126,11 +128,15 @@ const onSealMouseDown = () => {
   // #endif
 }
 
-const onClick = (event: any) => {
+const onSealClick = (event: any) => {
   if (interoperable.value) {
     emit('click', event)
   }
 }
+
+// const onClick = () => {
+//   void 0
+// }
 
 // others
 const popoutInputClass = computed(() => {

@@ -1,6 +1,7 @@
 import { type RadioGroupOption, type RadioGroupProps } from '../radio/common'
 import { type PopoutInputProps } from '../popout-input/common'
 import { defaultConfig } from '../config'
+import { type StyleValue } from 'vue'
 
 export type RadioInputOption = RadioGroupOption
 
@@ -9,6 +10,8 @@ export interface RadioInputProps
     Omit<PopoutInputProps, 'modelValue'> {
   visible?: boolean
   title?: string
+  popoutClass?: string
+  popoutStyle?: StyleValue
 }
 
 export const defaultRadioInputProps = () => ({

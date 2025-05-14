@@ -1,6 +1,7 @@
 import { type CalendarProps } from '../calendar/common'
 import { type PopoutInputProps } from '../popout-input/common'
 import { defaultConfig } from '../config'
+import { type StyleValue } from 'vue'
 
 export interface CalendarInputProps
   extends CalendarProps,
@@ -10,6 +11,8 @@ export interface CalendarInputProps
   showConfirm?: boolean
   outletFormat?: string
   validateEvent?: boolean
+  popoutClass?: string
+  popoutStyle?: StyleValue
 }
 
 export const defaultCalendarInputProps = () => ({

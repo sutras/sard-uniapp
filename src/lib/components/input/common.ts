@@ -91,4 +91,5 @@ export interface InputEmits {
   (e: 'linechange', event: any): void
   (e: 'confirm', event: any): void
   (e: 'keyboardheightchange', event: any): void
+  (e: 'click', event: any): void
 }

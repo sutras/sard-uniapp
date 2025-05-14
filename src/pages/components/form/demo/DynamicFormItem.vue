@@ -32,7 +32,7 @@
         <view style="display: flex; flex-direction: row; gap: 10rpx">
           <sar-input v-model="domain.value" />
           <sar-button
-            type="mild"
+            type="text"
             theme="danger"
             icon="trash"
             @click.prevent="removeDomain(domain)"

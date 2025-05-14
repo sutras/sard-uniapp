@@ -1,7 +1,5 @@
 <template>
-  <view
-    style="display: flex; flex-direction: row; align-items: center; gap: 20rpx"
-  >
+  <sar-space align="center">
     <sar-input
       type="text"
       :model-value="modelValue.number"
@@ -18,7 +16,7 @@
       @update:model-value="onCurrencyChange"
       :validate-event="false"
     />
-  </view>
+  </sar-space>
 </template>
 
 <script setup lang="ts">

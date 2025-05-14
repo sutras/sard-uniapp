@@ -10,6 +10,7 @@ import { classNames, stringifyStyle, createBem } from '../../utils'
 import {
   defaultSpaceProps,
   spaceMapAlign,
+  spaceMapJustify,
   spaceSizes,
   type SpaceProps,
   type SpaceSlots,
@@ -50,6 +51,8 @@ const spaceStyle = computed(() => {
     {
       gap: presetSize.value ? null : props.size,
       alignItems: (props.align && spaceMapAlign[props.align]) ?? props.align,
+      justifyContent:
+        (props.justify && spaceMapJustify[props.justify]) ?? props.justify,
     },
     props.rootStyle,
   )

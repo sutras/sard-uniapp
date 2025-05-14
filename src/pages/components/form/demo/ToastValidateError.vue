@@ -18,7 +18,7 @@
         class="form-item"
         :rules="[{ required: true, message: '请输入短信验证码!' }]"
       >
-        <view style="display: flex">
+        <sar-space>
           <sar-input
             v-model="formState.password"
             type="password"
@@ -28,7 +28,7 @@
           <sar-button type="pale-text" root-style="height: 100%">
             发送验证码
           </sar-button>
-        </view>
+        </sar-space>
       </sar-form-item>
 
       <sar-form-item class="form-item">

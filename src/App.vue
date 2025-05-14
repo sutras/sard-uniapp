@@ -23,12 +23,16 @@ onHide(() => {
 
 page {
   min-height: calc(100vh - var(--window-top) - var(--window-bottom));
-  color: var(--sar-body-color);
   background-color: var(--sar-body-bg);
+}
+
+page,
+.sar-portal {
   font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
     'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji',
     'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', monospace;
   font-size: var(--sar-text-base);
+  color: var(--sar-body-color);
   -webkit-tap-highlight-color: transparent;
 }
 </style>

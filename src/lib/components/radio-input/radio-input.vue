@@ -5,66 +5,67 @@
     :readonly="readonly"
     :disabled="disabled"
     :clearable="clearable"
-    @clear="onClear"
-    @click="onInputClick"
-  />
-
-  <sar-popout
     :root-class="rootClass"
     :root-style="rootStyle"
-    :visible="innerVisible"
-    @update:visible="onVisible"
-    :title="title ?? placeholder"
-    :show-footer="false"
-    @confirm="onConfirm"
+    @clear="onClear"
+    @click="onInputClick"
   >
-    <template #visible="{ already }">
-      <view v-if="already" :class="containerClass">
-        <scroll-view
-          :class="bem.e('scroll')"
-          scroll-y
-          trap-scroll
-          :upper-threshold="0"
-          :lower-threshold="0"
-          :throttle="false"
-          @scroll="onScroll"
-          @scrolltoupper="onScrolltoupper"
-          @scrolltolower="onScrolltolower"
-        >
-          <sar-radio-group
-            :size="size"
-            :type="type"
-            :checkedColor="checkedColor"
-            :direction="direction"
-            :validate-event="false"
-            :model-value="popoutValue"
-            @change="onChange"
+    <sar-popout
+      :visible="innerVisible"
+      :title="title ?? placeholder"
+      :root-class="popoutClass"
+      :root-style="popoutStyle"
+      @update:visible="onVisible"
+      @confirm="onConfirm"
+    >
+      <template #visible="{ already }">
+        <view v-if="already" :class="containerClass">
+          <scroll-view
+            :class="bem.e('scroll')"
+            scroll-y
+            trap-scroll
+            :upper-threshold="0"
+            :lower-threshold="0"
+            :throttle="false"
+            @scroll="onScroll"
+            @scrolltoupper="onScrolltoupper"
+            @scrolltolower="onScrolltolower"
           >
-            <template #custom="{ toggle }">
-              <sar-list inlaid>
-                <sar-list-item
-                  v-for="option in options"
-                  :key="getMayPrimitiveOption(option, fieldKeys.value)"
-                  :title="getMayPrimitiveOption(option, fieldKeys.label)"
-                  hover
-                  @click="
-                    toggle(getMayPrimitiveOption(option, fieldKeys.value))
-                  "
-                >
-                  <template #value>
-                    <sar-radio
-                      readonly
-                      :value="getMayPrimitiveOption(option, fieldKeys.value)"
-                    />
-                  </template>
-                </sar-list-item>
-              </sar-list>
-            </template>
-          </sar-radio-group>
-        </scroll-view>
-      </view>
-    </template>
-  </sar-popout>
+            <sar-radio-group
+              :size="size"
+              :type="type"
+              :checkedColor="checkedColor"
+              :direction="direction"
+              :validate-event="false"
+              :model-value="popoutValue"
+              @change="onChange"
+            >
+              <template #custom="{ toggle }">
+                <sar-list inlaid>
+                  <sar-list-item
+                    v-for="option in options"
+                    :key="getMayPrimitiveOption(option, fieldKeys.value)"
+                    :title="getMayPrimitiveOption(option, fieldKeys.label)"
+                    hover
+                    @click="
+                      toggle(getMayPrimitiveOption(option, fieldKeys.value))
+                    "
+                  >
+                    <template #value>
+                      <sar-radio
+                        readonly
+                        :value="getMayPrimitiveOption(option, fieldKeys.value)"
+                      />
+                    </template>
+                  </sar-list-item>
+                </sar-list>
+              </template>
+            </sar-radio-group>
+          </scroll-view>
+        </view>
+      </template>
+    </sar-popout>
+  </sar-popout-input>
 </template>
 
 <script setup lang="ts">
@@ -135,9 +136,6 @@ watch(innerValue, () => {
 
 const onChange = (value: any) => {
   popoutValue.value = value
-
-  onConfirm()
-  innerVisible.value = false
 }
 
 const onConfirm = () => {

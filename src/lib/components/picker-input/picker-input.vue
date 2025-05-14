@@ -5,31 +5,33 @@
     :readonly="readonly"
     :disabled="disabled"
     :clearable="clearable"
-    @clear="onClear"
-    @click="onInputClick"
-  />
-
-  <sar-popout
     :root-class="rootClass"
     :root-style="rootStyle"
-    keep-render
-    :visible="innerVisible"
-    @update:visible="onVisible"
-    :title="title ?? placeholder"
-    @confirm="onConfirm"
-    @enter="onEnter"
+    @clear="onClear"
+    @click="onInputClick"
   >
-    <template #visible="{ already }">
-      <sar-picker
-        v-if="already"
-        :model-value="popoutValue"
-        @change="onChange"
-        :columns="columns"
-        :option-keys="optionKeys"
-        :immediate-change="immediateChange"
-      />
-    </template>
-  </sar-popout>
+    <sar-popout
+      keep-render
+      :visible="innerVisible"
+      :title="title ?? placeholder"
+      :root-class="popoutClass"
+      :root-style="popoutStyle"
+      @update:visible="onVisible"
+      @confirm="onConfirm"
+      @enter="onEnter"
+    >
+      <template #visible="{ already }">
+        <sar-picker
+          v-if="already"
+          :model-value="popoutValue"
+          @change="onChange"
+          :columns="columns"
+          :option-keys="optionKeys"
+          :immediate-change="immediateChange"
+        />
+      </template>
+    </sar-popout>
+  </sar-popout-input>
 </template>
 
 <script setup lang="ts">

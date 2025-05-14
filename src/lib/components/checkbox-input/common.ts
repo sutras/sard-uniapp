@@ -4,6 +4,7 @@ import {
 } from '../checkbox/common'
 import { type PopoutInputProps } from '../popout-input/common'
 import { defaultConfig } from '../config'
+import { type StyleValue } from 'vue'
 
 export type CheckboxInputOption = CheckboxGroupOption
 
@@ -12,6 +13,8 @@ export interface CheckboxInputProps
     Omit<PopoutInputProps, 'modelValue'> {
   visible?: boolean
   title?: string
+  popoutClass?: string
+  popoutStyle?: StyleValue
 }
 
 export const defaultCheckboxInputProps = () => ({

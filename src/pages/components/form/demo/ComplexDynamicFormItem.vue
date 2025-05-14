@@ -16,7 +16,7 @@
         v-for="(sight, index) in dynamicValidateForm.sights"
         :key="sight.id"
       >
-        <view style="display: flex; align-items: center; gap: 20rpx">
+        <sar-space align="center">
           <sar-form-item
             :name="['sights', index, 'value']"
             label="Sight"
@@ -52,17 +52,16 @@
             <sar-input inlaid placeholder="Price" v-model="sight.price" />
           </sar-form-item>
           <sar-button
-            type="mild"
+            type="text"
             icon="trash"
             size="small"
             theme="danger"
             @click="removeSight(sight)"
           />
-        </view>
+        </sar-space>
       </sar-form-item>
       <sar-form-item>
-        <sar-button type="outline" @click="addSight()">
-          <sar-icon name="plus" />
+        <sar-button type="outline" icon="plus" @click="addSight()">
           Add sights
         </sar-button>
       </sar-form-item>
