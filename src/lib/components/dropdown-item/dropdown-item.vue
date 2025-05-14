@@ -32,20 +32,17 @@
     @touchmove.stop.prevent
   />
   <view v-if="wholeVisible" :class="bem.e('popover')" :style="popupInset">
-    <sar-popup
-      :root-class="bem.e('popup')"
-      :root-style="
-        stringifyStyle({
-          position: 'absolute',
-        })
-      "
-      :overlay-style="stringifyStyle({ position: 'absolute' })"
-      :overlay-class="bem.e('overlay')"
-      :effect="popupEffect"
+    <sar-overlay
+      root-style="position: absolute"
       :visible="popupVisible"
       :duration="context.duration"
-      @after-leave="onAfterLeave"
-      @overlay-click="onOverlayClick"
+      :z-index="zIndex"
+      @click="onOverlayClick"
+    />
+    <view
+      :class="popupClass"
+      :style="popupStyle"
+      @transitionend="onTransitionEnd"
     >
       <slot>
         <sar-list inlaid>
@@ -70,7 +67,7 @@
           </sar-list-item>
         </sar-list>
       </slot>
-    </sar-popup>
+    </view>
   </view>
 </template>
 
@@ -83,6 +80,8 @@ import {
   inject,
   onMounted,
   onUnmounted,
+  reactive,
+  toRef,
 } from 'vue'
 import {
   classNames,
@@ -93,10 +92,10 @@ import {
   getWindowInfo,
   isNullish,
 } from '../../utils'
-import SarPopup from '../popup/popup.vue'
 import SarList from '../list/list.vue'
 import SarListItem from '../list-item/list-item.vue'
 import SarIcon from '../icon/icon.vue'
+import SarOverlay from '../overlay/overlay.vue'
 import {
   type DropdownItemProps,
   type DropdownItemSlots,
@@ -106,6 +105,7 @@ import {
   dropdownContextSymbol,
   defaultDropdownItemProps,
 } from '../dropdown/common'
+import { type TransitionHookName, useTransition, useZIndex } from '../../use'
 
 defineOptions({
   options: {
@@ -126,6 +126,7 @@ const emit = defineEmits<DropdownItemEmits>()
 const bem = createBem('dropdown-item')
 
 // main
+
 const context = inject<DropdownContext>(
   dropdownContextSymbol,
 ) as DropdownContext
@@ -146,6 +147,7 @@ watch(
   },
 )
 
+// visible
 const innerVisible = ref(props.visible)
 const wholeVisible = ref(props.visible)
 const popupVisible = ref(props.visible)
@@ -257,6 +259,40 @@ onMounted(() => {
   context.register(instance, {
     hide,
     visible: wholeVisible,
+  })
+})
+
+const [zIndex, increaseZIndex] = useZIndex()
+
+const { realVisible, transitionClass, onTransitionEnd } = useTransition(
+  reactive({
+    visible: toRef(() => popupVisible.value),
+    duration: toRef(() => context.duration),
+    prefix: computed(() => bem.em('popup', popupEffect.value) + '-'),
+    onVisibleHook: (name: TransitionHookName) => {
+      if (name === 'before-enter') {
+        increaseZIndex()
+      }
+      if (name === 'after-leave') {
+        onAfterLeave()
+      }
+    },
+  }),
+)
+
+const popupClass = computed(() => {
+  return classNames(
+    bem.e('popup'),
+    bem.em('popup', popupEffect.value),
+    transitionClass.value,
+  )
+})
+
+const popupStyle = computed(() => {
+  return stringifyStyle(props.rootStyle, {
+    zIndex: zIndex.value,
+    display: realVisible.value ? 'flex' : 'none',
+    transitionDuration: context.duration + 'ms',
   })
 })
 

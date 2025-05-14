@@ -45,6 +45,49 @@
     touch-action: none;
   }
 
+  @include e(popup) {
+    @include universal;
+    position: absolute;
+    width: 100%;
+
+    @include m(slide-top) {
+      top: 0;
+      left: 0;
+      width: 100%;
+    }
+
+    @include m(slide-bottom) {
+      left: 0;
+      bottom: 0;
+      width: 100%;
+    }
+
+    @include m(slide-top-enter-from, slide-top-leave-to) {
+      transform: translate3d(0, -100%, 0);
+    }
+
+    @include m(slide-bottom-enter-from, slide-bottom-leave-to) {
+      transform: translate3d(0, 100%, 0);
+    }
+
+    @include m(
+      slide-top-enter-to,
+      slide-bottom-enter-to,
+      slide-top-leave-from,
+      slide-bottom-leave-from
+    ) {
+      transform: translate3d(0, 0, 0);
+    }
+
+    @include m(slide-top-enter-active, slide-bottom-enter-active) {
+      transition: transform var(--sar-popup-duration) ease-out;
+    }
+
+    @include m(slide-top-leave-active, slide-bottom-leave-active) {
+      transition: transform var(--sar-popup-duration) ease-in;
+    }
+  }
+
   @include e(option) {
     @include m(active) {
       color: var(--sar-dropdown-option-active-color);
