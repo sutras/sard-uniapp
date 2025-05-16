@@ -1,3 +1,12 @@
+## [1.14.4](https://github.com/sutras/sard-uniapp/compare/v1.14.3...v1.14.4) (2025-05-16)
+
+
+### Bug Fixes
+
+* 修复 crop-image 弹出问题 ([d7bec84](https://github.com/sutras/sard-uniapp/commit/d7bec84ab9746d3f535b1e85187108aeb3872079))
+
+
+
 ## [1.14.3](https://github.com/sutras/sard-uniapp/compare/v1.14.2...v1.14.3) (2025-05-14)
 
 
