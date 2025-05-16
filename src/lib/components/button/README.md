@@ -102,7 +102,7 @@ import Button from 'sard-uniapp/components/button/button.vue'
 
 | 属性                   | 描述                                                                                                                                                           | 类型    | 默认值       |
 | ---------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------- | ------------ |
-| form-type              | 用于 <form> 组件，点击分别会触发 <form> 组件的 submit/reset 事件                                                                                               | string  | -            |
+| form-type              | 用于 \<form> 组件，点击分别会触发 \<form> 组件的 submit/reset 事件                                                                                             | string  | -            |
 | open-type              | 开放能力                                                                                                                                                       | string  | -            |
 | app-parameter          | 打开 APP 时，向 APP 传递的参数，open-type=launchApp 时有效                                                                                                     | string  | -            |
 | hover-stop-propagation | 指定是否阻止本节点的祖先节点出现点击态                                                                                                                         | boolean | false        |

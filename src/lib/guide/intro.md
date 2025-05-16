@@ -7,8 +7,6 @@ group:
   order: 0
 ---
 
-## 简介
-
 `sard-uniapp` 是一套基于 `Uniapp` + `Vue3`框架开发的兼容多端的 `UI` 组件库。
 
 `sard-uniapp` 兼容 H5 / 小程序 / `APP`（不支持 `nvue` 或 `uvue`）。
@@ -29,39 +27,43 @@ group:
 ## 扫码体验
 
 <table align="center" width="100%">
-  <th>
-    <div align="center">
-      <img
-        src="https://fastly.jsdelivr.net/npm/@sard/assets@latest/h5.png"
-        alt="H5"
-        width="144"
-        height="144"
-      />
-    </div>
-    <p align="center">H5</p>
-  </th>
-  <th>
-    <div align="center">
-      <img
-        src="https://fastly.jsdelivr.net/npm/@sard/assets@latest/mp-weixin.jpg"
-        alt="微信小程序"
-        width="144"
-        height="144"
-      />
-    </div>
-    <p align="center">微信小程序</p>
-  </th>
-  <th>
-    <div align="center">
-      <img
-        src="https://fastly.jsdelivr.net/npm/@sard/assets@latest/android.png"
-        alt="android"
-        width="144"
-        height="144"
-      />
-    </div>
-    <p align="center">android</p>
-  </th>
+  <tbody>
+    <tr>
+      <th>
+        <div align="center">
+          <img
+            src="https://fastly.jsdelivr.net/npm/@sard/assets@latest/h5.png"
+            alt="H5"
+            width="144"
+            height="144"
+          />
+        </div>
+        <p align="center">H5</p>
+      </th>
+      <th>
+        <div align="center">
+          <img
+            src="https://fastly.jsdelivr.net/npm/@sard/assets@latest/mp-weixin.jpg"
+            alt="微信小程序"
+            width="144"
+            height="144"
+          />
+        </div>
+        <p align="center">微信小程序</p>
+      </th>
+      <th>
+        <div align="center">
+          <img
+            src="https://fastly.jsdelivr.net/npm/@sard/assets@latest/android.png"
+            alt="android"
+            width="144"
+            height="144"
+          />
+        </div>
+        <p align="center">android</p>
+      </th>
+    </tr> 
+  </tbody>
 </table>
 
 ## 开源协议

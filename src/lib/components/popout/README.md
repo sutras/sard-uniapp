@@ -39,22 +39,22 @@ import Popout from 'sard-uniapp/components/popout/popout.vue'
 
 ### PopoutProps
 
-| 属性              | 描述                                                      | 类型                                                                             | 默认值  |
-| ----------------- | --------------------------------------------------------- | -------------------------------------------------------------------------------- | ------- |
-| root-class        | 组件根元素类名                                            | string                                                                           | -       |
-| root-style        | 组件根元素样式                                            | StyleValue                                                                       | -       |
-| title             | 弹出框标题                                                | string                                                                           | -       |
-| show-cancel       | 是否显示取消按钮，适用 `loose` 类型                       | boolean                                                                          | false   |
-| cancel-text       | 取消按钮文案                                              | string                                                                           | '取消'  |
-| show-confirm      | 是否显示确定按钮，适用 `loose` 类型                       | boolean                                                                          | true    |
-| confirm-text      | 确定按钮文案                                              | string                                                                           | '确定'  |
-| show-close        | 是否显示关闭按钮，适用 `loose` 类型                       | boolean                                                                          | true    |
-| show-footer       | 是否显示底部按钮                                          | boolean                                                                          | true    |
-| type              | 弹出框按钮排版方式                                        | 'compact' \| 'loose'                                                             | 'loose' |
-| visible (v-model) | 是否显示弹出框                                            | boolean                                                                          | -       |
-| duration          | 显隐动画时长，单位 ms                                     | number                                                                           | 300     |
-| overlay-closable  | 点击遮罩是否关闭                                          | boolean                                                                          | true    |
-| before-close      | 关闭前的回调，返回 `false` 可阻止关闭，支持返回 `Promise` | (type: 'close' \| 'cancel' \| 'confirm') => boolean \| undefined \| Promise<any> | -       |
+| 属性              | 描述                                                      | 类型                                                                              | 默认值  |
+| ----------------- | --------------------------------------------------------- | --------------------------------------------------------------------------------- | ------- |
+| root-class        | 组件根元素类名                                            | string                                                                            | -       |
+| root-style        | 组件根元素样式                                            | StyleValue                                                                        | -       |
+| title             | 弹出框标题                                                | string                                                                            | -       |
+| show-cancel       | 是否显示取消按钮，适用 `loose` 类型                       | boolean                                                                           | false   |
+| cancel-text       | 取消按钮文案                                              | string                                                                            | '取消'  |
+| show-confirm      | 是否显示确定按钮，适用 `loose` 类型                       | boolean                                                                           | true    |
+| confirm-text      | 确定按钮文案                                              | string                                                                            | '确定'  |
+| show-close        | 是否显示关闭按钮，适用 `loose` 类型                       | boolean                                                                           | true    |
+| show-footer       | 是否显示底部按钮                                          | boolean                                                                           | true    |
+| type              | 弹出框按钮排版方式                                        | 'compact' \| 'loose'                                                              | 'loose' |
+| visible (v-model) | 是否显示弹出框                                            | boolean                                                                           | -       |
+| duration          | 显隐动画时长，单位 ms                                     | number                                                                            | 300     |
+| overlay-closable  | 点击遮罩是否关闭                                          | boolean                                                                           | true    |
+| before-close      | 关闭前的回调，返回 `false` 可阻止关闭，支持返回 `Promise` | (type: 'close' \| 'cancel' \| 'confirm') => boolean \| undefined \| Promise\<any> | -       |
 
 ### PopoutSlots
 

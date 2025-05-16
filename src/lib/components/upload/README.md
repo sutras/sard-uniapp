@@ -91,10 +91,10 @@ import Upload from 'sard-uniapp/components/upload/upload.vue'
 | over-size             | 文件大小超过限制时触发                                                         | (fileItem: UploadFileItem \| UploadFileItem[]) => void | -                          |
 | disabled              | 是否禁用文件上传                                                               | boolean                                                | false                      |
 | readonly              | 是否将上传区域设置为只读状态                                                   | boolean                                                | false                      |
-| before-read           | 文件读取前的回调，返回 false 可终止文件读取，支持返回 Promise                  | (file: File) => boolean \| Promise<File>               | -                          |
+| before-read           | 文件读取前的回调，返回 false 可终止文件读取，支持返回 Promise                  | (file: File) => boolean \| Promise\<File>              | -                          |
 | after-read            | 文件读取完成后的回调                                                           | (fileItem: UploadFileItem \| UploadFileItem[]) => void | -                          |
 | removable             | 是否可删除                                                                     | boolean                                                | true                       |
-| before-remove         | 文件删除前的回调，返回 false 可终止文件读取，支持返回 Promise                  | (...args: any[]) => boolean \| Promise<void>           | -                          |
+| before-remove         | 文件删除前的回调，返回 false 可终止文件读取，支持返回 Promise                  | (...args: any[]) => boolean \| Promise\<void>          | -                          |
 | validate-event        | 是否触发表单验证                                                               | boolean                                                | true                       |
 
 ### UploadSlots

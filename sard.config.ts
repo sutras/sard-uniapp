@@ -54,7 +54,7 @@ export default defineConfig({
           "var _hmt = _hmt || [];(function () { var hm = document.createElement('script'); hm.src = 'https://hm.baidu.com/hm.js?f83f5174c995e2f5c9520acb67f574b9'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(hm, s); })()",
       },
     ],
-    homePath: '/home',
+    homePath: '/',
     copyright: 'MIT Licensed | Power By wuzhitao',
   },
 })

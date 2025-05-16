@@ -53,18 +53,18 @@ import ShareSheet from 'sard-uniapp/components/share-sheet/share-sheet.vue'
 
 `ShareSheetProps` 继承 `PopupProps` 并拥有以下属性：
 
-| 属性              | 描述                                                      | 类型                                                               | 默认值 |
-| ----------------- | --------------------------------------------------------- | ------------------------------------------------------------------ | ------ |
-| root-class        | 组件根元素类名                                            | string                                                             | -      |
-| root-style        | 组件根元素样式                                            | StyleValue                                                         | -      |
-| item-list         | 面板选项列表                                              | ShareSheetItem[] \| ShareSheetItem[][]                             | []     |
-| title             | 面板标题                                                  | string                                                             | -      |
-| description       | 面板描述                                                  | string                                                             | -      |
-| cancel            | 取消按钮内容                                              | string                                                             | -      |
-| visible (v-model) | 面板是否可见                                              | boolean                                                            | -      |
-| overlay-closable  | 点击遮罩后是否关闭                                        | boolean                                                            | true   |
-| before-close      | 关闭前的回调，返回 `false` 可阻止关闭，支持返回 `Promise` | (type: 'close' \| 'cancel' \| 'select') => boolean \| Promise<any> | -      |
-| duration          | 显隐动画时长，单位 ms                                     | number                                                             | 300    |
+| 属性              | 描述                                                      | 类型                                                                | 默认值 |
+| ----------------- | --------------------------------------------------------- | ------------------------------------------------------------------- | ------ |
+| root-class        | 组件根元素类名                                            | string                                                              | -      |
+| root-style        | 组件根元素样式                                            | StyleValue                                                          | -      |
+| item-list         | 面板选项列表                                              | ShareSheetItem[] \| ShareSheetItem[][]                              | []     |
+| title             | 面板标题                                                  | string                                                              | -      |
+| description       | 面板描述                                                  | string                                                              | -      |
+| cancel            | 取消按钮内容                                              | string                                                              | -      |
+| visible (v-model) | 面板是否可见                                              | boolean                                                             | -      |
+| overlay-closable  | 点击遮罩后是否关闭                                        | boolean                                                             | true   |
+| before-close      | 关闭前的回调，返回 `false` 可阻止关闭，支持返回 `Promise` | (type: 'close' \| 'cancel' \| 'select') => boolean \| Promise\<any> | -      |
+| duration          | 显隐动画时长，单位 ms                                     | number                                                              | 300    |
 
 ### ShareSheetEmits
 

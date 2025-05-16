@@ -188,12 +188,12 @@ import FormItem from 'sard-uniapp/components/form-item/form-item.vue'
 
 ### FormExpose
 
-| 属性          | 描述                                             | 类型                                      |
-| ------------- | ------------------------------------------------ | ----------------------------------------- |
-| validate      | 对整个表单的内容进行验证。                       | (nameList?: FieldName[]) => Promise<void> |
-| reset         | 重置表单项，将其值重置为初始值，并移除校验结果。 | (nameList?: FieldName[]) => Promise<void> |
-| clearValidate | 清理指定字段的表单验证信息。                     | (nameList?: FieldName[]) => Promise<void> |
-| scrollToField | 滚动到指定的字段                                 | (name: FieldName) => void                 |
+| 属性          | 描述                                             | 类型                                       |
+| ------------- | ------------------------------------------------ | ------------------------------------------ |
+| validate      | 对整个表单的内容进行验证。                       | (nameList?: FieldName[]) => Promise\<void> |
+| reset         | 重置表单项，将其值重置为初始值，并移除校验结果。 | (nameList?: FieldName[]) => Promise\<void> |
+| clearValidate | 清理指定字段的表单验证信息。                     | (nameList?: FieldName[]) => Promise\<void> |
+| scrollToField | 滚动到指定的字段                                 | (name: FieldName) => void                  |
 
 ### FormItemProps
 
@@ -225,14 +225,14 @@ import FormItem from 'sard-uniapp/components/form-item/form-item.vue'
 
 ### FormItemExpose
 
-| 属性            | 描述                                               | 类型                                            |
-| --------------- | -------------------------------------------------- | ----------------------------------------------- |
-| validate        | 对整个表单的内容进行验证。                         | (trigger?: string \| string[]) => Promise<void> |
-| reset           | 重置该表单项，将其值重置为初始值，并移除校验结果。 | () => Promise<void>                             |
-| clearValidate   | 清理指定字段的表单验证信息。                       | () => void                                      |
-| scrollToField   | 滚动到当前字段                                     | () => void                                      |
-| validateMessage | 当前验证信息                                       | Ref<string>                                     |
-| validateState   | 当前验证状态                                       | Ref<ValidateState>                              |
+| 属性            | 描述                                               | 类型                                             |
+| --------------- | -------------------------------------------------- | ------------------------------------------------ |
+| validate        | 对整个表单的内容进行验证。                         | (trigger?: string \| string[]) => Promise\<void> |
+| reset           | 重置该表单项，将其值重置为初始值，并移除校验结果。 | () => Promise\<void>                             |
+| clearValidate   | 清理指定字段的表单验证信息。                       | () => void                                       |
+| scrollToField   | 滚动到当前字段                                     | () => void                                       |
+| validateMessage | 当前验证信息                                       | Ref\<string>                                     |
+| validateState   | 当前验证状态                                       | Ref\<ValidateState>                              |
 
 ### FormRules
 

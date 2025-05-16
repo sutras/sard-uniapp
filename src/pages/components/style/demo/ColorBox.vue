@@ -1,6 +1,6 @@
 <template>
   <view class="main-color" :style="`background-color: var(--sar-${color})`">
-    {{ color }}
+    {{ `var(--sar-${color})` }}
   </view>
   <view class="stepped">
     <view
@@ -10,7 +10,9 @@
       :style="`background-color: rgba(var(--sar-${color}-rgb), ${
         0.1 * (11 - i)
       })`"
-    ></view>
+    >
+      {{ `rgba(var(--sar-${color}-rgb), ${(0.1 * (11 - i)).toFixed(1)})` }}
+    </view>
   </view>
 </template>
 
@@ -24,19 +26,18 @@ defineProps<{
 .main-color {
   display: flex;
   align-items: center;
-  height: 80rpx;
   margin-top: 20rpx;
-  padding: 0 32rpx;
-  color: var(--sar-white);
+  margin-bottom: 1px;
+  padding: 16rpx;
 }
 
 .stepped {
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
+  gap: 1px;
 }
 
 .stepped-color {
-  flex: 1;
-  height: 80rpx;
+  padding: 16rpx;
 }
 </style>

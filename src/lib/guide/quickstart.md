@@ -167,3 +167,24 @@ import 'sard-uniapp/global.d.ts
   <sar-button>按钮</sar-button>
 </template>
 ```
+
+## 关于重置样式
+
+重置样式一般写在 `page` 选择器下即可兼容多端，但可弹出式的组件是通过 `root-portal` 或 `teleport` 传送到 `page` 外面的，并通过设置了 `.sar-portal` 类的元素包裹，因此重置样式也要给到 `.sar-portal`。例如：
+
+```html
+<!-- App.vue -->
+<style lang="scss">
+  @import 'sard-uniapp/index.scss';
+
+  page,
+  .sar-portal {
+    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
+      'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
+      'Segoe UI Symbol', 'Noto Color Emoji', monospace;
+    font-size: var(--sar-text-base);
+    color: var(--sar-body-color);
+    -webkit-tap-highlight-color: transparent;
+  }
+</style>
+```

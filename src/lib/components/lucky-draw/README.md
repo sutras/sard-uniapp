@@ -96,16 +96,16 @@ function useLuckyGrid(options?: UseLuckyGridOptions): UseLuckyGridReturn
 
 ### UseLuckyGridReturn
 
-| 属性        | 描述                                           | 类型                                          |
-| ----------- | ---------------------------------------------- | --------------------------------------------- |
-| play        | 调用后开始抽奖                                 | () => void                                    |
-| stop        | 调用后开始减速动画                             | (index?: number) => void                      |
-| pause       | 调用后暂停动画                                 | () => void                                    |
-| reset       | 调用后重置动画                                 | () => void                                    |
-| playing     | 用于判断当前是否正在动画                       | ComputedRef<boolean>                          |
-| activeIndex | 用于判断当前活动的下标                         | ComputedRef<number \| undefined>              |
-| grids       | 用于渲染成宫格，并根据下标判断奖品和非奖品位置 | ComputedRef<number[]>                         |
-| centerSize  | 用于渲染中间非奖品格子的行列数                 | ComputedRef<{ row: number; column: number; }> |
+| 属性        | 描述                                           | 类型                                           |
+| ----------- | ---------------------------------------------- | ---------------------------------------------- |
+| play        | 调用后开始抽奖                                 | () => void                                     |
+| stop        | 调用后开始减速动画                             | (index?: number) => void                       |
+| pause       | 调用后暂停动画                                 | () => void                                     |
+| reset       | 调用后重置动画                                 | () => void                                     |
+| playing     | 用于判断当前是否正在动画                       | ComputedRef\<boolean>                          |
+| activeIndex | 用于判断当前活动的下标                         | ComputedRef\<number \| undefined>              |
+| grids       | 用于渲染成宫格，并根据下标判断奖品和非奖品位置 | ComputedRef\<number[]>                         |
+| centerSize  | 用于渲染中间非奖品格子的行列数                 | ComputedRef\<{ row: number; column: number; }> |
 
 ### useLuckyWheel
 
@@ -136,9 +136,9 @@ function useLuckyWheel(options?: UseLuckyWheelOptions): UseLuckyWheelReturn
 | stop          | 调用后开始减速动画               | (index?: number) => void |
 | pause         | 调用后暂停动画                   | () => void               |
 | reset         | 调用后重置动画                   | () => void               |
-| playing       | 用于判断当前是否正在动画         | ComputedRef<boolean>     |
-| sectorDegrees | 每个扇形奖品所占的角度，单位 deg | ComputedRef<number>      |
-| degrees       | 当前转盘渲染的角度，单位 deg     | ComputedRef<number>      |
+| playing       | 用于判断当前是否正在动画         | ComputedRef\<boolean>    |
+| sectorDegrees | 每个扇形奖品所占的角度，单位 deg | ComputedRef\<number>     |
+| degrees       | 当前转盘渲染的角度，单位 deg     | ComputedRef\<number>     |
 
 ### useSlotMachine
 
@@ -148,19 +148,19 @@ function useSlotMachine(options: UseSlotMachineOptions): UseSlotMachineReturn
 
 ### UseSlotMachineOptions
 
-| 属性         | 描述                           | 类型                                                    | 默认值              |
-| ------------ | ------------------------------ | ------------------------------------------------------- | ------------------- |
-| columns      | 奖品个数                       | number[] \| unknown[][] \| Ref<number[] \| unknown[][]> | []                  |
-| staggerDelay | 列间交错延迟时间，单位毫秒     | number \| Ref\<number>                                  | 600                 |
-| minSpeed     | 最小加速度                     | number \| Ref\<number>                                  | 0.01                |
-| maxSpeed     | 最大加速度                     | number \| Ref\<number>                                  | 0.3                 |
-| accelTime    | 加速时间，单位毫秒             | number \| Ref\<number>                                  | 2500                |
-| decelTime    | 减速时间，单位毫秒             | number \| Ref\<number>                                  | 2500                |
-| easeIn       | 加速缓动公式                   | (progress: number) => number                            | (k) => k \* k       |
-| easeOut      | 减速缓动公式                   | (progress: number) => number                            | (k) => k \* (2 - k) |
-| startDelay   | 加速运动前的等待时间，单位毫秒 | number \| Ref\<number>                                  | 0                   |
-| endDelay     | 减速运动后的等待时间，单位毫秒 | number \| Ref\<number>                                  | 300                 |
-| complete     | 完成抽奖动画后的回调           | (index: number[]) => void                               | -                   |
+| 属性         | 描述                           | 类型                                                     | 默认值              |
+| ------------ | ------------------------------ | -------------------------------------------------------- | ------------------- |
+| columns      | 奖品个数                       | number[] \| unknown[][] \| Ref\<number[] \| unknown[][]> | []                  |
+| staggerDelay | 列间交错延迟时间，单位毫秒     | number \| Ref\<number>                                   | 600                 |
+| minSpeed     | 最小加速度                     | number \| Ref\<number>                                   | 0.01                |
+| maxSpeed     | 最大加速度                     | number \| Ref\<number>                                   | 0.3                 |
+| accelTime    | 加速时间，单位毫秒             | number \| Ref\<number>                                   | 2500                |
+| decelTime    | 减速时间，单位毫秒             | number \| Ref\<number>                                   | 2500                |
+| easeIn       | 加速缓动公式                   | (progress: number) => number                             | (k) => k \* k       |
+| easeOut      | 减速缓动公式                   | (progress: number) => number                             | (k) => k \* (2 - k) |
+| startDelay   | 加速运动前的等待时间，单位毫秒 | number \| Ref\<number>                                   | 0                   |
+| endDelay     | 减速运动后的等待时间，单位毫秒 | number \| Ref\<number>                                   | 300                 |
+| complete     | 完成抽奖动画后的回调           | (index: number[]) => void                                | -                   |
 
 ### UseSlotMachineReturn
 
@@ -170,5 +170,5 @@ function useSlotMachine(options: UseSlotMachineOptions): UseSlotMachineReturn
 | stop    | 调用后开始减速动画       | (index?: number[]) => void |
 | pause   | 调用后暂停动画           | () => void                 |
 | reset   | 调用后重置动画           | () => void                 |
-| playing | 用于判断当前是否正在动画 | ComputedRef<boolean>       |
-| offset  | 每一列的当前偏移量       | ComputedRef<number[]>      |
+| playing | 用于判断当前是否正在动画 | ComputedRef\<boolean>      |
+| offset  | 每一列的当前偏移量       | ComputedRef\<number[]>     |
