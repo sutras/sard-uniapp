@@ -122,7 +122,7 @@
     "lodash-es": "^4.17.21",
     "prettier": "^2.8.8",
     "region-data": "^1.2.3",
-    "sard-cli": "link:../sard-cli",
+    "sard-cli": "^1.1.7",
     "sass": "^1.69.7",
     "tel-area-code": "^1.1.0",
     "ts-custom-error": "^3.3.1",

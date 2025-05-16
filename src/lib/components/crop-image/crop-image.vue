@@ -68,20 +68,20 @@
       </view>
     </view>
 
-    <view :class="bem.e('canvas-wrapper')">
-      <canvas
-        type="2d"
-        :hidpi="false"
-        :canvas-id="canvasId"
-        :id="canvasId"
-        :style="canvasStyle"
-      ></canvas>
-    </view>
-
     <view v-if="isCropping" :class="bem.e('loading')">
       <sar-loading />
     </view>
   </sar-popup>
+
+  <view :class="bem.e('canvas-wrapper')">
+    <canvas
+      type="2d"
+      :hidpi="false"
+      :canvas-id="canvasId"
+      :id="canvasId"
+      :style="canvasStyle"
+    ></canvas>
+  </view>
 </template>
 
 <script setup lang="ts">
