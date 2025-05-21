@@ -92,13 +92,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, reactive, readonly, ref, watch } from 'vue'
 import {
   classNames,
   stringifyStyle,
   createBem,
   noop,
   isFunction,
+  isObject,
 } from '../../utils'
 import SarPopup from '../popup/popup.vue'
 import SarButton from '../button/button.vue'
@@ -167,18 +168,20 @@ const onVisibleHook = (name: TransitionHookName) => {
   emit(name as any)
 }
 
-const loading = ref({
+const loading = reactive({
   cancel: false,
   confirm: false,
   close: false,
 })
 
+const readonlyLoading = readonly(loading)
+
 const perhapsClose = (type: 'close' | 'cancel' | 'confirm') => {
   emit(type as any)
   if (isFunction(props.beforeClose)) {
-    const result = props.beforeClose(type)
-    if (result instanceof Promise) {
-      loading.value[type] = true
+    const result = props.beforeClose(type, readonlyLoading)
+    if (isObject(result) && isFunction(result.then)) {
+      loading[type] = true
 
       return result
         .then(() => {
@@ -187,7 +190,7 @@ const perhapsClose = (type: 'close' | 'cancel' | 'confirm') => {
         })
         .catch(noop)
         .finally(() => {
-          loading.value[type] = false
+          loading[type] = false
         })
     } else if (result === false) {
       return

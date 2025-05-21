@@ -3,6 +3,15 @@ import { defaultConfig } from '../config'
 import { type ButtonProps } from '../button'
 import { type TransitionHookEmits } from '../popup/common'
 
+export type DialogBeforeClose = (
+  type: 'close' | 'cancel' | 'confirm',
+  loading: {
+    readonly cancel: boolean
+    readonly confirm: boolean
+    readonly close: boolean
+  },
+) => any | Promise<any>
+
 export interface DialogProps {
   rootStyle?: StyleValue
   rootClass?: string
@@ -18,7 +27,7 @@ export interface DialogProps {
   showConfirm?: boolean
   confirmText?: string
   overlayClosable?: boolean
-  beforeClose?: (type: 'close' | 'cancel' | 'confirm') => any | Promise<any>
+  beforeClose?: DialogBeforeClose
   duration?: number
   cancelProps?: ButtonProps
   confirmProps?: ButtonProps

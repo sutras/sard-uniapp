@@ -33,7 +33,7 @@ import { dialog } from 'sard-uniapp'
 
 ### 异步关闭
 
-如果 `beforeClose` 属性是一个返回 `Promise` 对象的函数，则会在 `fulfilled` 状态时才隐藏对话框。
+如果 `beforeClose` 返回 false，则取消关闭对话框；如果返回 `Promise` 对象，则会在 `resolve` 时才关闭对话框。
 
 @code('${DEMO_PATH}/dialog/demo/AsyncClose.vue')
 
@@ -71,25 +71,45 @@ import { dialog } from 'sard-uniapp'
 
 ### DialogProps
 
-| 属性                           | 描述                  | 类型              | 默认值  |
-| ------------------------------ | --------------------- | ----------------- | ------- |
-| root-class                     | 对话框根元素类名      | string            | -       |
-| root-style                     | 对话框根元素样式      | StyleValue        | -       |
-| popup-class <sup>1.14.1+</sup> | 弹窗框根元素类名      | string            | -       |
-| popup-style <sup>1.14.1+</sup> | 弹窗框根元素样式      | StyleValue        | -       |
-| visible (v-model)              | 是否可见              | boolean           | false   |
-| title                          | 标题                  | string            | -       |
-| message                        | 文本内容              | string            | -       |
-| headed                         | 是否显示带头部类型    | boolean           | true    |
-| button-type                    | 按钮类型              | 'round' \| 'text' | 'round' |
-| show-cancel                    | 是否显示取消按钮      | boolean           | true    |
-| cancel-text                    | 取消按钮文案          | string            | '取消'  |
-| show-confirm                   | 是否显示确定按钮      | boolean           | true    |
-| confirm-text                   | 确定按钮文案          | string            | '确定'  |
-| overlay-closable               | 点击遮罩是否关闭      | boolean           | false   |
-| duration                       | 显隐动画时长，单位 ms | number            | 300     |
-| confirm-props <sup>1.10+</sup> | 设置确定按钮 props    | ButtonProps       | -       |
-| cancel-props <sup>1.10+</sup>  | 设置取消按钮 props    | ButtonProps       | -       |
+| 属性                           | 描述                       | 类型              | 默认值  |
+| ------------------------------ | -------------------------- | ----------------- | ------- |
+| root-class                     | 对话框根元素类名           | string            | -       |
+| root-style                     | 对话框根元素样式           | StyleValue        | -       |
+| popup-class <sup>1.14.1+</sup> | 弹窗框根元素类名           | string            | -       |
+| popup-style <sup>1.14.1+</sup> | 弹窗框根元素样式           | StyleValue        | -       |
+| visible (v-model)              | 是否可见                   | boolean           | false   |
+| title                          | 标题                       | string            | -       |
+| message                        | 文本内容                   | string            | -       |
+| headed                         | 是否显示带头部类型         | boolean           | true    |
+| button-type                    | 按钮类型                   | 'round' \| 'text' | 'round' |
+| show-cancel                    | 是否显示取消按钮           | boolean           | true    |
+| cancel-text                    | 取消按钮文案               | string            | '取消'  |
+| show-confirm                   | 是否显示确定按钮           | boolean           | true    |
+| confirm-text                   | 确定按钮文案               | string            | '确定'  |
+| overlay-closable               | 点击遮罩是否关闭           | boolean           | false   |
+| before-close                   | 用来实现异步关闭或取消关闭 | DialogBeforeClose | -       |
+| duration                       | 显隐动画时长，单位 ms      | number            | 300     |
+| confirm-props <sup>1.10+</sup> | 设置确定按钮 props         | ButtonProps       | -       |
+| cancel-props <sup>1.10+</sup>  | 设置取消按钮 props         | ButtonProps       | -       |
+
+#### DialogBeforeClose
+
+- 当点击确定按钮时，`type` 为 `confirm`；
+- 当点击取消按钮时，`type` 为 `cancel`；
+- 当点击关闭按钮或遮罩时，`type` 为 `cloes`。
+
+`loading` 表示当前哪个按钮处于异步关闭状态。
+
+```ts
+type DialogBeforeClose = (
+  type: 'close' | 'cancel' | 'confirm',
+  loading: {
+    readonly cancel: boolean
+    readonly confirm: boolean
+    readonly close: boolean
+  },
+) => any | Promise<any>
+```
 
 ### DialogSlots
 

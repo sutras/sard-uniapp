@@ -12,6 +12,7 @@ const showAlert = () => {
   dialog.confirm({
     title: '提示',
     message: '点击确定按钮会在一秒钟后关闭',
+    overlayClosable: false,
     beforeClose: (type) => {
       if (type === 'confirm') {
         return new Promise<void>((resolve) => {
