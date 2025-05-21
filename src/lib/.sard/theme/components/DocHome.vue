@@ -260,4 +260,10 @@ const base = import.meta.env.BASE_URL
     grid-template-columns: repeat(1, 1fr);
   }
 }
+
+[data-sc-theme='dark'] {
+  .feature {
+    background-color: var(--sc-gray-800);
+  }
+}
 </style>

@@ -31,7 +31,7 @@ import Popout from 'sard-uniapp/components/popout/popout.vue'
 
 ### 异步关闭
 
-通过 `beforeClose` 属性可以传入一个回调函数，在弹窗关闭前进行特定操作。
+如果 `beforeClose` 返回 false，则取消关闭弹出框；如果返回 `Promise` 对象，则会在 `resolve` 时才关闭弹出框。
 
 @code('${DEMO_PATH}/popout/demo/BeforeClose.vue')
 
@@ -52,9 +52,29 @@ import Popout from 'sard-uniapp/components/popout/popout.vue'
 | show-footer       | 是否显示底部按钮                                          | boolean                                                                           | true    |
 | type              | 弹出框按钮排版方式                                        | 'compact' \| 'loose'                                                              | 'loose' |
 | visible (v-model) | 是否显示弹出框                                            | boolean                                                                           | -       |
+| before-close      | 用来实现异步关闭或取消关闭                                | PopoutBeforeClose                                                                 | -       |
 | duration          | 显隐动画时长，单位 ms                                     | number                                                                            | 300     |
 | overlay-closable  | 点击遮罩是否关闭                                          | boolean                                                                           | true    |
 | before-close      | 关闭前的回调，返回 `false` 可阻止关闭，支持返回 `Promise` | (type: 'close' \| 'cancel' \| 'confirm') => boolean \| undefined \| Promise\<any> | -       |
+
+#### PopoutBeforeClose
+
+- 当点击确定按钮时，`type` 为 `confirm`；
+- 当点击取消按钮时，`type` 为 `cancel`；
+- 当点击关闭按钮或遮罩时，`type` 为 `cloes`。
+
+`loading` 表示当前哪个按钮处于异步关闭状态。
+
+```ts
+type PopoutBeforeClose = (
+  type: 'close' | 'cancel' | 'confirm',
+  loading: {
+    readonly cancel: boolean
+    readonly confirm: boolean
+    readonly close: boolean
+  },
+) => any | Promise<any>
+```
 
 ### PopoutSlots
 

@@ -54,6 +54,7 @@ import {
   createBem,
   noop,
   isFunction,
+  isObject,
 } from '../../utils'
 import SarPopup from '../popup/popup.vue'
 import SarLoading from '../loading/loading.vue'
@@ -93,7 +94,7 @@ watch(
 const perhapsClose = (type: 'close' | 'cancel' | 'select') => {
   if (isFunction(props.beforeClose)) {
     const result = props.beforeClose(type)
-    if (result instanceof Promise) {
+    if (isObject(result) && isFunction(result.then)) {
       return result
         .then(() => {
           innerVisible.value = false

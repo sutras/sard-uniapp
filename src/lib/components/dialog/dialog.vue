@@ -75,7 +75,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref, watch, readonly, reactive } from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -124,18 +124,20 @@ watch(
   },
 )
 
-const loading = ref({
+const loading = reactive({
   cancel: false,
   confirm: false,
   close: false,
 })
 
+const readonlyLoading = readonly(loading)
+
 const perhapsClose = (type: 'close' | 'cancel' | 'confirm') => {
   emit(type as any)
   if (isFunction(props.beforeClose)) {
-    const result = props.beforeClose(type)
+    const result = props.beforeClose(type, readonlyLoading)
     if (isObject(result) && isFunction(result.then)) {
-      loading.value[type] = true
+      loading[type] = true
 
       return result
         .then(() => {
@@ -144,7 +146,7 @@ const perhapsClose = (type: 'close' | 'cancel' | 'confirm') => {
         })
         .catch(noop)
         .finally(() => {
-          loading.value[type] = false
+          loading[type] = false
         })
     } else if (result === false) {
       return
