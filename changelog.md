@@ -1,12 +1,3 @@
-# [1.15.0](https://github.com/sutras/sard-uniapp/compare/v1.14.4...v1.15.0) (2025-05-21)
-
-
-### Features
-
-* dialog beforeClose 新增 loading 参数 ([715a961](https://github.com/sutras/sard-uniapp/commit/715a961ad6de63d68111b95af292bfb22e209434))
-
-
-
 ## [1.14.4](https://github.com/sutras/sard-uniapp/compare/v1.14.3...v1.14.4) (2025-05-16)
 
 
@@ -311,21 +302,13 @@
 
 
 
-# [1.6.0](https://github.com/sutras/sard-uniapp/compare/v1.5.0...v1.6.0) (2024-08-19)
-
-
-### Features
-
-* 新增Tree, Timeline, BackTop 组件 close [#36](https://github.com/sutras/sard-uniapp/issues/36), close [#41](https://github.com/sutras/sard-uniapp/issues/41), close 43 ([f0a0504](https://github.com/sutras/sard-uniapp/commit/f0a0504f03a8eac84f926e2e01a61bc31de59057))
-
-
-
-# [1.5.0](https://github.com/sutras/sard-uniapp/compare/v1.4.1...v1.5.0) (2024-08-08)
+# [1.6.0](https://github.com/sutras/sard-uniapp/compare/v1.4.1...v1.6.0) (2024-08-19)
 
 
 ### Features
 
 * 新增Fab, FloatingBubble 组件, 优化构建流程 close [#39](https://github.com/sutras/sard-uniapp/issues/39) ([fe28b0a](https://github.com/sutras/sard-uniapp/commit/fe28b0aeb3a60f8b4d3f74a7d16ceb0fb4ccf295))
+* 新增Tree, Timeline, BackTop 组件 close [#36](https://github.com/sutras/sard-uniapp/issues/36), close [#41](https://github.com/sutras/sard-uniapp/issues/41), close 43 ([f0a0504](https://github.com/sutras/sard-uniapp/commit/f0a0504f03a8eac84f926e2e01a61bc31de59057))
 
 
 
