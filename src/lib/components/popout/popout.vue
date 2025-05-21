@@ -176,6 +176,27 @@ const loading = reactive({
 
 const readonlyLoading = readonly(loading)
 
+const asyncSet = new Set<{ valid: boolean }>()
+
+watch(
+  innerVisible,
+  () => {
+    if (innerVisible.value === false) {
+      asyncSet.forEach((obj) => {
+        obj.valid = false
+      })
+      Object.assign(loading, {
+        cancel: false,
+        confirm: false,
+        close: false,
+      })
+    }
+  },
+  {
+    flush: 'sync',
+  },
+)
+
 const perhapsClose = (type: 'close' | 'cancel' | 'confirm') => {
   emit(type as any)
   if (isFunction(props.beforeClose)) {
@@ -183,10 +204,17 @@ const perhapsClose = (type: 'close' | 'cancel' | 'confirm') => {
     if (isObject(result) && isFunction(result.then)) {
       loading[type] = true
 
+      const obj = {
+        valid: true,
+      }
+      asyncSet.add(obj)
+
       return result
         .then(() => {
-          innerVisible.value = false
-          emit('update:visible', false)
+          if (obj.valid) {
+            innerVisible.value = false
+            emit('update:visible', false)
+          }
         })
         .catch(noop)
         .finally(() => {
