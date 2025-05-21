@@ -1,3 +1,12 @@
+## [1.15.1](https://github.com/sutras/sard-uniapp/compare/v1.15.0...v1.15.1) (2025-05-21)
+
+
+### Features
+
+* dialog beforeClose 新增 loading 参数 ([715a961](https://github.com/sutras/sard-uniapp/commit/715a961ad6de63d68111b95af292bfb22e209434))
+
+
+
 ## [1.14.4](https://github.com/sutras/sard-uniapp/compare/v1.14.3...v1.14.4) (2025-05-16)
 
 
