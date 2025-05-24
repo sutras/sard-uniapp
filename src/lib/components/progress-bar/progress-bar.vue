@@ -11,7 +11,7 @@
       <slot>{{ percent }}%</slot>
     </view>
     <view v-if="status" :class="bem.e('status')">
-      <sar-icon :name="iconName" />
+      <sar-icon family="sari" :name="iconName" />
     </view>
   </view>
 </template>

@@ -51,7 +51,7 @@
                   }}
                 </view>
                 <view :class="bem.e('option-icon')">
-                  <sar-icon name="success" />
+                  <sar-icon family="sari" name="success" />
                 </view>
               </view>
             </scroll-view>

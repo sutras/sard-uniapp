@@ -18,12 +18,12 @@
       />
 
       <view :class="bem.e('video-play')" @click="onPlayClick">
-        <sar-icon name="play" size="80rpx" />
+        <sar-icon family="sari" name="play" size="80rpx" />
       </view>
     </view>
     <view v-else :class="bem.e('file')">
       <view :class="bem.e('file-icon')">
-        <sar-icon name="file" />
+        <sar-icon family="sari" name="file" />
       </view>
       <view :class="bem.e('file-name')">
         {{ name }}
@@ -35,7 +35,11 @@
     >
       <view :class="bem.e('status-icon')">
         <sar-loading v-if="status === 'uploading'" />
-        <sar-icon v-else-if="status === 'failed'" name="x-circle" />
+        <sar-icon
+          v-else-if="status === 'failed'"
+          family="sari"
+          name="x-circle"
+        />
       </view>
 
       <view v-if="message" :class="bem.e('status-message')">{{ message }}</view>
@@ -46,7 +50,7 @@
       @click="onRemove"
     >
       <view :class="bem.e('close')">
-        <sar-icon name="close" />
+        <sar-icon family="sari" name="close" />
       </view>
     </view>
   </view>

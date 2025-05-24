@@ -27,13 +27,13 @@
             stringifyStyle({ background: item.background, color: item.color })
           "
         >
-          <sar-icon :family="item.iconFamily" :name="item.icon" />
+          <sar-icon :family="item.iconFamily || 'sari'" :name="item.icon" />
         </view>
       </view>
     </view>
     <view :class="itemEntryClass" @click="onItemEntryClick">
       <view :class="bem.e('item-btn')" :style="itemEntryBtnStyle">
-        <sar-icon name="plus" />
+        <sar-icon family="sari" name="plus" />
       </view>
     </view>
   </view>

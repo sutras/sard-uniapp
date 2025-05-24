@@ -25,7 +25,7 @@
       >
         <template #prepend>
           <slot name="input-prepend">
-            <sar-icon name="search" :root-class="bem.e('icon')" />
+            <sar-icon family="sari" name="search" :root-class="bem.e('icon')" />
           </slot>
         </template>
         <template #append>

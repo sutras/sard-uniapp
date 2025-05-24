@@ -2,12 +2,12 @@
   <view v-if="visible" :class="alertClass" :style="alertStyle">
     <view v-if="showIcon" :class="bem.e('icon')">
       <slot name="icon">
-        <sar-icon :name="mapTypeIcon[type]" />
+        <sar-icon family="sari" :name="mapTypeIcon[type]" />
       </slot>
     </view>
     <view :class="bem.e('content')"><slot></slot></view>
     <view v-if="closable" :class="bem.e('close')" @click="onClose">
-      <sar-icon name="close" />
+      <sar-icon family="sari" name="close" />
     </view>
   </view>
 </template>

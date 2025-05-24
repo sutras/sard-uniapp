@@ -11,7 +11,7 @@
             :name="icon"
             :color="iconColor"
             :size="iconSize"
-            :family="iconFamily"
+            :family="iconFamily || 'sari'"
           />
         </slot>
       </view>
@@ -33,7 +33,7 @@
       </view>
       <slot name="arrow">
         <view v-if="arrow" :class="bem.e('arrow')">
-          <sar-icon :name="arrowDirection" />
+          <sar-icon family="sari" :name="arrowDirection" />
         </view>
       </slot>
     </slot>

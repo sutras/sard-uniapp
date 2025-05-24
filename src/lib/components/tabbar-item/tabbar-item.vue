@@ -3,7 +3,11 @@
     <slot>
       <view :class="bem.e('icon')">
         <slot name="icon" :active="isCurrent">
-          <sar-icon :name="icon" :family="iconFamily" :size="iconSize" />
+          <sar-icon
+            :name="icon"
+            :family="iconFamily || 'sari'"
+            :size="iconSize"
+          />
         </slot>
         <sar-badge v-if="badge || dot" :value="badge" :dot="dot" fixed />
       </view>

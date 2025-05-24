@@ -2,7 +2,7 @@
   "id": "sard-uniapp",
   "name": "sard-uniapp",
   "displayName": "sard-uniapp",
-  "version": "1.15.1",
+  "version": "1.15.2",
   "description": "sard-uniapp 是一套基于 Uniapp + Vue3 框架开发的兼容多端的 UI 组件库",
   "main": "index.js",
   "scripts": {
@@ -122,7 +122,7 @@
     "lodash-es": "^4.17.21",
     "prettier": "^2.8.8",
     "region-data": "^1.2.3",
-    "sard-cli": "^1.1.7",
+    "sard-cli": "^1.1.8",
     "sass": "^1.69.7",
     "tel-area-code": "^1.1.0",
     "ts-custom-error": "^3.3.1",
@@ -225,6 +225,8 @@
     "HBuilderX": "^3.6.0"
   },
   "pnpm": {
-    "overrides": {}
+    "overrides": {
+      "sard-cli": "link:../sard-cli"
+    }
   }
 }

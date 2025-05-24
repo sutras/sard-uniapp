@@ -105,7 +105,7 @@
         @touchend="onClearTouchEnd"
         @touchcancel="onClearTouchEnd"
       >
-        <sar-icon name="x-circle-fill" />
+        <sar-icon family="sari" name="x-circle-fill" />
       </view>
       <view v-if="$slots.append" :class="bem.e('append')">
         <slot name="append"></slot>

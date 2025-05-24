@@ -9,7 +9,7 @@
         v-if="icon"
         :class="bem.e('item-icon')"
         :name="icon"
-        :family="iconFamily"
+        :family="iconFamily || 'sari'"
         :size="iconSize"
       />
 

@@ -52,7 +52,7 @@
           @click="onCloseClick"
         >
           <sar-button type="pale-text" theme="neutral" size="large" block>
-            <sar-icon name="close" />
+            <sar-icon family="sari" name="close" />
           </sar-button>
         </view>
       </view>

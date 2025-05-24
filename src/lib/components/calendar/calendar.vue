@@ -12,7 +12,7 @@
             :block="false"
             @click="onPrevMonthClick"
           >
-            <sar-icon name="left" size="32rpx" />
+            <sar-icon family="sari" name="left" size="32rpx" />
           </sar-button>
           <sar-button
             type="pale-text"
@@ -36,7 +36,7 @@
             :block="false"
             @click="onNextMonthClick"
           >
-            <sar-icon name="right" size="32rpx" />
+            <sar-icon family="sari" name="right" size="32rpx" />
           </sar-button>
         </view>
       </view>

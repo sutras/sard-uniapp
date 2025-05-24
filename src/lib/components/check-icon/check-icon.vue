@@ -1,6 +1,6 @@
 <template>
   <view :class="checkIconClass">
-    <sar-icon v-if="iconName" :name="iconName" />
+    <sar-icon v-if="iconName" family="sari" :name="iconName" />
   </view>
 </template>
 

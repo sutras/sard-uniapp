@@ -47,7 +47,7 @@
                   <sar-icon
                     v-else
                     :name="item.icon"
-                    :family="item.iconFamily"
+                    :family="item.iconFamily || 'sari'"
                   />
                 </view>
                 <view :class="bem.e('item-name')">{{ item.name }}</view>

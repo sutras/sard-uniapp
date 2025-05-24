@@ -4,7 +4,7 @@
       <view :class="bem.e('title')">{{ title }}</view>
       <view v-if="value" :class="bem.e('value')">{{ value }}</view>
       <view :class="bem.e('arrow')">
-        <sar-icon :name="arrowName" />
+        <sar-icon family="sari" :name="arrowName" />
       </view>
     </view>
     <sar-collapse :visible="visible">

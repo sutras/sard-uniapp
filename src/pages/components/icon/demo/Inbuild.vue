@@ -4,6 +4,7 @@
       v-for="name in inbuiltIcons"
       :key="name"
       :icon="name"
+      icon-family="sari"
       :text="name"
       @click="onClick(name)"
     />

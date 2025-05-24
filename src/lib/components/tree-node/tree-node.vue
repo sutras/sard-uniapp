@@ -10,7 +10,7 @@
   >
     <view :style="indentStyle"></view>
     <view :class="arrowClass">
-      <sar-icon name="right" />
+      <sar-icon family="sari" name="right" />
     </view>
     <view
       v-if="treeContext.selectable"
@@ -45,7 +45,7 @@
         @mousedown.stop="onEditMouseDown"
         @click.stop
       >
-        <sar-icon name="pencil-square" />
+        <sar-icon family="sari" name="pencil-square" />
       </view>
       <view
         v-if="treeContext.draggable"
@@ -58,10 +58,10 @@
         @mousedown.stop="onDragMouseDown"
         @click.stop
       >
-        <sar-icon name="list" />
+        <sar-icon family="sari" name="list" />
         <view :class="bem.e('level-btn')">
-          <sar-icon v-if="isLastNode" name="left" />
-          <sar-icon v-if="index !== 0" name="right" />
+          <sar-icon v-if="isLastNode" family="sari" name="left" />
+          <sar-icon v-if="index !== 0" family="sari" name="right" />
         </view>
       </view>
     </view>

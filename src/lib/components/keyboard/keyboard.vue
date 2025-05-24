@@ -96,7 +96,7 @@
       </template>
       <view :class="backspaceClass" style="order: 100" @click="onBackspace">
         <view :class="bem.e('key')">
-          <sar-icon name="backspace" />
+          <sar-icon family="sari" name="backspace" />
         </view>
       </view>
     </view>

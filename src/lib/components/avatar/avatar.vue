@@ -8,7 +8,12 @@
         :class="classNames(bem.e('image'), bem.m(shape))"
       />
 
-      <sar-icon v-else name="person" :root-class="bem.e('icon')" />
+      <sar-icon
+        v-else
+        family="sari"
+        name="person"
+        :root-class="bem.e('icon')"
+      />
     </slot>
     <slot name="extra"></slot>
   </view>

@@ -42,7 +42,7 @@
       <sar-icon
         v-else-if="icon"
         :name="icon"
-        :family="iconFamily"
+        :family="iconFamily || 'sari'"
         :size="iconSize"
       />
     </view>

@@ -8,7 +8,7 @@
       >
         <sar-input v-model="formState.username">
           <template #prepend>
-            <sar-icon name="person" family="demo-icons" />
+            <sar-icon family="demo-icons" name="person" />
           </template>
         </sar-input>
       </sar-form-item>
@@ -20,7 +20,7 @@
       >
         <sar-input type="password" v-model="formState.password">
           <template #prepend>
-            <sar-icon name="key" family="demo-icons" />
+            <sar-icon family="demo-icons" name="key" />
           </template>
         </sar-input>
       </sar-form-item>

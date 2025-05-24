@@ -21,7 +21,7 @@
             block
             @click="onClose"
           >
-            <sar-icon name="close" />
+            <sar-icon family="sari" name="close" />
           </sar-button>
         </view>
       </view>

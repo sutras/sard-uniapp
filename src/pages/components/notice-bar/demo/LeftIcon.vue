@@ -1,7 +1,7 @@
 <template>
   <sar-notice-bar>
     <template #left-icon>
-      <sar-icon name="bell" family="demo-icons" size="32rpx" />
+      <sar-icon family="demo-icons" name="bell" size="32rpx" />
     </template>
     这是一条很长很长很长很长很长很长很长很长很长很长的公告！
   </sar-notice-bar>

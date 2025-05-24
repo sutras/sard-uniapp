@@ -4,7 +4,7 @@
       v-if="icon || (withIcon && direction === 'vertical')"
       :class="bem.e('icon')"
     >
-      <sar-icon v-if="icon" :name="icon" :family="iconFamily" />
+      <sar-icon v-if="icon" :name="icon" :family="iconFamily || 'sari'" />
     </view>
     <view v-if="text" :class="bem.e('text')">
       {{ text }}

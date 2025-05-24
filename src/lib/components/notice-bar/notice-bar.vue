@@ -2,7 +2,7 @@
   <view :class="noticeBarClass" :style="noticeBarStyle" @click="onClick">
     <view v-if="!hideLeftIcon" :class="bem.e('left-icon')">
       <slot name="left-icon">
-        <sar-icon name="volume-up" />
+        <sar-icon family="sari" name="volume-up" />
       </slot>
     </view>
     <view :class="bem.e('content')" :id="contentId">
@@ -21,7 +21,10 @@
       @click="onRightIconClick"
     >
       <slot name="right-icon">
-        <sar-icon :name="closable ? 'close' : linkable ? 'right' : ''" />
+        <sar-icon
+          family="sari"
+          :name="closable ? 'close' : linkable ? 'right' : ''"
+        />
       </slot>
     </view>
   </view>

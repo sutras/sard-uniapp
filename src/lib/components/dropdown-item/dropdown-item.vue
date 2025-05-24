@@ -20,7 +20,7 @@
       {{ placeholder }}
     </view>
     <view :class="bem.e('arrow')">
-      <sar-icon :name="currentArrow" />
+      <sar-icon family="sari" :name="currentArrow" />
     </view>
   </view>
 
@@ -61,7 +61,7 @@
           >
             <template #arrow>
               <view :class="bem.e('option-icon')">
-                <sar-icon name="success" />
+                <sar-icon family="sari" name="success" />
               </view>
             </template>
           </sar-list-item>

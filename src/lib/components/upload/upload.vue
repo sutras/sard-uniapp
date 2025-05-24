@@ -26,7 +26,7 @@
       >
         <slot name="select">
           <view :class="bem.e('select-icon')">
-            <sar-icon name="plus" />
+            <sar-icon family="sari" name="plus" />
           </view>
         </slot>
       </view>

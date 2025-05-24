@@ -10,7 +10,7 @@
     <view :class="toastClass" :style="toastStyle">
       <view v-if="type !== 'text'" :class="iconClass">
         <sar-loading v-if="type === 'loading'" />
-        <sar-icon v-else :name="type" />
+        <sar-icon v-else family="sari" :name="type" />
       </view>
       <view :class="bem.e('title')">{{ title }}</view>
     </view>

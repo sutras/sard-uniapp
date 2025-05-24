@@ -20,7 +20,7 @@
             <sar-loading />
           </view>
           <view v-if="!isReadonly" :class="bem.e('arrow')">
-            <sar-icon name="caret-right" />
+            <sar-icon family="sari" name="caret-right" />
           </view>
         </view>
       </template>

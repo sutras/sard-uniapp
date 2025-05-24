@@ -15,9 +15,9 @@
         <view :class="classNames(bem.e('line'), bem.e('line-before'))"></view>
         <view :class="bem.e('icon')">
           <sar-icon
+            :family="iconFamily || 'sari'"
             :name="getStatusIcon(item.status ?? getStatus(current, i))"
             :size="iconSize"
-            :family="iconFamily"
           />
         </view>
         <view :class="classNames(bem.e('line'), bem.e('line-after'))"></view>

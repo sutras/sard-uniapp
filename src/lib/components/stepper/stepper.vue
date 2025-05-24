@@ -15,7 +15,7 @@
       @touchcancel="onTouchEnd"
       @mousedown="onMouseDown(-1)"
     >
-      <sar-icon name="minus" />
+      <sar-icon family="sari" name="minus" />
     </view>
     <input
       :class="bem.e('input')"
@@ -44,7 +44,7 @@
       @touchcancel="onTouchEnd"
       @mousedown="onMouseDown(1)"
     >
-      <sar-icon name="plus" />
+      <sar-icon family="sari" name="plus" />
     </view>
   </view>
 </template>

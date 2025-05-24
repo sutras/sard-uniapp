@@ -2,7 +2,7 @@
   <view :class="tagClass" :style="tagStyle" @click="$emit('click', $event)">
     <slot></slot>
     <view v-if="closable" :class="iconClass" @click="$emit('close', $event)">
-      <sar-icon name="close" />
+      <sar-icon family="sari" name="close" />
     </view>
   </view>
 </template>

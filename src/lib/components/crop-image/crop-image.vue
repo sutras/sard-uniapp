@@ -49,7 +49,7 @@
           block
           @click="onReset"
         >
-          <sar-icon name="undo" size="var(--sar-text-xl)" />
+          <sar-icon family="sari" name="undo" size="var(--sar-text-xl)" />
         </sar-button>
         <sar-button
           size="small"
@@ -58,7 +58,11 @@
           block
           @click="onRotate"
         >
-          <sar-icon name="rotate-left" size="var(--sar-text-xl)" />
+          <sar-icon
+            family="sari"
+            name="rotate-left"
+            size="var(--sar-text-xl)"
+          />
         </sar-button>
         <sar-button size="small" block @click="onConfirm">
           <text style="font-weight: bold">

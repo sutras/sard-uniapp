@@ -1,7 +1,7 @@
 <template>
   <view :class="backTopClass" :style="backTopStyle" @click="onClick">
     <slot>
-      <sar-icon name="backtop" />
+      <sar-icon family="sari" name="backtop" />
     </slot>
   </view>
 </template>
