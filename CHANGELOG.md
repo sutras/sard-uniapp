@@ -1,3 +1,12 @@
+## [1.15.3](https://github.com/sutras/sard-uniapp/compare/v1.15.2...v1.15.3) (2025-05-24)
+
+
+### Bug Fixes
+
+* tabs组件允许name为boolean类型 ([6897055](https://github.com/sutras/sard-uniapp/commit/68970555842b6f51649e3c96c5e770390e6e7c40))
+
+
+
 ## [1.15.2](https://github.com/sutras/sard-uniapp/compare/v1.15.1...v1.15.2) (2025-05-24)
 
 
