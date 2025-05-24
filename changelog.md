@@ -1,3 +1,12 @@
+## [1.15.2](https://github.com/sutras/sard-uniapp/compare/v1.15.1...v1.15.2) (2025-05-24)
+
+
+### Bug Fixes
+
+* 内部icon设置固定family ([3c73574](https://github.com/sutras/sard-uniapp/commit/3c735740a6cf33bcb9933c6d0915f2cbfbdd1b37))
+
+
+
 ## [1.15.1](https://github.com/sutras/sard-uniapp/compare/v1.15.0...v1.15.1) (2025-05-21)
 
 
