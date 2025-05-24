@@ -79,20 +79,20 @@ import Tab from 'sard-uniapp/components/tab/tab.vue'
 
 ### TabsEmits
 
-| 事件                      | 描述                     | 类型                             |
-| ------------------------- | ------------------------ | -------------------------------- |
-| update:current            | 当前激活的标签改变时触发 | (name: string \| number) => void |
-| change <sup>1.12.2+</sup> | 当前激活的标签改变时触发 | (name: string \| number) => void |
+| 事件                      | 描述                     | 类型                                        |
+| ------------------------- | ------------------------ | ------------------------------------------- |
+| update:current            | 当前激活的标签改变时触发 | (name: string \| number \| boolean) => void |
+| change <sup>1.12.2+</sup> | 当前激活的标签改变时触发 | (name: string \| number\| boolean) => void  |
 
 ### TabProps / TabOption
 
-| 属性       | 描述                                                       | 类型             | 默认值 |
-| ---------- | ---------------------------------------------------------- | ---------------- | ------ |
-| root-class | 组件根元素类名                                             | string           | -      |
-| root-style | 组件根元素样式                                             | StyleValue       | -      |
-| title      | 标签显示的标题                                             | string           | -      |
-| name       | 标签的唯一标识，默认为对应的下标，使用标签组件时要手动指定 | string \| number | -      |
-| disabled   | 是否禁用标签                                               | boolean          | false  |
+| 属性       | 描述                                                       | 类型                       | 默认值 |
+| ---------- | ---------------------------------------------------------- | -------------------------- | ------ |
+| root-class | 组件根元素类名                                             | string                     | -      |
+| root-style | 组件根元素样式                                             | StyleValue                 | -      |
+| title      | 标签显示的标题                                             | string                     | -      |
+| name       | 标签的唯一标识，默认为对应的下标，使用标签组件时要手动指定 | string \| number\| boolean | -      |
+| disabled   | 是否禁用标签                                               | boolean                    | false  |
 
 ### TabSlots
 

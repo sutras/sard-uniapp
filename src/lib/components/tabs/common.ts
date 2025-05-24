@@ -6,14 +6,14 @@ export interface TabOption {
   rootStyle?: StyleValue
   rootClass?: string
   title?: string
-  name?: string | number
+  name?: string | number | boolean
   disabled?: boolean
 }
 
 export interface TabsProps {
   rootStyle?: StyleValue
   rootClass?: string
-  current?: string | number
+  current?: string | number | boolean
   list?: TabOption[]
   type?: 'line' | 'pill' | 'card'
   scrollable?: boolean
@@ -26,15 +26,15 @@ export interface TabsSlots {
 }
 
 export interface TabsEmits {
-  (e: 'update:current', name: string | number): void
-  (e: 'change', name: string | number): void
+  (e: 'update:current', name: string | number | boolean): void
+  (e: 'change', name: string | number | boolean): void
 }
 
 export interface TabProps {
   rootStyle?: StyleValue
   rootClass?: string
   title?: string
-  name: string | number
+  name: string | number | boolean
   disabled?: boolean
 }
 
@@ -48,14 +48,14 @@ export interface TabEmits {
 
 export interface TabContext {
   current: any
-  select: (name: string | number, initial?: boolean) => void
+  select: (name: string | number | boolean, initial?: boolean) => void
   register: (
-    name: string | number,
+    name: string | number | boolean,
     expose: {
       getRect: () => Promise<NodeRect>
     },
   ) => void
-  unregister: (name: string | number) => void
+  unregister: (name: string | number | boolean) => void
 }
 
 export const tabContextSymbol = Symbol('tab-context')

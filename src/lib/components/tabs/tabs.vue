@@ -75,15 +75,15 @@ const emit = defineEmits<TabsEmits>()
 const bem = createBem('tabs')
 
 // main
-const scrollToTab = async (name: string | number) => {
-  if (!needScrollToTab.value || !tabMap[name]) {
+const scrollToTab = async (name: string | number | boolean) => {
+  if (!needScrollToTab.value || !tabMap.has(name)) {
     return
   }
 
   const [scrollRect, wrapperRect, tabRect] = await Promise.all([
     getBoundingClientRect(`#${scrollId}`, instance),
     getBoundingClientRect(`#${wrapperId}`, instance),
-    tabMap[name].getRect(),
+    tabMap.get(name)!.getRect(),
   ])
 
   scrollLeft.value =
@@ -119,7 +119,10 @@ const wrapperId = uniqid()
 const lineLeft = ref(0)
 const scrollLeft = ref(0)
 const scrollInitialized = ref(false)
-const tabMap: Record<string, { getRect: () => Promise<NodeRect> }> = {}
+const tabMap = new Map<
+  number | string | boolean,
+  { getRect: () => Promise<NodeRect> }
+>()
 
 const needScrollToTab = computed(() => {
   return props.type === 'line' || (props.type === 'pill' && props.scrollable)
@@ -152,10 +155,10 @@ provide<TabContext>(
   reactive({
     current: innerCurrent,
     register(name, expose) {
-      tabMap[name] = expose
+      tabMap.set(name, expose)
     },
     unregister(name) {
-      delete tabMap[name]
+      tabMap.delete(name)
     },
     select(name, initial?: boolean) {
       innerCurrent.value = name
