@@ -1,3 +1,12 @@
+## [1.15.4](https://github.com/sutras/sard-uniapp/compare/v1.15.3...v1.15.4) (2025-05-27)
+
+
+### Bug Fixes
+
+* 降低peerDependencies vue的版本 ([518e2aa](https://github.com/sutras/sard-uniapp/commit/518e2aa76c1607b7894ca4902a5583f3995259f2))
+
+
+
 ## [1.15.3](https://github.com/sutras/sard-uniapp/compare/v1.15.2...v1.15.3) (2025-05-24)
 
 
