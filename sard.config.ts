@@ -1,5 +1,6 @@
 import path from 'node:path'
 import { defineConfig } from 'sard-cli'
+import pkgJson from './package.json' with { type: 'json' }
 
 export default defineConfig({
   name: 'Sard',
@@ -56,5 +57,29 @@ export default defineConfig({
     ],
     homePath: '/',
     copyright: 'MIT Licensed | Power By wuzhitao',
+    nav: [
+      {
+        text: pkgJson.version,
+        items: [
+          {
+            text: '更新日志 (Github)',
+            link: 'https://github.com/sutras/sard-uniapp/blob/main/CHANGELOG.md',
+          },
+          {
+            text: '更新日志 (Gitee)',
+            link: 'https://gitee.com/sutras/sard-uniapp/blob/main/CHANGELOG.md',
+          },
+        ],
+      },
+      {
+        text: '友情链接',
+        items: [
+          {
+            text: 'Cosey Admin',
+            link: 'https://docs.cosey.wzt.zone/',
+          },
+        ],
+      },
+    ],
   },
 })
