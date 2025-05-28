@@ -3,18 +3,21 @@
     v-model="singleValue"
     v-model:visible="singleVisible"
     title="单个日期"
+    value-format="YYYY-MM-DD"
   />
   <sar-calendar-popout
     v-model="mulitpleValue"
     v-model:visible="mulitpleVisible"
     type="multiple"
     title="多个日期"
+    value-format="YYYY-MM-DD"
   />
   <sar-calendar-popout
     v-model="rangeValue"
     v-model:visible="rangeVisible"
     type="range"
     title="单个日期"
+    value-format="YYYY-MM-DD"
   />
 
   <sar-list card>
@@ -45,9 +48,9 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const singleValue = ref<Date>()
-const mulitpleValue = ref<Date[]>()
-const rangeValue = ref<Date[]>()
+const singleValue = ref<string>()
+const mulitpleValue = ref<string[]>()
+const rangeValue = ref<string[]>()
 
 const singleVisible = ref(false)
 const mulitpleVisible = ref(false)

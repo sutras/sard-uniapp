@@ -6,6 +6,7 @@
     type="range"
     :formatter="formatter"
     :current-date="new Date(new Date().getFullYear(), 4, 1)"
+    value-format="YYYY-MM-DD"
   />
 
   <sar-list card>

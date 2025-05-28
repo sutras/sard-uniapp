@@ -41,9 +41,3 @@ import DemoContent from './demo/Content.vue'
 import DemoButtonProps from './demo/ButtonProps.vue'
 import DemoPopupContent from './demo/PopupContent.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

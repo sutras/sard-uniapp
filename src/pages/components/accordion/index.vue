@@ -19,9 +19,3 @@ import DemoBasic from './demo/Basic.vue'
 import DemoMultiple from './demo/Multiple.vue'
 import DemoDisabled from './demo/Disabled.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

@@ -34,5 +34,3 @@ import DemoType from './demo/Type.vue'
 import DemoStyle from './demo/Style.vue'
 import DemoVertical from './demo/Vertical.vue'
 </script>
-
-<style lang="scss" scoped></style>

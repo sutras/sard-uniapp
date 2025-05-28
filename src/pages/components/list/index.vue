@@ -34,9 +34,3 @@ import DemoSlot from './demo/Slot.vue'
 import DemoGroup from './demo/Group.vue'
 import DemoCard from './demo/Card.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

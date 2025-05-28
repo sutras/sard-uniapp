@@ -24,9 +24,3 @@ import DemoOutletFormat from './demo/OutletFormat.vue'
 import DemoValueFormat from './demo/ValueFormat.vue'
 import DemoType from './demo/Type.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

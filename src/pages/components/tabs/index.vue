@@ -34,9 +34,3 @@ import DemoPill from './demo/Pill.vue'
 import DemoCard from './demo/Card.vue'
 import DemoCustomTab from './demo/CustomTab.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

@@ -59,9 +59,3 @@ import DemoSize from './demo/Size.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoSlot from './demo/Slot.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

@@ -29,9 +29,3 @@ import DemoColor from './demo/Color.vue'
 import DemoDuration from './demo/Duration.vue'
 import DemoPlacement from './demo/Placement.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

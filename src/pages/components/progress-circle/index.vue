@@ -29,9 +29,3 @@ import DemoColor from './demo/Color.vue'
 import DemoSize from './demo/Size.vue'
 import DemoStatus from './demo/Status.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

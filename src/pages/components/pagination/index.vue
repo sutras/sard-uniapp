@@ -24,9 +24,3 @@ import DemoEllipsis from './demo/Ellipsis.vue'
 import DemoSimple from './demo/Simple.vue'
 import DemoCustom from './demo/Custom.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

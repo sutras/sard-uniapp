@@ -14,5 +14,3 @@
 import DemoBasic from './demo/Basic.vue'
 import DemoSafeAreaInsetBottom from './demo/SafeAreaInsetBottom.vue'
 </script>
-
-<style lang="scss" scoped></style>

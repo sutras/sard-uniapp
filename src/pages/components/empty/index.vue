@@ -29,9 +29,3 @@ import DemoSize from './demo/Size.vue'
 import DemoIcon from './demo/Icon.vue'
 import DemoExtra from './demo/Extra.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

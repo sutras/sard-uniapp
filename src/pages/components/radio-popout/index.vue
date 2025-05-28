@@ -9,5 +9,3 @@
 <script setup lang="ts">
 import DemoBasic from './demo/Basic.vue'
 </script>
-
-<style lang="scss" scoped></style>

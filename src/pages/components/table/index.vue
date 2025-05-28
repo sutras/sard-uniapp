@@ -53,9 +53,3 @@ import DemoFullScreenEntry from './demo/FullScreenEntry.vue'
 import DemoMultilevelHeader from './demo/MultilevelHeader.vue'
 import DemoMerge from './demo/Merge.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

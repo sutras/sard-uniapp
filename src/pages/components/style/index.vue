@@ -24,9 +24,3 @@ import DemoGray from './demo/Gray.vue'
 import DemoTheme from './demo/Theme.vue'
 import DemoNeutral from './demo/Neutral.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

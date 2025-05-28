@@ -34,9 +34,3 @@ import DemoDirection from './demo/Direction.vue'
 import DemoDisabled from './demo/Disabled.vue'
 import DemoContent from './demo/Content.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

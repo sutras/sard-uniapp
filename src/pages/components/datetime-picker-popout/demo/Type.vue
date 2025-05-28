@@ -4,6 +4,7 @@
     v-model:visible="visible1"
     title="年月日"
     type="yMd"
+    value-format="YYYY-MM-DD"
   />
 
   <sar-datetime-picker-popout
@@ -11,6 +12,7 @@
     v-model:visible="visible2"
     title="时分秒"
     type="hms"
+    value-format="HH:mm:ss"
   />
 
   <sar-datetime-picker-popout
@@ -18,6 +20,7 @@
     v-model:visible="visible3"
     title="月日时"
     type="Mdh"
+    value-format="MM-DD HH"
   />
 
   <sar-list card>

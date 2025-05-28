@@ -29,9 +29,3 @@ import DemoOnlyBody from './demo/OnlyBody.vue'
 import DemoFooter from './demo/Footer.vue'
 import DemoHover from './demo/Hover.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

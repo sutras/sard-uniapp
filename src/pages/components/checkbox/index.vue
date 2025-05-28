@@ -59,9 +59,3 @@ import DemoGroupOptions from './demo/GroupOptions.vue'
 import DemoCustom from './demo/Custom.vue'
 import DemoIndeterminate from './demo/Indeterminate.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

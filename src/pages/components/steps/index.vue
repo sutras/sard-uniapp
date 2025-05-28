@@ -49,9 +49,3 @@ import DemoStatus from './demo/Status.vue'
 import DemoErrorStatus from './demo/ErrorStatus.vue'
 import DemoStepStatus from './demo/StepStatus.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

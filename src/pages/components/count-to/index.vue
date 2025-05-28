@@ -25,9 +25,3 @@ import DemoSeparator from './demo/Separator.vue'
 import DemoDuration from './demo/Duration.vue'
 import DemoRandom from './demo/Random.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

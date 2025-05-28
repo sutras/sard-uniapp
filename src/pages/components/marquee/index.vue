@@ -19,9 +19,3 @@ import DemoBasic from './demo/Basic.vue'
 import DemoReset from './demo/Reset.vue'
 import DemoHorizontal from './demo/Horizontal.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

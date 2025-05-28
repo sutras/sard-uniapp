@@ -29,9 +29,3 @@ import DemoColor from './demo/Color.vue'
 import DemoBadge from './demo/Badge.vue'
 import DemoBulge from './demo/Bulge.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

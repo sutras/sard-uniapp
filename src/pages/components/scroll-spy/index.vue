@@ -14,5 +14,3 @@
 import DemoBasic from './demo/Basic.vue'
 import DemoUpdate from './demo/Update.vue'
 </script>
-
-<style lang="scss" scoped></style>

@@ -49,9 +49,3 @@ import DemoIcon from './demo/Icon.vue'
 import DemoGroupOptions from './demo/GroupOptions.vue'
 import DemoCustom from './demo/Custom.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

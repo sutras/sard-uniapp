@@ -29,9 +29,3 @@ import DemoTitleDescription from './demo/TitleDescription.vue'
 import DemoPicture from './demo/Picture.vue'
 import DemoDisabled from './demo/Disabled.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

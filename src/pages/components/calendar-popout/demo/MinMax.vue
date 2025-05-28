@@ -5,6 +5,7 @@
     title="请选择日期"
     :min="new Date(2000, 0, 7)"
     :max="new Date(2000, 0, 21)"
+    value-format="YYYY-MM-DD"
   />
 
   <sar-list card>
@@ -21,6 +22,6 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const value = ref<Date>()
+const value = ref<string>()
 const visible = ref(false)
 </script>

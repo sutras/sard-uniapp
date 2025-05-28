@@ -21,9 +21,3 @@ import DemoGridSize from './demo/GridSize.vue'
 import DemoWheel from './demo/Wheel.vue'
 import DemoSlotMechine from './demo/SlotMechine.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

@@ -29,9 +29,3 @@ import DemoCustomSize from './demo/CustomSize.vue'
 import DemoWrap from './demo/Wrap.vue'
 import DemoAlign from './demo/Align.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

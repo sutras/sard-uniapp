@@ -34,9 +34,3 @@ import DemoPlainText from './demo/PlainText.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoCustomKeyboard from './demo/CustomKeyboard.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

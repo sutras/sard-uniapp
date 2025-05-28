@@ -26,9 +26,3 @@ const navigateTo = (url: string) => {
   })
 }
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

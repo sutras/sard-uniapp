@@ -29,5 +29,3 @@ import DemoLineWidth from './demo/LineWidth.vue'
 import DemoBackground from './demo/Background.vue'
 import DemoFullScreen from './demo/FullScreen.vue'
 </script>
-
-<style lang="scss" scoped></style>

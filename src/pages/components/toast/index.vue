@@ -19,9 +19,3 @@ import DemoBasic from './demo/Basic.vue'
 import DemoPlacement from './demo/Placement.vue'
 import DemoMask from './demo/Mask.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

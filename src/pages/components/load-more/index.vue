@@ -14,9 +14,3 @@
 import DemoBasic from './demo/Basic.vue'
 import DemoWithRefresh from './demo/WithRefresh.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

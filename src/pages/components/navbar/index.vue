@@ -39,9 +39,3 @@ import DemoContent from './demo/Content.vue'
 import DemoBackground from './demo/Background.vue'
 import DemoColor from './demo/Color.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

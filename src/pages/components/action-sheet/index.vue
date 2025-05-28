@@ -24,9 +24,3 @@ import DemoCancel from './demo/Cancel.vue'
 import DemoDescription from './demo/Description.vue'
 import DemoStatus from './demo/Status.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

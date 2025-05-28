@@ -5,6 +5,7 @@
     title="请选择日期"
     type="range"
     several-months
+    value-format="YYYY-MM-DD"
   />
 
   <sar-list card>

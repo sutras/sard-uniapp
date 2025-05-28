@@ -6,6 +6,7 @@
     type="multiple"
     :max-days="3"
     :over-max-days="() => toast('最多选择3天')"
+    value-format="YYYY-MM-DD"
   />
 
   <sar-calendar-popout
@@ -15,6 +16,7 @@
     type="range"
     :max-days="3"
     :over-max-days="() => toast('最多选择3天')"
+    value-format="YYYY-MM-DD"
   />
 
   <sar-list card>

@@ -34,9 +34,3 @@ import DemoValue from './demo/Value.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoLoading from './demo/Loading.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

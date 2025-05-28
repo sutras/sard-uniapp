@@ -29,9 +29,3 @@ import DemoIdcard from './demo/Idcard.vue'
 import DemoRandom from './demo/Random.vue'
 import DemoPlate from './demo/Plate.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

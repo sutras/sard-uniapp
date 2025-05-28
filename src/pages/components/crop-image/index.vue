@@ -21,5 +21,3 @@ import DemoBasic from './demo/Basic.vue'
 import DemoCropScale from './demo/CropScale.vue'
 import DemoBeforeCrop from './demo/BeforeCrop.vue'
 </script>
-
-<style lang="scss" scoped></style>

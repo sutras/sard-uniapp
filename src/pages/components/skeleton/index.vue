@@ -44,9 +44,3 @@ import DemoAnimated from './demo/Animated.vue'
 import DemoContain from './demo/Contain.vue'
 import DemoCustom from './demo/Custom.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

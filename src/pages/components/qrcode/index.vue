@@ -39,9 +39,3 @@ import DemoIcon from './demo/Icon.vue'
 import DemoQuietZoneModules from './demo/QuietZoneModules.vue'
 import DemoECL from './demo/ECL.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

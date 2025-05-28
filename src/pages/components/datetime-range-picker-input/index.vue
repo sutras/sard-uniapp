@@ -19,9 +19,3 @@ import DemoBasic from './demo/Basic.vue'
 import DemoOutletFormat from './demo/OutletFormat.vue'
 import DemoValueFormat from './demo/ValueFormat.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

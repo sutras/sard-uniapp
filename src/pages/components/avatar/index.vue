@@ -39,9 +39,3 @@ import DemoPicture from './demo/Picture.vue'
 import DemoChildren from './demo/Children.vue'
 import DemoExtra from './demo/Extra.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

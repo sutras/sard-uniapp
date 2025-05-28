@@ -34,9 +34,3 @@ import DemoStyle from './demo/Style.vue'
 import DemoControl from './demo/Control.vue'
 import DemoCaptcha from './demo/Captcha.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>

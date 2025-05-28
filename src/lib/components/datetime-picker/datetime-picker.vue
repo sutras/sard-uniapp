@@ -123,8 +123,8 @@ const normalizeValue = (value: Date | string | undefined | null) => {
   return date < minDate.value
     ? new Date(minDate.value)
     : date > maxDate.value
-    ? new Date(maxDate.value)
-    : date
+      ? new Date(maxDate.value)
+      : date
 }
 
 // main

@@ -44,5 +44,3 @@ import DemoWeekStartsOn from './demo/WeekStartsOn.vue'
 import DemoFormatter from './demo/Formatter.vue'
 import DemoSeveral from './demo/Several.vue'
 </script>
-
-<style lang="scss" scoped></style>

@@ -4,6 +4,7 @@
     v-model:visible="visible"
     title="请选择日期"
     :week-starts-on="1"
+    value-format="YYYY-MM-DD"
   />
 
   <sar-list card>

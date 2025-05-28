@@ -19,9 +19,3 @@ import DemoBasic from './demo/Basic.vue'
 import DemoCompact from './demo/Compact.vue'
 import DemoBeforeClose from './demo/BeforeClose.vue'
 </script>
-
-<style lang="scss" scoped>
-// :deep() {
-
-// }
-</style>
