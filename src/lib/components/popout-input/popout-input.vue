@@ -14,7 +14,11 @@
       :input-min-height="multiline"
       @clear="onClear"
     >
+      <template #prepend>
+        <slot name="prepend"></slot>
+      </template>
       <template #append>
+        <slot name="append"></slot>
         <view :class="bem.e('append')">
           <view :class="bem.e('loading')" v-if="loading">
             <sar-loading />

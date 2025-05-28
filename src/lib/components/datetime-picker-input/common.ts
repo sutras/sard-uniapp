@@ -1,30 +1,22 @@
-import { type DatetimePickerProps } from '../datetime-picker/common'
 import { type PopoutInputProps } from '../popout-input/common'
 import { defaultConfig } from '../config'
-import { type StyleValue } from 'vue'
+import {
+  type DatetimePickerPopoutProps,
+  type DatetimePickerPopoutEmits,
+} from '../datetime-picker-popout/common'
 
 export interface DatetimePickerInputProps
-  extends DatetimePickerProps,
+  extends DatetimePickerPopoutProps,
     Omit<PopoutInputProps, 'modelValue' | 'loading'> {
-  visible?: boolean
-  title?: string
   outletFormat?: string
-  valueFormat?: string
-  validateEvent?: boolean
-  popoutClass?: string
-  popoutStyle?: StyleValue
 }
 
 export const defaultDatetimePickerInputProps = () => ({
   ...defaultConfig.datetimePicker,
-  ...defaultConfig.datetimePickerInput,
+  ...defaultConfig.datetimePickerPopout,
 })
 
-export interface DatetimePickerInputEmits {
-  (e: 'update:visible', visible: boolean): void
-  (e: 'update:model-value', date: Date | string | undefined): void
-  (e: 'change', date: Date | string | undefined): void
-}
+export interface DatetimePickerInputEmits extends DatetimePickerPopoutEmits {}
 
 export const mapTypeFormat = {
   y: 'YYYY',

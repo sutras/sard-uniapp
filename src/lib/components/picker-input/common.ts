@@ -1,25 +1,16 @@
-import { defaultPickerProps, type PickerProps } from '../picker/common'
 import { type PopoutInputProps } from '../popout-input/common'
-import { defaultConfig } from '../config'
-import { type StyleValue } from 'vue'
+import {
+  defaultPickerPopoutProps,
+  type PickerPopoutEmits,
+  type PickerPopoutProps,
+} from '../picker-popout/common'
 
 export interface PickerInputProps
-  extends PickerProps,
-    Omit<PopoutInputProps, 'modelValue'> {
-  visible?: boolean
-  title?: string
-  validateEvent?: boolean
-  popoutClass?: string
-  popoutStyle?: StyleValue
-}
+  extends PickerPopoutProps,
+    Omit<PopoutInputProps, 'modelValue'> {}
 
 export const defaultPickerInputProps = () => ({
-  ...defaultPickerProps(),
-  ...defaultConfig.pickerInput,
+  ...defaultPickerPopoutProps(),
 })
 
-export interface PickerInputEmits {
-  (e: 'update:visible', visible: boolean): void
-  (e: 'update:model-value', value: any): void
-  (e: 'change', value: any): void
-}
+export interface PickerInputEmits extends PickerPopoutEmits {}

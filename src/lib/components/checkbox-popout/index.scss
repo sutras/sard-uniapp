@@ -1,0 +1,11 @@
+@use '../style/base' as *;
+
+@include bem(checkbox-popout) {
+  @include e(container) {
+    @include scroll-shadow;
+  }
+
+  @include e(scroll) {
+    max-height: var(--sar-checkbox-popout-max-height);
+  }
+}

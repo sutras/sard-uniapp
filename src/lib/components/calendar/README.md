@@ -25,50 +25,7 @@ import Calendar from 'sard-uniapp/components/calendar/calendar.vue'
 
 @code('${DEMO_PATH}/calendar/demo/Basic.vue')
 
-### 类型
-
-日历组件可以选择单个值、多个值以及进行范围选择。
-
-@code('${DEMO_PATH}/calendar/demo/Type.vue')
-
-### 自定义日期范围
-
-可以使用 `min` 和 `max` 属性限制可以选择的日期的范围。
-
-@code('${DEMO_PATH}/calendar/demo/MinMax.vue')
-
-### 最多选择天数
-
-在多个值和范围选择中，使用 `maxDays` 属性可以限制最多可选的天数。
-超出允许选择的天数后会调用 `overMaxDays` 属性配置的函数。
-
-@code('${DEMO_PATH}/calendar/demo/MaxDays.vue')
-
-### 禁用日期
-
-`disabledDate` 属性配置的函数接收一个日期对象，如果此函数返回真则禁用这个日期。
-
-@code('${DEMO_PATH}/calendar/demo/DisabledDate.vue')
-
-### 自定义起始周
-
-默认一周从星期天开始，使用 `weekStartsOn` 属性可以配置一周从任意星期开始。
-0 表示从周日开始，1 表示从周一开始。
-
-@code('${DEMO_PATH}/calendar/demo/WeekStartsOn.vue')
-
-### 格式化日期
-
-`formatter` 属性可以配置一个接收 `CalendarDay` 类型的对象，通过此对象可以自定义当前日期展示的内容和样式。
-
-@code('${DEMO_PATH}/calendar/demo/Formatter.vue')
-
-### 展示多个月
-
-默认只展示一个月，如果要表现上下月之间的强关联性，可以设置 `severalMonths` 属性以展示多个月。
-这时设置的最大最小值范围不能太大，避免渲染大量节点造成性能问题。
-
-@code('${DEMO_PATH}/calendar/demo/Several.vue')
+更多案例，请参考 [CalendarPopout 组件](./calendar-popout)
 
 ## API
 

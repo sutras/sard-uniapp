@@ -49,12 +49,20 @@
         "name": "calendar-input"
       },
       {
+        "title": "CalendarPopout 日历弹出框",
+        "name": "calendar-popout"
+      },
+      {
         "title": "Cascader 级联选择",
         "name": "cascader"
       },
       {
         "title": "CascaderInput 级联输入框",
         "name": "cascader-input"
+      },
+      {
+        "title": "CascaderPopout 级联弹出框",
+        "name": "cascader-popout"
       },
       {
         "title": "Checkbox 复选框",
@@ -65,6 +73,10 @@
         "name": "checkbox-input"
       },
       {
+        "title": "CheckboxPopout 复选弹出框",
+        "name": "checkbox-popout"
+      },
+      {
         "title": "DatetimePicker 日期时间选择器",
         "name": "datetime-picker"
       },
@@ -73,12 +85,20 @@
         "name": "datetime-picker-input"
       },
       {
+        "title": "DatetimePickerPopout 日期时间弹出框",
+        "name": "datetime-picker-popout"
+      },
+      {
         "title": "DatetimeRangePicker 日期时间范围选择器",
         "name": "datetime-range-picker"
       },
       {
         "title": "DatetimeRangePickerInput 日期时间范围输入框",
         "name": "datetime-range-picker-input"
+      },
+      {
+        "title": "DatetimeRangePickerPopout 日期时间范围弹出框",
+        "name": "datetime-range-picker-popout"
       },
       {
         "title": "Form 表单",
@@ -105,6 +125,10 @@
         "name": "picker-input"
       },
       {
+        "title": "PickerPopout 选择器弹出框",
+        "name": "picker-popout"
+      },
+      {
         "title": "PopoutInput 弹出式输入框",
         "name": "popout-input"
       },
@@ -115,6 +139,10 @@
       {
         "title": "RadioInput 单选输入框",
         "name": "radio-input"
+      },
+      {
+        "title": "RadioPopout 单选弹出框",
+        "name": "radio-popout"
       },
       {
         "title": "Rate 评分",

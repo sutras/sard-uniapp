@@ -10,44 +10,35 @@
     @clear="onClear"
     @click="onInputClick"
   >
-    <sar-popout
-      :visible="innerVisible"
+    <sar-calendar-popout
+      v-model:visible="innerVisible"
+      v-model="innerValue"
       :title="title ?? placeholder"
       :show-confirm="showConfirm"
-      :confirm-disabled="confirmDisabled"
       :root-class="popoutClass"
       :root-style="popoutStyle"
-      @update:visible="onVisible"
-      @confirm="onConfirm"
-    >
-      <template #visible="{ already }">
-        <sar-calendar
-          v-if="already"
-          :model-value="popoutValue"
-          @change="onChange"
-          :type="type"
-          :min="min"
-          :max="max"
-          :current-date="currentDate"
-          :disabled-date="disabledDate"
-          :max-days="maxDays"
-          :over-max-days="overMaxDays"
-          :week-starts-on="weekStartsOn"
-          :formatter="formatter"
-          :allow-same-day="allowSameDay"
-          :several-months="severalMonths"
-          :value-format="valueFormat"
-        />
-      </template>
-    </sar-popout>
+      :type="type"
+      :min="min"
+      :max="max"
+      :current-date="currentDate"
+      :disabled-date="disabledDate"
+      :max-days="maxDays"
+      :over-max-days="overMaxDays"
+      :week-starts-on="weekStartsOn"
+      :formatter="formatter"
+      :allow-same-day="allowSameDay"
+      :several-months="severalMonths"
+      :value-format="valueFormat"
+      :validate-event="validateEvent"
+      @change="onChange"
+    />
   </sar-popout-input>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue'
+import { ref, watch } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
-import SarCalendar from '../calendar/calendar.vue'
-import SarPopout from '../popout/popout.vue'
+import SarCalendarPopout from '../calendar-popout/calendar-popout.vue'
 import { formatDate, isString, parseDate } from '../../utils'
 import { type CalendarType } from '../calendar/common'
 import { useTranslate } from '../locale'
@@ -56,7 +47,6 @@ import {
   type CalendarInputEmits,
   defaultCalendarInputProps,
 } from './common'
-import { useFormItemContext } from '../form/common'
 
 defineOptions({
   options: {
@@ -73,7 +63,24 @@ const props = withDefaults(
 const emit = defineEmits<CalendarInputEmits>()
 
 // main
-const formItemContext = useFormItemContext()
+
+// visible
+const innerVisible = ref(props.visible)
+
+watch(
+  () => props.visible,
+  () => {
+    innerVisible.value = props.visible
+  },
+)
+
+watch(innerVisible, () => {
+  emit('update:visible', innerVisible.value)
+})
+
+const onInputClick = () => {
+  innerVisible.value = true
+}
 
 // value
 const innerValue = ref(props.modelValue)
@@ -82,38 +89,12 @@ watch(
   () => props.modelValue,
   () => {
     innerValue.value = props.modelValue
-    if (props.validateEvent) {
-      formItemContext?.onChange()
-    }
   },
 )
 
-const popoutValue = ref(props.modelValue)
-
-watch(innerValue, () => {
-  popoutValue.value = innerValue.value
-})
-
-const confirmDisabled = computed(() => {
-  const value = popoutValue.value
-  return !value || (Array.isArray(value) && value.length === 0)
-})
-
 const onChange = (value: any) => {
-  popoutValue.value = value
-
-  if (!props.showConfirm && !confirmDisabled.value) {
-    onConfirm()
-    innerVisible.value = false
-  }
-}
-
-const onConfirm = () => {
-  innerValue.value = popoutValue.value
-  emit('update:model-value', popoutValue.value)
-  emit('change', popoutValue.value)
-
-  inputValue.value = getInputValue()
+  emit('update:model-value', value)
+  emit('change', value)
 }
 
 // input
@@ -180,25 +161,5 @@ const onClear = () => {
   innerValue.value = undefined
   emit('update:model-value', undefined)
   emit('change', undefined)
-}
-
-// visible
-const innerVisible = ref(props.visible)
-
-watch(
-  () => props.visible,
-  () => {
-    innerVisible.value = props.visible
-  },
-)
-
-const onVisible = (visible: boolean) => {
-  innerVisible.value = visible
-  emit('update:visible', visible)
-}
-
-const onInputClick = () => {
-  innerVisible.value = true
-  emit('update:visible', true)
 }
 </script>

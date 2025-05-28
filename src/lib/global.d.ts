@@ -10,12 +10,15 @@ declare module 'vue' {
     SarButton: typeof import('./components/button/button.vue').default
     SarCalendar: typeof import('./components/calendar/calendar.vue').default
     SarCalendarInput: typeof import('./components/calendar-input/calendar-input.vue').default
+    SarCalendarPopout: typeof import('./components/calendar-popout/calendar-popout.vue').default
     SarCard: typeof import('./components/card/card.vue').default
     SarCascader: typeof import('./components/cascader/cascader.vue').default
     SarCascaderInput: typeof import('./components/cascader-input/cascader-input.vue').default
+    SarCascaderPopout: typeof import('./components/cascader-popout/cascader-popout.vue').default
     SarCheckbox: typeof import('./components/checkbox/checkbox.vue').default
     SarCheckboxGroup: typeof import('./components/checkbox-group/checkbox-group.vue').default
     SarCheckboxInput: typeof import('./components/checkbox-input/checkbox-input.vue').default
+    SarCheckboxPopout: typeof import('./components/checkbox-popout/checkbox-popout.vue').default
     SarCol: typeof import('./components/col/col.vue').default
     SarCollapse: typeof import('./components/collapse/collapse.vue').default
     SarCountDown: typeof import('./components/count-down/count-down.vue').default
@@ -24,8 +27,10 @@ declare module 'vue' {
     SarCropImageAgent: typeof import('./components/crop-image-agent/crop-image-agent.vue').default
     SarDatetimePicker: typeof import('./components/datetime-picker/datetime-picker.vue').default
     SarDatetimePickerInput: typeof import('./components/datetime-picker-input/datetime-picker-input.vue').default
+    SarDatetimePickerPopout: typeof import('./components/datetime-picker-popout/datetime-picker-popout.vue').default
     SarDatetimeRangePicker: typeof import('./components/datetime-range-picker/datetime-range-picker.vue').default
     SarDatetimeRangePickerInput: typeof import('./components/datetime-range-picker-input/datetime-range-picker-input.vue').default
+    SarDatetimeRangePickerPopout: typeof import('./components/datetime-range-picker-popout/datetime-range-picker-popout.vue').default
     SarDialog: typeof import('./components/dialog/dialog.vue').default
     SarDialogAgent: typeof import('./components/dialog-agent/dialog-agent.vue').default
     SarDivider: typeof import('./components/divider/divider.vue').default
@@ -61,6 +66,7 @@ declare module 'vue' {
     SarPasswordInput: typeof import('./components/password-input/password-input.vue').default
     SarPicker: typeof import('./components/picker/picker.vue').default
     SarPickerInput: typeof import('./components/picker-input/picker-input.vue').default
+    SarPickerPopout: typeof import('./components/picker-popout/picker-popout.vue').default
     SarPopout: typeof import('./components/popout/popout.vue').default
     SarPopoutInput: typeof import('./components/popout-input/popout-input.vue').default
     SarPopover: typeof import('./components/popover/popover.vue').default
@@ -73,6 +79,7 @@ declare module 'vue' {
     SarRadio: typeof import('./components/radio/radio.vue').default
     SarRadioGroup: typeof import('./components/radio-group/radio-group.vue').default
     SarRadioInput: typeof import('./components/radio-input/radio-input.vue').default
+    SarRadioPopout: typeof import('./components/radio-popout/radio-popout.vue').default
     SarRate: typeof import('./components/rate/rate.vue').default
     SarResult: typeof import('./components/result/result.vue').default
     SarRow: typeof import('./components/row/row.vue').default

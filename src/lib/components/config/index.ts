@@ -77,11 +77,13 @@ export const defaultConfig = {
     weekStartsOn: 0,
   },
   calendarInput: {
-    showConfirm: true,
-    validateEvent: true,
     outletFormat: 'YYYY-MM-DD',
   },
-  cascaderInput: {
+  calendarPopout: {
+    showConfirm: true,
+    validateEvent: true,
+  },
+  cascaderPopout: {
     showConfirm: true,
     validateEvent: true,
   },
@@ -92,7 +94,7 @@ export const defaultConfig = {
     direction: 'vertical' as CheckboxGroupProps['direction'],
     validateEvent: true,
   },
-  checkboxInput: {
+  checkboxPopout: {
     validateEvent: true,
   },
   countDown: {
@@ -118,13 +120,13 @@ export const defaultConfig = {
   datetimePicker: {
     type: 'yMd',
   },
-  datetimePickerInput: {
+  datetimePickerPopout: {
     validateEvent: true,
   },
   datetimeRangePicker: {
     type: 'yMd',
   },
-  datetimeRangePickerInput: {
+  datetimeRangePickerPopout: {
     validateEvent: true,
   },
   dialog: {
@@ -255,7 +257,7 @@ export const defaultConfig = {
   picker: {
     immediateChange: false,
   },
-  pickerInput: {
+  pickerPopout: {
     validateEvent: true,
   },
   popout: {
@@ -308,7 +310,7 @@ export const defaultConfig = {
     direction: 'vertical' as RadioGroupProps['direction'],
     validateEvent: true,
   },
-  radioInput: {
+  radioPopout: {
     validateEvent: true,
     type: 'circle' as RadioInputProps['type'],
   },

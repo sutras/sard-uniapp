@@ -46,6 +46,9 @@
       "path": "pages/components/calendar-input/index"
     },
     {
+      "path": "pages/components/calendar-popout/index"
+    },
+    {
       "path": "pages/components/calendar/index"
     },
     {
@@ -55,10 +58,16 @@
       "path": "pages/components/cascader-input/index"
     },
     {
+      "path": "pages/components/cascader-popout/index"
+    },
+    {
       "path": "pages/components/cascader/index"
     },
     {
       "path": "pages/components/checkbox-input/index"
+    },
+    {
+      "path": "pages/components/checkbox-popout/index"
     },
     {
       "path": "pages/components/checkbox/index"
@@ -79,10 +88,16 @@
       "path": "pages/components/datetime-picker-input/index"
     },
     {
+      "path": "pages/components/datetime-picker-popout/index"
+    },
+    {
       "path": "pages/components/datetime-picker/index"
     },
     {
       "path": "pages/components/datetime-range-picker-input/index"
+    },
+    {
+      "path": "pages/components/datetime-range-picker-popout/index"
     },
     {
       "path": "pages/components/datetime-range-picker/index"
@@ -106,16 +121,16 @@
       "path": "pages/components/floating-bubble/index"
     },
     {
-      "path": "pages/components/floating-panel/index"
+      "path": "pages/components/floating-panel/demo/Anchors"
     },
     {
       "path": "pages/components/floating-panel/demo/Basic"
     },
     {
-      "path": "pages/components/floating-panel/demo/Anchors"
+      "path": "pages/components/floating-panel/demo/ContentDraggable"
     },
     {
-      "path": "pages/components/floating-panel/demo/ContentDraggable"
+      "path": "pages/components/floating-panel/index"
     },
     {
       "path": "pages/components/form/demo/BasicLogin"
@@ -241,6 +256,9 @@
       "path": "pages/components/picker-input/index"
     },
     {
+      "path": "pages/components/picker-popout/index"
+    },
+    {
       "path": "pages/components/picker/index"
     },
     {
@@ -278,6 +296,9 @@
     },
     {
       "path": "pages/components/radio-input/index"
+    },
+    {
+      "path": "pages/components/radio-popout/index"
     },
     {
       "path": "pages/components/radio/index"

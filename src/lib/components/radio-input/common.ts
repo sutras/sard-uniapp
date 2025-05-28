@@ -1,26 +1,17 @@
-import { type RadioGroupOption, type RadioGroupProps } from '../radio/common'
+import { type RadioGroupOption } from '../radio/common'
 import { type PopoutInputProps } from '../popout-input/common'
-import { defaultConfig } from '../config'
-import { type StyleValue } from 'vue'
+import {
+  type RadioPopoutEmits,
+  type RadioPopoutProps,
+  defaultRadioPopoutProps,
+} from '../radio-popout/common'
 
 export type RadioInputOption = RadioGroupOption
 
 export interface RadioInputProps
-  extends RadioGroupProps,
-    Omit<PopoutInputProps, 'modelValue'> {
-  visible?: boolean
-  title?: string
-  popoutClass?: string
-  popoutStyle?: StyleValue
-}
+  extends RadioPopoutProps,
+    Omit<PopoutInputProps, 'modelValue'> {}
 
-export const defaultRadioInputProps = () => ({
-  ...defaultConfig.radioInput,
-  options: () => [],
-})
+export const defaultRadioInputProps = defaultRadioPopoutProps
 
-export interface RadioInputEmits {
-  (e: 'update:visible', visible: boolean): void
-  (e: 'update:model-value', value: any): void
-  (e: 'change', value: any): void
-}
+export interface RadioInputEmits extends RadioPopoutEmits {}

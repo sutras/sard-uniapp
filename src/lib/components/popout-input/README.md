@@ -35,7 +35,7 @@ import PopoutInput from 'sard-uniapp/components/popout-input/popout-input.vue'
 | placeholder | 输入框占位符内容 | string     | -      |
 | disabled    | 禁用状态         | boolean    | false  |
 | readonly    | 只读状态         | boolean    | false  |
-| loadng      | 加载状态         | boolean    | false  |
+| loading     | 加载状态         | boolean    | false  |
 | clearable   | 是否显示清空按钮 | boolean    | false  |
 | multiline   | 是否多行输入框   | boolean    | false  |
 

@@ -61,7 +61,7 @@
 </template>
 
 <script setup lang="ts">
-import { getWindowInfo } from '@/lib'
+import { getWindowInfo } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const statusBarHeight = getWindowInfo().statusBarHeight + 'px'

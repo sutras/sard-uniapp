@@ -10,39 +10,29 @@
     @clear="onClear"
     @click="onInputClick"
   >
-    <sar-popout
+    <sar-picker-popout
+      v-model:visible="innerVisible"
+      v-model="innerValue"
       keep-render
-      :visible="innerVisible"
       :title="title ?? placeholder"
       :root-class="popoutClass"
       :root-style="popoutStyle"
-      @update:visible="onVisible"
-      @confirm="onConfirm"
-      @enter="onEnter"
-    >
-      <template #visible="{ already }">
-        <sar-picker
-          v-if="already"
-          :model-value="popoutValue"
-          @change="onChange"
-          :columns="columns"
-          :option-keys="optionKeys"
-          :immediate-change="immediateChange"
-        />
-      </template>
-    </sar-popout>
+      :columns="columns"
+      :option-keys="optionKeys"
+      :immediate-change="immediateChange"
+      :validate-event="validateEvent"
+      @change="onChange"
+    />
   </sar-popout-input>
 </template>
 
 <script setup lang="ts">
 import { ref, watch, computed } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
-import SarPopout from '../popout/popout.vue'
-import SarPicker from '../picker/picker.vue'
+import SarPickerPopout from '../picker-popout/picker-popout.vue'
 import {
   defaultOptionKeys,
   getIndexesByValue,
-  getInitialValue,
   getOptionsByIndexes,
   getValueOrLabelByOption,
   type PickerOption,
@@ -54,7 +44,6 @@ import {
   type PickerInputEmits,
   defaultPickerInputProps,
 } from './common'
-import { useFormItemContext } from '../form/common'
 
 defineOptions({
   options: {
@@ -71,51 +60,42 @@ const props = withDefaults(
 const emit = defineEmits<PickerInputEmits>()
 
 // main
-const formItemContext = useFormItemContext()
 
+// visible
+const innerVisible = ref(props.visible)
+
+watch(
+  () => props.visible,
+  () => {
+    innerVisible.value = props.visible
+  },
+)
+
+watch(innerVisible, () => {
+  emit('update:visible', innerVisible.value)
+})
+
+const onInputClick = () => {
+  innerVisible.value = true
+}
+
+// value
 const fieldKeys = computed(() => {
   return Object.assign({}, defaultOptionKeys, props.optionKeys)
 })
 
-// value
 const innerValue = ref(props.modelValue)
 
 watch(
   () => props.modelValue,
   () => {
     innerValue.value = props.modelValue
-    if (props.validateEvent) {
-      formItemContext?.onChange()
-    }
   },
 )
 
-const popoutValue = ref(props.modelValue)
-
 const onChange = (value: any) => {
-  popoutValue.value = value
-}
-
-const onEnter = () => {
-  if (
-    !isNullish(innerValue.value) &&
-    innerValue.value !== '' &&
-    popoutValue.value !== innerValue.value
-  ) {
-    popoutValue.value = innerValue.value
-  }
-}
-
-const onConfirm = () => {
-  if (isNullish(popoutValue.value) || popoutValue.value === '') {
-    popoutValue.value = getInitialValue(props.columns, fieldKeys.value)
-  }
-
-  innerValue.value = popoutValue.value
-  emit('update:model-value', popoutValue.value)
-  emit('change', popoutValue.value)
-
-  inputValue.value = getInputValue()
+  emit('update:model-value', value)
+  emit('change', value)
 }
 
 // input
@@ -158,25 +138,5 @@ const onClear = () => {
   innerValue.value = undefined
   emit('update:model-value', undefined)
   emit('change', undefined)
-}
-
-// visible
-const innerVisible = ref(props.visible)
-
-watch(
-  () => props.visible,
-  () => {
-    innerVisible.value = props.visible
-  },
-)
-
-const onVisible = (visible: boolean) => {
-  innerVisible.value = visible
-  emit('update:visible', visible)
-}
-
-const onInputClick = () => {
-  innerVisible.value = true
-  emit('update:visible', true)
 }
 </script>

@@ -152,7 +152,7 @@ export const getColumnData = (
       (_, i) =>
         ({
           value: i + start,
-        } as DatetimeColumnOption),
+        }) as DatetimeColumnOption,
     )
 
   if (filter) {
@@ -177,6 +177,6 @@ export function getInitialValue(minDate: Date, maxDate: Date) {
   return value.getTime() < minDate.getTime()
     ? minDate
     : value.getTime() > maxDate.getTime()
-    ? maxDate
-    : value
+      ? maxDate
+      : value
 }

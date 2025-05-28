@@ -19,9 +19,9 @@ import CalendarInput from 'sard-uniapp/components/calendar-input/calendar-input.
 
 ### 基础使用
 
-日历输入框组件接收日历组件相同的属性，另外可以通过 `title` 和 `placeholder` 属性设置弹出框标题和输入框占位文本。
+使用 `v-model` 绑定当前值，通过 `title` 和 `placeholder` 属性设置弹出框标题和输入框占位文本。
 
-在点击输入框后会显示包裹日历的弹出框。
+在点击输入框后会显示日历弹出框。
 
 @code('${DEMO_PATH}/calendar-input/demo/Basic.vue')
 
@@ -39,34 +39,26 @@ import CalendarInput from 'sard-uniapp/components/calendar-input/calendar-input.
 
 ### 类型
 
+下面展示了不同类型选择的值在输入框的展示。
+
 @code('${DEMO_PATH}/calendar-input/demo/Type.vue')
 
 ## API
 
 ### CalendarInputProps
 
-继承 [`CalendarProps`](./calendar#CalendarProps) 并有以下额外属性：
+继承 [`CalendarPopoutProps`](./calendar-popout#CalendarPopoutProps) 并有以下额外属性：
 
-| 属性                            | 描述                                     | 类型                                                  | 默认值       |
-| ------------------------------- | ---------------------------------------- | ----------------------------------------------------- | ------------ |
-| root-class                      | 弹出式输入框根元素类名                   | string                                                | -            |
-| root-style                      | 弹出式输入框根元素样式                   | StyleValue                                            | -            |
-| popout-class <sup>1.14.2+</sup> | 弹窗框根元素类名                         | string                                                | -            |
-| popout-style <sup>1.14.2+</sup> | 弹窗框根元素样式                         | StyleValue                                            | -            |
-| disabled                        | 禁用状态                                 | boolean                                               | false        |
-| readonly                        | 只读状态                                 | boolean                                               | false        |
-| clearable                       | 是否显示清空按钮                         | boolean                                               | false        |
-| placeholder                     | 输入框占位符内容                         | string                                                | -            |
-| visible (v-model)               | 是否显示弹出框                           | boolean                                               | -            |
-| title                           | 弹出框标题，不设置则取 `placeholder` 值  | string                                                | -            |
-| show-confirm                    | 是否显示确定按钮，隐藏按钮可用于快捷选择 | boolean                                               | true         |
-| validate-event                  | 是否触发表单验证                         | boolean                                               | true         |
-| outlet-format <sup>1.10+</sup>  | 输出到输入框的日期格式                   | string [详见特殊符号](../guide/date#日期格式特殊符号) | 'YYYY-MM-DD' |
+| 属性                           | 描述                   | 类型                                                  | 默认值       |
+| ------------------------------ | ---------------------- | ----------------------------------------------------- | ------------ |
+| root-class                     | 弹出式输入框根元素类名 | string                                                | -            |
+| root-style                     | 弹出式输入框根元素样式 | StyleValue                                            | -            |
+| disabled                       | 禁用状态               | boolean                                               | false        |
+| readonly                       | 只读状态               | boolean                                               | false        |
+| clearable                      | 是否显示清空按钮       | boolean                                               | false        |
+| placeholder                    | 输入框占位符内容       | string                                                | -            |
+| outlet-format <sup>1.10+</sup> | 输出到输入框的日期格式 | string [详见特殊符号](../guide/date#日期格式特殊符号) | 'YYYY-MM-DD' |
 
 ### CalendarInputEmits
 
-| 事件                     | 描述                     | 类型                                                               |
-| ------------------------ | ------------------------ | ------------------------------------------------------------------ |
-| update:model-value       | 日历输入组件值改变时触发 | (value: Date \| Date[] \| string \| string[] \| undefined) => void |
-| change <sup>1.9.2+</sup> | 日历输入组件值改变时触发 | (value: Date \| Date[] \| string \| string[] \| undefined) => void |
-| update:visible           | 弹出框显隐时触发         | (visible: boolean) => void                                         |
+继承 [`CalendarPopoutEmits`](./calendar-popout#CalendarPopoutEmits)

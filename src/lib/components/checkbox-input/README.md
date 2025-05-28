@@ -8,7 +8,7 @@ version: 1.3+
 
 ## 介绍
 
-组合了复选框组、列表、弹出框、输入框组件，实现了在弹出框中多选的功能。
+组合了复选弹出框、列表、输入框组件，实现了在弹出框中多选的功能。
 
 ## 引入
 
@@ -29,29 +29,15 @@ import CheckboxInput from 'sard-uniapp/components/checkbox-input/checkbox-input.
 
 ### CheckboxInputProps
 
-继承 [`CheckboxGroupProps`](./checkbox#CheckboxGroupProps) 并有以下额外属性：
+继承 [`CheckboxPopoutProps`](./checkbox-popout#CheckboxPopoutProps) 并有以下额外属性：
 
-| 属性                            | 描述                                    | 类型       | 默认值 |
-| ------------------------------- | --------------------------------------- | ---------- | ------ |
-| root-class                      | 弹出式输入框根元素类名                  | string     | -      |
-| root-style                      | 弹出式输入框根元素样式                  | StyleValue | -      |
-| popout-class <sup>1.14.2+</sup> | 弹窗框根元素类名                        | string     | -      |
-| popout-style <sup>1.14.2+</sup> | 弹窗框根元素样式                        | StyleValue | -      |
-| clearable                       | 是否显示清空按钮                        | boolean    | false  |
-| placeholder                     | 输入框占位符内容                        | string     | -      |
-| visible (v-model)               | 是否显示弹出框                          | boolean    | -      |
-| title                           | 弹出框标题，不设置则取 `placeholder` 值 | string     | -      |
+| 属性        | 描述                   | 类型       | 默认值 |
+| ----------- | ---------------------- | ---------- | ------ |
+| root-class  | 弹出式输入框根元素类名 | string     | -      |
+| root-style  | 弹出式输入框根元素样式 | StyleValue | -      |
+| clearable   | 是否显示清空按钮       | boolean    | false  |
+| placeholder | 输入框占位符内容       | string     | -      |
 
 ### CheckboxInputEmits
 
-| 事件                     | 描述                     | 类型                                |
-| ------------------------ | ------------------------ | ----------------------------------- |
-| update:model-value       | 复选输入组件值改变时触发 | (value: any[] \| undefined) => void |
-| change <sup>1.9.2+</sup> | 复选输入组件值改变时触发 | (value: any[] \| undefined) => void |
-| update:visible           | 弹出框显隐时触发         | (visible: boolean) => void          |
-
-## 主题定制
-
-### CSS 变量
-
-@code('./variables.scss#variables')
+继承 [`CheckboxPopoutEmits`](./checkbox-popout#CheckboxPopoutEmits)

@@ -18,3 +18,5 @@ export interface PopoutInputEmits {
   (e: 'change', value: string): void
   (e: 'clear'): void
 }
+
+export interface PopoutInputSlots {}

@@ -23,29 +23,7 @@ import DatetimePicker from 'sard-uniapp/components/datetime-picker/datetime-pick
 
 @code('${DEMO_PATH}/datetime-picker/demo/Basic.vue')
 
-### 类型
-
-可以使用 `yMdhms`（年月日时分秒）进行任意组合，每个字母对应一列。
-
-@code('${DEMO_PATH}/datetime-picker/demo/Type.vue')
-
-### 自定义日期时间范围
-
-可以使用 `min` 和 `max` 属性限制可以选择的日期时间的范围。
-
-@code('${DEMO_PATH}/datetime-picker/demo/MinMax.vue')
-
-### 过滤器
-
-可以使用 `filter` 属性来仅展示想要的内容，只有返回真的值才会展示。
-
-@code('${DEMO_PATH}/datetime-picker/demo/Filter.vue')
-
-### 格式化
-
-可以使用 `formatter` 属性格式化展示的内容。
-
-@code('${DEMO_PATH}/datetime-picker/demo/Formatter.vue')
+更多案例，请参考 [DatetimePickerPopout 组件](./datetime-picker-popout)
 
 ## API
 

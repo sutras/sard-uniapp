@@ -1,28 +1,19 @@
-import { type CascaderProps, type CascaderOption } from '../cascader/common'
 import { type PopoutInputProps } from '../popout-input/common'
 import { defaultConfig } from '../config'
-import { type StyleValue } from 'vue'
+import {
+  type CascaderPopoutProps,
+  type CascaderPopoutEmits,
+  type CascaderPopoutSlots,
+} from '../cascader-popout/common'
 
 export interface CascaderInputProps
-  extends CascaderProps,
-    Omit<PopoutInputProps, 'modelValue'> {
-  visible?: boolean
-  title?: string
-  showConfirm?: boolean
-  validateEvent?: boolean
-  popoutClass?: string
-  popoutStyle?: StyleValue
-}
+  extends CascaderPopoutProps,
+    Omit<PopoutInputProps, 'modelValue'> {}
 
-export const defaultCascaderInputProps = defaultConfig.cascaderInput
+export const defaultCascaderInputProps = () => ({
+  ...defaultConfig.cascaderPopout,
+})
 
-export interface CascaderInputSlots {
-  top?(props: { tabIndex: number }): any
-}
+export interface CascaderInputSlots extends CascaderPopoutSlots {}
 
-export interface CascaderInputEmits {
-  (e: 'update:visible', visible: boolean): void
-  (e: 'update:model-value', value: any, selectedOptions: CascaderOption[]): void
-  (e: 'change', value: any, selectedOptions: CascaderOption[]): void
-  (e: 'select', option: CascaderOption, tabIndex: number): void
-}
+export interface CascaderInputEmits extends CascaderPopoutEmits {}
