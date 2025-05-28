@@ -26,7 +26,7 @@
         </view>
       </view>
     </view>
-    <sar-navbar-pit v-if="fixed" />
+    <sar-navbar-pit v-if="fixed" :status-bar="statusBar" />
   </view>
 </template>
 

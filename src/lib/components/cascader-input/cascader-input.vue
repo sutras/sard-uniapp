@@ -9,7 +9,7 @@
     :root-class="rootClass"
     :root-style="rootStyle"
     @clear="onClear"
-    @click="onInputClick"
+    @click="show"
   >
     <sar-cascader-popout
       v-model:visible="innerVisible"
@@ -27,15 +27,15 @@
       @select="(option, tabIndex) => $emit('select', option, tabIndex)"
       @change="onChange"
     >
-      <template #top="slotProps">
-        <slot name="top" v-bind="slotProps"></slot>
+      <template #top="{ tabIndex }">
+        <slot name="top" :tab-index="tabIndex"></slot>
       </template>
     </sar-cascader-popout>
   </sar-popout-input>
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue'
+import { watch, computed } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarCascaderPopout from '../cascader-popout/cascader-popout.vue'
 import {
@@ -45,6 +45,7 @@ import {
   getSelectedOptionsByValue,
 } from '../cascader/common'
 import { isNullish } from '../../utils'
+import { usePopoutInput } from '../../use'
 import {
   type CascaderInputProps,
   type CascaderInputSlots,
@@ -69,42 +70,13 @@ defineSlots<CascaderInputSlots>()
 const emit = defineEmits<CascaderInputEmits>()
 
 // main
-
-// visible
-const innerVisible = ref(props.visible)
-
-watch(
-  () => props.visible,
-  () => {
-    innerVisible.value = props.visible
-  },
-)
-
-watch(innerVisible, () => {
-  emit('update:visible', innerVisible.value)
-})
-
-const onInputClick = () => {
-  innerVisible.value = true
-}
-
-// value
-const innerValue = ref(props.modelValue)
-
-watch(
-  () => props.modelValue,
-  () => {
-    innerValue.value = props.modelValue
-  },
-)
-
-const onChange = (value: any, selectedOptions: CascaderOption[]) => {
-  emit('update:model-value', value, selectedOptions)
-  emit('change', value, selectedOptions)
-}
-
-// input
-const inputValue = ref('')
+const { innerVisible, innerValue, inputValue, show, onChange, onClear } =
+  usePopoutInput(props, emit, {
+    onClear() {
+      emit('update:model-value', undefined, [])
+      emit('change', undefined, [])
+    },
+  })
 
 const fieldkeys = computed(() => {
   return Object.assign(
@@ -146,11 +118,4 @@ watch(
     immediate: true,
   },
 )
-
-const onClear = () => {
-  inputValue.value = ''
-  innerValue.value = undefined
-  emit('update:model-value', undefined, [])
-  emit('change', undefined, [])
-}
 </script>

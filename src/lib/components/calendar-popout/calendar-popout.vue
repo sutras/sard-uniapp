@@ -31,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch, computed } from 'vue'
+import { computed } from 'vue'
 import SarPopout from '../popout/popout.vue'
 import SarCalendar from '../calendar/calendar.vue'
 import {
@@ -39,7 +39,7 @@ import {
   type CalendarPopoutEmits,
   defaultCalendarPopoutProps,
 } from './common'
-import { useFormItemContext } from '../form/common'
+import { useFormPopout } from '../../use'
 
 defineOptions({
   options: {
@@ -56,61 +56,21 @@ const props = withDefaults(
 const emit = defineEmits<CalendarPopoutEmits>()
 
 // main
-
-// visible
-const innerVisible = ref(props.visible)
-
-watch(
-  () => props.visible,
-  () => {
-    innerVisible.value = props.visible
+const { innerVisible, popoutValue, onChange, onConfirm } = useFormPopout(
+  props,
+  emit,
+  {
+    onChange() {
+      if (!props.showConfirm && !confirmDisabled.value) {
+        onConfirm()
+        innerVisible.value = false
+      }
+    },
   },
 )
-
-watch(innerVisible, () => {
-  emit('update:visible', innerVisible.value)
-})
-
-// value
-const formItemContext = useFormItemContext()
-
-const innerValue = ref(props.modelValue)
-
-watch(
-  () => props.modelValue,
-  () => {
-    innerValue.value = props.modelValue
-    if (props.validateEvent) {
-      formItemContext?.onChange()
-    }
-  },
-)
-
-const popoutValue = ref(props.modelValue)
-
-watch(innerValue, () => {
-  popoutValue.value = innerValue.value
-})
 
 const confirmDisabled = computed(() => {
   const value = popoutValue.value
   return !value || (Array.isArray(value) && value.length === 0)
 })
-
-const onChange = (value: any) => {
-  popoutValue.value = value
-
-  if (!props.showConfirm && !confirmDisabled.value) {
-    onConfirm()
-    innerVisible.value = false
-  }
-}
-
-const onConfirm = () => {
-  if (popoutValue.value !== innerValue.value) {
-    innerValue.value = popoutValue.value
-    emit('update:model-value', innerValue.value)
-    emit('change', innerValue.value)
-  }
-}
 </script>

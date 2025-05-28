@@ -8,7 +8,7 @@
     :root-class="rootClass"
     :root-style="rootStyle"
     @clear="onClear"
-    @click="onInputClick"
+    @click="show"
   >
     <sar-calendar-popout
       v-model:visible="innerVisible"
@@ -36,10 +36,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarCalendarPopout from '../calendar-popout/calendar-popout.vue'
 import { formatDate, isString, parseDate } from '../../utils'
+import { usePopoutInput } from '../../use'
 import { type CalendarType } from '../calendar/common'
 import { useTranslate } from '../locale'
 import {
@@ -63,42 +64,8 @@ const props = withDefaults(
 const emit = defineEmits<CalendarInputEmits>()
 
 // main
-
-// visible
-const innerVisible = ref(props.visible)
-
-watch(
-  () => props.visible,
-  () => {
-    innerVisible.value = props.visible
-  },
-)
-
-watch(innerVisible, () => {
-  emit('update:visible', innerVisible.value)
-})
-
-const onInputClick = () => {
-  innerVisible.value = true
-}
-
-// value
-const innerValue = ref(props.modelValue)
-
-watch(
-  () => props.modelValue,
-  () => {
-    innerValue.value = props.modelValue
-  },
-)
-
-const onChange = (value: any) => {
-  emit('update:model-value', value)
-  emit('change', value)
-}
-
-// input
-const inputValue = ref('')
+const { innerVisible, innerValue, inputValue, show, onChange, onClear } =
+  usePopoutInput(props, emit)
 
 const { t } = useTranslate('calendar')
 
@@ -155,11 +122,4 @@ watch(
     immediate: true,
   },
 )
-
-const onClear = () => {
-  inputValue.value = ''
-  innerValue.value = undefined
-  emit('update:model-value', undefined)
-  emit('change', undefined)
-}
 </script>

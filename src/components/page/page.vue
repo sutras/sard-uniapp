@@ -2,24 +2,23 @@
   <sar-toast-agent />
   <sar-dialog-agent />
   <sar-notify-agent status-bar />
+  <sar-navbar
+    :title="title"
+    show-back
+    fixed
+    :flow="isAlipay"
+    status-bar
+    :root-style="{
+      '--sar-navbar-bg': navbarBg || 'var(--sar-body-bg)',
+      '--sar-navbar-item-color': 'var(--sar-body-color)',
+    }"
+    @back="onBack"
+  />
 
   <view
     :class="classNames(bem.b(), bem.m('emphasis', emphasis))"
     :style="{ padding: padding || '' }"
   >
-    <sar-navbar
-      :title="title"
-      show-back
-      fixed
-      :flow="isAlipay"
-      status-bar
-      :root-style="{
-        '--sar-navbar-bg': navbarBg || 'var(--sar-body-bg)',
-        '--sar-navbar-item-color': 'var(--sar-body-color)',
-      }"
-      @back="onBack"
-    />
-
     <slot></slot>
   </view>
 </template>

@@ -8,6 +8,8 @@ export interface TabbarProps {
   color?: string
   activeColor?: string
   bordered?: boolean
+  fixed?: boolean
+  safeAreaInsetBottom?: boolean
 }
 
 export const defaultTabbarProps = defaultConfig.tabbar

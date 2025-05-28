@@ -22,7 +22,6 @@
 </template>
 
 <script setup lang="ts">
-import { watch, ref } from 'vue'
 import SarPopout from '../popout/popout.vue'
 import SarPicker from '../picker/picker.vue'
 import {
@@ -31,10 +30,10 @@ import {
   type PickerPopoutEmits,
   defaultPickerPopoutProps,
 } from './common'
-import { useFormItemContext } from '../form/common'
 import { isNullish } from '../../utils'
 import { defaultOptionKeys, getInitialValue } from '../picker/common'
 import { computed } from 'vue'
+import { useFormPopout } from '../../use'
 
 defineOptions({
   options: {
@@ -53,49 +52,18 @@ defineSlots<PickerPopoutSlots>()
 const emit = defineEmits<PickerPopoutEmits>()
 
 // main
-
-// visible
-const innerVisible = ref(props.visible)
-
-watch(
-  () => props.visible,
-  () => {
-    innerVisible.value = props.visible
-  },
-)
-
-watch(innerVisible, () => {
-  emit('update:visible', innerVisible.value)
-})
-
-// value
-const formItemContext = useFormItemContext()
+const { innerVisible, innerValue, popoutValue, onChange, onConfirm } =
+  useFormPopout(props, emit, {
+    onConfirmBefore() {
+      if (isNullish(popoutValue.value) || popoutValue.value === '') {
+        popoutValue.value = getInitialValue(props.columns, fieldKeys.value)
+      }
+    },
+  })
 
 const fieldKeys = computed(() => {
   return Object.assign({}, defaultOptionKeys, props.optionKeys)
 })
-
-const innerValue = ref(props.modelValue)
-
-watch(
-  () => props.modelValue,
-  () => {
-    innerValue.value = props.modelValue
-    if (props.validateEvent) {
-      formItemContext?.onChange()
-    }
-  },
-)
-
-const popoutValue = ref(props.modelValue)
-
-watch(innerValue, () => {
-  popoutValue.value = innerValue.value
-})
-
-const onChange = (value: any) => {
-  popoutValue.value = value
-}
 
 const onEnter = () => {
   if (
@@ -104,18 +72,6 @@ const onEnter = () => {
     popoutValue.value !== innerValue.value
   ) {
     popoutValue.value = innerValue.value
-  }
-}
-
-const onConfirm = () => {
-  if (isNullish(popoutValue.value) || popoutValue.value === '') {
-    popoutValue.value = getInitialValue(props.columns, fieldKeys.value)
-  }
-
-  if (popoutValue.value !== innerValue.value) {
-    innerValue.value = popoutValue.value
-    emit('update:model-value', innerValue.value)
-    emit('change', innerValue.value)
   }
 }
 </script>

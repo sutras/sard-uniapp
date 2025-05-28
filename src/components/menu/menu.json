@@ -303,6 +303,10 @@
         "name": "tabbar"
       },
       {
+        "title": "TabbarPit 标签栏占位",
+        "name": "tabbar-pit"
+      },
+      {
         "title": "Tabs 标签页",
         "name": "tabs"
       }

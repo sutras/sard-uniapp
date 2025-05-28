@@ -88,4 +88,32 @@ describe('Navbar', () => {
 
     expect(wrapper.find('.sar-navbar__content').text()).toBe('默认内容')
   })
+
+  test('fixed', async () => {
+    const wrapper = mount(
+      h(Navbar, {
+        fixed: true,
+      }),
+    )
+
+    expect(
+      wrapper.find('.sar-navbar').classes().includes('sar-navbar_fixed'),
+    ).toBeTruthy()
+  })
+
+  test('statusBar', async () => {
+    const wrapper = mount(
+      h(Navbar, {
+        statusBar: true,
+        fixed: true,
+      }),
+    )
+
+    expect(
+      wrapper.find('.sar-navbar__fixation .sar-status-bar').exists(),
+    ).toBeTruthy()
+    expect(
+      wrapper.find('.sar-navbar-pit .sar-status-bar').exists(),
+    ).toBeTruthy()
+  })
 })

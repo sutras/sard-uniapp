@@ -10,6 +10,19 @@
     background-color: var(--sar-tabbar-bg);
   }
 
+  @include m(fixed) {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    z-index: var(--sar-tabbar-z-index);
+  }
+
+  @include m(safe) {
+    height: calc(var(--sar-tabbar-height) + env(safe-area-inset-bottom));
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+
   @include m(bordered) {
     &::before {
       @include border-top(var(--sar-tabbar-border-color));

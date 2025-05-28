@@ -8,7 +8,7 @@
     :root-class="rootClass"
     :root-style="rootStyle"
     @clear="onClear"
-    @click="onInputClick"
+    @click="show"
   >
     <sar-datetime-range-picker-popout
       keep-render
@@ -31,10 +31,11 @@
 </template>
 
 <script setup lang="ts">
-import { ref, watch } from 'vue'
+import { watch } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarDatetimeRangePickerPopout from '../datetime-range-picker-popout/datetime-range-picker-popout.vue'
 import { formatDate, isString, parseDate } from '../../utils'
+import { usePopoutInput } from '../../use'
 import {
   type DatetimeRangePickerInputProps,
   type DatetimeRangePickerInputEmits,
@@ -58,42 +59,8 @@ const props = withDefaults(
 const emit = defineEmits<DatetimeRangePickerInputEmits>()
 
 // main
-
-// visible
-const innerVisible = ref(props.visible)
-
-watch(
-  () => props.visible,
-  () => {
-    innerVisible.value = props.visible
-  },
-)
-
-watch(innerVisible, () => {
-  emit('update:visible', innerVisible.value)
-})
-
-const onInputClick = () => {
-  innerVisible.value = true
-}
-
-// value
-const innerValue = ref(props.modelValue)
-
-watch(
-  () => props.modelValue,
-  () => {
-    innerValue.value = props.modelValue
-  },
-)
-
-const onChange = (value: (Date | string)[] | undefined) => {
-  emit('update:model-value', value)
-  emit('change', value)
-}
-
-// input
-const inputValue = ref('')
+const { innerVisible, innerValue, inputValue, show, onChange, onClear } =
+  usePopoutInput(props, emit)
 
 const { t } = useTranslate('datetimeRangePickerInput')
 
@@ -137,11 +104,4 @@ watch(
     immediate: true,
   },
 )
-
-const onClear = () => {
-  inputValue.value = ''
-  innerValue.value = undefined
-  emit('update:model-value', undefined)
-  emit('change', undefined)
-}
 </script>

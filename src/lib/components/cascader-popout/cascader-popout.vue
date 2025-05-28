@@ -28,7 +28,6 @@
 </template>
 
 <script setup lang="ts">
-import { watch, ref } from 'vue'
 import SarPopout from '../popout/popout.vue'
 import SarCascader from '../cascader/cascader.vue'
 import {
@@ -37,9 +36,8 @@ import {
   type CascaderPopoutEmits,
   defaultCascaderPopoutProps,
 } from './common'
-import { useFormItemContext } from '../form/common'
 import { isNullish } from '../../utils'
-import { type CascaderOption } from '../cascader/common'
+import { useFormPopout } from '../../use'
 
 defineOptions({
   options: {
@@ -58,59 +56,16 @@ defineSlots<CascaderPopoutSlots>()
 const emit = defineEmits<CascaderPopoutEmits>()
 
 // main
-
-// visible
-const innerVisible = ref(props.visible)
-
-watch(
-  () => props.visible,
-  () => {
-    innerVisible.value = props.visible
+const { innerVisible, popoutValue, onChange, onConfirm } = useFormPopout(
+  props,
+  emit,
+  {
+    onChange() {
+      if (!props.showConfirm && !isNullish(popoutValue.value)) {
+        onConfirm()
+        innerVisible.value = false
+      }
+    },
   },
 )
-
-watch(innerVisible, () => {
-  emit('update:visible', innerVisible.value)
-})
-
-// value
-const formItemContext = useFormItemContext()
-
-const innerValue = ref(props.modelValue)
-
-watch(
-  () => props.modelValue,
-  () => {
-    innerValue.value = props.modelValue
-    if (props.validateEvent) {
-      formItemContext?.onChange()
-    }
-  },
-)
-
-const popoutValue = ref(props.modelValue)
-const popoutOptions = ref<CascaderOption[]>([])
-
-watch(innerValue, () => {
-  popoutValue.value = innerValue.value
-})
-
-const onChange = (value: any, selectedOptions: CascaderOption[]) => {
-  popoutValue.value = value
-  popoutOptions.value = selectedOptions
-
-  if (!props.showConfirm && !isNullish(popoutValue.value)) {
-    onConfirm()
-    innerVisible.value = false
-  }
-}
-
-const onConfirm = () => {
-  if (popoutValue.value !== innerValue.value) {
-    innerValue.value = popoutValue.value
-
-    emit('update:model-value', innerValue.value, popoutOptions.value)
-    emit('change', innerValue.value, popoutOptions.value)
-  }
-}
 </script>

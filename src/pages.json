@@ -366,6 +366,9 @@
       "path": "pages/components/switch/index"
     },
     {
+      "path": "pages/components/tabbar-pit/index"
+    },
+    {
       "path": "pages/components/tabbar/index"
     },
     {

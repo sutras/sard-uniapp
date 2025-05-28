@@ -1,0 +1,11 @@
+@use '../style/base' as *;
+
+@include bem(navbar-pit) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(content) {
+    height: var(--sar-navbar-height);
+  }
+}

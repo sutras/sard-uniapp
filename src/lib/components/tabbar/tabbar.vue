@@ -60,7 +60,13 @@ provide<TabbarContext>(
 
 // others
 const tabbarClass = computed(() => {
-  return classNames(bem.b(), bem.m('bordered', props.bordered), props.rootClass)
+  return classNames(
+    bem.b(),
+    bem.m('bordered', props.bordered),
+    bem.m('fixed', props.fixed),
+    bem.m('safe', props.safeAreaInsetBottom),
+    props.rootClass,
+  )
 })
 
 const tabbarStyle = computed(() => {

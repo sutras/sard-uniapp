@@ -53,14 +53,16 @@ import TabbarItem from 'sard-uniapp/components/tabbar-item/tabbar-item.vue'
 
 ### TabbarProps
 
-| 属性              | 描述                       | 类型             | 默认值 |
-| ----------------- | -------------------------- | ---------------- | ------ |
-| root-class        | 组件根元素类名             | string           | -      |
-| root-style        | 组件根元素样式             | StyleValue       | -      |
-| current (v-model) | 当前选中标签的 `name` 属性 | number \| string | -      |
-| color             | 未选中标签的颜色           | string           | -      |
-| active-color      | 选中标签的颜色             | string           | -      |
-| bordered          | 是否显示外边框             | boolean          | true   |
+| 属性                                    | 描述                       | 类型             | 默认值 |
+| --------------------------------------- | -------------------------- | ---------------- | ------ |
+| root-class                              | 组件根元素类名             | string           | -      |
+| root-style                              | 组件根元素样式             | StyleValue       | -      |
+| current (v-model)                       | 当前选中标签的 `name` 属性 | number \| string | -      |
+| color                                   | 未选中标签的颜色           | string           | -      |
+| active-color                            | 选中标签的颜色             | string           | -      |
+| bordered                                | 是否显示外边框             | boolean          | true   |
+| fixed <sup>1.16+</sup>                  | 是否固定到页面底部         | boolean          | false  |
+| safe-area-inset-bottom <sup>1.16+</sup> | 是否开启底部安全区适配     | boolean          | false  |
 
 ### TabbarSlots
 

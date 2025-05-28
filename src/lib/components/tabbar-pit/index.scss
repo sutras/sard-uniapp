@@ -1,0 +1,12 @@
+@use '../style/base' as *;
+
+@include bem(tabbar-pit) {
+  @include b() {
+    @include universal;
+    height: var(--sar-tabbar-height);
+  }
+
+  @include m(safe) {
+    height: calc(var(--sar-tabbar-height) + env(safe-area-inset-bottom));
+  }
+}

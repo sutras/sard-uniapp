@@ -105,6 +105,7 @@ declare module 'vue' {
     SarTab: typeof import('./components/tab/tab.vue').default
     SarTabbar: typeof import('./components/tabbar/tabbar.vue').default
     SarTabbarItem: typeof import('./components/tabbar-item/tabbar-item.vue').default
+    SarTabbarPit: typeof import('./components/tabbar-pit/tabbar-pit.vue').default
     SarTable: typeof import('./components/table/table.vue').default
     SarTableCell: typeof import('./components/table-cell/table-cell.vue').default
     SarTableRow: typeof import('./components/table-row/table-row.vue').default

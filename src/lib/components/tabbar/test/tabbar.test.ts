@@ -178,4 +178,38 @@ describe('Tabbar', () => {
       '内容',
     )
   })
+
+  test('fixed', async () => {
+    const wrapper = mount(
+      h(
+        Tabbar,
+        {
+          current: 1,
+          fixed: true,
+        },
+        createChildren3,
+      ),
+    )
+
+    expect(
+      wrapper.find('.sar-tabbar').classes().includes('sar-tabbar_fixed'),
+    ).toBeTruthy()
+  })
+
+  test('safeAreaInsetBottom', async () => {
+    const wrapper = mount(
+      h(
+        Tabbar,
+        {
+          current: 1,
+          safeAreaInsetBottom: true,
+        },
+        createChildren3,
+      ),
+    )
+
+    expect(
+      wrapper.find('.sar-tabbar').classes().includes('sar-tabbar_safe'),
+    ).toBeTruthy()
+  })
 })

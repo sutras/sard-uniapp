@@ -25,7 +25,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, watch } from 'vue'
 import SarPopout from '../popout/popout.vue'
 import SarDatetimePicker from '../datetime-picker/datetime-picker.vue'
 import {
@@ -34,13 +34,13 @@ import {
   type DatetimePickerPopoutEmits,
   defaultDatetimePickerPopoutProps,
 } from './common'
-import { useFormItemContext } from '../form/common'
 import { formatDate, isNullish, toDate } from '../../utils'
 import {
   getInitialValue,
   getMaxDate,
   getMinDate,
 } from '../datetime-picker/common'
+import { useFormPopout } from '../../use'
 
 defineOptions({
   options: {
@@ -59,52 +59,6 @@ defineSlots<DatetimePickerPopoutSlots>()
 const emit = defineEmits<DatetimePickerPopoutEmits>()
 
 // main
-
-// visible
-const innerVisible = ref(props.visible)
-
-watch(
-  () => props.visible,
-  () => {
-    innerVisible.value = props.visible
-  },
-)
-
-watch(innerVisible, () => {
-  emit('update:visible', innerVisible.value)
-})
-
-// value
-const formItemContext = useFormItemContext()
-
-const innerValue = ref(props.modelValue)
-
-watch(
-  () => props.modelValue,
-  () => {
-    innerValue.value = props.modelValue
-    if (props.validateEvent) {
-      formItemContext?.onChange()
-    }
-  },
-)
-
-const popoutValue = ref(props.modelValue)
-
-watch(innerValue, () => {
-  popoutValue.value = innerValue.value
-})
-
-const onChange = (value: Date | string) => {
-  popoutValue.value = value
-}
-
-const onEnter = () => {
-  if (!isNullish(innerValue.value) && popoutValue.value !== innerValue.value) {
-    popoutValue.value = innerValue.value
-  }
-}
-
 const minDate = computed(() =>
   toDate(props.min || getMinDate(), props.valueFormat),
 )
@@ -113,6 +67,24 @@ const maxDate = computed(() => {
   const maxDate = toDate(props.max || getMaxDate())
   return maxDate < minDate.value ? new Date(minDate.value) : maxDate
 })
+
+const { innerVisible, innerValue, popoutValue, onChange, onConfirm } =
+  useFormPopout(props, emit, {
+    onConfirmBefore() {
+      if (!popoutValue.value) {
+        const initialValue = getInitialValue(minDate.value, maxDate.value)
+        popoutValue.value = props.valueFormat
+          ? formatDate(initialValue, props.valueFormat)
+          : initialValue
+      }
+    },
+  })
+
+const onEnter = () => {
+  if (!isNullish(innerValue.value) && popoutValue.value !== innerValue.value) {
+    popoutValue.value = innerValue.value
+  }
+}
 
 const normalizeValue = (value: Date | string | undefined | null) => {
   const date = value ? toDate(value, props.valueFormat) : new Date()
@@ -134,19 +106,4 @@ watch([minDate, maxDate], () => {
     }
   }
 })
-
-const onConfirm = () => {
-  if (!popoutValue.value) {
-    const initialValue = getInitialValue(minDate.value, maxDate.value)
-    popoutValue.value = props.valueFormat
-      ? formatDate(initialValue, props.valueFormat)
-      : initialValue
-  }
-
-  if (popoutValue.value !== innerValue.value) {
-    innerValue.value = popoutValue.value
-    emit('update:model-value', innerValue.value)
-    emit('change', innerValue.value)
-  }
-}
 </script>

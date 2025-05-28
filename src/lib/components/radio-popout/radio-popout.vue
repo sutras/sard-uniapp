@@ -56,7 +56,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed } from 'vue'
 import SarPopout from '../popout/popout.vue'
 import SarRadioGroup from '../radio-group/radio-group.vue'
 import SarRadio from '../radio/radio.vue'
@@ -69,9 +69,8 @@ import {
   type RadioPopoutEmits,
   defaultRadioPopoutProps,
 } from './common'
-import { useFormItemContext } from '../form'
 import { defaultOptionKeys } from '../radio/common'
-import { useScrollSide } from '../../use'
+import { useScrollSide, useFormPopout } from '../../use'
 
 defineOptions({
   options: {
@@ -92,57 +91,14 @@ const emit = defineEmits<RadioPopoutEmits>()
 const bem = createBem('radio-popout')
 
 // main
-
-// visible
-const innerVisible = ref(props.visible)
-
-watch(
-  () => props.visible,
-  () => {
-    innerVisible.value = props.visible
-  },
+const { innerVisible, popoutValue, onChange, onConfirm } = useFormPopout(
+  props,
+  emit,
 )
-
-watch(innerVisible, () => {
-  emit('update:visible', innerVisible.value)
-})
-
-// value
-const formItemContext = useFormItemContext()
 
 const fieldKeys = computed(() => {
   return Object.assign({}, defaultOptionKeys, props.optionKeys)
 })
-
-const innerValue = ref(props.modelValue)
-
-watch(
-  () => props.modelValue,
-  () => {
-    innerValue.value = props.modelValue
-    if (props.validateEvent) {
-      formItemContext?.onChange()
-    }
-  },
-)
-
-const popoutValue = ref(props.modelValue)
-
-watch(innerValue, () => {
-  popoutValue.value = innerValue.value
-})
-
-const onChange = (value: any) => {
-  popoutValue.value = value
-}
-
-const onConfirm = () => {
-  if (popoutValue.value !== innerValue.value) {
-    innerValue.value = popoutValue.value
-    emit('update:model-value', innerValue.value)
-    emit('change', innerValue.value)
-  }
-}
 
 // scroll
 const { scrollSide, onScroll, onScrolltoupper, onScrolltolower } =
