@@ -1,3 +1,18 @@
+# [1.17.0](https://github.com/sutras/sard-uniapp/compare/v1.16.0...v1.17.0) (2025-05-29)
+
+
+### Bug Fixes
+
+* 修复popup在h5弹出状态跳转页面仍显示的问题 ([1187368](https://github.com/sutras/sard-uniapp/commit/11873685cc8017ec42b4ad02c4d74754d5d3fc6c))
+
+
+### Features
+
+* picker 组件新增 custom 插槽 ([218d384](https://github.com/sutras/sard-uniapp/commit/218d3841459d65dec29d6cf35fd6fea7c713cca5))
+* tree 组件新增单选功能 ([a1fb8a2](https://github.com/sutras/sard-uniapp/commit/a1fb8a2c54ac7fc32e3dab2a416636553893bc2f))
+
+
+
 # [1.16.0](https://github.com/sutras/sard-uniapp/compare/v1.15.4...v1.16.0) (2025-05-28)
 
 
