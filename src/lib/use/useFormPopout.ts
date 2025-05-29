@@ -2,21 +2,21 @@ import { ref, watch } from 'vue'
 import { useTwoWayVisible } from './useTwoWayVisible'
 import { useFormItemContext } from '../components/form'
 
-export interface UsePopoutInputProps {
+export interface UseFormPopoutProps {
   visible?: boolean
   modelValue?: any
   validateEvent?: boolean
 }
 
-export interface UsePopoutInputEmits {
+export interface UseFormPopoutEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'update:model-value', ...args: any[]): void
   (e: 'change', ...args: any[]): void
 }
 
 export function useFormPopout(
-  props: UsePopoutInputProps,
-  emit: UsePopoutInputEmits,
+  props: UseFormPopoutProps,
+  emit: UseFormPopoutEmits,
   options: {
     onChange?: (...args: any[]) => void
     onConfirmBefore?: () => void
