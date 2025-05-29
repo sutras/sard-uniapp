@@ -33,6 +33,18 @@
           @click="navigateTo('DefaultExpandedAndChecked')"
         />
         <sar-list-item
+          title="单一选择"
+          arrow
+          hover
+          @click="navigateTo('Single')"
+        />
+        <sar-list-item
+          title="仅选择叶子节点"
+          arrow
+          hover
+          @click="navigateTo('LeafOnly')"
+        />
+        <sar-list-item
           title="可拖拽的"
           arrow
           hover

@@ -399,6 +399,12 @@
       "path": "pages/components/tree/demo/CheckStrictly"
     },
     {
+      "path": "pages/components/tree/demo/Single"
+    },
+    {
+      "path": "pages/components/tree/demo/LeafOnly"
+    },
+    {
       "path": "pages/components/tree/demo/DefaultExpandedAndChecked"
     },
     {

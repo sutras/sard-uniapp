@@ -51,6 +51,20 @@ import Tree from 'sard-uniapp/components/tree/tree.vue'
 
 @code('${DEMO_PATH}/tree/demo/DefaultExpandedAndChecked.vue')
 
+### 单一选择
+
+设置 `single-selectable` 属性即可实现单选，选择后会触发 `select` 事件，可使用 `current` 属性设置当前选择的节点。
+
+@code('${DEMO_PATH}/tree/demo/Single.vue')
+
+### 仅选择叶子节点
+
+设置 `leaf-only` 属性让其仅能选择叶子节点。
+
+此时，点击节点任意位置都能选择节点，而不仅仅是单选按钮，因为折叠和选择操作不冲突。
+
+@code('${DEMO_PATH}/tree/demo/LeafOnly.vue')
+
 ### 可拖拽的
 
 设置 `draggable` 属性使节点可拖拽，短按拖拽按钮便可进入拖拽状态；
@@ -85,22 +99,32 @@ import Tree from 'sard-uniapp/components/tree/tree.vue'
 
 ### TreeProps
 
-| 属性                  | 描述                               | 类型                                            | 默认值          |
-| --------------------- | ---------------------------------- | ----------------------------------------------- | --------------- |
-| root-class            | 组件根元素类名                     | string                                          | -               |
-| root-style            | 组件根元素样式                     | StyleValue                                      | -               |
-| data                  | 树形数据                           | TreeNode[]                                      | -               |
-| node-keys             | 节点对象的键名                     | TreeNodeKeys                                    | defaultNodeKeys |
-| default-expand-all    | 是否默认展开所有节点               | boolean                                         | false           |
-| default-expanded-keys | 默认展开的节点的 key               | (string \| number)[]                            | -               |
-| accordion             | 是否每次只展示一个同级树节点       | boolean                                         | false           |
-| selectable            | 节点是否可被选择                   | boolean                                         | false           |
-| check-strictly        | 可选时是否严格遵循父子不关联的做法 | boolean                                         | false           |
-| default-checked-keys  | 默认勾选的节点的 key 的数组        | (string \| number)[]                            | -               |
-| draggable             | 是否可以拖拽节点                   | boolean                                         | false           |
-| editable              | 是否可编辑节点（增删改）           | boolean                                         | false           |
-| filter-mode           | 节点过滤模式                       | 'lenient' \| 'strict'                           | 'lenient'       |
-| filter-method         | 自定义过滤方法                     | (value: string, node: TreeStateNode) => boolean | -               |
+| 属性                               | 描述                                       | 类型                                            | 默认值          |
+| ---------------------------------- | ------------------------------------------ | ----------------------------------------------- | --------------- |
+| root-class                         | 组件根元素类名                             | string                                          | -               |
+| root-style                         | 组件根元素样式                             | StyleValue                                      | -               |
+| data                               | 树形数据                                   | TreeNode[]                                      | -               |
+| node-keys                          | 节点对象的键名                             | TreeNodeKeys                                    | defaultNodeKeys |
+| default-expand-all                 | 是否默认展开所有节点                       | boolean                                         | false           |
+| default-expanded-keys              | 默认展开的节点的 key                       | (string \| number)[]                            | -               |
+| accordion                          | 是否每次只展示一个同级树节点               | boolean                                         | false           |
+| selectable                         | 节点是否可被选择（复选）                   | boolean                                         | false           |
+| check-strictly                     | 可选时是否严格遵循父子不关联的做法（复选） | boolean                                         | false           |
+| default-checked-keys               | 默认勾选的节点的 key 的数组（复选）        | (string \| number)[]                            | -               |
+| single-selectable <sup>1.17+</sup> | 节点是否可被选择（单选）                   | boolean                                         | false           |
+| leaf-only <sup>1.17+</sup>         | 是否只能选择叶子节点（单选）               | boolean                                         | false           |
+| current (v-model) <sup>1.17+</sup> | 当前选择的节点的 key（单选）               | string \| number                                | -               |
+| draggable                          | 是否可以拖拽节点                           | boolean                                         | false           |
+| editable                           | 是否可编辑节点（增删改）                   | boolean                                         | false           |
+| filter-mode                        | 节点过滤模式                               | 'lenient' \| 'strict'                           | 'lenient'       |
+| filter-method                      | 自定义过滤方法                             | (value: string, node: TreeStateNode) => boolean | -               |
+
+### TreeEmits
+
+| 事件                            | 描述                   | 类型                                                 |
+| ------------------------------- | ---------------------- | ---------------------------------------------------- |
+| update:current <sup>1.17+</sup> | 选择节点后触发（单选） | (key: string \| number, node: TreeStateNode) => void |
+| select <sup>1.17+</sup>         | 选择节点后触发（单选） | (key: string \| number, node: TreeStateNode) => void |
 
 ### TreeExpose
 

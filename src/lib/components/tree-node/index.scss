@@ -8,7 +8,8 @@
     left: 0;
     width: 100%;
     height: var(--sar-tree-node-height);
-    transition: transform var(--sar-tree-duration),
+    transition:
+      transform var(--sar-tree-duration),
       opacity var(--sar-tree-duration);
 
     flex-direction: row;

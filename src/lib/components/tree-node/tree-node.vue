@@ -13,7 +13,7 @@
       <sar-icon family="sari" name="right" />
     </view>
     <view
-      v-if="treeContext.selectable"
+      v-if="treeContext.selectable || canSingleSelectable"
       :class="selectionClass"
       @touchstart.stop="onSelectionTouchStart"
       @touchend.stop="onSelectionTouchEnd"
@@ -22,9 +22,16 @@
       @click.stop
     >
       <sar-checkbox
+        v-if="treeContext.selectable"
         readonly
         :checked="node.checked"
         :indeterminate="node.indeterminate"
+        :disabled="node.disabled"
+      />
+      <sar-radio
+        v-if="canSingleSelectable"
+        readonly
+        :checked="isSingleChecked"
         :disabled="node.disabled"
       />
     </view>
@@ -107,6 +114,7 @@ import {
 import { useMouseDown, useSimulatedClick, useSimulatedPress } from '../../use'
 import SarIcon from '../icon/icon.vue'
 import SarCheckbox from '../checkbox/checkbox.vue'
+import SarRadio from '../radio/radio.vue'
 import SarPopover from '../popover/popover.vue'
 import { usePopover } from '../popover'
 import { getNodeLevel, recurDescendant } from '../tree/utils'
@@ -308,12 +316,15 @@ const onNodeClick = () => {
   if (!isLeaf.value) {
     treeContext.toggleExpandedByNode(props.node)
   }
+  if (canSingleSelectable.value && treeContext.leafOnly) {
+    treeContext.singleSelect(props.node)
+  }
 }
 
 const nodeActive = ref(false)
 
 const onNodeTouchStart = () => {
-  if (!isLeaf.value) {
+  if (!isLeaf.value || (canSingleSelectable.value && treeContext.leafOnly)) {
     nodeActive.value = true
   }
 }
@@ -329,10 +340,21 @@ const onNodeMouseDown = useMouseDown(
 )
 
 // select
+const canSingleSelectable = computed(() => {
+  return treeContext.singleSelectable && (!treeContext.leafOnly || isLeaf.value)
+})
+
+const isSingleChecked = computed(
+  () => props.node.key === treeContext.currentKey,
+)
+
 const [onSelectionTouchStart, onSelectionTouchEnd] = useSimulatedClick(() => {
   if (!props.node.disabled) {
     if (treeContext.selectable) {
       treeContext.setCheckedByNode(props.node, !props.node.checked)
+    }
+    if (canSingleSelectable.value) {
+      treeContext.singleSelect(props.node)
     }
   }
 })
@@ -367,6 +389,7 @@ const nodeClass = computed(() => {
     bem.em('node', 'dragging', dragging.value),
     bem.em('node', 'selectable', treeContext.selectable),
     bem.em('node', 'active', nodeActive.value),
+    bem.em('node', 'current', isSingleChecked.value),
     nodeId,
   )
 })

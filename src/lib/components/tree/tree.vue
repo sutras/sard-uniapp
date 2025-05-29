@@ -34,7 +34,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide, reactive, ref, toRef, watch } from 'vue'
+import { computed, provide, reactive, ref, shallowRef, toRef, watch } from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -44,6 +44,7 @@ import {
 } from '../../utils'
 import {
   type TreeProps,
+  type TreeEmits,
   type TreeExpose,
   type TreeNode,
   type TreeStateNode,
@@ -73,6 +74,8 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<TreeProps>(), defaultTreeProps())
+
+const emit = defineEmits<TreeEmits>()
 
 const bem = createBem('tree')
 
@@ -594,6 +597,24 @@ function filter(searchString: string) {
   setRenderPosition()
 }
 
+// 单选
+const currentKey = shallowRef(props.current)
+
+watch(
+  () => props.current,
+  () => {
+    currentKey.value = props.current
+  },
+)
+
+const singleSelect = (node: TreeStateNode) => {
+  if (currentKey.value !== node.key) {
+    currentKey.value = node.key
+    emit('update:current', node.key, node)
+    emit('select', node.key, node)
+  }
+}
+
 // others
 provide<TreeContext>(
   treeContextSymbol,
@@ -601,6 +622,8 @@ provide<TreeContext>(
     selectable: toRef(() => props.selectable),
     draggable: toRef(() => props.draggable),
     editable: toRef(() => props.editable),
+    singleSelectable: toRef(() => props.singleSelectable),
+    leafOnly: toRef(() => props.leafOnly),
     treeData: toRef(() => treeData.value),
     setExpandedByNode,
     toggleExpandedByNode,
@@ -609,6 +632,8 @@ provide<TreeContext>(
     leveldown,
     drop,
     edit,
+    currentKey,
+    singleSelect,
   }),
 )
 

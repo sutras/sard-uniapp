@@ -52,6 +52,9 @@ export interface TreeProps {
   accordion?: boolean
   selectable?: boolean
   checkStrictly?: boolean
+  singleSelectable?: boolean
+  leafOnly?: boolean
+  current?: string | number
   defaultCheckedKeys?: (string | number)[]
   draggable?: boolean
   editable?: boolean
@@ -63,6 +66,11 @@ export const defaultTreeProps = () => ({
   ...defaultConfig.tree,
   data: () => [],
 })
+
+export interface TreeEmits {
+  (e: 'update:current', key: string | number, node: TreeStateNode): void
+  (e: 'select', key: string | number, node: TreeStateNode): void
+}
 
 export interface TreeExpose {
   setExpanded: (key: string | number, expanded: boolean) => void
@@ -91,6 +99,8 @@ export interface TreeContext {
   selectable: TreeProps['selectable']
   draggable: TreeProps['draggable']
   editable: TreeProps['editable']
+  singleSelectable: TreeProps['singleSelectable']
+  leafOnly: TreeProps['leafOnly']
   treeData: TreeStateNode[]
   setExpandedByNode: (node: TreeStateNode, expanded: boolean) => void
   toggleExpandedByNode: (node: TreeStateNode) => void
@@ -103,6 +113,8 @@ export interface TreeContext {
     dropTargetNode: TreeStateNode,
     position: number,
   ) => void
+  currentKey: string | number | undefined
+  singleSelect: (node: TreeStateNode) => void
 }
 
 export const treeContextSymbol = Symbol('tree-context')

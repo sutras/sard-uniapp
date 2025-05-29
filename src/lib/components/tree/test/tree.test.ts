@@ -151,4 +151,27 @@ describe('Tree', () => {
       wrapper.findAll('.sar-tree__title').map((item) => item.text()),
     ).toEqual(['北京市', '北京市'])
   })
+
+  test('single-selectable', async () => {
+    const wrapper = mount(
+      h(Tree, {
+        data: treeData,
+        nodeKeys,
+        singleSelectable: true,
+        leafOnly: true,
+        current: 110102,
+        defaultExpandAll: true,
+      }),
+    )
+
+    expect(
+      wrapper.find('.sar-tree__node_current .sar-tree__title').text(),
+    ).toBe('西城区')
+
+    await wrapper.find('.sar-tree__node:nth-child(8)').trigger('click')
+
+    expect(
+      wrapper.find('.sar-tree__node_current .sar-tree__title').text(),
+    ).toBe('和平区')
+  })
 })

@@ -1,1 +1,7 @@
-export type { TreeProps, TreeExpose } from './common'
+export type {
+  TreeProps,
+  TreeEmits,
+  TreeExpose,
+  TreeNode,
+  TreeStateNode,
+} from './common'
