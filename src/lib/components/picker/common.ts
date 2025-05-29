@@ -20,12 +20,24 @@ export interface PickerProps {
   optionKeys?: PickerOptionKeys
   modelValue?: any
   immediateChange?: boolean
+  internalCustom?: number
 }
 
 export const defaultPickerProps = () => ({
   ...defaultConfig.picker,
   columns: () => [],
 })
+
+export interface PickerSlots {
+  custom?(props: {
+    columns: any[][]
+    value: number[]
+    pickerViewClass: string
+    maskClass: string
+    indicatorClass: string
+    onChange: (event: any) => void
+  }): any
+}
 
 export interface PickerEmits {
   (

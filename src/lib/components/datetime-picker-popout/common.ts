@@ -1,5 +1,8 @@
 import { type StyleValue } from 'vue'
-import { type DatetimePickerProps } from '../datetime-picker/common'
+import {
+  type DatetimePickerProps,
+  type DatetimePickerSlots,
+} from '../datetime-picker/common'
 import { defaultConfig } from '../config'
 
 export interface DatetimePickerPopoutProps extends DatetimePickerProps {
@@ -15,9 +18,7 @@ export const defaultDatetimePickerPopoutProps = () => ({
   ...defaultConfig.datetimePickerPopout,
 })
 
-export interface DatetimePickerPopoutSlots {
-  default?(props: Record<string, never>): any
-}
+export interface DatetimePickerPopoutSlots extends DatetimePickerSlots {}
 
 export interface DatetimePickerPopoutEmits {
   (e: 'update:visible', visible: boolean): void

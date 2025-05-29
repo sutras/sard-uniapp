@@ -1,5 +1,9 @@
 import { type StyleValue } from 'vue'
-import { defaultPickerProps, type PickerProps } from '../picker/common'
+import {
+  defaultPickerProps,
+  type PickerSlots,
+  type PickerProps,
+} from '../picker/common'
 import { defaultConfig } from '../config'
 
 export interface PickerPopoutProps extends PickerProps {
@@ -15,9 +19,7 @@ export const defaultPickerPopoutProps = () => ({
   ...defaultConfig.pickerPopout,
 })
 
-export interface PickerPopoutSlots {
-  default?(props: Record<string, never>): any
-}
+export interface PickerPopoutSlots extends PickerSlots {}
 
 export interface PickerPopoutEmits {
   (e: 'update:visible', visible: boolean): void

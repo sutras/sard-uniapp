@@ -1,5 +1,8 @@
 import { type StyleValue } from 'vue'
-import { type DatetimeRangePickerProps } from '../datetime-range-picker/common'
+import {
+  type DatetimeRangePickerProps,
+  type DatetimeRangePickerSlots,
+} from '../datetime-range-picker/common'
 import { defaultConfig } from '../config'
 
 export interface DatetimeRangePickerPopoutProps
@@ -16,9 +19,8 @@ export const defaultDatetimeRangePickerInputProps = () => ({
   ...defaultConfig.datetimeRangePickerPopout,
 })
 
-export interface DatetimeRangePickerPopoutSlots {
-  default?(props: Record<string, never>): any
-}
+export interface DatetimeRangePickerPopoutSlots
+  extends DatetimeRangePickerSlots {}
 
 export interface DatetimeRangePickerPopoutEmits {
   (e: 'update:visible', visible: boolean): void

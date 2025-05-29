@@ -38,6 +38,10 @@ import PickerPopout from 'sard-uniapp/components/picker-popout/picker-popout.vue
 | title             | 弹出框标题       | string     | -      |
 | validate-event    | 是否触发表单验证 | boolean    | true   |
 
+### PickerPopoutSlots
+
+继承 [`PickerSlots`](./picker#PickerSlots)
+
 ### PickerPopoutEmits
 
 | 事件               | 描述                       | 类型                       |

@@ -14,6 +14,7 @@ import { classNames, formatDate, stringifyStyle, toDate } from '../../utils'
 import SarPicker from '../picker/picker.vue'
 import {
   type DatetimePickerProps,
+  type DatetimePickerSlots,
   type DatetimePickerEmits,
   type DatetimeLetter,
   type DateEvery,
@@ -40,6 +41,8 @@ const props = withDefaults(
   defineProps<DatetimePickerProps>(),
   defaultDatetimePickerProps,
 )
+
+defineSlots<DatetimePickerSlots>()
 
 const emit = defineEmits<DatetimePickerEmits>()
 

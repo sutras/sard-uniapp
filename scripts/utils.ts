@@ -220,7 +220,8 @@ export async function createComponentVariables(compDir: string) {
   await fse.outputFile(
     path.resolve(compDir, `variables.scss`),
     `// #variables
-page {}
+page,
+.sar-portal {}
 // #endvariables
 `,
   )
@@ -346,10 +347,10 @@ export async function addDemoRoute(kebabCaseName: string) {
         return a.path === indexPath
           ? -1
           : b.path === indexPath
-          ? 1
-          : a.path < b.path
-          ? -1
-          : 1
+            ? 1
+            : a.path < b.path
+              ? -1
+              : 1
       })
     }
     return JSON.stringify(obj, null, 2)

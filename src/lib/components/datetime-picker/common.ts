@@ -1,6 +1,7 @@
 import { type StyleValue } from 'vue'
 import { getDaysInMonth, minmax } from '../../utils'
 import { defaultConfig } from '../config'
+import { type PickerSlots } from '../picker/common'
 
 export interface DatetimePickerProps {
   rootStyle?: StyleValue
@@ -25,6 +26,8 @@ export interface DatetimePickerProps {
 }
 
 export const defaultDatetimePickerProps = defaultConfig.datetimePicker
+
+export interface DatetimePickerSlots extends PickerSlots {}
 
 export interface DatetimePickerEmits {
   (e: 'update:model-value', date: Date | string): void

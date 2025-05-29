@@ -1,7 +1,9 @@
 <template>
-  <slot :time="currentTime">
-    {{ formatTime(format, currentTime) }}
-  </slot>
+  <text>
+    <slot :time="currentTime">
+      {{ formatTime(format, currentTime) }}
+    </slot>
+  </text>
 </template>
 
 <script setup lang="ts">

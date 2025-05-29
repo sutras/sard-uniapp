@@ -15,8 +15,33 @@
         :columns="columns"
         :option-keys="optionKeys"
         :immediate-change="immediateChange"
+        :internal-custom="
+          isNumber(internalCustom) ? internalCustom : $slots.custom ? 1 : 0
+        "
         @change="onChange"
-      />
+      >
+        <template
+          v-if="$slots.custom"
+          #custom="{
+            columns,
+            maskClass,
+            pickerViewClass,
+            indicatorClass,
+            value,
+            onChange,
+          }"
+        >
+          <slot
+            name="custom"
+            :columns="columns"
+            :picker-view-class="pickerViewClass"
+            :mask-class="maskClass"
+            :indicator-class="indicatorClass"
+            :value="value"
+            :on-change="onChange"
+          ></slot>
+        </template>
+      </sar-picker>
     </template>
   </sar-popout>
 </template>
@@ -30,7 +55,7 @@ import {
   type PickerPopoutEmits,
   defaultPickerPopoutProps,
 } from './common'
-import { isNullish } from '../../utils'
+import { isNullish, isNumber } from '../../utils'
 import { defaultOptionKeys, getInitialValue } from '../picker/common'
 import { computed } from 'vue'
 import { useFormPopout } from '../../use'

@@ -41,6 +41,10 @@ import PickerInput from 'sard-uniapp/components/picker-input/picker-input.vue'
 | clearable   | 是否显示清空按钮       | boolean    | false  |
 | placeholder | 输入框占位符内容       | string     | -      |
 
+### PickerSlots
+
+继承 [`PickerPopoutSlots`](./picker-popout#PickerPopoutSlots)
+
 ### PickerInputEmits
 
 继承 [`PickerPopoutEmits`](./picker-popout#PickerPopoutEmits) 并有以下额外属性：

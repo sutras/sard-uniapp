@@ -66,6 +66,7 @@ declare module 'vue' {
     SarPasswordInput: typeof import('./components/password-input/password-input.vue').default
     SarPicker: typeof import('./components/picker/picker.vue').default
     SarPickerInput: typeof import('./components/picker-input/picker-input.vue').default
+    SarPickerItem: typeof import('./components/picker-item/picker-item.vue').default
     SarPickerPopout: typeof import('./components/picker-popout/picker-popout.vue').default
     SarPopout: typeof import('./components/popout/popout.vue').default
     SarPopoutInput: typeof import('./components/popout-input/popout-input.vue').default

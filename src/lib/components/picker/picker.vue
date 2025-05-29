@@ -1,17 +1,28 @@
 <template>
   <view :class="pickerClass" :style="pickerStyle">
-    <picker-view
-      :class="bem.e('picker-view')"
-      :indicator-class="bem.e('indicator')"
-      :mask-class="bem.e('mask')"
+    <slot
+      v-if="isNumber(internalCustom) ? internalCustom : $slots.custom"
+      name="custom"
+      :columns="renderedColumns"
+      :picker-view-class="pickerViewClass"
+      :mask-class="maskClass"
+      :indicator-class="indicatorClass"
       :value="columnIndexes"
+      :on-change="onChange"
+    ></slot>
+    <picker-view
+      v-else
+      :class="pickerViewClass"
       :immediate-change="immediateChange"
+      :indicator-class="indicatorClass"
+      :mask-class="maskClass"
+      :value="columnIndexes"
       @change="onChange"
     >
       <picker-view-column v-for="(column, i) in renderedColumns" :key="i">
-        <view v-for="(option, j) in column" :key="j" :class="bem.e('item')">
+        <sar-picker-item v-for="(option, j) in column" :key="j">
           {{ getLabelByOption(option) }}
-        </view>
+        </sar-picker-item>
       </picker-view-column>
     </picker-view>
   </view>
@@ -27,9 +38,11 @@ import {
   toArray,
   arrayEqual,
   isNullish,
+  isNumber,
 } from '../../utils'
 import {
   type PickerProps,
+  type PickerSlots,
   type PickerEmits,
   type PickerOption,
   defaultOptionKeys,
@@ -41,6 +54,7 @@ import {
   getValueOrLabelByOption,
   defaultPickerProps,
 } from './common'
+import SarPickerItem from '../picker-item/picker-item.vue'
 
 defineOptions({
   options: {
@@ -50,6 +64,8 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<PickerProps>(), defaultPickerProps())
+
+defineSlots<PickerSlots>()
 
 const emit = defineEmits<PickerEmits>()
 
@@ -202,6 +218,10 @@ const pickerClass = computed(() => {
 const pickerStyle = computed(() => {
   return stringifyStyle(props.rootStyle)
 })
+
+const pickerViewClass = bem.e('picker-view')
+const indicatorClass = bem.e('indicator')
+const maskClass = bem.e('mask')
 </script>
 
 <style lang="scss">

@@ -77,7 +77,7 @@ import Tree from 'sard-uniapp/components/tree/tree.vue'
 
 默认的过滤是宽松的，即匹配到一个节点后便停止后代节点的匹配，其后代节点都会被显示出来。
 
-设置 `filter-mode="strict"` 进入严格模式，即所有节点都要进行匹配，只有匹配成功的节点还会显示出来。
+设置 `filter-mode="strict"` 进入严格模式，即所有节点都要进行匹配，只有匹配成功的节点才会显示出来。
 
 @code('${DEMO_PATH}/tree/demo/StrictFilter.vue')
 

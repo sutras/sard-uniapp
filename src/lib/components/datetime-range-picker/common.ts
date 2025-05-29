@@ -1,5 +1,8 @@
 import { defaultConfig } from '../config'
-import { type DatetimePickerProps } from '../datetime-picker/common'
+import {
+  type DatetimePickerSlots,
+  type DatetimePickerProps,
+} from '../datetime-picker/common'
 
 export interface DatetimeRangePickerProps
   extends Omit<DatetimePickerProps, 'modelValue'> {
@@ -9,9 +12,7 @@ export interface DatetimeRangePickerProps
 
 export const defaultDatetimeRangePickerProps = defaultConfig.datetimeRangePicker
 
-export interface DatetimeRangePickerSlots {
-  default?(props: Record<string, never>): any
-}
+export interface DatetimeRangePickerSlots extends DatetimePickerSlots {}
 
 export interface DatetimeRangePickerEmits {
   (e: 'update:model-value', date: (Date | string)[]): void

@@ -47,6 +47,20 @@ import Picker from 'sard-uniapp/components/picker/picker.vue'
 
 @code('${DEMO_PATH}/picker/demo/Cascaded.vue')
 
+### 插槽
+
+可通过 `custom` 插槽自定义每一个选项的内容。
+
+@info
+
+因小程序不支持循环中的插槽，因此循环逻辑要自行实现；
+
+因 `picker-view-column` 要为 `picker-view` 的直接子元素，因此要把 `picker-view` 提取出来，要自行绑定属性和事件。
+
+@endinfo
+
+@code('${DEMO_PATH}/picker/demo/Slot.vue')
+
 ## API
 
 ### PickerProps
@@ -59,6 +73,12 @@ import Picker from 'sard-uniapp/components/picker/picker.vue'
 | option-keys      | 自定义 `columns` 结构中的字段                      | PickerOptionKeys                   | {label: 'label', value: 'value', children: 'children'} |
 | model-value      | 选中项的值                                         | any                                | -                                                      |
 | immediate-change | 是否在手指松开时立即触发 `update:model-value` 事件 | boolean                            | false                                                  |
+
+### PickerSlots
+
+| 插槽                    | 描述             | 属性                                                                                                                                      |
+| ----------------------- | ---------------- | ----------------------------------------------------------------------------------------------------------------------------------------- |
+| custom <sup>1.17+</sup> | 自定义选项的内容 | { columns: any[][]; value: number[]; pickerViewClass: string; maskClass: string; indicatorClass: string; onChange: (event: any) => void;} |
 
 ### PickerEmits
 

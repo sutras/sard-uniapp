@@ -6,7 +6,7 @@ import { getRegionData } from 'region-data'
 
 import Picker from '../picker.vue'
 
-describe('PasswordInput', () => {
+describe('Picker', () => {
   test('basic', async () => {
     const wrapper = mount(
       h(Picker, {
@@ -148,5 +148,23 @@ describe('PasswordInput', () => {
         )
         .text(),
     ).toBe('东城区')
+  })
+
+  test('slots', async () => {
+    const wrapper = mount(
+      h(
+        Picker,
+        {
+          columns: ['北京市', '天津市', '河北省', '山东省'],
+        },
+        {
+          custom() {
+            return h('div', null, 'content')
+          },
+        },
+      ),
+    )
+
+    expect(wrapper.find('.sar-picker').text()).toBe('content')
   })
 })

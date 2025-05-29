@@ -21,8 +21,31 @@
       :option-keys="optionKeys"
       :immediate-change="immediateChange"
       :validate-event="validateEvent"
+      :internal-custom="$slots.custom ? 1 : 0"
       @change="onChange"
-    />
+    >
+      <template
+        v-if="$slots.custom"
+        #custom="{
+          columns,
+          maskClass,
+          pickerViewClass,
+          indicatorClass,
+          value,
+          onChange,
+        }"
+      >
+        <slot
+          name="custom"
+          :columns="columns"
+          :picker-view-class="pickerViewClass"
+          :mask-class="maskClass"
+          :indicator-class="indicatorClass"
+          :value="value"
+          :on-change="onChange"
+        ></slot>
+      </template>
+    </sar-picker-popout>
   </sar-popout-input>
 </template>
 
@@ -43,6 +66,7 @@ import { usePopoutInput } from '../../use'
 import {
   type PickerInputProps,
   type PickerInputEmits,
+  type PickerInputSlots,
   defaultPickerInputProps,
 } from './common'
 
@@ -57,6 +81,8 @@ const props = withDefaults(
   defineProps<PickerInputProps>(),
   defaultPickerInputProps(),
 )
+
+defineSlots<PickerInputSlots>()
 
 const emit = defineEmits<PickerInputEmits>()
 

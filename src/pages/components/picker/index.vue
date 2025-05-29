@@ -19,6 +19,10 @@
     <doc-demo title="级联选择">
       <DemoCascaded />
     </doc-demo>
+
+    <doc-demo title="插槽">
+      <DemoSlot />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -28,6 +32,7 @@ import DemoObjectOption from './demo/ObjectOption.vue'
 import DemoMultiple from './demo/Multiple.vue'
 import DemoObjectMultiple from './demo/ObjectMultiple.vue'
 import DemoCascaded from './demo/Cascaded.vue'
+import DemoSlot from './demo/Slot.vue'
 </script>
 
 <style lang="scss" scoped>

@@ -3,6 +3,7 @@ import { defaultConfig } from '../config'
 import {
   type DatetimePickerPopoutProps,
   type DatetimePickerPopoutEmits,
+  type DatetimePickerPopoutSlots,
 } from '../datetime-picker-popout/common'
 
 export interface DatetimePickerInputProps
@@ -15,6 +16,8 @@ export const defaultDatetimePickerInputProps = () => ({
   ...defaultConfig.datetimePicker,
   ...defaultConfig.datetimePickerPopout,
 })
+
+export interface DatetimePickerInputSlots extends DatetimePickerPopoutSlots {}
 
 export interface DatetimePickerInputEmits extends DatetimePickerPopoutEmits {}
 

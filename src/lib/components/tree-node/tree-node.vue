@@ -191,10 +191,10 @@ const onDragMove = (offset: Coord) => {
             ? 1
             : 0
           : index > currentIndex
-          ? index <= targetIndex
-            ? -1
+            ? index <= targetIndex
+              ? -1
+              : 0
             : 0
-          : 0
     })
     dropTargetNode = targetNode
     dropPosition = targetNode === props.node ? 0 : offset.y < 0 ? -1 : 1

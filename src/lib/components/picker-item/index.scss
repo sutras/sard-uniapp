@@ -1,0 +1,12 @@
+@use '../style/base' as *;
+
+@include bem(picker) {
+  @include e(item) {
+    height: var(--sar-picker-item-height);
+    line-height: var(--sar-picker-item-height);
+    font-size: var(--sar-picker-item-font-size);
+    text-align: center;
+    color: var(--sar-picker-item-color);
+    @include ellipsis;
+  }
+}

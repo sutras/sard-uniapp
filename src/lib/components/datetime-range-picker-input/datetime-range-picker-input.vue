@@ -38,6 +38,7 @@ import { formatDate, isString, parseDate } from '../../utils'
 import { usePopoutInput } from '../../use'
 import {
   type DatetimeRangePickerInputProps,
+  type DatetimeRangePickerInputSlots,
   type DatetimeRangePickerInputEmits,
   defaultDatetimeRangePickerInputProps,
 } from './common'
@@ -55,6 +56,8 @@ const props = withDefaults(
   defineProps<DatetimeRangePickerInputProps>(),
   defaultDatetimeRangePickerInputProps(),
 )
+
+defineSlots<DatetimeRangePickerInputSlots>()
 
 const emit = defineEmits<DatetimeRangePickerInputEmits>()
 
