@@ -1,3 +1,13 @@
+# [1.16.0](https://github.com/sutras/sard-uniapp/compare/v1.15.4...v1.16.0) (2025-05-28)
+
+
+### Features
+
+* 新增7个 *Input 对应的 *Popout 组件 ([c3645d4](https://github.com/sutras/sard-uniapp/commit/c3645d47c397ed729e43a518ac7036ed29e818e3))
+* 新增TabbarPit组件, Tabbar 组件新增fixed和safe-area-inset-bottom属性 ([b9f3197](https://github.com/sutras/sard-uniapp/commit/b9f319799609c82489a71a7f8aec287b6f08b672))
+
+
+
 ## [1.15.4](https://github.com/sutras/sard-uniapp/compare/v1.15.3...v1.15.4) (2025-05-27)
 
 
