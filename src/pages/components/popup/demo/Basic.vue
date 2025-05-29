@@ -4,7 +4,9 @@
     :effect="effect"
     @overlay-click="onOverlayClick"
   >
-    <view :class="bem.e('content')">Popup</view>
+    <view :class="bem.e('content')">
+      <sar-button @click="onClick">跳转</sar-button>
+    </view>
   </sar-popup>
 
   <sar-list card>
@@ -34,6 +36,12 @@ const show = (e: PopupProps['effect']) => {
 
 const onOverlayClick = () => {
   visible.value = false
+}
+
+const onClick = () => {
+  uni.navigateTo({
+    url: `/pages/components/form/index`,
+  })
 }
 </script>
 

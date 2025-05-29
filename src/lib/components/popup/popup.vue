@@ -5,7 +5,7 @@
     <!-- #ifdef MP -->
     <root-portal>
       <!-- #endif -->
-      <view class="sar-portal">
+      <view v-show="pageVisible" class="sar-portal">
         <sar-overlay
           v-if="overlay"
           :visible="visible"
@@ -35,7 +35,8 @@
 
 <script setup lang="ts">
 import { computed, reactive, ref, toRef } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
+import { onHide, onShow } from '@dcloudio/uni-app'
+import { classNames, stringifyStyle, createBem, isWeb } from '../../utils'
 import { type UseTransitionOptions, useTransition, useZIndex } from '../../use'
 import SarOverlay from '../overlay/overlay.vue'
 import {
@@ -97,6 +98,20 @@ const { realVisible, transitionClass, onTransitionEnd } = useTransition(
 const onOverlayClick = (event: any) => {
   emit('overlay-click', event)
 }
+
+const pageVisible = ref(true)
+
+onShow(() => {
+  if (isWeb) {
+    pageVisible.value = true
+  }
+})
+
+onHide(() => {
+  if (isWeb) {
+    pageVisible.value = false
+  }
+})
 
 // others
 const popupClass = computed(() => {
