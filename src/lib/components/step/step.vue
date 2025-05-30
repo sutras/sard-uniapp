@@ -54,7 +54,7 @@ defineExpose<StepExpose>({})
 const bem = createBem('step')
 
 // main
-const context = inject(stepsContextSymbol)
+const context = inject(stepsContextSymbol)!
 
 if (!context) {
   throw new Error('Step must be included in Steps.')
