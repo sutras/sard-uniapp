@@ -160,7 +160,7 @@ describe('ShareSheet', () => {
       }),
     )
 
-    expect(wrapper.findAll('.sar-share-sheet__row').length).toBe(2)
+    expect(wrapper.findAll('.sar-share-sheet__row').length).toBe(4)
   })
 
   test('titleAndDescription', async () => {

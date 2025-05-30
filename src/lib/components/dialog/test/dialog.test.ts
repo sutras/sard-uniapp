@@ -46,7 +46,7 @@ describe('Dialog', () => {
 
     expect(
       wrapper.findAll('.sar-dialog__footer .sar-button_round').length,
-    ).toBe(2)
+    ).toBe(4)
   })
 
   test('headed', async () => {
