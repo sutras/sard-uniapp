@@ -17,6 +17,17 @@
           :root-class="overlayClass"
           @click="onOverlayClick"
         />
+        <!-- #ifndef MP -->
+        <view
+          v-bind="$attrs"
+          :class="popupClass"
+          :style="popupStyle"
+          @transitionend="onTransitionEnd"
+        >
+          <slot></slot>
+        </view>
+        <!-- #endif -->
+        <!-- #ifdef MP -->
         <view
           :class="popupClass"
           :style="popupStyle"
@@ -24,6 +35,7 @@
         >
           <slot></slot>
         </view>
+        <!-- #endif -->
       </view>
       <!-- #ifdef MP -->
     </root-portal>
@@ -52,6 +64,7 @@ defineOptions({
     virtualHost: true,
     styleIsolation: 'shared',
   },
+  inheritAttrs: false,
 })
 
 const props = withDefaults(defineProps<PopupProps>(), defaultPopupProps)
