@@ -1,3 +1,17 @@
+## [1.17.1](https://github.com/sutras/sard-uniapp/compare/v1.17.0...v1.17.1) (2025-05-30)
+
+
+### Bug Fixes
+
+* 修复Popup在H5 attrs 透传问题 ([4de8765](https://github.com/sutras/sard-uniapp/commit/4de87657580cb6525c1025bc3862d4f4eef3afb1))
+
+
+### Features
+
+* steps组件新增自定义内容插槽 ([5f17466](https://github.com/sutras/sard-uniapp/commit/5f17466c9370d21f699f0ec691e0ea5f74888188))
+
+
+
 # [1.17.0](https://github.com/sutras/sard-uniapp/compare/v1.16.0...v1.17.0) (2025-05-29)
 
 
