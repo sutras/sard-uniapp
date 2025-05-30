@@ -35,6 +35,10 @@
     <doc-demo title="自定义各步骤状态">
       <DemoStepStatus />
     </doc-demo>
+
+    <doc-demo title="默认插槽">
+      <DemoSlot />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -48,4 +52,5 @@ import DemoColor from './demo/Color.vue'
 import DemoStatus from './demo/Status.vue'
 import DemoErrorStatus from './demo/ErrorStatus.vue'
 import DemoStepStatus from './demo/StepStatus.vue'
+import DemoSlot from './demo/Slot.vue'
 </script>

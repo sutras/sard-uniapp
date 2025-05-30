@@ -399,12 +399,6 @@
       "path": "pages/components/tree/demo/CheckStrictly"
     },
     {
-      "path": "pages/components/tree/demo/Single"
-    },
-    {
-      "path": "pages/components/tree/demo/LeafOnly"
-    },
-    {
       "path": "pages/components/tree/demo/DefaultExpandedAndChecked"
     },
     {
@@ -417,7 +411,13 @@
       "path": "pages/components/tree/demo/Filter"
     },
     {
+      "path": "pages/components/tree/demo/LeafOnly"
+    },
+    {
       "path": "pages/components/tree/demo/Selectable"
+    },
+    {
+      "path": "pages/components/tree/demo/Single"
     },
     {
       "path": "pages/components/tree/demo/StrictFilter"

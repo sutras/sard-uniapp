@@ -99,6 +99,7 @@ declare module 'vue' {
     SarSlider: typeof import('./components/slider/slider.vue').default
     SarSpace: typeof import('./components/space/space.vue').default
     SarStatusBar: typeof import('./components/status-bar/status-bar.vue').default
+    SarStep: typeof import('./components/step/step.vue').default
     SarStepper: typeof import('./components/stepper/stepper.vue').default
     SarSteps: typeof import('./components/steps/steps.vue').default
     SarSwiperDot: typeof import('./components/swiper-dot/swiper-dot.vue').default

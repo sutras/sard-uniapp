@@ -371,6 +371,7 @@ export const defaultConfig = {
   steps: {
     current: 0,
     center: false,
+    itemList: () => [],
     direction: 'horizontal' as StepsProps['direction'],
     finishIcon: 'check-circle-fill',
     processIcon: 'circle',

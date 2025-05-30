@@ -1,0 +1,215 @@
+@use '../style/base' as *;
+
+@include bem(step) {
+  @include b() {
+    @include universal;
+    flex: 1;
+    font-size: var(--sar-steps-step-font-size);
+
+    &:first-child {
+      @include e(line-before) {
+        opacity: 0;
+      }
+    }
+
+    &:last-child {
+      flex: none;
+      white-space: nowrap;
+
+      @include e(line) {
+        display: none;
+      }
+
+      @include e(line-after) {
+        opacity: 0;
+      }
+    }
+
+    @include m(behind) {
+      @include e(line) {
+        background-color: var(--sar-steps-line-active-color);
+      }
+    }
+
+    @include m(self) {
+      @include e(line-before) {
+        background-color: var(--sar-steps-line-active-color);
+      }
+    }
+
+    @include m(finish) {
+      @include e(icon) {
+        color: var(--sar-steps-icon-finish-color);
+      }
+
+      @include e(body) {
+        color: var(--sar-steps-text-finish-color);
+      }
+    }
+
+    @include m(process) {
+      @include e(icon) {
+        color: var(--sar-steps-icon-process-color);
+      }
+
+      @include e(body) {
+        color: var(--sar-steps-text-process-color);
+      }
+    }
+
+    @include m(wait) {
+      @include e(icon) {
+        color: var(--sar-steps-icon-wait-color);
+      }
+
+      @include e(body) {
+        color: var(--sar-steps-text-wait-color);
+      }
+    }
+
+    @include m(error) {
+      @include e(icon) {
+        color: var(--sar-steps-icon-error-color);
+      }
+
+      @include e(body) {
+        color: var(--sar-steps-text-error-color);
+      }
+    }
+  }
+
+  @include e(header) {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    padding-top: var(--sar-steps-header-gap-y);
+    padding-bottom: var(--sar-steps-header-gap-y);
+  }
+
+  @include e(line) {
+    @include universal;
+    height: var(--sar-steps-line-thickness);
+    width: 0;
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    margin-left: var(--sar-steps-line-gap);
+    margin-right: var(--sar-steps-line-gap);
+    background-color: var(--sar-steps-line-color);
+  }
+
+  @include e(line-before) {
+    display: none;
+  }
+
+  @include e(icon) {
+    @include universal;
+    font-size: var(--sar-steps-icon-font-size);
+  }
+
+  @include e(body) {
+    @include universal;
+  }
+
+  @include e(name) {
+    font-size: var(--sar-steps-name-font-size);
+  }
+
+  @include e(description) {
+    margin-top: var(--sar-steps-description-margin-top);
+    font-size: var(--sar-steps-description-font-size);
+    color: var(--sar-steps-description-color);
+  }
+
+  @include m(vertical) {
+    flex-direction: row;
+    min-height: var(--sar-steps-step-min-height);
+
+    &:last-child {
+      @include e(line) {
+        white-space: unset;
+      }
+    }
+
+    @include e(header) {
+      top: calc(
+        var(--sar-steps-header-vertical-top) + var(--sar-steps-body-padding-y)
+      );
+      flex: none;
+      flex-direction: column;
+      padding-top: 0;
+      padding-bottom: 0;
+      padding-left: var(--sar-steps-header-gap-x);
+      padding-right: var(--sar-steps-header-gap-x);
+    }
+
+    @include e(line) {
+      width: var(--sar-steps-line-thickness);
+      height: 0;
+      margin-left: 0;
+      margin-right: 0;
+      margin-top: var(--sar-steps-line-gap);
+      margin-bottom: var(--sar-steps-line-gap);
+    }
+
+    @include e(body) {
+      flex: 1;
+      padding-top: var(--sar-steps-body-padding-y);
+      padding-bottom: var(--sar-steps-body-padding-y);
+    }
+  }
+
+  @include m(center) {
+    justify-content: center;
+
+    &:last-child {
+      flex: 1;
+      white-space: unset;
+
+      @include e(line) {
+        display: flex;
+      }
+    }
+
+    @include e(line-before) {
+      display: flex;
+      margin-left: 0;
+    }
+
+    @include e(line-after) {
+      margin-right: 0;
+    }
+
+    @include e(body) {
+      align-items: center;
+    }
+  }
+
+  @include m-intersect(center, vertical) {
+    justify-content: center;
+    align-items: center;
+
+    &:last-child {
+      flex: 1;
+      white-space: unset;
+    }
+
+    @include e(header) {
+      top: 0;
+      align-self: stretch;
+    }
+
+    @include e(line-before) {
+      margin-top: 0;
+    }
+
+    @include e(line-after) {
+      margin-bottom: 0;
+    }
+
+    @include e(body) {
+      justify-content: center;
+      align-items: flex-start;
+    }
+  }
+}

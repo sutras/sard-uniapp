@@ -71,6 +71,12 @@ import Steps from 'sard-uniapp/components/steps/steps.vue'
 
 @code('${DEMO_PATH}/steps/demo/StepStatus.vue')
 
+### 默认插槽
+
+版本 `1.17+` 可使用 `Step` 组件实现自定义内容，必须传递 `index` 属性。
+
+@code('${DEMO_PATH}/steps/demo/Slot.vue')
+
 ## API
 
 ### StepsProps
@@ -90,6 +96,30 @@ import Steps from 'sard-uniapp/components/steps/steps.vue'
 | process-icon | 处理中状态的图标名称 | string                     | -            |
 | wait-icon    | 等待中状态的图标名称 | string                     | -            |
 | error-icon   | 错误状态的图标名称   | string                     | -            |
+
+### StepsSlots
+
+| 插槽    | 描述           | 属性 |
+| ------- | -------------- | ---- |
+| default | 自定义默认内容 | -    |
+
+### StepProps
+
+| 属性        | 描述             | 类型        | 默认值 |
+| ----------- | ---------------- | ----------- | ------ |
+| root-class  | 组件根元素类名   | string      | -      |
+| root-style  | 组件根元素样式   | StyleValue  | -      |
+| status      | 自定义状态       | StepsStatus | -      |
+| name        | 步骤名称         | string      | -      |
+| description | 步骤描述         | string      | -      |
+| index       | 步骤下标（必填） | number      | -      |
+
+### StepSlots
+
+| 插槽    | 描述           | 属性                    |
+| ------- | -------------- | ----------------------- |
+| default | 自定义默认内容 | { status: StepsStatus } |
+| icon    | 自定义图标内容 | { status: StepsStatus } |
 
 ### StepsItem
 
