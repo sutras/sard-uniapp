@@ -73,7 +73,7 @@ import Steps from 'sard-uniapp/components/steps/steps.vue'
 
 ### 默认插槽
 
-版本 `1.17+` 可使用 `Step` 组件实现自定义内容，必须传递 `index` 属性。
+版本 `1.17.1+` 可使用 `Step` 组件实现自定义内容，必须传递 `index` 属性。
 
 @code('${DEMO_PATH}/steps/demo/Slot.vue')
 
