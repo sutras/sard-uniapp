@@ -4,7 +4,7 @@
       <view :class="iconClass">
         <sar-icon
           :name="icon || mapStatusIcon[status]"
-          :family="iconFamily || 'sari'"
+          :family="iconFamily"
           :color="iconColor"
         />
       </view>

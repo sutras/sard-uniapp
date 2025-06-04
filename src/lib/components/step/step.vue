@@ -5,7 +5,7 @@
       <view :class="bem.e('icon')">
         <slot name="icon" :status="currentStatus">
           <sar-icon
-            :family="context.iconFamily || 'sari'"
+            :family="context.iconFamily"
             :name="statusIcon"
             :size="context.iconSize"
           />

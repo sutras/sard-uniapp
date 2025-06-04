@@ -2,7 +2,7 @@
   <view :class="emptyClass" :style="emptyStyle">
     <view :class="bem.e('icon')" :style="iconStyle">
       <slot name="icon">
-        <sar-icon :family="iconFamily || 'sari'" :name="icon" />
+        <sar-icon :family="iconFamily" :name="icon" />
       </slot>
     </view>
     <slot name="description">

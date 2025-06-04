@@ -27,7 +27,7 @@
             stringifyStyle({ background: item.background, color: item.color })
           "
         >
-          <sar-icon :family="item.iconFamily || 'sari'" :name="item.icon" />
+          <sar-icon :family="item.iconFamily" :name="item.icon" />
         </view>
       </view>
     </view>

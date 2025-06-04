@@ -27,12 +27,18 @@ const isImg = computed(() => {
 
 // others
 const iconClass = computed(() => {
+  if (isImg.value) {
+    return classNames(bem.b(), props.rootClass)
+  }
+  if (props.name.includes(':')) {
+    const [family, name] = props.name.split(':')
+    return classNames(bem.b(), family, `${family}-${name}`, props.rootClass)
+  }
+
   return classNames(
     bem.b(),
-    {
-      [props.family]: !isImg.value,
-      [`${props.family}-${props.name}`]: !isImg.value,
-    },
+    props.family,
+    `${props.family}-${props.name}`,
     props.rootClass,
   )
 })

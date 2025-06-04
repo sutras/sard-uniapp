@@ -31,7 +31,7 @@
           <template v-if="voidText">
             {{ voidText }}
           </template>
-          <sar-icon v-else :name="voidIcon" :family="iconFamily || 'sari'" />
+          <sar-icon v-else :name="voidIcon" :family="iconFamily" />
         </view>
         <view
           :class="bem.e('star')"
@@ -45,7 +45,7 @@
           <template v-if="text">
             {{ text }}
           </template>
-          <sar-icon v-else :name="icon" :family="iconFamily || 'sari'" />
+          <sar-icon v-else :name="icon" :family="iconFamily" />
         </view>
       </view>
     </view>

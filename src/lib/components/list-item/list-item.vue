@@ -11,7 +11,7 @@
             :name="icon"
             :color="iconColor"
             :size="iconSize"
-            :family="iconFamily || 'sari'"
+            :family="iconFamily"
           />
         </slot>
       </view>

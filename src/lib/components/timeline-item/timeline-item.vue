@@ -5,11 +5,7 @@
       <view :class="bem.e('icon-wrapper')">
         <view v-if="icon || $slots.icon" :class="bem.e('icon')">
           <slot name="icon">
-            <sar-icon
-              :name="icon"
-              :family="iconFamily || 'sari'"
-              :color="iconColor"
-            />
+            <sar-icon :name="icon" :family="iconFamily" :color="iconColor" />
           </slot>
         </view>
         <view v-else :class="bem.e('dot')"></view>
