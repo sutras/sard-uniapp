@@ -1,3 +1,14 @@
+# [1.18.0](https://github.com/sutras/sard-uniapp/compare/v1.17.1...v1.18.0) (2025-06-06)
+
+
+### Features
+
+* datetime-picker 组件新增农历类型 ([7b0f305](https://github.com/sutras/sard-uniapp/commit/7b0f305f57ff43f322ef4a398f95415a5a9e01e0))
+* dropdown-item 组件新增显隐动画相关事件 ([83e8c52](https://github.com/sutras/sard-uniapp/commit/83e8c52e996bdc4901ea446b30d9273d0e5e956d))
+* icon支持冒号分隔符名称属性 ([7ffcd90](https://github.com/sutras/sard-uniapp/commit/7ffcd9056e006cc353aadf5cb2831edde9515719))
+
+
+
 ## [1.17.1](https://github.com/sutras/sard-uniapp/compare/v1.17.0...v1.17.1) (2025-05-30)
 
 
