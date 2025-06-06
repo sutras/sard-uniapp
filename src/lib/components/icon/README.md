@@ -69,6 +69,12 @@ import Icon from 'sard-uniapp/components/icon/icon.vue'
 
 @code('${DEMO_PATH}/icon/demo/Custom.vue')
 
+### 冒号分隔 <sup>1.18+</sup>
+
+除了通过 `family` 指定图标字体，还可以将图标字体和图标名称通过冒号分隔符组合在一起，统一通过 `name` 进行设置。
+
+@code('${DEMO_PATH}/icon/demo/Colon.vue')
+
 ### 内置图标
 
 点击右边演示的图标可以复制图标名称。

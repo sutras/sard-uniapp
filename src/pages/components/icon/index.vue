@@ -20,6 +20,10 @@
       <DemoCustom />
     </doc-demo>
 
+    <doc-demo title="冒号分隔">
+      <DemoColon />
+    </doc-demo>
+
     <doc-demo title="内置图标">
       <DemoInbuild />
     </doc-demo>
@@ -32,5 +36,6 @@ import DemoSize from './demo/Size.vue'
 import DemoColor from './demo/Color.vue'
 import DemoImage from './demo/Image.vue'
 import DemoCustom from './demo/Custom.vue'
+import DemoColon from './demo/Colon.vue'
 import DemoInbuild from './demo/Inbuild.vue'
 </script>
