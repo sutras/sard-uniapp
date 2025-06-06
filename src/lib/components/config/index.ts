@@ -119,6 +119,7 @@ export const defaultConfig = {
   },
   datetimePicker: {
     type: 'yMd',
+    calendar: 'solar' as const,
   },
   datetimePickerPopout: {
     validateEvent: true,

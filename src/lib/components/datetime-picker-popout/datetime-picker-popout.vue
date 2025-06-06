@@ -18,6 +18,7 @@
         :filter="filter"
         :formatter="formatter"
         :value-format="valueFormat"
+        :calendar="calendar"
         @change="onChange"
       />
     </template>

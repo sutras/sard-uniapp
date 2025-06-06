@@ -45,8 +45,8 @@ const formatter = (day: CalendarDay) => {
     }
 
     if (week === 0) {
-      const weekOnFirstDay = new Date(year, month - 1, 1).getDay()
-      const secondSunday = 15 - (weekOnFirstDay || 7)
+      const weekOnMonthStart = new Date(year, month - 1, 1).getDay()
+      const secondSunday = 15 - (weekOnMonthStart || 7)
 
       if (secondSunday === date) {
         day.bottom = '母亲节'

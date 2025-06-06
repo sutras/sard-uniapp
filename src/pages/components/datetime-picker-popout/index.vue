@@ -19,6 +19,10 @@
     <doc-demo title="格式化">
       <DemoFormatter />
     </doc-demo>
+
+    <doc-demo title="农历">
+      <DemoCalendar />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -28,4 +32,5 @@ import DemoType from './demo/Type.vue'
 import DemoMinMax from './demo/MinMax.vue'
 import DemoFilter from './demo/Filter.vue'
 import DemoFormatter from './demo/Formatter.vue'
+import DemoCalendar from './demo/Calendar.vue'
 </script>

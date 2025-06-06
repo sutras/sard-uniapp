@@ -48,6 +48,12 @@ import DatetimePickerPopout from 'sard-uniapp/components/datetime-picker-popout/
 
 @code('${DEMO_PATH}/datetime-picker-popout/demo/Formatter.vue')
 
+### 农历
+
+可以设置 `calendar="lunar"` 将历法类型改为农历。农历仅用于展示，实际绑定的值还是公历。
+
+@code('${DEMO_PATH}/datetime-picker-popout/demo/Calendar.vue')
+
 ## API
 
 ### DatetimePickerPopoutProps

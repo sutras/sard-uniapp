@@ -24,6 +24,7 @@
       :formatter="formatter"
       :value-format="valueFormat"
       :validate-event="validateEvent"
+      :calendar="calendar"
       @change="onChange"
     />
   </sar-popout-input>

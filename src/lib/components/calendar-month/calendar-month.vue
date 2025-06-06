@@ -33,9 +33,9 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import {
-  getDaysInMonth,
-  getOffsetDaysFromFirstDay,
-  getDayOnFirstOfMonth,
+  getMonthDays,
+  getOffsetDaysFromMonthStart,
+  getWeekOfMonthStart,
   getPadStartDays,
   getPadEndDays,
   toDateNumber,
@@ -61,12 +61,12 @@ const emit = defineEmits<CalendarMonthEmits>()
 
 // main
 const days = computed(() => {
-  return getDaysInMonth(props.year, props.month)
+  return getMonthDays(props.year, props.month + 1)
 })
 
 const offsetDays = computed(() => {
-  return getOffsetDaysFromFirstDay(
-    getDayOnFirstOfMonth(props.year, props.month),
+  return getOffsetDaysFromMonthStart(
+    getWeekOfMonthStart(props.year, props.month + 1),
     props.weekStartsOn,
   )
 })
@@ -82,13 +82,13 @@ const allDays = computed(() => {
 
   const padStartDays = getPadStartDays(
     props.year,
-    props.month,
+    props.month + 1,
     offsetDays.value,
   )
 
   const padEndDays = getPadEndDays(
     props.year,
-    props.month,
+    props.month + 1,
     42 - offsetDays.value - days.value,
   )
 
@@ -165,22 +165,22 @@ const daysInfo = computed(() => {
         isStart && isEnd
           ? `${props.t('start')}/${props.t('end')}`
           : isStart
-          ? props.t('start')
-          : isEnd
-          ? props.t('end')
-          : '',
+            ? props.t('start')
+            : isEnd
+              ? props.t('end')
+              : '',
       type:
         isStart && isEnd
           ? 'same'
           : isStart
-          ? 'start'
-          : isMiddle
-          ? 'middle'
-          : isEnd
-          ? 'end'
-          : selected
-          ? 'selected'
-          : 'normal',
+            ? 'start'
+            : isMiddle
+              ? 'middle'
+              : isEnd
+                ? 'end'
+                : selected
+                  ? 'selected'
+                  : 'normal',
     }
 
     if (within && props.formatter) {

@@ -10,7 +10,14 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { classNames, formatDate, stringifyStyle, toDate } from '../../utils'
+import {
+  classNames,
+  formatDate,
+  lunarToSolar,
+  solarToLunar,
+  stringifyStyle,
+  toDate,
+} from '../../utils'
 import SarPicker from '../picker/picker.vue'
 import {
   type DatetimePickerProps,
@@ -51,16 +58,22 @@ const { t } = useTranslate('datetimePicker')
 
 // utils
 const createColumnData = (types: DatetimeLetter[], currentDate: Date) => {
-  minValues = getBoundaryValue(false, minDate.value, currentDate)
-  maxValues = getBoundaryValue(true, maxDate.value, currentDate)
+  minValues = getBoundaryValue(
+    props.calendar,
+    false,
+    minDate.value,
+    currentDate,
+  )
+  maxValues = getBoundaryValue(props.calendar, true, maxDate.value, currentDate)
 
   const getColumnDataByType = (letter: DatetimeLetter) => {
     const strategy = strategies[letter]
     const index = strategy[0]
 
     return getColumnData(
-      maxValues[index] - minValues[index] + 1,
+      props.calendar,
       minValues[index],
+      maxValues[index],
       strategy[1],
       letter,
       currentDate,
@@ -77,16 +90,33 @@ const createColumnData = (types: DatetimeLetter[], currentDate: Date) => {
 }
 
 const getChangedLetter = (currentDate: Date) => {
-  const min = getBoundaryValue(false, minDate.value, currentDate)
-  const max = getBoundaryValue(true, maxDate.value, currentDate)
+  const min = getBoundaryValue(
+    props.calendar,
+    false,
+    minDate.value,
+    currentDate,
+  )
+  const max = getBoundaryValue(props.calendar, true, maxDate.value, currentDate)
 
   return letterArray.filter(
     (_, i) => min[i] !== minValues[i] || max[i] !== maxValues[i],
   )
 }
 
+let lunarYearChanged = false
+
 const updateColumns = (currentDate: Date) => {
   const changedLetter = getChangedLetter(currentDate)
+
+  if (
+    props.calendar === 'lunar' &&
+    !changedLetter.includes('M') &&
+    innerType.value.includes('M') &&
+    lunarYearChanged
+  ) {
+    changedLetter.push('M')
+    lunarYearChanged = false
+  }
 
   if (changedLetter.length) {
     const changedColumns = createColumnData(changedLetter, currentDate)
@@ -104,19 +134,72 @@ const updateColumns = (currentDate: Date) => {
 }
 
 const getDateByPickerValue = (value: number[]) => {
-  const currEvery = letterArray.map((letter) => {
-    const stratery = strategies[letter]
-    for (let i = 0, l = innerType.value.length; i < l; i++) {
-      if (innerType.value[i] === letter) {
-        return value[i]
-      }
-    }
-    return stratery[4](innerValue.value)
-  })
-  correctDate(currEvery as DateEvery, minDate.value, maxDate.value)
+  let currEvery: number[]
 
-  currEvery[1]--
-  const date = new Date(...(currEvery as DateEvery))
+  if (props.calendar === 'solar') {
+    currEvery = letterArray.map((letter) => {
+      const stratery = strategies[letter]
+      for (let i = 0, l = innerType.value.length; i < l; i++) {
+        if (innerType.value[i] === letter) {
+          return value[i]
+        }
+      }
+      return stratery[4](innerValue.value)
+    })
+  } else {
+    const lunarDate = solarToLunar(
+      innerValue.value.getFullYear(),
+      innerValue.value.getMonth() + 1,
+      innerValue.value.getDate(),
+    )
+
+    const yearIndex = innerType.value.indexOf('y')
+    if (yearIndex !== -1) {
+      lunarYearChanged = lunarDate.year !== value[yearIndex]
+    }
+
+    currEvery = letterArray.map((letter) => {
+      for (let i = 0, l = innerType.value.length; i < l; i++) {
+        if (innerType.value[i] === letter) {
+          return value[i]
+        }
+      }
+
+      switch (letter) {
+        case 'y':
+          return lunarDate.year
+        case 'M':
+          return lunarDate.month
+        case 'd':
+          return lunarDate.day
+        default:
+          return strategies[letter][4](innerValue.value)
+      }
+    })
+  }
+
+  correctDate(
+    props.calendar,
+    currEvery as DateEvery,
+    minDate.value,
+    maxDate.value,
+  )
+
+  let date: Date
+  if (props.calendar === 'solar') {
+    currEvery[1]--
+    date = new Date(...(currEvery as DateEvery))
+  } else {
+    const solarDate = lunarToSolar(currEvery[0], currEvery[1], currEvery[2])
+    date = new Date(
+      solarDate.year,
+      solarDate.month - 1,
+      solarDate.day,
+      currEvery[3],
+      currEvery[4],
+      currEvery[5],
+    )
+  }
 
   return date
 }
@@ -184,9 +267,30 @@ watch([minDate, maxDate], () => {
 })
 
 const pickerValue = computed(() => {
-  return innerType.value.map((letter) => {
-    return strategies[letter][4](innerValue.value)
-  })
+  if (props.calendar === 'solar') {
+    return innerType.value.map((letter) => {
+      return strategies[letter][4](innerValue.value)
+    })
+  } else {
+    const lunarDate = solarToLunar(
+      innerValue.value.getFullYear(),
+      innerValue.value.getMonth() + 1,
+      innerValue.value.getDate(),
+    )
+
+    return innerType.value.map((letter) => {
+      switch (letter) {
+        case 'y':
+          return lunarDate.year
+        case 'M':
+          return lunarDate.month
+        case 'd':
+          return lunarDate.day
+        default:
+          return strategies[letter][4](innerValue.value)
+      }
+    })
+  }
 })
 
 const columnsMap: { [p: string]: DatetimeColumnOption[] } = {}
