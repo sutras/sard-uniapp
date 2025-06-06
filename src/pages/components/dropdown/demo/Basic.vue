@@ -1,7 +1,7 @@
 <template>
   <sar-dropdown>
-    <sar-dropdown-item :options="options1" v-model="value1" />
-    <sar-dropdown-item :options="options2" v-model="value2" />
+    <sar-dropdown-item v-model="value1" :options="options1" />
+    <sar-dropdown-item v-model="value2" :options="options2" />
   </sar-dropdown>
 </template>
 

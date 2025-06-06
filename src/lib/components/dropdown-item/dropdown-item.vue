@@ -276,6 +276,9 @@ const { realVisible, transitionClass, onTransitionEnd } = useTransition(
       if (name === 'after-leave') {
         onAfterLeave()
       }
+
+      emit('visible-hook', name)
+      emit(name as any)
     },
   }),
 )

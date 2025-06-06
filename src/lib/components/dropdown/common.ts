@@ -1,5 +1,6 @@
 import { type StyleValue, type Ref } from 'vue'
 import { defaultConfig } from '../config'
+import { type TransitionHookEmits } from '../popup/common'
 
 export interface DropdownProps {
   rootStyle?: StyleValue
@@ -43,7 +44,7 @@ export interface DropdownItemSlots {
   default?(props: Record<string, never>): any
 }
 
-export interface DropdownItemEmits {
+export interface DropdownItemEmits extends TransitionHookEmits {
   (e: 'update:model-value', value: any): void
   (e: 'change', value: any): void
   (e: 'update:visible', visible: boolean): void
