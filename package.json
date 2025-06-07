@@ -122,7 +122,7 @@
     "lodash-es": "^4.17.21",
     "prettier": "^3.5.3",
     "region-data": "^1.2.3",
-    "sard-cli": "^1.2.0",
+    "sard-cli": "^1.2.3",
     "sass": "^1.69.7",
     "tel-area-code": "^1.1.0",
     "ts-custom-error": "^3.3.1",
@@ -223,10 +223,5 @@
   },
   "engines": {
     "HBuilderX": "^3.6.0"
-  },
-  "pnpm": {
-    "overrides": {
-      "sard-cli": "link:../sard-cli"
-    }
   }
 }
