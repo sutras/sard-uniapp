@@ -16,6 +16,10 @@
       <DemoRound />
     </doc-demo>
 
+    <doc-demo title="圆形按钮">
+      <DemoSquare />
+    </doc-demo>
+
     <doc-demo title="禁用按钮">
       <DemoDisabled />
     </doc-demo>
@@ -43,6 +47,7 @@ import DemoType from './demo/Type.vue'
 import DemoTheme from './demo/Theme.vue'
 import DemoColor from './demo/Color.vue'
 import DemoRound from './demo/Round.vue'
+import DemoSquare from './demo/Square.vue'
 import DemoDisabled from './demo/Disabled.vue'
 import DemoSize from './demo/Size.vue'
 import DemoLoading from './demo/Loading.vue'

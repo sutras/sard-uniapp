@@ -78,6 +78,20 @@ describe('Button', () => {
     expect(wrapper.find('.sar-button').classes()).toContain('sar-button_round')
   })
 
+  test('square', async () => {
+    const wrapper = mount(
+      h(
+        Button,
+        {
+          square: true,
+        },
+        () => '默认',
+      ),
+    )
+
+    expect(wrapper.find('.sar-button').classes()).toContain('sar-button_square')
+  })
+
   test('disabled', async () => {
     const wrapper = mount(
       h(

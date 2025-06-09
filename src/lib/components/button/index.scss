@@ -190,6 +190,15 @@
     }
   }
 
+  // # 方形按钮
+  @include m(square) {
+    border-radius: 0;
+
+    &::after {
+      border-radius: 0;
+    }
+  }
+
   // # active 状态
   @include m(default, pale, mild, outline, text) {
     &:not(#{bem($b: button, $m: disabled)}):not(

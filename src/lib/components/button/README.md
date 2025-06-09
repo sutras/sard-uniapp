@@ -43,6 +43,12 @@ import Button from 'sard-uniapp/components/button/button.vue'
 
 @code('${DEMO_PATH}/button/demo/Round.vue')
 
+### 方形按钮
+
+使用`square`属性设置为方形按钮。
+
+@code('${DEMO_PATH}/button/demo/Square.vue')
+
 ### 禁用按钮
 
 禁用状态的按钮不可点击。
@@ -85,6 +91,7 @@ import Button from 'sard-uniapp/components/button/button.vue'
 | theme                        | 按钮主题色                                    | 'primary' \| 'secondary' \| 'success' \| 'info' \| 'warning' \| 'danger' | 'primary'  |
 | size                         | 按钮尺寸                                      | 'mini' \| 'small' \| 'medium' \| 'large'                                 | 'medium'   |
 | round                        | 圆角按钮                                      | boolean                                                                  | false      |
+| square <sup>1.19+</sup>      | 方形按钮                                      | boolean                                                                  | false      |
 | disabled                     | 禁用按钮                                      | boolean                                                                  | false      |
 | loading                      | 加载状态                                      | boolean                                                                  | false      |
 | loading-type                 | 加载类型                                      | 'clock' \| 'circular'                                                    | 'circular' |

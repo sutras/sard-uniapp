@@ -15,6 +15,7 @@ export interface ButtonProps {
     | 'neutral'
   size?: 'mini' | 'small' | 'medium' | 'large'
   round?: boolean
+  square?: boolean
   disabled?: boolean
   loading?: boolean
   loadingType?: 'clock' | 'circular'
