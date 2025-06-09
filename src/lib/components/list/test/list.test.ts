@@ -12,13 +12,13 @@ describe('List', () => {
         h(ListItem, {
           title: '标题',
           value: '值',
-          description: '标签',
+          description: '描述',
         }),
       ]),
     )
 
-    expect(wrapper.find('.sar-list-item__title').text()).toBe('标题标签')
-    expect(wrapper.find('.sar-list-item__description').text()).toBe('标签')
+    expect(wrapper.find('.sar-list-item__title').text()).toBe('标题描述')
+    expect(wrapper.find('.sar-list-item__description').text()).toBe('描述')
     expect(wrapper.find('.sar-list-item__value').text()).toBe('值')
   })
 
