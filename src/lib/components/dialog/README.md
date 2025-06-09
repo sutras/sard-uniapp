@@ -96,7 +96,7 @@ import { dialog } from 'sard-uniapp'
 
 - 当点击确定按钮时，`type` 为 `confirm`；
 - 当点击取消按钮时，`type` 为 `cancel`；
-- 当点击关闭按钮或遮罩时，`type` 为 `cloes`。
+- 当点击关闭按钮或遮罩时，`type` 为 `close`。
 
 `loading` 表示当前哪个按钮处于异步关闭状态。
 
