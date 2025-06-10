@@ -31,7 +31,7 @@ import {
   type FloatingBubbleEmits,
   defaultFloatingBubbleProps,
 } from './common'
-import { useMouseDown, useSetTimeout } from '../../use'
+import { useMouseDown, useTimeout } from '../../use'
 
 defineOptions({
   options: {
@@ -78,9 +78,9 @@ watch(
 
 const animated = ref(false)
 
-const [nonAnimatedLater, cancelNonAnimated] = useSetTimeout(() => {
+const { start: nonAnimatedLater, stop: cancelNonAnimated } = useTimeout(() => {
   animated.value = false
-})
+}, 500)
 
 function getMinX() {
   return props.gapX
@@ -174,7 +174,7 @@ const onTouchEnd = () => {
     }
   }
   animated.value = true
-  nonAnimatedLater(500)
+  nonAnimatedLater()
 
   bubbleRect = undefined
 }

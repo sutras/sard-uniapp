@@ -21,7 +21,7 @@ import {
   type MarqueeExpose,
   defaultMarqueeProps,
 } from './common'
-import { useSetTimeout } from '../../use'
+import { useTimeout } from '../../use'
 
 defineOptions({
   options: {
@@ -52,12 +52,15 @@ const update = async () => {
   duration.value = (size / props.speed) * 1000
 }
 
-const [updateLater] = useSetTimeout(() => {
-  update()
-})
+const { start: updateLater } = useTimeout(
+  () => {
+    update()
+  },
+  () => props.delay,
+)
 
 onMounted(() => {
-  updateLater(props.delay)
+  updateLater()
 })
 
 defineExpose<MarqueeExpose>({

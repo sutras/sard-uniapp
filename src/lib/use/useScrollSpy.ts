@@ -1,5 +1,5 @@
 import { computed, ref, shallowRef } from 'vue'
-import { useSetTimeout } from './useSetTimeout'
+import { useTimeout } from './useTimeout'
 import { isNullish, matchScrollVisible, type NodeRect } from '../utils'
 
 export interface UseScrollSpyOptions {
@@ -27,9 +27,9 @@ export function useScrollSpy(options: UseScrollSpyOptions) {
 
   let lockScroll = false
 
-  const [unLockScrollLater] = useSetTimeout(() => {
+  const { start: unLockScrollLater } = useTimeout(() => {
     lockScroll = false
-  })
+  }, 150)
 
   const register = (
     name: string | number,
@@ -74,7 +74,7 @@ export function useScrollSpy(options: UseScrollSpyOptions) {
         scrollTop.value = offset - startOffset.value
 
         lockScroll = true
-        unLockScrollLater(150)
+        unLockScrollLater()
       }
     }
   }

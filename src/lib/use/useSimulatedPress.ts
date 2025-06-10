@@ -1,5 +1,5 @@
 import { getDistanceBetweenTwoPoints } from '../utils'
-import { useSetTimeout } from './useSetTimeout'
+import { useTimeout } from './useTimeout'
 
 export interface UseSimulatedPressOptions {
   start?: () => void
@@ -22,18 +22,21 @@ export function useSimulatedPress(options: UseSimulatedPressOptions = {}) {
   let downCoord = { x: 0, y: 0 }
   let isPressing = false
 
-  const [triggerPressLater, cancelTriggerPress, isWaitingToTriggerPress] =
-    useSetTimeout(() => {
-      isPressing = true
-      start?.()
-    })
+  const {
+    start: triggerPressLater,
+    stop: cancelTriggerPress,
+    isPending: isWaitingToTriggerPress,
+  } = useTimeout(() => {
+    isPressing = true
+    start?.()
+  }, duration)
 
   const onTouchStart = (event: TouchEvent) => {
     downCoord = {
       x: event.touches[0].clientX,
       y: event.touches[0].clientY,
     }
-    triggerPressLater(duration)
+    triggerPressLater()
   }
 
   const onTouchMove = (event: TouchEvent) => {
@@ -48,7 +51,7 @@ export function useSimulatedPress(options: UseSimulatedPressOptions = {}) {
           y: moveCoord.y - downCoord.y,
         },
       })
-    } else if (isWaitingToTriggerPress()) {
+    } else if (isWaitingToTriggerPress.value) {
       const distance = getDistanceBetweenTwoPoints(downCoord, moveCoord)
       if (distance > 10) {
         cancelTriggerPress()

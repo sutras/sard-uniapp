@@ -112,7 +112,7 @@ import {
   type CropImageExpose,
   defaultCropImageProps,
 } from './common'
-import { useDragPinch, useSetTimeout } from '../../use'
+import { useDragPinch, useTimeout } from '../../use'
 import { useTranslate } from '../locale'
 import SarPopup from '../popup/popup.vue'
 import SarIcon from '../icon/icon.vue'
@@ -184,21 +184,21 @@ const rotate = ref(0)
 
 const actualRotate = ref(0)
 
-const [onRotateEnd] = useSetTimeout(() => {
+const { start: onRotateEnd } = useTimeout(() => {
   actualRotate.value = rotate.value
-})
+}, 150 + 100)
 
 watch(rotate, () => {
-  onRotateEnd(150 + 100)
+  onRotateEnd()
 })
 
 const isRotating = computed(() => rotate.value !== actualRotate.value)
 
 const isStillRotating = ref(false)
 
-const [stopRotateLater, cancelStopRotate] = useSetTimeout(() => {
+const { start: stopRotateLater, stop: cancelStopRotate } = useTimeout(() => {
   isStillRotating.value = false
-})
+}, 150)
 
 watch(isRotating, () => {
   cancelStopRotate()
@@ -206,7 +206,7 @@ watch(isRotating, () => {
   if (isRotating.value) {
     isStillRotating.value = true
   } else {
-    stopRotateLater(150)
+    stopRotateLater()
   }
 })
 

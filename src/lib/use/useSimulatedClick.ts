@@ -1,20 +1,20 @@
 import { getDistanceBetweenTwoPoints } from '../utils'
-import { useSetTimeout } from './useSetTimeout'
+import { useTimeout } from './useTimeout'
 
 export function useSimulatedClick(click: () => void, duration = 10000) {
   let timeout = false
   let downCoord = { x: 0, y: 0 }
 
-  const [timeoutLater, cancelTimeout] = useSetTimeout(() => {
+  const { start: timeoutLater, stop: cancelTimeout } = useTimeout(() => {
     timeout = true
-  })
+  }, duration)
 
   const onTouchStart = (event: TouchEvent) => {
     downCoord = {
       x: event.touches[0].clientX,
       y: event.touches[0].clientY,
     }
-    timeoutLater(duration)
+    timeoutLater()
   }
 
   const onTouchEnd = (event: TouchEvent) => {

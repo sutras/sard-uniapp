@@ -15,7 +15,7 @@
 <script setup lang="ts">
 import { computed, ref, watch, nextTick } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
-import { useSetTimeout } from '../../use'
+import { useTimeout } from '../../use'
 import {
   type NotifyExpose,
   type NotifyProps,
@@ -49,17 +49,20 @@ const effect = computed(() => {
 
 const innerVisible = ref(props.visible)
 
-const [hideLater, cancelHide] = useSetTimeout(() => {
-  innerVisible.value = false
-  emit('update:visible', false)
-})
+const { start: hideLater, stop: cancelHide } = useTimeout(
+  () => {
+    innerVisible.value = false
+    emit('update:visible', false)
+  },
+  () => props.timeout,
+)
 
 const reHideLater = () => {
   cancelHide()
 
   nextTick(() => {
     if (props.timeout > 0) {
-      hideLater(props.timeout)
+      hideLater()
     }
   })
 }
@@ -70,7 +73,7 @@ watch(
     innerVisible.value = props.visible
     if (props.visible) {
       if (props.timeout > 0) {
-        hideLater(props.timeout)
+        hideLater()
       }
     }
   },

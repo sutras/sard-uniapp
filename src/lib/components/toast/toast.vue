@@ -40,7 +40,7 @@ import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarPopup from '../popup/popup.vue'
 import SarLoading from '../loading/loading.vue'
 import SarIcon from '../icon/icon.vue'
-import { useSetTimeout } from '../../use'
+import { useTimeout } from '../../use'
 import {
   type ToastProps,
   type ToastEmits,
@@ -57,17 +57,20 @@ const bem = createBem('toast')
 // main
 const innerVisible = ref(props.visible)
 
-const [hideLater, cancelHide] = useSetTimeout(() => {
-  innerVisible.value = false
-  emit('update:visible', false)
-})
+const { start: hideLater, stop: cancelHide } = useTimeout(
+  () => {
+    innerVisible.value = false
+    emit('update:visible', false)
+  },
+  () => props.timeout,
+)
 
 const reHideLater = () => {
   cancelHide()
 
   nextTick(() => {
     if (props.type !== 'loading' && props.timeout > 0) {
-      hideLater(props.timeout)
+      hideLater()
     }
   })
 }
@@ -78,7 +81,7 @@ watch(
     innerVisible.value = props.visible
     if (props.visible) {
       if (props.type !== 'loading' && props.timeout > 0) {
-        hideLater(props.timeout)
+        hideLater()
       }
     }
   },

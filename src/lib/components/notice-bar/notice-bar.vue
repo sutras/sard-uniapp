@@ -47,7 +47,7 @@ import {
   type NoticeBarExpose,
   defaultNoticeBarProps,
 } from './common'
-import { useSetTimeout } from '../../use'
+import { useTimeout } from '../../use'
 
 defineOptions({
   options: {
@@ -120,13 +120,16 @@ const onRightIconClick = () => {
   }
 }
 
-const [updateLater] = useSetTimeout(() => {
-  update()
-})
+const { start: updateLater } = useTimeout(
+  () => {
+    update()
+  },
+  () => props.delay,
+)
 
 onMounted(() => {
   if (props.scrollable) {
-    updateLater(props.delay)
+    updateLater()
   }
 })
 

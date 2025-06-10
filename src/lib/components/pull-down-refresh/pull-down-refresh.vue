@@ -83,7 +83,7 @@ import {
   type PullDownRefreshStatus,
   defaultPullDownRefreshProps,
 } from './common'
-import { useMouseDown, useSetTimeout } from '../../use'
+import { useMouseDown, useTimeout } from '../../use'
 import SarLoading from '../loading/loading.vue'
 
 const touch: any = {}
@@ -113,13 +113,19 @@ const progress = computed(() => {
   return Math.min(translateY.value / props.threshold, 1)
 })
 
-const [toInitialLater, cancelToInitial] = useSetTimeout(() => {
-  status.value = 'initial'
-})
+const { start: toInitialLater, stop: cancelToInitial } = useTimeout(
+  () => {
+    status.value = 'initial'
+  },
+  () => props.transitionDuration,
+)
 
-const [toRecoveringLater, cancelToRecovering] = useSetTimeout(() => {
-  toRecovering()
-})
+const { start: toRecoveringLater, stop: cancelToRecovering } = useTimeout(
+  () => {
+    toRecovering()
+  },
+  () => props.doneDuration,
+)
 
 const toLoading = () => {
   cancelToRecovering()
@@ -131,12 +137,12 @@ const toLoading = () => {
 const toRecovering = () => {
   status.value = 'recovering'
   translateY.value = 0
-  toInitialLater(props.transitionDuration)
+  toInitialLater()
 }
 
 const toDone = () => {
   status.value = 'done'
-  toRecoveringLater(props.doneDuration)
+  toRecoveringLater()
 }
 
 watch(

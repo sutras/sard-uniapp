@@ -16,7 +16,7 @@
       <DemoRound />
     </doc-demo>
 
-    <doc-demo title="圆形按钮">
+    <doc-demo title="方形按钮">
       <DemoSquare />
     </doc-demo>
 

@@ -1,6 +1,6 @@
 import { computed, watch } from 'vue'
 import { ref, Ref } from 'vue'
-import { useSetTimeout } from './useSetTimeout'
+import { useTimeout } from './useTimeout'
 
 export interface UseTimeoutLoadingOptions {
   leading?: number
@@ -17,14 +17,19 @@ export function useTimeoutLoading(
 
   let startTime = 0
 
-  const [waitTrailing, cancelTrailing] = useSetTimeout(() => {
-    status.value = 'idle'
-  })
+  let trailingDuration = 0
 
-  const [waitLeading, cancelLeading] = useSetTimeout(() => {
+  const { start: waitTrailing, stop: cancelTrailing } = useTimeout(
+    () => {
+      status.value = 'idle'
+    },
+    () => trailingDuration,
+  )
+
+  const { start: waitLeading, stop: cancelLeading } = useTimeout(() => {
     status.value = 'loading'
     startTime = Date.now()
-  })
+  }, leading)
 
   watch(loading, () => {
     cancelLeading()
@@ -34,7 +39,7 @@ export function useTimeoutLoading(
       switch (status.value) {
         case 'idle':
           status.value = 'leading'
-          waitLeading(leading)
+          waitLeading()
           break
         case 'trailing':
           status.value = 'loading'
@@ -53,7 +58,8 @@ export function useTimeoutLoading(
             status.value = 'idle'
           } else {
             status.value = 'trailing'
-            waitTrailing(trailing - duration)
+            trailingDuration = trailing - duration
+            waitTrailing()
           }
           break
         }
