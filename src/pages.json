@@ -360,6 +360,9 @@
       "path": "pages/components/style/index"
     },
     {
+      "path": "pages/components/swipe-action/index"
+    },
+    {
       "path": "pages/components/swiper-dot/index"
     },
     {

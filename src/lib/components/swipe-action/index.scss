@@ -1,0 +1,53 @@
+@use '../style/base' as *;
+
+@include bem(swipe-action) {
+  @include b() {
+    @include universal;
+    overflow: hidden;
+  }
+
+  @include e(content) {
+    @include universal;
+    cursor: grab;
+  }
+
+  @include e(actions) {
+    @include universal;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    pointer-events: none;
+  }
+
+  @include e(actions-wrapper) {
+    @include universal;
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+  }
+
+  @include e(left, right) {
+    @include universal;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    pointer-events: auto;
+  }
+
+  @include e(left) {
+    left: 0;
+    transform: translateX(-100%);
+  }
+
+  @include e(right) {
+    right: 0;
+    transform: translateX(100%);
+  }
+}

@@ -372,6 +372,10 @@
         "name": "skeleton"
       },
       {
+        "title": "SwipeAction 滑动操作",
+        "name": "swipe-action"
+      },
+      {
         "title": "Toast 轻提示",
         "name": "toast"
       }
