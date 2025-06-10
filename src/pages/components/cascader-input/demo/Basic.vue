@@ -42,7 +42,7 @@ const value = ref<number | undefined>(440111)
 
 const fieldKeys = { label: 'name', value: 'code' }
 
-const onChange = (value: any, selectedOptions: Node[]) => {
+const onChange = (value: any, selectedOptions: any) => {
   console.log('change', value, selectedOptions)
 }
 </script>

@@ -94,7 +94,7 @@ function getOutletText(
   const selectedOptions = getSelectedOptionsByValue(options, value, fieldKeys)
 
   if (!selectedOptions) {
-    return ''
+    return isNullish(value) ? '' : String(value)
   }
 
   const labels = selectedOptions.map((option) => option[fieldKeys.label])

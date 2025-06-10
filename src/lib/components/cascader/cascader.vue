@@ -154,6 +154,13 @@ const updateTabs = () => {
           selected: null,
         })
       }
+    } else {
+      nextTabs = [
+        {
+          options: props.options || [],
+          selected: null,
+        },
+      ]
     }
   }
 
