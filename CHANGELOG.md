@@ -1,3 +1,22 @@
+# [1.19.0](https://github.com/sutras/sard-uniapp/compare/v1.18.0...v1.19.0) (2025-06-10)
+
+
+### Bug Fixes
+
+* 修复 dialog 命令式回调选项参数问题 ([5af4fd8](https://github.com/sutras/sard-uniapp/commit/5af4fd81b6528501f2103b8db1b40a14f6186926))
+* 修复 form fields 错乱删除问题 ([8250da9](https://github.com/sutras/sard-uniapp/commit/8250da9770152a4f6a93e873c70c01e13c91ce56))
+* 修复cascader组件因值不存在时不显示列表的问题 ([4bae371](https://github.com/sutras/sard-uniapp/commit/4bae37167ccd88db3286d3bc233dfa250cfad4f9))
+* 修复picker最后一列在安卓偏移问题 ([a041836](https://github.com/sutras/sard-uniapp/commit/a04183687b4291c04a0c5381dbc8fbf0b0f5afba))
+
+
+### Features
+
+* button 新增 square 属性 ([41db4ac](https://github.com/sutras/sard-uniapp/commit/41db4acd6804f52e02cff5eeb3eaaf005dfc7f5e))
+* dropdown 新增 before-close 属性 ([3407a6b](https://github.com/sutras/sard-uniapp/commit/3407a6b5a9cb4038c7d63de9bfdb81498e6afd76))
+* 新增 swipe-action 组件 ([9a390c6](https://github.com/sutras/sard-uniapp/commit/9a390c61d036a016d2ee8d706130589e3ca4009c))
+
+
+
 # [1.18.0](https://github.com/sutras/sard-uniapp/compare/v1.17.1...v1.18.0) (2025-06-06)
 
 
