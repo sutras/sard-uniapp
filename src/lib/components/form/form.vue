@@ -121,7 +121,10 @@ const addField: FormContext['addField'] = (formItemContext) => {
 }
 
 const removeField: FormContext['removeField'] = (formItemContext) => {
-  fields.splice(fields.indexOf(formItemContext), 1)
+  const index = fields.indexOf(formItemContext)
+  if (index !== -1) {
+    fields.splice(index, 1)
+  }
 }
 
 const validator = markRaw(new Validator())
