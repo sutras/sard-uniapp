@@ -8,6 +8,9 @@ import {
 
 export interface DialogAgentProps extends DialogProps {
   id?: string
+  onClose?: () => void
+  onCancel?: () => void
+  onConfirm?: () => void
 }
 
 export const defaultDialogAgentProps = () => ({

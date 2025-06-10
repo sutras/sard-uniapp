@@ -1,5 +1,11 @@
 <template>
-  <sar-dialog v-bind="innerProps" v-model:visible="innerProps.visible" />
+  <sar-dialog
+    v-bind="innerProps"
+    v-model:visible="innerProps.visible"
+    @confirm="innerProps.onConfirm"
+    @close="innerProps.onClose"
+    @cancel="innerProps.onCancel"
+  />
 </template>
 
 <script setup lang="ts">
