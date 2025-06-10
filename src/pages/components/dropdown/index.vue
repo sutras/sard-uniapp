@@ -23,6 +23,10 @@
     <doc-demo title="自定义内容" full>
       <DemoContent />
     </doc-demo>
+
+    <doc-demo title="异步关闭" full>
+      <DemoAsync />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -33,4 +37,5 @@ import DemoLabel from './demo/Label.vue'
 import DemoDirection from './demo/Direction.vue'
 import DemoDisabled from './demo/Disabled.vue'
 import DemoContent from './demo/Content.vue'
+import DemoAsync from './demo/Async.vue'
 </script>

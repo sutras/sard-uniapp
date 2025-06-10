@@ -47,17 +47,17 @@ import ActionSheet from 'sard-uniapp/components/action-sheet/action-sheet.vue'
 
 ### ActionSheetProps
 
-| 属性             | 描述                                                      | 类型                                                                | 默认值 |
-| ---------------- | --------------------------------------------------------- | ------------------------------------------------------------------- | ------ |
-| root-class       | 组件根元素类名                                            | string                                                              | -      |
-| root-style       | 组件根元素样式                                            | StyleValue                                                          | -      |
-| description      | 动作面板描述说明                                          | string                                                              | -      |
-| item-list        | 面板项列表                                                | ActionSheetItem[]                                                   | []     |
-| cancel           | 取消按钮文字                                              | string                                                              | -      |
-| visible          | 是否显示动作面板                                          | boolean                                                             | false  |
-| overlay-closable | 点击遮罩后是否关闭                                        | boolean                                                             | true   |
-| before-close     | 关闭前的回调，返回 `false` 可阻止关闭，支持返回 `Promise` | (type: 'close' \| 'cancel' \| 'select') => boolean \| Promise\<any> | -      |
-| duration         | 显隐动画时长，单位 ms                                     | number                                                              | 300    |
+| 属性             | 描述                                                                 | 类型                                           | 默认值 |
+| ---------------- | -------------------------------------------------------------------- | ---------------------------------------------- | ------ |
+| root-class       | 组件根元素类名                                                       | string                                         | -      |
+| root-style       | 组件根元素样式                                                       | StyleValue                                     | -      |
+| description      | 动作面板描述说明                                                     | string                                         | -      |
+| item-list        | 面板项列表                                                           | ActionSheetItem[]                              | []     |
+| cancel           | 取消按钮文字                                                         | string                                         | -      |
+| visible          | 是否显示动作面板                                                     | boolean                                        | false  |
+| overlay-closable | 点击遮罩后是否关闭                                                   | boolean                                        | true   |
+| before-close     | 关闭前的回调，返回 `false` 或 `rejected` 状态的 `Promise` 可阻止关闭 | (type: 'close' \| 'cancel' \| 'select') => any | -      |
+| duration         | 显隐动画时长，单位 ms                                                | number                                         | 300    |
 
 ### ActionSheetItem
 

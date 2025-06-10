@@ -47,17 +47,17 @@
       <slot>
         <sar-list inlaid>
           <sar-list-item
-            v-for="(item, i) in options"
+            v-for="(option, i) in options"
             :key="i"
-            :title="item.label"
+            :title="option.label"
             hover
             :root-class="
               classNames(
                 bem.e('option'),
-                bem.em('option', 'active', item.value === innerValue),
+                bem.em('option', 'active', option.value === innerValue),
               )
             "
-            @click="onOptionClick(item)"
+            @click="onOptionClick(option)"
           >
             <template #arrow>
               <view :class="bem.e('option-icon')">
@@ -91,6 +91,9 @@ import {
   getBoundingClientRect,
   getWindowInfo,
   isNullish,
+  isFunction,
+  isObject,
+  noop,
 } from '../../utils'
 import SarList from '../list/list.vue'
 import SarListItem from '../list-item/list-item.vue'
@@ -102,6 +105,7 @@ import {
   type DropdownItemEmits,
   type DropdownContext,
   type DropdownOption,
+  type DropdownCloseType,
   dropdownContextSymbol,
   defaultDropdownItemProps,
 } from '../dropdown/common'
@@ -220,39 +224,65 @@ const setInnerVisible = (visible: boolean) => {
   }
 }
 
+let isClosing = false
+
+const perhapsClose = (type: DropdownCloseType) => {
+  if (isClosing) {
+    return
+  }
+  if (isFunction(props.beforeClose)) {
+    const result = props.beforeClose(type)
+    if (isObject(result) && isFunction(result.then)) {
+      isClosing = true
+
+      return result
+        .then(() => {
+          setInnerVisible(false)
+        })
+        .catch(noop)
+    } else if (result === false) {
+      return
+    }
+  }
+
+  setInnerVisible(false)
+}
+
 const onItemClick = () => {
   if (!context.disabled && !props.disabled) {
-    setInnerVisible(!innerVisible.value)
+    if (innerVisible.value) {
+      perhapsClose('button')
+    } else {
+      setInnerVisible(true)
+    }
   }
 }
 
-const onOptionClick = (item: DropdownOption) => {
-  if (item.value !== innerValue.value) {
-    innerValue.value = item.value
-    emit('update:model-value', item.value)
-    emit('change', item.value)
+const onOptionClick = (option: DropdownOption) => {
+  if (option.value !== innerValue.value) {
+    innerValue.value = option.value
+    emit('update:model-value', option.value)
+    emit('change', option.value)
   }
-  setInnerVisible(false)
+  perhapsClose('option')
 }
 
 const onOverlayClick = () => {
   if (context.overlayClosable) {
-    setInnerVisible(false)
+    perhapsClose('overlay')
   }
 }
 
 const onAwayClick = () => {
   if (context.awayClosable) {
-    setInnerVisible(false)
+    perhapsClose('away')
   }
 }
 
-const onAfterLeave = () => {
-  wholeVisible.value = false
-}
-
 const hide = () => {
-  setInnerVisible(false)
+  if (innerVisible.value) {
+    perhapsClose('other-button')
+  }
 }
 
 onMounted(() => {
@@ -274,7 +304,10 @@ const { realVisible, transitionClass, onTransitionEnd } = useTransition(
         increaseZIndex()
       }
       if (name === 'after-leave') {
-        onAfterLeave()
+        wholeVisible.value = false
+      }
+      if (name === 'leave-cancelled' || name === 'after-leave') {
+        isClosing = false
       }
 
       emit('visible-hook', name)

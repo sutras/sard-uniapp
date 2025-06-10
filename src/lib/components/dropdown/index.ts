@@ -4,4 +4,6 @@ export type {
   DropdownItemProps,
   DropdownItemSlots,
   DropdownItemEmits,
+  DropdownCloseType,
+  DropdownBeforeClose,
 } from './common'
