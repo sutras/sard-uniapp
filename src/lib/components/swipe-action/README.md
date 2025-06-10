@@ -3,6 +3,7 @@ nav: 组件
 title: SwipeAction
 subtitle: 滑动操作
 group: 反馈组件
+version: 1.19+
 ---
 
 ## 介绍
