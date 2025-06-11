@@ -248,12 +248,36 @@ const perhapsClose = (type: DropdownCloseType) => {
   setInnerVisible(false)
 }
 
+let isOpening = false
+
+const perhapsOpen = () => {
+  if (isOpening) {
+    return
+  }
+  if (isFunction(props.beforeOpen)) {
+    const result = props.beforeOpen()
+    if (isObject(result) && isFunction(result.then)) {
+      isOpening = true
+
+      return result
+        .then(() => {
+          setInnerVisible(true)
+        })
+        .catch(noop)
+    } else if (result === false) {
+      return
+    }
+  }
+
+  setInnerVisible(true)
+}
+
 const onItemClick = () => {
   if (!context.disabled && !props.disabled) {
     if (innerVisible.value) {
       perhapsClose('button')
     } else {
-      setInnerVisible(true)
+      perhapsOpen()
     }
   }
 }
@@ -302,6 +326,7 @@ const { realVisible, transitionClass, onTransitionEnd } = useTransition(
     onVisibleHook: (name: TransitionHookName) => {
       if (name === 'before-enter') {
         increaseZIndex()
+        isOpening = false
       }
       if (name === 'after-leave') {
         wholeVisible.value = false

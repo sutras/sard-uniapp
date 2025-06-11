@@ -24,7 +24,7 @@
       <DemoContent />
     </doc-demo>
 
-    <doc-demo title="异步关闭" full>
+    <doc-demo title="异步开关" full>
       <DemoAsync />
     </doc-demo>
   </doc-page>

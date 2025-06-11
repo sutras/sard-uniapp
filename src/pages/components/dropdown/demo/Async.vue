@@ -3,11 +3,13 @@
     <sar-dropdown-item
       v-model="value1"
       :options="options1"
+      :before-open="beforeOpen"
       :before-close="beforeClose"
     />
     <sar-dropdown-item
       v-model="value2"
       :options="options2"
+      :before-open="beforeOpen"
       :before-close="beforeClose"
     />
   </sar-dropdown>
@@ -49,14 +51,27 @@ const options2 = [
 const value1 = ref('1')
 const value2 = ref('1')
 
+const doSomething = () => {
+  return new Promise((resolve) => {
+    setTimeout(resolve, 500)
+  })
+}
+
+const beforeOpen = () => {
+  toast.loading('加载中', {
+    overlay: true,
+  })
+  return doSomething().finally(() => {
+    toast.hide()
+  })
+}
+
 const beforeClose = (type: DropdownCloseType) => {
   if (type === 'option') {
     toast.loading('加载中', {
       overlay: true,
     })
-    return new Promise((resolve) => {
-      setTimeout(resolve, 1000)
-    }).finally(() => {
+    return doSomething().finally(() => {
       toast.hide()
     })
   }

@@ -30,9 +30,9 @@ export type DropdownCloseType =
   | 'option'
   | 'button'
 
-export type DropdownBeforeClose = (
-  type: DropdownCloseType,
-) => any | Promise<any>
+export type DropdownBeforeClose = (type: DropdownCloseType) => any
+
+export type DropdownBeforeOpen = () => any
 
 export interface DropdownItemProps {
   rootStyle?: StyleValue
@@ -46,6 +46,7 @@ export interface DropdownItemProps {
   separator?: string
   placeholder?: string
   beforeClose?: DropdownBeforeClose
+  beforeOpen?: DropdownBeforeOpen
 }
 
 export const defaultDropdownItemProps = {

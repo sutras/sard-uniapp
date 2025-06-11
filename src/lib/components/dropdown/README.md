@@ -54,7 +54,9 @@ import DropdownItem from 'sard-uniapp/components/dropdown-item/dropdown-item.vue
 
 @code('${DEMO_PATH}/dropdown/demo/Content.vue')
 
-### 异步关闭 <sup>1.19+</sup>
+### 异步开关 <sup>1.19+</sup>
+
+如果 `beforeOpen` 返回 false，则取消打开菜单；如果返回 `Promise` 对象，则会在 `resolve` 时才打开菜单。
 
 如果 `beforeClose` 返回 false，则取消关闭菜单；如果返回 `Promise` 对象，则会在 `resolve` 时才关闭菜单。
 
@@ -82,20 +84,21 @@ import DropdownItem from 'sard-uniapp/components/dropdown-item/dropdown-item.vue
 
 ### DropdownItemProps
 
-| 属性                          | 描述                                                                 | 类型                | 默认值 |
-| ----------------------------- | -------------------------------------------------------------------- | ------------------- | ------ |
-| root-class                    | 组件根元素类名                                                       | string              | -      |
-| root-style                    | 组件根元素样式                                                       | StyleValue          | -      |
-| title                         | 标题，用于自定义菜单内容                                             | string              | -      |
-| label                         | 标签说明                                                             | string              | -      |
-| options                       | 菜单选项                                                             | DropdownOption[]    | []     |
-| direction                     | 菜单弹出方向                                                         | 'down' \| 'up'      | 'down' |
-| disabled                      | 是否禁用                                                             | boolean             | false  |
-| model-value (v-model)         | 当前选择的菜单项的值                                                 | any                 | -      |
-| visible (v-model)             | 弹出框是否可见                                                       | boolean             | -      |
-| separator                     | 标签后面分隔符                                                       | string              | -      |
-| placeholder                   | 占位符                                                               | string              | -      |
-| before-close <sup>1.19+</sup> | 关闭前的回调，返回 `false` 或 `rejected` 状态的 `Promise` 可阻止关闭 | DropdownBeforeClose | -      |
+| 属性                           | 描述                                                                 | 类型                | 默认值 |
+| ------------------------------ | -------------------------------------------------------------------- | ------------------- | ------ |
+| root-class                     | 组件根元素类名                                                       | string              | -      |
+| root-style                     | 组件根元素样式                                                       | StyleValue          | -      |
+| title                          | 标题，用于自定义菜单内容                                             | string              | -      |
+| label                          | 标签说明                                                             | string              | -      |
+| options                        | 菜单选项                                                             | DropdownOption[]    | []     |
+| direction                      | 菜单弹出方向                                                         | 'down' \| 'up'      | 'down' |
+| disabled                       | 是否禁用                                                             | boolean             | false  |
+| model-value (v-model)          | 当前选择的菜单项的值                                                 | any                 | -      |
+| visible (v-model)              | 弹出框是否可见                                                       | boolean             | -      |
+| separator                      | 标签后面分隔符                                                       | string              | -      |
+| placeholder                    | 占位符                                                               | string              | -      |
+| before-open <sup>1.19.1+</sup> | 打开前的回调，返回 `false` 或 `rejected` 状态的 `Promise` 可阻止打开 | () => any           | -      |
+| before-close <sup>1.19+</sup>  | 关闭前的回调，返回 `false` 或 `rejected` 状态的 `Promise` 可阻止关闭 | DropdownBeforeClose | -      |
 
 ### DropdownBeforeClose
 
