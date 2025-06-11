@@ -1,3 +1,12 @@
+## [1.19.1](https://github.com/sutras/sard-uniapp/compare/v1.19.0...v1.19.1) (2025-06-11)
+
+
+### Features
+
+* dropdown 新增 before-close 属性 ([fca24ac](https://github.com/sutras/sard-uniapp/commit/fca24ac536bc3840fbc9562fde4992f864968080))
+
+
+
 # [1.19.0](https://github.com/sutras/sard-uniapp/compare/v1.18.0...v1.19.0) (2025-06-10)
 
 
