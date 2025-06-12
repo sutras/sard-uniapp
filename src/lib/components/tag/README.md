@@ -70,7 +70,7 @@ import Tag from 'sard-uniapp/components/tag/tag.vue'
 | theme      | 主题色         | 'primary' \| 'secondary' \| 'success' \| 'info' \| 'warning' \| 'danger' | 'primary' |
 | round      | 圆角按标签     | boolean                                                                  | false     |
 | plain      | 镂空标签       | boolean                                                                  | false     |
-| mark       | 标记标签       | boolean                                                                  | false     |
+| mark       | 标记标签       | boolean \| 'left' \| 'right'                                             | false     |
 | size       | 标签尺寸       | 'small' \| 'medium' \| 'large'                                           | 'medium'  |
 | color      | 标签颜色       | string                                                                   | -         |
 | text-color | 文本颜色       | string                                                                   | -         |
