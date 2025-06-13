@@ -51,7 +51,7 @@ import ShareSheet from 'sard-uniapp/components/share-sheet/share-sheet.vue'
 
 ### ShareSheetProps
 
-`ShareSheetProps` 继承 `PopupProps` 并拥有以下属性：
+继承 [`PopupProps`](./popup#PopupProps) 并有以下额外属性：
 
 | 属性              | 描述                                                                 | 类型                                                                | 默认值 |
 | ----------------- | -------------------------------------------------------------------- | ------------------------------------------------------------------- | ------ |

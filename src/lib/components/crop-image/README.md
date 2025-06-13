@@ -73,7 +73,7 @@ import { cropImage } from 'sard-uniapp'
 
 ### CropImageAgentProps / CropImageOptions
 
-继承 `CropImageProps` 并有以下额外属性。
+继承 [`CropImageProps`](#CropImageProps) 并有以下额外属性。
 
 | 属性 | 描述          | 类型   | 默认值      |
 | ---- | ------------- | ------ | ----------- |

@@ -66,7 +66,7 @@ import { toast } from 'sard-uniapp'
 
 ### ToastAgentProps / ToastOptions
 
-继承 `ToastProps` 并有以下额外属性。
+继承 [`ToastProps`](#ToastProps) 并有以下额外属性。
 
 | 属性 | 描述          | 类型   | 默认值  |
 | ---- | ------------- | ------ | ------- |

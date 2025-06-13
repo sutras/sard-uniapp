@@ -137,7 +137,7 @@ type DialogBeforeClose = (
 
 ### DialogAgentProps / DialogOptions
 
-继承 `DialogProps` 并有以下额外属性。
+继承 [`DialogProps`](#DialogProps) 并有以下额外属性。
 
 | 属性 | 描述            | 类型   | 默认值   |
 | ---- | --------------- | ------ | -------- |

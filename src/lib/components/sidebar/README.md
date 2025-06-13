@@ -89,6 +89,28 @@ import SidebarItem from 'sard-uniapp/components/sidebar-item/sidebar-item.vue'
 | update:current | 当前导航项改变时触发 | (name: string \| number) => void |
 | change         | 当前导航项改变时触发 | (name: string \| number) => void |
 
+### SidebarItemProps
+
+| 属性       | 描述                 | 类型             | 默认值 |
+| ---------- | -------------------- | ---------------- | ------ |
+| root-class | 组件根元素类名       | string           | -      |
+| root-style | 组件根元素样式       | StyleValue       | -      |
+| title      | 导航项显示的标题内容 | string           | -      |
+| name       | 导航项唯一名称，必需 | string \| number | -      |
+| disabled   | 是否禁用表单项       | boolean          | false  |
+
+### SidebarItemSlots
+
+| 插槽    | 描述           | 属性 |
+| ------- | -------------- | ---- |
+| default | 自定义默认内容 | -    |
+
+### SidebarItemEmits
+
+| 事件  | 描述             | 类型                 |
+| ----- | ---------------- | -------------------- |
+| click | 点击导航项时触发 | (event: any) => void |
+
 ## 主题定制
 
 ### CSS 变量

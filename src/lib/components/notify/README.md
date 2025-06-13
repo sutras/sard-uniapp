@@ -73,7 +73,7 @@ import { notify } from 'sard-uniapp'
 
 ### NotifyAgentProps / NotifyOptions
 
-继承 `NotifyProps` 并有以下额外属性。
+继承 [`NotifyProps`](#NotifyProps) 并有以下额外属性。
 
 | 属性 | 描述          | 类型   | 默认值   |
 | ---- | ------------- | ------ | -------- |

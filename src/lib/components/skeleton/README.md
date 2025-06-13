@@ -99,7 +99,7 @@ import SkeletonParagraph from 'sard-uniapp/components/skeleton-paragraph/skeleto
 
 ### SkeletonAvatarProps
 
-继承 `SkeletonBlockProps` 并有以下额外属性：
+继承 [`SkeletonBlockProps`](#SkeletonBlockProps) 并有以下额外属性。
 
 | 属性 | 描述     | 类型   | 默认值 |
 | ---- | -------- | ------ | ------ |
@@ -107,11 +107,11 @@ import SkeletonParagraph from 'sard-uniapp/components/skeleton-paragraph/skeleto
 
 ### SkeletonTitleProps
 
-继承 `SkeletonBlockProps`。
+继承 [`SkeletonBlockProps`](#SkeletonBlockProps) 并有以下额外属性。
 
 ### SkeletonParagraphProps
 
-继承 `SkeletonBlockProps` 并有以下额外属性：
+继承 [`SkeletonBlockProps`](#SkeletonBlockProps) 并有以下额外属性。
 
 | 属性 | 描述     | 类型   | 默认值 |
 | ---- | -------- | ------ | ------ |
