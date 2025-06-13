@@ -11,6 +11,8 @@
   --sar-secondary-bg: var(--sar-gray-700);
   --sar-tertiary-color: var(--sar-gray-500);
   --sar-tertiary-bg: var(--sar-gray-600);
+  --sar-fourth-color: var(--sar-gray-600);
+  --sar-fourth-bg: var(--sar-gray-500);
   --sar-quaternary-color: var(--sar-gray-600);
   --sar-quaternary-bg: var(--sar-gray-500);
   --sar-emphasis-color: var(--sar-white);
@@ -26,6 +28,8 @@
   --sar-secondary-bg-rgb: var(--sar-gray-700-rgb);
   --sar-tertiary-color-rgb: var(--sar-gray-500-rgb);
   --sar-tertiary-bg-rgb: var(--sar-gray-700-rgb);
+  --sar-fourth-color-rgb: var(--sar-gray-600-rgb);
+  --sar-fourth-bg-rgb: var(--sar-gray-700-rgb);
   --sar-quaternary-color-rgb: var(--sar-gray-600-rgb);
   --sar-quaternary-bg-rgb: var(--sar-gray-700-rgb);
   --sar-emphasis-color-rgb: var(--sar-white-rgb);
@@ -36,12 +40,12 @@
   // # 阴影
   --sar-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.1);
   --sar-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.2), 0 1px 2px -1px rgb(0 0 0 / 0.2);
-  --sar-shadow-md: 0 2px 6px -1px rgb(0 0 0 / 0.2),
-    0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --sar-shadow-lg: 0 5px 15px -3px rgb(0 0 0 / 0.2),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --sar-shadow-xl: 0 10px 25px -5px rgb(0 0 0 / 0.25),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --sar-shadow-md:
+    0 2px 6px -1px rgb(0 0 0 / 0.2), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --sar-shadow-lg:
+    0 5px 15px -3px rgb(0 0 0 / 0.2), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --sar-shadow-xl:
+    0 10px 25px -5px rgb(0 0 0 / 0.25), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --sar-shadow-2xl: 0 15px 50px -12px rgb(0 0 0 / 0.5);
   --sar-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.1);
 

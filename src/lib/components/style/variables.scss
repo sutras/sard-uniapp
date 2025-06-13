@@ -90,6 +90,8 @@ page,
   --sar-tertiary-bg: var(--sar-gray-300);
   --sar-quaternary-color: var(--sar-gray-500);
   --sar-quaternary-bg: var(--sar-gray-400);
+  --sar-fourth-color: var(--sar-gray-500);
+  --sar-fourth-bg: var(--sar-gray-400);
   --sar-emphasis-color: var(--sar-black);
   --sar-emphasis-bg: var(--sar-white);
   --sar-border-color: var(--sar-gray-300);
@@ -105,6 +107,8 @@ page,
   --sar-tertiary-bg-rgb: var(--sar-gray-300-rgb);
   --sar-quaternary-color-rgb: var(--sar-gray-500-rgb);
   --sar-quaternary-bg-rgb: var(--sar-gray-400-rgb);
+  --sar-fourth-color-rgb: var(--sar-gray-500-rgb);
+  --sar-fourth-bg-rgb: var(--sar-gray-400-rgb);
   --sar-emphasis-color-rgb: var(--sar-black-rgb);
   --sar-emphasis-bg-rgb: var(--sar-white-rgb);
   --sar-border-color-rgb: var(--sar-gray-300-rgb);
@@ -119,12 +123,14 @@ page,
   --sar-rounded-full: 9999px;
 
   // # 字体
-  --sar-font-sans: system-ui, -apple-system, 'Segoe UI', Roboto,
-    'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif,
-    'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  --sar-font-sans:
+    system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial,
+    'Noto Sans', 'Liberation Sans', sans-serif, 'Apple Color Emoji',
+    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   --sar-font-serif: ui-serif, Georgia, Cambria, 'Times New Roman', Times, serif;
-  --sar-font-mono: SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono',
-    'Courier New', monospace;
+  --sar-font-mono:
+    SFMono-Regular, Menlo, Monaco, Consolas, 'Liberation Mono', 'Courier New',
+    monospace;
 
   // # 字号
   --sar-text-xs: 20rpx;
@@ -150,12 +156,12 @@ page,
   // # 阴影
   --sar-shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
   --sar-shadow: 0 1px 3px 0 rgb(0 0 0 / 0.1), 0 1px 2px -1px rgb(0 0 0 / 0.1);
-  --sar-shadow-md: 0 2px 6px -1px rgb(0 0 0 / 0.1),
-    0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --sar-shadow-lg: 0 3px 15px -3px rgb(0 0 0 / 0.1),
-    0 4px 6px -4px rgb(0 0 0 / 0.1);
-  --sar-shadow-xl: 0 5px 25px -5px rgb(0 0 0 / 0.1),
-    0 8px 10px -6px rgb(0 0 0 / 0.1);
+  --sar-shadow-md:
+    0 2px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
+  --sar-shadow-lg:
+    0 3px 15px -3px rgb(0 0 0 / 0.1), 0 4px 6px -4px rgb(0 0 0 / 0.1);
+  --sar-shadow-xl:
+    0 5px 25px -5px rgb(0 0 0 / 0.1), 0 8px 10px -6px rgb(0 0 0 / 0.1);
   --sar-shadow-2xl: 0 10px 50px -12px rgb(0 0 0 / 0.25);
   --sar-shadow-inner: inset 0 2px 4px 0 rgb(0 0 0 / 0.05);
 

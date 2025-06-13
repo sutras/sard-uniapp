@@ -18,11 +18,11 @@
     <view class="color-box" style="color: var(--sar-tertiary-color)">
       tertiary-color
     </view>
-    <view class="color-box" style="background-color: var(--sar-quaternary-bg)">
-      quaternary-bg
+    <view class="color-box" style="background-color: var(--sar-fourth-bg)">
+      fourth-bg
     </view>
-    <view class="color-box" style="color: var(--sar-quaternary-color)">
-      quaternary-color
+    <view class="color-box" style="color: var(--sar-fourth-color)">
+      fourth-color
     </view>
     <view class="color-box" style="background-color: var(--sar-emphasis-bg)">
       emphasis-bg
