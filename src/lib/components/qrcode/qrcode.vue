@@ -2,7 +2,7 @@
   <view :class="qrcodeClass" :style="qrcodeStyle">
     <view :class="bem.e('canvas-wrapper')">
       <canvas
-        type="2d"
+        :class="canvasId"
         :width="canvasSize"
         :height="canvasSize"
         :style="{ width: canvasSize + 'px', height: canvasSize + 'px' }"
@@ -10,8 +10,13 @@
         :id="canvasId"
       ></canvas>
     </view>
-    <image :src="dataURL" mode="aspectFit" :class="bem.e('image')" />
-    <slot></slot>
+    <image
+      :src="dataURL"
+      :show-menu-by-longpress="showMenuByLongpress"
+      mode="aspectFit"
+      :class="bem.e('image')"
+    />
+    <slot v-if="!icon"></slot>
   </view>
 </template>
 
@@ -30,8 +35,6 @@ import {
   createBem,
   uniqid,
   qrcode,
-  isApp,
-  getNode,
 } from '../../utils'
 import { defaultQrcodeProps, type QrcodeProps } from './common'
 
@@ -50,7 +53,6 @@ const bem = createBem('qrcode')
 const instance = getCurrentInstance()
 const canvasId = uniqid()
 const contextRef = shallowRef<ReturnType<typeof uni.createCanvasContext>>()
-const canvasRef = shallowRef<HTMLCanvasElement>()
 
 const qrcodeMap = computed(() => {
   return qrcode(props.text, {
@@ -60,7 +62,7 @@ const qrcodeMap = computed(() => {
 
 const dataURL = ref('')
 
-const drawQrcodeInApp = () => {
+const drawQrcodeInApp = async () => {
   const context = contextRef.value
   if (!context) {
     return
@@ -89,88 +91,85 @@ const drawQrcodeInApp = () => {
     })
   })
 
+  // 绘制 icon
+  await drawIcon(context)
+
   context.draw()
 
-  uni.canvasToTempFilePath({
-    x: 0,
-    y: 0,
-    width: size,
-    height: size,
-    destWidth: size,
-    destHeight: size,
-    canvasId: canvasId,
-    success(res) {
-      dataURL.value = res.tempFilePath
-    },
-  })
+  setTimeout(() => {
+    uni.canvasToTempFilePath(
+      {
+        x: 0,
+        y: 0,
+        width: size,
+        height: size,
+        destWidth: size,
+        destHeight: size,
+        canvasId: canvasId,
+        success(res) {
+          dataURL.value = res.tempFilePath
+        },
+        fail(err) {
+          console.log('uni.canvasToTempFilePath fail', err)
+        },
+      },
+      instance,
+    )
+  }, 500)
 }
 
-const drawQrcodeInOthers = () => {
-  const canvas = canvasRef.value
-  if (!canvas) {
-    return
+// 绘制 icon
+const drawIcon = async (ctx: any) => {
+  if (props.icon) {
+    const iconInfo = (await loadIcon(props.icon)) as any
+
+    const size = props.canvasSize
+    ctx.save()
+    ctx.beginPath()
+    ctx.drawImage(iconInfo.path, size * 0.4, size * 0.4, size * 0.2, size * 0.2)
+    ctx.restore()
   }
+}
 
-  const map = qrcodeMap.value
-  const size = props.canvasSize
-  canvas.width = size
-  canvas.height = size
-  const moduleSize = size / (map.length + props.quietZoneModules * 2)
-  const margin = moduleSize * props.quietZoneModules
-  const context = canvas.getContext('2d') as CanvasRenderingContext2D
-
-  const path2D = (context as any).createPath2D
-    ? (context as any).createPath2D()
-    : (canvas as any).createPath2D
-    ? (canvas as any).createPath2D()
-    : new Path2D()
-
-  map.forEach((row, rowIndex) => {
-    row.forEach((col, colIndex) => {
-      if (col === 1) {
-        path2D.rect(
-          colIndex * moduleSize + margin,
-          rowIndex * moduleSize + margin,
-          moduleSize,
-          moduleSize,
-        )
-      }
+// 加载 icon 图片
+const loadIcon = (path: string) => {
+  return new Promise((resolve, reject) => {
+    uni.getImageInfo({
+      src: path,
+      success(res) {
+        resolve(res)
+      },
+      fail(err) {
+        console.log('uni.getImageInfo fail', path)
+        console.log('uni.getImageInfo fail', err)
+        reject(err)
+      },
     })
   })
-  context.clearRect(0, 0, size, size)
-  context.fillStyle = props.bgColor
-  context.fillRect(0, 0, size, size)
-  context.fillStyle = props.color
-  context.fill(path2D)
-
-  dataURL.value = canvas.toDataURL()
 }
 
 watch(
   [
     contextRef,
-    canvasRef,
     qrcodeMap,
     () => props.canvasSize,
     () => props.color,
     () => props.bgColor,
     () => props.quietZoneModules,
+    () => props.icon,
   ],
   () => {
-    if (isApp) {
-      drawQrcodeInApp()
-    } else {
-      drawQrcodeInOthers()
-    }
+    drawQrcodeInApp()
+    // if (isApp) {
+    //   drawQrcodeInApp()
+    // } else {
+    //   drawQrcodeInOthers()
+    // }
   },
 )
 
 onMounted(async () => {
-  if (isApp) {
-    contextRef.value = uni.createCanvasContext(canvasId, instance)
-  } else {
-    canvasRef.value = await getNode(`#${canvasId}`, instance)
-  }
+  contextRef.value = uni.createCanvasContext(canvasId, instance)
 })
 
 // others
@@ -187,5 +186,5 @@ const qrcodeStyle = computed(() => {
 </script>
 
 <style lang="scss">
-@import './index.scss';
+@use './index.scss' as *;
 </style>
