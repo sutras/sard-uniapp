@@ -14,6 +14,8 @@ export interface QrcodeProps {
   color?: string
   bgColor?: string
   quietZoneModules?: number
+  showMenuByLongpress?: boolean
+  icon?: string
 }
 
 export const defaultQrcodeProps = defaultConfig.qrcode
