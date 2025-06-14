@@ -12,6 +12,7 @@
       :type="multiline ? 'textarea' : undefined"
       :auto-height="multiline"
       :input-min-height="multiline"
+      :internal-prepend="$slots.prepend ? 1 : 0"
       @clear="onClear"
     >
       <template #prepend>

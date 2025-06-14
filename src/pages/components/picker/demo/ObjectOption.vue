@@ -7,7 +7,10 @@
         :option-keys="{ label: 'name', value: 'code' }"
       />
     </sar-list-item>
-    <sar-list-item title="当前值：" :value="String(value)" />
+    <sar-list-item
+      title="当前值："
+      :value="JSON.stringify(value) ?? 'undefined'"
+    />
     <sar-list-item title="设置为: 天津市" arrow hover @click="value = 120000" />
     <sar-list-item title="清空" arrow hover @click="value = undefined" />
   </sar-list>

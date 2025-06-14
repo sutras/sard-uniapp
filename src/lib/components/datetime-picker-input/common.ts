@@ -10,11 +10,13 @@ export interface DatetimePickerInputProps
   extends DatetimePickerPopoutProps,
     Omit<PopoutInputProps, 'modelValue' | 'loading'> {
   outletFormat?: string
+  valueOnClear?: () => any
 }
 
 export const defaultDatetimePickerInputProps = () => ({
   ...defaultConfig.datetimePicker,
   ...defaultConfig.datetimePickerPopout,
+  ...defaultConfig.datetimePickerInput,
 })
 
 export interface DatetimePickerInputSlots extends DatetimePickerPopoutSlots {}

@@ -37,8 +37,8 @@ import {
   nestedToMulti,
   toArray,
   arrayEqual,
-  isNullish,
   isNumber,
+  isEmptyBinding,
 } from '../../utils'
 import {
   type PickerProps,
@@ -95,7 +95,7 @@ const columnIndexes = ref<number[]>([])
 watch(
   [innerValue, () => props.columns, fieldKeys],
   () => {
-    if (!isNullish(innerValue.value) && innerValue.value !== '') {
+    if (!isEmptyBinding(innerValue.value)) {
       const indexes = getIndexesByValue(
         toArray(innerValue.value),
         props.columns,
@@ -117,10 +117,9 @@ const onChange = (event: any) => {
   // 在H5弹出框中使用时，在初始化会触发change，值中会携带Infinity的下标。
   if (indexes.some((index) => index === Infinity)) {
     nextTick(() => {
-      columnIndexes.value =
-        isNullish(innerValue.value) || innerValue.value === ''
-          ? columnIndexes.value.map(() => 0)
-          : [...columnIndexes.value]
+      columnIndexes.value = isEmptyBinding(innerValue.value)
+        ? columnIndexes.value.map(() => 0)
+        : [...columnIndexes.value]
     })
     return
   }
@@ -197,8 +196,7 @@ watch(
       newColumns !== oldColumns ||
       (newValue !== oldValue &&
         columnsType.value === 'cascader' &&
-        !isNullish(newValue) &&
-        newValue !== '' &&
+        !isEmptyBinding(newValue) &&
         (!Array.isArray(newValue) || newValue.length > 0))
     ) {
       renderedColumns.value = getRenderedColumns()

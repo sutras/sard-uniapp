@@ -35,7 +35,7 @@ import {
   type DatetimeRangePickerPopoutEmits,
   defaultDatetimeRangePickerInputProps,
 } from './common'
-import { formatDate, isNullish, toDate } from '../../utils'
+import { formatDate, isEmptyBinding, toDate } from '../../utils'
 import {
   getInitialValue,
   getMaxDate,
@@ -84,7 +84,10 @@ const { innerVisible, innerValue, popoutValue, onChange, onConfirm } =
   })
 
 const onEnter = () => {
-  if (!isNullish(innerValue.value) && popoutValue.value !== innerValue.value) {
+  if (
+    !isEmptyBinding(innerValue.value) &&
+    popoutValue.value !== innerValue.value
+  ) {
     popoutValue.value = innerValue.value
   }
 }

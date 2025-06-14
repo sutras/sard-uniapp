@@ -5,13 +5,19 @@ import {
   type CheckboxPopoutProps,
   defaultCheckboxPopoutProps,
 } from '../checkbox-popout/common'
+import { defaultConfig } from '../config'
 
 export type CheckboxInputOption = CheckboxGroupOption
 
 export interface CheckboxInputProps
   extends CheckboxPopoutProps,
-    Omit<PopoutInputProps, 'modelValue'> {}
+    Omit<PopoutInputProps, 'modelValue'> {
+  valueOnClear?: () => any
+}
 
-export const defaultCheckboxInputProps = defaultCheckboxPopoutProps
+export const defaultCheckboxInputProps = () => ({
+  ...defaultCheckboxPopoutProps(),
+  ...defaultConfig.checkboxInput,
+})
 
 export interface CheckboxInputEmits extends CheckboxPopoutEmits {}

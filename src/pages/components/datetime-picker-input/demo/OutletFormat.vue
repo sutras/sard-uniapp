@@ -13,7 +13,7 @@
     </sar-list-item>
     <sar-list-item
       title="当前值："
-      :value="value ? formatDate(value, 'YYYY-MM-DD') : String(value)"
+      :value="JSON.stringify(value) ?? 'undefined'"
     />
     <sar-list-item
       title="设置为当前时间"
@@ -27,7 +27,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { formatDate } from 'sard-uniapp'
 
 const value = ref<Date>()
 

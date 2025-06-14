@@ -51,15 +51,16 @@ import DatetimePickerInput from 'sard-uniapp/components/datetime-picker-input/da
 
 继承 [`DatetimePickerPopoutProps`](./datetime-picker-popout#DatetimePickerPopoutProps) 并有以下额外属性：
 
-| 属性          | 描述                                                         | 类型                                                  | 默认值 |
-| ------------- | ------------------------------------------------------------ | ----------------------------------------------------- | ------ |
-| root-class    | 弹出式输入框根元素类名                                       | string                                                | -      |
-| root-style    | 弹出式输入框根元素样式                                       | StyleValue                                            | -      |
-| disabled      | 禁用状态                                                     | boolean                                               | false  |
-| readonly      | 只读状态                                                     | boolean                                               | false  |
-| clearable     | 是否显示清空按钮                                             | boolean                                               | false  |
-| placeholder   | 输入框占位符内容                                             | string                                                | -      |
-| outlet-format | 输出到输入框的日期格式，不指定则根据 `type` 属性自动生成格式 | string [详见特殊符号](../guide/date#日期格式特殊符号) | -      |
+| 属性                              | 描述                                                         | 类型                                                  | 默认值          |
+| --------------------------------- | ------------------------------------------------------------ | ----------------------------------------------------- | --------------- |
+| root-class                        | 弹出式输入框根元素类名                                       | string                                                | -               |
+| root-style                        | 弹出式输入框根元素样式                                       | StyleValue                                            | -               |
+| disabled                          | 禁用状态                                                     | boolean                                               | false           |
+| readonly                          | 只读状态                                                     | boolean                                               | false           |
+| clearable                         | 是否显示清空按钮                                             | boolean                                               | false           |
+| placeholder                       | 输入框占位符内容                                             | string                                                | -               |
+| outlet-format                     | 输出到输入框的日期格式，不指定则根据 `type` 属性自动生成格式 | string [详见特殊符号](../guide/date#日期格式特殊符号) | -               |
+| value-on-clear <sup>1.19.2+</sup> | 设置点击清除按钮后的值                                       | () => any                                             | () => undefined |
 
 ### `type` 到 `outletFormat` 的映射：
 

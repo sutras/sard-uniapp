@@ -5,13 +5,19 @@ import {
   type RadioPopoutProps,
   defaultRadioPopoutProps,
 } from '../radio-popout/common'
+import { defaultConfig } from '../config'
 
 export type RadioInputOption = RadioGroupOption
 
 export interface RadioInputProps
   extends RadioPopoutProps,
-    Omit<PopoutInputProps, 'modelValue'> {}
+    Omit<PopoutInputProps, 'modelValue'> {
+  valueOnClear?: () => any
+}
 
-export const defaultRadioInputProps = defaultRadioPopoutProps
+export const defaultRadioInputProps = () => ({
+  ...defaultRadioPopoutProps(),
+  ...defaultConfig.radioInput,
+})
 
 export interface RadioInputEmits extends RadioPopoutEmits {}

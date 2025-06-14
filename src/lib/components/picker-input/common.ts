@@ -5,13 +5,17 @@ import {
   type PickerPopoutEmits,
   type PickerPopoutProps,
 } from '../picker-popout/common'
+import { defaultConfig } from '../config'
 
 export interface PickerInputProps
   extends PickerPopoutProps,
-    Omit<PopoutInputProps, 'modelValue'> {}
+    Omit<PopoutInputProps, 'modelValue'> {
+  valueOnClear?: () => any
+}
 
 export const defaultPickerInputProps = () => ({
   ...defaultPickerPopoutProps(),
+  ...defaultConfig.pickerInput,
 })
 
 export interface PickerInputSlots extends PickerPopoutSlots {}

@@ -1,22 +1,11 @@
 <template>
   <view :class="inputClass" :style="inputStyle" @click="onClick">
     <view :class="bem.e('content')">
-      <view v-if="$slots.prepend" :class="bem.e('prepend')">
-        <slot name="prepend"></slot>
-      </view>
       <view
-        v-if="type === 'textarea' && innerValue === '' && placeholder"
-        :class="
-          classNames(
-            bem.e('placeholder'),
-            bem.em('placeholder', 'textarea'),
-            bem.em('placeholder', 'input-min-height', inputMinHeight),
-            placeholderClass,
-          )
-        "
-        :style="mergedPlaceholderStyle"
+        v-if="internalPrepend !== 0 && $slots.prepend"
+        :class="bem.e('prepend')"
       >
-        {{ placeholder }}
+        <slot name="prepend"></slot>
       </view>
       <textarea
         v-if="type === 'textarea'"
@@ -27,6 +16,9 @@
             bem.em('control', 'input-min-height', inputMinHeight),
           )
         "
+        :placeholder="placeholder"
+        :placeholder-style="mergedPlaceholderStyle"
+        :placeholder-class="placeholderClass"
         :value="innerValue"
         :disabled="isDisabled || isReadonly"
         :maxlength="maxlength"
@@ -62,7 +54,7 @@
         :value="innerValue"
         :placeholder="placeholder"
         :placeholder-style="mergedPlaceholderStyle"
-        :placeholder-class="classNames(bem.e('placeholder'), placeholderClass)"
+        :placeholder-class="placeholderClass"
         :disabled="isDisabled || isReadonly"
         :maxlength="maxlength"
         :focus="focus"
@@ -295,7 +287,15 @@ const mergedPlaceholderStyle = computed(() => {
   return stringifyStyle(
     {
       color: 'var(--sar-input-placeholder-color)',
+      fontSize: 'var(--sar-input-control-font-size)',
+      lineHeight: 'var(--sar-input-control-line-height)',
     },
+    props.inputMinHeight
+      ? {
+          minHeight: 'var(--sar-input-control-input-height)',
+          lineHeight: 'var(--sar-input-control-input-height)',
+        }
+      : null,
     props.placeholderStyle,
   )
 })

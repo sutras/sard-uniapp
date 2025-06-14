@@ -71,6 +71,8 @@ export interface InputProps {
   focused?: boolean
   minHeight?: string
   validateEvent?: boolean
+
+  internalPrepend?: number
 }
 
 export const defaultInputProps = defaultConfig.input

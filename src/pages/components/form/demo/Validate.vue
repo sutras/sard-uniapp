@@ -2,11 +2,17 @@
   <doc-page title="表单校验">
     <sar-form ref="ruleFormRef" :model="ruleForm" :rules="rules">
       <sar-form-item label="Activity name" name="name">
-        <sar-input inlaid v-model="ruleForm.name" placeholder="Activity name" />
+        <sar-input
+          v-model="ruleForm.name"
+          clearable
+          inlaid
+          placeholder="Activity name"
+        />
       </sar-form-item>
       <sar-form-item label="Activity zone" name="region">
         <sar-picker-input
           v-model="ruleForm.region"
+          clearable
           placeholder="Activity zone"
           :columns="[
             { label: 'Zone one', value: 'shanghai' },
@@ -17,6 +23,7 @@
       <sar-form-item label="Activity count" name="count">
         <sar-picker-input
           v-model="ruleForm.count"
+          clearable
           placeholder="Activity count"
           :columns="options"
         />
@@ -24,6 +31,7 @@
       <sar-form-item label="Activity time" required name="date1">
         <sar-datetime-picker-input
           v-model="ruleForm.date1"
+          clearable
           type="yMd"
           placeholder="Pick a date"
         />
@@ -31,6 +39,7 @@
       <sar-form-item label="" hide-star name="date2">
         <sar-datetime-picker-input
           v-model="ruleForm.date2"
+          clearable
           type="hms"
           placeholder="Pick a time"
         />
@@ -41,6 +50,7 @@
       <sar-form-item label="Activity type" name="type">
         <sar-checkbox-input
           v-model="ruleForm.type"
+          clearable
           placeholder="Pick Activity type"
           :options="[
             { label: 'Online activities', value: 'Online activities' },
@@ -53,6 +63,7 @@
       <sar-form-item label="Resources" name="resource">
         <sar-radio-input
           v-model="ruleForm.resource"
+          clearable
           placeholder="Pick Resources"
           :options="[
             { label: 'Sponsor', value: 'Sponsor' },
@@ -61,7 +72,13 @@
         />
       </sar-form-item>
       <sar-form-item label="Activity form" name="desc">
-        <sar-input v-model="ruleForm.desc" type="textarea" />
+        <sar-input
+          v-model="ruleForm.desc"
+          clearable
+          type="textarea"
+          inlaid
+          placeholder="Activity form"
+        />
       </sar-form-item>
       <sar-form-item>
         <sar-button @click="submitForm(ruleFormRef)">Create</sar-button>

@@ -39,7 +39,7 @@ import {
   type RadioInputOption,
   defaultRadioInputProps,
 } from './common'
-import { getMayPrimitiveOption, isNullish } from '../../utils'
+import { getMayPrimitiveOption, isEmptyBinding, isNullish } from '../../utils'
 import { usePopoutInput } from '../../use'
 
 defineOptions({
@@ -78,7 +78,7 @@ function getOutletText(
 }
 
 function getInputValue() {
-  if (isNullish(innerValue.value) || innerValue.value.length === 0) {
+  if (isEmptyBinding(innerValue.value)) {
     return ''
   }
   return getOutletText(props.options, fieldKeys.value, innerValue.value)

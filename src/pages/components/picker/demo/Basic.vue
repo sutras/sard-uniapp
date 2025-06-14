@@ -3,7 +3,10 @@
     <sar-list-item>
       <sar-picker v-model="value" :columns="columns" @change="onChange" />
     </sar-list-item>
-    <sar-list-item title="当前值：" :value="String(value)" />
+    <sar-list-item
+      title="当前值："
+      :value="JSON.stringify(value) ?? 'undefined'"
+    />
     <sar-list-item
       title="设置为: 天津市"
       arrow

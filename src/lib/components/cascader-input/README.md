@@ -31,15 +31,16 @@ import CascaderInput from 'sard-uniapp/components/cascader-input/cascader-input.
 
 继承 [`CascaderPopoutProps`](./cascader-popout#CascaderPopoutProps) 并有以下额外属性：
 
-| 属性        | 描述                   | 类型       | 默认值 |
-| ----------- | ---------------------- | ---------- | ------ |
-| root-class  | 弹出式输入框根元素类名 | string     | -      |
-| root-style  | 弹出式输入框根元素样式 | StyleValue | -      |
-| disabled    | 禁用状态               | boolean    | false  |
-| readonly    | 只读状态               | boolean    | false  |
-| loading     | 加载状态               | boolean    | false  |
-| clearable   | 是否显示清空按钮       | boolean    | false  |
-| placeholder | 输入框占位符内容       | string     | -      |
+| 属性                              | 描述                   | 类型       | 默认值          |
+| --------------------------------- | ---------------------- | ---------- | --------------- |
+| root-class                        | 弹出式输入框根元素类名 | string     | -               |
+| root-style                        | 弹出式输入框根元素样式 | StyleValue | -               |
+| disabled                          | 禁用状态               | boolean    | false           |
+| readonly                          | 只读状态               | boolean    | false           |
+| loading                           | 加载状态               | boolean    | false           |
+| clearable                         | 是否显示清空按钮       | boolean    | false           |
+| placeholder                       | 输入框占位符内容       | string     | -               |
+| value-on-clear <sup>1.19.2+</sup> | 设置点击清除按钮后的值 | () => any  | () => undefined |
 
 ### CascaderInputSlots
 

@@ -1,8 +1,13 @@
 import { type AvatarProps } from '../avatar'
 import { type AlertProps } from '../alert'
 import { type ButtonProps } from '../button'
+import { type CalendarInputProps } from '../calendar-input'
 import { type CalendarProps } from '../calendar'
+import { type CascaderInputProps } from '../cascader-input'
 import { type CheckboxGroupProps } from '../checkbox'
+import { type CheckboxInputProps } from '../checkbox-input'
+import { type DatetimePickerInputProps } from '../datetime-picker-input'
+import { type DatetimeRangePickerInputProps } from '../datetime-range-picker-input'
 import { type DialogProps } from '../dialog'
 import { type DropdownProps } from '../dropdown'
 import { type FloatingBubbleProps } from '../floating-bubble'
@@ -17,12 +22,14 @@ import { type NoticeBarProps } from '../notice-bar'
 import { type NotifyProps } from '../notify'
 import { type PaginationProps } from '../pagination'
 import { type PasswordInputProps } from '../password-input'
+import { type PickerInputProps } from '../picker-input'
 import { type PopoutProps } from '../popout'
 import { type PopoverProps } from '../popover'
 import { type PopupProps } from '../popup'
 import { type QrcodeProps } from '../qrcode'
 import { type RadioGroupProps } from '../radio'
 import { type RadioInputProps } from '../radio-input'
+import { type RadioPopoutProps } from '../radio-popout'
 import { type ResultProps } from '../result'
 import { type SearchProps } from '../search'
 import { type SpaceProps } from '../space'
@@ -39,10 +46,29 @@ import { type DividerProps } from '../divider'
 type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Record<any, any> ? DeepPartial<T[P]> : T[P]
 }
+
 // #defaultConfig
 export const defaultConfig = {
   // 全局初始 zIndex
   initialZIndex: 1000,
+
+  /**
+   * 设置点击清除按钮后的值
+   *
+   * - 类型：() => any
+   * - 默认值：() = undefined
+   *
+   * 支持以下组件：
+   *
+   * - CalendarInput
+   * - DatetimePickerInput
+   * - DatetimeRangePickerInput
+   * - CascaderInput
+   * - CheckboxInput
+   * - PickerInput
+   * - RadioInput
+   */
+  valueOnClear: undefined as (() => any) | undefined,
 
   actionSheet: {
     overlayClosable: true,
@@ -78,6 +104,7 @@ export const defaultConfig = {
   },
   calendarInput: {
     outletFormat: 'YYYY-MM-DD',
+    valueOnClear: undefined as CalendarInputProps['valueOnClear'],
   },
   calendarPopout: {
     showConfirm: true,
@@ -87,12 +114,18 @@ export const defaultConfig = {
     showConfirm: true,
     validateEvent: true,
   },
+  cascaderInput: {
+    valueOnClear: undefined as CascaderInputProps['valueOnClear'],
+  },
   checkbox: {
     validateEvent: true,
   },
   checkboxGroup: {
     direction: 'vertical' as CheckboxGroupProps['direction'],
     validateEvent: true,
+  },
+  checkboxInput: {
+    valueOnClear: undefined as CheckboxInputProps['valueOnClear'],
   },
   checkboxPopout: {
     validateEvent: true,
@@ -121,11 +154,17 @@ export const defaultConfig = {
     type: 'yMd',
     calendar: 'solar' as const,
   },
+  datetimePickerInput: {
+    valueOnClear: undefined as DatetimePickerInputProps['valueOnClear'],
+  },
   datetimePickerPopout: {
     validateEvent: true,
   },
   datetimeRangePicker: {
     type: 'yMd',
+  },
+  datetimeRangePickerInput: {
+    valueOnClear: undefined as DatetimeRangePickerInputProps['valueOnClear'],
   },
   datetimeRangePickerPopout: {
     validateEvent: true,
@@ -258,6 +297,9 @@ export const defaultConfig = {
   picker: {
     immediateChange: false,
   },
+  pickerInput: {
+    valueOnClear: undefined as PickerInputProps['valueOnClear'],
+  },
   pickerPopout: {
     validateEvent: true,
   },
@@ -311,9 +353,12 @@ export const defaultConfig = {
     direction: 'vertical' as RadioGroupProps['direction'],
     validateEvent: true,
   },
+  radioInput: {
+    valueOnClear: undefined as RadioInputProps['valueOnClear'],
+  },
   radioPopout: {
     validateEvent: true,
-    type: 'circle' as RadioInputProps['type'],
+    type: 'circle' as RadioPopoutProps['type'],
   },
   rate: {
     count: 5,

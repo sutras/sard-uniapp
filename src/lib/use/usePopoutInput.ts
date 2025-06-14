@@ -1,9 +1,11 @@
 import { ref, watch } from 'vue'
 import { useTwoWayVisible } from './useTwoWayVisible'
+import { defaultConfig } from '../components/config'
 
 export interface UsePopoutInputProps {
   visible?: boolean
   modelValue?: any
+  valueOnClear?: () => any
 }
 
 export interface UsePopoutInputEmits {
@@ -12,11 +14,13 @@ export interface UsePopoutInputEmits {
   (e: 'change', ...args: any[]): void
 }
 
+const defaultValueOnClear = () => undefined
+
 export function usePopoutInput(
   props: UsePopoutInputProps,
   emit: UsePopoutInputEmits,
   options: {
-    onClear?: () => void
+    onClear?: (value: any) => void
   } = {},
 ) {
   // visible
@@ -28,6 +32,9 @@ export function usePopoutInput(
 
   // value
   const innerValue = ref(props.modelValue)
+
+  const getValueOnClear = () =>
+    (props.valueOnClear || defaultConfig.valueOnClear || defaultValueOnClear)()
 
   watch(
     () => props.modelValue,
@@ -43,12 +50,12 @@ export function usePopoutInput(
 
   const onClear = () => {
     inputValue.value = ''
-    innerValue.value = undefined
+    innerValue.value = getValueOnClear()
     if (options.onClear) {
-      options.onClear()
+      options.onClear(innerValue.value)
     } else {
-      emit('update:model-value', undefined)
-      emit('change', undefined)
+      emit('update:model-value', innerValue.value)
+      emit('change', innerValue.value)
     }
   }
 

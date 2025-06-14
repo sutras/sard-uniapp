@@ -12,7 +12,7 @@
 
     <sar-list-item
       title="当前值："
-      :value="value ? formatDate(value, 'YYYY-MM-DD') : String(value)"
+      :value="JSON.stringify(value) ?? 'undefined'"
     />
     <sar-list-item title="设置为今天" arrow hover @click="value = new Date()" />
     <sar-list-item title="清空" arrow hover @click="value = undefined" />
@@ -21,7 +21,6 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { formatDate } from 'sard-uniapp'
 
 const value = ref<Date | undefined>(new Date())
 

@@ -13,7 +13,10 @@
       />
     </sar-list-item>
 
-    <sar-list-item title="当前值：" :value="String(value)" />
+    <sar-list-item
+      title="当前值："
+      :value="JSON.stringify(value) ?? 'undefined'"
+    />
     <sar-list-item
       title="设置为：440111 (广东省/广州市/白云区)"
       arrow

@@ -10,7 +10,10 @@
         @change="onChange"
       />
     </sar-list-item>
-    <sar-list-item title="当前值：" :value="value ? value : String(value)" />
+    <sar-list-item
+      title="当前值："
+      :value="JSON.stringify(value) ?? 'undefined'"
+    />
     <sar-list-item
       title="设置为 2025/01/01"
       arrow

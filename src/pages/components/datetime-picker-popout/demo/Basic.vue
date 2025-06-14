@@ -14,6 +14,10 @@
       </sar-button>
     </sar-list-item>
     <sar-list-item
+      title="当前值："
+      :value="JSON.stringify(value) ?? 'undefined'"
+    />
+    <sar-list-item
       title="设置为当前时间"
       arrow
       hover

@@ -11,7 +11,10 @@
       />
     </sar-list-item>
 
-    <sar-list-item title="当前值：" :value="`${JSON.stringify(value)}`" />
+    <sar-list-item
+      title="当前值："
+      :value="JSON.stringify(value) ?? 'undefined'"
+    />
     <sar-list-item
       title="设置为：['option2', 'option3']"
       arrow

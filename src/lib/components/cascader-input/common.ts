@@ -8,10 +8,13 @@ import {
 
 export interface CascaderInputProps
   extends CascaderPopoutProps,
-    Omit<PopoutInputProps, 'modelValue'> {}
+    Omit<PopoutInputProps, 'modelValue'> {
+  valueOnClear?: () => any
+}
 
 export const defaultCascaderInputProps = () => ({
   ...defaultConfig.cascaderPopout,
+  ...defaultConfig.cascaderInput,
 })
 
 export interface CascaderInputSlots extends CascaderPopoutSlots {}

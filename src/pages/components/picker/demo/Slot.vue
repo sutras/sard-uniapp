@@ -44,7 +44,10 @@
         </template>
       </sar-picker>
     </sar-list-item>
-    <sar-list-item title="当前值：" :value="String(value)" />
+    <sar-list-item
+      title="当前值："
+      :value="JSON.stringify(value) ?? 'undefined'"
+    />
     <sar-list-item title="设置为: 泡芙" arrow hover @click="value = '泡芙'" />
     <sar-list-item title="清空" arrow hover @click="value = undefined" />
   </sar-list>

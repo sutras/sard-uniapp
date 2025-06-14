@@ -55,7 +55,7 @@ import {
   type PickerPopoutEmits,
   defaultPickerPopoutProps,
 } from './common'
-import { isNullish, isNumber } from '../../utils'
+import { isEmptyBinding, isNumber } from '../../utils'
 import { defaultOptionKeys, getInitialValue } from '../picker/common'
 import { computed } from 'vue'
 import { useFormPopout } from '../../use'
@@ -80,7 +80,7 @@ const emit = defineEmits<PickerPopoutEmits>()
 const { innerVisible, innerValue, popoutValue, onChange, onConfirm } =
   useFormPopout(props, emit, {
     onConfirmBefore() {
-      if (isNullish(popoutValue.value) || popoutValue.value === '') {
+      if (isEmptyBinding(popoutValue.value)) {
         popoutValue.value = getInitialValue(props.columns, fieldKeys.value)
       }
     },
@@ -92,8 +92,7 @@ const fieldKeys = computed(() => {
 
 const onEnter = () => {
   if (
-    !isNullish(innerValue.value) &&
-    innerValue.value !== '' &&
+    !isEmptyBinding(innerValue.value) &&
     popoutValue.value !== innerValue.value
   ) {
     popoutValue.value = innerValue.value

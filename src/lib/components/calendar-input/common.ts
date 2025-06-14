@@ -9,6 +9,7 @@ export interface CalendarInputProps
   extends CalendarPopoutProps,
     Omit<PopoutInputProps, 'modelValue' | 'loading'> {
   outletFormat?: string
+  valueOnClear?: () => any
 }
 
 export const defaultCalendarInputProps = () => ({

@@ -44,7 +44,7 @@ import {
   defaultFieldKeys,
   getSelectedOptionsByValue,
 } from '../cascader/common'
-import { isNullish } from '../../utils'
+import { isEmptyBinding } from '../../utils'
 import { usePopoutInput } from '../../use'
 import {
   type CascaderInputProps,
@@ -72,9 +72,9 @@ const emit = defineEmits<CascaderInputEmits>()
 // main
 const { innerVisible, innerValue, inputValue, show, onChange, onClear } =
   usePopoutInput(props, emit, {
-    onClear() {
-      emit('update:model-value', undefined, [])
-      emit('change', undefined, [])
+    onClear(value) {
+      emit('update:model-value', value, [])
+      emit('change', value, [])
     },
   })
 
@@ -94,7 +94,7 @@ function getOutletText(
   const selectedOptions = getSelectedOptionsByValue(options, value, fieldKeys)
 
   if (!selectedOptions) {
-    return isNullish(value) ? '' : String(value)
+    return isEmptyBinding(value) ? '' : String(value)
   }
 
   const labels = selectedOptions.map((option) => option[fieldKeys.label])
@@ -103,7 +103,7 @@ function getOutletText(
 }
 
 function getInputValue() {
-  if (isNullish(innerValue.value) || !props.options) {
+  if (isEmptyBinding(innerValue.value) || !props.options) {
     return ''
   }
   return getOutletText(props.options, innerValue.value, fieldkeys.value)

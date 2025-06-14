@@ -12,6 +12,10 @@
         {{ value ? formatDate(value, 'YYYY-MM-DD') : '请选择' }}
       </sar-button>
     </sar-list-item>
+    <sar-list-item
+      title="当前值："
+      :value="JSON.stringify(value) ?? 'undefined'"
+    />
     <sar-list-item title="设置为今天" arrow hover @click="value = new Date()" />
     <sar-list-item title="清空" arrow hover @click="value = undefined" />
   </sar-list>

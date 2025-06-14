@@ -36,7 +36,7 @@ import {
   type CascaderPopoutEmits,
   defaultCascaderPopoutProps,
 } from './common'
-import { isNullish } from '../../utils'
+import { isEmptyBinding } from '../../utils'
 import { useFormPopout } from '../../use'
 
 defineOptions({
@@ -61,7 +61,7 @@ const { innerVisible, popoutValue, onChange, onConfirm } = useFormPopout(
   emit,
   {
     onChange() {
-      if (!props.showConfirm && !isNullish(popoutValue.value)) {
+      if (!props.showConfirm && !isEmptyBinding(popoutValue.value)) {
         onConfirm()
         innerVisible.value = false
       }

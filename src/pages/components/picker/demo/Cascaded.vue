@@ -7,7 +7,10 @@
         :option-keys="{ label: 'name', value: 'code' }"
       />
     </sar-list-item>
-    <sar-list-item title="当前值：" :value="JSON.stringify(value)" />
+    <sar-list-item
+      title="当前值："
+      :value="JSON.stringify(value) ?? 'undefined'"
+    />
     <sar-list-item
       title="设置为: 广东省/广州市/白云区"
       arrow
