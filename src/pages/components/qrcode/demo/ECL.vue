@@ -1,7 +1,7 @@
 <template>
   <view>
     <sar-qrcode
-      text="https://sutras.github.io/sard-uniapp-docs/mobile/"
+      text="https://sard.wzt.zone/sard-uniapp-docs/mobile/"
       :ecl="ecl"
     />
 

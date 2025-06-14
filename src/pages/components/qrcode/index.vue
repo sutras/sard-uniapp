@@ -16,11 +16,11 @@
       <DemoColor />
     </doc-demo>
 
-    <doc-demo title="添加图标 slot">
+    <doc-demo title="默认插槽">
       <DemoIcon />
     </doc-demo>
 
-    <doc-demo title="添加图标 props">
+    <doc-demo title="添加图标">
       <DemoIconProps />
     </doc-demo>
 

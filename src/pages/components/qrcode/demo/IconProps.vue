@@ -1,6 +1,6 @@
 <template>
   <sar-qrcode
-    text="https://sutras.github.io/sard-uniapp-docs/mobile/"
+    text="https://sard.wzt.zone/sard-uniapp-docs/mobile/"
     :icon="icon"
     show-menu-by-longpress
   ></sar-qrcode>

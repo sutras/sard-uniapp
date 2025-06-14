@@ -1,3 +1,3 @@
 <template>
-  <sar-qrcode text="https://sutras.github.io/sard-uniapp-docs/mobile/" />
+  <sar-qrcode text="https://sard.wzt.zone/sard-uniapp-docs/mobile/" />
 </template>

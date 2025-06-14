@@ -43,13 +43,17 @@ import Qrcode from 'sard-uniapp/components/qrcode/qrcode.vue'
 
 @code('${DEMO_PATH}/qrcode/demo/Color.vue')
 
-### 添加图标
+### 默认插槽
 
-- 使用默认插槽, 图标可以直接定位到二维码上面。
-  @code('${DEMO_PATH}/qrcode/demo/Icon.vue')
+使用默认插槽, 可以把任意内容放置在二维码上面。
 
-- 使用 `icon` 属性, 图标和二维码在同一张图片上。
-  @code('${DEMO_PATH}/qrcode/demo/IconProps.vue')
+@code('${DEMO_PATH}/qrcode/demo/Icon.vue')
+
+### 添加图标 <sup>1.19.2+</sup>
+
+使用 `icon` 属性, 可以将一张图片渲染到画布中间，与二维码合并为同一张图片。
+
+@code('${DEMO_PATH}/qrcode/demo/IconProps.vue')
 
 ### 安静区域模块数
 
@@ -78,19 +82,19 @@ import Qrcode from 'sard-uniapp/components/qrcode/qrcode.vue'
 
 ### QrcodeProps
 
-| 属性                   | 描述                         | 类型                     | 默认值 |
-| ---------------------- | ---------------------------- | ------------------------ | ------ |
-| root-class             | 组件根元素类名               | string                   | -      |
-| root-style             | 组件根元素样式               | StyleValue               | -      |
-| text                   | 要编码的字符串数据           | string                   | -      |
-| ecl                    | 错误纠错级别                 | 'L' \| 'M' \| 'Q' \| 'H' | 'M'    |
-| size                   | 二维码呈现的大小             | string                   | 320rpx |
-| canvas-size            | 画板的大小                   | number                   | 400    |
-| color                  | 二维码颜色                   | string                   | #000   |
-| bg-color               | 二维码背景颜色               | string                   | #fff   |
-| quiet-zone-modules     | 安静区域模块数               | number                   | 2      |
-| show-menu-by-longpress | 长按图片显示菜单(微信小程序) | boolean                  | false  |
-| icon                   | 图标(优先级高于默认插槽)     | string                   | -      |
+| 属性                                      | 描述                         | 类型                     | 默认值 |
+| ----------------------------------------- | ---------------------------- | ------------------------ | ------ |
+| root-class                                | 组件根元素类名               | string                   | -      |
+| root-style                                | 组件根元素样式               | StyleValue               | -      |
+| text                                      | 要编码的字符串数据           | string                   | -      |
+| ecl                                       | 错误纠错级别                 | 'L' \| 'M' \| 'Q' \| 'H' | 'M'    |
+| size                                      | 二维码呈现的大小             | string                   | 320rpx |
+| canvas-size                               | 画板的大小                   | number                   | 400    |
+| color                                     | 二维码颜色                   | string                   | #000   |
+| bg-color                                  | 二维码背景颜色               | string                   | #fff   |
+| quiet-zone-modules                        | 安静区域模块数               | number                   | 2      |
+| show-menu-by-longpress <sup>1.19.2+</sup> | 长按图片显示菜单(微信小程序) | boolean                  | false  |
+| icon <sup>1.19.2+</sup>                   | 二维码中图片的地址           | string                   | -      |
 
 ### QrcodeSlots
 

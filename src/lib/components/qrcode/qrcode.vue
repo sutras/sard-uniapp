@@ -16,7 +16,7 @@
       mode="aspectFit"
       :class="bem.e('image')"
     />
-    <slot v-if="!icon"></slot>
+    <slot></slot>
   </view>
 </template>
 
@@ -62,7 +62,7 @@ const qrcodeMap = computed(() => {
 
 const dataURL = ref('')
 
-const drawQrcodeInApp = async () => {
+const drawQrcode = async () => {
   const context = contextRef.value
   if (!context) {
     return
@@ -94,9 +94,7 @@ const drawQrcodeInApp = async () => {
   // 绘制 icon
   await drawIcon(context)
 
-  context.draw()
-
-  setTimeout(() => {
+  context.draw(false, () => {
     uni.canvasToTempFilePath(
       {
         x: 0,
@@ -115,7 +113,7 @@ const drawQrcodeInApp = async () => {
       },
       instance,
     )
-  }, 500)
+  })
 }
 
 // 绘制 icon
@@ -159,12 +157,7 @@ watch(
     () => props.icon,
   ],
   () => {
-    drawQrcodeInApp()
-    // if (isApp) {
-    //   drawQrcodeInApp()
-    // } else {
-    //   drawQrcodeInOthers()
-    // }
+    drawQrcode()
   },
 )
 
