@@ -70,11 +70,7 @@ $sar-tag-sizes: (
     border-top-left-radius: var(--sar-rounded-full);
     border-bottom-left-radius: var(--sar-rounded-full);
   }
-  @include m(mark-right) {
-    border-top-right-radius: var(--sar-rounded-full);
-    border-bottom-right-radius: var(--sar-rounded-full);
-  }
-  @include m(mark) {
+  @include m(mark, mark-right) {
     border-top-right-radius: var(--sar-rounded-full);
     border-bottom-right-radius: var(--sar-rounded-full);
   }
