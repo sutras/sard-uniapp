@@ -92,18 +92,22 @@ watch(
 // columnIndexes
 const columnIndexes = ref<number[]>([])
 
+const updateColumnIndexes = () => {
+  const indexes = getIndexesByValue(
+    toArray(innerValue.value),
+    props.columns,
+    fieldKeys.value,
+  )
+  if (!arrayEqual(indexes, columnIndexes.value)) {
+    columnIndexes.value = indexes
+  }
+}
+
 watch(
   [innerValue, () => props.columns, fieldKeys],
   () => {
     if (!isEmptyBinding(innerValue.value)) {
-      const indexes = getIndexesByValue(
-        toArray(innerValue.value),
-        props.columns,
-        fieldKeys.value,
-      )
-      if (!arrayEqual(indexes, columnIndexes.value)) {
-        columnIndexes.value = indexes
-      }
+      updateColumnIndexes()
     }
   },
   {
@@ -189,6 +193,10 @@ const getRenderedColumns = () => {
 
 const renderedColumns = ref(getRenderedColumns())
 
+const updateRenderedColumns = () => {
+  renderedColumns.value = getRenderedColumns()
+}
+
 watch(
   [() => props.columns, innerValue],
   ([newColumns, newValue], [oldColumns, oldValue]) => {
@@ -199,7 +207,17 @@ watch(
         !isEmptyBinding(newValue) &&
         (!Array.isArray(newValue) || newValue.length > 0))
     ) {
-      renderedColumns.value = getRenderedColumns()
+      updateRenderedColumns()
+    }
+  },
+)
+
+watch(
+  () => props.modelValue,
+  () => {
+    if (isEmptyBinding(props.modelValue)) {
+      updateColumnIndexes()
+      updateRenderedColumns()
     }
   },
 )
