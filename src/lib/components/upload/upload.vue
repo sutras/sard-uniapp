@@ -20,7 +20,7 @@
         @image-click="onImageClick"
       />
       <view
-        v-if="innerValue.length < maxCount"
+        v-if="innerValue.length < maxCount && !isReadonly"
         :class="bem.e('select')"
         @click="onSelect"
       >
@@ -209,8 +209,11 @@ function toChain(files: UploadFile[]) {
   chain(files)
 }
 
+let isSelectPending = false
+
 const onSelect = () => {
   if (
+    isSelectPending ||
     isDisabled.value ||
     isReadonly.value ||
     innerValue.value.length >= props.maxCount
@@ -218,29 +221,43 @@ const onSelect = () => {
     return
   }
 
-  chooseMedia({
-    mediaType: props.accept,
-    count: props.multiple ? 9999 : 1,
-    sizeType: props.sizeType,
-    sourceType: props.sourceType,
-    maxDuration: props.maxDuration,
-    camera: props.camera,
-    success(result) {
-      toChain(
-        result.tempFiles.map((file) => {
-          return {
-            type: file.fileType,
-            size: file.size,
-            path: file.tempFilePath,
-            duration: file.duration,
-            width: file.width,
-            height: file.height,
-          }
-        }),
-      )
-    },
-    fail: noop,
-  })
+  const next = () => {
+    chooseMedia({
+      mediaType: props.accept,
+      count: props.multiple ? 9999 : 1,
+      sizeType: props.sizeType,
+      sourceType: props.sourceType,
+      maxDuration: props.maxDuration,
+      camera: props.camera,
+      success(result) {
+        toChain(
+          result.tempFiles.map((file) => {
+            return {
+              type: file.fileType,
+              size: file.size,
+              path: file.tempFilePath,
+              duration: file.duration,
+              width: file.width,
+              height: file.height,
+            }
+          }),
+        )
+      },
+      fail: noop,
+    })
+  }
+
+  if (props.beforeChoose) {
+    isSelectPending = true
+    props.beforeChoose?.(innerValue.value, (allowed) => {
+      isSelectPending = false
+      if (allowed) {
+        next()
+      }
+    })
+  } else {
+    next()
+  }
 }
 
 const onRemove = (index: number, item: UploadFileItem) => {

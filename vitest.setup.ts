@@ -167,6 +167,9 @@ const uniObject = {
     return new SelectorQuery()
   },
   onWindowResize() {},
+  createCanvasContext() {
+    return new CanvasContext()
+  },
 }
 
 class NodesRef {
@@ -211,6 +214,51 @@ class SelectorQuery {
   exec(callback: any) {
     callback?.(execCallbackParam)
   }
+}
+
+class CanvasContext {
+  draw() {}
+  createLinearGradient() {}
+  createCircularGradient() {}
+  createPattern() {}
+  measureText() {}
+  save() {}
+  restore() {}
+  beginPath() {}
+  moveTo() {}
+  lineTo() {}
+  quadraticCurveTo() {}
+  bezierCurveTo() {}
+  arc() {}
+  rect() {}
+  arcTo() {}
+  clip() {}
+  fillRect() {}
+  strokeRect() {}
+  clearRect() {}
+  fill() {}
+  stroke() {}
+  closePath() {}
+  scale() {}
+  rotate() {}
+  translate() {}
+  drawImage() {}
+  strokeText() {}
+  transform() {}
+  setTransform() {}
+  setFillStyle() {}
+  setStrokeStyle() {}
+  setShadow() {}
+  setGlobalAlpha() {}
+  setLineWidth() {}
+  setLineJoin() {}
+  setLineCap() {}
+  setLineDash() {}
+  setMiterLimit() {}
+  fillText() {}
+  setFontSize() {}
+  setTextAlign() {}
+  setTextBaseline() {}
 }
 
 Object.defineProperty(globalThis, 'uni', {

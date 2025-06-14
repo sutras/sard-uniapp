@@ -38,6 +38,10 @@ export interface UploadProps {
   overSize?: (fileItem: UploadFileItem[]) => void
   disabled?: boolean
   readonly?: boolean
+  beforeChoose?: (
+    fileList: UploadFileItem[],
+    next: (allowed: boolean) => void,
+  ) => void
   beforeRead?: (file: UploadFile) => boolean | Promise<UploadFile>
   afterRead?: (fileItem: UploadFileItem) => void
   removable?: boolean

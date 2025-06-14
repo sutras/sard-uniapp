@@ -16,6 +16,10 @@
       <DemoMultiple />
     </doc-demo>
 
+    <doc-demo title="选择文件前置处理">
+      <DemoBeforeChoose />
+    </doc-demo>
+
     <doc-demo title="上传前置处理">
       <DemoBeforeRead />
     </doc-demo>
@@ -43,6 +47,7 @@ import DemoBasic from './demo/Basic.vue'
 import DemoVideo from './demo/Video.vue'
 import DemoMaxCount from './demo/MaxCount.vue'
 import DemoMultiple from './demo/Multiple.vue'
+import DemoBeforeChoose from './demo/BeforeChoose.vue'
 import DemoBeforeRead from './demo/BeforeRead.vue'
 import DemoSize from './demo/Size.vue'
 import DemoStatus from './demo/Status.vue'

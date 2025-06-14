@@ -78,6 +78,27 @@ describe('Toast', () => {
     expect(wrapper.find('.sar-upload__select').exists()).not.toBeTruthy()
   })
 
+  test('beforeChoose', async () => {
+    const beforeChoose = vi.fn((_, next) => {
+      next(false)
+    })
+    const wrapper = mount(
+      h(Upload, {
+        beforeChoose,
+      }),
+    )
+
+    vi.stubGlobal('tempFiles', [
+      mockFile('pic1.jpg'),
+      mockFile('pic2.jpg'),
+      mockFile('pic3.jpg'),
+    ])
+
+    await wrapper.find('.sar-upload__select').trigger('click')
+
+    expect(wrapper.findAll('image').length).toBe(0)
+  })
+
   test('beforeRead', async () => {
     const beforeRead = vi.fn((file) => {
       if (file.path === 'pic2.jpg') {
@@ -187,9 +208,7 @@ describe('Toast', () => {
 
     vi.stubGlobal('tempFiles', [mockFile()])
 
-    await wrapper.find('.sar-upload__select').trigger('click')
-
-    expect(wrapper.findAll('image').length).toBe(1)
+    expect(wrapper.find('.sar-upload__select').exists()).toBe(false)
   })
 
   test('disabled', async () => {
