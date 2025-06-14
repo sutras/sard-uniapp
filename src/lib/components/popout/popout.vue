@@ -25,6 +25,7 @@
             <template v-else>{{ t('cancel') }}</template>
           </sar-button>
         </view>
+        <slot name="title-prepend"></slot>
         <view :class="bem.e('title')">
           <template v-if="title">
             <text :class="bem.e('title-text')">{{ title }}</text>

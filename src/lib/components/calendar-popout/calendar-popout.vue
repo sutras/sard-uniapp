@@ -1,13 +1,19 @@
 <template>
   <sar-popout
     v-model:visible="innerVisible"
-    :title="title"
+    :title="$slots.title ? '' : title"
     :show-confirm="showConfirm"
     :confirm-disabled="confirmDisabled"
     :root-class="popoutClass"
     :root-style="popoutStyle"
     @confirm="onConfirm"
   >
+    <template #title-prepend>
+      <slot name="title-prepend"></slot>
+    </template>
+    <template #title>
+      <slot name="title"></slot>
+    </template>
     <template #visible="{ already }">
       <sar-calendar
         v-if="already"

@@ -38,6 +38,7 @@ export interface PopoutSlots {
   cancel?(props: Record<string, never>): any
   confirm?(props: Record<string, never>): any
   visible?(props: { whole: boolean; already: boolean }): any
+  'title-prepend'?(props: Record<string, never>): any
 }
 
 export interface PopoutEmits extends TransitionHookEmits {

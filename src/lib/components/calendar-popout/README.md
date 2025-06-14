@@ -84,6 +84,13 @@ import CalendarPopout from 'sard-uniapp/components/calendar-popout/calendar-popo
 | show-confirm      | 是否显示确定按钮，隐藏按钮可用于快捷选择 | boolean    | true   |
 | validate-event    | 是否触发表单验证                         | boolean    | true   |
 
+### CalendarPopoutSlots
+
+| 插槽                             | 描述               | 属性 |
+| -------------------------------- | ------------------ | ---- |
+| title <sup>1.19.2+</sup>         | 自定义标题         | -    |
+| title-prepend <sup>1.19.2+</sup> | 自定义标题前面内容 | -    |
+
 ### CalendarPopoutEmits
 
 | 事件               | 描述                 | 类型                                                               |

@@ -18,6 +18,8 @@ export const defaultCalendarPopoutProps = () => ({
 
 export interface CalendarPopoutSlots {
   default?(props: Record<string, never>): any
+  title?(props: Record<string, never>): any
+  'title-prepend'?(props: Record<string, never>): any
 }
 
 export interface CalendarPopoutEmits {
