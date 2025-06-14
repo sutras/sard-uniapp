@@ -1,3 +1,23 @@
+## [1.19.2](https://github.com/sutras/sard-uniapp/compare/v1.19.1...v1.19.2) (2025-06-14)
+
+
+### Bug Fixes
+
+* picker 值为空时滚到第一个位置 ([f033ccc](https://github.com/sutras/sard-uniapp/commit/f033ccc713ec1260d1cb761769ab31ccbc39d808))
+* 修复 picker-popout 首次选择不能获取选项列表问题 ([50cebc7](https://github.com/sutras/sard-uniapp/commit/50cebc75c036c8b0bf7ed32cb46338d68716385d))
+
+
+### Features
+
+* *-input 系列组件新增valueOnClear属性 ([42275cd](https://github.com/sutras/sard-uniapp/commit/42275cd5beec09d7d5fe669c560ae6ad7dfc1b13))
+* calendar-popout组件新增title和title-prepend插槽 ([f6f8404](https://github.com/sutras/sard-uniapp/commit/f6f84042f2924f6547bb6273078ada5e08039fd5))
+* upload 组件新增 beforeChoose 属性 ([22e3137](https://github.com/sutras/sard-uniapp/commit/22e3137c72e3a16f298dcabbffd2db43268f8a74))
+* 增加 tag 组件的 mark 属性，支持 'left' 和 'right' 值以控制标记方向 ([77f9fb7](https://github.com/sutras/sard-uniapp/commit/77f9fb724040d99f7aa2612ccd03c8c6f175de52))
+* 新增css变量 ([f1b081e](https://github.com/sutras/sard-uniapp/commit/f1b081ef65c66794dec1d7b4bc6d769676cbdf7f))
+* 新增图标属性和长按菜单功能 ([62c0d7f](https://github.com/sutras/sard-uniapp/commit/62c0d7f9d4e085f91c0c745f85b02d90d0cd246e))
+
+
+
 ## [1.19.1](https://github.com/sutras/sard-uniapp/compare/v1.19.0...v1.19.1) (2025-06-11)
 
 
