@@ -196,24 +196,39 @@ export function getInitialValue(
   columns: PickerOption[] | PickerOption[][],
   optionKeys: Required<PickerOptionKeys>,
 ) {
-  function recurse(columns: PickerOption[]): PickerOption {
+  function recurse(
+    columns: PickerOption[],
+    options: PickerOptionObject[],
+  ): PickerOption {
     const option = columns[0] as PickerOptionObject
+    options.push(option)
     const nextColumn = option?.[optionKeys.children]
 
     if (Array.isArray(nextColumn) && nextColumn.length > 0) {
-      return recurse(nextColumn)
+      return recurse(nextColumn, options)
     }
     return option
   }
 
   switch (getColumnsType(columns, optionKeys)) {
     case 'single':
-      return getValueOrLabelByOption(columns[0], optionKeys.value)
+      return [
+        getValueOrLabelByOption(columns[0], optionKeys.value),
+        [columns[0]],
+      ]
     case 'multi':
-      return (columns as PickerOption[][]).map((column) =>
-        getValueOrLabelByOption(column[0], optionKeys.value),
-      )
-    case 'cascader':
-      return getValueOrLabelByOption(recurse(columns), optionKeys.value)
+      return [
+        (columns as PickerOption[][]).map((column) =>
+          getValueOrLabelByOption(column[0], optionKeys.value),
+        ),
+        (columns as PickerOption[][]).map((column) => column[0]),
+      ]
+    case 'cascader': {
+      const options: PickerOptionObject[] = []
+      return [
+        getValueOrLabelByOption(recurse(columns, options), optionKeys.value),
+        options,
+      ]
+    }
   }
 }

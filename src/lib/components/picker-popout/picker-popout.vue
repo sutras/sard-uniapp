@@ -81,7 +81,12 @@ const { innerVisible, innerValue, popoutValue, onChange, onConfirm } =
   useFormPopout(props, emit, {
     onConfirmBefore() {
       if (isEmptyBinding(popoutValue.value)) {
-        popoutValue.value = getInitialValue(props.columns, fieldKeys.value)
+        const [initialValue, selectedOptions] = getInitialValue(
+          props.columns,
+          fieldKeys.value,
+        )
+        popoutValue.value = initialValue
+        return [selectedOptions]
       }
     },
   })

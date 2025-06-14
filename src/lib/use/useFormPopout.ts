@@ -19,7 +19,7 @@ export function useFormPopout(
   emit: UseFormPopoutEmits,
   options: {
     onChange?: (...args: any[]) => void
-    onConfirmBefore?: () => void
+    onConfirmBefore?: () => any
   } = {},
 ) {
   // visible
@@ -55,7 +55,10 @@ export function useFormPopout(
   }
 
   const onConfirm = () => {
-    options.onConfirmBefore?.()
+    const extraArgs = options.onConfirmBefore?.()
+    if (extraArgs) {
+      restArgs = extraArgs
+    }
     if (popoutValue.value !== innerValue.value) {
       innerValue.value = popoutValue.value
       const args = [innerValue.value, ...restArgs]
