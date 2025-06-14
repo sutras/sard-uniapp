@@ -31,7 +31,7 @@ const columns = ['北京市', '天津市', '河北省', '山东省']
 const visible = ref(false)
 const value = ref<string | undefined>()
 
-const onChange = (value: any, selectedOptions: any) => {
-  console.log('change', value, selectedOptions)
+const onChange = (value: any) => {
+  console.log('change', value)
 }
 </script>
