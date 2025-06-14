@@ -44,7 +44,7 @@ const tagClass = computed(() => {
     bem.m(`${props.theme}-plain`, props.plain),
     bem.m(props.size),
     bem.m('round', props.round),
-    bem.m('mark', props.mark),
+    bem.m(props.mark === true ? 'mark' : `mark-${props.mark}`, !!props.mark),
     props.rootClass,
   )
 })

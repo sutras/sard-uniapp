@@ -66,6 +66,14 @@ $sar-tag-sizes: (
   }
 
   // 标记
+  @include m(mark-left) {
+    border-top-left-radius: var(--sar-rounded-full);
+    border-bottom-left-radius: var(--sar-rounded-full);
+  }
+  @include m(mark-right) {
+    border-top-right-radius: var(--sar-rounded-full);
+    border-bottom-right-radius: var(--sar-rounded-full);
+  }
   @include m(mark) {
     border-top-right-radius: var(--sar-rounded-full);
     border-bottom-right-radius: var(--sar-rounded-full);

@@ -14,7 +14,7 @@ export interface TagProps {
     | 'danger'
   plain?: boolean
   round?: boolean
-  mark?: boolean
+  mark?: boolean | 'left' | 'right'
   size?: 'small' | 'medium' | 'large'
   color?: string
   textColor?: string
