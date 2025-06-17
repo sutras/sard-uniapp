@@ -13,6 +13,7 @@ import { type DropdownProps } from '../dropdown'
 import { type FloatingBubbleProps } from '../floating-bubble'
 import { type FormProps } from '../form'
 import { type GridProps } from '../grid'
+import { type IconProps } from '../icon'
 import { type InputProps } from '../input'
 import { type KeyboardProps } from '../keyboard'
 import { type ListItemProps } from '../list'
@@ -230,6 +231,7 @@ export const defaultConfig = {
   icon: {
     name: '',
     family: 'sari',
+    separate: false as IconProps['separate'],
   },
   indexes: {
     hintDuration: 300,

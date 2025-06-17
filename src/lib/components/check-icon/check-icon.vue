@@ -28,14 +28,14 @@ const iconName = computed(() => {
   return props.disabled && props.type === 'check'
     ? 'check'
     : props.disabled && props.type === 'dash'
-    ? 'dash'
-    : props.type === 'check'
-    ? `check-${props.shape}-fill`
-    : props.type === 'dash'
-    ? `dash-${props.shape}-fill`
-    : props.type === 'dot'
-    ? `record-circle`
-    : undefined
+      ? 'dash'
+      : props.type === 'check'
+        ? `check-${props.shape}-fill`
+        : props.type === 'dash'
+          ? `dash-${props.shape}-fill`
+          : props.type === 'dot'
+            ? `record-circle`
+            : undefined
 })
 
 const checkIconClass = computed(() => {

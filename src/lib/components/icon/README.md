@@ -61,7 +61,7 @@ import Icon from 'sard-uniapp/components/icon/icon.vue'
 
 ```html
 <style lang="scss">
-  @use './demo-icons.css';
+  @import './demo-icons.css';
 </style>
 ```
 
@@ -75,6 +75,30 @@ import Icon from 'sard-uniapp/components/icon/icon.vue'
 
 @code('${DEMO_PATH}/icon/demo/Colon.vue')
 
+### 分离图标字体和名称 <sup>1.19.3+</sup>
+
+默认情况下，图标组件会将 `family`，以及通过 `-` 拼接的`family` 和 `name` 作为类名添加到图标组件。
+
+例如：
+
+```html
+<sar-icon family="demo-icons" name="cart" />
+```
+
+会添加 `demo-icons demo-icons-cart` 类名到组件。
+
+如果字体名称和字体前缀不一致，可以使用 `separate` 属性来取消拼接。
+
+假如字体为 `iconfont`，字体前缀为 `icon-`：
+
+```html
+<sar-icon family="iconfont" name="icon-cart" separate />
+```
+
+会添加 `iconfont icon-cart` 类名到组件；而不是 `iconfont iconfont-icon-cart` 。
+
+也可以 [`全局配置`](../guide/config) 图标的 `separate`。
+
 ### 内置图标
 
 点击右边演示的图标可以复制图标名称。
@@ -83,11 +107,12 @@ import Icon from 'sard-uniapp/components/icon/icon.vue'
 
 ### IconProps
 
-| 属性       | 描述                                                    | 类型       | 默认值 |
-| ---------- | ------------------------------------------------------- | ---------- | ------ |
-| root-class | 组件根元素类名                                          | string     | -      |
-| root-style | 组件根元素样式                                          | StyleValue | -      |
-| name       | 图标名称或图片链接，如果名称带有`/`，会被认为是图片图标 | string     | ''     |
-| family     | 字体名称                                                | string     | 'sari' |
-| size       | 图标大小                                                | string     | -      |
-| color      | 图标颜色                                                | string     | -      |
+| 属性                        | 描述                                                    | 类型       | 默认值 |
+| --------------------------- | ------------------------------------------------------- | ---------- | ------ |
+| root-class                  | 组件根元素类名                                          | string     | -      |
+| root-style                  | 组件根元素样式                                          | StyleValue | -      |
+| name                        | 图标名称或图片链接，如果名称带有`/`，会被认为是图片图标 | string     | ''     |
+| family                      | 字体名称                                                | string     | 'sari' |
+| size                        | 图标大小                                                | string     | -      |
+| color                       | 图标颜色                                                | string     | -      |
+| separate <sup>1.19.3+</sup> | 是否分开字体和字体名称，而不进行拼接                    | boolean    | false  |

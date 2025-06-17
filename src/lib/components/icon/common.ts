@@ -8,6 +8,7 @@ export interface IconProps {
   family?: string
   size?: string
   color?: string
+  separate?: boolean
 }
 
 export const defaultIconProps = defaultConfig.icon

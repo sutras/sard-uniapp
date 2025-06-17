@@ -130,8 +130,8 @@ const getValueOnClear = () => {
   return props.valueOnClear === 'min'
     ? props.min
     : props.valueOnClear === 'max'
-    ? props.max
-    : props.valueOnClear
+      ? props.max
+      : props.valueOnClear
 }
 
 const onInput = (event: any) => {

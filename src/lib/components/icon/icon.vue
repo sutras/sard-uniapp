@@ -32,13 +32,20 @@ const iconClass = computed(() => {
   }
   if (props.name.includes(':')) {
     const [family, name] = props.name.split(':')
-    return classNames(bem.b(), family, `${family}-${name}`, props.rootClass)
+    return classNames(
+      bem.b(),
+      family,
+      props.separate && family !== 'sari' ? name : `${family}-${name}`,
+      props.rootClass,
+    )
   }
 
   return classNames(
     bem.b(),
     props.family,
-    `${props.family}-${props.name}`,
+    props.separate && props.family !== 'sari'
+      ? props.name
+      : `${props.family}-${props.name}`,
     props.rootClass,
   )
 })
