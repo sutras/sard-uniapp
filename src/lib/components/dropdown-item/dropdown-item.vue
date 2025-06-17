@@ -108,6 +108,7 @@ import {
   type DropdownCloseType,
   dropdownContextSymbol,
   defaultDropdownItemProps,
+  defaultValueOnClear,
 } from '../dropdown/common'
 import { type TransitionHookName, useTransition, useZIndex } from '../../use'
 
@@ -143,6 +144,11 @@ const itemId = uniqid()
 const instance = getCurrentInstance()
 
 const innerValue = ref(props.modelValue)
+
+const mergedTogglable = computed(() => props.togglable || context.togglable)
+const mergedValueOnClear = computed(
+  () => props.valueOnClear || context.valueOnClear || defaultValueOnClear,
+)
 
 watch(
   () => props.modelValue,
@@ -283,11 +289,26 @@ const onItemClick = () => {
 }
 
 const onOptionClick = (option: DropdownOption) => {
+  let changed = false
+
   if (option.value !== innerValue.value) {
     innerValue.value = option.value
-    emit('update:model-value', option.value)
-    emit('change', option.value)
+    changed = true
+  } else {
+    if (mergedTogglable.value) {
+      const value = mergedValueOnClear.value()
+      if (value !== innerValue.value) {
+        innerValue.value = value
+      }
+      changed = true
+    }
   }
+
+  if (changed) {
+    emit('update:model-value', innerValue.value)
+    emit('change', innerValue.value)
+  }
+
   perhapsClose('option')
 }
 

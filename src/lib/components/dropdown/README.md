@@ -62,19 +62,27 @@ import DropdownItem from 'sard-uniapp/components/dropdown-item/dropdown-item.vue
 
 @code('${DEMO_PATH}/dropdown/demo/Async.vue')
 
+### 可取消选择 <sup>1.19.3+</sup>
+
+如果想点击时取消选中的选项，可以使用 `togglable` 属性。
+
+@code('${DEMO_PATH}/dropdown/demo/Togglable.vue')
+
 ## API
 
 ### DropdownProps
 
-| 属性             | 描述                         | 类型           | 默认值 |
-| ---------------- | ---------------------------- | -------------- | ------ |
-| root-class       | 组件根元素类名               | string         | -      |
-| root-style       | 组件根元素样式               | StyleValue     | -      |
-| direction        | 菜单弹出方向                 | 'down' \| 'up' | 'down' |
-| disabled         | 是否禁用                     | boolean        | false  |
-| away-closable    | 是否在点击外部区域后自动隐藏 | boolean        | true   |
-| overlay-closable | 是否在点击遮罩后自动隐藏     | boolean        | true   |
-| duration         | 显隐动画时长，单位 ms        | number         | 300    |
+| 属性                              | 描述                         | 类型           | 默认值    |
+| --------------------------------- | ---------------------------- | -------------- | --------- |
+| root-class                        | 组件根元素类名               | string         | -         |
+| root-style                        | 组件根元素样式               | StyleValue     | -         |
+| direction                         | 菜单弹出方向                 | 'down' \| 'up' | 'down'    |
+| disabled                          | 是否禁用                     | boolean        | false     |
+| away-closable                     | 是否在点击外部区域后自动隐藏 | boolean        | true      |
+| overlay-closable                  | 是否在点击遮罩后自动隐藏     | boolean        | true      |
+| duration                          | 显隐动画时长，单位 ms        | number         | 300       |
+| togglable <sup>1.19.3+</sup>      | 是否可取消选中的选项         | boolean        | false     |
+| value-on-clear <sup>1.19.3+</sup> | 取消选项时设置的值           | any            | undefined |
 
 ### DropdownSlots
 
@@ -84,21 +92,23 @@ import DropdownItem from 'sard-uniapp/components/dropdown-item/dropdown-item.vue
 
 ### DropdownItemProps
 
-| 属性                           | 描述                                                                 | 类型                | 默认值 |
-| ------------------------------ | -------------------------------------------------------------------- | ------------------- | ------ |
-| root-class                     | 组件根元素类名                                                       | string              | -      |
-| root-style                     | 组件根元素样式                                                       | StyleValue          | -      |
-| title                          | 标题，用于自定义菜单内容                                             | string              | -      |
-| label                          | 标签说明                                                             | string              | -      |
-| options                        | 菜单选项                                                             | DropdownOption[]    | []     |
-| direction                      | 菜单弹出方向                                                         | 'down' \| 'up'      | 'down' |
-| disabled                       | 是否禁用                                                             | boolean             | false  |
-| model-value (v-model)          | 当前选择的菜单项的值                                                 | any                 | -      |
-| visible (v-model)              | 弹出框是否可见                                                       | boolean             | -      |
-| separator                      | 标签后面分隔符                                                       | string              | -      |
-| placeholder                    | 占位符                                                               | string              | -      |
-| before-open <sup>1.19.1+</sup> | 打开前的回调，返回 `false` 或 `rejected` 状态的 `Promise` 可阻止打开 | () => any           | -      |
-| before-close <sup>1.19+</sup>  | 关闭前的回调，返回 `false` 或 `rejected` 状态的 `Promise` 可阻止关闭 | DropdownBeforeClose | -      |
+| 属性                              | 描述                                                                 | 类型                | 默认值    |
+| --------------------------------- | -------------------------------------------------------------------- | ------------------- | --------- |
+| root-class                        | 组件根元素类名                                                       | string              | -         |
+| root-style                        | 组件根元素样式                                                       | StyleValue          | -         |
+| title                             | 标题，用于自定义菜单内容                                             | string              | -         |
+| label                             | 标签说明                                                             | string              | -         |
+| options                           | 菜单选项                                                             | DropdownOption[]    | []        |
+| direction                         | 菜单弹出方向                                                         | 'down' \| 'up'      | 'down'    |
+| disabled                          | 是否禁用                                                             | boolean             | false     |
+| model-value (v-model)             | 当前选择的菜单项的值                                                 | any                 | -         |
+| visible (v-model)                 | 弹出框是否可见                                                       | boolean             | -         |
+| separator                         | 标签后面分隔符                                                       | string              | -         |
+| placeholder                       | 占位符                                                               | string              | -         |
+| togglable <sup>1.19.3+</sup>      | 是否可取消选中的选项                                                 | boolean             | false     |
+| value-on-clear <sup>1.19.3+</sup> | 取消选项时设置的值                                                   | any                 | undefined |
+| before-open <sup>1.19.1+</sup>    | 打开前的回调，返回 `false` 或 `rejected` 状态的 `Promise` 可阻止打开 | () => any           | -         |
+| before-close <sup>1.19+</sup>     | 关闭前的回调，返回 `false` 或 `rejected` 状态的 `Promise` 可阻止关闭 | DropdownBeforeClose | -         |
 
 ### DropdownBeforeClose
 

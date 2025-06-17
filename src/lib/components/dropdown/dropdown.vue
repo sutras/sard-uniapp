@@ -62,6 +62,8 @@ provide<DropdownContext>(
     awayClosable: toRef(() => props.awayClosable),
     overlayClosable: toRef(() => props.overlayClosable),
     duration: toRef(() => props.duration),
+    togglable: toRef(() => props.togglable),
+    valueOnClear: toRef(() => props.valueOnClear),
     hideOthers,
     register,
     unregister,

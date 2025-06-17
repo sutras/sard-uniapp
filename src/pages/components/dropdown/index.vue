@@ -27,6 +27,10 @@
     <doc-demo title="异步开关" full>
       <DemoAsync />
     </doc-demo>
+
+    <doc-demo title="可取消选择" full>
+      <DemoTogglable />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -38,4 +42,5 @@ import DemoDirection from './demo/Direction.vue'
 import DemoDisabled from './demo/Disabled.vue'
 import DemoContent from './demo/Content.vue'
 import DemoAsync from './demo/Async.vue'
+import DemoTogglable from './demo/Togglable.vue'
 </script>

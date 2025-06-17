@@ -1,5 +1,5 @@
 <template>
-  <sar-dropdown direction="up">
+  <sar-dropdown>
     <sar-dropdown-item :options="options1" model-value="1" />
     <sar-dropdown-item title="筛选" v-model:visible="visible">
       <sar-list inlaid>
