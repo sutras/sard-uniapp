@@ -1,3 +1,12 @@
+## [1.19.4](https://github.com/sutras/sard-uniapp/compare/v1.19.3...v1.19.4) (2025-06-19)
+
+
+### Features
+
+* calendar 允许修改范围文案 ([ba4debe](https://github.com/sutras/sard-uniapp/commit/ba4debefe74e8a7e9f9ea42141dd421ccc00a082))
+
+
+
 ## [1.19.3](https://github.com/sutras/sard-uniapp/compare/v1.19.2...v1.19.3) (2025-06-17)
 
 
