@@ -163,11 +163,11 @@ const daysInfo = computed(() => {
       text: date.getDate() + '',
       bottom:
         isStart && isEnd
-          ? `${props.t('start')}/${props.t('end')}`
+          ? props.sameDateText || `${props.t('start')}/${props.t('end')}`
           : isStart
-            ? props.t('start')
+            ? props.startDateText || props.t('start')
             : isEnd
-              ? props.t('end')
+              ? props.endDateText || props.t('end')
               : '',
       type:
         isStart && isEnd

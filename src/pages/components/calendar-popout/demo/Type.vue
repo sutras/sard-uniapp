@@ -16,8 +16,9 @@
     v-model="rangeValue"
     v-model:visible="rangeVisible"
     type="range"
-    title="单个日期"
+    title="范围选择"
     value-format="YYYY-MM-DD"
+    allow-same-day
   />
 
   <sar-list card>

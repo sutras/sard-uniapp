@@ -32,6 +32,9 @@ export interface CalendarProps {
   allowSameDay?: boolean
   severalMonths?: boolean
   valueFormat?: string
+  startDateText?: string
+  endDateText?: string
+  sameDateText?: string
 }
 
 export const defaultCalendarProps = defaultConfig.calendar
@@ -55,6 +58,9 @@ export interface CalendarMonthProps {
   severalMonths?: boolean
   t: LocaleTranslate
   bem: Bem
+  startDateText?: string
+  endDateText?: string
+  sameDateText?: string
 }
 
 export interface CalendarMonthEmits {

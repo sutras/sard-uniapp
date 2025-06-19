@@ -1,3 +1,13 @@
+## [1.19.3](https://github.com/sutras/sard-uniapp/compare/v1.19.2...v1.19.3) (2025-06-17)
+
+
+### Features
+
+* dropdown 新增 togglable 属性 ([e46291e](https://github.com/sutras/sard-uniapp/commit/e46291e99307ad977801153547b593ef97a56ee8))
+* icon 添加 separate 属性 ([b20d069](https://github.com/sutras/sard-uniapp/commit/b20d0697ec4ef16fabf50e4bae3eab6908d6a572))
+
+
+
 ## [1.19.2](https://github.com/sutras/sard-uniapp/compare/v1.19.1...v1.19.2) (2025-06-14)
 
 
