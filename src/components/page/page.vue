@@ -13,14 +13,14 @@
       '--sar-navbar-item-color': 'var(--sar-body-color)',
     }"
     @back="onBack"
-  >
-    <!-- <template #left>
+  ></sar-navbar>
+
+  <!-- <template #left>
       <sar-tabs v-model:current="locale" type="card" style="align-self: center">
         <sar-tab name="zhCN">中文</sar-tab>
         <sar-tab name="enUS">英文</sar-tab>
       </sar-tabs>
     </template> -->
-  </sar-navbar>
 
   <view
     :class="classNames(bem.b(), bem.m('emphasis', emphasis))"
