@@ -1,3 +1,12 @@
+## [1.19.5](https://github.com/sutras/sard-uniapp/compare/v1.19.4...v1.19.5) (2025-06-22)
+
+
+### Features
+
+* 新增useLocaleProvide, useLocale钩子函数 ([a374df8](https://github.com/sutras/sard-uniapp/commit/a374df85f75c1b76e24e1f99ef58c1377ed7b4a5))
+
+
+
 ## [1.19.4](https://github.com/sutras/sard-uniapp/compare/v1.19.3...v1.19.4) (2025-06-19)
 
 
