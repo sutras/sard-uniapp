@@ -4,6 +4,7 @@
     v-model:visible="visible"
     title="请选择"
     :options="options"
+    show-check-all
     @change="onChange"
   />
 
@@ -32,6 +33,7 @@ const options = Array(10)
     return {
       value: `option${i + 1}`,
       label: `选项${i + 1}`,
+      disabled: i > 5,
     }
   })
 

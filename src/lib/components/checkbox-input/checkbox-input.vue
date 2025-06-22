@@ -24,6 +24,9 @@
       :options="options"
       :option-keys="optionKeys"
       :validate-event="validateEvent"
+      :show-check-all="showCheckAll"
+      :searchable="searchable"
+      :filter-placeholder="filterPlaceholder"
       @change="onChange"
     />
   </sar-popout-input>

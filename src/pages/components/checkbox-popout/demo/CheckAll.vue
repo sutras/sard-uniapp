@@ -4,6 +4,7 @@
     v-model:visible="visible"
     title="请选择"
     :options="options"
+    show-check-all
     @change="onChange"
   />
 

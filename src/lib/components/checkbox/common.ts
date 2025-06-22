@@ -34,6 +34,7 @@ export interface CheckboxEmits {
 export const defaultOptionKeys = {
   label: 'label',
   value: 'value',
+  disabled: 'disabled',
 }
 
 export type CheckboxGroupOption =
