@@ -32,6 +32,7 @@ const options = Array(10)
     return {
       value: `option${i + 1}`,
       label: `选项${i + 1}`,
+      disabled: i > 5,
     }
   })
 

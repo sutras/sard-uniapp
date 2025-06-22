@@ -24,18 +24,32 @@ import RadioPopout from 'sard-uniapp/components/radio-popout/radio-popout.vue'
 
 @code('${DEMO_PATH}/radio-popout/demo/Basic.vue')
 
+### 禁用选项 <sup>1.20+</sup>
+
+设置了 `disabled` 的选项可禁止选择。
+
+@code('${DEMO_PATH}/radio-popout/demo/Disabled.vue')
+
+### 可搜索的 <sup>1.20+</sup>
+
+使用 `searchable` 显示搜索框，可用于过滤选项列表。
+
+@code('${DEMO_PATH}/radio-popout/demo/Search.vue')
+
 ## API
 
 ### RadioPopoutProps
 
 继承 [`RadioGroupProps`](./radio#RadioGroupProps) 并有以下额外属性：
 
-| 属性              | 描述             | 类型       | 默认值 |
-| ----------------- | ---------------- | ---------- | ------ |
-| popout-class      | 弹窗框根元素类名 | string     | -      |
-| popout-style      | 弹窗框根元素样式 | StyleValue | -      |
-| visible (v-model) | 是否显示弹出框   | boolean    | -      |
-| title             | 弹出框标题       | string     | -      |
+| 属性                                | 描述                 | 类型       | 默认值 |
+| ----------------------------------- | -------------------- | ---------- | ------ |
+| popout-class                        | 弹窗框根元素类名     | string     | -      |
+| popout-style                        | 弹窗框根元素样式     | StyleValue | -      |
+| visible (v-model)                   | 是否显示弹出框       | boolean    | -      |
+| title                               | 弹出框标题           | string     | -      |
+| searchable <sup>1.20+</sup>         | 是否可搜索           | boolean    | false  |
+| filter-placeholder <sup>1.20+</sup> | 搜索输入框占位符内容 | string     | -      |
 
 ### RadioPopoutEmits
 

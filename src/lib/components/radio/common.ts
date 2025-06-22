@@ -28,6 +28,7 @@ export interface RadioEmits {
 export const defaultOptionKeys = {
   label: 'label',
   value: 'value',
+  disabled: 'disabled',
 }
 
 export type RadioGroupOption =

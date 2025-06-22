@@ -4,6 +4,8 @@
     v-model:visible="visible"
     title="请选择"
     :options="options"
+    searchable
+    filter-placeholder="请输入过滤关键词"
     @change="onChange"
   />
 

@@ -7,5 +7,9 @@
 
   @include e(scroll) {
     max-height: var(--sar-radio-popout-max-height);
+
+    @include m(searchable) {
+      height: var(--sar-checkbox-popout-max-height);
+    }
   }
 }

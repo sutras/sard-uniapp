@@ -7,6 +7,8 @@ export interface RadioPopoutProps extends RadioGroupProps {
   title?: string
   popoutClass?: string
   popoutStyle?: StyleValue
+  searchable?: boolean
+  filterPlaceholder?: string
 }
 
 export const defaultRadioPopoutProps = () => ({
