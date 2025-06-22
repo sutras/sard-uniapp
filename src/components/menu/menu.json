@@ -242,6 +242,10 @@
         "name": "qrcode"
       },
       {
+        "title": "ScrollList 横向滚动列表",
+        "name": "scroll-list"
+      },
+      {
         "title": "ScrollSpy 滚动监听",
         "name": "scroll-spy"
       },

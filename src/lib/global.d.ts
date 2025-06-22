@@ -84,6 +84,7 @@ declare module 'vue' {
     SarRate: typeof import('./components/rate/rate.vue').default
     SarResult: typeof import('./components/result/result.vue').default
     SarRow: typeof import('./components/row/row.vue').default
+    SarScrollList: typeof import('./components/scroll-list/scroll-list.vue').default
     SarScrollSpy: typeof import('./components/scroll-spy/scroll-spy.vue').default
     SarScrollSpyAnchor: typeof import('./components/scroll-spy-anchor/scroll-spy-anchor.vue').default
     SarSearch: typeof import('./components/search/search.vue').default

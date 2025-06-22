@@ -310,6 +310,9 @@
       "path": "pages/components/result/index"
     },
     {
+      "path": "pages/components/scroll-list/index"
+    },
+    {
       "path": "pages/components/scroll-spy/index"
     },
     {

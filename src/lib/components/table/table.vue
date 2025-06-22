@@ -40,6 +40,7 @@ import {
   defaultTableProps,
 } from './common'
 import SarTableFixation from '../table-fixation/table-fixation.vue'
+import { useWindowResize } from '../../use'
 
 defineOptions({
   options: {
@@ -71,7 +72,7 @@ onMounted(() => {
   nextTick(setTableRect)
 })
 
-uni.onWindowResize?.(setTableRect)
+useWindowResize(setTableRect)
 
 // fixed row
 const fixedRow = computed(() => {

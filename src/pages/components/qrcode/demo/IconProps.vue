@@ -17,5 +17,3 @@ const icon = ref('/static/logo.png')
 icon.value = 'https://sard.wzt.zone/sard-uniapp-docs/mobile/static/logo.png'
 // #endif
 </script>
-
-<style lang="scss" scoped></style>

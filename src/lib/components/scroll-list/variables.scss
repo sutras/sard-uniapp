@@ -1,0 +1,11 @@
+// #variables
+page,
+.sar-portal {
+  --sar-scroll-list-scrollbar-width: 100rpx;
+  --sar-scroll-list-scrollbar-height: 8rpx;
+  --sar-scroll-list-scrollbar-margin-top: 32rpx;
+  --sar-scroll-list-scrollbar-bg: var(--sar-tertiary-bg);
+  --sar-scroll-list-scrollbar-thumb-width: 40rpx;
+  --sar-scroll-list-scrollbar-thumb-bg: var(--sar-primary);
+}
+// #endvariables
