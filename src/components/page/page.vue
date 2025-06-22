@@ -13,7 +13,14 @@
       '--sar-navbar-item-color': 'var(--sar-body-color)',
     }"
     @back="onBack"
-  />
+  >
+    <!-- <template #left>
+      <sar-tabs v-model:current="locale" type="card" style="align-self: center">
+        <sar-tab name="zhCN">中文</sar-tab>
+        <sar-tab name="enUS">英文</sar-tab>
+      </sar-tabs>
+    </template> -->
+  </sar-navbar>
 
   <view
     :class="classNames(bem.b(), bem.m('emphasis', emphasis))"
@@ -25,7 +32,7 @@
 
 <script setup lang="ts">
 import { createBem } from '@/utils'
-import { classNames, isAlipay } from 'sard-uniapp'
+import { classNames, isAlipay, useLocale } from 'sard-uniapp'
 
 defineProps<{
   emphasis?: boolean
@@ -35,6 +42,10 @@ defineProps<{
 }>()
 
 const bem = createBem('page')
+
+const locale = useLocale()!
+
+void locale
 
 const onBack = () => {
   uni.navigateBack()

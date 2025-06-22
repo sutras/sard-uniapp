@@ -1,4 +1,13 @@
-import { shallowRef, computed } from 'vue'
+import {
+  shallowRef,
+  computed,
+  inject,
+  ref,
+  watch,
+  type App,
+  type InjectionKey,
+  type Ref,
+} from 'vue'
 import zhCN from './lang/zh-CN'
 import { chainGet } from '../../utils'
 
@@ -63,4 +72,32 @@ export function useTranslate(prefix = '') {
 
 export function setLocale(locale: Record<string, any>) {
   currentLocale.value = locale
+}
+
+export const localeContextSymbol = Symbol('locale-context') as InjectionKey<
+  Ref<string>
+>
+
+export function useLocaleProvide<T extends Record<string, any>>(
+  app: App,
+  languages: T,
+  defaultLocale: keyof T,
+) {
+  const locale = ref<string>(defaultLocale as string)
+
+  watch(
+    locale,
+    () => {
+      setLocale(languages[locale.value])
+    },
+    {
+      immediate: true,
+    },
+  )
+
+  app.provide(localeContextSymbol, locale)
+}
+
+export function useLocale() {
+  return inject(localeContextSymbol)
 }

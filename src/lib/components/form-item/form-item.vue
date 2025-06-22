@@ -112,6 +112,19 @@ watch(
   },
 )
 
+watch(
+  () => props.rules,
+  () => {
+    if (validateMessage.value) {
+      validate().catch(noop)
+    }
+  },
+  {
+    deep: true,
+    flush: 'post',
+  },
+)
+
 const shouldShowError = computed(() => {
   return props.showError && formContext.showError && validateMessage.value
 })

@@ -140,9 +140,7 @@ watch(
       validate().catch(noop)
     }
   },
-  {
-    deep: true,
-  },
+  { deep: true, flush: 'post' },
 )
 
 provide<FormContext>(
