@@ -369,6 +369,9 @@ export const defaultConfig = {
     voidIcon: 'star',
     validateEvent: true,
   },
+  readMore: {
+    maxHeight: 200,
+  },
   result: {
     status: 'info' as ResultProps['status'],
   },

@@ -307,6 +307,9 @@
       "path": "pages/components/rate/index"
     },
     {
+      "path": "pages/components/read-more/index"
+    },
+    {
       "path": "pages/components/result/index"
     },
     {

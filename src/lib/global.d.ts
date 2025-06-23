@@ -82,6 +82,7 @@ declare module 'vue' {
     SarRadioInput: typeof import('./components/radio-input/radio-input.vue').default
     SarRadioPopout: typeof import('./components/radio-popout/radio-popout.vue').default
     SarRate: typeof import('./components/rate/rate.vue').default
+    SarReadMore: typeof import('./components/read-more/read-more.vue').default
     SarResult: typeof import('./components/result/result.vue').default
     SarRow: typeof import('./components/row/row.vue').default
     SarScrollList: typeof import('./components/scroll-list/scroll-list.vue').default

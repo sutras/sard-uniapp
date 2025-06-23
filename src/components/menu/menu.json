@@ -242,6 +242,10 @@
         "name": "qrcode"
       },
       {
+        "title": "ReadMore 阅读更多",
+        "name": "read-more"
+      },
+      {
         "title": "ScrollList 横向滚动列表",
         "name": "scroll-list"
       },

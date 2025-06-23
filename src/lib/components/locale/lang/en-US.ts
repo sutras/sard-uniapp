@@ -105,6 +105,10 @@ export default {
     confirm: 'Ok',
     cancel: 'Cancel',
   },
+  readMore: {
+    fold: 'fold',
+    unfold: 'unfold',
+  },
   signature: {
     confirm: 'Ok',
     clear: 'Clear',
