@@ -38,51 +38,79 @@ export function chooseMedia(options: chooseMediaOptions) {
   } = options
 
   if (mediaType === 'image') {
-    return uni.chooseImage({
-      count,
-      sizeType,
-      sourceType,
-      success(res) {
-        success?.({
-          type: 'image',
-          tempFiles: toArray(res.tempFiles).map((file) => {
-            return {
-              tempFilePath: file.path,
-              size: file.size,
-              duration: 0,
-              height: 0,
-              width: 0,
-              fileType: 'image',
-            }
-          }),
-        })
-      },
-      fail,
-      complete,
-    })
-  } else {
-    return uni.chooseVideo({
-      sourceType,
-      compressed: sizeType.includes('compressed'),
-      maxDuration,
-      camera,
-      success(res) {
-        success?.({
-          type: 'video',
-          tempFiles: [
-            {
-              tempFilePath: res.tempFilePath,
-              size: res.size,
-              duration: res.duration,
-              height: res.height,
-              width: res.width,
-              fileType: 'video',
-            },
-          ],
-        })
-      },
-      fail,
-      complete,
-    })
-  }
+		let result = null
+		// #ifdef MP-WEIXIN
+		result = uni.chooseMedia({
+			count,
+			mediaType: ['image'],
+			sourceType,
+			sizeType,
+			camera,
+			success(res) {
+				success?.({
+					type: 'image',
+					tempFiles: toArray(res.tempFiles).map((file) => {
+						return {
+							tempFilePath: file.tempFilePath,
+							size: file.size,
+							duration: 0,
+							height: 0,
+							width: 0,
+							fileType: 'image',
+						};
+					}),
+				});
+			},
+			fail,
+			complete,
+		});
+		// #endif
+		// #ifndef MP-WEIXIN
+		result = uni.chooseImage({
+			count,
+			sizeType,
+			sourceType,
+			success(res) {
+				success?.({
+					type: 'image',
+					tempFiles: toArray(res.tempFiles).map((file) => {
+						return {
+							tempFilePath: file.path,
+							size: file.size,
+							duration: 0,
+							height: 0,
+							width: 0,
+							fileType: 'image',
+						};
+					}),
+				});
+			},
+			fail,
+			complete,
+		});
+		// #endif
+		return result
+	} else {
+		return uni.chooseVideo({
+			sourceType,
+			compressed: sizeType.includes('compressed'),
+			maxDuration,
+			camera,
+			success(res) {
+				success?.({
+					type: 'video',
+					tempFiles: [{
+						tempFilePath: res.tempFilePath,
+						size: res.size,
+						duration: res.duration,
+						height: res.height,
+						width: res.width,
+						fileType: 'video',
+					}, ],
+				});
+			},
+			fail,
+			complete,
+		});
+	}
 }

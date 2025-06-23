@@ -40,6 +40,7 @@ export interface UploadProps {
   readonly?: boolean
   beforeChoose?: (
     fileList: UploadFileItem[],
+    sourceType: ('album' | 'camera')[],
     next: (allowed: boolean) => void,
   ) => void
   beforeRead?: (file: UploadFile) => boolean | Promise<UploadFile>

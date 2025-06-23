@@ -221,12 +221,13 @@ const onSelect = () => {
     return
   }
 
+  let sourceType = props.sourceType || ['album', 'camera']
   const next = () => {
     chooseMedia({
       mediaType: props.accept,
       count: props.multiple ? 9999 : 1,
       sizeType: props.sizeType,
-      sourceType: props.sourceType,
+      sourceType,
       maxDuration: props.maxDuration,
       camera: props.camera,
       success(result) {
@@ -247,17 +248,34 @@ const onSelect = () => {
     })
   }
 
-  if (props.beforeChoose) {
-    isSelectPending = true
-    props.beforeChoose?.(innerValue.value, (allowed) => {
-      isSelectPending = false
-      if (allowed) {
-        next()
+  const onBeforeChoose = () => {
+    if (props.beforeChoose) {
+      isSelectPending = true
+      props.beforeChoose?.(innerValue.value, sourceType, (allowed) => {
+        isSelectPending = false
+        if (allowed) {
+          next()
+        }
+      })
+    } else {
+      next()
+    }
+  }
+
+  // sourceType为['album', 'camera']时，进行特殊处理
+  if (['album', 'camera'].every(item => sourceType.includes(item))) {
+    // #ifdef APP-PLUS
+    return uni.showActionSheet({
+      itemList: ['拍摄', '从相册选择'],
+      success: (res) => {
+        sourceType = res.tapIndex === 0 ? ['camera'] : ['album']
+        onBeforeChoose()
       }
     })
-  } else {
-    next()
+    // #endif
   }
+
+  onBeforeChoose()
 }
 
 const onRemove = (index: number, item: UploadFileItem) => {
