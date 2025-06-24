@@ -153,12 +153,25 @@ let moveValue: number | number[]
 let downRatio = 0
 let triggerMove = false
 
+interface AlipayTapEvent {
+  detail: {
+    clientY: number
+    clientX: number
+  }
+}
+
 const onSliderClick = async (event: MouseEvent | TouchEvent) => {
   if (isDisabled.value || isReadonly.value) {
     return
   }
 
-  const { clientY, clientX } = 'touches' in event ? event.touches[0] : event
+  const { clientY, clientX } =
+    'touches' in event
+      ? event.touches[0]
+      : 'detail' in event &&
+          'clientX' in (event as unknown as AlipayTapEvent).detail
+        ? (event as unknown as AlipayTapEvent).detail
+        : event
 
   trackRect = await getBoundingClientRect(`#${trackId}`, instance)
 
