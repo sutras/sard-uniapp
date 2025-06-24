@@ -57,8 +57,9 @@ const onBack = () => {
 
 @include bem(page) {
   @include b() {
+    box-sizing: border-box;
     padding: 20rpx 0 calc(20rpx + env(safe-area-inset-bottom));
-    min-height: 100vh;
+    min-height: calc(100vh - var(--sar-navbar-height));
   }
 
   @include m(emphasis) {

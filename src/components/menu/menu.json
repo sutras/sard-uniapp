@@ -368,6 +368,10 @@
         "name": "pull-down-refresh"
       },
       {
+        "title": "ResizeSensor 尺寸传感器",
+        "name": "resize-sensor"
+      },
+      {
         "title": "Result 结果",
         "name": "result"
       },

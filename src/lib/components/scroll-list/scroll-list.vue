@@ -11,23 +11,30 @@
     >
       <view :id="contentId" :class="bem.e('content')">
         <slot></slot>
+        <sar-resize-sensor initial :threshold="0" @resize="onResize" />
       </view>
     </scroll-view>
-    <view :class="bem.e('scrollbar')" :style="scrollbarStyle">
+    <view
+      v-if="!hideScrollbar"
+      :class="bem.e('scrollbar')"
+      :style="scrollbarStyle"
+    >
       <view :class="bem.e('scrollbar-thumb')" :style="thumbStyle"></view>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance, onMounted, ref } from 'vue'
+import { computed, getCurrentInstance, ref } from 'vue'
 import {
   classNames,
   stringifyStyle,
   createBem,
   uniqid,
   getBoundingClientRect,
+  debounce,
 } from '../../utils'
+import SarResizeSensor from '../resize-sensor/resize-sensor.vue'
 import {
   type ScrollListProps,
   type ScrollListSlots,
@@ -64,26 +71,29 @@ const scrollLeft = ref(0)
 const scrollWidth = ref(0)
 const clientWidth = ref(0)
 
-const update = async () => {
-  const scrollListRect = await getBoundingClientRect(
-    `.${scrollListId}`,
-    instance,
-  )
+const update = debounce(
+  async () => {
+    const scrollListRect = await getBoundingClientRect(
+      `.${scrollListId}`,
+      instance,
+    )
+    clientWidth.value = scrollListRect.width
 
-  clientWidth.value = scrollListRect.width
-
-  if (props.mode === 'traditional') {
     const contentRect = await getBoundingClientRect(`#${contentId}`, instance)
-
     scrollWidth.value = contentRect.width
-  }
-}
-
-onMounted(async () => {
-  update()
-})
+  },
+  50,
+  {
+    leading: false,
+    trailing: true,
+  },
+)
 
 useWindowResize(update)
+
+const onResize = () => {
+  update()
+}
 
 const onScroll = (event: any) => {
   scrollLeft.value = event.detail.scrollLeft
@@ -112,45 +122,31 @@ const scrollListStyle = computed(() => {
 })
 
 const scrollbarStyle = computed(() => {
-  if (props.mode === 'traditional') {
-    return {
-      backgroundColor: props.scrollbarBg,
-    }
-  }
-
   return {
-    width: props.scrollbarWidth + 'px',
+    width: props.scrollbarWidth || '',
     backgroundColor: props.scrollbarBg,
   }
 })
 
+const thumbWidth = computed(() => {
+  let width = clientWidth.value / scrollWidth.value
+  if (!Number.isFinite(width)) {
+    width = 0
+  }
+  return width
+})
+
+const hideScrollbar = computed(() => thumbWidth.value >= 1)
+
 const thumbStyle = computed(() => {
-  if (props.mode === 'traditional') {
-    let left = scrollLeft.value / scrollWidth.value
-    if (!Number.isFinite(left)) {
-      left = 0
-    }
-    let width = clientWidth.value / scrollWidth.value
-    if (!Number.isFinite(width)) {
-      width = 0
-    }
-    return {
-      left: left * 100 + '%',
-      width: width * 100 + '%',
-      backgroundColor: props.thumbBg,
-    }
-  } else {
-    let left =
-      (scrollLeft.value / (scrollWidth.value - clientWidth.value)) *
-      (props.scrollbarWidth - props.thumbWidth)
-    if (!Number.isFinite(left)) {
-      left = 0
-    }
-    return {
-      transform: `translateX(${left}px)`,
-      width: props.thumbWidth + 'px',
-      backgroundColor: props.thumbBg,
-    }
+  let left = scrollLeft.value / scrollWidth.value
+  if (!Number.isFinite(left)) {
+    left = 0
+  }
+  return {
+    left: left * 100 + '%',
+    width: thumbWidth.value * 100 + '%',
+    backgroundColor: props.thumbBg,
   }
 })
 </script>

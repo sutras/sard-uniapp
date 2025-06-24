@@ -29,10 +29,16 @@ import Marquee from 'sard-uniapp/components/marquee/marquee.vue'
 `Marquee` 组件是通过 `animation` 来实现高效的滚动动画的，
 会根据内容高度或宽度动态设置动画时长，以实现固定速率滚动。
 
-如果 `Marquee` 挂载时机比插槽内容靠前，即插槽内容数据需要通过接口异步获取再渲染的，
+@info
+
+在 <sup>1.20</sup>之前，如果 `Marquee` 挂载时机比插槽内容靠前，即插槽内容数据需要通过接口异步获取再渲染的，
 需要手动调用 `update` 方法来更新动画时长。
 
-@code('${DEMO_PATH}/marquee/demo/Reset.vue')
+在 <sup>1.20</sup>之后，会监听内容尺寸变化，自动调用更新方法，无需手动调用。
+
+@endinfo
+
+@code('${DEMO_PATH}/marquee/demo/Async.vue')
 
 ### 水平方向
 

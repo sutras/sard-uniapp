@@ -1,8 +1,6 @@
 <template>
-  <sar-scroll-list
-    scrollbar-bg="rgba(var(--sar-danger-rgb), 0.2)"
-    thumb-bg="var(--sar-danger)"
-  >
+  <sar-skeleton-block v-if="loading" height="252rpx" animated />
+  <sar-scroll-list v-if="!loading">
     <view class="list">
       <view v-for="(row, i) in rows" :key="i" class="list-row">
         <view v-for="(item, j) in row" :key="j" class="list-item">
@@ -15,10 +13,15 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
+import { sleep } from 'sard-uniapp'
+import { onMounted, ref } from 'vue'
 
-const rows = ref(
-  Array(16)
+const loading = ref(false)
+const rows = ref<any[]>([])
+
+const getData = async () => {
+  await sleep(1000)
+  return Array(16)
     .fill(0)
     .reduce(
       (rows, _, i) => {
@@ -29,8 +32,14 @@ const rows = ref(
         return rows
       },
       [[], []],
-    ),
-)
+    )
+}
+
+onMounted(async () => {
+  loading.value = true
+  rows.value = await getData()
+  loading.value = false
+})
 </script>
 
 <style scoped lang="scss">

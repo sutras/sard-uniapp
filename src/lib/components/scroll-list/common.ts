@@ -1,5 +1,4 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
 
 export interface ScrollListProps {
   rootStyle?: StyleValue
@@ -8,12 +7,11 @@ export interface ScrollListProps {
   scrollbarWidth?: number
   thumbBg?: string
   thumbWidth?: number
-  mode?: 'stubborn' | 'traditional'
   upperThreshold?: number
   lowerThreshold?: number
 }
 
-export const defaultScrollListProps = defaultConfig.scrollList
+export const defaultScrollListProps = {}
 
 export interface ScrollListSlots {
   default?(props: Record<string, never>): any

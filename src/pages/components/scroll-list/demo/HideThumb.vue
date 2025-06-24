@@ -1,6 +1,5 @@
 <template>
-  <sar-skeleton-block v-show="loading" height="252rpx" animated />
-  <sar-scroll-list v-show="!loading" ref="scrollList" mode="traditional">
+  <sar-scroll-list>
     <view class="list">
       <view v-for="(row, i) in rows" :key="i" class="list-row">
         <view v-for="(item, j) in row" :key="j" class="list-item">
@@ -13,16 +12,10 @@
 </template>
 
 <script setup lang="ts">
-import { sleep } from 'sard-uniapp'
-import { nextTick, onMounted, ref } from 'vue'
+import { ref } from 'vue'
 
-const loading = ref(false)
-const rows = ref<any[]>([])
-const scrollList = ref()
-
-const getData = async () => {
-  await sleep(1000)
-  return Array(16)
+const rows = ref(
+  Array(8)
     .fill(0)
     .reduce(
       (rows, _, i) => {
@@ -33,18 +26,8 @@ const getData = async () => {
         return rows
       },
       [[], []],
-    )
-}
-
-onMounted(async () => {
-  loading.value = true
-  rows.value = await getData()
-  loading.value = false
-
-  nextTick(() => {
-    scrollList.value?.update()
-  })
-})
+    ),
+)
 </script>
 
 <style scoped lang="scss">

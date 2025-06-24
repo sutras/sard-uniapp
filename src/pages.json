@@ -310,6 +310,9 @@
       "path": "pages/components/read-more/index"
     },
     {
+      "path": "pages/components/resize-sensor/index"
+    },
+    {
       "path": "pages/components/result/index"
     },
     {

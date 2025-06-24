@@ -32,7 +32,6 @@ import { type RadioGroupProps } from '../radio'
 import { type RadioInputProps } from '../radio-input'
 import { type RadioPopoutProps } from '../radio-popout'
 import { type ResultProps } from '../result'
-import { type ScrollListProps } from '../scroll-list'
 import { type SearchProps } from '../search'
 import { type SpaceProps } from '../space'
 import { type StepperProps } from '../stepper'
@@ -372,13 +371,11 @@ export const defaultConfig = {
   readMore: {
     maxHeight: 200,
   },
+  resizeSensor: {
+    threshold: 150,
+  },
   result: {
     status: 'info' as ResultProps['status'],
-  },
-  scrollList: {
-    scrollbarWidth: 50,
-    thumbWidth: 20,
-    mode: 'stubborn' as ScrollListProps['mode'],
   },
   search: {
     shape: 'square' as SearchProps['shape'],
