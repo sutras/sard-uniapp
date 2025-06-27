@@ -8,7 +8,7 @@
   @content;
 }
 
-@mixin border-vertical-base($color) {
+@mixin border-vertical-base {
   @include border-base {
     left: 0;
     right: 0;
@@ -17,7 +17,7 @@
   }
 }
 
-@mixin border-horizontal-base($color) {
+@mixin border-horizontal-base {
   @include border-base {
     top: 0;
     bottom: 0;
@@ -26,50 +26,69 @@
   }
 }
 
-@mixin border-top($color) {
-  @include border-vertical-base($color) {
+@mixin border-top(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-vertical-base {
     top: 0;
-    border-top: 1px solid $color;
+    border-top: $width $style $color;
     transform-origin: top center;
     @content;
   }
 }
 
-@mixin border-bottom($color) {
-  @include border-vertical-base($color) {
+@mixin border-bottom(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-vertical-base {
     bottom: 0;
-    border-bottom: 1px solid $color;
+    border-bottom: $width $style $color;
     transform-origin: bottom center;
     @content;
   }
 }
 
-@mixin border-left($color) {
-  @include border-horizontal-base($color) {
+@mixin border-left(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-horizontal-base {
     left: 0;
-    border-left: 1px solid $color;
+    border-left: $width $style $color;
     transform-origin: left center;
     @content;
   }
 }
 
-@mixin border-right($color) {
-  @include border-horizontal-base($color) {
+@mixin border-right(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-horizontal-base {
     right: 0;
-    border-right: 1px solid $color;
+    border-right: $width $style $color;
     transform-origin: right center;
     @content;
   }
 }
 
-@mixin border-cover-base() {
+@mixin border-cover-base(
+  $width: var(--sar-border-width),
+  $style: var(--sar-border-style)
+) {
   position: absolute;
   top: -50%;
   right: -50%;
   bottom: -50%;
   left: -50%;
   z-index: 1;
-  border: 1px solid transparent;
+  border: $width $style transparent;
   transform: scale(0.5);
   transform-origin: center;
   pointer-events: none;
@@ -78,82 +97,126 @@
   @content;
 }
 
-@mixin border-top-right($color) {
-  @include border-cover-base;
+@mixin border-top-right(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-cover-base($width, $style);
   border-top-color: $color;
   border-right-color: $color;
   @content;
 }
 
-@mixin border-bottom-right($color) {
-  @include border-cover-base;
+@mixin border-bottom-right(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-cover-base($width, $style);
   border-bottom-color: $color;
   border-right-color: $color;
   @content;
 }
 
-@mixin border-top-left($color) {
-  @include border-cover-base;
+@mixin border-top-left(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-cover-base($width, $style);
   border-top-color: $color;
   border-left-color: $color;
   @content;
 }
 
-@mixin border-bottom-left($color) {
-  @include border-cover-base;
+@mixin border-bottom-left(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-cover-base($width, $style);
   border-bottom-color: $color;
   border-left-color: $color;
   @content;
 }
 
-@mixin border-horizontal($color) {
-  @include border-cover-base;
+@mixin border-horizontal(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-cover-base($width, $style);
   border-left-color: $color;
   border-right-color: $color;
   @content;
 }
 
-@mixin border-vertical($color) {
-  @include border-cover-base;
+@mixin border-vertical(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-cover-base($width, $style);
   border-top-color: $color;
   border-bottom-color: $color;
   @content;
 }
 
-@mixin border-lack-top($color) {
-  @include border-cover-base;
+@mixin border-lack-top(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-cover-base($width, $style);
   border-left-color: $color;
   border-right-color: $color;
   border-bottom-color: $color;
   @content;
 }
 
-@mixin border-lack-right($color) {
-  @include border-cover-base;
+@mixin border-lack-right(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-cover-base($width, $style);
   border-top-color: $color;
   border-bottom-color: $color;
   border-left-color: $color;
   @content;
 }
 
-@mixin border-lack-bottom($color) {
-  @include border-cover-base;
+@mixin border-lack-bottom(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-cover-base($width, $style);
   border-top-color: $color;
   border-right-color: $color;
   border-left-color: $color;
   @content;
 }
 
-@mixin border-lack-left($color) {
-  @include border-cover-base;
+@mixin border-lack-left(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-cover-base($width, $style);
   border-top-color: $color;
   border-right-color: $color;
   border-bottom-color: $color;
   @content;
 }
 
-@mixin border-surround($color) {
-  @include border-cover-base;
+@mixin border-surround(
+  $color: var(--sar-border-color),
+  $style: var(--sar-border-style),
+  $width: var(--sar-border-width)
+) {
+  @include border-cover-base($width, $style);
   border-color: $color;
   @content;
 }

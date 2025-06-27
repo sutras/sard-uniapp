@@ -16,6 +16,7 @@ onHide(() => {
 @import 'sard-uniapp/dark.scss';
 @import '@/style/demo-icons.css';
 @import '@/style/cake.css';
+@tailwind utilities;
 
 ::-webkit-scrollbar {
   display: none;

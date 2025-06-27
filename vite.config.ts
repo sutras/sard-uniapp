@@ -2,6 +2,7 @@ import { defineConfig, type PluginOption } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
 import path from 'node:path'
 import { transformIndexHtmlPlugin } from './transformIndexHtmlPlugin'
+import tailwindcss from 'tailwindcss'
 
 function vitePluginUncommentWxs(files: string[]): PluginOption {
   return {
@@ -23,6 +24,11 @@ export default defineConfig({
   optimizeDeps: {
     exclude: ['sard-uniapp'],
     force: true,
+  },
+  css: {
+    postcss: {
+      plugins: [tailwindcss()],
+    },
   },
   plugins: [
     vitePluginUncommentWxs(['pull-down-refresh.vue']),

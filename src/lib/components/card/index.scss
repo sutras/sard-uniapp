@@ -23,7 +23,13 @@
     padding: var(--sar-card-header-padding-y) var(--sar-card-header-padding-x);
 
     &::after {
-      @include border-bottom(var(--sar-card-border-color));
+      @include border-bottom(
+        var(--sar-card-header-border-color, var(--sar-card-border-color)),
+        var(--sar-card-header-border-style, var(--sar-card-border-style)),
+        var(--sar-card-header-border-width, var(--sar-card-border-width))
+      );
+      left: var(--sar-card-border-left);
+      right: var(--sar-card-border-right);
     }
   }
 
@@ -46,7 +52,29 @@
     @include universal;
     padding: var(--sar-card-footer-padding-y) var(--sar-card-footer-padding-x);
     &::before {
-      @include border-top(var(--sar-card-border-color));
+      @include border-top(
+        var(--sar-card-footer-border-color, var(--sar-card-border-color)),
+        var(--sar-card-footer-border-style, var(--sar-card-border-style)),
+        var(--sar-card-footer-border-width, var(--sar-card-border-width))
+      );
+      left: var(--sar-card-border-left);
+      right: var(--sar-card-border-right);
+    }
+  }
+
+  @include m(head-borderless) {
+    @include e(header) {
+      &::after {
+        display: none;
+      }
+    }
+  }
+
+  @include m(foot-borderless) {
+    @include e(footer) {
+      &::before {
+        display: none;
+      }
     }
   }
 }

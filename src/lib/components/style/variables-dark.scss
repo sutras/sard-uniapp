@@ -13,7 +13,9 @@
   --sar-tertiary-bg: var(--sar-gray-600);
   --sar-fourth-color: var(--sar-gray-600);
   --sar-fourth-bg: var(--sar-gray-500);
+  // deprecated 1.20+
   --sar-quaternary-color: var(--sar-gray-600);
+  // deprecated 1.20+
   --sar-quaternary-bg: var(--sar-gray-500);
   --sar-emphasis-color: var(--sar-white);
   --sar-emphasis-bg: var(--sar-gray-900);
@@ -30,7 +32,9 @@
   --sar-tertiary-bg-rgb: var(--sar-gray-700-rgb);
   --sar-fourth-color-rgb: var(--sar-gray-600-rgb);
   --sar-fourth-bg-rgb: var(--sar-gray-700-rgb);
+  // deprecated 1.20+
   --sar-quaternary-color-rgb: var(--sar-gray-600-rgb);
+  // deprecated 1.20+
   --sar-quaternary-bg-rgb: var(--sar-gray-700-rgb);
   --sar-emphasis-color-rgb: var(--sar-white-rgb);
   --sar-emphasis-bg-rgb: var(--sar-gray-900-rgb);

@@ -12,7 +12,7 @@
     </sar-list-item>
     <sar-list-item title="音量">
       <template #value>
-        <sar-slider root-style="width: 100%" :value="50" />
+        <sar-slider root-style="width: 600rpx" :value="50" />
       </template>
     </sar-list-item>
 

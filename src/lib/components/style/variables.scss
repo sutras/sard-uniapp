@@ -88,7 +88,9 @@ page,
   --sar-secondary-bg: var(--sar-gray-200);
   --sar-tertiary-color: var(--sar-gray-600);
   --sar-tertiary-bg: var(--sar-gray-300);
+  // deprecated 1.20+
   --sar-quaternary-color: var(--sar-gray-500);
+  // deprecated 1.20+
   --sar-quaternary-bg: var(--sar-gray-400);
   --sar-fourth-color: var(--sar-gray-500);
   --sar-fourth-bg: var(--sar-gray-400);
@@ -105,7 +107,9 @@ page,
   --sar-secondary-bg-rgb: var(--sar-gray-200-rgb);
   --sar-tertiary-color-rgb: var(--sar-gray-600-rgb);
   --sar-tertiary-bg-rgb: var(--sar-gray-300-rgb);
+  // deprecated 1.20+
   --sar-quaternary-color-rgb: var(--sar-gray-500-rgb);
+  // deprecated 1.20+
   --sar-quaternary-bg-rgb: var(--sar-gray-400-rgb);
   --sar-fourth-color-rgb: var(--sar-gray-500-rgb);
   --sar-fourth-bg-rgb: var(--sar-gray-400-rgb);
@@ -113,6 +117,10 @@ page,
   --sar-emphasis-bg-rgb: var(--sar-white-rgb);
   --sar-border-color-rgb: var(--sar-gray-300-rgb);
   --sar-active-bg-rgb: var(--sar-gray-200-rgb);
+
+  // # 边框 1.20+
+  --sar-border-style: solid;
+  --sar-border-width: 1px;
 
   // # 圆角
   --sar-rounded-xs: 4rpx;

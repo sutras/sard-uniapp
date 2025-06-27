@@ -67,6 +67,8 @@ const cardClass = computed(() => {
     bem.m('hover', props.hover),
     bem.m('headless', headless.value),
     bem.m('footless', footless.value),
+    bem.m('head-borderless', props.hideHeaderBorder),
+    bem.m('foot-borderless', props.hideFooterBorder),
     props.rootClass,
   )
 })

@@ -7,6 +7,8 @@ export interface CardProps {
   extra?: string
   footer?: string
   hover?: boolean
+  hideHeaderBorder?: boolean
+  hideFooterBorder?: boolean
 }
 
 export interface CardSlots {

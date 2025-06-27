@@ -19,6 +19,10 @@
     <doc-demo title="可点击的">
       <DemoHover />
     </doc-demo>
+
+    <doc-demo title="自定义样式">
+      <DemoStyle />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -28,4 +32,5 @@ import DemoExtra from './demo/Extra.vue'
 import DemoOnlyBody from './demo/OnlyBody.vue'
 import DemoFooter from './demo/Footer.vue'
 import DemoHover from './demo/Hover.vue'
+import DemoStyle from './demo/Style.vue'
 </script>
