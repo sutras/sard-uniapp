@@ -6,6 +6,14 @@
 export function isPlainObject(target: any): target is Record<PropertyKey, any> {
   return Object.prototype.toString.call(target) === '[object Object]'
 }
+/**
+ * @description: 判断是否为空数组
+ * @param {any} target
+ * @return {boolean}
+ */
+export function isEmptyArray(target: any): boolean {
+  return Array.isArray(target) && target.length === 0
+}
 
 /**
  * @description: 判断是否为对象
@@ -79,4 +87,13 @@ export function isNullish(target: any): target is null | undefined {
  */
 export function isPrimitive(target: any): target is string | number | boolean {
   return isString(target) || isNumber(target) || isBoolean(target)
+}
+
+/**
+ * @description: 判断是否为日期类型
+ * @param {any} target
+ * @return {boolean}
+ */
+export function isDate(target: any): target is Date {
+  return target instanceof Date
 }

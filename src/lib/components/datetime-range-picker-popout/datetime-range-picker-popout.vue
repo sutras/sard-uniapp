@@ -35,11 +35,11 @@ import {
   type DatetimeRangePickerPopoutEmits,
   defaultDatetimeRangePickerInputProps,
 } from './common'
-import { formatDate, isEmptyBinding, toDate } from '../../utils'
+import { isEmptyBinding, toDate } from '../../utils'
 import {
-  getInitialValue,
   getMaxDate,
   getMinDate,
+  normalizeRangeValue,
 } from '../datetime-picker/common'
 import { useFormPopout } from '../../use'
 
@@ -72,13 +72,17 @@ const maxDate = computed(() => {
 const { innerVisible, innerValue, popoutValue, onChange, onConfirm } =
   useFormPopout(props, emit, {
     onConfirmBefore() {
-      if (!popoutValue.value) {
-        const initialValue = getInitialValue(minDate.value, maxDate.value)
-        const singleValue = props.valueFormat
-          ? formatDate(initialValue, props.valueFormat)
-          : initialValue
-
-        popoutValue.value = [singleValue, singleValue]
+      if (
+        !popoutValue.value ||
+        (Array.isArray(popoutValue.value) &&
+          popoutValue.value.filter(Boolean).length < 2)
+      ) {
+        popoutValue.value = normalizeRangeValue(
+          minDate.value,
+          maxDate.value,
+          popoutValue.value,
+          props.valueFormat,
+        )
       }
     },
   })

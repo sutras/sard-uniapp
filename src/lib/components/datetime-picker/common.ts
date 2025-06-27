@@ -1,13 +1,16 @@
 import { type StyleValue } from 'vue'
 import {
+  formatDate,
   getLunarDayName,
   getLunarLeapMonth,
   getLunarLeapMonthDays,
   getLunarMonthDays,
   getLunarMonthName,
   getMonthDays,
+  isDate,
   minmax,
   solarToLunar,
+  toDate,
 } from '../../utils'
 import { defaultConfig } from '../config'
 import { type PickerSlots } from '../picker/common'
@@ -422,8 +425,29 @@ export const getColumnData = (
 export function getInitialValue(minDate: Date, maxDate: Date) {
   const value = new Date()
   return value.getTime() < minDate.getTime()
-    ? minDate
+    ? new Date(minDate)
     : value.getTime() > maxDate.getTime()
-      ? maxDate
+      ? new Date(maxDate)
       : value
+}
+
+export const normalizeRangeValue = (
+  minDate: Date,
+  maxDate: Date,
+  value?: (string | Date)[],
+  valueFormat?: string,
+) => {
+  const [start, end] = value || []
+  const startValue = start || getInitialValue(minDate, maxDate)
+  const endValue =
+    end || getInitialValue(toDate(startValue, valueFormat), maxDate)
+
+  return [
+    valueFormat && isDate(startValue)
+      ? formatDate(startValue, valueFormat)
+      : startValue,
+    valueFormat && isDate(endValue)
+      ? formatDate(endValue, valueFormat)
+      : endValue,
+  ]
 }

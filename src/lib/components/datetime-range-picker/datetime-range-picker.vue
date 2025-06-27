@@ -49,9 +49,9 @@ import {
   defaultDatetimeRangePickerProps,
 } from './common'
 import {
-  getInitialValue,
   getMaxDate,
   getMinDate,
+  normalizeRangeValue,
 } from '../datetime-picker/common'
 
 defineOptions({
@@ -104,18 +104,17 @@ const maxDate = computed(() => {
 const startValue = ref<string | Date>()
 const endValue = ref<string | Date>()
 
-const parseValue = (value?: (string | Date)[]) => {
-  const [start, end] = value || []
-  startValue.value = start || getInitialValue(minDate.value, maxDate.value)
-  endValue.value =
-    end ||
-    getInitialValue(toDate(startValue.value, props.valueFormat), maxDate.value)
-}
-
 watch(
   () => props.modelValue,
   (value) => {
-    parseValue(value)
+    const [start, end] = normalizeRangeValue(
+      minDate.value,
+      maxDate.value,
+      value,
+      props.valueFormat,
+    )
+    startValue.value = start
+    endValue.value = end
   },
   {
     immediate: true,
