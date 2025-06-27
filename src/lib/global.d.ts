@@ -105,6 +105,8 @@ declare module 'vue' {
     SarStep: typeof import('./components/step/step.vue').default
     SarStepper: typeof import('./components/stepper/stepper.vue').default
     SarSteps: typeof import('./components/steps/steps.vue').default
+    SarSticky: typeof import('./components/sticky/sticky.vue').default
+    SarStickyBox: typeof import('./components/sticky-box/sticky-box.vue').default
     SarSwipeAction: typeof import('./components/swipe-action/swipe-action.vue').default
     SarSwiperDot: typeof import('./components/swiper-dot/swiper-dot.vue').default
     SarSwitch: typeof import('./components/switch/switch.vue').default

@@ -383,7 +383,7 @@ export async function addDemoMenu(
           children.sort((a, b) => (a.name < b.name ? -1 : 1))
         }
       }
-      return JSON.stringify(obj, null, 2)
+      return JSON.stringify(obj, null, 2) + '\n'
     },
   )
 }

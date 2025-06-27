@@ -1,0 +1,18 @@
+@use '../style/base' as *;
+
+@include bem(sticky) {
+  @include b() {
+    display: block;
+  }
+
+  @include e(fixation) {
+    position: relative;
+    z-index: 1;
+  }
+
+  @include e(bound) {
+    position: absolute;
+    min-width: 1px;
+    min-height: 1px;
+  }
+}

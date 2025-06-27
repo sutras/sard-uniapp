@@ -24,7 +24,11 @@
 
   <view
     :class="classNames(bem.b(), bem.m('emphasis', emphasis))"
-    :style="{ padding: padding || '' }"
+    :style="{
+      padding: padding || '',
+      height: height || '',
+      paddingBottom: paddingBottom || '',
+    }"
   >
     <slot></slot>
   </view>
@@ -39,6 +43,8 @@ defineProps<{
   title?: string
   navbarBg?: string
   padding?: string
+  paddingBottom?: string
+  height?: string
 }>()
 
 const bem = createBem('page')
