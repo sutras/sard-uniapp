@@ -8,10 +8,10 @@
         :width="item.width"
         :fixed="i === 0"
       >
-        <view class="cell">{{ item.title }}</view>
+        <view class="py-12 px-16 whitespace-nowrap">{{ item.title }}</view>
       </sar-table-cell>
       <sar-table-cell bold fixed="right" width="120rpx">
-        <view class="cell">操作</view>
+        <view class="py-12 px-16 whitespace-nowrap">操作</view>
       </sar-table-cell>
     </sar-table-row>
 
@@ -22,10 +22,12 @@
         :width="item.width"
         :fixed="i === 0"
       >
-        <view class="cell">{{ record[item.prop] }}</view>
+        <view class="py-12 px-16 whitespace-nowrap">
+          {{ record[item.prop] }}
+        </view>
       </sar-table-cell>
       <sar-table-cell fixed="right" width="120rpx">
-        <view class="cell">
+        <view class="py-12 px-16 whitespace-nowrap">
           <sar-button size="small">编辑</sar-button>
         </view>
       </sar-table-cell>
@@ -36,10 +38,3 @@
 <script lang="ts" setup>
 import { columns, partialData } from './data'
 </script>
-
-<style lang="scss" scoped>
-.cell {
-  padding: 12rpx 16rpx;
-  white-space: nowrap;
-}
-</style>

@@ -9,6 +9,16 @@ export default {
     },
   },
 
+  corePlugins: {
+    preflight: false,
+    container: false,
+    float: false,
+    clear: false,
+    listStyleType: false,
+    listStyleImage: false,
+    listStylePosition: false,
+  },
+
   theme: {
     spacing: {
       0: '0px',

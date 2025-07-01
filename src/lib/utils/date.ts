@@ -1,5 +1,5 @@
+import { minmax } from './number'
 import { escapeRegExp } from './regexp'
-import { minmax } from './utils'
 
 /**
  * 判断是否为闰年。

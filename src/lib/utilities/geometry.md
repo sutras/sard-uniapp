@@ -40,7 +40,7 @@ function getScrollIntoViewValue(
   viewportScrollTop: number,
   elementHeight: number,
   elementOffsetTop: number,
-  options?: ScrollIntoViewValueOptions,
+  options?: ScrollIntoViewOptions,
 ): number
 ```
 
@@ -50,25 +50,33 @@ function getScrollIntoViewValue(
 
 参数
 
-- `viewportHeight`: viewport 高度
-- `viewportScrollTop`: viewport 垂直滚动值
-- `elementHeight`: element 高度
-- `elementOffsetTop`: element 距离页面顶部距离
-- `options.position`: element 在 viewport 中的位置，可选：'start' | 'center' | 'end' | 'nearest'
-- `options.startOffset`: element 距离视窗顶部的偏移量
-- `options.endOffset`: element 距离视窗底部的偏移量
+- `viewportHeight`: `viewport` 高度
+- `viewportScrollTop`: `viewport` 垂直滚动值
+- `elementHeight`: `element` 高度
+- `elementOffsetTop`: `element` 距离页面顶部距离
+- `options.position`: `element` 在 `viewport` 中的位置，可选：`'start' | 'center' | 'end' | 'nearest'`
+- `options.startOffset`: `element` 距离视窗顶部的偏移量
+- `options.endOffset`: `element` 距离视窗底部的偏移量
 
 返回值：viewport 新的垂直滚动值。
 
-#### ScrollIntoViewValueOptions
+#### ScrollIntoViewOptions
 
 ```ts
-interface ScrollIntoViewValueOptions {
+interface ScrollIntoViewOptions {
   position?: ScrollIntoViewPosition
   startOffset?: number
   endOffset?: number
+  duration?: number
 }
 ```
+
+| 属性        | 描述                              | 类型                   | 默认值    |
+| ----------- | --------------------------------- | ---------------------- | --------- |
+| position    | 元素在视窗中的位置                | ScrollIntoViewPosition | 'nearest' |
+| startOffset | 元素距离视窗顶部的偏移量，单位 px | number                 | 0         |
+| endOffset   | 元素距离视窗底部的偏移量，单位 px | number                 | 0         |
+| duration    | 页面滚动持续时间，单位 ms         | number                 | 150       |
 
 #### ScrollIntoViewPosition
 

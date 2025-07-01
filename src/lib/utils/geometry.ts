@@ -1,11 +1,5 @@
 export type ScrollIntoViewPosition = 'start' | 'center' | 'end' | 'nearest'
 
-export interface ScrollIntoViewValueOptions {
-  position?: ScrollIntoViewPosition
-  startOffset?: number
-  endOffset?: number
-}
-
 export interface ScrollIntoViewOptions {
   position?: ScrollIntoViewPosition
   startOffset?: number
@@ -44,7 +38,7 @@ export function getScrollIntoViewValue(
   viewportScrollTop: number,
   elementHeight: number,
   elementOffsetTop: number,
-  options: ScrollIntoViewValueOptions = {},
+  options: ScrollIntoViewOptions = {},
 ): number {
   const { startOffset = 0, endOffset = 0 } = options
 
@@ -206,4 +200,32 @@ export interface Point {
  */
 export function getTwoPointsDistance(p1: Point, p2: Point) {
   return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2))
+}
+
+interface Rect {
+  x: number
+  y: number
+  width: number
+  height: number
+}
+/**
+ * @description: 根据原始坐标尺寸和缩放后的坐标尺寸算出转换的原点
+ * @param {Rect} rect
+ * @param {Rect} scaleRect
+ * @return {[number, number]}
+ */
+export function getTransformOrigin(
+  rect: Rect,
+  scaleRect: Rect,
+): [number, number] {
+  const ratio = scaleRect.width / rect.width
+  const originX =
+    (rect.x + rect.width / 2 - scaleRect.x - scaleRect.width / 2) /
+      (ratio - 1) +
+    rect.width / 2
+  const originY =
+    (rect.y + rect.height / 2 - scaleRect.y - scaleRect.height / 2) /
+      (ratio - 1) +
+    rect.height / 2
+  return [originX, originY]
 }

@@ -1,4 +1,4 @@
-import { getDistanceBetweenTwoPoints } from '../utils'
+import { getTwoPointsDistance } from '../utils'
 import { useTimeout } from './useTimeout'
 
 export function useSimulatedClick(click: () => void, duration = 10000) {
@@ -26,7 +26,7 @@ export function useSimulatedClick(click: () => void, duration = 10000) {
         y: event.changedTouches[0].clientY,
       }
 
-      const distance = getDistanceBetweenTwoPoints(downCoord, upCoord)
+      const distance = getTwoPointsDistance(downCoord, upCoord)
       if (distance <= 10) {
         click()
       }

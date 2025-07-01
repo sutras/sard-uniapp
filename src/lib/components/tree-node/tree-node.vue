@@ -96,7 +96,7 @@
 <script lang="ts" setup>
 import { computed, getCurrentInstance, inject, onMounted, ref } from 'vue'
 import {
-  type Coord,
+  type Point,
   type NodeRect,
   classNames,
   createBem,
@@ -173,7 +173,7 @@ const onDragStart = () => {
   })
 }
 
-const onDragMove = (offset: Coord) => {
+const onDragMove = (offset: Point) => {
   translateY.value = offset.y
 
   const nodeHeight = nodeRect!.height
