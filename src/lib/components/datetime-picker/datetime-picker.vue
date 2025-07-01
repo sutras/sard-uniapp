@@ -149,7 +149,7 @@ const getDateByPickerValue = (value: number[]) => {
   } else {
     const lunarDate = solarToLunar(
       innerValue.value.getFullYear(),
-      innerValue.value.getMonth() + 1,
+      innerValue.value.getMonth(),
       innerValue.value.getDate(),
     )
 
@@ -274,7 +274,7 @@ const pickerValue = computed(() => {
   } else {
     const lunarDate = solarToLunar(
       innerValue.value.getFullYear(),
-      innerValue.value.getMonth() + 1,
+      innerValue.value.getMonth(),
       innerValue.value.getDate(),
     )
 

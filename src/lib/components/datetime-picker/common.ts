@@ -6,7 +6,7 @@ import {
   getLunarLeapMonthDays,
   getLunarMonthDays,
   getLunarMonthName,
-  getMonthDays,
+  getDaysInMonth,
   isDate,
   minmax,
   solarToLunar,
@@ -102,9 +102,9 @@ function getSolarBoundaryValue(
     const strategy = strategies[letter]
     let minOrMax = strategy[minOrMaxIndex] as number
     if (isMax && letter === 'd') {
-      minOrMax = getMonthDays(
+      minOrMax = getDaysInMonth(
         currentDate.getFullYear(),
-        currentDate.getMonth() + 1,
+        currentDate.getMonth(),
       )
     }
     aside = aside && currEvery[index] === prevGetter(currentDate)
@@ -202,7 +202,7 @@ export function correctSolarDate(
     let minValue = strategy[2] as number
     let maxValue = strategy[3] as number
     if (letter === 'd') {
-      maxValue = getMonthDays(date[0], date[1])
+      maxValue = getDaysInMonth(date[0], date[1] - 1)
     }
 
     const currGetter = strategy[4]

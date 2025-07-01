@@ -33,11 +33,10 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import {
-  getMonthDays,
-  getOffsetDaysFromMonthStart,
-  getWeekOfMonthStart,
-  getPadStartDays,
-  getPadEndDays,
+  getDaysInMonth,
+  getDaysBeforeFirstDay,
+  getPrevMonthTailDays,
+  getNextMonthHeadDays,
   toDateNumber,
   stringifyStyle,
   classNames,
@@ -61,14 +60,11 @@ const emit = defineEmits<CalendarMonthEmits>()
 
 // main
 const days = computed(() => {
-  return getMonthDays(props.year, props.month + 1)
+  return getDaysInMonth(props.year, props.month)
 })
 
-const offsetDays = computed(() => {
-  return getOffsetDaysFromMonthStart(
-    getWeekOfMonthStart(props.year, props.month + 1),
-    props.weekStartsOn,
-  )
+const daysBefore = computed(() => {
+  return getDaysBeforeFirstDay(props.year, props.month, props.weekStartsOn)
 })
 
 const allDays = computed(() => {
@@ -80,25 +76,25 @@ const allDays = computed(() => {
     return currentDays
   }
 
-  const padStartDays = getPadStartDays(
+  const prevMonthTailDays = getPrevMonthTailDays(
     props.year,
-    props.month + 1,
-    offsetDays.value,
+    props.month,
+    props.weekStartsOn,
   )
 
-  const padEndDays = getPadEndDays(
+  const nextMonthHeadDays = getNextMonthHeadDays(
     props.year,
-    props.month + 1,
-    42 - offsetDays.value - days.value,
+    props.month,
+    props.weekStartsOn,
   )
 
-  return [...padStartDays, ...currentDays, ...padEndDays]
+  return [...prevMonthTailDays, ...currentDays, ...nextMonthHeadDays]
 })
 
 function withinMonth(i: number) {
   return props.severalMonths
     ? true
-    : i >= offsetDays.value && i < offsetDays.value + days.value
+    : i >= daysBefore.value && i < daysBefore.value + days.value
 }
 
 const types = {
@@ -194,7 +190,7 @@ const daysInfo = computed(() => {
       style: stringifyStyle(day.style, {
         marginLeft:
           props.severalMonths && i === 0
-            ? (offsetDays.value / 7) * 100 + '%'
+            ? (daysBefore.value / 7) * 100 + '%'
             : null,
       }),
       className: classNames(

@@ -74,6 +74,8 @@ import SarRadioGroup from '../radio-group/radio-group.vue'
 import SarRadio from '../radio/radio.vue'
 import SarList from '../list/list.vue'
 import SarListItem from '../list-item/list-item.vue'
+import SarIcon from '../icon/icon.vue'
+import SarInput from '../input/input.vue'
 import { classNames, createBem, getMayPrimitiveOption } from '../../utils'
 import {
   type RadioPopoutProps,

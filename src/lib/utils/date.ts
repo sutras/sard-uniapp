@@ -1,83 +1,131 @@
 import { escapeRegExp } from './regexp'
 import { minmax } from './utils'
 
-// 判断是否为闰年
+/**
+ * 判断是否为闰年。
+ */
 export function isLeapYear(year: number) {
   return (year % 4 === 0 && year % 100 !== 0) || year % 400 === 0
 }
 
 const monthDays = [31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-// 获取某月的天数
-export function getMonthDays(year: number, month: number) {
-  if (month === 2) {
+/**
+ * 获取某月的天数，月份从0开始。
+ */
+export function getDaysInMonth(year: number, month: number) {
+  if (month === 1) {
     return isLeapYear(year) ? 29 : 28
   } else {
-    return monthDays[month - 1]
+    return monthDays[month]
   }
 }
 
-// 获取当前日期是一年中的第几天
-export function getDaysInYear(date: Date) {
+/**
+ * 获取当前日期是一年中的第几天。
+ */
+export function getDayOfYear(date: Date) {
   const year = date.getFullYear()
   const month = date.getMonth()
   const d = date.getDate()
   let days = 0
   for (let m = 0; m < month; m++) {
-    days += getMonthDays(year, m + 1)
+    days += getDaysInMonth(year, m)
   }
   return days + d
 }
 
-// 获取某月一号对应是星期几
-export function getWeekOfMonthStart(year: number, month: number) {
-  return new Date(year, month - 1, 1).getDay()
+/**
+ * 获取指定月份第一天是星期几，月份从0开始。
+ */
+export function getFirstDayWeekday(year: number, month: number) {
+  return new Date(year, month, 1).getDay()
 }
 
-// 获取 Date 中的总天数
-export function getDaysInDate(date: Date) {
+/**
+ * 获取从基准日期（如1970-01-01）到指定日期的总天数。
+ */
+export function getDaysSinceUnixEpoch(date: Date) {
   return Math.floor(date.getTime() / 1000 / 60 / 60 / 24)
 }
 
-// 把日期转换为年月日数值
+/**
+ * 把日期转换为年月日数值，例如：2025年7月1号 -> 20250601。
+ */
 export function toDateNumber(date: Date) {
   return date.getFullYear() * 10000 + date.getMonth() * 100 + date.getDate()
 }
 
-// 把日期转换为年月日字符串
+/**
+ * 把日期转换为年月日字符串，，例如：2025年7月1号 -> 2025-7-1。
+ */
 export function toDateString(date: Date) {
   return date.getFullYear() + '-' + (date.getMonth() + 1) + '-' + date.getDate()
 }
 
-// 把日期转换为年月数值
+/**
+ * 把日期转换为年月数值，例如：2025年7月1号 -> 20250600。
+ */
 export function toMonthNumber(date: Date) {
   return date.getFullYear() * 10000 + date.getMonth() * 100
 }
 
-// 获取从开头开始填充的日期
-export function getPadStartDays(year: number, month: number, amount: number) {
-  const dates: Date[] = []
-  for (let i = amount - 1; i >= 0; i--) {
-    dates.push(new Date(year, month - 1, -i))
-  }
-  return dates
-}
-
-// 获取从结尾开始填充的日期
-export function getPadEndDays(year: number, month: number, amount: number) {
-  const dates: Date[] = []
-  for (let i = 1; i <= amount; i++) {
-    dates.push(new Date(year, month + 1 - 1, i))
-  }
-  return dates
-}
-
-// 获取一号偏移的天数
-export function getOffsetDaysFromMonthStart(
-  weekOnMonthStart: number,
-  weekStartsOn: number,
+/**
+ * 计算当前月份1号前面需要显示的上个月末尾的天数。
+ */
+export function getDaysBeforeFirstDay(
+  year: number,
+  month: number,
+  weekStartsOn = 0,
 ) {
-  return (weekOnMonthStart - weekStartsOn + 7) % 7
+  const week = getFirstDayWeekday(year, month)
+  return (week - weekStartsOn + 7) % 7
+}
+
+/**
+ * 获取当前月份最后一天之后需要显示的下个月开始的天数。
+ */
+export function getDaysAfterLastDay(
+  year: number,
+  month: number,
+  weekStartsOn = 0,
+) {
+  const daysBefore = getDaysBeforeFirstDay(year, month, weekStartsOn)
+  return 42 - daysBefore - getDaysInMonth(year, month)
+}
+
+/**
+ * 获取当前月份1号之前需要显示的上个月末尾的日期。
+ */
+export function getPrevMonthTailDays(
+  year: number,
+  month: number,
+  weekStartsOn = 0,
+) {
+  const daysBefore = getDaysBeforeFirstDay(year, month, weekStartsOn)
+
+  const dates: Date[] = []
+  for (let i = daysBefore - 1; i >= 0; i--) {
+    dates.push(new Date(year, month, -i))
+  }
+  return dates
+}
+
+/**
+ * 获取当前月份最后一天之后需要显示的下个月开始的日期。
+ */
+export function getNextMonthHeadDays(
+  year: number,
+  month: number,
+  weekStartsOn = 0,
+) {
+  const daysAfter = getDaysAfterLastDay(year, month, weekStartsOn)
+
+  const dates: Date[] = []
+  for (let i = 1; i <= daysAfter; i++) {
+    dates.push(new Date(year, month + 1, i))
+  }
+  return dates
 }
 
 const dateTokensReg = /(YYYY|YY|MM|M|DD|D|HH|H|hh|h|mm|m|ss|s|SSS)/g
@@ -100,7 +148,9 @@ const dateGetters = {
   SSS: (date: Date) => String(date.getMilliseconds()).padStart(3, '0'),
 }
 
-// 根据传入的占位符返回格式化后的日期
+/**
+ * 根据传入的占位符返回格式化后的日期。
+ */
 export function formatDate(date: Date, format = 'YYYY-MM-DD HH:mm:ss') {
   return format.replace(dateTokensReg, (match) => {
     return dateGetters[match as keyof typeof dateGetters](date)
@@ -137,7 +187,9 @@ function parseDateWithoutFormat(value: string) {
   return date
 }
 
-// 解析日期的字符串表示形式，并返回 Date 实例对象
+/**
+ * 解析日期的字符串表示形式，并返回 Date 实例对象。
+ */
 export function parseDate(value: string, format?: string) {
   if (!format) {
     return parseDateWithoutFormat(value)
@@ -169,7 +221,7 @@ export function parseDate(value: string, format?: string) {
   return date
 }
 
-// 确保返回一个Date对象，如果传递字符串，则使用 parseDate 解析
+// 确保返回一个Date对象，如果传递字符串，则使用 parseDate 解析。
 export function toDate(date: Date | string, valueFormat?: string) {
   if (date instanceof Date) {
     return date
@@ -177,17 +229,17 @@ export function toDate(date: Date | string, valueFormat?: string) {
   return parseDate(date, valueFormat)
 }
 
-// 限定日期范围
+// 限定日期范围，会返回一个新的日期。
 export function minmaxDate(date: Date, minDate: Date, maxDate: Date) {
   return new Date(minmax(date.getTime(), minDate.getTime(), maxDate.getTime()))
 }
 
-// 获取上一个月的日期对象
+// 获取上一个月的日期对象。
 export function getPrevMonthDate(date: Date) {
   return new Date(date.getFullYear(), date.getMonth() - 1, 1)
 }
 
-// 获取下一个月的日期对象
+// 获取下一个月的日期对象。
 export function getNextMonthDate(date: Date) {
   return new Date(date.getFullYear(), date.getMonth() + 1, 1)
 }
@@ -249,20 +301,26 @@ export const springFestivals = [
 
 export const baseLunarYear = 1900
 
-// 获取农历某年闰月的月份（0表示无闰月）
+/**
+ * 获取农历某年闰月的月份，月份从1开始（0表示无闰月）。
+ */
 export function getLunarLeapMonth(year: number) {
   return lunarInfo[year - baseLunarYear] & 0xf
 }
 
-// 获取农历某年闰月的天数
-export function getLunarLeapMonthDays(year: number) {
+/**
+ * 获取农历某年闰月的天数。
+ */
+export function getLunarLeapMonthDays(year: number): number {
   if (getLunarLeapMonth(year)) {
     return lunarInfo[year - baseLunarYear] & 0x10000 ? 30 : 29
   }
   return 0
 }
 
-// 获取农历某年的总天数
+/**
+ * 获取农历某年的总天数。
+ */
 export function getLunarYearDays(year: number) {
   let sum = 348 // 29天*12个月
   const info = lunarInfo[year - baseLunarYear]
@@ -276,16 +334,20 @@ export function getLunarYearDays(year: number) {
   return sum + getLunarLeapMonthDays(year)
 }
 
-// 获取农历某年某月的天数
-export function getLunarMonthDays(year: number, month: number) {
+/**
+ * 获取农历某年某月的天数，月份从1开始。
+ */
+export function getLunarMonthDays(year: number, month: number): number {
   return lunarInfo[year - baseLunarYear] & (0x10000 >> month) ? 30 : 29
 }
 
-// 公历转农历
-export function solarToLunar(year: number, _month: number, date: number) {
+/**
+ * 公历转农历，月份从1开始（返回的闰月为负数）。
+ */
+export function solarToLunar(year: number, month: number, day: number) {
   // 计算输入日期与基准日期的天数差
   const offsetDays = Math.floor(
-    (Date.UTC(year, _month - 1, date) - Date.UTC(baseLunarYear, 0, 31)) /
+    (Date.UTC(year, month - 1, day) - Date.UTC(baseLunarYear, 0, 31)) /
       (24 * 60 * 60 * 1000),
   )
 
@@ -309,22 +371,22 @@ export function solarToLunar(year: number, _month: number, date: number) {
   // 计算农历月和日
   const leapMonth = getLunarLeapMonth(lunarYear)
   let monthDays = 0
-  let month = 1
+  let _month = 1
 
-  for (; month <= 12; month++) {
+  for (; _month <= 12; _month++) {
     // 处理闰月
-    if (leapMonth > 0 && month === leapMonth + 1) {
+    if (leapMonth > 0 && _month === leapMonth + 1) {
       monthDays = getLunarLeapMonthDays(lunarYear)
 
       if (daysRemaining < monthDays) {
         isLeapMonth = true
-        month--
+        _month--
         break
       }
       daysRemaining -= monthDays
     }
 
-    monthDays = getLunarMonthDays(lunarYear, month)
+    monthDays = getLunarMonthDays(lunarYear, _month)
 
     if (daysRemaining < monthDays) {
       break
@@ -332,7 +394,7 @@ export function solarToLunar(year: number, _month: number, date: number) {
     daysRemaining -= monthDays
   }
 
-  lunarMonth = month
+  lunarMonth = _month
   lunarDay = daysRemaining + 1
 
   return {
@@ -342,39 +404,33 @@ export function solarToLunar(year: number, _month: number, date: number) {
   }
 }
 
-// 农历转公历（闰月需传递负数）
-export function lunarToSolar(
-  lunarYear: number,
-  lunarMonth: number,
-  lunarDay: number,
-) {
-  const springFestival = springFestivals[lunarYear - baseLunarYear]
+/**
+ * 农历转公历（闰月需传递负数）。
+ */
+export function lunarToSolar(year: number, month: number, day: number) {
+  const springFestival = springFestivals[year - baseLunarYear]
 
-  const solarDate = new Date(
-    lunarYear,
-    springFestival[0] - 1,
-    springFestival[1],
-  )
+  const solarDate = new Date(year, springFestival[0] - 1, springFestival[1])
 
-  const info = lunarInfo[lunarYear - baseLunarYear]
+  const info = lunarInfo[year - baseLunarYear]
   const leapMonth = info & 0xf
 
   let totalDays = 0
-  const absMonth = Math.abs(lunarMonth)
+  const absMonth = Math.abs(month)
 
   for (let m = 1; m < absMonth; m++) {
     if (m === leapMonth) {
-      totalDays += getLunarLeapMonthDays(lunarYear)
+      totalDays += getLunarLeapMonthDays(year)
     }
 
-    totalDays += getLunarMonthDays(lunarYear, m)
+    totalDays += getLunarMonthDays(year, m)
   }
 
-  if (lunarMonth < 0) {
-    totalDays += getLunarMonthDays(lunarYear, absMonth)
+  if (month < 0) {
+    totalDays += getLunarMonthDays(year, absMonth)
   }
 
-  totalDays += lunarDay - 1
+  totalDays += day - 1
 
   solarDate.setDate(solarDate.getDate() + totalDays)
 
@@ -389,6 +445,9 @@ export function lunarToSolar(
 // prettier-ignore
 export const lunarYearNames = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九', '十']
 
+/**
+ * 将阿拉伯数字的年份转为汉字数字年份
+ */
 export function getLunarYearName(year: number) {
   return (
     String(year)
@@ -402,7 +461,9 @@ export function getLunarYearName(year: number) {
 // prettier-ignore
 export const lunarMonthNames = ['正', '二', '三', '四', '五', '六', '七', '八', '九', '十', '冬', '腊']
 
-// 获取农历月份名称
+/**
+ * 获取农历月份名称，月份从1开始，例如：正月，十月，腊月。
+ */
 export function getLunarMonthName(month: number, isLeapMonth?: boolean) {
   return (isLeapMonth ? '闰' : '') + lunarMonthNames[month - 1] + '月'
 }
@@ -411,7 +472,9 @@ export function getLunarMonthName(month: number, isLeapMonth?: boolean) {
 // prettier-ignore
 export const lunarDayNames = ['初一', '初二', '初三', '初四', '初五', '初六', '初七', '初八', '初九', '初十', '十一', '十二', '十三', '十四', '十五', '十六', '十七', '十八', '十九', '二十', '廿一', '廿二', '廿三', '廿四', '廿五', '廿六', '廿七', '廿八', '廿九', '三十']
 
-// 获取农历日期名称
+/**
+ * 获取农历日期名称，例如：初一，十二，廿一。
+ */
 export function getLunarDayName(day: number) {
   return lunarDayNames[day - 1]
 }
@@ -424,7 +487,9 @@ export const heavenlyStems = ['甲', '乙', '丙', '丁', '戊', '己', '庚', '
 // prettier-ignore
 export const earthlyBranches = ['子', '丑', '寅', '卯', '辰', '巳', '午', '未', '申', '酉', '戌', '亥']
 
-// 获取农历时辰名称
+/**
+ * 获取农历时辰名称，例如：子初、子正、午初，午正。
+ */
 export function getLunarHourName(hour: number) {
   const index = Math.floor(((hour === 23 ? 0 : hour) + 1) / 2) % 12
 

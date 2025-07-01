@@ -22,6 +22,7 @@ import {
   type StickyBoxExpose,
   stickyContextSymbol,
 } from './common'
+import SarResizeSensor from '../resize-sensor/resize-sensor.vue'
 
 defineOptions({
   options: {
