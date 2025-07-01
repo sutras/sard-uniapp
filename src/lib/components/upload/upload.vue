@@ -12,12 +12,12 @@
         :name="item.name"
         :message="item.message"
         :removable="removable"
-        :before-remove="beforeRemove"
         :index="index"
         :disabled="isDisabled"
         :readonly="isReadonly"
         @remove="onRemove(index, item)"
-        @image-click="onImageClick"
+        @image-click="onImageClick(index)"
+        @click="onItemClick(index, item)"
       />
       <view
         v-if="innerValue.length < maxCount && !isReadonly"
@@ -148,7 +148,7 @@ const toUploadFileNode: ChainNode = (files: UploadFile[], next) => {
   const fileList = files.map((file) => {
     return {
       file,
-      name: file.name || (file.path && getFileName(file.path)),
+      name: file.name,
     }
   })
 
@@ -239,7 +239,9 @@ const onSelect = () => {
               duration: file.duration,
               width: file.width,
               height: file.height,
-              name: file.name,
+              name:
+                file.name ||
+                (file.tempFilePath && getFileName(file.tempFilePath)),
             }
           }),
         )
@@ -261,15 +263,50 @@ const onSelect = () => {
   }
 }
 
+// # remove
+
+const removingSet = new WeakSet<UploadFileItem>()
+
 const onRemove = (index: number, item: UploadFileItem) => {
-  const list = innerValue.value.filter((_, i) => i !== index)
-  innerValue.value = list
-  emit('update:model-value', list)
-  emit('change', list)
-  emit('remove', index, item)
+  if (!props.removable || isDisabled.value || isReadonly.value) return
+
+  if (removingSet.has(item)) {
+    return
+  }
+
+  function remove() {
+    const list = innerValue.value.filter((_, i) => i !== index)
+    innerValue.value = list
+    emit('update:model-value', list)
+    emit('change', list)
+    emit('remove', index, item)
+  }
+
+  if (props.beforeRemove) {
+    const ret = props.beforeRemove(index, item)
+    if (ret === false) {
+      return
+    }
+    if (ret instanceof Promise) {
+      removingSet.add(item)
+      ret
+        .then(() => {
+          remove()
+        })
+        .catch(() => {
+          void 0
+        })
+        .finally(() => {
+          removingSet.delete(item)
+        })
+      return
+    }
+  }
+  remove()
 }
 
-const onImageClick = (index: number) => {
+// # preview
+const previewImage = (index: number) => {
   const currentFileItem = innerValue.value[index]
 
   const fileList = innerValue.value.filter(
@@ -283,6 +320,16 @@ const onImageClick = (index: number) => {
     current: urls[currentIndex],
   })
 }
+
+const onImageClick = (index: number) => {
+  previewImage(index)
+}
+
+const onItemClick = (index: number, fileItem: UploadFileItem) => {
+  emit('item-click', fileItem, index)
+}
+
+// # others
 
 const uploadClass = computed(() => {
   return classNames(

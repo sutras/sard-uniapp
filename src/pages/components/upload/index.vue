@@ -32,6 +32,10 @@
       <DemoStatus />
     </doc-demo>
 
+    <doc-demo title="重传与取消">
+      <DemoReuploadCancel />
+    </doc-demo>
+
     <doc-demo title="只读和禁用">
       <DemoDisabledReadOnly />
     </doc-demo>
@@ -51,6 +55,7 @@ import DemoBeforeChoose from './demo/BeforeChoose.vue'
 import DemoBeforeRead from './demo/BeforeRead.vue'
 import DemoSize from './demo/Size.vue'
 import DemoStatus from './demo/Status.vue'
+import DemoReuploadCancel from './demo/ReuploadCancel.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoCustomSelect from './demo/CustomSelect.vue'
 </script>
