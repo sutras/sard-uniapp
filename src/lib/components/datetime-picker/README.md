@@ -40,7 +40,7 @@ import DatetimePicker from 'sard-uniapp/components/datetime-picker/datetime-pick
 | model-value                   | 当前选中的日期                               | Date \| string                                                                                                  | -       |
 | filter                        | 选项的过滤函数                               | (letter: DatetimeLetter, value: number, date: Date, index: number) => boolean                                   | -       |
 | formatter                     | 选项的格式化函数                             | (letter: DatetimeLetter, option: DatetimeColumnOption, date: Date, index: number) => string \| void \|undefined | -       |
-| value-format <sup>1.10+</sup> | 绑定值的格式，不指定则绑定值为 Date 对象     | string [详见特殊符号](../guide/date#日期格式特殊符号)                                                           | -       |
+| value-format <sup>1.10+</sup> | 绑定值的格式，不指定则绑定值为 Date 对象     | string [详见特殊符号](../utilities/date#日期格式特殊符号)                                                       | -       |
 
 ### DatetimePickerEmits
 

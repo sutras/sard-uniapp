@@ -3,6 +3,7 @@ import uni from '@dcloudio/vite-plugin-uni'
 import path from 'node:path'
 import { transformIndexHtmlPlugin } from './transformIndexHtmlPlugin'
 import tailwindcss from 'tailwindcss'
+import vitePluginPagesTypings from './vite-plugin-pages-typings'
 
 function vitePluginUncommentWxs(files: string[]): PluginOption {
   return {
@@ -34,6 +35,7 @@ export default defineConfig({
     vitePluginUncommentWxs(['pull-down-refresh.vue']),
     uni(),
     transformIndexHtmlPlugin(),
+    vitePluginPagesTypings(),
   ],
   resolve: {
     alias: [

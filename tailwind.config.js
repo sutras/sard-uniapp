@@ -2,7 +2,13 @@ import plugin from 'tailwindcss/plugin'
 
 /** @type {import('tailwindcss').Config} */
 export default {
-  content: ['./src/**/*.vue'],
+  content: {
+    files: ['./src/components/**/*.vue', './src/pages/**/*.vue'],
+    extract: {
+      vue: (content) => content.match(/[^<>"'`\s!:]*/g),
+    },
+  },
+
   theme: {
     spacing: {
       0: '0px',
@@ -38,12 +44,6 @@ export default {
       white: 'white',
       black: 'black',
       base: 'var(--sar-border-color)',
-      primary: 'var(--sar-primary)',
-      secondary: 'var(--sar-secondary)',
-      success: 'var(--sar-success)',
-      info: 'var(--sar-info)',
-      warning: 'var(--sar-warning)',
-      danger: 'var(--sar-danger)',
     },
     fontSize: {
       xs: 'var(--sar-text-xs)',
@@ -83,9 +83,6 @@ export default {
         },
         '.sbg-tertiary': {
           'background-color': 'var(--sar-tertiary-bg)',
-        },
-        '.sbg-quaternary': {
-          'background-color': 'var(--sar-quaternary-bg)',
         },
         '.sbg-fourth': {
           'background-color': 'var(--sar-fourth-bg)',

@@ -9,12 +9,6 @@ import {
   watch,
 } from 'vue'
 
-type UniAppIntersectionObserver = ReturnType<
-  typeof uni.createIntersectionObserver
->
-
-type ObserveCallback = Parameters<UniAppIntersectionObserver['observe']>[1]
-
 interface IntersectionObserverOptions {
   root?: MaybeRef<string>
   selector?: MaybeRef<string>
@@ -27,12 +21,12 @@ interface IntersectionObserverOptions {
 }
 
 export function useIntersectionObserver(
-  callback: ObserveCallback,
+  callback: (result: UniApp.ObserveResult) => void,
   options: IntersectionObserverOptions = {},
 ) {
   const instance = getCurrentInstance()
 
-  let observer: UniAppIntersectionObserver | null = null
+  let observer: UniApp.IntersectionObserver | null = null
 
   const selector = computed(() => unref(options.selector))
   const root = computed(() => unref(options.root))

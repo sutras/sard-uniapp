@@ -1,7 +1,6 @@
 ---
-nav: 指引
+nav: 工具
 title: ScrollIntoViewOptions
-order: 0
 group:
   title: 工具
 ---

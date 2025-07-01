@@ -1,17 +1,18 @@
 ---
-nav: 指引
+nav: 工具
 title: 日期
-order: 0
 group:
   title: 工具
-  order: 2
+  order: 1
 ---
+
+## isLeapYear(year: number): boolean
 
 ## 日期格式特殊符号
 
 根据传入的带有特殊符号的字符串获取格式化的日期。
 
-|      | 描述             |
+| 符号 | 描述             |
 | ---- | ---------------- |
 | YYYY | 四位年份         |
 | YY   | 两位年份         |

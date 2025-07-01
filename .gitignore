@@ -28,3 +28,5 @@ uni_modules/
 *.njsproj
 *.sln
 *.sw?
+
+pages.d.ts
