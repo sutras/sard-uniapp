@@ -138,14 +138,15 @@ type UploadStatus = 'pending' | 'uploading' | 'failed' | 'done'
 
 ### UploadFile
 
-| 属性     | 描述               | 类型               | 默认值 |
-| -------- | ------------------ | ------------------ | ------ |
-| type     | 文件类型           | 'image' \| 'video' | -      |
-| size     | 文件大小，单位字节 | number             | -      |
-| path     | 本地临时文件路径   | string             | -      |
-| duration | 选定视频的时间长度 | number             | 0      |
-| width    | 返回选定视频的宽度 | number             | 0      |
-| height   | 返回选定视频的高度 | number             | 0      |
+| 属性                  | 描述               | 类型               | 默认值 |
+| --------------------- | ------------------ | ------------------ | ------ |
+| type                  | 文件类型           | 'image' \| 'video' | -      |
+| size                  | 文件大小，单位字节 | number             | -      |
+| name <sup>1.20+</sup> | 文件名             | string             | -      |
+| path                  | 本地临时文件路径   | string             | -      |
+| duration              | 选定视频的时间长度 | number             | 0      |
+| width                 | 返回选定视频的宽度 | number             | 0      |
+| height                | 返回选定视频的高度 | number             | 0      |
 
 ## 主题定制
 

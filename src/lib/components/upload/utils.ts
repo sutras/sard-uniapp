@@ -20,6 +20,7 @@ interface chooseMediaResult {
     height: number
     width: number
     fileType: 'image' | 'video'
+    name: string
   }[]
   type: 'image' | 'video'
 }
@@ -52,6 +53,7 @@ export function chooseMedia(options: chooseMediaOptions) {
               duration: 0,
               height: 0,
               width: 0,
+              name: file.name || '',
               fileType: 'image',
             }
           }),
@@ -76,6 +78,7 @@ export function chooseMedia(options: chooseMediaOptions) {
               duration: res.duration,
               height: res.height,
               width: res.width,
+              name: res.name || '',
               fileType: 'video',
             },
           ],

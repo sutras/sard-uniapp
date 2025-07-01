@@ -28,7 +28,7 @@ group:
 
 因此不支持 `app-nvue`、`uni-app-x`、`Skyline`。
 
-有原生性能要求，可学习 `Swift`、`Kotlin`、`ArkTS`、`Flutter` 等。
+有原生性能要求，可考虑使用 `Swift`、`Kotlin`、`ArkTS`、`Flutter` 等来开发。
 
 ## 跨端支持
 

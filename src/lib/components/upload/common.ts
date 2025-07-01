@@ -10,6 +10,7 @@ export interface UploadFile {
   duration: number
   width: number
   height: number
+  name: string
 }
 
 export interface UploadFileItem {

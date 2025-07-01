@@ -148,7 +148,7 @@ const toUploadFileNode: ChainNode = (files: UploadFile[], next) => {
   const fileList = files.map((file) => {
     return {
       file,
-      name: file.path && getFileName(file.path),
+      name: file.name || (file.path && getFileName(file.path)),
     }
   })
 
@@ -239,6 +239,7 @@ const onSelect = () => {
               duration: file.duration,
               width: file.width,
               height: file.height,
+              name: file.name,
             }
           }),
         )
