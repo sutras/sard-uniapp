@@ -1,3 +1,25 @@
+# [1.20.0](https://github.com/sutras/sard-uniapp/compare/v1.19.5...v1.20.0) (2025-07-01)
+
+
+### Features
+
+* card 组件新增边框相关css变量 ([b838d88](https://github.com/sutras/sard-uniapp/commit/b838d88930f8200a5ed832e888a11cc8f5942233))
+* checkbox-popout 新增搜索和全选功能 ([9457fdd](https://github.com/sutras/sard-uniapp/commit/9457fdd7476f5a6f82a43239c55f8d968ebfd4c9))
+* radio-popout 组件新增搜索功能 ([fade336](https://github.com/sutras/sard-uniapp/commit/fade336615fe9402dd4ff81bff8900ef915cb314))
+* upload h5 显示真实文件名 ([635805f](https://github.com/sutras/sard-uniapp/commit/635805fec8df90411f190c6a1345f59c47af16e9))
+* upload 组件新增 item-click 事件 ([cc01b3f](https://github.com/sutras/sard-uniapp/commit/cc01b3f9283dadae8def7b14d0d65cad40ebc3c9))
+* 修复slider在支付宝端点击问题 ([76e9fd4](https://github.com/sutras/sard-uniapp/commit/76e9fd4fe75515b2ec3cf4ceed08fec87ff1388b))
+* 扩大 DatetimeRangePickerPopout 绑定值的适应性范围,允许绑定空数组 ([087aa7f](https://github.com/sutras/sard-uniapp/commit/087aa7f3fe2a07cba8333a96ef5842426f26e81b))
+* 新增 case 相关工具函数 ([1c3acaa](https://github.com/sutras/sard-uniapp/commit/1c3acaac5a0a95eb57dd7632055843cd9fe6401c))
+* 新增 read-more 组件 ([12637b8](https://github.com/sutras/sard-uniapp/commit/12637b897649fb641eff6672df7c79db9128ab69))
+* 新增 ResizeSensor 组件 ([7f8697e](https://github.com/sutras/sard-uniapp/commit/7f8697ee1f26dcd5cc55ed3e83c1c40664febc64))
+* 新增 ScrollList 组件 ([dacce49](https://github.com/sutras/sard-uniapp/commit/dacce49043332f3a6c143228c23bb92f2285211a))
+* 新增 sticky 和 sticky-box 组件 ([e99ef87](https://github.com/sutras/sard-uniapp/commit/e99ef87c4918b1f84142755c19c7e306abaccfb6))
+* 新增工程化相关工具 ([09fc190](https://github.com/sutras/sard-uniapp/commit/09fc190a66da6a83cf1b3dd2919ca6132ba6e354))
+* 新增日期相关工具 ([51807f4](https://github.com/sutras/sard-uniapp/commit/51807f4a190b5ee3525146c5d7384cc178109796))
+
+
+
 ## [1.19.5](https://github.com/sutras/sard-uniapp/compare/v1.19.4...v1.19.5) (2025-06-22)
 
 
