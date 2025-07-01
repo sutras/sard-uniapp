@@ -1,4 +1,4 @@
-import { minmax } from './number'
+import { clamp } from './number'
 import { escapeRegExp } from './regexp'
 
 /**
@@ -231,7 +231,7 @@ export function toDate(date: Date | string, valueFormat?: string) {
 
 // 限定日期范围，会返回一个新的日期。
 export function minmaxDate(date: Date, minDate: Date, maxDate: Date) {
-  return new Date(minmax(date.getTime(), minDate.getTime(), maxDate.getTime()))
+  return new Date(clamp(date.getTime(), minDate.getTime(), maxDate.getTime()))
 }
 
 // 获取上一个月的日期对象。

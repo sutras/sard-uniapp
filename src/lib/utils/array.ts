@@ -47,43 +47,30 @@ export function spreadEach(
 }
 
 /**
- * @description: 判断两数组是否相等，浅比较
- * @param {any[]} arr1
- * @param {any[]} arr2
- * @return {boolean}
+ * 判断两数组是否相等，浅比较，元素个数和位置都要相等才为真。
  */
 export function arrayEqual(arr1: any[], arr2: any[]): boolean {
   return arr1.length === arr1.length && arr1.every((el, i) => el === arr2[i])
 }
 
 /**
- * @description: 打乱数组
- * @param {any[]} arr 要打乱的数组
- * @param {boolean} inPlace 是否改变原数组
- * @return {any[]}
+ * 打乱并返回数组，会修改原数组。
  */
-export function shuffle(arr: any[], inPlace = false): any[] {
-  if (!inPlace) {
-    arr = arr.slice()
-  }
-  const len = arr.length
+export function shuffle<T>(array: T[]): T[] {
+  const len = array.length
   for (let i = len - 1; i >= 0; i--) {
     const randomIndex = ~~(Math.random() * (i + 1))
-    const temp = arr[randomIndex]
-    arr[randomIndex] = arr[i]
-    arr[i] = temp
+    const temp = array[randomIndex]
+    array[randomIndex] = array[i]
+    array[i] = temp
   }
-  return arr
+  return array
 }
 
 /**
- * @description: 移动数组中的元素
- * @param array
- * @param fromIndex
- * @param toIndex
- * @return 移动后的新数组
+ * 移动数组中的元素，会返回移动后的新数组。
  */
-export function arrayMove(array: any[], fromIndex: number, toIndex: number) {
+export function arrayMove<T>(array: T[], fromIndex: number, toIndex: number) {
   if (
     fromIndex === toIndex ||
     fromIndex < 0 ||

@@ -18,9 +18,7 @@ export function omit<T extends object, U extends keyof T>(
 }
 
 /**
- * @description: 深度克隆对象，仅克隆数组和无格式对象，其他类型会被直接返回
- * @param {any} target
- * @return {any}
+ * 深度克隆对象，仅克隆数组和无格式对象，其他类型会被直接返回
  */
 export function deepClone(target: any): any {
   if (Array.isArray(target)) {
@@ -39,9 +37,7 @@ export function deepClone(target: any): any {
 }
 
 /**
- * @description: 深拷贝其他对象到第一个对象
- * @param args 任意长度参数对象
- * @return 返回第一个参数对象
+ * 深拷贝其他对象到第一个对象
  */
 export function extend(...args: any[]) {
   const target = args[0],

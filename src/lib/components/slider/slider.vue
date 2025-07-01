@@ -88,7 +88,7 @@ import {
   uniqid,
   NodeRect,
   getBoundingClientRect,
-  minmax,
+  clamp,
   mround,
   arrayEqual,
   toArray,
@@ -181,7 +181,7 @@ const onSliderClick = async (event: MouseEvent | TouchEvent) => {
   const offset = tapCoord - startCoord
   const ratio = offset / trackSize
   const total = props.max - props.min
-  const tapValue = minmax(
+  const tapValue = clamp(
     mround(props.min + total * ratio, props.step),
     props.min,
     props.max,
@@ -262,7 +262,7 @@ const onTouchMove = (event: TouchEvent, index: number) => {
   const delta = props.vertical ? deltaY : deltaX
   const ratio = delta / trackSize + downRatio
   const total = props.max - props.min
-  const tapValue = minmax(
+  const tapValue = clamp(
     mround(props.min + total * ratio, props.step),
     props.min,
     props.max,

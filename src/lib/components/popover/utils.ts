@@ -1,4 +1,4 @@
-import { getWindowInfo, minmax } from '../../utils'
+import { getWindowInfo, clamp } from '../../utils'
 
 export type Position =
   | 'top'
@@ -142,7 +142,7 @@ export function getPopoverPosition(
     const offset = strategies[side]()
 
     // 确保处于屏幕内
-    return minmax(
+    return clamp(
       offset,
       viewportGap,
       axisWindowSize - popperRect[axisSizeName] - viewportGap,
@@ -167,7 +167,7 @@ export function getPopoverPosition(
     const offset = strategies[direction]()
 
     // 确保处于屏幕内
-    return minmax(
+    return clamp(
       offset,
       viewportGap,
       crossAxisWindowSize - popperRect[crossAxisSizeName] - viewportGap,
@@ -207,7 +207,7 @@ export function getPopoverPosition(
     const offset = extra + intersection / 2
 
     // 确保箭头位于popper之内
-    return minmax(offset, arrowSize, popperRect[axisSizeName] - arrowSize)
+    return clamp(offset, arrowSize, popperRect[axisSizeName] - arrowSize)
   }
 
   arrowStyle[axis] = getArrowOffset()

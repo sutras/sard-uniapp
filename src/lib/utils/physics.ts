@@ -1,4 +1,4 @@
-import { minmax } from './number'
+import { clamp } from './number'
 
 /**
  * @description: 获取阻尼值
@@ -63,7 +63,7 @@ export function getInBoundValue(
 ): number {
   const diff = areaSize - viewSize
   const [min, max] = [0, diff].sort((a, b) => a - b)
-  return minmax(offset, min, max)
+  return clamp(offset, min, max)
 }
 
 /**

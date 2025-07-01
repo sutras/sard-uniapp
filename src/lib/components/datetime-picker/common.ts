@@ -8,7 +8,7 @@ import {
   getLunarMonthName,
   getDaysInMonth,
   isDate,
-  minmax,
+  clamp,
   solarToLunar,
   toDate,
 } from '../../utils'
@@ -212,7 +212,7 @@ export function correctSolarDate(
     if ((maxAside = maxAside && prevGetter(maxDate) === date[index])) {
       maxValue = currGetter(maxDate)
     }
-    date[index + 1] = minmax(date[index + 1], minValue, maxValue)
+    date[index + 1] = clamp(date[index + 1], minValue, maxValue)
 
     prevGetter = currGetter
   })
@@ -302,10 +302,10 @@ export function correctLunarDate(
         value = Math.abs(value) + 0.5
       }
 
-      value = minmax(value, min, max)
+      value = clamp(value, min, max)
       date[currIndex] = value % 1 === 0.5 ? ~~value * -1 : value
     } else {
-      date[currIndex] = minmax(currValue, range[0].value, range[1].value)
+      date[currIndex] = clamp(currValue, range[0].value, range[1].value)
     }
 
     if (letter === 'd') {

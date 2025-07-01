@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { classNames, stringifyStyle, createBem, minmax } from '../../utils'
+import { classNames, stringifyStyle, createBem, clamp } from '../../utils'
 import { useTranslate } from '../locale'
 import {
   type PaginationProps,
@@ -142,7 +142,7 @@ const multiItems = computed(() => {
       page =
         type === 0
           ? page
-          : minmax(
+          : clamp(
               innerCurrent.value + type * props.multiCount,
               1,
               innerPageCount.value,

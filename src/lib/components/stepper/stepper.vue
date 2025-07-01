@@ -56,7 +56,7 @@ import {
   stringifyStyle,
   createBem,
   isNullish,
-  minmax,
+  clamp,
 } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
@@ -119,7 +119,7 @@ const setValueEnsureSafe = (value: number) => {
 }
 
 const normalizedValue = (value: number) => {
-  value = minmax(value, props.min, props.max)
+  value = clamp(value, props.min, props.max)
   if (props.precision !== undefined) {
     value = +value.toFixed(props.precision)
   }

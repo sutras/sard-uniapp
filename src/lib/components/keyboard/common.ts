@@ -1,5 +1,6 @@
 import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
+import { shuffle } from '../../utils'
 
 export interface KeyboardProps {
   rootStyle?: StyleValue
@@ -118,17 +119,6 @@ export const englishKeys = [
   'M',
 ]
 
-export function shuffle(arr: any[]) {
-  const newArr = arr.slice()
-  for (let i = arr.length - 1; i >= 0; i--) {
-    const randomIndex = ~~(Math.random() * (i + 1))
-    const randomItem = newArr[randomIndex]
-    newArr[randomIndex] = newArr[i]
-    newArr[i] = randomItem
-  }
-  return newArr
-}
-
 export function getRandomKeys() {
-  return shuffle(numberKeys)
+  return shuffle(numberKeys.slice())
 }

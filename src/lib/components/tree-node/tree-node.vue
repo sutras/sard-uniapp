@@ -101,7 +101,7 @@ import {
   classNames,
   createBem,
   getBoundingClientRect,
-  minmax,
+  clamp,
   stringifyStyle,
   uniqid,
 } from '../../utils'
@@ -183,7 +183,7 @@ const onDragMove = (offset: Point) => {
   const offsetIndex =
     Math.floor(Math.abs(offset.y) / nodeHeight + 0.5) * (offset.y < 0 ? -1 : 1)
 
-  const targetIndex = minmax(
+  const targetIndex = clamp(
     currentIndex + offsetIndex,
     0,
     obviousNodes.length - 1,
