@@ -206,7 +206,7 @@ export interface Response<
   /**
    * 文件内容。QQ小程序
    */
-  fileContent?: Buffer
+  fileContent?: any
   /**
    * 需要基础库： `2.10.4`
    *
@@ -394,7 +394,7 @@ export class Request<E extends Record<string, any> = any> {
                 UniApp.UploadFileSuccessCallbackResult &
                 UniApp.DownloadSuccessData & {
                   apFilePath: string
-                  fileContent?: Buffer
+                  fileContent?: any
                 },
             ) {
               const {
