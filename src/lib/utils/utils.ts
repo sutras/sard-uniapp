@@ -1,4 +1,4 @@
-import { toKebabCase } from './case'
+import { kebabCase } from './case'
 import { isPlainObject, isPrimitive } from './is'
 
 /**
@@ -740,7 +740,7 @@ export function stringifyStyle(...args: StyleProp[]): string {
       for (const key in arg) {
         const value = arg[key]
         if (value || value === 0) {
-          result += `${toKebabCase(key)}:${value};`
+          result += `${kebabCase(key)}:${value};`
         }
       }
     }

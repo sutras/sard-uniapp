@@ -13,43 +13,39 @@ export interface ScrollIntoViewOptions {
   duration?: number
 }
 
-/**    
-```
-                      page               
-                     ╱ 
-    ╭───────────────╮    viewport
-  ╭─│─ ─ ─ ─ ─ ─ ─ ─│─╮ ╱  
-  │ │ ╭───────────╮ │ │
-  │ │ │  element  │ │ │
-  │ │ ╰───────────╯ │ │
-  ╰─│─ ─ ─ ─ ─ ─ ─ ─│─╯
-    │               │
-    │               │
-    ╰───────────────╯
-```
-
-# 参数
-- viewportHeight: viewport 高度
-- viewportScrollTop: viewport 垂直滚动值
-- elementHeight: element 高度
-- elementOffsetTop: element 距离页面顶部距离
-
-# 选项
-- position: element 在视窗中的位置(start, center, end, nearest)
-- startOffset: element 距离视窗顶部的偏移量
-- endOffset: element 距离视窗底部的偏移量
-
-# 结果值
-- viewportScrollTop: viewport 新的垂直滚动值
-
-*/
+/**
+ * 根据最后位置计算 page 滚动到顶部的值。
+ *
+ * 也可计算水平方向的滚动值。
+ *
+ *                      page
+ *                     ╱
+ *    ╭───────────────╮    viewport
+ *  ╭─│─ ─ ─ ─ ─ ─ ─ ─│─╮ ╱
+ *  │ │ ╭───────────╮ │ │
+ *  │ │ │  element  │ │ │
+ *  │ │ ╰───────────╯ │ │
+ *  ╰─│─ ─ ─ ─ ─ ─ ─ ─│─╯
+ *    │               │
+ *    │               │
+ *    ╰───────────────╯
+ *
+ * @param {number} viewportHeight viewport 高度
+ * @param {number} viewportScrollTop viewport 垂直滚动值
+ * @param {number} elementHeight element 高度
+ * @param {number} elementOffsetTop element 距离页面顶部距离
+ * @param {string} options.position element 在 viewport 中的位置，可选：'start' | 'center' | 'end' | 'nearest'
+ * @param {number} options.startOffset element 距离视窗顶部的偏移量
+ * @param {number} options.endOffset element 距离视窗底部的偏移量
+ * @return {number} viewport 新的垂直滚动值
+ */
 export function getScrollIntoViewValue(
   viewportHeight: number,
   viewportScrollTop: number,
   elementHeight: number,
   elementOffsetTop: number,
   options: ScrollIntoViewValueOptions = {},
-) {
+): number {
   const { startOffset = 0, endOffset = 0 } = options
 
   let position = options.position || 'nearest'
@@ -105,13 +101,18 @@ export interface NodeRect {
   width: number
 }
 
-interface MatchScrollVisibleOptions {
+export interface MatchScrollVisibleOptions {
   offset?: number
   errorValue?: number
 }
 
 /**
- * @description: 匹配元素列表中第一个位于滚动盒子可视区域的元素
+ * 匹配元素列表中第一个位于滚动盒子可视区域的元素
+ *
+ * @param {array} rects NodeRect 类型数组
+ * @param {function} callback 匹配成功时调用，会接收匹配的元素的下标
+ * @param {number} options.offset 偏移量
+ * @param {number} options.errorValue 容错值
  */
 export async function matchScrollVisible(
   rects: NodeRect[],
@@ -145,6 +146,9 @@ export async function matchScrollVisible(
   }
 }
 
+/**
+ * 保持纵横比缩放图片，只保证图片的短边能完全显示出来。也就是说，图片通常只在水平或垂直方向是完整的，另一个方向将会发生截取。
+ */
 export function getAspectFillSize(
   origWidth: number,
   origHeight: number,
@@ -167,6 +171,9 @@ export function getAspectFillSize(
   return [width, height] as [number, number]
 }
 
+/**
+ * 保持纵横比缩放图片，使图片的长边能完全显示出来。也就是说，可以完整地将图片显示出来。
+ */
 export function getAspectFitSize(
   origWidth: number,
   origHeight: number,
@@ -189,11 +196,14 @@ export function getAspectFitSize(
   return [width, height] as [number, number]
 }
 
-interface Point {
+export interface Point {
   x: number
   y: number
 }
 
+/**
+ * 获取两点间的距离
+ */
 export function getTwoPointsDistance(p1: Point, p2: Point) {
   return Math.sqrt(Math.pow(p2.x - p1.x, 2) + Math.pow(p2.y - p1.y, 2))
 }
