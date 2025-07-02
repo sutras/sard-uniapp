@@ -21,6 +21,7 @@ export interface UploadFileItem {
   status?: UploadStatus
   name?: string
   message?: string
+  [key: PropertyKey]: any
 }
 
 export interface UploadProps {

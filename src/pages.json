@@ -2,446 +2,445 @@
   "pages": [
     {
       "path": "pages/index/index"
-    },
-    {
-      "path": "pages/components/accordion/index"
-    },
-    {
-      "path": "pages/components/action-sheet/index"
-    },
-    {
-      "path": "pages/components/alert/index"
-    },
-    {
-      "path": "pages/components/avatar/index"
-    },
-    {
-      "path": "pages/components/back-top/demo/Basic"
-    },
-    {
-      "path": "pages/components/back-top/demo/CustomContent"
-    },
-    {
-      "path": "pages/components/back-top/demo/Duration"
-    },
-    {
-      "path": "pages/components/back-top/demo/Position"
-    },
-    {
-      "path": "pages/components/back-top/demo/ScrollView"
-    },
-    {
-      "path": "pages/components/back-top/demo/VisibleHeight"
-    },
-    {
-      "path": "pages/components/back-top/index"
-    },
-    {
-      "path": "pages/components/badge/index"
-    },
-    {
-      "path": "pages/components/button/index"
-    },
-    {
-      "path": "pages/components/calendar-input/index"
-    },
-    {
-      "path": "pages/components/calendar-popout/index"
-    },
-    {
-      "path": "pages/components/calendar/index"
-    },
-    {
-      "path": "pages/components/card/index"
-    },
-    {
-      "path": "pages/components/cascader-input/index"
-    },
-    {
-      "path": "pages/components/cascader-popout/index"
-    },
-    {
-      "path": "pages/components/cascader/index"
-    },
-    {
-      "path": "pages/components/checkbox-input/index"
-    },
-    {
-      "path": "pages/components/checkbox-popout/index"
-    },
-    {
-      "path": "pages/components/checkbox/index"
-    },
-    {
-      "path": "pages/components/collapse/index"
-    },
-    {
-      "path": "pages/components/count-down/index"
-    },
-    {
-      "path": "pages/components/count-to/index"
-    },
-    {
-      "path": "pages/components/crop-image/index"
-    },
-    {
-      "path": "pages/components/datetime-picker-input/index"
-    },
-    {
-      "path": "pages/components/datetime-picker-popout/index"
-    },
-    {
-      "path": "pages/components/datetime-picker/index"
-    },
-    {
-      "path": "pages/components/datetime-range-picker-input/index"
-    },
-    {
-      "path": "pages/components/datetime-range-picker-popout/index"
-    },
-    {
-      "path": "pages/components/datetime-range-picker/index"
-    },
-    {
-      "path": "pages/components/dialog/index"
-    },
-    {
-      "path": "pages/components/divider/index"
-    },
-    {
-      "path": "pages/components/dropdown/index"
-    },
-    {
-      "path": "pages/components/empty/index"
-    },
-    {
-      "path": "pages/components/fab/index"
-    },
-    {
-      "path": "pages/components/floating-bubble/index"
-    },
-    {
-      "path": "pages/components/floating-panel/demo/Anchors"
-    },
-    {
-      "path": "pages/components/floating-panel/demo/Basic"
-    },
-    {
-      "path": "pages/components/floating-panel/demo/ContentDraggable"
-    },
-    {
-      "path": "pages/components/floating-panel/index"
-    },
-    {
-      "path": "pages/components/form/demo/BasicLogin"
-    },
-    {
-      "path": "pages/components/form/demo/ChangePassword"
-    },
-    {
-      "path": "pages/components/form/demo/ComplexDynamicFormItem"
-    },
-    {
-      "path": "pages/components/form/demo/CustomControl"
-    },
-    {
-      "path": "pages/components/form/demo/CustomValidate"
-    },
-    {
-      "path": "pages/components/form/demo/DialogForm"
-    },
-    {
-      "path": "pages/components/form/demo/DirectionAlign"
-    },
-    {
-      "path": "pages/components/form/demo/DisabledReadOnly"
-    },
-    {
-      "path": "pages/components/form/demo/DynamicFormItem"
-    },
-    {
-      "path": "pages/components/form/demo/DynamicNested"
-    },
-    {
-      "path": "pages/components/form/demo/DynamicValidate"
-    },
-    {
-      "path": "pages/components/form/demo/ForgetPassword"
-    },
-    {
-      "path": "pages/components/form/demo/LabelWidth"
-    },
-    {
-      "path": "pages/components/form/demo/Login"
-    },
-    {
-      "path": "pages/components/form/demo/MobileLogin"
-    },
-    {
-      "path": "pages/components/form/demo/MultiFormLinkage"
-    },
-    {
-      "path": "pages/components/form/demo/Nested"
-    },
-    {
-      "path": "pages/components/form/demo/ScrollToFirstError"
-    },
-    {
-      "path": "pages/components/form/demo/ToastValidateError"
-    },
-    {
-      "path": "pages/components/form/demo/Typical"
-    },
-    {
-      "path": "pages/components/form/demo/Validate"
-    },
-    {
-      "path": "pages/components/form/index"
-    },
-    {
-      "path": "pages/components/grid/index"
-    },
-    {
-      "path": "pages/components/icon/index"
-    },
-    {
-      "path": "pages/components/indexes/demo/FullPage"
-    },
-    {
-      "path": "pages/components/indexes/index"
-    },
-    {
-      "path": "pages/components/input/index"
-    },
-    {
-      "path": "pages/components/keyboard/index"
-    },
-    {
-      "path": "pages/components/layout/index"
-    },
-    {
-      "path": "pages/components/list/index"
-    },
-    {
-      "path": "pages/components/load-more/index"
-    },
-    {
-      "path": "pages/components/loading/index"
-    },
-    {
-      "path": "pages/components/lucky-draw/index"
-    },
-    {
-      "path": "pages/components/marquee/index"
-    },
-    {
-      "path": "pages/components/navbar/index"
-    },
-    {
-      "path": "pages/components/notice-bar/index"
-    },
-    {
-      "path": "pages/components/notify/index"
-    },
-    {
-      "path": "pages/components/overlay/index"
-    },
-    {
-      "path": "pages/components/pagination/index"
-    },
-    {
-      "path": "pages/components/password-input/index"
-    },
-    {
-      "path": "pages/components/picker-input/index"
-    },
-    {
-      "path": "pages/components/picker-popout/index"
-    },
-    {
-      "path": "pages/components/picker/index"
-    },
-    {
-      "path": "pages/components/popout-input/index"
-    },
-    {
-      "path": "pages/components/popout/index"
-    },
-    {
-      "path": "pages/components/popover/index"
-    },
-    {
-      "path": "pages/components/popup/index"
-    },
-    {
-      "path": "pages/components/progress-bar/index"
-    },
-    {
-      "path": "pages/components/progress-circle/index"
-    },
-    {
-      "path": "pages/components/pull-down-refresh/demo/Page"
-    },
-    {
-      "path": "pages/components/pull-down-refresh/demo/ScrollView"
-    },
-    {
-      "path": "pages/components/pull-down-refresh/demo/Slot"
-    },
-    {
-      "path": "pages/components/pull-down-refresh/index"
-    },
-    {
-      "path": "pages/components/qrcode/index"
-    },
-    {
-      "path": "pages/components/radio-input/index"
-    },
-    {
-      "path": "pages/components/radio-popout/index"
-    },
-    {
-      "path": "pages/components/radio/index"
-    },
-    {
-      "path": "pages/components/rate/index"
-    },
-    {
-      "path": "pages/components/read-more/index"
-    },
-    {
-      "path": "pages/components/resize-sensor/index"
-    },
-    {
-      "path": "pages/components/result/index"
-    },
-    {
-      "path": "pages/components/scroll-list/index"
-    },
-    {
-      "path": "pages/components/scroll-spy/index"
-    },
-    {
-      "path": "pages/components/search/index"
-    },
-    {
-      "path": "pages/components/share-sheet/index"
-    },
-    {
-      "path": "pages/components/sidebar/demo/Scene1",
-      "style": {
-        "renderer": "skyline",
-        "componentFramework": "glass-easel"
-      }
-    },
-    {
-      "path": "pages/components/sidebar/demo/Scene2",
-      "style": {
-        "renderer": "skyline",
-        "componentFramework": "glass-easel"
-      }
-    },
-    {
-      "path": "pages/components/sidebar/index"
-    },
-    {
-      "path": "pages/components/signature/index"
-    },
-    {
-      "path": "pages/components/skeleton/index"
-    },
-    {
-      "path": "pages/components/slider/index"
-    },
-    {
-      "path": "pages/components/space/index"
-    },
-    {
-      "path": "pages/components/status-bar/index"
-    },
-    {
-      "path": "pages/components/stepper/index"
-    },
-    {
-      "path": "pages/components/steps/index"
-    },
-    {
-      "path": "pages/components/sticky/index"
-    },
-    {
-      "path": "pages/components/style/index"
-    },
-    {
-      "path": "pages/components/swipe-action/index"
-    },
-    {
-      "path": "pages/components/swiper-dot/index"
-    },
-    {
-      "path": "pages/components/switch/index"
-    },
-    {
-      "path": "pages/components/tabbar-pit/index"
-    },
-    {
-      "path": "pages/components/tabbar/index"
-    },
-    {
-      "path": "pages/components/table/demo/FullScreen"
-    },
-    {
-      "path": "pages/components/table/index"
-    },
-    {
-      "path": "pages/components/tabs/index"
-    },
-    {
-      "path": "pages/components/tag/index"
-    },
-    {
-      "path": "pages/components/timeline/index"
-    },
-    {
-      "path": "pages/components/toast/index"
-    },
-    {
-      "path": "pages/components/tree/demo/Accordion"
-    },
-    {
-      "path": "pages/components/tree/demo/Basic"
-    },
-    {
-      "path": "pages/components/tree/demo/CheckStrictly"
-    },
-    {
-      "path": "pages/components/tree/demo/DefaultExpandedAndChecked"
-    },
-    {
-      "path": "pages/components/tree/demo/Draggable"
-    },
-    {
-      "path": "pages/components/tree/demo/Editable"
-    },
-    {
-      "path": "pages/components/tree/demo/Filter"
-    },
-    {
-      "path": "pages/components/tree/demo/LeafOnly"
-    },
-    {
-      "path": "pages/components/tree/demo/Selectable"
-    },
-    {
-      "path": "pages/components/tree/demo/Single"
-    },
-    {
-      "path": "pages/components/tree/demo/StrictFilter"
-    },
-    {
-      "path": "pages/components/tree/index"
-    },
-    {
-      "path": "pages/components/upload/index"
+    }
+  ],
+  "subPackages": [
+    {
+      "root": "pages/components",
+      "pages": [
+        {
+          "path": "accordion/index"
+        },
+        {
+          "path": "action-sheet/index"
+        },
+        {
+          "path": "alert/index"
+        },
+        {
+          "path": "avatar/index"
+        },
+        {
+          "path": "back-top/demo/Basic"
+        },
+        {
+          "path": "back-top/demo/CustomContent"
+        },
+        {
+          "path": "back-top/demo/Duration"
+        },
+        {
+          "path": "back-top/demo/Position"
+        },
+        {
+          "path": "back-top/demo/ScrollView"
+        },
+        {
+          "path": "back-top/demo/VisibleHeight"
+        },
+        {
+          "path": "back-top/index"
+        },
+        {
+          "path": "badge/index"
+        },
+        {
+          "path": "button/index"
+        },
+        {
+          "path": "calendar-input/index"
+        },
+        {
+          "path": "calendar-popout/index"
+        },
+        {
+          "path": "calendar/index"
+        },
+        {
+          "path": "card/index"
+        },
+        {
+          "path": "cascader-input/index"
+        },
+        {
+          "path": "cascader-popout/index"
+        },
+        {
+          "path": "cascader/index"
+        },
+        {
+          "path": "checkbox-input/index"
+        },
+        {
+          "path": "checkbox-popout/index"
+        },
+        {
+          "path": "checkbox/index"
+        },
+        {
+          "path": "collapse/index"
+        },
+        {
+          "path": "count-down/index"
+        },
+        {
+          "path": "count-to/index"
+        },
+        {
+          "path": "crop-image/index"
+        },
+        {
+          "path": "datetime-picker-input/index"
+        },
+        {
+          "path": "datetime-picker-popout/index"
+        },
+        {
+          "path": "datetime-picker/index"
+        },
+        {
+          "path": "datetime-range-picker-input/index"
+        },
+        {
+          "path": "datetime-range-picker-popout/index"
+        },
+        {
+          "path": "datetime-range-picker/index"
+        },
+        {
+          "path": "dialog/index"
+        },
+        {
+          "path": "divider/index"
+        },
+        {
+          "path": "dropdown/index"
+        },
+        {
+          "path": "empty/index"
+        },
+        {
+          "path": "fab/index"
+        },
+        {
+          "path": "floating-bubble/index"
+        },
+        {
+          "path": "floating-panel/demo/Anchors"
+        },
+        {
+          "path": "floating-panel/demo/Basic"
+        },
+        {
+          "path": "floating-panel/demo/ContentDraggable"
+        },
+        {
+          "path": "floating-panel/index"
+        },
+        {
+          "path": "form/demo/BasicLogin"
+        },
+        {
+          "path": "form/demo/ChangePassword"
+        },
+        {
+          "path": "form/demo/ComplexDynamicFormItem"
+        },
+        {
+          "path": "form/demo/CustomControl"
+        },
+        {
+          "path": "form/demo/CustomValidate"
+        },
+        {
+          "path": "form/demo/DialogForm"
+        },
+        {
+          "path": "form/demo/DirectionAlign"
+        },
+        {
+          "path": "form/demo/DisabledReadOnly"
+        },
+        {
+          "path": "form/demo/DynamicFormItem"
+        },
+        {
+          "path": "form/demo/DynamicNested"
+        },
+        {
+          "path": "form/demo/DynamicValidate"
+        },
+        {
+          "path": "form/demo/ForgetPassword"
+        },
+        {
+          "path": "form/demo/LabelWidth"
+        },
+        {
+          "path": "form/demo/Login"
+        },
+        {
+          "path": "form/demo/MobileLogin"
+        },
+        {
+          "path": "form/demo/MultiFormLinkage"
+        },
+        {
+          "path": "form/demo/Nested"
+        },
+        {
+          "path": "form/demo/ScrollToFirstError"
+        },
+        {
+          "path": "form/demo/ToastValidateError"
+        },
+        {
+          "path": "form/demo/Typical"
+        },
+        {
+          "path": "form/demo/Validate"
+        },
+        {
+          "path": "form/index"
+        },
+        {
+          "path": "grid/index"
+        },
+        {
+          "path": "icon/index"
+        },
+        {
+          "path": "indexes/demo/FullPage"
+        },
+        {
+          "path": "indexes/index"
+        },
+        {
+          "path": "input/index"
+        },
+        {
+          "path": "keyboard/index"
+        },
+        {
+          "path": "layout/index"
+        },
+        {
+          "path": "list/index"
+        },
+        {
+          "path": "load-more/index"
+        },
+        {
+          "path": "loading/index"
+        },
+        {
+          "path": "lucky-draw/index"
+        },
+        {
+          "path": "marquee/index"
+        },
+        {
+          "path": "navbar/index"
+        },
+        {
+          "path": "notice-bar/index"
+        },
+        {
+          "path": "notify/index"
+        },
+        {
+          "path": "overlay/index"
+        },
+        {
+          "path": "pagination/index"
+        },
+        {
+          "path": "password-input/index"
+        },
+        {
+          "path": "picker-input/index"
+        },
+        {
+          "path": "picker-popout/index"
+        },
+        {
+          "path": "picker/index"
+        },
+        {
+          "path": "popout-input/index"
+        },
+        {
+          "path": "popout/index"
+        },
+        {
+          "path": "popover/index"
+        },
+        {
+          "path": "popup/index"
+        },
+        {
+          "path": "progress-bar/index"
+        },
+        {
+          "path": "progress-circle/index"
+        },
+        {
+          "path": "pull-down-refresh/demo/Page"
+        },
+        {
+          "path": "pull-down-refresh/demo/ScrollView"
+        },
+        {
+          "path": "pull-down-refresh/demo/Slot"
+        },
+        {
+          "path": "pull-down-refresh/index"
+        },
+        {
+          "path": "qrcode/index"
+        },
+        {
+          "path": "radio-input/index"
+        },
+        {
+          "path": "radio-popout/index"
+        },
+        {
+          "path": "radio/index"
+        },
+        {
+          "path": "rate/index"
+        },
+        {
+          "path": "read-more/index"
+        },
+        {
+          "path": "resize-sensor/index"
+        },
+        {
+          "path": "result/index"
+        },
+        {
+          "path": "scroll-list/index"
+        },
+        {
+          "path": "scroll-spy/index"
+        },
+        {
+          "path": "search/index"
+        },
+        {
+          "path": "share-sheet/index"
+        },
+        {
+          "path": "sidebar/demo/Scene1"
+        },
+        {
+          "path": "sidebar/demo/Scene2"
+        },
+        {
+          "path": "sidebar/index"
+        },
+        {
+          "path": "signature/index"
+        },
+        {
+          "path": "skeleton/index"
+        },
+        {
+          "path": "slider/index"
+        },
+        {
+          "path": "space/index"
+        },
+        {
+          "path": "status-bar/index"
+        },
+        {
+          "path": "stepper/index"
+        },
+        {
+          "path": "steps/index"
+        },
+        {
+          "path": "sticky/index"
+        },
+        {
+          "path": "style/index"
+        },
+        {
+          "path": "swipe-action/index"
+        },
+        {
+          "path": "swiper-dot/index"
+        },
+        {
+          "path": "switch/index"
+        },
+        {
+          "path": "tabbar-pit/index"
+        },
+        {
+          "path": "tabbar/index"
+        },
+        {
+          "path": "table/demo/FullScreen"
+        },
+        {
+          "path": "table/index"
+        },
+        {
+          "path": "tabs/index"
+        },
+        {
+          "path": "tag/index"
+        },
+        {
+          "path": "timeline/index"
+        },
+        {
+          "path": "toast/index"
+        },
+        {
+          "path": "tree/demo/Accordion"
+        },
+        {
+          "path": "tree/demo/Basic"
+        },
+        {
+          "path": "tree/demo/CheckStrictly"
+        },
+        {
+          "path": "tree/demo/DefaultExpandedAndChecked"
+        },
+        {
+          "path": "tree/demo/Draggable"
+        },
+        {
+          "path": "tree/demo/Editable"
+        },
+        {
+          "path": "tree/demo/Filter"
+        },
+        {
+          "path": "tree/demo/LeafOnly"
+        },
+        {
+          "path": "tree/demo/Selectable"
+        },
+        {
+          "path": "tree/demo/Single"
+        },
+        {
+          "path": "tree/demo/StrictFilter"
+        },
+        {
+          "path": "tree/index"
+        },
+        {
+          "path": "upload/index"
+        }
+      ]
     }
   ],
   "globalStyle": {

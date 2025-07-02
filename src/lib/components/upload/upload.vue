@@ -310,7 +310,10 @@ const previewImage = (index: number) => {
   const currentFileItem = innerValue.value[index]
 
   const fileList = innerValue.value.filter(
-    (item) => (item.url && isImageUrl(item.url)) || item.file?.type === 'image',
+    (item) =>
+      item.isImage ||
+      item.file?.type === 'image' ||
+      (item.url && isImageUrl(item.url)),
   )
   const currentIndex = fileList.findIndex((item) => item === currentFileItem)
   const urls = fileList.map((item) => (item.url || item.file?.path) as string)

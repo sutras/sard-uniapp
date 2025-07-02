@@ -332,15 +332,14 @@ export async function declareGlobalComponent(
 export async function addDemoRoute(kebabCaseName: string) {
   await replaceFileContent(path.resolve(srcDir, 'pages.json'), (content) => {
     const obj = JSON.parse(content)
-    if (
-      obj.pages.find((item: any) => item.path.includes(`/${kebabCaseName}/`))
-    ) {
+    const pages = obj.subPackages[0].pages
+    if (pages.find((item: any) => item.path.includes(`${kebabCaseName}/`))) {
       consola.warn(`已存在同名组件: ${kebabCaseName}`)
     } else {
-      obj.pages.push({
+      pages.push({
         path: `pages/components/${kebabCaseName}/index`,
       })
-      obj.pages.sort((a: any, b: any) => {
+      pages.sort((a: any, b: any) => {
         const indexPath = 'pages/index/index'
         return a.path === indexPath
           ? -1

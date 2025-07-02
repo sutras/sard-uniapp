@@ -2,7 +2,7 @@
   "id": "sard-uniapp",
   "name": "sard-uniapp",
   "displayName": "sard-uniapp",
-  "version": "1.20.0",
+  "version": "1.20.1",
   "description": "sard-uniapp 是一套基于 Uniapp + Vue3 框架开发的兼容多端的 UI 组件库",
   "main": "index.js",
   "scripts": {
@@ -16,7 +16,7 @@
     "tag": "sard tag",
     "changelog": "sard changelog",
     "buildAndRelease": "npm run build && npm run release",
-    "push": "git push origin && git push gitee && git push origin --tags && git push gitee --tags",
+    "push": "git push origin && git push gitee && git push origin --tags --force && git push gitee --tags --force",
     "prepare": "husky install",
     "new-component": "tsx ./scripts/new-component.ts",
     "nc": "npm run new-component",
