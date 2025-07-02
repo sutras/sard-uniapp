@@ -1,5 +1,6 @@
 import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
+import { type TransitionHookEmits } from '../popup/common'
 
 export interface ToastProps {
   rootStyle?: StyleValue
@@ -16,7 +17,7 @@ export interface ToastProps {
 
 export const defaultToastProps = defaultConfig.toast
 
-export interface ToastEmits {
+export interface ToastEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
 }
 

@@ -60,17 +60,39 @@ import { toast } from 'sard-uniapp'
 
 ### ToastEmits
 
-| 事件           | 描述             | 类型                       |
-| -------------- | ---------------- | -------------------------- |
-| update:visible | 对话框显隐时触发 | (visible: boolean) => void |
+| 事件                               | 描述                        | 类型                               |
+| ---------------------------------- | --------------------------- | ---------------------------------- |
+| update:visible                     | 提示框显隐时触发            | (visible: boolean) => void         |
+| visible-hook <sup>1.20.2+</sup>    | 入场/退场动画状态改变时触发 | (name: TransitionHookName) => void |
+| before-enter <sup>1.20.2+</sup>    | 入场动画开始前触发          | () => void                         |
+| enter <sup>1.20.2+</sup>           | 入场动画开始时触发          | () => void                         |
+| after-enter <sup>1.20.2+</sup>     | 入场动画结束时触发          | () => void                         |
+| enter-cancelled <sup>1.20.2+</sup> | 入场动画取消时触发          | () => void                         |
+| before-leave <sup>1.20.2+</sup>    | 退场动画开始前触发          | () => void                         |
+| leave <sup>1.20.2+</sup>           | 退场动画开始时触发          | () => void                         |
+| after-leave <sup>1.20.2+</sup>     | 退场动画结束时触发          | () => void                         |
+| leave-cancelled <sup>1.20.2+</sup> | 退场动画取消时触发          | () => void                         |
 
 ### ToastAgentProps / ToastOptions
 
 继承 [`ToastProps`](#ToastProps) 并有以下额外属性。
 
-| 属性 | 描述          | 类型   | 默认值  |
-| ---- | ------------- | ------ | ------- |
-| id   | 提示组件的 id | string | 'toast' |
+| 属性                                | 描述                        | 类型                               | 默认值  |
+| ----------------------------------- | --------------------------- | ---------------------------------- | ------- |
+| id                                  | 提示组件的 id               | string                             | 'toast' |
+| onVisibleHook <sup>1.20.2+</sup>    | 入场/退场动画状态改变时调用 | (name: TransitionHookName) => void |
+| onBeforeEnter <sup>1.20.2+</sup>    | 入场动画开始前调用          | () => void                         |
+| onEnter <sup>1.20.2+</sup>          | 入场动画开始时调用          | () => void                         |
+| onAfterEnter <sup>1.20.2+</sup>     | 入场动画结束时调用          | () => void                         |
+| onEnterCancelled <sup>1.20.2+</sup> | 入场动画取消时调用          | () => void                         |
+| onBeforeLeave <sup>1.20.2+</sup>    | 退场动画开始前调用          | () => void                         |
+| onLeave <sup>1.20.2+</sup>          | 退场动画开始时调用          | () => void                         |
+| onAfterLeave <sup>1.20.2+</sup>     | 退场动画结束时调用          | () => void                         |
+| onLeaveCancelled <sup>1.20.2+</sup> | 退场动画取消时调用          | () => void                         |
+
+### ToastAgentEmits <sup>1.20.2+</sup>
+
+继承 [`ToastEmits`](#ToastEmits)。
 
 ### 命令式方法
 

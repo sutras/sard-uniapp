@@ -41,6 +41,18 @@ export interface TransitionHookEmits {
   (e: 'visible-hook', name: TransitionHookName): void
 }
 
+export interface TransitionHookCallbacks {
+  onVisibleHook?: (name: TransitionHookName) => void
+  onBeforeEnter?: () => void
+  onEnter?: () => void
+  onAfterEnter?: () => void
+  onEnterCancelled?: () => void
+  onBeforeLeave?: () => void
+  onLeave?: () => void
+  onAfterLeave?: () => void
+  onLeaveCancelled?: () => void
+}
+
 export interface PopupEmits extends TransitionHookEmits {
   (e: 'overlay-click', event: any): void
 }

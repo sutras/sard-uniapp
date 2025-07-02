@@ -1,5 +1,6 @@
 import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
+import { type TransitionHookEmits } from '../popup/common'
 
 export interface NotifyProps {
   rootStyle?: StyleValue
@@ -17,7 +18,11 @@ export interface NotifyProps {
 
 export const defaultNotifyProps = defaultConfig.notify
 
-export interface NotifyEmits {
+export interface NotifySlots {
+  default?(props: Record<string, never>): any
+}
+
+export interface NotifyEmits extends TransitionHookEmits {
   (e: 'click', event: any): void
   (e: 'update:visible', event: any): void
 }

@@ -2,11 +2,16 @@ import {
   getAllImperatives,
   getAvailableImperative,
   getImperatives,
-} from '../../use/useImperative'
+} from '../../use'
 import { defaultConfig } from '../config'
-import { type ToastProps, defaultToastProps } from '../toast/common'
+import { type TransitionHookCallbacks } from '../popup/common'
+import {
+  type ToastEmits,
+  type ToastProps,
+  defaultToastProps,
+} from '../toast/common'
 
-export interface ToastAgentProps extends ToastProps {
+export interface ToastAgentProps extends ToastProps, TransitionHookCallbacks {
   id?: string
 }
 
@@ -14,6 +19,8 @@ export const defaultToastAgentProps = () => ({
   ...defaultToastProps,
   ...defaultConfig.toastAgent,
 })
+
+export interface ToastAgentEmits extends ToastEmits {}
 
 export const imperativeName = 'toast'
 

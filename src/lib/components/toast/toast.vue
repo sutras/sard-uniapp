@@ -6,6 +6,7 @@
     :transparent="transparent"
     :root-style="popupStyle"
     effect="fade"
+    @visible-hook="onVisibleHook"
   >
     <view :class="toastClass" :style="toastStyle">
       <view v-if="type !== 'text'" :class="iconClass">
@@ -40,7 +41,7 @@ import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarPopup from '../popup/popup.vue'
 import SarLoading from '../loading/loading.vue'
 import SarIcon from '../icon/icon.vue'
-import { useTimeout } from '../../use'
+import { type TransitionHookName, useTimeout } from '../../use'
 import {
   type ToastProps,
   type ToastEmits,
@@ -86,6 +87,11 @@ watch(
     }
   },
 )
+
+const onVisibleHook = (name: TransitionHookName) => {
+  emit('visible-hook', name)
+  emit(name as any)
+}
 
 defineExpose<ToastExpose>({
   reHideLater,

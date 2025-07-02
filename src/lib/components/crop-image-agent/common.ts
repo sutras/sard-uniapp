@@ -1,4 +1,4 @@
-import { getAvailableImperative } from '../../use/useImperative'
+import { getAvailableImperative } from '../../use'
 import { defaultConfig } from '../config'
 import { CropImageProps, defaultCropImageProps } from '../crop-image/common'
 

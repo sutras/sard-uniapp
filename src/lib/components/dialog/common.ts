@@ -31,7 +31,6 @@ export interface DialogProps {
   duration?: number
   cancelProps?: ButtonProps
   confirmProps?: ButtonProps
-  id?: string
 }
 
 export const defaultDialogProps = defaultConfig.dialog

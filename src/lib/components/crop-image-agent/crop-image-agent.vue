@@ -11,7 +11,7 @@ import {
   defaultCropImageAgentProps,
   imperativeName,
 } from './common'
-import { useImperative } from '../../use/useImperative'
+import { useImperative } from '../../use'
 
 defineOptions({
   options: {

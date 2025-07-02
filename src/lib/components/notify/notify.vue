@@ -4,10 +4,13 @@
     :overlay="false"
     :effect="effect"
     :duration="duration"
+    @visible-hook="onVisibleHook"
   >
-    <view :class="notifyClass" :style="notifyStyle">
+    <view :class="notifyClass" :style="notifyStyle" @click="onClick">
       <sar-status-bar v-if="position === 'top' && statusBar" />
-      <view :class="bem.e('content')">{{ message }}</view>
+      <view :class="bem.e('content')">
+        <slot>{{ message }}</slot>
+      </view>
     </view>
   </sar-popup>
 </template>
@@ -15,11 +18,12 @@
 <script setup lang="ts">
 import { computed, ref, watch, nextTick } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
-import { useTimeout } from '../../use'
+import { type TransitionHookName, useTimeout } from '../../use'
 import {
   type NotifyExpose,
   type NotifyProps,
   type NotifyEmits,
+  type NotifySlots,
   defaultNotifyProps,
 } from './common'
 import SarPopup from '../popup/popup.vue'
@@ -34,6 +38,8 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<NotifyProps>(), defaultNotifyProps)
+
+defineSlots<NotifySlots>()
 
 const emit = defineEmits<NotifyEmits>()
 
@@ -78,6 +84,15 @@ watch(
     }
   },
 )
+
+const onVisibleHook = (name: TransitionHookName) => {
+  emit('visible-hook', name)
+  emit(name as any)
+}
+
+const onClick = (event: any) => {
+  emit('click', event)
+}
 
 defineExpose<NotifyExpose>({
   reHideLater,

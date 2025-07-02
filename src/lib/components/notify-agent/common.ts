@@ -1,12 +1,17 @@
-import { type NotifyProps, defaultNotifyProps } from '../notify/common'
+import {
+  type NotifyEmits,
+  type NotifyProps,
+  defaultNotifyProps,
+} from '../notify/common'
 import { defaultConfig } from '../config'
 import {
   getAllImperatives,
   getAvailableImperative,
   getImperatives,
-} from '../../use/useImperative'
+} from '../../use'
+import { type TransitionHookCallbacks } from '../popup/common'
 
-export interface NotifyAgentProps extends NotifyProps {
+export interface NotifyAgentProps extends NotifyProps, TransitionHookCallbacks {
   id?: string
 }
 
@@ -14,6 +19,8 @@ export const defaultNotifyAgentProps = () => ({
   ...defaultNotifyProps,
   ...defaultConfig.notifyAgent,
 })
+
+export interface NotifyAgentEmits extends NotifyEmits {}
 
 export const imperativeName = 'notify'
 

@@ -71,13 +71,48 @@ import { notify } from 'sard-uniapp'
 | duration                    | 显隐动画时长，单位 ms                       | number                                         | 300       |
 | status-bar <sup>1.12+</sup> | 是否包含状态栏，自定义导航栏时应设为 `true` | boolean                                        | false     |
 
+### NotifySlots <sup>1.20.2+</sup>
+
+| 插槽    | 描述           | 属性 |
+| ------- | -------------- | ---- |
+| default | 自定义默认内容 | -    |
+
+### NotifyEmits
+
+| 事件                               | 描述                        | 类型                               |
+| ---------------------------------- | --------------------------- | ---------------------------------- |
+| update:visible                     | 通知框显隐时触发            | (visible: boolean) => void         |
+| click <sup>1.20.2+</sup>           | 点击通知框时触发            | (event: any) => void               |
+| visible-hook <sup>1.20.2+</sup>    | 入场/退场动画状态改变时触发 | (name: TransitionHookName) => void |
+| before-enter <sup>1.20.2+</sup>    | 入场动画开始前触发          | () => void                         |
+| enter <sup>1.20.2+</sup>           | 入场动画开始时触发          | () => void                         |
+| after-enter <sup>1.20.2+</sup>     | 入场动画结束时触发          | () => void                         |
+| enter-cancelled <sup>1.20.2+</sup> | 入场动画取消时触发          | () => void                         |
+| before-leave <sup>1.20.2+</sup>    | 退场动画开始前触发          | () => void                         |
+| leave <sup>1.20.2+</sup>           | 退场动画开始时触发          | () => void                         |
+| after-leave <sup>1.20.2+</sup>     | 退场动画结束时触发          | () => void                         |
+| leave-cancelled <sup>1.20.2+</sup> | 退场动画取消时触发          | () => void                         |
+
 ### NotifyAgentProps / NotifyOptions
 
 继承 [`NotifyProps`](#NotifyProps) 并有以下额外属性。
 
-| 属性 | 描述          | 类型   | 默认值   |
-| ---- | ------------- | ------ | -------- |
-| id   | 通知组件的 id | string | 'notify' |
+| 属性                                | 描述                        | 类型                               | 默认值   |
+| ----------------------------------- | --------------------------- | ---------------------------------- | -------- |
+| id                                  | 通知组件的 id               | string                             | 'notify' |
+| onVisibleHook <sup>1.20.2+</sup>    | 入场/退场动画状态改变时调用 | (name: TransitionHookName) => void |
+| onBeforeEnter <sup>1.20.2+</sup>    | 入场动画开始前调用          | () => void                         |
+| onEnter <sup>1.20.2+</sup>          | 入场动画开始时调用          | () => void                         |
+| onAfterEnter <sup>1.20.2+</sup>     | 入场动画结束时调用          | () => void                         |
+| onEnterCancelled <sup>1.20.2+</sup> | 入场动画取消时调用          | () => void                         |
+| onBeforeLeave <sup>1.20.2+</sup>    | 退场动画开始前调用          | () => void                         |
+| onLeave <sup>1.20.2+</sup>          | 退场动画开始时调用          | () => void                         |
+| onAfterLeave <sup>1.20.2+</sup>     | 退场动画结束时调用          | () => void                         |
+| onLeaveCancelled <sup>1.20.2+</sup> | 退场动画取消时调用          | () => void                         |
+
+### NotifyAgentEmits <sup>1.20.2+</sup>
+
+继承 [`NotifyEmits`](#NotifyEmits)。
 
 ### 命令式方法
 

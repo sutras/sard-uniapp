@@ -1,1 +1,6 @@
-export { type NotifyAgentProps, type NotifyOptions, notify } from './common'
+export {
+  type NotifyAgentProps,
+  type NotifyOptions,
+  type NotifyAgentEmits,
+  notify,
+} from './common'

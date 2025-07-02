@@ -1,1 +1,6 @@
-export type { NotifyProps, NotifyEmits, NotifyExpose } from './common'
+export type {
+  NotifyProps,
+  NotifySlots,
+  NotifyEmits,
+  NotifyExpose,
+} from './common'

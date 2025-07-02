@@ -1,1 +1,6 @@
-export { type ToastAgentProps, type ToastOptions, toast } from './common'
+export {
+  type ToastAgentProps,
+  type ToastOptions,
+  type ToastAgentEmits,
+  toast,
+} from './common'

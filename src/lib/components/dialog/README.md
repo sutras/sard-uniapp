@@ -139,9 +139,25 @@ type DialogBeforeClose = (
 
 继承 [`DialogProps`](#DialogProps) 并有以下额外属性。
 
-| 属性 | 描述            | 类型   | 默认值   |
-| ---- | --------------- | ------ | -------- |
-| id   | 对话框组件的 id | string | 'dialog' |
+| 属性                                | 描述                        | 类型                               | 默认值   |
+| ----------------------------------- | --------------------------- | ---------------------------------- | -------- |
+| id                                  | 对话框组件的 id             | string                             | 'dialog' |
+| onClose <sup>1.20.2+</sup>          | 点击关闭按钮或遮罩时调用    | () => void                         |
+| onCancel <sup>1.20.2+</sup>         | 点击取消按钮时调用          | () => void                         |
+| onConfirm <sup>1.20.2+</sup>        | 点击确定按钮时调用          | () => void                         |
+| onVisibleHook <sup>1.20.2+</sup>    | 入场/退场动画状态改变时调用 | (name: TransitionHookName) => void |
+| onBeforeEnter <sup>1.20.2+</sup>    | 入场动画开始前调用          | () => void                         |
+| onEnter <sup>1.20.2+</sup>          | 入场动画开始时调用          | () => void                         |
+| onAfterEnter <sup>1.20.2+</sup>     | 入场动画结束时调用          | () => void                         |
+| onEnterCancelled <sup>1.20.2+</sup> | 入场动画取消时调用          | () => void                         |
+| onBeforeLeave <sup>1.20.2+</sup>    | 退场动画开始前调用          | () => void                         |
+| onLeave <sup>1.20.2+</sup>          | 退场动画开始时调用          | () => void                         |
+| onAfterLeave <sup>1.20.2+</sup>     | 退场动画结束时调用          | () => void                         |
+| onLeaveCancelled <sup>1.20.2+</sup> | 退场动画取消时调用          | () => void                         |
+
+### DialogAgentEmits <sup>1.20.2+</sup>
+
+继承 [`DialogEmits`](#DialogEmits)。
 
 ### 命令式方法
 

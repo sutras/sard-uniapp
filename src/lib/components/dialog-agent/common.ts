@@ -1,12 +1,17 @@
-import { type DialogProps, defaultDialogProps } from '../dialog/common'
+import {
+  type DialogEmits,
+  type DialogProps,
+  defaultDialogProps,
+} from '../dialog/common'
 import { defaultConfig } from '../config'
 import {
   getAllImperatives,
   getAvailableImperative,
   getImperatives,
-} from '../../use/useImperative'
+} from '../../use'
+import { type TransitionHookCallbacks } from '../popup/common'
 
-export interface DialogAgentProps extends DialogProps {
+export interface DialogAgentProps extends DialogProps, TransitionHookCallbacks {
   id?: string
   onClose?: () => void
   onCancel?: () => void
@@ -17,6 +22,8 @@ export const defaultDialogAgentProps = () => ({
   ...defaultDialogProps,
   ...defaultConfig.dialogAgent,
 })
+
+export interface DialogAgentEmits extends DialogEmits {}
 
 export const imperativeName = 'dialog'
 
