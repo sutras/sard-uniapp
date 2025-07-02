@@ -1,3 +1,12 @@
+## [1.20.2](https://github.com/sutras/sard-uniapp/compare/v1.20.1...v1.20.2) (2025-07-02)
+
+
+### Features
+
+* dialog, notify, toast 新增事件 ([54e5c4b](https://github.com/sutras/sard-uniapp/commit/54e5c4b8c8240df6dd77edb01bfee9e8ecabae96))
+
+
+
 ## [1.20.1](https://github.com/sutras/sard-uniapp/compare/v1.20.0...v1.20.1) (2025-07-02)
 
 
