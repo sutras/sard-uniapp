@@ -10,6 +10,7 @@ export interface UploadFile {
   duration: number
   width: number
   height: number
+  name: string
 }
 
 export interface UploadFileItem {
@@ -46,7 +47,10 @@ export interface UploadProps {
   beforeRead?: (file: UploadFile) => boolean | Promise<UploadFile>
   afterRead?: (fileItem: UploadFileItem) => void
   removable?: boolean
-  beforeRemove?: (...args: unknown[]) => boolean | Promise<void>
+  beforeRemove?: (
+    index: number,
+    fileItem: UploadFileItem,
+  ) => boolean | Promise<void>
   validateEvent?: boolean
 }
 
@@ -63,6 +67,7 @@ export interface UploadEmits {
   (e: 'update:model-value', value: UploadFileItem[]): void
   (e: 'change', value: UploadFileItem[]): void
   (e: 'remove', index: number, item: UploadFileItem): void
+  (e: 'item-click', item: UploadFileItem, index: number): void
 }
 
 export interface ChainNode {
@@ -80,7 +85,6 @@ export interface UploadPreviewProps {
   name?: string
   message?: string
   removable?: boolean
-  beforeRemove?: (index: number) => boolean | Promise<void>
   index: number
   disabled?: boolean
   readonly?: boolean
@@ -89,6 +93,7 @@ export interface UploadPreviewProps {
 export const defaultUploadPreviewProps = defaultConfig.uploadPreview
 
 export interface UploadPreviewEmits {
-  (e: 'image-click', index: number): void
-  (e: 'remove', index: number): void
+  (e: 'image-click'): void
+  (e: 'remove'): void
+  (e: 'click'): void
 }

@@ -65,6 +65,12 @@ import Upload from 'sard-uniapp/components/upload/upload.vue'
 
 @code('${DEMO_PATH}/upload/demo/Status.vue')
 
+### 重传与取消 <sup>1.20+</sup>
+
+利用 `item-click` 事件可实现重传与取消。
+
+@code('${DEMO_PATH}/upload/demo/ReuploadCancel.vue')
+
 ### 只读和禁用
 
 只读会隐藏选择区域，禁用则不允许用户点击选择。
@@ -101,7 +107,7 @@ import Upload from 'sard-uniapp/components/upload/upload.vue'
 | before-read                      | 文件读取前的回调，返回 false 可终止文件读取，支持返回 Promise                                                     | (file: File) => boolean \| Promise\<File>                              | -                          |
 | after-read                       | 文件读取完成后的回调                                                                                              | (fileItem: UploadFileItem \| UploadFileItem[]) => void                 | -                          |
 | removable                        | 是否可删除                                                                                                        | boolean                                                                | true                       |
-| before-remove                    | 文件删除前的回调，返回 false 可终止文件读取，支持返回 Promise                                                     | (...args: any[]) => boolean \| Promise\<void>                          | -                          |
+| before-remove                    | 文件删除前的回调，返回 false 可终止文件删除，支持返回 Promise                                                     | (index: number, fileItem: UploadFileItem) => boolean \| Promise\<any>  | -                          |
 | validate-event                   | 是否触发表单验证                                                                                                  | boolean                                                                | true                       |
 
 ### UploadSlots
@@ -110,13 +116,14 @@ import Upload from 'sard-uniapp/components/upload/upload.vue'
 | ------ | -------------- | ---- |
 | select | 自定义选取内容 | -    |
 
-### ButtonEmits
+### UploadEmits
 
-| 事件                     | 描述                     | 类型                                          |
-| ------------------------ | ------------------------ | --------------------------------------------- |
-| update:model-value       | 选择的文件列表改变时触发 | (value: UploadFileItem[]) => void             |
-| change <sup>1.9.2+</sup> | 选择的文件列表改变时触发 | (value: UploadFileItem[]) => void             |
-| remove                   | 删除文件时触发           | (index: number, item: UploadFileItem) => void |
+| 事件                        | 描述                     | 类型                                          |
+| --------------------------- | ------------------------ | --------------------------------------------- |
+| update:model-value          | 选择的文件列表改变时触发 | (value: UploadFileItem[]) => void             |
+| change <sup>1.9.2+</sup>    | 选择的文件列表改变时触发 | (value: UploadFileItem[]) => void             |
+| remove                      | 删除文件时触发           | (index: number, item: UploadFileItem) => void |
+| item-click <sup>1.20+</sup> | 点击文件项时触发         | (item: UploadFileItem, index: number) => void |
 
 ### UploadFileItem
 
@@ -138,14 +145,15 @@ type UploadStatus = 'pending' | 'uploading' | 'failed' | 'done'
 
 ### UploadFile
 
-| 属性     | 描述               | 类型               | 默认值 |
-| -------- | ------------------ | ------------------ | ------ |
-| type     | 文件类型           | 'image' \| 'video' | -      |
-| size     | 文件大小，单位字节 | number             | -      |
-| path     | 本地临时文件路径   | string             | -      |
-| duration | 选定视频的时间长度 | number             | 0      |
-| width    | 返回选定视频的宽度 | number             | 0      |
-| height   | 返回选定视频的高度 | number             | 0      |
+| 属性                  | 描述               | 类型               | 默认值 |
+| --------------------- | ------------------ | ------------------ | ------ |
+| type                  | 文件类型           | 'image' \| 'video' | -      |
+| size                  | 文件大小，单位字节 | number             | -      |
+| name <sup>1.20+</sup> | 文件名             | string             | -      |
+| path                  | 本地临时文件路径   | string             | -      |
+| duration              | 选定视频的时间长度 | number             | 0      |
+| width                 | 选定视频的宽度     | number             | 0      |
+| height                | 选定视频的高度     | number             | 0      |
 
 ## 主题定制
 

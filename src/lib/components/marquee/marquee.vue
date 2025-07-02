@@ -2,6 +2,7 @@
   <view :class="marqueeClass" :style="marqueeStyle">
     <view :id="wrapperId" :class="bem.e('wrapper')" :style="wrapperStyle">
       <slot></slot>
+      <sar-resize-sensor @resize="onResize" />
     </view>
   </view>
 </template>
@@ -15,6 +16,7 @@ import {
   uniqid,
   getBoundingClientRect,
 } from '../../utils'
+import SarResizeSensor from '../resize-sensor/resize-sensor.vue'
 import {
   type MarqueeProps,
   type MarqueeSlots,
@@ -62,6 +64,10 @@ const { start: updateLater } = useTimeout(
 onMounted(() => {
   updateLater()
 })
+
+const onResize = () => {
+  update()
+}
 
 defineExpose<MarqueeExpose>({
   update,

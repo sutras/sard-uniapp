@@ -7,6 +7,9 @@ export interface CheckboxPopoutProps extends CheckboxGroupProps {
   title?: string
   popoutClass?: string
   popoutStyle?: StyleValue
+  showCheckAll?: boolean
+  searchable?: boolean
+  filterPlaceholder?: string
 }
 
 export const defaultCheckboxPopoutProps = () => ({

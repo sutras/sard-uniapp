@@ -23,7 +23,7 @@ import {
   getBoundingClientRect,
   uniqid,
   getWindowInfo,
-  minmax,
+  clamp,
 } from '../../utils'
 import {
   type FloatingBubbleProps,
@@ -137,8 +137,8 @@ const onTouchMove = (event: TouchEvent) => {
     x = bubbleRect.left + deltaX
     y = bubbleRect.top + deltaY
 
-    x = minmax(x, getMinX(), getMaxX())
-    y = minmax(y, getMinY(), getMaxY())
+    x = clamp(x, getMinX(), getMaxX())
+    y = clamp(y, getMinY(), getMaxY())
 
     if (props.axis === 'y') {
       x = getMaxX()

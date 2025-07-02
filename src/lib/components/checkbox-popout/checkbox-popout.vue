@@ -6,63 +6,88 @@
     :root-style="popoutStyle"
     @confirm="onConfirm"
   >
-    <template #visible="{ already }">
-      <view v-if="already" :class="containerClass">
-        <scroll-view
-          :class="bem.e('scroll')"
-          scroll-y
-          trap-scroll
-          :upper-threshold="0"
-          :lower-threshold="0"
-          :throttle="false"
-          @scroll="onScroll"
-          @scrolltoupper="onScrolltoupper"
-          @scrolltolower="onScrolltolower"
+    <template v-if="showCheckAll" #title-prepend>
+      <view :class="bem.e('check-all')">
+        <sar-checkbox
+          v-model:checked="allChecked"
+          :indeterminate="isIndeterminate"
+          @change="onAllChange"
         >
-          <sar-checkbox-group
-            :size="size"
-            :type="type"
-            :checkedColor="checkedColor"
-            :direction="direction"
-            :validate-event="false"
-            :model-value="popoutValue"
-            @change="onChange"
+          {{ count }}
+        </sar-checkbox>
+      </view>
+    </template>
+    <template #visible="{ already }">
+      <view v-if="already">
+        <sar-list-item v-if="searchable">
+          <sar-input
+            v-model="searchValue"
+            :placeholder="filterPlaceholder"
+            clearable
           >
-            <template #custom="{ toggle }">
-              <sar-list inlaid>
-                <sar-list-item
-                  v-for="option in options"
-                  :key="getMayPrimitiveOption(option, fieldKeys.value)"
-                  :title="getMayPrimitiveOption(option, fieldKeys.label)"
-                  hover
-                  @click="
-                    toggle(getMayPrimitiveOption(option, fieldKeys.value))
-                  "
-                >
-                  <template #value>
-                    <sar-checkbox
-                      readonly
-                      :value="getMayPrimitiveOption(option, fieldKeys.value)"
-                      :validate-event="false"
-                    />
-                  </template>
-                </sar-list-item>
-              </sar-list>
+            <template #prepend>
+              <sar-icon family="sari" name="search" />
             </template>
-          </sar-checkbox-group>
-        </scroll-view>
+          </sar-input>
+        </sar-list-item>
+        <view :class="containerClass">
+          <scroll-view
+            :class="scrollClass"
+            scroll-y
+            trap-scroll
+            :upper-threshold="0"
+            :lower-threshold="0"
+            :throttle="false"
+            @scroll="onScroll"
+            @scrolltoupper="onScrolltoupper"
+            @scrolltolower="onScrolltolower"
+          >
+            <sar-checkbox-group
+              :size="size"
+              :type="type"
+              :checkedColor="checkedColor"
+              :direction="direction"
+              :validate-event="false"
+              :model-value="popoutValue"
+              @change="onChange"
+            >
+              <template #custom="{ toggle }">
+                <sar-list inlaid>
+                  <sar-list-item
+                    v-for="option in filteredOptions"
+                    :key="option.value"
+                    :title="option.label"
+                    :hover="!option.disabled"
+                    @click="select(option, toggle)"
+                  >
+                    <template #icon>
+                      <sar-checkbox
+                        readonly
+                        :disabled="option.disabled"
+                        :value="option.value"
+                        :validate-event="false"
+                      />
+                    </template>
+                  </sar-list-item>
+                </sar-list>
+              </template>
+            </sar-checkbox-group>
+          </scroll-view>
+        </view>
       </view>
     </template>
   </sar-popout>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, ref } from 'vue'
 import SarPopout from '../popout/popout.vue'
 import SarCheckboxGroup from '../checkbox-group/checkbox-group.vue'
 import SarCheckbox from '../checkbox/checkbox.vue'
 import SarList from '../list/list.vue'
 import SarListItem from '../list-item/list-item.vue'
+import SarInput from '../input/input.vue'
+import SarIcon from '../icon/icon.vue'
 import { classNames, createBem, getMayPrimitiveOption } from '../../utils'
 import {
   type CheckboxPopoutProps,
@@ -70,7 +95,7 @@ import {
   type CheckboxPopoutEmits,
   defaultCheckboxPopoutProps,
 } from './common'
-import { useScrollSide, useFormPopout } from '../../use'
+import { useScrollSide, useFormPopout, useIndeterminate } from '../../use'
 import { defaultOptionKeys } from '../checkbox/common'
 
 defineOptions({
@@ -101,6 +126,45 @@ const fieldKeys = computed(() => {
   return Object.assign({}, defaultOptionKeys, props.optionKeys)
 })
 
+const objectOptions = computed(() => {
+  return props.options.map((option) => {
+    return {
+      label: getMayPrimitiveOption(option, fieldKeys.value.label),
+      value: getMayPrimitiveOption(option, fieldKeys.value.value),
+      disabled:
+        getMayPrimitiveOption(option, fieldKeys.value.disabled) === true,
+    }
+  })
+})
+
+const select = (option: any, toggle: (value: any) => void) => {
+  if (!option.disabled) {
+    toggle(option.value)
+  }
+}
+
+const { allChecked, isIndeterminate, onAllChange } = useIndeterminate(
+  popoutValue,
+  objectOptions,
+)
+
+// search
+const searchValue = ref('')
+
+const filteredOptions = computed(() => {
+  const searchString = searchValue.value
+  if (!searchString) return objectOptions.value
+
+  return objectOptions.value.filter((option) => {
+    return option.label.includes(searchString)
+  })
+})
+
+// count
+const count = computed(() => {
+  return (popoutValue.value?.length || 0) + ' / ' + props.options.length
+})
+
 // scroll
 const { scrollSide, onScroll, onScrolltoupper, onScrolltolower } =
   useScrollSide()
@@ -109,6 +173,13 @@ const containerClass = computed(() => {
   return classNames(
     bem.e('container'),
     bem.em('container', scrollSide.value, scrollSide.value),
+  )
+})
+
+const scrollClass = computed(() => {
+  return classNames(
+    bem.e('scroll'),
+    bem.em('scroll', 'searchable', props.searchable),
   )
 })
 </script>

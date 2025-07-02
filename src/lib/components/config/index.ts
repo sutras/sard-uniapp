@@ -368,6 +368,12 @@ export const defaultConfig = {
     voidIcon: 'star',
     validateEvent: true,
   },
+  readMore: {
+    maxHeight: 200,
+  },
+  resizeSensor: {
+    threshold: 150,
+  },
   result: {
     status: 'info' as ResultProps['status'],
   },

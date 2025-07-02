@@ -38,6 +38,7 @@ import {
   type TableFixationEmits,
   type TableScrollSide,
 } from '../table/common'
+import { useWindowResize } from '../../use'
 
 defineOptions({
   options: {
@@ -66,8 +67,8 @@ const onScroll = (event: any) => {
       scrollLeft < 1
         ? 'left'
         : scrollWidth - scrollLeft - fixationWidth < 1
-        ? 'right'
-        : 'middle'
+          ? 'right'
+          : 'middle'
   }
 }
 
@@ -105,7 +106,7 @@ const setFixationRect = async () => {
   fixationRect.value = await getBoundingClientRect(`.${fixationId}`, instance)
 }
 
-uni.onWindowResize?.(setFixationRect)
+useWindowResize(setFixationRect)
 
 watch(
   scrollSide,

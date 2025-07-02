@@ -82,8 +82,11 @@ declare module 'vue' {
     SarRadioInput: typeof import('./components/radio-input/radio-input.vue').default
     SarRadioPopout: typeof import('./components/radio-popout/radio-popout.vue').default
     SarRate: typeof import('./components/rate/rate.vue').default
+    SarReadMore: typeof import('./components/read-more/read-more.vue').default
+    SarResizeSensor: typeof import('./components/resize-sensor/resize-sensor.vue').default
     SarResult: typeof import('./components/result/result.vue').default
     SarRow: typeof import('./components/row/row.vue').default
+    SarScrollList: typeof import('./components/scroll-list/scroll-list.vue').default
     SarScrollSpy: typeof import('./components/scroll-spy/scroll-spy.vue').default
     SarScrollSpyAnchor: typeof import('./components/scroll-spy-anchor/scroll-spy-anchor.vue').default
     SarSearch: typeof import('./components/search/search.vue').default
@@ -102,6 +105,8 @@ declare module 'vue' {
     SarStep: typeof import('./components/step/step.vue').default
     SarStepper: typeof import('./components/stepper/stepper.vue').default
     SarSteps: typeof import('./components/steps/steps.vue').default
+    SarSticky: typeof import('./components/sticky/sticky.vue').default
+    SarStickyBox: typeof import('./components/sticky-box/sticky-box.vue').default
     SarSwipeAction: typeof import('./components/swipe-action/swipe-action.vue').default
     SarSwiperDot: typeof import('./components/swiper-dot/swiper-dot.vue').default
     SarSwitch: typeof import('./components/switch/switch.vue').default

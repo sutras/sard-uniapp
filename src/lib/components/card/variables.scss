@@ -2,7 +2,6 @@
 page,
 .sar-portal {
   --sar-card-border-radius: var(--sar-rounded-lg);
-  --sar-card-border-color: var(--sar-border-color);
   --sar-card-bg: var(--sar-emphasis-bg);
   --sar-card-active-bg: var(--sar-active-bg);
 
@@ -17,5 +16,21 @@ page,
 
   --sar-card-footer-padding-y: 20rpx;
   --sar-card-footer-padding-x: 32rpx;
+
+  --sar-card-border-color: var(--sar-border-color);
+
+  // 1.20+
+  --sar-card-border-style: var(--sar-border-style);
+  --sar-card-border-width: var(--sar-border-width);
+  --sar-card-border-left: 0px;
+  --sar-card-border-right: 0px;
+
+  // 可覆盖 1.20+
+  // --sar-card-header-border-color: var(--sar-card-border-color);
+  // --sar-card-header-border-style: var(--sar-card-border-style);
+  // --sar-card-header-border-width: var(--sar-card-border-width);
+  // --sar-card-footer-border-color: var(--sar-card-border-color);
+  // --sar-card-footer-border-style: var(--sar-card-border-style);
+  // --sar-card-footer-border-width: var(--sar-card-border-width);
 }
 // #endvariables

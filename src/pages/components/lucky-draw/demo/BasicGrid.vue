@@ -1,5 +1,5 @@
 <template>
-  <view class="grid">
+  <view class="grid-box">
     <view v-for="item in grids" :key="item" class="grid-item">
       <view
         v-if="item > -1"
@@ -64,7 +64,7 @@ onMounted(() => {
 </script>
 
 <style lang="scss" scoped>
-.grid {
+.grid-box {
   box-sizing: border-box;
   display: flex;
   flex-wrap: wrap;
@@ -99,6 +99,7 @@ onMounted(() => {
 }
 .prize-icon {
   font-size: 72rpx;
+  line-height: 1;
   text-shadow: 0 2rpx 4rpx rgba(0, 0, 0, 0.2);
 }
 .prize-name {

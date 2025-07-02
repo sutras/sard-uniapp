@@ -58,6 +58,8 @@
     flex: auto;
     font-size: var(--sar-list-item-title-font-size);
     line-height: var(--sar-list-item-title-line-height);
+    word-wrap: break-word;
+    word-break: break-word;
   }
 
   @include e(description) {
@@ -66,6 +68,8 @@
     font-size: var(--sar-list-item-description-font-size);
     line-height: var(--sar-list-item-description-line-height);
     color: var(--sar-list-item-description-color);
+    word-wrap: break-word;
+    word-break: break-word;
   }
 
   @include e(value) {

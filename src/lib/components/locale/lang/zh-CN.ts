@@ -105,6 +105,10 @@ export default {
     confirm: '确定',
     cancel: '取消',
   },
+  readMore: {
+    fold: '收起',
+    unfold: '展开',
+  },
   signature: {
     confirm: '确定',
     clear: '清空',

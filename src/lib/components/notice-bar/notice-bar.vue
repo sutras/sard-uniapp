@@ -13,6 +13,7 @@
         @animationend="onAnimationEnd"
       >
         <slot></slot>
+        <sar-resize-sensor @resize="onResize" />
       </view>
     </view>
     <view
@@ -40,6 +41,7 @@ import {
   getBoundingClientRect,
 } from '../../utils'
 import SarIcon from '../icon/icon.vue'
+import SarResizeSensor from '../resize-sensor/resize-sensor.vue'
 import {
   type NoticeBarProps,
   type NoticeBarSlots,
@@ -112,14 +114,6 @@ const onAnimationEnd = () => {
   }
 }
 
-const innerVisible = ref(props.visible)
-const onRightIconClick = () => {
-  if (props.closable) {
-    innerVisible.value = false
-    emit('close')
-  }
-}
-
 const { start: updateLater } = useTimeout(
   () => {
     update()
@@ -133,6 +127,20 @@ onMounted(() => {
   }
 })
 
+const onResize = () => {
+  update()
+}
+
+// visible
+const innerVisible = ref(props.visible)
+const onRightIconClick = () => {
+  if (props.closable) {
+    innerVisible.value = false
+    emit('close')
+  }
+}
+
+// others
 const onClick = (event: any) => {
   emit('click', event)
 }
@@ -141,7 +149,6 @@ defineExpose<NoticeBarExpose>({
   update,
 })
 
-// others
 const noticeBarClass = computed(() => {
   return classNames(
     bem.b(),

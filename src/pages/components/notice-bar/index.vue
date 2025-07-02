@@ -5,7 +5,7 @@
     </doc-demo>
 
     <doc-demo title="异步数据" full>
-      <DemoReset />
+      <DemoAsync />
     </doc-demo>
 
     <doc-demo title="强制滚动" full>
@@ -48,7 +48,7 @@
 
 <script setup lang="ts">
 import DemoBasic from './demo/Basic.vue'
-import DemoReset from './demo/Reset.vue'
+import DemoAsync from './demo/Async.vue'
 import DemoScrollable from './demo/Scrollable.vue'
 import DemoUnScrollable from './demo/UnScrollable.vue'
 import DemoWrap from './demo/Wrap.vue'

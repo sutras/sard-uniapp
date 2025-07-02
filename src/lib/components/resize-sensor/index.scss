@@ -1,0 +1,33 @@
+@use '../style/base' as *;
+
+@include bem(resize-sensor) {
+  @include b() {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: -9999;
+    overflow: hidden;
+    pointer-events: none;
+    visibility: hidden;
+  }
+
+  @include e(scroll-view) {
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  @include e(increase) {
+    width: 100000px;
+    height: 100000px;
+  }
+
+  @include e(decrease) {
+    width: 200%;
+    height: 200%;
+  }
+}

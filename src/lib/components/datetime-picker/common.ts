@@ -1,13 +1,16 @@
 import { type StyleValue } from 'vue'
 import {
+  formatDate,
   getLunarDayName,
   getLunarLeapMonth,
   getLunarLeapMonthDays,
   getLunarMonthDays,
   getLunarMonthName,
-  getMonthDays,
-  minmax,
+  getDaysInMonth,
+  isDate,
+  clamp,
   solarToLunar,
+  toDate,
 } from '../../utils'
 import { defaultConfig } from '../config'
 import { type PickerSlots } from '../picker/common'
@@ -99,9 +102,9 @@ function getSolarBoundaryValue(
     const strategy = strategies[letter]
     let minOrMax = strategy[minOrMaxIndex] as number
     if (isMax && letter === 'd') {
-      minOrMax = getMonthDays(
+      minOrMax = getDaysInMonth(
         currentDate.getFullYear(),
-        currentDate.getMonth() + 1,
+        currentDate.getMonth(),
       )
     }
     aside = aside && currEvery[index] === prevGetter(currentDate)
@@ -199,7 +202,7 @@ export function correctSolarDate(
     let minValue = strategy[2] as number
     let maxValue = strategy[3] as number
     if (letter === 'd') {
-      maxValue = getMonthDays(date[0], date[1])
+      maxValue = getDaysInMonth(date[0], date[1] - 1)
     }
 
     const currGetter = strategy[4]
@@ -209,7 +212,7 @@ export function correctSolarDate(
     if ((maxAside = maxAside && prevGetter(maxDate) === date[index])) {
       maxValue = currGetter(maxDate)
     }
-    date[index + 1] = minmax(date[index + 1], minValue, maxValue)
+    date[index + 1] = clamp(date[index + 1], minValue, maxValue)
 
     prevGetter = currGetter
   })
@@ -299,10 +302,10 @@ export function correctLunarDate(
         value = Math.abs(value) + 0.5
       }
 
-      value = minmax(value, min, max)
+      value = clamp(value, min, max)
       date[currIndex] = value % 1 === 0.5 ? ~~value * -1 : value
     } else {
-      date[currIndex] = minmax(currValue, range[0].value, range[1].value)
+      date[currIndex] = clamp(currValue, range[0].value, range[1].value)
     }
 
     if (letter === 'd') {
@@ -422,8 +425,29 @@ export const getColumnData = (
 export function getInitialValue(minDate: Date, maxDate: Date) {
   const value = new Date()
   return value.getTime() < minDate.getTime()
-    ? minDate
+    ? new Date(minDate)
     : value.getTime() > maxDate.getTime()
-      ? maxDate
+      ? new Date(maxDate)
       : value
+}
+
+export const normalizeRangeValue = (
+  minDate: Date,
+  maxDate: Date,
+  value?: (string | Date)[],
+  valueFormat?: string,
+) => {
+  const [start, end] = value || []
+  const startValue = start || getInitialValue(minDate, maxDate)
+  const endValue =
+    end || getInitialValue(toDate(startValue, valueFormat), maxDate)
+
+  return [
+    valueFormat && isDate(startValue)
+      ? formatDate(startValue, valueFormat)
+      : startValue,
+    valueFormat && isDate(endValue)
+      ? formatDate(endValue, valueFormat)
+      : endValue,
+  ]
 }

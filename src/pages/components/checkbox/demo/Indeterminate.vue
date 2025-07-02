@@ -8,7 +8,7 @@
     全选
   </sar-checkbox>
 
-  <sar-checkbox-group v-model="checkedResult" @change="onChange">
+  <sar-checkbox-group v-model="checkedResult">
     <sar-checkbox
       v-for="option in options"
       :key="option.value"
@@ -20,11 +20,10 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { useIndeterminate } from 'sard-uniapp'
+import { ref } from 'vue'
 
 const checkedResult = ref(['option2'])
-
-const allChecked = ref(false)
 
 const options = [
   { value: 'option1', label: '选项1' },
@@ -32,16 +31,8 @@ const options = [
   { value: 'option3', label: '选项3' },
 ]
 
-const isIndeterminate = computed(() => {
-  const length = checkedResult.value.length
-  return length > 0 && length < options.length
-})
-
-const onAllChange = (checked: boolean) => {
-  checkedResult.value = checked ? options.map((option) => option.value) : []
-}
-
-const onChange = (value: any[]) => {
-  allChecked.value = value.length === options.length
-}
+const { allChecked, isIndeterminate, onAllChange } = useIndeterminate(
+  checkedResult,
+  options,
+)
 </script>

@@ -74,6 +74,8 @@ export function toTouchEvent(event: MouseEvent | TouchEvent, windowTop = 0) {
       {
         clientX: event.clientX,
         clientY: event.clientY - windowTop,
+        pageY: event.pageY,
+        pageX: event.pageX,
       },
     ]
 

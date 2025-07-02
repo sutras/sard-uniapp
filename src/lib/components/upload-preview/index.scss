@@ -111,6 +111,7 @@
     padding: 0 var(--sar-upload-status-message-padding-x);
     margin-top: var(--sar-upload-status-message-margin-top);
     font-size: var(--sar-upload-status-message-font-size);
+    text-align: center;
   }
 
   @include e(remove) {

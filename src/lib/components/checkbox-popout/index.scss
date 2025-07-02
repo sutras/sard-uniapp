@@ -7,5 +7,21 @@
 
   @include e(scroll) {
     max-height: var(--sar-checkbox-popout-max-height);
+
+    @include m(searchable) {
+      height: var(--sar-checkbox-popout-max-height);
+    }
+  }
+
+  @include e(check-all) {
+    @include universal;
+    position: absolute;
+    left: 32rpx;
+    z-index: 2;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    color: var(--sar-tertiary-color);
+    font-size: var(--sar-text-sm);
   }
 }

@@ -16,6 +16,7 @@ onHide(() => {
 @import 'sard-uniapp/dark.scss';
 @import '@/style/demo-icons.css';
 @import '@/style/cake.css';
+@tailwind utilities;
 
 ::-webkit-scrollbar {
   display: none;
@@ -28,10 +29,23 @@ page {
 
 page,
 .sar-portal {
-  font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
-    'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji',
-    'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji', monospace;
+  font-family:
+    system-ui,
+    -apple-system,
+    'Segoe UI',
+    Roboto,
+    'Helvetica Neue',
+    'Noto Sans',
+    'Liberation Sans',
+    Arial,
+    sans-serif,
+    'Apple Color Emoji',
+    'Segoe UI Emoji',
+    'Segoe UI Symbol',
+    'Noto Color Emoji',
+    monospace;
   font-size: var(--sar-text-base);
+  line-height: 1.5;
   color: var(--sar-body-color);
   -webkit-tap-highlight-color: transparent;
 }

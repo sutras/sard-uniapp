@@ -8,10 +8,10 @@
   />
 
   <sar-list card>
-    <sar-list-item>
-      <sar-button @click="visible = true">
-        {{ value ? value : '请选择' }}
-      </sar-button>
+    <sar-list-item arrow hover @click="visible = true">
+      <template #title>
+        {{ value ? JSON.stringify(value) : '请选择' }}
+      </template>
     </sar-list-item>
     <sar-list-item
       title="设置为：'option3'"

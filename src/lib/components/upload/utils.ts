@@ -20,6 +20,7 @@ interface chooseMediaResult {
     height: number
     width: number
     fileType: 'image' | 'video'
+    name: string
   }[]
   type: 'image' | 'video'
 }

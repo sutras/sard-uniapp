@@ -67,14 +67,14 @@ import SidebarItem from 'sard-uniapp/components/sidebar-item/sidebar-item.vue'
 
 ### SidebarProps
 
-| 属性                     | 描述                       | 类型                                                       | 默认值                                              |
-| ------------------------ | -------------------------- | ---------------------------------------------------------- | --------------------------------------------------- |
-| root-class               | 组件根元素类名             | string                                                     | -                                                   |
-| root-style               | 组件根元素样式             | StyleValue                                                 | -                                                   |
-| current                  | 当前绑定导航项的名称       | string \| number                                           | -                                                   |
-| round                    | 当前导航项是否显示为圆角   | boolean                                                    | false                                               |
-| line                     | 当前导航项是否添加左边线条 | boolean                                                    | false                                               |
-| scroll-into-view-options | 自定义滚动配置选项         | [ScrollIntoViewOptions](../guide/scroll-into-view-options) | {position: 'nearest', startOffset: 0, endOffset: 0} |
+| 属性                     | 描述                       | 类型                                                                 | 默认值                                              |
+| ------------------------ | -------------------------- | -------------------------------------------------------------------- | --------------------------------------------------- |
+| root-class               | 组件根元素类名             | string                                                               | -                                                   |
+| root-style               | 组件根元素样式             | StyleValue                                                           | -                                                   |
+| current                  | 当前绑定导航项的名称       | string \| number                                                     | -                                                   |
+| round                    | 当前导航项是否显示为圆角   | boolean                                                              | false                                               |
+| line                     | 当前导航项是否添加左边线条 | boolean                                                              | false                                               |
+| scroll-into-view-options | 自定义滚动配置选项         | [ScrollIntoViewOptions](../utilities/geometry#ScrollIntoViewOptions) | {position: 'nearest', startOffset: 0, endOffset: 0} |
 
 ### SidebarSlots
 

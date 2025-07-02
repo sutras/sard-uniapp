@@ -5,7 +5,7 @@
     </doc-demo>
 
     <doc-demo title="异步数据">
-      <DemoReset />
+      <DemoAsync />
     </doc-demo>
 
     <doc-demo title="水平方向">
@@ -16,6 +16,6 @@
 
 <script setup lang="ts">
 import DemoBasic from './demo/Basic.vue'
-import DemoReset from './demo/Reset.vue'
+import DemoAsync from './demo/Async.vue'
 import DemoHorizontal from './demo/Horizontal.vue'
 </script>

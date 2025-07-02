@@ -1,0 +1,12 @@
+// #variables
+page,
+.sar-portal {
+  --sar-read-more-shadow-max-height: 80%;
+  --sar-read-more-shadow-height: 200rpx;
+  --sar-read-more-shadow-bg-image: linear-gradient(
+    to bottom,
+    rgba(var(--sar-emphasis-bg-rgb), 0),
+    rgba(var(--sar-emphasis-bg-rgb), 1) 95%
+  );
+}
+// #endvariables

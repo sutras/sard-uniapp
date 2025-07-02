@@ -29,5 +29,3 @@ import DemoDisabled from './demo/Disabled.vue'
 import DemoAsync from './demo/Async.vue'
 import DemoForm from './demo/Form.vue'
 </script>
-
-<style lang="scss" scoped></style>

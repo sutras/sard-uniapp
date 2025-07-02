@@ -96,12 +96,12 @@
 <script lang="ts" setup>
 import { computed, getCurrentInstance, inject, onMounted, ref } from 'vue'
 import {
-  type Coord,
+  type Point,
   type NodeRect,
   classNames,
   createBem,
   getBoundingClientRect,
-  minmax,
+  clamp,
   stringifyStyle,
   uniqid,
 } from '../../utils'
@@ -173,7 +173,7 @@ const onDragStart = () => {
   })
 }
 
-const onDragMove = (offset: Coord) => {
+const onDragMove = (offset: Point) => {
   translateY.value = offset.y
 
   const nodeHeight = nodeRect!.height
@@ -183,7 +183,7 @@ const onDragMove = (offset: Coord) => {
   const offsetIndex =
     Math.floor(Math.abs(offset.y) / nodeHeight + 0.5) * (offset.y < 0 ? -1 : 1)
 
-  const targetIndex = minmax(
+  const targetIndex = clamp(
     currentIndex + offsetIndex,
     0,
     obviousNodes.length - 1,

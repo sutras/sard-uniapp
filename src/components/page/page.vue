@@ -24,7 +24,11 @@
 
   <view
     :class="classNames(bem.b(), bem.m('emphasis', emphasis))"
-    :style="{ padding: padding || '' }"
+    :style="{
+      padding: padding || '',
+      height: height || '',
+      paddingBottom: paddingBottom || '',
+    }"
   >
     <slot></slot>
   </view>
@@ -39,6 +43,8 @@ defineProps<{
   title?: string
   navbarBg?: string
   padding?: string
+  paddingBottom?: string
+  height?: string
 }>()
 
 const bem = createBem('page')
@@ -57,7 +63,9 @@ const onBack = () => {
 
 @include bem(page) {
   @include b() {
+    box-sizing: border-box;
     padding: 20rpx 0 calc(20rpx + env(safe-area-inset-bottom));
+    min-height: calc(100vh - var(--sar-navbar-height));
   }
 
   @include m(emphasis) {

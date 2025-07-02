@@ -1,0 +1,35 @@
+@use '../style/base' as *;
+
+@include bem(scroll-list) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(content) {
+    @include universal;
+    display: inline-flex;
+    flex-direction: row;
+  }
+
+  @include e(scrollbar) {
+    @include universal;
+    width: var(--sar-scroll-list-scrollbar-width);
+    height: var(--sar-scroll-list-scrollbar-height);
+    margin-top: var(--sar-scroll-list-scrollbar-margin-top);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: var(--sar-rounded-full);
+    background-color: var(--sar-scroll-list-scrollbar-bg);
+  }
+
+  @include e(scrollbar-thumb) {
+    @include universal;
+    top: 0;
+    left: 0;
+    position: absolute;
+    width: var(--sar-scroll-list-scrollbar-thumb-width);
+    height: 100%;
+    border-radius: var(--sar-rounded-full);
+    background-color: var(--sar-scroll-list-scrollbar-thumb-bg);
+  }
+}

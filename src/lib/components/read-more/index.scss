@@ -1,0 +1,41 @@
+@use '../style/base' as *;
+
+@include bem(read-more) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(content) {
+    position: relative;
+  }
+
+  @include e(shadow) {
+    @include universal;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    max-height: var(--sar-read-more-shadow-max-height);
+    height: var(--sar-read-more-shadow-height);
+    background-image: var(--sar-read-more-shadow-bg-image);
+    display: none;
+  }
+
+  @include e(toggle) {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  @include m(close) {
+    @include e(content) {
+      overflow: hidden;
+    }
+
+    @include e(shadow) {
+      display: flex;
+    }
+  }
+}

@@ -34,6 +34,10 @@
       {
         "title": "StatusBar 状态栏",
         "name": "status-bar"
+      },
+      {
+        "title": "Sticky 粘性布局",
+        "name": "sticky"
       }
     ]
   },
@@ -242,6 +246,14 @@
         "name": "qrcode"
       },
       {
+        "title": "ReadMore 阅读更多",
+        "name": "read-more"
+      },
+      {
+        "title": "ScrollList 横向滚动列表",
+        "name": "scroll-list"
+      },
+      {
         "title": "ScrollSpy 滚动监听",
         "name": "scroll-spy"
       },
@@ -358,6 +370,10 @@
       {
         "title": "PullDownRefresh 下拉刷新",
         "name": "pull-down-refresh"
+      },
+      {
+        "title": "ResizeSensor 尺寸传感器",
+        "name": "resize-sensor"
       },
       {
         "title": "Result 结果",

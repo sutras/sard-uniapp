@@ -1,5 +1,9 @@
 <template>
-  <view :class="uploadPreviewClass" :style="uploadPreviewStyle">
+  <view
+    :class="uploadPreviewClass"
+    :style="uploadPreviewStyle"
+    @click="onClick"
+  >
     <image
       v-if="isImage"
       :class="bem.e('image')"
@@ -47,7 +51,7 @@
     <view
       v-if="removable && !disabled && !readonly && status !== 'uploading'"
       :class="bem.e('remove')"
-      @click="onRemove"
+      @click.stop="onRemove"
     >
       <view :class="bem.e('close')">
         <sar-icon family="sari" name="close" />
@@ -113,7 +117,7 @@ const mediaUrl = computed(() => {
 
 // image
 const onImageClick = () => {
-  emit('image-click', props.index)
+  emit('image-click')
 }
 
 // video
@@ -132,37 +136,24 @@ const onFullscreenchange = (event: any) => {
   }
 }
 
-const onPlayClick = () => {
+const previewVideo = () => {
   videoContext.requestFullScreen({
     direction: 0,
   })
 }
 
+const onPlayClick = () => {
+  previewVideo()
+}
+
 // remove
 const onRemove = () => {
   if (!props.removable || props.disabled || props.readonly) return
+  emit('remove')
+}
 
-  function remove() {
-    emit('remove', props.index)
-  }
-
-  if (props.beforeRemove) {
-    const ret = props.beforeRemove(props.index)
-    if (!ret) {
-      return
-    }
-    if (ret instanceof Promise) {
-      ret
-        .then(() => {
-          remove()
-        })
-        .catch(() => {
-          void 0
-        })
-      return
-    }
-  }
-  remove()
+const onClick = () => {
+  emit('click')
 }
 
 // others

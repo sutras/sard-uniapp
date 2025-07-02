@@ -170,6 +170,9 @@ const uniObject = {
   createCanvasContext() {
     return new CanvasContext()
   },
+  createIntersectionObserver() {
+    return new IntersectionObserver()
+  },
 }
 
 class NodesRef {
@@ -259,6 +262,13 @@ class CanvasContext {
   setFontSize() {}
   setTextAlign() {}
   setTextBaseline() {}
+}
+
+class IntersectionObserver {
+  relativeTo() {}
+  relativeToViewport() {}
+  observe() {}
+  disconnect() {}
 }
 
 Object.defineProperty(globalThis, 'uni', {

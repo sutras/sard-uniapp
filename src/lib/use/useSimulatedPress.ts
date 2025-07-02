@@ -1,4 +1,4 @@
-import { getDistanceBetweenTwoPoints } from '../utils'
+import { getTwoPointsDistance } from '../utils'
 import { useTimeout } from './useTimeout'
 
 export interface UseSimulatedPressOptions {
@@ -52,7 +52,7 @@ export function useSimulatedPress(options: UseSimulatedPressOptions = {}) {
         },
       })
     } else if (isWaitingToTriggerPress.value) {
-      const distance = getDistanceBetweenTwoPoints(downCoord, moveCoord)
+      const distance = getTwoPointsDistance(downCoord, moveCoord)
       if (distance > 10) {
         cancelTriggerPress()
       }

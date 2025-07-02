@@ -256,8 +256,6 @@ export async function createDemo(
 <script setup lang="ts">
 import DemoBasic from './demo/Basic.vue'
 </script>
-
-<style lang="scss" scoped></style>
 `,
   )
 
@@ -385,7 +383,7 @@ export async function addDemoMenu(
           children.sort((a, b) => (a.name < b.name ? -1 : 1))
         }
       }
-      return JSON.stringify(obj, null, 2)
+      return JSON.stringify(obj, null, 2) + '\n'
     },
   )
 }

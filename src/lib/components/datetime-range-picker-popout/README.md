@@ -45,9 +45,3 @@ import DatetimeRangePickerPopout from 'sard-uniapp/components/datetime-range-pic
 | update:model-value | 日期时间输入组件值改变时触发 | (date: (Date \| string)[]) => void |
 | change             | 日期时间输入组件值改变时触发 | (date: (Date \| string)[]) => void |
 | update:visible     | 弹出框显隐时触发             | (visible: boolean) => void         |
-
-## 主题定制
-
-### CSS 变量
-
-@code('./variables.scss#variables')

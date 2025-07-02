@@ -32,6 +32,10 @@ import IndexesAnchor from 'sard-uniapp/components/indexes-anchor/indexes-anchor.
 
 @code('${DEMO_PATH}/indexes/demo/AreaCodeSearch.vue')
 
+### 全屏
+
+@code('${DEMO_PATH}/indexes/demo/FullPage.vue')
+
 ## API
 
 ### IndexesProps

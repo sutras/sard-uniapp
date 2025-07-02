@@ -46,7 +46,7 @@ import {
   createBem,
   uniqid,
   getBoundingClientRect,
-  minmax,
+  clamp,
 } from '../../utils'
 import {
   type IndexesNavProps,
@@ -121,7 +121,7 @@ const calcPosition = (touch: Touch) => {
     return
   }
   const offsetY = touch.clientY - navRect.value.top
-  const itemIndex = minmax(
+  const itemIndex = clamp(
     Math.floor(offsetY / itemSize),
     0,
     props.anchors.length - 1,

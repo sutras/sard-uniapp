@@ -3,7 +3,7 @@
  * @param {string} url
  * @return {boolean}
  */
-export function isImageUrl(url: string) {
+export function isImageUrl(url: string): boolean {
   const rPicMime = /\.(?:jpg|jpeg|png|gif|svg|bmp|webp|tiff|tif|heic|heif)$/i
   return (
     typeof url === 'string' &&
@@ -16,7 +16,7 @@ export function isImageUrl(url: string) {
  * @param {string} url
  * @return {boolean}
  */
-export function isVideoUrl(url: string) {
+export function isVideoUrl(url: string): boolean {
   const rVideoMime =
     /\.(avi|mp4|mov|wmv|flv|mkv|mpeg|mpg|3gp|webm|swf|rmvb|vob|ts|mts|m2ts|divx|asf|ogv|f4v)$/i
   return (
@@ -30,7 +30,7 @@ export function isVideoUrl(url: string) {
  * @param {string} url
  * @return {boolean}
  */
-export function isFileUrl(url: string) {
+export function isFileUrl(url: string): boolean {
   return url.includes('/')
 }
 
@@ -42,7 +42,10 @@ export type FileReaderResultType = 'file' | 'dataUrl' | 'text'
  * @param {ResultType} resultType
  * @return {Promise<void | string>}
  */
-export function readFileContent(file: File, resultType: FileReaderResultType) {
+export function readFileContent(
+  file: File,
+  resultType: FileReaderResultType,
+): Promise<string | void> {
   return new Promise<void | string>((resolve) => {
     if (resultType === 'file') {
       resolve()
@@ -67,7 +70,7 @@ export function readFileContent(file: File, resultType: FileReaderResultType) {
  * @param {boolean} ext 是否包含扩展名
  * @return {string}
  */
-export function getFileName(path: string, ext = true) {
+export function getFileName(path: string, ext = true): string {
   const name = path.match(/\/([^/]+)$/)?.[1] || ''
   return ext ? name : name.replace(/\.[^.]+$/, '')
 }
