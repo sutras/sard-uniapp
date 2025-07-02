@@ -1,3 +1,12 @@
+## [1.20.1](https://github.com/sutras/sard-uniapp/compare/v1.20.0...v1.20.1) (2025-07-02)
+
+
+### Bug Fixes
+
+* 修复upload图片预览失败和remove按钮层级过高问题 ([ea29178](https://github.com/sutras/sard-uniapp/commit/ea291785fe2197d46091a8d10e6da7fdab9d6624))
+
+
+
 # [1.20.0](https://github.com/sutras/sard-uniapp/compare/v1.19.5...v1.20.0) (2025-07-01)
 
 
