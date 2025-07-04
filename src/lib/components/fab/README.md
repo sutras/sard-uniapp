@@ -60,6 +60,12 @@ import Fab from 'sard-uniapp/components/fab/fab.vue'
 
 @code('${DEMO_PATH}/fab/demo/NonItemList.vue')
 
+### 自定义图标
+
+使用 `icon` 和 `icon-family` 可自定义悬浮按钮图标。
+
+@code('${DEMO_PATH}/fab/demo/Icon.vue')
+
 ## API
 
 ### FabProps

@@ -26,6 +26,7 @@
       <DemoTopRight v-if="currentDemo === 'TopRight'" />
       <DemoBottomLeft v-if="currentDemo === 'BottomLeft'" />
       <DemoNonItemList v-if="currentDemo === 'NonItemList'" />
+      <DemoIcon v-if="currentDemo === 'Icon'" />
     </doc-demo>
   </doc-page>
 </template>
@@ -39,6 +40,7 @@ import DemoTopLeft from './demo/TopLeft.vue'
 import DemoTopRight from './demo/TopRight.vue'
 import DemoBottomLeft from './demo/BottomLeft.vue'
 import DemoNonItemList from './demo/NonItemList.vue'
+import DemoIcon from './demo/Icon.vue'
 
 const currentDemo = ref('Basic')
 
@@ -50,5 +52,6 @@ const demoOptions = [
   { value: 'TopRight', label: '右上角显示' },
   { value: 'BottomLeft', label: '左下角显示' },
   { value: 'NonItemList', label: '无按钮列表显示' },
+  { value: 'Icon', label: '自定义图标' },
 ]
 </script>

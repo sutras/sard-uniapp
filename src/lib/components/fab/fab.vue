@@ -33,7 +33,7 @@
     </view>
     <view :class="itemEntryClass" @click="onItemEntryClick">
       <view :class="bem.e('item-btn')" :style="itemEntryBtnStyle">
-        <sar-icon family="sari" name="plus" />
+        <sar-icon :family="iconFamily || 'sari'" :name="icon || 'plus'" />
       </view>
     </view>
   </view>
