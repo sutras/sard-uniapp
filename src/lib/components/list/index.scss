@@ -24,6 +24,14 @@
     }
   }
 
+  @include m(borderless) {
+    @include e(content) {
+      &::before {
+        display: none;
+      }
+    }
+  }
+
   @include e(description) {
     @include universal;
     margin-left: var(--sar-list-description-margin-x);

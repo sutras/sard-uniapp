@@ -26,6 +26,12 @@
       right: var(--sar-list-item-padding-x);
     }
 
+    @include m(borderless) {
+      &::before {
+        display: none;
+      }
+    }
+
     &:first-child::before {
       display: none;
     }

@@ -135,4 +135,35 @@ describe('List', () => {
 
     expect(wrapper.find('.sar-list.sar-list_card').exists()).toBeTruthy()
   })
+
+  test('hide-border', async () => {
+    const wrapper = mount(
+      h(
+        List,
+        {
+          hideBorder: true,
+          card: true,
+        },
+        () => [
+          h(ListItem, {
+            title: '标题',
+            value: '值',
+          }),
+          h(ListItem, {
+            title: '标题',
+            value: '值',
+          }),
+          h(ListItem, {
+            title: '标题',
+            value: '值',
+          }),
+        ],
+      ),
+    )
+
+    expect(wrapper.find('.sar-list.sar-list_borderless').exists()).toBeTruthy()
+    expect(
+      wrapper.find('.sar-list-item.sar-list-item_borderless').exists(),
+    ).toBeTruthy()
+  })
 })

@@ -16,14 +16,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, provide, reactive, toRef } from 'vue'
 import {
   classNames,
   stringifyStyle,
   isRenderVisible,
   createBem,
 } from '../../utils'
-import { type ListProps, type ListSlots } from './common'
+import { listContextKey, type ListProps, type ListSlots } from './common'
 
 defineOptions({
   options: {
@@ -39,6 +39,12 @@ defineSlots<ListSlots>()
 const bem = createBem('list')
 
 // main
+provide(
+  listContextKey,
+  reactive({
+    hideBorder: toRef(() => props.hideBorder),
+  }),
+)
 
 // others
 const listClass = computed(() => {
@@ -47,6 +53,7 @@ const listClass = computed(() => {
     bem.m('card', props.card),
     bem.m('not-card', !props.card),
     bem.m('inlaid', props.inlaid),
+    bem.m('borderless', props.hideBorder),
     props.rootClass,
   )
 })

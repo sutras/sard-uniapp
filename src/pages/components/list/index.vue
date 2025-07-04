@@ -23,6 +23,10 @@
     <doc-demo title="卡片风格">
       <DemoCard />
     </doc-demo>
+
+    <doc-demo title="隐藏边框">
+      <DemoHideBorder />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -33,4 +37,5 @@ import DemoIcon from './demo/Icon.vue'
 import DemoSlot from './demo/Slot.vue'
 import DemoGroup from './demo/Group.vue'
 import DemoCard from './demo/Card.vue'
+import DemoHideBorder from './demo/HideBorder.vue'
 </script>

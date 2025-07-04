@@ -41,7 +41,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -54,6 +54,7 @@ import {
   type ListItemSlots,
   type ListItemEmits,
   defaultListItemProps,
+  listContextKey,
 } from '../list/common'
 
 defineOptions({
@@ -72,6 +73,8 @@ const emit = defineEmits<ListItemEmits>()
 const bem = createBem('list-item')
 
 // main
+const context = inject(listContextKey)
+
 const onClick = (event: any) => {
   emit('click', event)
 }
@@ -82,6 +85,7 @@ const listItemClass = computed(() => {
     bem.b(),
     bem.m('hover', props.hover),
     bem.m('custom', !!slots.default),
+    bem.m('borderless', context?.hideBorder),
     props.rootClass,
   )
 })

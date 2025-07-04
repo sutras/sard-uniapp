@@ -1,4 +1,4 @@
-import { type StyleValue } from 'vue'
+import { InjectionKey, type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface ListProps {
@@ -8,6 +8,7 @@ export interface ListProps {
   description?: string | number
   inlaid?: boolean
   card?: boolean
+  hideBorder?: boolean
 }
 
 export interface ListSlots {
@@ -45,3 +46,11 @@ export interface ListItemSlots {
   arrow?(props: Record<string, never>): any
   icon?(props: Record<string, never>): any
 }
+
+export interface ListContext {
+  hideBorder?: boolean
+}
+
+export const listContextKey = Symbol(
+  'list-context',
+) as InjectionKey<ListContext>

@@ -32,15 +32,15 @@ import ListItem from 'sard-uniapp/components/list-item/list-item.vue'
 
 ### 图标
 
-设置`icon`属性或插槽可以在左边显示图标。
+设置 `icon` 属性或插槽可以在左边显示图标。
 
 @code('${DEMO_PATH}/list/demo/Icon.vue')
 
 ### 自定义内容
 
-列表项的`body`和`footer`默认平分水平空间，如果`footer`需要占据更多的空间，可以设置`body`不扩展。
+列表项的 `body` 和 `footer` 默认平分水平空间，如果 `footer` 需要占据更多的空间，可以设置 `body` 不扩展。
 
-`value`中的元素默认会向右边靠，如果有使用`footer`属性定义内容，则内容会纵向排列。
+`value` 中的元素默认会向右边靠，如果有使用 `footer` 属性定义内容，则内容会纵向排列。
 
 @code('${DEMO_PATH}/list/demo/Slot.vue')
 
@@ -52,22 +52,29 @@ import ListItem from 'sard-uniapp/components/list-item/list-item.vue'
 
 ### 卡片风格
 
-可以使用`card`属性让列表显示为卡片风格。
+可以使用 `card` 属性让列表显示为卡片风格。
 
 @code('${DEMO_PATH}/list/demo/Card.vue')
+
+### 隐藏边框 <sup>1.21.0+</sup>
+
+可以使用 `hide-border` 属性隐藏边框。
+
+@code('${DEMO_PATH}/list/demo/HideBorder.vue')
 
 ## API
 
 ### ListProps
 
-| 属性        | 描述           | 类型             | 默认值 |
-| ----------- | -------------- | ---------------- | ------ |
-| root-class  | 组件根元素类名 | string           | -      |
-| root-style  | 组件根元素样式 | StyleValue       | -      |
-| title       | 列表顶部标题   | string \| number | -      |
-| description | 列表底部描述   | string \| number | -      |
-| card        | 卡片风格       | boolean          | false  |
-| inlaid      | 嵌入式列表     | boolean          | false  |
+| 属性                           | 描述           | 类型             | 默认值 |
+| ------------------------------ | -------------- | ---------------- | ------ |
+| root-class                     | 组件根元素类名 | string           | -      |
+| root-style                     | 组件根元素样式 | StyleValue       | -      |
+| title                          | 列表顶部标题   | string \| number | -      |
+| description                    | 列表底部描述   | string \| number | -      |
+| card                           | 卡片风格       | boolean          | false  |
+| inlaid                         | 嵌入式列表     | boolean          | false  |
+| hide-border <sup>1.21.0+</sup> | 是否隐藏边框   | boolean          | false  |
 
 ### ListSlots
 
