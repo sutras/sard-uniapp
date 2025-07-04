@@ -330,12 +330,12 @@ function mergeUrl(options: {
     const index = mergedUrl.indexOf('?')
 
     if (index !== -1) {
-      const originPath = mergedUrl.slice(index)
+      const originPath = mergedUrl.slice(0, index)
       const search = mergedUrl.slice(index)
-      mergedUrl +=
+      mergedUrl =
         originPath +
         '?' +
-        new URLQuery([...query, ...new URLQuery(search)]).toString()
+        new URLQuery([...new URLQuery(search), ...query]).toString()
     } else {
       mergedUrl += '?' + query.toString()
     }
