@@ -12,8 +12,8 @@
       @scrolltoupper="onScrolltoupper"
     >
       <sar-pull-down-refresh
-        :loading="loading"
         ref="pullDownRefresh"
+        :loading="loading"
         :done-duration="500"
         @refresh="onRefresh"
       >

@@ -485,6 +485,11 @@ export const defaultConfig = {
   uploadPreview: {
     status: 'pending' as UploadPreviewProps['status'],
   },
+  waterfall: {
+    columns: 2,
+    columnGap: 16,
+    rowGap: 16,
+  },
 }
 // #enddefaultConfig
 

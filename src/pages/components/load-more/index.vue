@@ -4,7 +4,7 @@
       <DemoBasic />
     </doc-demo>
 
-    <doc-demo title="配合下拉刷新一起使用">
+    <doc-demo title="配合 PullDownRefresh 组件一起使用">
       <DemoWithRefresh />
     </doc-demo>
   </doc-page>

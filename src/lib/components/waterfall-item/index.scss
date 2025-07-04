@@ -1,0 +1,18 @@
+@use '../style/base' as *;
+
+@include bem(waterfall-item) {
+  @include b() {
+    @include universal;
+    position: absolute;
+    pointer-events: none;
+    opacity: 0;
+    transition:
+      opacity var(--sar-waterfall-duration),
+      transform var(--sar-waterfall-duration);
+  }
+
+  @include m(show) {
+    pointer-events: auto;
+    opacity: 1;
+  }
+}

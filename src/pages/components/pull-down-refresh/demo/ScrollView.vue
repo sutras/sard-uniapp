@@ -13,8 +13,8 @@
       @scrolltoupper="onScrolltoupper"
     >
       <sar-pull-down-refresh
-        :loading="loading"
         ref="pullDownRefresh"
+        :loading="loading"
         @refresh="onRefresh"
       >
         <view

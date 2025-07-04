@@ -125,6 +125,9 @@ declare module 'vue' {
     SarToastAgent: typeof import('./components/toast-agent/toast-agent.vue').default
     SarTree: typeof import('./components/tree/tree.vue').default
     SarUpload: typeof import('./components/upload/upload.vue').default
+    SarWaterfall: typeof import('./components/waterfall/waterfall.vue').default
+    SarWaterfallItem: typeof import('./components/waterfall-item/waterfall-item.vue').default
+    SarWaterfallLoad: typeof import('./components/waterfall-load/waterfall-load.vue').default
   }
 }
 

@@ -26,7 +26,10 @@ export default {
       ...Array(750)
         .fill(0)
         .reduce((pair, _, i) => {
-          pair[i + 1] = i + 1 + 'rpx'
+          const n = i + 1
+          if (n % 2 === 0) {
+            pair[n] = n + 'rpx'
+          }
           return pair
         }, {}),
     },

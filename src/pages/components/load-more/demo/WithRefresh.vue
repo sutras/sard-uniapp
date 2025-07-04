@@ -13,10 +13,10 @@
       @scrolltolower="onScrolltolower"
     >
       <sar-pull-down-refresh
-        :loading="refreshing"
         ref="pullDownRefresh"
-        @refresh="onRefresh"
+        :loading="refreshing"
         :disabled="loadMoreStatus === 'loading'"
+        @refresh="onRefresh"
       >
         <view
           v-for="item in list"
@@ -37,7 +37,7 @@
           :status="loadMoreStatus"
           @load-more="onLoadMore"
           @reload="onReload"
-        ></sar-load-more>
+        />
       </sar-pull-down-refresh>
     </scroll-view>
   </view>

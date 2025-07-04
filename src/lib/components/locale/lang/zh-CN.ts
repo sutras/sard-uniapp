@@ -92,7 +92,7 @@ export default {
     },
   },
   loadMore: {
-    incompleteText: '加载更多',
+    incompleteText: '点击加载更多',
     loadingText: '加载中...',
     completeText: '没有更多了',
     errorText: '请求失败，点击重新加载',

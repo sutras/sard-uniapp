@@ -38,6 +38,10 @@
       {
         "title": "Sticky 粘性布局",
         "name": "sticky"
+      },
+      {
+        "title": "Waterfall 瀑布流",
+        "name": "waterfall"
       }
     ]
   },

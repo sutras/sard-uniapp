@@ -1,8 +1,8 @@
 <template>
   <doc-page emphasis title="基于页面的刷新">
     <sar-pull-down-refresh
-      :loading="loading"
       ref="pullDownRefresh"
+      :loading="loading"
       root-style="min-height: 100vh"
       @refresh="onRefresh"
     >

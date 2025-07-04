@@ -15,6 +15,11 @@ export async function replaceFileContent(
   await fs.writeFile(filePath, content)
 }
 
+export function logNewFile(file: string) {
+  consola.log('[创建文件] ', file)
+  return file
+}
+
 // *.vue
 export async function createComponentVue(
   compDir: string,
@@ -23,7 +28,7 @@ export async function createComponentVue(
   pascalCaseName: string,
 ) {
   await fse.outputFile(
-    path.resolve(compDir, `${kebabCaseName}.vue`),
+    logNewFile(path.resolve(compDir, `${kebabCaseName}.vue`)),
     `<template>
   <view :class="${camelCaseName}Class" :style="${camelCaseName}Style">
     <slot></slot>
@@ -57,9 +62,9 @@ const bem = createBem('${kebabCaseName}')
 
 // main
 
+// others
 defineExpose<${pascalCaseName}Expose>({})
 
-// others
 const ${camelCaseName}Class = computed(() => {
   return classNames(bem.b(), props.rootClass)
 })
@@ -82,7 +87,7 @@ export async function createComponentCommon(
   pascalCaseName: string,
 ) {
   await fse.outputFile(
-    path.resolve(compDir, `common.ts`),
+    logNewFile(path.resolve(compDir, `common.ts`)),
     `import { type StyleValue } from 'vue'
 
 export interface ${pascalCaseName}Props {
@@ -107,7 +112,7 @@ export async function createComponentIndexScss(
   kebabCaseName: string,
 ) {
   await fse.outputFile(
-    path.resolve(compDir, `index.scss`),
+    logNewFile(path.resolve(compDir, `index.scss`)),
     `@use '../style/base' as *;
 
 @include bem(${kebabCaseName}) {
@@ -135,7 +140,7 @@ export async function createComponentIndex(
   pascalCaseName: string,
 ) {
   await fse.outputFile(
-    path.resolve(compDir, `index.ts`),
+    logNewFile(path.resolve(compDir, `index.ts`)),
     `export type {
   ${pascalCaseName}Props,
   ${pascalCaseName}Slots,
@@ -155,7 +160,7 @@ export async function createComponentReadme(
   groupCnName: string,
 ) {
   await fse.outputFile(
-    path.resolve(compDir, `README.md`),
+    logNewFile(path.resolve(compDir, `README.md`)),
     `---
 nav: 组件
 title: ${pascalCaseName}
@@ -218,7 +223,7 @@ import ${pascalCaseName} from 'sard-uniapp/components/${kebabCaseName}/${kebabCa
 // variables.scss
 export async function createComponentVariables(compDir: string) {
   await fse.outputFile(
-    path.resolve(compDir, `variables.scss`),
+    logNewFile(path.resolve(compDir, `variables.scss`)),
     `// #variables
 page,
 .sar-portal {}
@@ -244,7 +249,7 @@ export async function createDemo(
 
   // index.vue
   await fse.outputFile(
-    path.resolve(demoDir, `index.vue`),
+    logNewFile(path.resolve(demoDir, `index.vue`)),
     `<template>
   <doc-page title="${pascalCaseName} ${cnName}">
     <doc-demo title="基础使用">
@@ -261,7 +266,7 @@ import DemoBasic from './demo/Basic.vue'
 
   // Basic.vue
   await fse.outputFile(
-    path.resolve(demoDir, `demo/Basic.vue`),
+    logNewFile(path.resolve(demoDir, `demo/Basic.vue`)),
     `<template>
   <sar-${kebabCaseName}></sar-${kebabCaseName}>
 </template>
@@ -337,7 +342,7 @@ export async function addDemoRoute(kebabCaseName: string) {
       consola.warn(`已存在同名组件: ${kebabCaseName}`)
     } else {
       pages.push({
-        path: `pages/components/${kebabCaseName}/index`,
+        path: `${kebabCaseName}/index`,
       })
       pages.sort((a: any, b: any) => {
         const indexPath = 'pages/index/index'

@@ -1,0 +1,12 @@
+@use '../style/base' as *;
+
+@include bem(waterfall-load) {
+  @include b() {
+    @include universal;
+  }
+
+  @include e(content) {
+    position: absolute;
+    inset: 0;
+  }
+}

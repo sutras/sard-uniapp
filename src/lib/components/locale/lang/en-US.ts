@@ -92,7 +92,7 @@ export default {
     },
   },
   loadMore: {
-    incompleteText: 'Load more',
+    incompleteText: 'Click to load more',
     loadingText: 'Loading...',
     errorText: 'Request failed. Click to reload',
     completeText: 'No more',
