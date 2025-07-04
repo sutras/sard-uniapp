@@ -24,6 +24,10 @@ export interface UploadFileItem {
   [key: PropertyKey]: any
 }
 
+export interface UploadSelectOptions {
+  sourceType?: ('album' | 'camera')[]
+}
+
 export interface UploadProps {
   rootStyle?: StyleValue
   rootClass?: string
@@ -42,8 +46,7 @@ export interface UploadProps {
   readonly?: boolean
   beforeChoose?: (
     fileList: UploadFileItem[],
-    sourceType: ('album' | 'camera')[],
-    next: (allowed: boolean) => void,
+    next: (allowed: boolean | UploadSelectOptions) => void,
   ) => void
   beforeRead?: (file: UploadFile) => boolean | Promise<UploadFile>
   afterRead?: (fileItem: UploadFileItem) => void
