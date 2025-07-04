@@ -43,7 +43,7 @@ import Upload from 'sard-uniapp/components/upload/upload.vue'
 
 ### 选择文件前置处理 <sup>1.19.2+</sup>
 
-通过传入 `beforeChoose` 函数可以在选择之前做处理，接受当前文件列表和 `next` 函数作参数，调用 `next(true)` 允许选择，调用 `next(false)` 不允许选择。
+通过传入 `beforeChoose` 函数可以在选择之前做处理，接受当前文件列表和 `next` 函数作参数，调用 `next(true)` 允许选择，调用 `next(false)` 不允许选择，也可传入一个配置对象自定义选择。
 
 @code('${DEMO_PATH}/upload/demo/BeforeChoose.vue')
 
@@ -87,28 +87,36 @@ import Upload from 'sard-uniapp/components/upload/upload.vue'
 
 ### UploadProps
 
-| 属性                             | 描述                                                                                                              | 类型                                                                   | 默认值                     |
-| -------------------------------- | ----------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------------------------- |
-| root-class                       | 组件根元素类名                                                                                                    | string                                                                 | -                          |
-| root-style                       | 组件根元素样式                                                                                                    | StyleValue                                                             | -                          |
-| accept                           | 允许上传的文件类型                                                                                                | 'image' \| 'video'                                                     | 'image'                    |
-| multiple                         | 是否开启图片多选                                                                                                  | boolean                                                                | false                      |
-| source-type                      | 文件选择来源                                                                                                      | ('album' \| 'camera')[]                                                | ['album', 'camera']        |
-| size-type                        | 所选的图片的尺寸                                                                                                  | ('original' \| 'compressed')[]                                         | ['original', 'compressed'] |
-| max-duration                     | 拍摄视频最长拍摄时间，单位秒                                                                                      | number                                                                 | 60                         |
-| camera                           | 默认拉起的是前置或者后置摄像头。部分 Android 手机下由于系统 ROM 不支持无法生效                                    | 'back' \| 'front'                                                      | 'back'                     |
-| model-value (v-model)            | 已上传的文件列表                                                                                                  | UploadFileItem[]                                                       | -                          |
-| max-count                        | 文件上传数量限制                                                                                                  | number                                                                 | Number.MAX_SAFE_INTEGER    |
-| max-size                         | 文件大小限制，单位为 `byte`                                                                                       | number \| ((file: File) => boolean)                                    | Number.MAX_SAFE_INTEGER    |
-| over-size                        | 文件大小超过限制时触发                                                                                            | (fileItem: UploadFileItem \| UploadFileItem[]) => void                 | -                          |
-| disabled                         | 是否禁用文件上传                                                                                                  | boolean                                                                | false                      |
-| readonly                         | 是否将上传区域设置为只读状态                                                                                      | boolean                                                                | false                      |
-| before-choose <sup>1.19.2+</sup> | 文件选择前的回调，接受当前文件列表和 `next` 函数作参数，调用 `next(true)` 允许选择，调用 `next(false)` 不允许选择 | (fileList: UploadFileItem[], next: (allowed: boolean) => void) => void | -                          |
-| before-read                      | 文件读取前的回调，返回 false 可终止文件读取，支持返回 Promise                                                     | (file: File) => boolean \| Promise\<File>                              | -                          |
-| after-read                       | 文件读取完成后的回调                                                                                              | (fileItem: UploadFileItem \| UploadFileItem[]) => void                 | -                          |
-| removable                        | 是否可删除                                                                                                        | boolean                                                                | true                       |
-| before-remove                    | 文件删除前的回调，返回 false 可终止文件删除，支持返回 Promise                                                     | (index: number, fileItem: UploadFileItem) => boolean \| Promise\<any>  | -                          |
-| validate-event                   | 是否触发表单验证                                                                                                  | boolean                                                                | true                       |
+| 属性                             | 描述                                                                                                                                              | 类型                                                                                          | 默认值                     |
+| -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | -------------------------- |
+| root-class                       | 组件根元素类名                                                                                                                                    | string                                                                                        | -                          |
+| root-style                       | 组件根元素样式                                                                                                                                    | StyleValue                                                                                    | -                          |
+| accept                           | 允许上传的文件类型                                                                                                                                | 'image' \| 'video'                                                                            | 'image'                    |
+| multiple                         | 是否开启图片多选                                                                                                                                  | boolean                                                                                       | false                      |
+| source-type                      | 文件选择来源                                                                                                                                      | ('album' \| 'camera')[]                                                                       | ['album', 'camera']        |
+| size-type                        | 所选的图片的尺寸                                                                                                                                  | ('original' \| 'compressed')[]                                                                | ['original', 'compressed'] |
+| max-duration                     | 拍摄视频最长拍摄时间，单位秒                                                                                                                      | number                                                                                        | 60                         |
+| camera                           | 默认拉起的是前置或者后置摄像头。部分 Android 手机下由于系统 ROM 不支持无法生效                                                                    | 'back' \| 'front'                                                                             | 'back'                     |
+| model-value (v-model)            | 已上传的文件列表                                                                                                                                  | UploadFileItem[]                                                                              | -                          |
+| max-count                        | 文件上传数量限制                                                                                                                                  | number                                                                                        | Number.MAX_SAFE_INTEGER    |
+| max-size                         | 文件大小限制，单位为 `byte`                                                                                                                       | number \| ((file: File) => boolean)                                                           | Number.MAX_SAFE_INTEGER    |
+| over-size                        | 文件大小超过限制时触发                                                                                                                            | (fileItem: UploadFileItem \| UploadFileItem[]) => void                                        | -                          |
+| disabled                         | 是否禁用文件上传                                                                                                                                  | boolean                                                                                       | false                      |
+| readonly                         | 是否将上传区域设置为只读状态                                                                                                                      | boolean                                                                                       | false                      |
+| before-choose <sup>1.19.2+</sup> | 文件选择前的回调，接受当前文件列表和 `next` 函数作参数，调用 `next(true)` 允许选择，调用 `next(false)` 不允许选择，或者传入一个配置对象自定义选择 | (fileList: UploadFileItem[], next: (allowed: boolean \| UploadSelectOptions) => void) => void | -                          |
+| before-read                      | 文件读取前的回调，返回 false 可终止文件读取，支持返回 Promise                                                                                     | (file: File) => boolean \| Promise\<File>                                                     | -                          |
+| after-read                       | 文件读取完成后的回调                                                                                                                              | (fileItem: UploadFileItem \| UploadFileItem[]) => void                                        | -                          |
+| removable                        | 是否可删除                                                                                                                                        | boolean                                                                                       | true                       |
+| before-remove                    | 文件删除前的回调，返回 false 可终止文件删除，支持返回 Promise                                                                                     | (index: number, fileItem: UploadFileItem) => boolean \| Promise\<any>                         | -                          |
+| validate-event                   | 是否触发表单验证                                                                                                                                  | boolean                                                                                       | true                       |
+
+### UploadSelectOptions <sup>1.21.0+</sup>
+
+```ts
+interface UploadSelectOptions {
+  sourceType?: ('album' | 'camera')[]
+}
+```
 
 ### UploadSlots
 

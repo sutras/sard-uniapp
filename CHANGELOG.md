@@ -1,3 +1,20 @@
+# [1.21.0](https://github.com/sutras/sard-uniapp/compare/v1.20.2...v1.21.0) (2025-07-04)
+
+
+### Bug Fixes
+
+* upload组件修改beforeChoose，多返回一个参数sourceType，用于区分当前选择项 ([d440c7e](https://github.com/sutras/sard-uniapp/commit/d440c7e166db4987507e642bda8d3fb6aa2a4c9b))
+* 修复 fab 图标设置失败问题 ([da00f11](https://github.com/sutras/sard-uniapp/commit/da00f11ce8cd19ab712572d106ce94856739a228))
+
+
+### Features
+
+* list 新增隐藏边框属性 ([6fbab69](https://github.com/sutras/sard-uniapp/commit/6fbab69ad4e637bc1bb12dea360e12413e398c74))
+* upload组件选择前置允许配置 ([5f2a753](https://github.com/sutras/sard-uniapp/commit/5f2a7538f985a85226e52c19aa11699fa1c6aa9f))
+* 新增瀑布流组件 ([8da700b](https://github.com/sutras/sard-uniapp/commit/8da700b367a63725f074d4431ac72e26b3e64cae))
+
+
+
 ## [1.20.2](https://github.com/sutras/sard-uniapp/compare/v1.20.1...v1.20.2) (2025-07-02)
 
 
