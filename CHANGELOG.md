@@ -1,3 +1,13 @@
+## [1.21.1](https://github.com/sutras/sard-uniapp/compare/v1.21.0...v1.21.1) (2025-07-05)
+
+
+### Bug Fixes
+
+* 修复 request 查询参数拼接问题 ([53df30d](https://github.com/sutras/sard-uniapp/commit/53df30d0e8bf0a3c362ca97f06cc8a178458d359))
+* 替代废弃的 uni.getSystemInfoSync 接口 ([7b7d391](https://github.com/sutras/sard-uniapp/commit/7b7d391e86e0baf2fce8b550f7d9b5441c2cb40a))
+
+
+
 # [1.21.0](https://github.com/sutras/sard-uniapp/compare/v1.20.2...v1.21.0) (2025-07-04)
 
 

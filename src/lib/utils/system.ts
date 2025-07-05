@@ -1,9 +1,5 @@
 let platform = ''
 
-// #ifdef WEB
-platform = 'web'
-// #endif
-
 // #ifdef APP
 platform = 'app'
 // #endif
@@ -14,6 +10,10 @@ platform = 'mp-weixin'
 
 // #ifdef MP-ALIPAY
 platform = 'mp-alipay'
+// #endif
+
+// #ifdef WEB
+platform = 'web'
 // #endif
 
 export const isWeb = platform === 'web'

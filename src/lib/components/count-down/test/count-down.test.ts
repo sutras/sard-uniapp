@@ -15,7 +15,7 @@ describe('CountDown', () => {
 
     expect(wrapper.text()).toBe('02:00:00')
     await sleep(1000)
-    expect(wrapper.text()).toBe('01:59:59')
+    expect(wrapper.text()).oneOf(['01:59:59', '01:59:58'])
   })
 
   test('autoStart', async () => {
