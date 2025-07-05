@@ -38,6 +38,8 @@ export default defineConfig({
       'table-row': '../table',
       'timeline-item': '../timeline',
       'toast-agent': '../toast',
+      'waterfall-item': '../waterfall',
+      'waterfall-load': '../waterfall',
     },
   },
   codeAlias: {
