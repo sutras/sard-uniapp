@@ -1,9 +1,23 @@
-export const systemInfo = uni.getSystemInfoSync()
+let platform = ''
 
-const platform = systemInfo.uniPlatform
+// #ifdef WEB
+platform = 'web'
+// #endif
 
-export const isApp = platform === 'app'
+// #ifdef APP
+platform = 'app'
+// #endif
+
+// #ifdef MP-WEIXIN
+platform = 'mp-weixin'
+// #endif
+
+// #ifdef MP-ALIPAY
+platform = 'mp-alipay'
+// #endif
+
 export const isWeb = platform === 'web'
+export const isApp = platform === 'app'
 export const isMp = platform.startsWith('mp-')
-export const isAlipay = platform === 'mp-alipay'
 export const isWeixin = platform === 'mp-weixin'
+export const isAlipay = platform === 'mp-alipay'

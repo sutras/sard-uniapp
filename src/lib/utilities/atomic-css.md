@@ -90,7 +90,7 @@ Unknown at rule @tailwind scss(unknownAtRules)
 
 ### 间距和大小
 
-`theme.spacing` 配置了 0至750个梯度的间距和大小，单位为 rpx；在 750px 宽度的设计稿中，测试到多大尺寸直接就能用这个数值了，无需进行换算。
+`theme.spacing` 配置了 0至750中偶数的间距和大小，单位为 rpx；在 750px 宽度的设计稿中，测试到多大尺寸直接就能用这个数值了，无需进行换算。
 
 下面是类名和对应的声明：
 
