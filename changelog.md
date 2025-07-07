@@ -1,3 +1,12 @@
+## [1.21.2](https://github.com/sutras/sard-uniapp/compare/v1.21.1...v1.21.2) (2025-07-07)
+
+
+### Features
+
+* input 组件新增 show-eye 属性 ([351a56e](https://github.com/sutras/sard-uniapp/commit/351a56ec77fabc44edb788b2e9e06ffdfb5a7cef))
+
+
+
 ## [1.21.1](https://github.com/sutras/sard-uniapp/compare/v1.21.0...v1.21.1) (2025-07-05)
 
 
