@@ -25,6 +25,12 @@ page,
   --sar-input-clear-font-size: 32rpx;
   --sar-input-clear-color: var(--sar-fourth-color);
 
+  --sar-input-eye-margin-left: 16rpx;
+  --sar-input-eye-margin-right: calc(var(--sar-input-padding-x) * -1);
+  --sar-input-eye-padding-x: 16rpx;
+  --sar-input-eye-font-size: 36rpx;
+  --sar-input-eye-color: var(--sar-fourth-color);
+
   --sar-input-count-font-size: var(--sar-text-sm);
   --sar-input-count-line-height: var(--sar-leading-tight);
   --sar-input-count-color: var(--sar-tertiary-color);

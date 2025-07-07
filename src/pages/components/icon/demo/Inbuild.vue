@@ -61,6 +61,8 @@ const inbuiltIcons = [
   'backtop',
   'undo',
   'rotate-left',
+  'eye',
+  'eye-slash',
 ]
 
 const onClick = (name: string) => {

@@ -71,6 +71,7 @@ export interface InputProps {
   focused?: boolean
   minHeight?: string
   validateEvent?: boolean
+  showEye?: boolean
 
   internalPrepend?: number
 }

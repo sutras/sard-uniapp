@@ -101,6 +101,21 @@
     }
   }
 
+  @include e(eye) {
+    @include universal;
+    flex: none;
+    width: auto;
+    align-self: stretch;
+    justify-content: center;
+    align-items: center;
+    margin-left: var(--sar-input-eye-margin-left);
+    margin-right: var(--sar-input-eye-margin-right);
+    padding: 0 var(--sar-input-eye-padding-x);
+    font-size: var(--sar-input-eye-font-size);
+    color: var(--sar-input-eye-color);
+    cursor: pointer;
+  }
+
   @include e(count) {
     @include universal;
     align-items: flex-end;

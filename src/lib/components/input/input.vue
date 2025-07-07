@@ -49,7 +49,7 @@
         :show-count="false"
       />
       <input
-        v-else
+        v-if="type !== 'textarea' && showPassword"
         :class="classNames(bem.e('control'), bem.em('control', 'input'))"
         :value="innerValue"
         :placeholder="placeholder"
@@ -75,8 +75,48 @@
         @blur="onBlur"
         @confirm="onConfirm"
         @keyboardheightchange="onKeyboardheightchange"
-        :type="type"
-        :password="type === 'password'"
+        :type="mergedType"
+        :password="true"
+        :always-embed="alwaysEmbed"
+        :safe-password-cert-path="safePasswordCertPath"
+        :safe-password-length="safePasswordLength"
+        :safe-password-time-stamp="safePasswordTimeStamp"
+        :safe-password-nonce="safePasswordNonce"
+        :safe-password-salt="safePasswordSalt"
+        :safe-password-custom-hash="safePasswordCustomHash"
+        :random-number="randomNumber"
+        :controlled="controlled"
+        :always-system="alwaysSystem"
+      />
+      <input
+        v-if="type !== 'textarea' && !showPassword"
+        :class="classNames(bem.e('control'), bem.em('control', 'input'))"
+        :value="innerValue"
+        :placeholder="placeholder"
+        :placeholder-style="mergedPlaceholderStyle"
+        :placeholder-class="placeholderClass"
+        :disabled="isDisabled || isReadonly"
+        :maxlength="maxlength"
+        :focus="focus"
+        :cursor-spacing="cursorSpacing"
+        :cursor="cursor"
+        :confirm-type="confirmType"
+        :confirm-hold="confirmHold"
+        :selection-start="selectionStart"
+        :selection-end="selectionEnd"
+        :adjust-position="adjustPosition"
+        :hold-keyboard="holdKeyboard"
+        :auto-blur="autoBlur"
+        :ignore-composition-event="ignoreCompositionEvent"
+        :inputmode="inputmode"
+        autocomplete="off"
+        @input="onInput"
+        @focus="onFocus"
+        @blur="onBlur"
+        @confirm="onConfirm"
+        @keyboardheightchange="onKeyboardheightchange"
+        :type="mergedType"
+        :password="false"
         :always-embed="alwaysEmbed"
         :safe-password-cert-path="safePasswordCertPath"
         :safe-password-length="safePasswordLength"
@@ -98,6 +138,9 @@
         @touchcancel="onClearTouchEnd"
       >
         <sar-icon family="sari" name="x-circle-fill" />
+      </view>
+      <view v-if="mergedShowEye" :class="bem.e('eye')" @click.stop="onEyeClick">
+        <sar-icon family="sari" :name="eyeIcon" />
       </view>
       <view v-if="$slots.append" :class="bem.e('append')">
         <slot name="append"></slot>
@@ -258,6 +301,29 @@ const onKeyboardheightchange = (event: any) => {
 const onClick = (event: any) => {
   emit('click', event)
 }
+
+// eye
+const isPlainText = ref(false)
+
+const eyeIcon = computed(() => (isPlainText.value ? 'eye' : 'eye-slash'))
+
+const onEyeClick = () => {
+  isPlainText.value = !isPlainText.value
+}
+
+const showPassword = computed(() => {
+  return props.type === 'password' && isPlainText.value === false
+})
+
+const mergedShowEye = computed(() => props.type === 'password' && props.showEye)
+
+const mergedType = computed(() => {
+  return showPassword.value
+    ? 'password'
+    : props.type === 'password'
+      ? 'text'
+      : props.type
+})
 
 // others
 const inputClass = computed(() => {
