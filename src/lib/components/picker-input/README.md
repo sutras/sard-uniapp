@@ -41,6 +41,13 @@ import PickerInput from 'sard-uniapp/components/picker-input/picker-input.vue'
 | clearable                         | 是否显示清空按钮       | boolean    | false           |
 | placeholder                       | 输入框占位符内容       | string     | -               |
 | value-on-clear <sup>1.19.2+</sup> | 设置点击清除按钮后的值 | () => any  | () => undefined |
+| arrow                             | 自定义箭头             | string     | caret-right     |
+
+### PickerInputSlots
+
+| 插槽  | 描述       | 属性       |
+| ----- | ---------- | ---------- |
+| arrow | 自定义箭头 | () => void |
 
 ### PickerSlots
 
