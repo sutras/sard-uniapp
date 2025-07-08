@@ -10,6 +10,7 @@ export interface PopoutInputProps {
   clearable?: boolean
   loading?: boolean
   multiline?: boolean
+  arrow?: string
 }
 
 export interface PopoutInputEmits {
@@ -19,4 +20,6 @@ export interface PopoutInputEmits {
   (e: 'clear'): void
 }
 
-export interface PopoutInputSlots {}
+export interface PopoutInputSlots {
+  'arrow'(): any
+}
