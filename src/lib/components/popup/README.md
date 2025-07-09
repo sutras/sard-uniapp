@@ -28,16 +28,17 @@ import Popup from 'sard-uniapp/components/popup/popup.vue'
 
 ### PopupProps
 
-| 属性        | 描述                  | 类型                                                                               | 默认值 |
-| ----------- | --------------------- | ---------------------------------------------------------------------------------- | ------ |
-| root-class  | 组件根元素类名        | string                                                                             | -      |
-| root-style  | 组件根元素样式        | StyleValue                                                                         | -      |
-| visible     | 是否可见              | boolean                                                                            | false  |
-| duration    | 显隐动画时长，单位 ms | number                                                                             | 300    |
-| effect      | 显隐效果              | 'slide-top' \| 'slide-right' \| 'slide-bottom' \| 'slide-left' \| 'zoom' \| 'fade' | 'fade' |
-| overlay     | 是否显示遮罩          | boolean                                                                            | true   |
-| background  | 遮罩背景色            | string                                                                             | -      |
-| transparent | 透明遮罩              | boolean                                                                            | false  |
+| 属性                   | 描述                   | 类型                                                                               | 默认值 |
+| ---------------------- | ---------------------- | ---------------------------------------------------------------------------------- | ------ |
+| root-class             | 组件根元素类名         | string                                                                             | -      |
+| root-style             | 组件根元素样式         | StyleValue                                                                         | -      |
+| visible (v-model)      | 是否可见               | boolean                                                                            | false  |
+| duration               | 显隐动画时长，单位 ms  | number                                                                             | 300    |
+| effect                 | 显隐效果               | 'slide-top' \| 'slide-right' \| 'slide-bottom' \| 'slide-left' \| 'zoom' \| 'fade' | 'fade' |
+| overlay                | 是否显示遮罩           | boolean                                                                            | true   |
+| background             | 遮罩背景色             | string                                                                             | -      |
+| transparent            | 透明遮罩               | boolean                                                                            | false  |
+| close-on-click-overlay | 是否在点击遮罩层后关闭 | boolean                                                                            | true   |
 
 ### PopupSlots
 
@@ -59,6 +60,7 @@ import Popup from 'sard-uniapp/components/popup/popup.vue'
 | leave           | 退场动画开始时触发          | () => void                         |
 | after-leave     | 退场动画结束时触发          | () => void                         |
 | leave-cancelled | 退场动画取消时触发          | () => void                         |
+| update:visible  | 显隐时触发                  | (visible: boolean) => void         |
 
 ## 主题定制
 
