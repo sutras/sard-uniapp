@@ -90,6 +90,7 @@ export interface FormItemSlots {
   default?(props: Record<string, never>): any
   label?(props: Record<string, never>): any
   validate?(props: { state: ValidateState }): any
+  error?(props: { message: string; showError: boolean }): any
 }
 
 export interface FormItemExpose {

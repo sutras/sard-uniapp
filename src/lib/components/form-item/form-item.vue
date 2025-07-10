@@ -11,9 +11,15 @@
     <view :class="bem.e('content')">
       <slot></slot>
       <slot name="validate" :state="validateState"></slot>
-      <view v-if="shouldShowError" :class="bem.e('error')">
-        {{ validateMessage }}
-      </view>
+      <slot
+        name="error"
+        :message="validateMessage"
+        :show-error="shouldShowError"
+      >
+        <view v-if="shouldShowError" :class="bem.e('error')">
+          {{ validateMessage }}
+        </view>
+      </slot>
     </view>
   </view>
 </template>
@@ -126,7 +132,7 @@ watch(
 )
 
 const shouldShowError = computed(() => {
-  return props.showError && formContext.showError && validateMessage.value
+  return !!props.showError && !!formContext.showError && !!validateMessage.value
 })
 
 const validateState = ref<ValidateState>('')
