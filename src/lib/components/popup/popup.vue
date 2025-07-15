@@ -146,6 +146,19 @@ const popupStyle = computed(() => {
 })
 </script>
 
+<!-- #ifdef APP-PLUS -->
+<script module="render" lang="renderjs">
+export default {
+  mounted() {
+    const root = document.querySelector('uni-app') || document.body
+    if (this.$ownerInstance.$el) {
+      root.appendChild(this.$ownerInstance.$el)
+    }
+  }
+}
+</script>
+<!-- #endif -->
+
 <style lang="scss">
 @import './index.scss';
 </style>
