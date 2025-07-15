@@ -111,7 +111,7 @@ const { realVisible, transitionClass, onTransitionEnd } = useTransition(
 const onOverlayClick = (event: any) => {
   emit('overlay-click', event)
 
-  if (props.closeOnClickOverlay) {
+  if (props.overlayClosable) {
     emit('update:visible', false)
   }
 }

@@ -53,5 +53,10 @@ describe('Popover', () => {
       effect: 'zoom',
     })
     expect(wrapper.find('.sar-popup.sar-popup_zoom').exists()).toBeTruthy()
+
+    wrapper.find('.sar-overlay').trigger('click')
+
+    expect(wrapper.emitted<boolean[]>()['update:visible'][0][0]).toBe(false)
+    expect(wrapper.emitted<boolean[]>()['overlay-click'][0][0]).toBeTruthy()
   })
 })

@@ -326,7 +326,7 @@ export const defaultConfig = {
     duration: 250,
     effect: 'fade' as PopupProps['effect'],
     overlay: true,
-    closeOnClickOverlay: true,
+    overlayClosable: true,
   },
   progressBar: {
     percent: 0,
