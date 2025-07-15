@@ -9,6 +9,7 @@
     :root-class="rootClass"
     :root-style="rootStyle"
     :internal-arrow="$slots.arrow ? 1 : 0"
+    :input-props="inputProps"
     @clear="onClear"
     @click="show"
   >

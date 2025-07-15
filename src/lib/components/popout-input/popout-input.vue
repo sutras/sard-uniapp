@@ -12,6 +12,7 @@
       :auto-height="multiline"
       :input-min-height="multiline"
       :internal-prepend="$slots.prepend ? 1 : 0"
+      v-bind="inputProps"
       @clear="onClear"
       @change="onChange"
     >

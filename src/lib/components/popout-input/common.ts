@@ -1,5 +1,6 @@
 import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
+import { type InputProps } from '../input'
 export interface PopoutInputProps {
   rootStyle?: StyleValue
   rootClass?: string
@@ -13,6 +14,7 @@ export interface PopoutInputProps {
   arrow?: string
   arrowFamily?: string
   internalArrow?: number
+  inputProps?: InputProps
 }
 
 export const defaultPopoutInputProps = defaultConfig.popoutInput

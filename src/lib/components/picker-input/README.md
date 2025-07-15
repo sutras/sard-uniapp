@@ -43,6 +43,7 @@ import PickerInput from 'sard-uniapp/components/picker-input/picker-input.vue'
 | value-on-clear <sup>1.19.2+</sup> | 设置点击清除按钮后的值 | () => any  | () => undefined |
 | arrow <sup>1.22+</sup>            | 自定义箭头图标名       | string     | 'caret-right'   |
 | arrow-family <sup>1.22+</sup>     | 自定义箭头图标字体     | string     | 'sari'          |
+| input-props <sup>1.22+</sup>      | 自定义输入框组件属性   | InputProps | -               |
 
 ### PickerInputSlots
 

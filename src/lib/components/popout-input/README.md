@@ -27,19 +27,20 @@ import PopoutInput from 'sard-uniapp/components/popout-input/popout-input.vue'
 
 ### PopoutInputProps
 
-| 属性                          | 描述               | 类型       | 默认值        |
-| ----------------------------- | ------------------ | ---------- | ------------- |
-| root-class                    | 组件根元素类名     | string     | -             |
-| root-style                    | 组件根元素样式     | StyleValue | -             |
-| model-value                   | 输入框值           | string     | -             |
-| placeholder                   | 输入框占位符内容   | string     | -             |
-| disabled                      | 禁用状态           | boolean    | false         |
-| readonly                      | 只读状态           | boolean    | false         |
-| loading                       | 加载状态           | boolean    | false         |
-| clearable                     | 是否显示清空按钮   | boolean    | false         |
-| multiline                     | 是否多行输入框     | boolean    | false         |
-| arrow <sup>1.22+</sup>        | 自定义箭头图标名   | string     | 'caret-right' |
-| arrow-family <sup>1.22+</sup> | 自定义箭头图标字体 | string     | 'sari'        |
+| 属性                          | 描述                 | 类型       | 默认值        |
+| ----------------------------- | -------------------- | ---------- | ------------- |
+| root-class                    | 组件根元素类名       | string     | -             |
+| root-style                    | 组件根元素样式       | StyleValue | -             |
+| model-value                   | 输入框值             | string     | -             |
+| placeholder                   | 输入框占位符内容     | string     | -             |
+| disabled                      | 禁用状态             | boolean    | false         |
+| readonly                      | 只读状态             | boolean    | false         |
+| loading                       | 加载状态             | boolean    | false         |
+| clearable                     | 是否显示清空按钮     | boolean    | false         |
+| multiline                     | 是否多行输入框       | boolean    | false         |
+| arrow <sup>1.22+</sup>        | 自定义箭头图标名     | string     | 'caret-right' |
+| arrow-family <sup>1.22+</sup> | 自定义箭头图标字体   | string     | 'sari'        |
+| input-props <sup>1.22+</sup>  | 自定义输入框组件属性 | InputProps | -             |
 
 ### PopoutInputSlots
 
