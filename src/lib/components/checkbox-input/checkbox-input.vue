@@ -8,9 +8,13 @@
     multiline
     :root-class="rootClass"
     :root-style="rootStyle"
+    :internal-arrow="$slots.arrow ? 1 : 0"
     @clear="onClear"
     @click="show"
   >
+    <template v-if="$slots.arrow" #arrow>
+      <slot name="arrow"></slot>
+    </template>
     <sar-checkbox-popout
       v-model:visible="innerVisible"
       v-model="innerValue"
@@ -44,6 +48,7 @@ import {
   type CheckboxInputProps,
   type CheckboxInputEmits,
   type CheckboxInputOption,
+  type CheckboxInputSlots,
   defaultCheckboxInputProps,
 } from './common'
 import { getMayPrimitiveOption, isEmptyBinding } from '../../utils'
@@ -60,6 +65,8 @@ const props = withDefaults(
   defineProps<CheckboxInputProps>(),
   defaultCheckboxInputProps(),
 )
+
+defineSlots<CheckboxInputSlots>()
 
 const emit = defineEmits<CheckboxInputEmits>()
 

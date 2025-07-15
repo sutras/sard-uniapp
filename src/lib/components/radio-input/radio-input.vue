@@ -7,9 +7,13 @@
     :clearable="clearable"
     :root-class="rootClass"
     :root-style="rootStyle"
+    :internal-arrow="$slots.arrow ? 1 : 0"
     @clear="onClear"
     @click="show"
   >
+    <template v-if="$slots.arrow" #arrow>
+      <slot name="arrow"></slot>
+    </template>
     <sar-radio-popout
       v-model:visible="innerVisible"
       v-model="innerValue"
@@ -39,6 +43,7 @@ import {
   type RadioInputProps,
   type RadioInputEmits,
   type RadioInputOption,
+  type RadioInputSlots,
   defaultRadioInputProps,
 } from './common'
 import { getMayPrimitiveOption, isEmptyBinding, isNullish } from '../../utils'
@@ -55,6 +60,8 @@ const props = withDefaults(
   defineProps<RadioInputProps>(),
   defaultRadioInputProps(),
 )
+
+defineSlots<RadioInputSlots>()
 
 const emit = defineEmits<RadioInputEmits>()
 

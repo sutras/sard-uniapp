@@ -1,4 +1,7 @@
-import { type PopoutInputProps } from '../popout-input/common'
+import {
+  type PopoutInputSlots,
+  type PopoutInputProps,
+} from '../popout-input/common'
 import {
   defaultPickerPopoutProps,
   type PickerPopoutSlots,
@@ -18,8 +21,6 @@ export const defaultPickerInputProps = () => ({
   ...defaultConfig.pickerInput,
 })
 
-export interface PickerInputSlots extends PickerPopoutSlots {
-  arrow(): any
-}
+export interface PickerInputSlots extends PickerPopoutSlots, PopoutInputSlots {}
 
 export interface PickerInputEmits extends PickerPopoutEmits {}

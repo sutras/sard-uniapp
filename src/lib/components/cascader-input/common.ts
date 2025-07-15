@@ -1,4 +1,7 @@
-import { type PopoutInputProps } from '../popout-input/common'
+import {
+  type PopoutInputSlots,
+  type PopoutInputProps,
+} from '../popout-input/common'
 import { defaultConfig } from '../config'
 import {
   type CascaderPopoutProps,
@@ -17,6 +20,8 @@ export const defaultCascaderInputProps = () => ({
   ...defaultConfig.cascaderInput,
 })
 
-export interface CascaderInputSlots extends CascaderPopoutSlots {}
+export interface CascaderInputSlots
+  extends CascaderPopoutSlots,
+    PopoutInputSlots {}
 
 export interface CascaderInputEmits extends CascaderPopoutEmits {}

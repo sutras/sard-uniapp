@@ -2,7 +2,10 @@ import {
   type CalendarPopoutEmits,
   type CalendarPopoutProps,
 } from '../calendar-popout/common'
-import { type PopoutInputProps } from '../popout-input/common'
+import {
+  type PopoutInputSlots,
+  type PopoutInputProps,
+} from '../popout-input/common'
 import { defaultConfig } from '../config'
 
 export interface CalendarInputProps
@@ -17,5 +20,7 @@ export const defaultCalendarInputProps = () => ({
   ...defaultConfig.calendarPopout,
   ...defaultConfig.calendarInput,
 })
+
+export interface CalendarInputSlots extends PopoutInputSlots {}
 
 export interface CalendarInputEmits extends CalendarPopoutEmits {}

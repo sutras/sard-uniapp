@@ -61,6 +61,8 @@ import DatetimePickerInput from 'sard-uniapp/components/datetime-picker-input/da
 | placeholder                       | 输入框占位符内容                                             | string                                                    | -               |
 | outlet-format                     | 输出到输入框的日期格式，不指定则根据 `type` 属性自动生成格式 | string [详见特殊符号](../utilities/date#日期格式特殊符号) | -               |
 | value-on-clear <sup>1.19.2+</sup> | 设置点击清除按钮后的值                                       | () => any                                                 | () => undefined |
+| arrow <sup>1.22+</sup>            | 自定义箭头图标名                                             | string                                                    | 'caret-right'   |
+| arrow-family <sup>1.22+</sup>     | 自定义箭头图标字体                                           | string                                                    | 'sari'          |
 
 ### `type` 到 `outletFormat` 的映射：
 
@@ -76,6 +78,12 @@ const mapTypeFormat = {
   hms: 'HH:mm:ss',
 }
 ```
+
+### DatetimePickerInputSlots
+
+| 插槽                   | 描述       | 属性       |
+| ---------------------- | ---------- | ---------- |
+| arrow <sup>1.22+</sup> | 自定义箭头 | () => void |
 
 ### DatetimePickerInputEmits
 

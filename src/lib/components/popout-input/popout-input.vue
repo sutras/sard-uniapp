@@ -21,13 +21,15 @@
       <template #append>
         <slot name="append"></slot>
         <view :class="bem.e('append')">
-          <view :class="bem.e('loading')" v-if="loading">
+          <view v-if="loading" :class="bem.e('loading')">
             <sar-loading />
           </view>
           <view v-if="!isReadonly" :class="bem.e('arrow')">
-            <slot name="arrow">
-              <sar-icon :family="arrowFamily" :name="arrow" />
-            </slot>
+            <slot
+              v-if="internalArrow !== 0 && $slots.arrow"
+              name="arrow"
+            ></slot>
+            <sar-icon v-else :family="arrowFamily" :name="arrow" />
           </view>
         </view>
       </template>

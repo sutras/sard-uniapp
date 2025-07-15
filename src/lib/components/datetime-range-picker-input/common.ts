@@ -4,7 +4,10 @@ import {
   type DatetimeRangePickerPopoutSlots,
   type DatetimeRangePickerPopoutEmits,
 } from '../datetime-range-picker-popout/common'
-import { type PopoutInputProps } from '../popout-input/common'
+import {
+  type PopoutInputSlots,
+  type PopoutInputProps,
+} from '../popout-input/common'
 
 export interface DatetimeRangePickerInputProps
   extends DatetimeRangePickerPopoutProps,
@@ -20,7 +23,8 @@ export const defaultDatetimeRangePickerInputProps = () => ({
 })
 
 export interface DatetimeRangePickerInputSlots
-  extends DatetimeRangePickerPopoutSlots {}
+  extends DatetimeRangePickerPopoutSlots,
+    PopoutInputSlots {}
 
 export interface DatetimeRangePickerInputEmits
   extends DatetimeRangePickerPopoutEmits {}

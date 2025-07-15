@@ -8,6 +8,7 @@
     :root-class="rootClass"
     :root-style="rootStyle"
     :arrow="arrow"
+    :internal-arrow="$slots.arrow ? 1 : 0"
     @clear="onClear"
     @click="show"
   >

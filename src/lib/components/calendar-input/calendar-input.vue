@@ -7,9 +7,13 @@
     :clearable="clearable"
     :root-class="rootClass"
     :root-style="rootStyle"
+    :internal-arrow="$slots.arrow ? 1 : 0"
     @clear="onClear"
     @click="show"
   >
+    <template v-if="$slots.arrow" #arrow>
+      <slot name="arrow"></slot>
+    </template>
     <sar-calendar-popout
       v-model:visible="innerVisible"
       v-model="innerValue"
@@ -49,6 +53,7 @@ import { useTranslate } from '../locale'
 import {
   type CalendarInputProps,
   type CalendarInputEmits,
+  type CalendarInputSlots,
   defaultCalendarInputProps,
 } from './common'
 
@@ -63,6 +68,8 @@ const props = withDefaults(
   defineProps<CalendarInputProps>(),
   defaultCalendarInputProps(),
 )
+
+defineSlots<CalendarInputSlots>()
 
 const emit = defineEmits<CalendarInputEmits>()
 

@@ -1,4 +1,7 @@
-import { type PopoutInputProps } from '../popout-input/common'
+import {
+  type PopoutInputSlots,
+  type PopoutInputProps,
+} from '../popout-input/common'
 import { defaultConfig } from '../config'
 import {
   type DatetimePickerPopoutProps,
@@ -19,7 +22,9 @@ export const defaultDatetimePickerInputProps = () => ({
   ...defaultConfig.datetimePickerInput,
 })
 
-export interface DatetimePickerInputSlots extends DatetimePickerPopoutSlots {}
+export interface DatetimePickerInputSlots
+  extends DatetimePickerPopoutSlots,
+    PopoutInputSlots {}
 
 export interface DatetimePickerInputEmits extends DatetimePickerPopoutEmits {}
 

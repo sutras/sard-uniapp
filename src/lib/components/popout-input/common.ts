@@ -1,6 +1,5 @@
 import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
-
 export interface PopoutInputProps {
   rootStyle?: StyleValue
   rootClass?: string
@@ -13,6 +12,7 @@ export interface PopoutInputProps {
   multiline?: boolean
   arrow?: string
   arrowFamily?: string
+  internalArrow?: number
 }
 
 export const defaultPopoutInputProps = defaultConfig.popoutInput

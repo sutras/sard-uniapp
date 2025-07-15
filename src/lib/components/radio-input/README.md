@@ -38,6 +38,14 @@ import RadioInput from 'sard-uniapp/components/radio-input/radio-input.vue'
 | clearable                         | 是否显示清空按钮       | boolean    | false           |
 | placeholder                       | 输入框占位符内容       | string     | -               |
 | value-on-clear <sup>1.19.2+</sup> | 设置点击清除按钮后的值 | () => any  | () => undefined |
+| arrow <sup>1.22+</sup>            | 自定义箭头图标名       | string     | 'caret-right'   |
+| arrow-family <sup>1.22+</sup>     | 自定义箭头图标字体     | string     | 'sari'          |
+
+### RadioInputSlots
+
+| 插槽                   | 描述       | 属性       |
+| ---------------------- | ---------- | ---------- |
+| arrow <sup>1.22+</sup> | 自定义箭头 | () => void |
 
 ### RadioInputEmits
 

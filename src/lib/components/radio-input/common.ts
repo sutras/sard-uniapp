@@ -1,5 +1,8 @@
 import { type RadioGroupOption } from '../radio/common'
-import { type PopoutInputProps } from '../popout-input/common'
+import {
+  type PopoutInputSlots,
+  type PopoutInputProps,
+} from '../popout-input/common'
 import {
   type RadioPopoutEmits,
   type RadioPopoutProps,
@@ -19,5 +22,7 @@ export const defaultRadioInputProps = () => ({
   ...defaultRadioPopoutProps(),
   ...defaultConfig.radioInput,
 })
+
+export interface RadioInputSlots extends PopoutInputSlots {}
 
 export interface RadioInputEmits extends RadioPopoutEmits {}

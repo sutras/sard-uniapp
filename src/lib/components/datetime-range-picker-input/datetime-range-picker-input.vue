@@ -7,9 +7,13 @@
     :clearable="clearable"
     :root-class="rootClass"
     :root-style="rootStyle"
+    :internal-arrow="$slots.arrow ? 1 : 0"
     @clear="onClear"
     @click="show"
   >
+    <template v-if="$slots.arrow" #arrow>
+      <slot name="arrow"></slot>
+    </template>
     <sar-datetime-range-picker-popout
       keep-render
       v-model:visible="innerVisible"
