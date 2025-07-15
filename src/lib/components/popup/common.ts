@@ -21,6 +21,7 @@ export interface PopupProps {
   background?: string
   transparent?: boolean
   keepRender?: boolean
+  closeOnClickOverlay?: boolean
 }
 
 export const defaultPopupProps = defaultConfig.popup
@@ -55,6 +56,7 @@ export interface TransitionHookCallbacks {
 
 export interface PopupEmits extends TransitionHookEmits {
   (e: 'overlay-click', event: any): void
+  (e: 'update:visible', visible: boolean): void
 }
 
 export interface PopupContext {
