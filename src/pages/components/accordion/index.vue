@@ -11,6 +11,10 @@
     <doc-demo title="禁用" full>
       <DemoDisabled />
     </doc-demo>
+
+    <doc-demo title="隐藏边框" full>
+      <DemoHideBorder />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -18,4 +22,5 @@
 import DemoBasic from './demo/Basic.vue'
 import DemoMultiple from './demo/Multiple.vue'
 import DemoDisabled from './demo/Disabled.vue'
+import DemoHideBorder from './demo/HideBorder.vue'
 </script>

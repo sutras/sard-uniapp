@@ -5,6 +5,7 @@ export interface AccordionProps {
   rootClass?: string
   modelValue?: (string | number)[] | string | number
   multiple?: boolean
+  hideBorder?: boolean
 }
 
 export interface AccordionEmits {
@@ -19,6 +20,7 @@ export interface AccoridonContext {
   value: any
   multiple: AccordionProps['multiple']
   toggle: (name: string | number) => void
+  hideBorder?: boolean
 }
 
 export const accoridonContextSymbol = Symbol('accoridon-context')

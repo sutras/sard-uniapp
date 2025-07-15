@@ -38,16 +38,23 @@ import AccordionItem from 'sard-uniapp/components/accordion-item/accordion-item.
 
 @code('${DEMO_PATH}/accordion/demo/Disabled.vue')
 
+### 隐藏边框 <sup>1.22+</sup>
+
+可以使用 `hide-border` 属性隐藏边框。
+
+@code('${DEMO_PATH}/accordion/demo/HideBorder.vue')
+
 ## API
 
 ### AccordionProps
 
-| 属性        | 描述                   | 类型                                     | 默认值 |
-| ----------- | ---------------------- | ---------------------------------------- | ------ |
-| root-class  | 组件根元素类名         | string                                   | -      |
-| root-style  | 组件根元素样式         | StyleValue                               | -      |
-| model-value | 当前展开面板的 `name`  | string \| number \| (string \| number)[] | -      |
-| multiple    | 是否可同时展开多个面板 | boolean                                  | false  |
+| 属性                         | 描述                   | 类型                                     | 默认值 |
+| ---------------------------- | ---------------------- | ---------------------------------------- | ------ |
+| root-class                   | 组件根元素类名         | string                                   | -      |
+| root-style                   | 组件根元素样式         | StyleValue                               | -      |
+| model-value                  | 当前展开面板的 `name`  | string \| number \| (string \| number)[] | -      |
+| multiple                     | 是否可同时展开多个面板 | boolean                                  | false  |
+| hide-border <sup>1.22+</sup> | 是否隐藏边框           | boolean                                  | false  |
 
 ### AccordionSlots
 

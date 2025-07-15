@@ -66,12 +66,17 @@ provide<AccoridonContext>(
     value: innerValue,
     multiple: toRef(() => props.multiple),
     toggle,
+    hideBorder: toRef(() => props.hideBorder),
   }),
 )
 
 // others
 const accordionClass = computed(() => {
-  return classNames(bem.b(), props.rootClass)
+  return classNames(
+    bem.b(),
+    bem.m('borderless', props.hideBorder),
+    props.rootClass,
+  )
 })
 
 const accordionStyle = computed(() => {

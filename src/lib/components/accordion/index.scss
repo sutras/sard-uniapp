@@ -6,4 +6,10 @@
   &::before {
     @include border-vertical(var(--sar-accordion-border-color));
   }
+
+  @include m(borderless) {
+    &::before {
+      display: none;
+    }
+  }
 }

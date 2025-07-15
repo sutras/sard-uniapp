@@ -61,4 +61,31 @@ describe('Accordion', () => {
         }),
     ).toBe(true)
   })
+
+  test('hide-border', async () => {
+    const wrapper = mount(
+      h(
+        Accordion,
+        {
+          modelValue: '1',
+          duration: 0,
+          hideBorder: true,
+        },
+        { default: createSlots },
+      ),
+    )
+
+    expect(
+      wrapper
+        .find('.sar-accordion')
+        .classes()
+        .includes('sar-accordion_borderless'),
+    ).toBeTruthy()
+    expect(
+      wrapper
+        .find('.sar-accordion-item')
+        .classes()
+        .includes('sar-accordion-item_borderless'),
+    ).toBeTruthy()
+  })
 })

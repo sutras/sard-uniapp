@@ -68,4 +68,16 @@
       }
     }
   }
+
+  @include m(borderless) {
+    &::before {
+      display: none;
+    }
+
+    @include e(body) {
+      &::before {
+        display: none;
+      }
+    }
+  }
 }

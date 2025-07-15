@@ -71,7 +71,12 @@ const arrowName = computed(() => {
 })
 
 const accordionItemClass = computed(() => {
-  return classNames(bem.b(), bem.m('disabled', props.disabled), props.rootClass)
+  return classNames(
+    bem.b(),
+    bem.m('disabled', props.disabled),
+    bem.m('borderless', context.hideBorder),
+    props.rootClass,
+  )
 })
 
 const accordionItemStyle = computed(() => {
