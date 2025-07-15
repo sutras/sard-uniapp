@@ -1,9 +1,24 @@
-## [1.21.2](https://github.com/sutras/sard-uniapp/compare/v1.21.1...v1.21.2) (2025-07-07)
+# [1.22.0](https://github.com/sutras/sard-uniapp/compare/v1.21.1...v1.22.0) (2025-07-15)
+
+
+### Bug Fixes
+
+* 使popup组件在app端能传送到根节点 ([5008ce7](https://github.com/sutras/sard-uniapp/commit/5008ce7d72f2167b2c8c40b7b9cef16c4420ad69))
 
 
 ### Features
 
+* *-input 类组件新增 inputProps 属性 ([837ed51](https://github.com/sutras/sard-uniapp/commit/837ed514a684c8547e0a23b410912eda6fd8435b))
+* *-input 类组件新增arrow插槽和arrow, arrow-family属性 ([6555241](https://github.com/sutras/sard-uniapp/commit/655524171dd619461f4acfccbc3b7f753fc6e1d5))
+* accordion 组件新增 hide-border 属性 ([ae3a093](https://github.com/sutras/sard-uniapp/commit/ae3a093df01ab788dee6e51cac551d7d352974dd))
+* form-item 新增 error 插槽 ([b377e8e](https://github.com/sutras/sard-uniapp/commit/b377e8e082fcab3e03006a999bed2c2015910f67))
 * input 组件新增 show-eye 属性 ([351a56e](https://github.com/sutras/sard-uniapp/commit/351a56ec77fabc44edb788b2e9e06ffdfb5a7cef))
+* picker-input 新增 arrow 属性和 arrow 插槽 ([f9fc77f](https://github.com/sutras/sard-uniapp/commit/f9fc77f31fe58f879d97d9fd8c16efced2f4626e))
+* popout-input 新增 arrow-family 属性 ([a97f280](https://github.com/sutras/sard-uniapp/commit/a97f28082ab6811dcc1731a01b13446880b3e8e1))
+* popup-input 新增 arrow 属性和 arrow 插槽 ([4756536](https://github.com/sutras/sard-uniapp/commit/475653631e0142f9d9779908b5f2919e997abb22))
+* **Popup:** 增加 close-on-click-overlay，支持点击遮罩关闭弹出层；visible 支持 v-model ([28e7d27](https://github.com/sutras/sard-uniapp/commit/28e7d2748b02679ca2a744522237fd69f6dedd38))
+* 新增 dnd 组件 ([f9629a1](https://github.com/sutras/sard-uniapp/commit/f9629a10baa9b536f5d2ad07f0ef2b8b520d350a))
+* 新增overlayClosable属性 ([d615537](https://github.com/sutras/sard-uniapp/commit/d61553721d0e3321ffc6ff8ec53e238c7b88117c))
 
 
 
