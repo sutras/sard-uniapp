@@ -25,7 +25,9 @@
             <sar-loading />
           </view>
           <view v-if="!isReadonly" :class="bem.e('arrow')">
-            <sar-icon family="sari" name="caret-right" />
+            <slot name="arrow">
+              <sar-icon family="sari" :name="arrow" />
+            </slot>
           </view>
         </view>
       </template>
@@ -61,7 +63,9 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<PopoutInputProps>(), {})
+const props = withDefaults(defineProps<PopoutInputProps>(), {
+  arrow: 'caret-right',
+})
 
 const emit = defineEmits<PopoutInputEmits>()
 
