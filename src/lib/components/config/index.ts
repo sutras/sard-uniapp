@@ -313,6 +313,10 @@ export const defaultConfig = {
     overlayClosable: true,
     duration: 250,
   },
+  popoutInput: {
+    arrow: 'caret-right',
+    arrowFamily: 'sari',
+  },
   popover: {
     position: 'bottom' as PopoverProps['position'],
     direction: 'vertical' as PopoverProps['direction'],

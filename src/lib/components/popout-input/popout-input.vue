@@ -3,7 +3,6 @@
     <sar-input
       inlaid
       :model-value="innerValue"
-      @change="onChange"
       :placeholder="placeholder"
       :readonly="isReadonly"
       :disabled="isDisabled"
@@ -14,6 +13,7 @@
       :input-min-height="multiline"
       :internal-prepend="$slots.prepend ? 1 : 0"
       @clear="onClear"
+      @change="onChange"
     >
       <template #prepend>
         <slot name="prepend"></slot>
@@ -26,7 +26,7 @@
           </view>
           <view v-if="!isReadonly" :class="bem.e('arrow')">
             <slot name="arrow">
-              <sar-icon family="sari" :name="arrow" />
+              <sar-icon :family="arrowFamily" :name="arrow" />
             </slot>
           </view>
         </view>
@@ -53,7 +53,11 @@ import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarInput from '../input/input.vue'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext } from '../form/common'
-import { type PopoutInputProps, type PopoutInputEmits } from './common'
+import {
+  type PopoutInputProps,
+  type PopoutInputEmits,
+  defaultPopoutInputProps,
+} from './common'
 import SarLoading from '../loading/loading.vue'
 
 defineOptions({
@@ -63,9 +67,10 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<PopoutInputProps>(), {
-  arrow: 'caret-right',
-})
+const props = withDefaults(
+  defineProps<PopoutInputProps>(),
+  defaultPopoutInputProps,
+)
 
 const emit = defineEmits<PopoutInputEmits>()
 
@@ -142,10 +147,6 @@ const onSealClick = (event: any) => {
     emit('click', event)
   }
 }
-
-// const onClick = () => {
-//   void 0
-// }
 
 // others
 const popoutInputClass = computed(() => {
