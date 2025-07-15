@@ -38,6 +38,7 @@ export default [
         module: true,
         uni: true,
         plus: true,
+        my: true,
       },
     },
   },

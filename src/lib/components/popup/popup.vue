@@ -148,10 +148,13 @@ const popupStyle = computed(() => {
 
 <!-- #ifdef APP-PLUS -->
 <script module="render" lang="renderjs">
+// @ts-expect-error ignore renderjs
 export default {
   mounted() {
     const root = document.querySelector('uni-app') || document.body
+    // @ts-expect-error ignore renderjs
     if (this.$ownerInstance.$el) {
+      // @ts-expect-error ignore renderjs
       root.appendChild(this.$ownerInstance.$el)
     }
   }

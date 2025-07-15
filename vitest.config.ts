@@ -1,9 +1,29 @@
 /// <reference types="vitest" />
-import { defineConfig } from 'vite'
+import { defineConfig, Plugin } from 'vite'
 import { defineConfig as vitestDefineConfig } from 'vitest/config'
 import vue from '@vitejs/plugin-vue'
 import VueJsx from '@vitejs/plugin-vue-jsx'
 import { resolve } from 'path'
+
+function transformRenderjs() {
+  return {
+    name: 'transform-renderjs',
+
+    enforce: 'pre',
+
+    transform(src, id) {
+      if (id.includes('popup/popup.vue')) {
+        return {
+          code: src.replace(
+            /^<script module="render" lang="renderjs">[\s\S]+?^<\/script>/m,
+            '',
+          ),
+          map: null, // 如果可行将提供 source map
+        }
+      }
+    },
+  } as Plugin
+}
 
 const vitestConfig = vitestDefineConfig({
   test: {
@@ -38,6 +58,6 @@ const vitestConfig = vitestDefineConfig({
 })
 
 export default defineConfig({
-  plugins: [vue(), VueJsx()],
+  plugins: [transformRenderjs(), vue(), VueJsx()],
   ...(vitestConfig as any),
 })

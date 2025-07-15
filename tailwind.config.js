@@ -43,6 +43,7 @@ export default {
     },
     borderRadius: {
       none: 0,
+      inherit: 'inherit',
       xs: 'var(--sar-rounded-xs)',
       sm: 'var(--sar-rounded-sm)',
       DEFAULT: 'var(--sar-rounded)',

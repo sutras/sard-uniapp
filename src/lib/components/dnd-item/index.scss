@@ -1,0 +1,28 @@
+@use '../style/base' as *;
+
+@include bem(dnd-item) {
+  @include b() {
+    @include universal;
+
+    &:first-child {
+      border-top-left-radius: inherit;
+      border-top-right-radius: inherit;
+    }
+
+    &:last-child {
+      border-bottom-left-radius: inherit;
+      border-bottom-right-radius: inherit;
+    }
+
+    @include m(active) {
+      z-index: 1;
+      box-shadow: var(--sar-dnd-dragging-shadow);
+    }
+
+    @include m(passive) {
+      transition:
+        transform var(--sar-dnd-duration),
+        opacity var(--sar-dnd-duration);
+    }
+  }
+}

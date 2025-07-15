@@ -3,6 +3,7 @@
 @include bem(popout-input) {
   @include b() {
     @include universal;
+    justify-content: center;
     cursor: pointer;
 
     @include m(down) {

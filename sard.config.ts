@@ -40,7 +40,9 @@ export default defineConfig({
       'toast-agent': '../toast',
       'waterfall-item': '../waterfall',
       'waterfall-load': '../waterfall',
+      'dnd-item': '../dnd',
     },
+    multiDefaultExport: ['components/popup/popup.vue'],
   },
   codeAlias: {
     DEMO_PATH: path.resolve(process.cwd(), 'src/pages/components'),

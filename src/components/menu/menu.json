@@ -344,6 +344,10 @@
         "name": "dialog"
       },
       {
+        "title": "Dnd 拖放",
+        "name": "dnd"
+      },
+      {
         "title": "Fab 悬浮按钮",
         "name": "fab"
       },

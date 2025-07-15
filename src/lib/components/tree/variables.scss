@@ -11,8 +11,7 @@ page,
   --sar-tree-node-bg: var(--sar-emphasis-bg);
   --sar-tree-node-active-bg: var(--sar-active-bg);
   --sar-tree-node-dragging-bg: var(--sar-mask-white-legible);
-  --sar-tree-node-dragging-shadow:
-    0 0 1px 1px rgb(0 0 0 / 0.2), 0 1px 10px rgb(0 0 0 / 0.2);
+  --sar-tree-node-dragging-shadow: var(--sar-shadow-dragging);
 
   --sar-tree-toolbar-margin-right: -24rpx;
 

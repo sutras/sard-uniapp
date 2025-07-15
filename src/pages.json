@@ -114,6 +114,9 @@
           "path": "divider/index"
         },
         {
+          "path": "dnd/index"
+        },
+        {
           "path": "dropdown/index"
         },
         {
@@ -250,30 +253,6 @@
         },
         {
           "path": "overlay/index"
-        },
-        {
-          "path": "waterfall/index"
-        },
-        {
-          "path": "waterfall/demo/Basic"
-        },
-        {
-          "path": "waterfall/demo/KnownSize"
-        },
-        {
-          "path": "waterfall/demo/TrueCase"
-        },
-        {
-          "path": "waterfall/demo/MaxWait"
-        },
-        {
-          "path": "waterfall/demo/BigImage"
-        },
-        {
-          "path": "waterfall/demo/Columns"
-        },
-        {
-          "path": "waterfall/demo/Dynamic"
         },
         {
           "path": "pagination/index"
@@ -463,6 +442,30 @@
         },
         {
           "path": "upload/index"
+        },
+        {
+          "path": "waterfall/demo/Basic"
+        },
+        {
+          "path": "waterfall/demo/BigImage"
+        },
+        {
+          "path": "waterfall/demo/Columns"
+        },
+        {
+          "path": "waterfall/demo/Dynamic"
+        },
+        {
+          "path": "waterfall/demo/KnownSize"
+        },
+        {
+          "path": "waterfall/demo/MaxWait"
+        },
+        {
+          "path": "waterfall/demo/TrueCase"
+        },
+        {
+          "path": "waterfall/index"
         }
       ]
     }

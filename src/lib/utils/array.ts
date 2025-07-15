@@ -85,17 +85,17 @@ export function arrayMove<T>(array: T[], fromIndex: number, toIndex: number) {
 
   if (fromIndex > toIndex) {
     return [
-      ...array.slice(0, fromIndex),
-      ...array.slice(fromIndex + 1, toIndex + 1),
-      fromValue,
-      ...array.slice(toIndex + 1),
-    ]
-  } else {
-    return [
       ...array.slice(0, toIndex),
       fromValue,
       ...array.slice(toIndex, fromIndex),
       ...array.slice(fromIndex + 1),
+    ]
+  } else {
+    return [
+      ...array.slice(0, fromIndex),
+      ...array.slice(fromIndex + 1, toIndex + 1),
+      fromValue,
+      ...array.slice(toIndex + 1),
     ]
   }
 }

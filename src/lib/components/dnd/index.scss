@@ -1,0 +1,11 @@
+@use '../style/base' as *;
+
+@include bem(dnd) {
+  @include b() {
+    @include universal;
+  }
+
+  /* #ifdef MP-ALIPAY */
+  @include disable-scroll;
+  /* #endif */
+}

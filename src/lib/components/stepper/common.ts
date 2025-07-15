@@ -4,7 +4,7 @@ import { defaultConfig } from '../config'
 export interface StepperProps {
   rootStyle?: StyleValue
   rootClass?: string
-  modelValue?: number | string
+  modelValue?: number | string | null
   min?: number
   max?: number
   valueOnClear?: number | 'min' | 'max'

@@ -34,6 +34,9 @@ declare module 'vue' {
     SarDialog: typeof import('./components/dialog/dialog.vue').default
     SarDialogAgent: typeof import('./components/dialog-agent/dialog-agent.vue').default
     SarDivider: typeof import('./components/divider/divider.vue').default
+    SarDnd: typeof import('./components/dnd/dnd.vue').default
+    SarDndHandle: typeof import('./components/dnd-handle/dnd-handle.vue').default
+    SarDndItem: typeof import('./components/dnd-item/dnd-item.vue').default
     SarDropdown: typeof import('./components/dropdown/dropdown.vue').default
     SarDropdownItem: typeof import('./components/dropdown-item/dropdown-item.vue').default
     SarEmpty: typeof import('./components/empty/empty.vue').default

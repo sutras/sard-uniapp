@@ -1,0 +1,13 @@
+@use '../style/base' as *;
+
+@include bem(dnd-handle) {
+  @include b() {
+    @include universal;
+    cursor: pointer;
+    touch-action: none;
+  }
+
+  @include m(dragging) {
+    touch-action: none;
+  }
+}

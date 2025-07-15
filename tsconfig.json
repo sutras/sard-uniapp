@@ -7,7 +7,12 @@
     "sourceMap": true,
     "baseUrl": ".",
     "lib": ["esnext", "dom"],
-    "types": ["@dcloudio/types", "./src/lib/global.d.ts", "./pages.d.ts"],
+    "types": [
+      "@dcloudio/types",
+      "./src/lib/global.d.ts",
+      "./pages.d.ts",
+      "./env.d.ts"
+    ],
     "ignoreDeprecations": "5.0",
     "esModuleInterop": true,
     "moduleResolution": "Node",

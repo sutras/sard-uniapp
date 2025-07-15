@@ -1,0 +1,7 @@
+// #variables
+page,
+.sar-portal {
+  --sar-dnd-duration: var(--sar-duration);
+  --sar-dnd-dragging-shadow: var(--sar-shadow-dragging);
+}
+// #endvariables

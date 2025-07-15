@@ -31,6 +31,17 @@
   </sar-dialog>
 
   <sar-toast v-model:visible="toastVisible" :title="t('please')" />
+
+  <!-- #ifdef MP-ALIPAY -->
+  <view
+    :class="
+      classNames(
+        bem.e('disable-scroll'),
+        bem.em('disable-scroll', 'dragging', context.dragging),
+      )
+    "
+  ></view>
+  <!-- #endif -->
 </template>
 
 <script setup lang="ts">
@@ -615,27 +626,27 @@ const singleSelect = (node: TreeStateNode) => {
   }
 }
 
+const context = reactive({
+  selectable: toRef(() => props.selectable),
+  draggable: toRef(() => props.draggable),
+  editable: toRef(() => props.editable),
+  singleSelectable: toRef(() => props.singleSelectable),
+  leafOnly: toRef(() => props.leafOnly),
+  treeData: toRef(() => treeData.value),
+  setExpandedByNode,
+  toggleExpandedByNode,
+  setCheckedByNode,
+  levelup,
+  leveldown,
+  drop,
+  edit,
+  currentKey,
+  singleSelect,
+  dragging: false,
+})
+
 // others
-provide<TreeContext>(
-  treeContextSymbol,
-  reactive({
-    selectable: toRef(() => props.selectable),
-    draggable: toRef(() => props.draggable),
-    editable: toRef(() => props.editable),
-    singleSelectable: toRef(() => props.singleSelectable),
-    leafOnly: toRef(() => props.leafOnly),
-    treeData: toRef(() => treeData.value),
-    setExpandedByNode,
-    toggleExpandedByNode,
-    setCheckedByNode,
-    levelup,
-    leveldown,
-    drop,
-    edit,
-    currentKey,
-    singleSelect,
-  }),
-)
+provide<TreeContext>(treeContextSymbol, context)
 
 defineExpose<TreeExpose>({
   setExpanded,

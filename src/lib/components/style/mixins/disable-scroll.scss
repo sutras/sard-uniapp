@@ -1,0 +1,14 @@
+@use './bem' as *;
+
+@mixin disable-scroll {
+  position: fixed;
+  inset: 0;
+  z-index: var(--sar-disable-scroll-z-index);
+  display: none;
+  background-color: transparent;
+  touch-action: none;
+
+  @include m(dragging) {
+    display: block;
+  }
+}

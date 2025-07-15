@@ -17,6 +17,7 @@
     box-shadow: var(--sar-floating-bubble-box-shadow);
     opacity: 0;
     cursor: pointer;
+    touch-action: none;
 
     &:active {
       opacity: var(--sar-floating-bubble-active-opacity);

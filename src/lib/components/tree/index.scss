@@ -10,4 +10,8 @@
   @include e(input-wrapper) {
     padding: var(--sar-dialog-body-padding-y) var(--sar-dialog-body-padding-x);
   }
+
+  /* #ifdef MP-ALIPAY */
+  @include disable-scroll;
+  /* #endif */
 }

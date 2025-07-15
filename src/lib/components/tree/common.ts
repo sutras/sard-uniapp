@@ -115,6 +115,7 @@ export interface TreeContext {
   ) => void
   currentKey: string | number | undefined
   singleSelect: (node: TreeStateNode) => void
+  dragging: boolean
 }
 
 export const treeContextSymbol = Symbol('tree-context')
