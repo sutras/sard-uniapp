@@ -18,6 +18,8 @@ export const defaultPickerInputProps = () => ({
   ...defaultConfig.pickerInput,
 })
 
-export interface PickerInputSlots extends PickerPopoutSlots {}
+export interface PickerInputSlots extends PickerPopoutSlots {
+  arrow(): any
+}
 
 export interface PickerInputEmits extends PickerPopoutEmits {}

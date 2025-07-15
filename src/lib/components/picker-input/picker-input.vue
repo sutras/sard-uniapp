@@ -7,9 +7,14 @@
     :clearable="clearable"
     :root-class="rootClass"
     :root-style="rootStyle"
+    :arrow="arrow"
     @clear="onClear"
     @click="show"
   >
+    <template v-if="$slots.arrow" #arrow>
+      <slot name="arrow"></slot>
+    </template>
+
     <sar-picker-popout
       v-model:visible="innerVisible"
       v-model="innerValue"
