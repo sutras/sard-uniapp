@@ -1,3 +1,13 @@
+## [1.22.1](https://github.com/sutras/sard-uniapp/compare/v1.22.0...v1.22.1) (2025-07-19)
+
+
+### Features
+
+* 基于 popout 组件的带有确定按钮的组件添加 confirm 事件 ([d88f36f](https://github.com/sutras/sard-uniapp/commit/d88f36fd2f23a33eb56b2c7fd1f3919558a4f857))
+* 所有基于 Popup 和 Popout 组件的组件都添加入场/退场相关事件 ([5178b00](https://github.com/sutras/sard-uniapp/commit/5178b00e0e4b092304013b5639a7f85c52ba65b3))
+
+
+
 # [1.22.0](https://github.com/sutras/sard-uniapp/compare/v1.21.1...v1.22.0) (2025-07-15)
 
 
