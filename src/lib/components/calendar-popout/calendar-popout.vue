@@ -70,7 +70,7 @@ const { innerVisible, popoutValue, onChange, onConfirm, onVisibleHook } =
   useFormPopout(props, emit, {
     onChange() {
       if (!props.showConfirm && !confirmDisabled.value) {
-        onConfirm()
+        onConfirm(false)
         innerVisible.value = false
       }
     },

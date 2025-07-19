@@ -75,6 +75,7 @@ import DatetimePickerPopout from 'sard-uniapp/components/datetime-picker-popout/
 | update:model-value                 | 日期时间输入组件值改变时触发 | (value: Date \| string \| undefined) => void |
 | change                             | 日期时间输入组件值改变时触发 | (value: Date \|string \| undefined) => void  |
 | update:visible                     | 弹出框显隐时触发             | (visible: boolean) => void                   |
+| confirm <sup>1.22.1+</sup>         | 点击确定按钮时触发           | () => void                                   |
 | visible-hook <sup>1.22.1+</sup>    | 入场/退场动画状态改变时触发  | (name: TransitionHookName) => void           |
 | before-enter <sup>1.22.1+</sup>    | 入场动画开始前触发           | () => void                                   |
 | enter <sup>1.22.1+</sup>           | 入场动画开始时触发           | () => void                                   |

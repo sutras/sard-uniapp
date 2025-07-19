@@ -31,6 +31,7 @@
       :internal-custom="$slots.custom ? 1 : 0"
       @change="onChange"
       @visible-hook="onVisibleHook"
+      @confirm="onConfirm"
     >
       <template
         v-if="$slots.custom"
@@ -140,4 +141,8 @@ watch(
     immediate: true,
   },
 )
+
+const onConfirm = () => {
+  emit('confirm')
+}
 </script>

@@ -45,6 +45,7 @@ import DatetimeRangePickerPopout from 'sard-uniapp/components/datetime-range-pic
 | update:model-value                 | 日期时间输入组件值改变时触发 | (date: (Date \| string)[]) => void |
 | change                             | 日期时间输入组件值改变时触发 | (date: (Date \| string)[]) => void |
 | update:visible                     | 弹出框显隐时触发             | (visible: boolean) => void         |
+| confirm <sup>1.22.1+</sup>         | 点击确定按钮时触发           | () => void                         |
 | visible-hook <sup>1.22.1+</sup>    | 入场/退场动画状态改变时触发  | (name: TransitionHookName) => void |
 | before-enter <sup>1.22.1+</sup>    | 入场动画开始前触发           | () => void                         |
 | enter <sup>1.22.1+</sup>           | 入场动画开始时触发           | () => void                         |

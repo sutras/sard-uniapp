@@ -30,6 +30,7 @@ export interface CalendarPopoutEmits extends TransitionHookEmits {
     value: Date | Date[] | string | string[] | undefined,
   ): void
   (e: 'change', value: Date | Date[] | string | string[] | undefined): void
+  (e: 'confirm'): void
 }
 
 export interface CalendarPopoutExpose {}

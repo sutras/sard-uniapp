@@ -25,6 +25,7 @@ export interface RadioPopoutEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'update:model-value', value: any): void
   (e: 'change', value: any): void
+  (e: 'confirm'): void
 }
 
 export interface RadioPopoutExpose {}

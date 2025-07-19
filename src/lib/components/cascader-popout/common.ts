@@ -23,6 +23,7 @@ export interface CascaderPopoutEmits extends TransitionHookEmits {
   (e: 'update:model-value', value: any, selectedOptions: CascaderOption[]): void
   (e: 'change', value: any, selectedOptions: CascaderOption[]): void
   (e: 'select', option: CascaderOption, tabIndex: number): void
+  (e: 'confirm'): void
 }
 
 export interface CascaderPopoutExpose {}

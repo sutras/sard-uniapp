@@ -51,6 +51,7 @@ import CascaderPopout from 'sard-uniapp/components/cascader-popout/cascader-popo
 | change                             | 级联输入组件值改变时触发    | (value: string \| number, selectedOptions: CascaderOption[]) => void |
 | select                             | 选择级联选择某一项时触发    | (option: CascaderOption, tabIndex: number) => void                   |
 | update:visible                     | 弹出框显隐时触发            | (visible: boolean) => void                                           |
+| confirm <sup>1.22.1+</sup>         | 点击确定按钮时触发          | () => void                                                           |
 | visible-hook <sup>1.22.1+</sup>    | 入场/退场动画状态改变时触发 | (name: TransitionHookName) => void                                   |
 | before-enter <sup>1.22.1+</sup>    | 入场动画开始前触发          | () => void                                                           |
 | enter <sup>1.22.1+</sup>           | 入场动画开始时触发          | () => void                                                           |

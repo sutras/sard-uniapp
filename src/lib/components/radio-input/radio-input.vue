@@ -32,6 +32,7 @@
       :filter-placeholder="filterPlaceholder"
       @change="onChange"
       @visible-hook="onVisibleHook"
+      @confirm="onConfirm"
     />
   </sar-popout-input>
 </template>
@@ -111,4 +112,8 @@ watch(
     immediate: true,
   },
 )
+
+const onConfirm = () => {
+  emit('confirm')
+}
 </script>

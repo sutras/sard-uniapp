@@ -32,6 +32,7 @@
       @select="(option, tabIndex) => $emit('select', option, tabIndex)"
       @change="onChange"
       @visible-hook="onVisibleHook"
+      @confirm="onConfirm"
     >
       <template #top="{ tabIndex }">
         <slot name="top" :tab-index="tabIndex"></slot>
@@ -131,4 +132,8 @@ watch(
     immediate: true,
   },
 )
+
+const onConfirm = () => {
+  emit('confirm')
+}
 </script>

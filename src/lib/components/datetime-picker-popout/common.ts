@@ -25,6 +25,7 @@ export interface DatetimePickerPopoutEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'update:model-value', date: Date | string | undefined): void
   (e: 'change', date: Date | string | undefined): void
+  (e: 'confirm'): void
 }
 
 export interface DatetimePickerPopoutExpose {}

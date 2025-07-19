@@ -14,6 +14,7 @@ export interface UseFormPopoutEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'update:model-value', ...args: any[]): void
   (e: 'change', ...args: any[]): void
+  (e: 'confirm'): void
 }
 
 export function useFormPopout(
@@ -56,7 +57,10 @@ export function useFormPopout(
     options.onChange?.(value, ...args)
   }
 
-  const onConfirm = () => {
+  const onConfirm = (showConfirm = true) => {
+    if (showConfirm) {
+      emit('confirm')
+    }
     const extraArgs = options.onConfirmBefore?.()
     if (extraArgs) {
       restArgs = extraArgs
