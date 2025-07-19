@@ -7,6 +7,7 @@
     :root-style="popoutStyle"
     @confirm="onConfirm"
     @enter="onEnter"
+    @visible-hook="onVisibleHook"
   >
     <template #visible="{ already }">
       <sar-picker
@@ -77,19 +78,25 @@ defineSlots<PickerPopoutSlots>()
 const emit = defineEmits<PickerPopoutEmits>()
 
 // main
-const { innerVisible, innerValue, popoutValue, onChange, onConfirm } =
-  useFormPopout(props, emit, {
-    onConfirmBefore() {
-      if (isEmptyBinding(popoutValue.value)) {
-        const [initialValue, selectedOptions] = getInitialValue(
-          props.columns,
-          fieldKeys.value,
-        )
-        popoutValue.value = initialValue
-        return [selectedOptions]
-      }
-    },
-  })
+const {
+  innerVisible,
+  innerValue,
+  popoutValue,
+  onChange,
+  onConfirm,
+  onVisibleHook,
+} = useFormPopout(props, emit, {
+  onConfirmBefore() {
+    if (isEmptyBinding(popoutValue.value)) {
+      const [initialValue, selectedOptions] = getInitialValue(
+        props.columns,
+        fieldKeys.value,
+      )
+      popoutValue.value = initialValue
+      return [selectedOptions]
+    }
+  },
+})
 
 const fieldKeys = computed(() => {
   return Object.assign({}, defaultOptionKeys, props.optionKeys)

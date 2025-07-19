@@ -68,12 +68,21 @@ import ShareSheet from 'sard-uniapp/components/share-sheet/share-sheet.vue'
 
 ### ShareSheetEmits
 
-| 事件           | 描述               | 类型                           |
-| -------------- | ------------------ | ------------------------------ |
-| update:visible | 分享面板显隐时触发 | (visible: boolean) => void     |
-| close          | 点击遮罩时触发     | () => void                     |
-| cancel         | 点击取消按钮时触发 | () => void                     |
-| select         | 点击分享项时触发   | (item: ShareSheetItem) => void |
+| 事件                               | 描述                        | 类型                               |
+| ---------------------------------- | --------------------------- | ---------------------------------- |
+| update:visible                     | 分享面板显隐时触发          | (visible: boolean) => void         |
+| close                              | 点击遮罩时触发              | () => void                         |
+| cancel                             | 点击取消按钮时触发          | () => void                         |
+| select                             | 点击分享项时触发            | (item: ShareSheetItem) => void     |
+| visible-hook <sup>1.22.1+</sup>    | 入场/退场动画状态改变时触发 | (name: TransitionHookName) => void |
+| before-enter <sup>1.22.1+</sup>    | 入场动画开始前触发          | () => void                         |
+| enter <sup>1.22.1+</sup>           | 入场动画开始时触发          | () => void                         |
+| after-enter <sup>1.22.1+</sup>     | 入场动画结束时触发          | () => void                         |
+| enter-cancelled <sup>1.22.1+</sup> | 入场动画取消时触发          | () => void                         |
+| before-leave <sup>1.22.1+</sup>    | 退场动画开始前触发          | () => void                         |
+| leave <sup>1.22.1+</sup>           | 退场动画开始时触发          | () => void                         |
+| after-leave <sup>1.22.1+</sup>     | 退场动画结束时触发          | () => void                         |
+| leave-cancelled <sup>1.22.1+</sup> | 退场动画取消时触发          | () => void                         |
 
 ### ShareSheetItem
 

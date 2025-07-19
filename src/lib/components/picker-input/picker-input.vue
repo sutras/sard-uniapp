@@ -30,6 +30,7 @@
       :validate-event="validateEvent"
       :internal-custom="$slots.custom ? 1 : 0"
       @change="onChange"
+      @visible-hook="onVisibleHook"
     >
       <template
         v-if="$slots.custom"
@@ -94,8 +95,15 @@ defineSlots<PickerInputSlots>()
 const emit = defineEmits<PickerInputEmits>()
 
 // main
-const { innerVisible, innerValue, inputValue, show, onChange, onClear } =
-  usePopoutInput(props, emit)
+const {
+  innerVisible,
+  innerValue,
+  inputValue,
+  show,
+  onChange,
+  onClear,
+  onVisibleHook,
+} = usePopoutInput(props, emit)
 
 const fieldKeys = computed(() => {
   return Object.assign({}, defaultOptionKeys, props.optionKeys)

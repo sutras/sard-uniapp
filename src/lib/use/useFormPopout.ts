@@ -1,6 +1,8 @@
 import { ref, watch } from 'vue'
 import { useTwoWayVisible } from './useTwoWayVisible'
 import { useFormItemContext } from '../components/form'
+import { type TransitionHookName } from './useTransition'
+import { type TransitionHookEmits } from '../components/popup/common'
 
 export interface UseFormPopoutProps {
   visible?: boolean
@@ -8,7 +10,7 @@ export interface UseFormPopoutProps {
   validateEvent?: boolean
 }
 
-export interface UseFormPopoutEmits {
+export interface UseFormPopoutEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'update:model-value', ...args: any[]): void
   (e: 'change', ...args: any[]): void
@@ -67,11 +69,17 @@ export function useFormPopout(
     }
   }
 
+  const onVisibleHook = (name: TransitionHookName) => {
+    emit('visible-hook', name)
+    emit(name as any)
+  }
+
   return {
     innerVisible: visible,
     innerValue,
     popoutValue,
     onChange,
     onConfirm,
+    onVisibleHook,
   }
 }

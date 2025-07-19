@@ -7,6 +7,15 @@
         placeholder="请选择日期"
         clearable
         @change="onChange"
+        @before-enter="() => console.log('before-enter')"
+        @enter="() => console.log('enter')"
+        @after-enter="() => console.log('after-enter')"
+        @enter-cancelled="() => console.log('enter-cancelled')"
+        @before-leave="() => console.log('before-leave')"
+        @leave="() => console.log('leave')"
+        @after-leave="() => console.log('after-leave')"
+        @leave-cancelled="() => console.log('leave-cancelled')"
+        @visible-hook="(name: string) => console.log('visible-hook', name)"
       />
     </sar-list-item>
 

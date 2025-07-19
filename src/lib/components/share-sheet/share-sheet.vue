@@ -4,6 +4,7 @@
     :visible="innerVisible"
     :duration="duration"
     @overlay-click="onOverlayClick"
+    @visible-hook="onVisibleHook"
   >
     <view :class="shareSheetClass" :style="shareSheetStyle">
       <view v-if="title || description" :class="bem.e('header')">
@@ -88,6 +89,7 @@ import {
   type ShareSheetItem,
   defaultShareSheetProps,
 } from './common'
+import { type TransitionHookName } from '../../use'
 
 defineOptions({
   options: {
@@ -164,6 +166,11 @@ const onSelect = (item: ShareSheetItem) => {
 const onCancel = () => {
   emit('cancel')
   perhapsClose('cancel')
+}
+
+const onVisibleHook = (name: TransitionHookName) => {
+  emit('visible-hook', name)
+  emit(name as any)
 }
 
 const isImg = (url: any) => {

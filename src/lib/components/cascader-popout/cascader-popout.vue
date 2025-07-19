@@ -6,6 +6,7 @@
     :root-class="popoutClass"
     :root-style="popoutStyle"
     @confirm="onConfirm"
+    @visible-hook="onVisibleHook"
   >
     <template #visible="{ already }">
       <sar-cascader
@@ -56,16 +57,13 @@ defineSlots<CascaderPopoutSlots>()
 const emit = defineEmits<CascaderPopoutEmits>()
 
 // main
-const { innerVisible, popoutValue, onChange, onConfirm } = useFormPopout(
-  props,
-  emit,
-  {
+const { innerVisible, popoutValue, onChange, onConfirm, onVisibleHook } =
+  useFormPopout(props, emit, {
     onChange() {
       if (!props.showConfirm && !isEmptyBinding(popoutValue.value)) {
         onConfirm()
         innerVisible.value = false
       }
     },
-  },
-)
+  })
 </script>

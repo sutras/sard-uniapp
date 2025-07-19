@@ -1,6 +1,8 @@
 import { ref, watch } from 'vue'
 import { useTwoWayVisible } from './useTwoWayVisible'
 import { defaultConfig } from '../components/config'
+import { type TransitionHookName } from './useTransition'
+import { type TransitionHookEmits } from '../components/popup/common'
 
 export interface UsePopoutInputProps {
   visible?: boolean
@@ -8,7 +10,7 @@ export interface UsePopoutInputProps {
   valueOnClear?: () => any
 }
 
-export interface UsePopoutInputEmits {
+export interface UsePopoutInputEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'update:model-value', ...args: any[]): void
   (e: 'change', ...args: any[]): void
@@ -28,6 +30,11 @@ export function usePopoutInput(
 
   const show = () => {
     visible.value = true
+  }
+
+  const onVisibleHook = (name: TransitionHookName) => {
+    emit('visible-hook', name)
+    emit(name as any)
   }
 
   // value
@@ -69,5 +76,6 @@ export function usePopoutInput(
     show,
     onChange,
     onClear,
+    onVisibleHook,
   }
 }

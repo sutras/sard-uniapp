@@ -4,6 +4,7 @@
     :visible="innerVisible"
     :duration="duration"
     @overlay-click="onOverlayClick"
+    @visible-hook="onVisibleHook"
   >
     <view :class="actionSheetClass" :style="actionSheetStyle">
       <view v-if="description" :class="bem.e('description')">
@@ -64,6 +65,7 @@ import {
   type ActionSheetEmits,
   defaultActionSheetProps,
 } from './common'
+import { type TransitionHookName } from '../../use'
 
 defineOptions({
   options: {
@@ -127,6 +129,11 @@ const onSelect = (item: ActionSheetItem, index: number) => {
 const onCancel = () => {
   emit('cancel')
   perhapsClose('cancel')
+}
+
+const onVisibleHook = (name: TransitionHookName) => {
+  emit('visible-hook', name)
+  emit(name as any)
 }
 
 // others

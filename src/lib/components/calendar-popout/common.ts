@@ -1,6 +1,7 @@
 import { type StyleValue } from 'vue'
 import { type CalendarProps } from '../calendar/common'
 import { defaultConfig } from '../config'
+import { type TransitionHookEmits } from '../popup/common'
 
 export interface CalendarPopoutProps extends CalendarProps {
   visible?: boolean
@@ -22,7 +23,7 @@ export interface CalendarPopoutSlots {
   'title-prepend'?(props: Record<string, never>): any
 }
 
-export interface CalendarPopoutEmits {
+export interface CalendarPopoutEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (
     e: 'update:model-value',

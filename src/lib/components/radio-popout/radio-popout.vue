@@ -5,6 +5,7 @@
     :root-class="popoutClass"
     :root-style="popoutStyle"
     @confirm="onConfirm"
+    @visible-hook="onVisibleHook"
   >
     <template #visible="{ already }">
       <view v-if="already">
@@ -105,10 +106,8 @@ const emit = defineEmits<RadioPopoutEmits>()
 const bem = createBem('radio-popout')
 
 // main
-const { innerVisible, popoutValue, onChange, onConfirm } = useFormPopout(
-  props,
-  emit,
-)
+const { innerVisible, popoutValue, onChange, onConfirm, onVisibleHook } =
+  useFormPopout(props, emit)
 
 const fieldKeys = computed(() => {
   return Object.assign({}, defaultOptionKeys, props.optionKeys)

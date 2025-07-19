@@ -1,5 +1,6 @@
 import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
+import { type TransitionHookEmits } from '../popup/common'
 
 export interface CropImageProps {
   rootStyle?: StyleValue
@@ -25,7 +26,7 @@ export interface CropImageSlots {
   default?(props: Record<string, never>): any
 }
 
-export interface CropImageEmits {
+export interface CropImageEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
 }
 

@@ -5,6 +5,7 @@ import {
   type PickerProps,
 } from '../picker/common'
 import { defaultConfig } from '../config'
+import { type TransitionHookEmits } from '../popup/common'
 
 export interface PickerPopoutProps extends PickerProps {
   visible?: boolean
@@ -21,7 +22,7 @@ export const defaultPickerPopoutProps = () => ({
 
 export interface PickerPopoutSlots extends PickerSlots {}
 
-export interface PickerPopoutEmits {
+export interface PickerPopoutEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'update:model-value', value: any): void
   (e: 'change', value: any): void

@@ -31,6 +31,7 @@
       :tabs="tabs"
       :validate-event="validateEvent"
       @change="onChange"
+      @visible-hook="onVisibleHook"
     />
   </sar-popout-input>
 </template>
@@ -67,8 +68,15 @@ defineSlots<DatetimeRangePickerInputSlots>()
 const emit = defineEmits<DatetimeRangePickerInputEmits>()
 
 // main
-const { innerVisible, innerValue, inputValue, show, onChange, onClear } =
-  usePopoutInput(props, emit)
+const {
+  innerVisible,
+  innerValue,
+  inputValue,
+  show,
+  onChange,
+  onClear,
+  onVisibleHook,
+} = usePopoutInput(props, emit)
 
 const { t } = useTranslate('datetimeRangePickerInput')
 

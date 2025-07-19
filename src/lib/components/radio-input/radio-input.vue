@@ -31,6 +31,7 @@
       :searchable="searchable"
       :filter-placeholder="filterPlaceholder"
       @change="onChange"
+      @visible-hook="onVisibleHook"
     />
   </sar-popout-input>
 </template>
@@ -67,8 +68,15 @@ defineSlots<RadioInputSlots>()
 const emit = defineEmits<RadioInputEmits>()
 
 // main
-const { innerVisible, innerValue, inputValue, show, onChange, onClear } =
-  usePopoutInput(props, emit)
+const {
+  innerVisible,
+  innerValue,
+  inputValue,
+  show,
+  onChange,
+  onClear,
+  onVisibleHook,
+} = usePopoutInput(props, emit)
 
 const fieldKeys = computed(() => {
   return Object.assign({}, defaultOptionKeys, props.optionKeys)

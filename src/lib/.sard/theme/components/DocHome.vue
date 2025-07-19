@@ -34,7 +34,7 @@
       <div class="feature">
         <div class="icon">⭐️</div>
         <div class="title">零依赖</div>
-        <div class="details">零外部依赖，不依赖三方 `npm` 包，更加可控</div>
+        <div class="details">零外部依赖，不依赖三方 npm 包，更加可控</div>
       </div>
       <div class="feature">
         <div class="icon">🌿</div>
@@ -67,6 +67,7 @@ defineOptions({
   name: 'DocHome',
 })
 
+// @ts-expect-error ignore env error
 const base = import.meta.env.BASE_URL
 </script>
 
@@ -151,7 +152,10 @@ const base = import.meta.env.BASE_URL
   white-space: nowrap;
   text-align: center;
   background-color: var(--sc-secondary-bg);
-  transition: color 0.25s, border-color 0.25s, background-color 0.25s;
+  transition:
+    color 0.25s,
+    border-color 0.25s,
+    background-color 0.25s;
   cursor: pointer;
 
   &:hover {
@@ -185,7 +189,9 @@ const base = import.meta.env.BASE_URL
   padding: 24px;
   border-radius: 12px;
   background-color: var(--sc-gray-100);
-  transition: border-color 0.25s, background-color 0.25s;
+  transition:
+    border-color 0.25s,
+    background-color 0.25s;
 
   .icon {
     display: flex;

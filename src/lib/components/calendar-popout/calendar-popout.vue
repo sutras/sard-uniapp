@@ -7,6 +7,7 @@
     :root-class="popoutClass"
     :root-style="popoutStyle"
     @confirm="onConfirm"
+    @visible-hook="onVisibleHook"
   >
     <template #title-prepend>
       <slot name="title-prepend"></slot>
@@ -65,18 +66,15 @@ const props = withDefaults(
 const emit = defineEmits<CalendarPopoutEmits>()
 
 // main
-const { innerVisible, popoutValue, onChange, onConfirm } = useFormPopout(
-  props,
-  emit,
-  {
+const { innerVisible, popoutValue, onChange, onConfirm, onVisibleHook } =
+  useFormPopout(props, emit, {
     onChange() {
       if (!props.showConfirm && !confirmDisabled.value) {
         onConfirm()
         innerVisible.value = false
       }
     },
-  },
-)
+  })
 
 const confirmDisabled = computed(() => {
   const value = popoutValue.value

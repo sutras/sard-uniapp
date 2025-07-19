@@ -31,6 +31,7 @@
       :validate-event="validateEvent"
       :calendar="calendar"
       @change="onChange"
+      @visible-hook="onVisibleHook"
     />
   </sar-popout-input>
 </template>
@@ -66,8 +67,15 @@ defineSlots<DatetimePickerInputSlots>()
 const emit = defineEmits<DatetimePickerInputEmits>()
 
 // main
-const { innerVisible, innerValue, inputValue, show, onChange, onClear } =
-  usePopoutInput(props, emit)
+const {
+  innerVisible,
+  innerValue,
+  inputValue,
+  show,
+  onChange,
+  onClear,
+  onVisibleHook,
+} = usePopoutInput(props, emit)
 
 function getOutletText(value: Date | string) {
   if (isString(value) && props.valueFormat) {

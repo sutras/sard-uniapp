@@ -53,6 +53,12 @@ npm install sard-uniapp
 
 插件地址：<a href="https://ext.dcloud.net.cn/plugin?id=16001" target="_blank">https://ext.dcloud.net.cn/plugin?id=16001</a>
 
+@warning
+
+通过 HBuilderX 创建的项目，不要通过命令行方式下载 `sard-uniapp`，而是应该通过插件市场下载。
+
+@endwarning
+
 ## 配置
 
 ### vite
@@ -179,9 +185,21 @@ import 'sard-uniapp/global.d.ts
 
   page,
   .sar-portal {
-    font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue',
-      'Noto Sans', 'Liberation Sans', Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji',
-      'Segoe UI Symbol', 'Noto Color Emoji', monospace;
+    font-family:
+      system-ui,
+      -apple-system,
+      'Segoe UI',
+      Roboto,
+      'Helvetica Neue',
+      'Noto Sans',
+      'Liberation Sans',
+      Arial,
+      sans-serif,
+      'Apple Color Emoji',
+      'Segoe UI Emoji',
+      'Segoe UI Symbol',
+      'Noto Color Emoji',
+      monospace;
     font-size: var(--sar-text-base);
     color: var(--sar-body-color);
     -webkit-tap-highlight-color: transparent;

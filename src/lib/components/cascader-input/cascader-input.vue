@@ -31,6 +31,7 @@
       :validate-event="validateEvent"
       @select="(option, tabIndex) => $emit('select', option, tabIndex)"
       @change="onChange"
+      @visible-hook="onVisibleHook"
     >
       <template #top="{ tabIndex }">
         <slot name="top" :tab-index="tabIndex"></slot>
@@ -75,13 +76,20 @@ defineSlots<CascaderInputSlots>()
 const emit = defineEmits<CascaderInputEmits>()
 
 // main
-const { innerVisible, innerValue, inputValue, show, onChange, onClear } =
-  usePopoutInput(props, emit, {
-    onClear(value) {
-      emit('update:model-value', value, [])
-      emit('change', value, [])
-    },
-  })
+const {
+  innerVisible,
+  innerValue,
+  inputValue,
+  show,
+  onChange,
+  onClear,
+  onVisibleHook,
+} = usePopoutInput(props, emit, {
+  onClear(value) {
+    emit('update:model-value', value, [])
+    emit('change', value, [])
+  },
+})
 
 const fieldkeys = computed(() => {
   return Object.assign(

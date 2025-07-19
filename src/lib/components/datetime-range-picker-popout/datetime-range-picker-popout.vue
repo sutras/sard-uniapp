@@ -7,6 +7,7 @@
     :root-style="popoutStyle"
     @confirm="onConfirm"
     @enter="onEnter"
+    @visible-hook="onVisibleHook"
   >
     <template #visible="{ already }">
       <sar-datetime-range-picker
@@ -69,23 +70,29 @@ const maxDate = computed(() => {
   return maxDate < minDate.value ? new Date(minDate.value) : maxDate
 })
 
-const { innerVisible, innerValue, popoutValue, onChange, onConfirm } =
-  useFormPopout(props, emit, {
-    onConfirmBefore() {
-      if (
-        !popoutValue.value ||
-        (Array.isArray(popoutValue.value) &&
-          popoutValue.value.filter(Boolean).length < 2)
-      ) {
-        popoutValue.value = normalizeRangeValue(
-          minDate.value,
-          maxDate.value,
-          popoutValue.value,
-          props.valueFormat,
-        )
-      }
-    },
-  })
+const {
+  innerVisible,
+  innerValue,
+  popoutValue,
+  onChange,
+  onConfirm,
+  onVisibleHook,
+} = useFormPopout(props, emit, {
+  onConfirmBefore() {
+    if (
+      !popoutValue.value ||
+      (Array.isArray(popoutValue.value) &&
+        popoutValue.value.filter(Boolean).length < 2)
+    ) {
+      popoutValue.value = normalizeRangeValue(
+        minDate.value,
+        maxDate.value,
+        popoutValue.value,
+        props.valueFormat,
+      )
+    }
+  },
+})
 
 const onEnter = () => {
   if (

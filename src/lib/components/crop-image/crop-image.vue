@@ -5,6 +5,7 @@
     :duration="duration"
     :overlay="false"
     @after-enter="onAfterEnter"
+    @visible-hook="onVisibleHook"
   >
     <view :class="cropImageClass" :style="cropImageStyle">
       <view
@@ -112,7 +113,7 @@ import {
   type CropImageExpose,
   defaultCropImageProps,
 } from './common'
-import { useDragPinch, useTimeout } from '../../use'
+import { type TransitionHookName, useDragPinch, useTimeout } from '../../use'
 import { useTranslate } from '../locale'
 import SarPopup from '../popup/popup.vue'
 import SarIcon from '../icon/icon.vue'
@@ -151,6 +152,11 @@ watch(
 const close = () => {
   innerVisible.value = false
   emit('update:visible', false)
+}
+
+const onVisibleHook = (name: TransitionHookName) => {
+  emit('visible-hook', name)
+  emit(name as any)
 }
 
 // focus & mask

@@ -1,5 +1,6 @@
 import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
+import { type TransitionHookEmits } from '../popup/common'
 
 export interface ActionSheetProps {
   rootStyle?: StyleValue
@@ -15,7 +16,7 @@ export interface ActionSheetProps {
 
 export const defaultActionSheetProps = defaultConfig.actionSheet
 
-export interface ActionSheetEmits {
+export interface ActionSheetEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'close'): void
   (e: 'cancel'): void

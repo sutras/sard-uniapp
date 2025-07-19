@@ -5,6 +5,7 @@
     :root-class="popoutClass"
     :root-style="popoutStyle"
     @confirm="onConfirm"
+    @visible-hook="onVisibleHook"
   >
     <template v-if="showCheckAll" #title-prepend>
       <view :class="bem.e('check-all')">
@@ -117,10 +118,8 @@ const emit = defineEmits<CheckboxPopoutEmits>()
 const bem = createBem('checkbox-popout')
 
 // main
-const { innerVisible, popoutValue, onChange, onConfirm } = useFormPopout(
-  props,
-  emit,
-)
+const { innerVisible, popoutValue, onChange, onConfirm, onVisibleHook } =
+  useFormPopout(props, emit)
 
 const fieldKeys = computed(() => {
   return Object.assign({}, defaultOptionKeys, props.optionKeys)

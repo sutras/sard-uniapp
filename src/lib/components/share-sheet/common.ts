@@ -1,5 +1,6 @@
 import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
+import { type TransitionHookEmits } from '../popup/common'
 
 export interface ShareSheetProps {
   rootStyle?: StyleValue
@@ -16,7 +17,7 @@ export interface ShareSheetProps {
 
 export const defaultShareSheetProps = defaultConfig.shareSheet
 
-export interface ShareSheetEmits {
+export interface ShareSheetEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'close'): void
   (e: 'cancel'): void
