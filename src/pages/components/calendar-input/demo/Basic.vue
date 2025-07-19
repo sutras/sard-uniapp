@@ -7,7 +7,6 @@
         placeholder="请选择日期"
         clearable
         @change="onChange"
-        @confirm="() => console.log('confirm')"
       />
     </sar-list-item>
 
