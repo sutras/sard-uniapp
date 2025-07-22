@@ -4,7 +4,6 @@
   @include b() {
     @include universal;
     cursor: pointer;
-    touch-action: none;
   }
 
   @include m(dragging) {

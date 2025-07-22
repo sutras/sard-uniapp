@@ -235,7 +235,6 @@ const [
   onDragSimulatedPressTouchEnd,
 ] = useSimulatedPress({
   start: () => {
-    treeContext.dragging = true
     dragging.value = true
     treeContext.setExpandedByNode(props.node, false)
     onDragStart()
@@ -246,7 +245,6 @@ const [
     }
   },
   end: () => {
-    treeContext.dragging = false
     dragging.value = false
     onDragEnd()
   },

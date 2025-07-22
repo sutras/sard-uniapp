@@ -1,17 +1,6 @@
 <template>
   <view :class="dndClass" :style="dndStyle">
     <slot :list="dndList"></slot>
-
-    <!-- #ifdef MP-ALIPAY -->
-    <view
-      :class="
-        classNames(
-          bem.e('disable-scroll'),
-          bem.em('disable-scroll', 'dragging', dragging),
-        )
-      "
-    ></view>
-    <!-- #endif -->
   </view>
 </template>
 

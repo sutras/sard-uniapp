@@ -4,8 +4,4 @@
   @include b() {
     @include universal;
   }
-
-  /* #ifdef MP-ALIPAY */
-  @include disable-scroll;
-  /* #endif */
 }

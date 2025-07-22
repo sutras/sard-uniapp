@@ -12,12 +12,6 @@ version: 1.22+
 
 `Dnd` 组件用于提供上下文；`DndItem` 组件用于展示拖放样式以及作为列表项容器；`DndHandle` 需放置在 `DndItem` 中，控制着拖拽区域，短按可进入拖拽状态，样式和内容可自定义。
 
-@warning
-
-暂不支持支付宝。
-
-@endwarning
-
 ## 引入
 
 ```ts

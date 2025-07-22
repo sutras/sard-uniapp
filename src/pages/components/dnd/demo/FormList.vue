@@ -44,7 +44,7 @@
                 theme="danger"
                 icon="trash"
                 size="small"
-                @click.prevent="removeAward(i)"
+                @click="removeAward(i)"
               />
               <sar-form-item
                 :name="['awards', i, 'name']"
@@ -98,8 +98,6 @@
 <script lang="ts" setup>
 import { type FormExpose, toast, uniqid } from 'sard-uniapp'
 import { reactive, ref } from 'vue'
-
-// form
 
 const awardList = ['台式机', '笔记本', '平板', '手机', '耳机']
 

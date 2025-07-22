@@ -31,17 +31,6 @@
   </sar-dialog>
 
   <sar-toast v-model:visible="toastVisible" :title="t('please')" />
-
-  <!-- #ifdef MP-ALIPAY -->
-  <view
-    :class="
-      classNames(
-        bem.e('disable-scroll'),
-        bem.em('disable-scroll', 'dragging', context.dragging),
-      )
-    "
-  ></view>
-  <!-- #endif -->
 </template>
 
 <script setup lang="ts">
@@ -642,7 +631,6 @@ const context = reactive({
   edit,
   currentKey,
   singleSelect,
-  dragging: false,
 })
 
 // others

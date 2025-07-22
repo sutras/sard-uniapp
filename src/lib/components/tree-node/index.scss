@@ -94,6 +94,7 @@
     line-height: var(--sar-leading-none);
     color: var(--sar-tree-drag-color);
     cursor: pointer;
+    touch-action: none;
 
     &:active {
       opacity: var(--sar-tree-drag-active-opacity);
