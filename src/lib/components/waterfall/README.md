@@ -3,7 +3,7 @@ nav: 组件
 title: Waterfall
 subtitle: 瀑布流
 group: 布局
-version: 1.21.0+
+version: 1.21+
 ---
 
 ## 介绍

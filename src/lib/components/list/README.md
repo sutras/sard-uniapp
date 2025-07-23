@@ -56,7 +56,7 @@ import ListItem from 'sard-uniapp/components/list-item/list-item.vue'
 
 @code('${DEMO_PATH}/list/demo/Card.vue')
 
-### 隐藏边框 <sup>1.21.0+</sup>
+### 隐藏边框 <sup>1.21+</sup>
 
 可以使用 `hide-border` 属性隐藏边框。
 
@@ -66,15 +66,15 @@ import ListItem from 'sard-uniapp/components/list-item/list-item.vue'
 
 ### ListProps
 
-| 属性                           | 描述           | 类型             | 默认值 |
-| ------------------------------ | -------------- | ---------------- | ------ |
-| root-class                     | 组件根元素类名 | string           | -      |
-| root-style                     | 组件根元素样式 | StyleValue       | -      |
-| title                          | 列表顶部标题   | string \| number | -      |
-| description                    | 列表底部描述   | string \| number | -      |
-| card                           | 卡片风格       | boolean          | false  |
-| inlaid                         | 嵌入式列表     | boolean          | false  |
-| hide-border <sup>1.21.0+</sup> | 是否隐藏边框   | boolean          | false  |
+| 属性                         | 描述           | 类型             | 默认值 |
+| ---------------------------- | -------------- | ---------------- | ------ |
+| root-class                   | 组件根元素类名 | string           | -      |
+| root-style                   | 组件根元素样式 | StyleValue       | -      |
+| title                        | 列表顶部标题   | string \| number | -      |
+| description                  | 列表底部描述   | string \| number | -      |
+| card                         | 卡片风格       | boolean          | false  |
+| inlaid                       | 嵌入式列表     | boolean          | false  |
+| hide-border <sup>1.21+</sup> | 是否隐藏边框   | boolean          | false  |
 
 ### ListSlots
 

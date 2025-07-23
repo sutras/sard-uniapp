@@ -89,7 +89,15 @@ export default defineConfig({
       },
     ],
     homePath: '/',
-    copyright: 'MIT Licensed | Power By wuzhitao',
+    copyright: 'Power By wuzhitao',
+    license: {
+      text: 'MIT Licensed',
+      link: 'https://opensource.org/license/MIT',
+    },
+    icp: {
+      text: '粤ICP备2023157350号',
+      link: 'https://beian.miit.gov.cn/',
+    },
     nav: [
       {
         text: pkgJson.version,

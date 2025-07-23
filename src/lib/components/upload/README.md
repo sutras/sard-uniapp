@@ -110,7 +110,7 @@ import Upload from 'sard-uniapp/components/upload/upload.vue'
 | before-remove                    | 文件删除前的回调，返回 false 可终止文件删除，支持返回 Promise                                                                                     | (index: number, fileItem: UploadFileItem) => boolean \| Promise\<any>                         | -                          |
 | validate-event                   | 是否触发表单验证                                                                                                                                  | boolean                                                                                       | true                       |
 
-### UploadSelectOptions <sup>1.21.0+</sup>
+### UploadSelectOptions <sup>1.21+</sup>
 
 ```ts
 interface UploadSelectOptions {
