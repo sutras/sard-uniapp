@@ -83,6 +83,14 @@ import Upload from 'sard-uniapp/components/upload/upload.vue'
 
 @code('${DEMO_PATH}/upload/demo/CustomSelect.vue')
 
+### 自定义渲染 <sup>1.22.2+</sup>
+
+使用默认插槽自定义渲染内容。
+
+`list` 参数用于渲染文件列表；`onSelect` 用于选择文件；`onRemove` 用于删除文件；`onImageClick` 用于预览图片。
+
+@code('${DEMO_PATH}/upload/demo/Custom.vue')
+
 ## API
 
 ### UploadProps
@@ -120,9 +128,10 @@ interface UploadSelectOptions {
 
 ### UploadSlots
 
-| 插槽   | 描述           | 属性 |
-| ------ | -------------- | ---- |
-| select | 自定义选取内容 | -    |
+| 插槽                       | 描述           | 属性                                                                                                                                            |
+| -------------------------- | -------------- | ----------------------------------------------------------------------------------------------------------------------------------------------- |
+| default <sup>1.22.2+</sup> | 自定义渲染     | { list: UploadFileItem[]; onSelect: () => void; onRemove: (index: number, item: UploadFileItem) => void; onImageClick: (index: number) => void} |
+| select                     | 自定义选取内容 | -                                                                                                                                               |
 
 ### UploadEmits
 

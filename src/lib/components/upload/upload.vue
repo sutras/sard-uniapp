@@ -1,36 +1,43 @@
 <template>
   <view :class="uploadClass" :style="uploadStyle">
-    <view :class="bem.e('wrapper')">
-      <sar-upload-preview
-        v-for="(item, index) in innerValue"
-        :key="index"
-        :file="item.file"
-        :url="item.url"
-        :is-image="item.isImage"
-        :is-video="item.isVideo"
-        :status="item.status"
-        :name="item.name"
-        :message="item.message"
-        :removable="removable"
-        :index="index"
-        :disabled="isDisabled"
-        :readonly="isReadonly"
-        @remove="onRemove(index, item)"
-        @image-click="onImageClick(index)"
-        @click="onItemClick(index, item)"
-      />
-      <view
-        v-if="innerValue.length < maxCount && !isReadonly"
-        :class="bem.e('select')"
-        @click="onSelect"
-      >
-        <slot name="select">
-          <view :class="bem.e('select-icon')">
-            <sar-icon family="sari" name="plus" />
-          </view>
-        </slot>
+    <slot
+      :list="innerValue"
+      :on-select="onSelect"
+      :on-remove="onRemove"
+      :on-image-click="onImageClick"
+    >
+      <view :class="bem.e('wrapper')">
+        <sar-upload-preview
+          v-for="(item, index) in innerValue"
+          :key="index"
+          :file="item.file"
+          :url="item.url"
+          :is-image="item.isImage"
+          :is-video="item.isVideo"
+          :status="item.status"
+          :name="item.name"
+          :message="item.message"
+          :removable="removable"
+          :index="index"
+          :disabled="isDisabled"
+          :readonly="isReadonly"
+          @remove="onRemove(index, item)"
+          @image-click="onImageClick(index)"
+          @click="onItemClick(index, item)"
+        />
+        <view
+          v-if="innerValue.length < maxCount && !isReadonly"
+          :class="bem.e('select')"
+          @click="onSelect"
+        >
+          <slot name="select">
+            <view :class="bem.e('select-icon')">
+              <sar-icon family="sari" name="plus" />
+            </view>
+          </slot>
+        </view>
       </view>
-    </view>
+    </slot>
   </view>
 </template>
 

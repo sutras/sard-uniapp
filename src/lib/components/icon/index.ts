@@ -1,1 +1,1 @@
-export type { IconProps } from './common'
+export type { IconProps, IconEmits } from './common'

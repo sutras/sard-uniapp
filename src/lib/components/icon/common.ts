@@ -12,3 +12,7 @@ export interface IconProps {
 }
 
 export const defaultIconProps = defaultConfig.icon
+
+export interface IconEmits {
+  (e: 'click', event: any): void
+}

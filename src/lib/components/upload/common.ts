@@ -64,6 +64,12 @@ export const defaultUploadProps = defaultConfig.upload as Omit<
 >
 
 export interface UploadSlots {
+  default?(props: {
+    list: UploadFileItem[]
+    onSelect: () => void
+    onRemove: (index: number, item: UploadFileItem) => void
+    onImageClick: (index: number) => void
+  }): any
   select?(props: Record<string, never>): any
 }
 

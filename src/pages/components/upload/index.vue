@@ -43,6 +43,10 @@
     <doc-demo title="自定义选区样式">
       <DemoCustomSelect />
     </doc-demo>
+
+    <doc-demo title="自定义渲染">
+      <DemoCustom />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -58,6 +62,7 @@ import DemoStatus from './demo/Status.vue'
 import DemoReuploadCancel from './demo/ReuploadCancel.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoCustomSelect from './demo/CustomSelect.vue'
+import DemoCustom from './demo/Custom.vue'
 </script>
 
 <style lang="scss" scoped>

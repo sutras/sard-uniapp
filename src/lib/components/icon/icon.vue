@@ -1,5 +1,5 @@
 <template>
-  <view :class="iconClass" :style="iconStyle">
+  <view :class="iconClass" :style="iconStyle" @click="onClick">
     <image v-if="isImg" :class="bem.e('image')" :src="name" />
   </view>
 </template>
@@ -7,7 +7,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, isFileUrl, createBem } from '../../utils'
-import { type IconProps, defaultIconProps } from './common'
+import { type IconProps, type IconEmits, defaultIconProps } from './common'
 
 defineOptions({
   options: {
@@ -18,12 +18,18 @@ defineOptions({
 
 const props = withDefaults(defineProps<IconProps>(), defaultIconProps)
 
+const emit = defineEmits<IconEmits>()
+
 const bem = createBem('icon')
 
 // main
 const isImg = computed(() => {
   return isFileUrl(props.name)
 })
+
+const onClick = (event: any) => {
+  emit('click', event)
+}
 
 // others
 const iconClass = computed(() => {
