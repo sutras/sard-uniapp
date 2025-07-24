@@ -1,3 +1,19 @@
+## [1.22.2](https://github.com/sutras/sard-uniapp/compare/v1.22.1...v1.22.2) (2025-07-24)
+
+
+### Bug Fixes
+
+* 优化支付宝端拖拽体验 ([351db34](https://github.com/sutras/sard-uniapp/commit/351db340ec343c95cb37015e03375113b43a6840))
+* 修复支付宝端获取元素尺寸可能存在失败的问题 ([12c2dfb](https://github.com/sutras/sard-uniapp/commit/12c2dfb59e17a9811600b11d23c093d6c0c56bf6))
+* 隐藏 list-item 单独使用时的上下文警告 ([18fe6bb](https://github.com/sutras/sard-uniapp/commit/18fe6bb645c383282723ad29c4636ac775cbadf2))
+
+
+### Features
+
+* upload 新增默认插槽 ([73f3658](https://github.com/sutras/sard-uniapp/commit/73f3658c94cc7b04c036a577a959c1385665e6f7))
+
+
+
 ## [1.22.1](https://github.com/sutras/sard-uniapp/compare/v1.22.0...v1.22.1) (2025-07-19)
 
 
