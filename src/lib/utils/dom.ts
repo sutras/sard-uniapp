@@ -14,7 +14,9 @@ export function getBoundingClientRect(
   return new Promise<NodeRect>((resolve) => {
     uni
       .createSelectorQuery()
+      // #ifndef MP-ALIPAY
       .in(instance?.proxy)
+      // #endif
       .select(selector)
       .boundingClientRect((data) => {
         resolve(data as NodeRect)
