@@ -73,7 +73,7 @@ const emit = defineEmits<ListItemEmits>()
 const bem = createBem('list-item')
 
 // main
-const context = inject(listContextKey)
+const context = inject(listContextKey, null)
 
 const onClick = (event: any) => {
   emit('click', event)
