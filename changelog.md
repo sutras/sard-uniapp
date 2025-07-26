@@ -1,3 +1,14 @@
+# [1.23.0](https://github.com/sutras/sard-uniapp/compare/v1.22.2...v1.23.0) (2025-07-26)
+
+
+### Features
+
+* cascader 新增 allLevels 属性 ([d40fc98](https://github.com/sutras/sard-uniapp/commit/d40fc98100553b8ffdbd035640107062433dc33e))
+* crop-image 组件新增 cancel 回调 ([572991f](https://github.com/sutras/sard-uniapp/commit/572991f199c2c10b0a8b50c63356297fad33d715))
+* 新增 FormPlain, FormItemPlain 组件 ([95c6721](https://github.com/sutras/sard-uniapp/commit/95c67215f69c5f5a8f3aec370e53a3b99031232e))
+
+
+
 ## [1.22.2](https://github.com/sutras/sard-uniapp/compare/v1.22.1...v1.22.2) (2025-07-24)
 
 
