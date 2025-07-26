@@ -14,6 +14,7 @@ export interface CropImageProps {
   success?: (filePath: string) => void
   fail?: (err: any) => void
   complete?: () => void
+  cancel?: () => void
   id?: string
   beforeCrop?: (width: number, height: number) => number
   cancelText?: string

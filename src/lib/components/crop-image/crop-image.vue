@@ -730,6 +730,7 @@ const cropImage = async () => {
 
 // toolbar
 const onCancel = () => {
+  props.cancel?.()
   close()
 }
 
