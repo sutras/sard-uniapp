@@ -47,20 +47,27 @@ import { Cascader } from 'sard'
 
 @code('${DEMO_PATH}/cascader/demo/Disabled.vue')
 
+### 绑定所有级别的值 <sup>1.23+</sup>
+
+如果要绑定所有级别的值，即绑定数组值，而不单单是最后一级，可以使用 `all-levels` 属性。
+
+@code('${DEMO_PATH}/cascader/demo/AllLevels.vue')
+
 ## API
 
 ### CascaderProps
 
-| 属性                              | 描述                      | 类型                               | 默认值           |
-| --------------------------------- | ------------------------- | ---------------------------------- | ---------------- |
-| root-class                        | 组件根元素类名            | string                             | -                |
-| root-style                        | 组件根元素样式            | StyleValue                         | -                |
-| model-value (v-model)             | 选中项的值                | string \| number                   | -                |
-| options                           | 可选项数据源              | CascaderOption[]                   | []               |
-| field-keys                        | 自定义 `options` 中的字段 | CascaderFieldKeys                  | defaultFieldKeys |
-| hint-text                         | 未选中时的提示文案        | string                             | '请选择'         |
-| label-render                      | 自定义可选项渲染          | (option: CascaderOption) => string | -                |
-| change-on-select <sup>1.14+</sup> | 点击每级选项都会触发变化  | boolean                            | false            |
+| 属性                              | 描述                                     | 类型                                     | 默认值           |
+| --------------------------------- | ---------------------------------------- | ---------------------------------------- | ---------------- |
+| root-class                        | 组件根元素类名                           | string                                   | -                |
+| root-style                        | 组件根元素样式                           | StyleValue                               | -                |
+| model-value (v-model)             | 选中项的值                               | string \| number \| (string \| number)[] | -                |
+| options                           | 可选项数据源                             | CascaderOption[]                         | []               |
+| field-keys                        | 自定义 `options` 中的字段                | CascaderFieldKeys                        | defaultFieldKeys |
+| hint-text                         | 未选中时的提示文案                       | string                                   | '请选择'         |
+| label-render                      | 自定义可选项渲染                         | (option: CascaderOption) => string       | -                |
+| change-on-select <sup>1.14+</sup> | 点击每级选项都会触发变化                 | boolean                                  | false            |
+| all-levels <sup>1.23+</sup>       | 是否绑定所有级别的值，而不单单是最后一级 | boolean                                  | false            |
 
 ### CascaderSlots
 
@@ -70,11 +77,11 @@ import { Cascader } from 'sard'
 
 ### CascaderEmits
 
-| 事件                     | 描述                   | 类型                                                                 |
-| ------------------------ | ---------------------- | -------------------------------------------------------------------- |
-| update:model-value       | 全部选项选择完成后触发 | (value: string \| number, selectedOptions: CascaderOption[]) => void |
-| change <sup>1.9.2+</sup> | 全部选项选择完成后触发 | (value: string \| number, selectedOptions: CascaderOption[]) => void |
-| select                   | 选中某一项时触发       | (option: CascaderOption, tabIndex: number) => void                   |
+| 事件                     | 描述                   | 类型                                                                                         |
+| ------------------------ | ---------------------- | -------------------------------------------------------------------------------------------- |
+| update:model-value       | 全部选项选择完成后触发 | (value: string \| number \| (string \| number)[], selectedOptions: CascaderOption[]) => void |
+| change <sup>1.9.2+</sup> | 全部选项选择完成后触发 | (value: string \| number \| (string \| number)[], selectedOptions: CascaderOption[]) => void |
+| select                   | 选中某一项时触发       | (option: CascaderOption, tabIndex: number) => void                                           |
 
 ### CascaderOption
 

@@ -1,28 +1,28 @@
 <template>
   <view :class="cascaderClass" :style="cascaderStyle">
-    <sar-tabs scrollable v-model:current="tabsCurrent" :list="tabsList" />
+    <sar-tabs scrollable v-model:current="currentTab" :list="tabList" />
 
-    <slot name="top" :tab-index="tabsCurrent"></slot>
+    <slot name="top" :tab-index="currentTab"></slot>
 
     <view :class="bem.e('container')">
       <view
         :class="bem.e('wrapper')"
         :style="
           stringifyStyle({
-            transform: `translateX(${-Number(tabsCurrent) * 100}%)`,
+            transform: `translateX(${-Number(currentTab) * 100}%)`,
             transitionDuration: renderedPane ? null : '0s',
           })
         "
       >
         <view
-          v-for="(tab, tabIndex) in tabs"
-          :key="tabIndex"
+          v-for="(panel, panelIndex) in panels"
+          :key="panelIndex"
           :class="bem.e('pane')"
         >
           <view :class="bem.e('options')">
             <scroll-view scroll-y trap-scroll :class="bem.e('scroll')">
               <view
-                v-for="(option, optionIndex) in tab.options"
+                v-for="(option, optionIndex) in panel.options"
                 :key="optionIndex"
                 :class="
                   classNames(
@@ -30,8 +30,8 @@
                     bem.em(
                       'option',
                       'selected',
-                      tab.selected &&
-                        tab.selected[mergedFieldKeys.value] ===
+                      panel.selected &&
+                        panel.selected[mergedFieldKeys.value] ===
                           option[mergedFieldKeys.value],
                     ),
                     bem.em(
@@ -41,7 +41,7 @@
                     ),
                   )
                 "
-                @click="onOptionClick(option, tabIndex)"
+                @click="onOptionClick(option, panelIndex)"
               >
                 <view :class="bem.e('option-label')">
                   {{
@@ -59,7 +59,7 @@
               :class="
                 classNames(
                   bem.e('loading-wrapper'),
-                  bem.em('loading-wrapper', 'show', tab.options.length === 0),
+                  bem.em('loading-wrapper', 'show', panel.options.length === 0),
                 )
               "
             >
@@ -81,6 +81,7 @@ import {
   stringifyStyle,
   createBem,
   isEmptyBinding,
+  isEmptyArray,
 } from '../../utils'
 import { useTranslate } from '../locale'
 import SarTabs from '../tabs/tabs.vue'
@@ -92,7 +93,7 @@ import {
   type CascaderEmits,
   type CascaderOption,
   type CascaderFieldKeys,
-  type CascaderTab,
+  type CascaderPanel,
   defaultFieldKeys,
   getSelectedOptionsByValue,
   defaultCascaderProps,
@@ -117,11 +118,11 @@ const bem = createBem('cascader')
 const { t } = useTranslate('cascader')
 
 // utils
-const updateTabs = () => {
-  let nextTabs: CascaderTab[] | undefined
+const updatePanels = () => {
+  let nextPanels: CascaderPanel[]
 
-  if (isEmptyBinding(tempValue)) {
-    nextTabs = [
+  if (isEmptyBinding(tempValue) || isEmptyArray(tempValue)) {
+    nextPanels = [
       {
         options: props.options || [],
         selected: null,
@@ -134,28 +135,28 @@ const updateTabs = () => {
       mergedFieldKeys.value,
     )
 
-    if (selectedOptions) {
+    if (selectedOptions && selectedOptions.length > 0) {
       let nextOptions: CascaderOption[] | undefined = props.options
 
-      nextTabs = selectedOptions.map((option) => {
-        const tab = {
-          options: nextOptions as CascaderOption[],
+      nextPanels = selectedOptions.map((option) => {
+        const panel: CascaderPanel = {
+          options: nextOptions || [],
           selected: option,
         }
 
         nextOptions = option[mergedFieldKeys.value.children]
 
-        return tab
+        return panel
       })
 
       if (nextOptions) {
-        nextTabs.push({
+        nextPanels.push({
           options: nextOptions,
           selected: null,
         })
       }
     } else {
-      nextTabs = [
+      nextPanels = [
         {
           options: props.options || [],
           selected: null,
@@ -164,16 +165,14 @@ const updateTabs = () => {
     }
   }
 
-  if (nextTabs) {
-    tabs.value = nextTabs
-    tabsCurrent.value = nextTabs.length - 1
+  panels.value = nextPanels
+  currentTab.value = nextPanels.length - 1
 
-    if (!renderedPane.value) {
-      setTimeout(() => {
-        renderedPane.value = true
-        // 确保小程序端已渲染完毕
-      }, 30)
-    }
+  if (!renderedPane.value) {
+    setTimeout(() => {
+      renderedPane.value = true
+      // 确保小程序端已渲染完毕
+    }, 30)
   }
 }
 
@@ -181,48 +180,53 @@ const isLastOption = (option: CascaderOption) => {
   return !Array.isArray(option[mergedFieldKeys.value.children])
 }
 
-const onOptionClick = (option: CascaderOption, tabIndex: number) => {
+const onOptionClick = (option: CascaderOption, panelIndex: number) => {
   if (option.disabled) {
     return
   }
 
-  let nextTabs = tabs.value.slice()
+  let nextPanels = panels.value.slice()
 
-  nextTabs[tabIndex].selected = option
+  nextPanels[panelIndex].selected = option
 
-  const selectBack = tabIndex < nextTabs.length - 1
+  const selectBack = panelIndex < nextPanels.length - 1
 
   if (selectBack) {
-    nextTabs = nextTabs.slice(0, tabIndex + 1)
+    nextPanels = nextPanels.slice(0, panelIndex + 1)
   }
 
   const isLast = isLastOption(option)
 
   if (!isLast) {
-    const nextTab = {
+    const nextPanel = {
       options: option[mergedFieldKeys.value.children],
       selected: null,
     }
-    nextTabs.push(nextTab)
+    nextPanels.push(nextPanel)
   }
 
-  tabsCurrent.value = isLast ? tabIndex : nextTabs.length - 1
+  currentTab.value = isLast ? panelIndex : nextPanels.length - 1
 
-  tempValue = option[mergedFieldKeys.value.value]
-  tabs.value = nextTabs
-  emit('select', option, tabIndex)
+  if (props.allLevels) {
+    tempValue = nextPanels
+      .map((panel) => panel.selected)
+      .filter(Boolean)
+      .map((option) => option![mergedFieldKeys.value.value])
+  } else {
+    tempValue = option[mergedFieldKeys.value.value]
+  }
+
+  panels.value = nextPanels
+  emit('select', option, panelIndex)
 
   // finish
   if (isLast || props.changeOnSelect) {
-    const nextValue = option[mergedFieldKeys.value.value]
-    innerValue.value = nextValue
-
-    const selectedOptions = nextTabs
-      .map((tab) => tab.selected)
+    const selectedOptions = nextPanels
+      .map((panel) => panel.selected)
       .filter(Boolean) as CascaderOption[]
 
-    emit('update:model-value', nextValue, selectedOptions)
-    emit('change', nextValue, selectedOptions)
+    emit('update:model-value', tempValue!, selectedOptions)
+    emit('change', tempValue!, selectedOptions)
   }
 }
 
@@ -239,24 +243,22 @@ const mergedFieldKeys = computed(() => {
   ) as Required<CascaderFieldKeys>
 })
 
-const innerValue = ref(props.modelValue)
+let tempValue = props.modelValue
 
-let tempValue = innerValue.value
-
-const tabsCurrent = ref(0)
+const currentTab = ref(0)
 
 const renderedPane = ref(false)
 
-const tabs = ref<CascaderTab[]>([])
+const panels = ref<CascaderPanel[]>([])
 
-const tabsList = computed(() => {
-  return tabs.value.map((tab) => {
-    const { selected } = tab
-    const tabLabel = selected
+const tabList = computed(() => {
+  return panels.value.map((panel) => {
+    const { selected } = panel
+    const label = selected
       ? selected[mergedFieldKeys.value.label]
       : innerPaceholder.value
     return {
-      title: tabLabel,
+      title: label,
     }
   })
 })
@@ -264,27 +266,40 @@ const tabsList = computed(() => {
 watch(
   () => props.modelValue,
   () => {
-    innerValue.value = props.modelValue
-
-    if (!isEmptyBinding(props.modelValue)) {
-      if (
-        tabs.value.some(
-          (tab) =>
-            tab.selected?.[mergedFieldKeys.value.value] === props.modelValue,
-        )
-      ) {
-        return
+    if (Array.isArray(props.modelValue)) {
+      if (props.modelValue.length > 0) {
+        if (
+          props.modelValue.every(
+            (item, index) =>
+              panels.value[index].selected?.[mergedFieldKeys.value.value] ===
+              item,
+          )
+        ) {
+          return
+        }
+      }
+    } else {
+      if (!isEmptyBinding(props.modelValue)) {
+        if (
+          panels.value.some(
+            (panel) =>
+              panel.selected?.[mergedFieldKeys.value.value] ===
+              props.modelValue,
+          )
+        ) {
+          return
+        }
       }
     }
     tempValue = props.modelValue
-    updateTabs()
+    updatePanels()
   },
 )
 
 watch(
   () => props.options,
   () => {
-    updateTabs()
+    updatePanels()
   },
   {
     immediate: true,

@@ -19,6 +19,10 @@
     <doc-demo title="禁选选项">
       <DemoDisabled />
     </doc-demo>
+
+    <doc-demo title="绑定所有级别的值">
+      <DemoAllLevels />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -28,6 +32,7 @@ import DemoChangeOnSelect from './demo/ChangeOnSelect.vue'
 import DemoAsync from './demo/Async.vue'
 import DemoOptionTop from './demo/OptionTop.vue'
 import DemoDisabled from './demo/Disabled.vue'
+import DemoAllLevels from './demo/AllLevels.vue'
 </script>
 
 <style lang="scss" scoped>
