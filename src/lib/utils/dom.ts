@@ -9,14 +9,17 @@ import { type NodeRect } from './geometry'
  */
 export function getBoundingClientRect(
   selector: string,
-  instance: ComponentInternalInstance | null,
+  instance?: ComponentInternalInstance | null,
 ) {
   return new Promise<NodeRect>((resolve) => {
-    uni
-      .createSelectorQuery()
-      // #ifndef MP-ALIPAY
-      .in(instance?.proxy)
-      // #endif
+    let selectorQuery = uni.createSelectorQuery()
+    // #ifndef MP-ALIPAY
+    const proxy = instance?.proxy
+    if (proxy) {
+      selectorQuery = selectorQuery.in(proxy)
+    }
+    // #endif
+    selectorQuery
       .select(selector)
       .boundingClientRect((data) => {
         resolve(data as NodeRect)

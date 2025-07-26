@@ -45,6 +45,8 @@ declare module 'vue' {
     SarFloatingPanel: typeof import('./components/floating-panel/floating-panel.vue').default
     SarForm: typeof import('./components/form/form.vue').default
     SarFormItem: typeof import('./components/form-item/form-item.vue').default
+    SarFormItemPlain: typeof import('./components/form-item-plain/form-item-plain.vue').default
+    SarFormPlain: typeof import('./components/form-plain/form-plain.vue').default
     SarGrid: typeof import('./components/grid/grid.vue').default
     SarGridItem: typeof import('./components/grid-item/grid-item.vue').default
     SarIcon: typeof import('./components/icon/icon.vue').default

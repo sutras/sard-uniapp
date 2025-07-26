@@ -128,6 +128,12 @@
           hover
           @click="navigateTo('ForgetPassword')"
         />
+        <sar-list-item
+          title="自定义表单样式和结构"
+          arrow
+          hover
+          @click="navigateTo('Plain')"
+        />
       </sar-list>
     </doc-demo>
   </doc-page>

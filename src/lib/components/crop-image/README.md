@@ -50,21 +50,21 @@ import { cropImage } from 'sard-uniapp'
 
 ### CropImageProps
 
-| 属性                      | 描述                                                   | 类型                                      | 默认值 |
-| ------------------------- | ------------------------------------------------------ | ----------------------------------------- | ------ |
-| root-class                | 组件根元素类名                                         | string                                    | -      |
-| root-style                | 组件根元素样式                                         | StyleValue                                | -      |
-| visible                   | 是否显示裁剪弹框                                       | boolean                                   | false  |
-| src                       | 要裁剪的图片                                           | string                                    | false  |
-| crop-scale                | 裁剪的比例                                             | string                                    | '1:1'  |
-| type                      | 导出图片类型                                           | 'png' \| 'jpg'                            | 'png'  |
-| quality                   | 导出图片的质量                                         | number                                    | 0.92   |
-| duration                  | 弹窗显隐过渡时间（单位 ms）                            | number                                    | 150    |
-| success                   | 裁剪成功回调                                           | (filePath: string) => void                | -      |
-| fail                      | 裁剪失败回调                                           | (err: any) => void                        | -      |
-| complete                  | 裁剪成功或失败回调                                     | () => void                                | -      |
-| cancel <sup>1.22.3+</sup> | 点击取消按钮时触发                                     | () => void                                | -      |
-| before-crop               | 裁剪前回调，可以修改裁剪的尺寸；接收宽高，返回缩放比例 | (width: number, height: number) => number | -      |
+| 属性                    | 描述                                                   | 类型                                      | 默认值 |
+| ----------------------- | ------------------------------------------------------ | ----------------------------------------- | ------ |
+| root-class              | 组件根元素类名                                         | string                                    | -      |
+| root-style              | 组件根元素样式                                         | StyleValue                                | -      |
+| visible                 | 是否显示裁剪弹框                                       | boolean                                   | false  |
+| src                     | 要裁剪的图片                                           | string                                    | false  |
+| crop-scale              | 裁剪的比例                                             | string                                    | '1:1'  |
+| type                    | 导出图片类型                                           | 'png' \| 'jpg'                            | 'png'  |
+| quality                 | 导出图片的质量                                         | number                                    | 0.92   |
+| duration                | 弹窗显隐过渡时间（单位 ms）                            | number                                    | 150    |
+| success                 | 裁剪成功回调                                           | (filePath: string) => void                | -      |
+| fail                    | 裁剪失败回调                                           | (err: any) => void                        | -      |
+| complete                | 裁剪成功或失败回调                                     | () => void                                | -      |
+| cancel <sup>1.23+</sup> | 点击取消按钮时触发                                     | () => void                                | -      |
+| before-crop             | 裁剪前回调，可以修改裁剪的尺寸；接收宽高，返回缩放比例 | (width: number, height: number) => number | -      |
 
 ### CropImageEmits
 

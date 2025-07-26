@@ -14,6 +14,8 @@ group: 表单组件
 ```ts
 import Form from 'sard-uniapp/components/form/form.vue'
 import FormItem from 'sard-uniapp/components/form-item/form-item.vue'
+import FormPlain from 'sard-uniapp/components/form-plain/form-plain.vue'
+import FormItemPlain from 'sard-uniapp/components/form-item-plain/form-item-plain.vue'
 ```
 
 ## 代码演示
@@ -155,6 +157,20 @@ import FormItem from 'sard-uniapp/components/form-item/form-item.vue'
 演示了常用的忘记密码的表单实现。
 
 @code('${DEMO_PATH}/form/demo/ForgetPassword.vue')
+
+### 自定义表单样式和结构 <sup>1.23+</sup>
+
+如果对表单样式和结构有很强的定义性，可使用 `FormPlain` 和 `FormItemPlain` 组件来代替 `Form` 和 `FormItem`。
+
+前者不包含任意样式，能让你自由发挥。
+
+这两组组件几乎拥有一样的接口，除了 `FormItemPlain` 的插槽提供了一些属性用于获取当前表单项的状态和样式。
+
+@code('${DEMO_PATH}/form/demo/Plain.vue')
+
+`RadioList.vue`
+
+@code('${DEMO_PATH}/form/demo/RadioList.vue')
 
 ## API
 
@@ -301,6 +317,48 @@ type ValidateState = '' | 'success' | 'error' | 'validating'
 | url      | 必须为 `url`                                                           |
 | hex      | 必须为 `hex`                                                           |
 | email    | 必须为邮件                                                             |
+
+### FormPlainProps <sup>1.23+</sup>
+
+继承 [`FormProps`](#FormProps)。
+
+### FormPlainSlots <sup>1.23+</sup>
+
+继承 [`FormSlots`](#FormSlots)。
+
+### FormPlainExpose <sup>1.23+</sup>
+
+继承 [`FormExpose`](#FormExpose)。
+
+### FormItemPlainProps <sup>1.23+</sup>
+
+继承 [`FormItemProps`](#FormItemProps)。
+
+### FormItemPlainSlots <sup>1.23+</sup>
+
+| 插槽    | 描述           | 属性                    |
+| ------- | -------------- | ----------------------- |
+| default | 自定义默认内容 | -                       |
+| custom  | 自定义默认内容 | FormItemPlainSlotsProps |
+
+### FormItemPlainSlotsProps <sup>1.23+</sup>
+
+| 属性            | 描述                     | 类型                      |
+| --------------- | ------------------------ | ------------------------- |
+| fieldId         | 表单项类名，用于滚动定位 | string                    |
+| validateState   | 表单验证状态             | ValidateState             |
+| shouldShowStar  | 是否显示星号             | boolean                   |
+| validateMessage | 当前验证信息             | string                    |
+| shouldShowError | 是否显示错误信息         | boolean                   |
+| direction       | 表单排列方向             | FormProps['direction']    |
+| labelAlign      | 标签水平对齐方式         | FormProps['labelAlign']   |
+| labelValign     | 标签垂直对齐方式         | FormProps['labelValign']  |
+| starPosition    | 星号位置                 | FormProps['starPosition'] |
+| labelWidth      | 标签宽度                 | FormProps['labelWidth']   |
+
+### FormItemPlainExpose <sup>1.23+</sup>
+
+继承 [`FormItemExpose`](#FormItemExpose)。
 
 ## 主题定制
 

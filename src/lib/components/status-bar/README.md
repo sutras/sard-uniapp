@@ -31,7 +31,7 @@ setConfig({
 
 // 2. 获取状态栏高度
 // 假设接口如下
-const statusBarHeight = window.toggle.getBarHeight()
+const statusBarHeight = window.android.getBarHeight()
 
 // 3. 声明到 html 元素上
 document.documentElement.style.setProperty(

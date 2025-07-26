@@ -204,6 +204,9 @@
           "path": "form/demo/Validate"
         },
         {
+          "path": "form/demo/Plain"
+        },
+        {
           "path": "form/index"
         },
         {
