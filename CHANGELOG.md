@@ -1,3 +1,12 @@
+## [1.23.1](https://github.com/sutras/sard-uniapp/compare/v1.23.0...v1.23.1) (2025-07-28)
+
+
+### Bug Fixes
+
+* 修复 rate 清空问题 ([ac43638](https://github.com/sutras/sard-uniapp/commit/ac43638b3802d759221df5b65cb36c71c21a50ef))
+
+
+
 # [1.23.0](https://github.com/sutras/sard-uniapp/compare/v1.22.2...v1.23.0) (2025-07-26)
 
 
