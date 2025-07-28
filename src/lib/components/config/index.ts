@@ -32,7 +32,6 @@ import { type QrcodeProps } from '../qrcode'
 import { type RadioGroupProps } from '../radio'
 import { type RadioInputProps } from '../radio-input'
 import { type RadioPopoutProps } from '../radio-popout'
-import { type RateProps } from '../rate'
 import { type ResultProps } from '../result'
 import { type SearchProps } from '../search'
 import { type SpaceProps } from '../space'
@@ -373,7 +372,6 @@ export const defaultConfig = {
     icon: 'star-fill',
     voidIcon: 'star',
     validateEvent: true,
-    valueOnClear: undefined as RateProps['valueOnClear'],
   },
   readMore: {
     maxHeight: 200,
