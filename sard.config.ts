@@ -18,6 +18,8 @@ export default defineConfig({
       'checkbox-group': '../checkbox',
       col: '../layout',
       'form-item': '../form',
+      'form-plain': '../form',
+      'form-item-plain': '../form',
       'grid-item': '../grid',
       'indexes-anchor': '../indexes',
       'list-item': '../list',

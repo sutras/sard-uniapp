@@ -209,6 +209,10 @@ const onTouchMove = (event: TouchEvent) => {
     }
   }
 
+  if (nextValue === 0 && !props.clearable) {
+    nextValue = props.allowHalf ? 0.5 : 1
+  }
+
   if (nextValue !== undefined && nextValue !== innerValue.value) {
     innerValue.value = nextValue
     emit('update:model-value', nextValue)

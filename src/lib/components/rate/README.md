@@ -57,7 +57,7 @@ import Rate from 'sard-uniapp/components/rate/rate.vue'
 
 ### 允许清空
 
-当 `clearable` 属性设置为 `true`，再次点击相同的值时，可以将值重置为 0。
+当 `clearable` 属性设置为 `true`，再次点击相同的值，或划到最左边时，可以将值重置为 0。
 
 @code('${DEMO_PATH}/rate/demo/Clearable.vue')
 
@@ -71,26 +71,26 @@ import Rate from 'sard-uniapp/components/rate/rate.vue'
 
 ### RateProps
 
-| 属性           | 描述                         | 类型       | 默认值 |
-| -------------- | ---------------------------- | ---------- | ------ |
-| root-class     | 组件根元素类名               | string     | -      |
-| root-style     | 组件根元素样式               | StyleValue | -      |
-| model-value    | 选中图标数                   | number     | -      |
-| allow-half     | 是否允许半选                 | boolean    | false  |
-| clearable      | 是否允许清空，划到最左边清空 | boolean    | false  |
-| count          | 图标总数                     | number     | 5      |
-| size           | 图标大小                     | string     | -      |
-| gap            | 图标间距                     | string     | -      |
-| icon-family    | 图标字体                     | string     | -      |
-| icon           | 自定义选中时的图标           | string     | -      |
-| void-icon      | 自定义未选中时的图标         | string     | -      |
-| text           | 自定义选中时的文字           | string     | -      |
-| void-text      | 自定义未选中时的文字         | string     | -      |
-| color          | 选中时的颜色                 | string     | -      |
-| void-color     | 未选中时的颜色               | string     | -      |
-| disabled       | 禁用状态                     | boolean    | false  |
-| readonly       | 只读状态                     | boolean    | false  |
-| validate-event | 是否触发表单验证             | boolean    | true   |
+| 属性           | 描述                                           | 类型       | 默认值 |
+| -------------- | ---------------------------------------------- | ---------- | ------ |
+| root-class     | 组件根元素类名                                 | string     | -      |
+| root-style     | 组件根元素样式                                 | StyleValue | -      |
+| model-value    | 选中图标数                                     | number     | -      |
+| allow-half     | 是否允许半选                                   | boolean    | false  |
+| clearable      | 在点击相同值，或划到最左边时，是否将值重置为 0 | boolean    | false  |
+| count          | 图标总数                                       | number     | 5      |
+| size           | 图标大小                                       | string     | -      |
+| gap            | 图标间距                                       | string     | -      |
+| icon-family    | 图标字体                                       | string     | -      |
+| icon           | 自定义选中时的图标                             | string     | -      |
+| void-icon      | 自定义未选中时的图标                           | string     | -      |
+| text           | 自定义选中时的文字                             | string     | -      |
+| void-text      | 自定义未选中时的文字                           | string     | -      |
+| color          | 选中时的颜色                                   | string     | -      |
+| void-color     | 未选中时的颜色                                 | string     | -      |
+| disabled       | 禁用状态                                       | boolean    | false  |
+| readonly       | 只读状态                                       | boolean    | false  |
+| validate-event | 是否触发表单验证                               | boolean    | true   |
 
 ### RateEmits
 
