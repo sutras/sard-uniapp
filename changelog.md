@@ -1,3 +1,18 @@
+## [1.23.2](https://github.com/sutras/sard-uniapp/compare/v1.23.1...v1.23.2) (2025-07-30)
+
+
+### Bug Fixes
+
+* **picker-input:** 修复异步加载数据回显问题 ([76615e4](https://github.com/sutras/sard-uniapp/commit/76615e4f397265e0c110c082ace579c7fb24396a))
+* **picker-input:** 允许设置 loaidng 属性 ([5f1f91c](https://github.com/sutras/sard-uniapp/commit/5f1f91c4f7a4ae6275b2909cc8da7058b2af5471))
+
+
+### Features
+
+* navbar 新增 fixationStyle, fixationClasss 属性 ([bdc70f1](https://github.com/sutras/sard-uniapp/commit/bdc70f1282f7a232ed8cadae2699ec5f4074a37c))
+
+
+
 ## [1.23.1](https://github.com/sutras/sard-uniapp/compare/v1.23.0...v1.23.1) (2025-07-28)
 
 
