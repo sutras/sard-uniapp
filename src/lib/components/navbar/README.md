@@ -66,16 +66,18 @@ import NavbarItem from 'sard-uniapp/components/navbar-item/navbar-item.vue'
 
 ### NavbarProps
 
-| 属性                        | 描述                                                                               | 类型       | 默认值 |
-| --------------------------- | ---------------------------------------------------------------------------------- | ---------- | ------ |
-| root-class                  | 组件根元素类名                                                                     | string     | -      |
-| root-style                  | 组件根元素样式                                                                     | StyleValue | -      |
-| title                       | 自定义标题                                                                         | string     | -      |
-| flow                        | 默认 `left/right` 绝对定位于左右两侧，标题居中；可以使用 `flow` 使其变为流动布局。 | boolean    | false  |
-| show-back <sup>1.12+</sup>  | 是否显示返回按钮（仅显示，返回逻辑需自行编写）                                     | boolean    | false  |
-| back-text <sup>1.12+</sup>  | 返回按钮的文本                                                                     | string     | -      |
-| fixed <sup>1.12+</sup>      | 是否固定到页面顶部                                                                 | boolean    | false  |
-| status-bar <sup>1.12+</sup> | 是否包含状态栏                                                                     | boolean    | false  |
+| 属性                              | 描述                                                                               | 类型       | 默认值 |
+| --------------------------------- | ---------------------------------------------------------------------------------- | ---------- | ------ |
+| root-class                        | 组件根元素类名                                                                     | string     | -      |
+| root-style                        | 组件根元素样式                                                                     | StyleValue | -      |
+| title                             | 自定义标题                                                                         | string     | -      |
+| flow                              | 默认 `left/right` 绝对定位于左右两侧，标题居中；可以使用 `flow` 使其变为流动布局。 | boolean    | false  |
+| show-back <sup>1.12+</sup>        | 是否显示返回按钮（仅显示，返回逻辑需自行编写）                                     | boolean    | false  |
+| back-text <sup>1.12+</sup>        | 返回按钮的文本                                                                     | string     | -      |
+| fixed <sup>1.12+</sup>            | 是否固定到页面顶部                                                                 | boolean    | false  |
+| status-bar <sup>1.12+</sup>       | 是否包含状态栏                                                                     | boolean    | false  |
+| fixation-class <sup>1.23.2+</sup> | 固定栏元素类名                                                                     | string     | -      |
+| fixation-style <sup>1.23.2+</sup> | 固定栏元素样式                                                                     | StyleValue | -      |
 
 ### NavbarSlots
 

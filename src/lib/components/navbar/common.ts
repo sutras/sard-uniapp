@@ -9,6 +9,8 @@ export interface NavbarProps {
   backText?: string
   fixed?: boolean
   statusBar?: boolean
+  fixationStyle?: StyleValue
+  fixationClass?: string
 }
 
 export interface NavbarSlots {

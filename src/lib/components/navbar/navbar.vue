@@ -1,6 +1,6 @@
 <template>
   <view :class="navbarClass" :style="navbarStyle">
-    <view :class="bem.e('fixation')">
+    <view :class="fixationCls" :style="fixationStyle">
       <sar-status-bar v-if="statusBar" />
       <view :class="bem.e('wrapper')">
         <view v-if="$slots.left || showBack" :class="bem.e('left')">
@@ -71,6 +71,10 @@ const navbarClass = computed(() => {
 
 const navbarStyle = computed(() => {
   return stringifyStyle(props.rootStyle)
+})
+
+const fixationCls = computed(() => {
+  return classNames(bem.e('fixation'), props.fixationClass)
 })
 </script>
 
