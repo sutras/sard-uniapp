@@ -10,6 +10,7 @@
     :arrow="arrow"
     :internal-arrow="$slots.arrow ? 1 : 0"
     :input-props="inputProps"
+    :loading="loading"
     @clear="onClear"
     @click="show"
   >
@@ -133,7 +134,7 @@ function getInputValue() {
 }
 
 watch(
-  innerValue,
+  [innerValue, () => props.columns],
   () => {
     inputValue.value = getInputValue()
   },
