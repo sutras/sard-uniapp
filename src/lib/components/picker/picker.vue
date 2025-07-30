@@ -116,6 +116,10 @@ watch(
 )
 
 const onChange = (event: any) => {
+  if (!props.columns || props.columns.length === 0) {
+    return
+  }
+
   let indexes = event.detail.value as number[]
 
   // 在H5弹出框中使用时，在初始化会触发change，值中会携带Infinity的下标。

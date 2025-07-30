@@ -12,7 +12,7 @@
     :input-props="inputProps"
     :loading="loading"
     @clear="onClear"
-    @click="show"
+    @click="onClick"
   >
     <template v-if="$slots.arrow" #arrow>
       <slot name="arrow"></slot>
@@ -106,6 +106,12 @@ const {
   onClear,
   onVisibleHook,
 } = usePopoutInput(props, emit)
+
+const onClick = () => {
+  if (props.columns && props.columns.length > 0) {
+    show()
+  }
+}
 
 const fieldKeys = computed(() => {
   return Object.assign({}, defaultOptionKeys, props.optionKeys)
