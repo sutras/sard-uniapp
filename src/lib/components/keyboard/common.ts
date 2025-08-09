@@ -13,10 +13,11 @@ export const defaultKeyboardProps = defaultConfig.keyboard
 export interface KeyboardSlots {
   default?(props: Record<string, never>): any
 }
-
+export type PlateMode = 'chinese' | 'english'
 export interface KeyboardEmits {
   (e: 'input', key: string): void
   (e: 'delete'): void
+  (e: 'toggle', mode: PlateMode): void
 }
 
 export interface KeyBoardExpose {
