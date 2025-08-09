@@ -111,6 +111,7 @@ import {
   type KeyboardSlots,
   type KeyboardEmits,
   type KeyBoardExpose,
+  type PlateMode,
   numberKeys,
   digitKeys,
   idcardKeys,
@@ -169,7 +170,7 @@ watch(
 )
 
 // 车牌号
-const mode = ref<'chinese' | 'english'>('chinese')
+const mode = ref<PlateMode>('chinese')
 
 const toggleKey = computed(() => {
   return {
@@ -188,6 +189,7 @@ const interceptOrder = computed(() => {
 
 const onToggle = () => {
   mode.value = mode.value === 'chinese' ? 'english' : 'chinese'
+  emit('toggle', mode.value)
 }
 
 // others
