@@ -1,4 +1,19 @@
 <template>
+  <!-- <sar-datetime-picker-input
+    v-model="datetime"
+    type="yMd"
+    value-format="YYYY-MM-DD"
+    min="2025-09-29"
+    placeholder="请选择时间"
+  /> -->
+  <sar-datetime-picker
+    v-model="datetime"
+    type="yMdhm"
+    outlet-format="YYYY-MM-DD HH:mm"
+    :min="new Date()"
+    placeholder="请选择时间"
+  />
+
   <sar-list card>
     <sar-list-item>
       <sar-datetime-picker v-model="date" type="yMd" @change="onChange" />
@@ -20,6 +35,8 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 import { formatDate } from 'sard-uniapp'
+
+const datetime = ref()
 
 const date = ref<Date>()
 

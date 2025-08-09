@@ -1,3 +1,19 @@
+## [1.23.3](https://github.com/sutras/sard-uniapp/compare/v1.23.2...v1.23.3) (2025-08-09)
+
+
+### Bug Fixes
+
+* **qrcode:** 将[@use](https://github.com/use)改为[@import](https://github.com/import) ([9cf83d2](https://github.com/sutras/sard-uniapp/commit/9cf83d2efbac8bdc668d0e35622a76357ed59b6a))
+
+
+### Features
+
+* **Keyboard:** 车牌键盘切换按钮添加toggle事件 ([5b3c88d](https://github.com/sutras/sard-uniapp/commit/5b3c88d45abacd558f55208d4e6fc334b7b2cb10))
+* **tag:** 支持渐变色 ([20cd25a](https://github.com/sutras/sard-uniapp/commit/20cd25a8cc5f9125fd1daa8d1834a112dade6a70))
+* 可弹出表单组件新增 resettable 属性 ([dce34de](https://github.com/sutras/sard-uniapp/commit/dce34de7fc5a3d8650a56377481aaae9ac001516))
+
+
+
 ## [1.23.2](https://github.com/sutras/sard-uniapp/compare/v1.23.1...v1.23.2) (2025-07-30)
 
 
