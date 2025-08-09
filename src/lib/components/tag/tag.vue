@@ -54,7 +54,7 @@ const tagStyle = computed(() => {
     {
       color: props.plain ? props.color : props.textColor,
       borderColor: props.plain ? props.color : null,
-      backgroundColor: !props.plain ? props.color : null,
+      background: !props.plain ? props.color : null,
     },
     props.rootStyle,
   )
