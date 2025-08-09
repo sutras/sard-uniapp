@@ -59,10 +59,11 @@ import Keyboard from 'sard-uniapp/components/keyboard/keyboard.vue'
 
 ### KeyboardEmits
 
-| 事件   | 描述                 | 类型                  |
-| ------ | -------------------- | --------------------- |
-| input  | 可输入按键点击时触发 | (key: string) => void |
-| delete | 点击删除按钮时触发   | () => void            |
+| 事件                      | 描述                     | 类型                                   |
+| ------------------------- | ------------------------ | -------------------------------------- |
+| input                     | 可输入按键点击时触发     | (key: string) => void                  |
+| delete                    | 点击删除按钮时触发       | () => void                             |
+| toggle <sup>1.23.3+</sup> | 切换车牌号的中英文时触发 | (mode: 'chinese' \| 'english') => void |
 
 ### KeyBoardExpose
 
