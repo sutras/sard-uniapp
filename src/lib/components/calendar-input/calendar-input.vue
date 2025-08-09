@@ -38,6 +38,7 @@
       :several-months="severalMonths"
       :value-format="valueFormat"
       :validate-event="validateEvent"
+      :resettable="resettable"
       @change="onChange"
       @visible-hook="onVisibleHook"
       @confirm="onConfirm"

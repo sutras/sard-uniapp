@@ -13,6 +13,7 @@ export interface PickerPopoutProps extends PickerProps {
   validateEvent?: boolean
   popoutClass?: string
   popoutStyle?: StyleValue
+  resettable?: boolean
 }
 
 export const defaultPickerPopoutProps = () => ({

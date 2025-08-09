@@ -30,13 +30,14 @@ import PickerPopout from 'sard-uniapp/components/picker-popout/picker-popout.vue
 
 继承 [`PickerProps`](./picker#PickerProps) 并有以下额外属性：
 
-| 属性              | 描述             | 类型       | 默认值 |
-| ----------------- | ---------------- | ---------- | ------ |
-| popout-class      | 弹窗框根元素类名 | string     | -      |
-| popout-style      | 弹窗框根元素样式 | StyleValue | -      |
-| visible (v-model) | 是否显示弹出框   | boolean    | -      |
-| title             | 弹出框标题       | string     | -      |
-| validate-event    | 是否触发表单验证 | boolean    | true   |
+| 属性                          | 描述                             | 类型       | 默认值 |
+| ----------------------------- | -------------------------------- | ---------- | ------ |
+| popout-class                  | 弹窗框根元素类名                 | string     | -      |
+| popout-style                  | 弹窗框根元素样式                 | StyleValue | -      |
+| visible (v-model)             | 是否显示弹出框                   | boolean    | -      |
+| title                         | 弹出框标题                       | string     | -      |
+| validate-event                | 是否触发表单验证                 | boolean    | true   |
+| resettable <sup>1.23.3+</sup> | 关闭弹出框后，是否可复位弹出框值 | boolean    | false  |
 
 ### PickerPopoutSlots
 

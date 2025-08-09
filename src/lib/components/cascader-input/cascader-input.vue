@@ -29,6 +29,7 @@
       :change-on-select="changeOnSelect"
       :label-render="labelRender"
       :validate-event="validateEvent"
+      :resettable="resettable"
       @select="(option, tabIndex) => $emit('select', option, tabIndex)"
       @change="onChange"
       @visible-hook="onVisibleHook"

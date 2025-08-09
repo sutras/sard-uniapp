@@ -48,15 +48,16 @@ import CheckboxPopout from 'sard-uniapp/components/checkbox-popout/checkbox-popo
 
 继承 [`CheckboxGroupProps`](./checkbox#CheckboxGroupProps) 并有以下额外属性：
 
-| 属性                                | 描述                 | 类型       | 默认值 |
-| ----------------------------------- | -------------------- | ---------- | ------ |
-| popout-class                        | 弹窗框根元素类名     | string     | -      |
-| popout-style                        | 弹窗框根元素样式     | StyleValue | -      |
-| visible (v-model)                   | 是否显示弹出框       | boolean    | -      |
-| title                               | 弹出框标题           | string     | -      |
-| show-check-all <sup>1.20+</sup>     | 是否显示全选         | boolean    | false  |
-| searchable <sup>1.20+</sup>         | 是否可搜索           | boolean    | false  |
-| filter-placeholder <sup>1.20+</sup> | 搜索输入框占位符内容 | string     | -      |
+| 属性                                | 描述                             | 类型       | 默认值 |
+| ----------------------------------- | -------------------------------- | ---------- | ------ |
+| popout-class                        | 弹窗框根元素类名                 | string     | -      |
+| popout-style                        | 弹窗框根元素样式                 | StyleValue | -      |
+| visible (v-model)                   | 是否显示弹出框                   | boolean    | -      |
+| title                               | 弹出框标题                       | string     | -      |
+| show-check-all <sup>1.20+</sup>     | 是否显示全选                     | boolean    | false  |
+| searchable <sup>1.20+</sup>         | 是否可搜索                       | boolean    | false  |
+| filter-placeholder <sup>1.20+</sup> | 搜索输入框占位符内容             | string     | -      |
+| resettable <sup>1.23.3+</sup>       | 关闭弹出框后，是否可复位弹出框值 | boolean    | false  |
 
 ### CheckboxPopoutEmits
 

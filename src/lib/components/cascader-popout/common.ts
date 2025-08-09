@@ -10,6 +10,7 @@ export interface CascaderPopoutProps extends CascaderProps {
   validateEvent?: boolean
   popoutClass?: string
   popoutStyle?: StyleValue
+  resettable?: boolean
 }
 
 export const defaultCascaderPopoutProps = defaultConfig.cascaderPopout

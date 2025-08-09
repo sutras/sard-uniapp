@@ -30,6 +30,7 @@
       :validate-event="validateEvent"
       :searchable="searchable"
       :filter-placeholder="filterPlaceholder"
+      :resettable="resettable"
       @change="onChange"
       @visible-hook="onVisibleHook"
       @confirm="onConfirm"

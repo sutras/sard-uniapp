@@ -32,6 +32,7 @@
       :show-check-all="showCheckAll"
       :searchable="searchable"
       :filter-placeholder="filterPlaceholder"
+      :resettable="resettable"
       @change="onChange"
       @visible-hook="onVisibleHook"
       @confirm="onConfirm"

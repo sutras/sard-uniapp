@@ -30,6 +30,7 @@
       :value-format="valueFormat"
       :tabs="tabs"
       :validate-event="validateEvent"
+      :resettable="resettable"
       @change="onChange"
       @visible-hook="onVisibleHook"
       @confirm="onConfirm"

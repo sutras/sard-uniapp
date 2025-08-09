@@ -8,6 +8,7 @@ export interface UseFormPopoutProps {
   visible?: boolean
   modelValue?: any
   validateEvent?: boolean
+  resettable?: boolean
 }
 
 export interface UseFormPopoutEmits extends TransitionHookEmits {
@@ -74,6 +75,13 @@ export function useFormPopout(
   }
 
   const onVisibleHook = (name: TransitionHookName) => {
+    if (
+      props.resettable &&
+      name === 'after-leave' &&
+      popoutValue.value !== innerValue.value
+    ) {
+      popoutValue.value = innerValue.value
+    }
     emit('visible-hook', name)
     emit(name as any)
   }

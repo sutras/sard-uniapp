@@ -13,6 +13,7 @@ export interface DatetimeRangePickerPopoutProps
   validateEvent?: boolean
   popoutClass?: string
   popoutStyle?: StyleValue
+  resettable?: boolean
 }
 
 export const defaultDatetimeRangePickerInputProps = () => ({

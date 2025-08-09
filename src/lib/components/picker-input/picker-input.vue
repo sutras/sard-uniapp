@@ -30,6 +30,7 @@
       :immediate-change="immediateChange"
       :validate-event="validateEvent"
       :internal-custom="$slots.custom ? 1 : 0"
+      :resettable="resettable"
       @change="onChange"
       @visible-hook="onVisibleHook"
       @confirm="onConfirm"
