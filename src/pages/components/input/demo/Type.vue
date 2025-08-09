@@ -25,7 +25,7 @@
     clearable
   >
     <template #append>
-      <view class="ml-16" @click="isPlainText = !isPlainText">
+      <view @click="isPlainText = !isPlainText">
         {{ isPlainText ? '显示密文' : '显示明文' }}
       </view>
     </template>

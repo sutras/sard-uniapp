@@ -34,9 +34,10 @@
   }
 
   @include e(title) {
-    @include universal;
     font-size: var(--sar-card-title-font-size);
     line-height: var(--sar-card-title-line-height);
+    flex: 1;
+    min-width: 0;
   }
 
   @include e(extra) {

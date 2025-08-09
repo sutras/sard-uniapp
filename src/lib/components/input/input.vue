@@ -128,22 +128,28 @@
         :controlled="controlled"
         :always-system="alwaysSystem"
       />
-      <view
-        v-show="clearVisible"
-        :class="bem.e('clear')"
-        @click.stop="onClearClick"
-        @mousedown="onClearMouseDown"
-        @touchstart="onClearTouchStart"
-        @touchend="onClearTouchEnd"
-        @touchcancel="onClearTouchEnd"
-      >
-        <sar-icon family="sari" name="x-circle-fill" />
-      </view>
-      <view v-if="mergedShowEye" :class="bem.e('eye')" @click.stop="onEyeClick">
-        <sar-icon family="sari" :name="eyeIcon" />
-      </view>
-      <view v-if="$slots.append" :class="bem.e('append')">
-        <slot name="append"></slot>
+      <view :class="bem.e('tools')">
+        <view
+          v-show="clearVisible"
+          :class="bem.e('clear')"
+          @click.stop="onClearClick"
+          @mousedown="onClearMouseDown"
+          @touchstart="onClearTouchStart"
+          @touchend="onClearTouchEnd"
+          @touchcancel="onClearTouchEnd"
+        >
+          <sar-icon family="sari" name="x-circle-fill" />
+        </view>
+        <view
+          v-if="mergedShowEye"
+          :class="bem.e('eye')"
+          @click.stop="onEyeClick"
+        >
+          <sar-icon family="sari" :name="eyeIcon" />
+        </view>
+        <view v-if="$slots.append" :class="bem.e('append')">
+          <slot name="append"></slot>
+        </view>
       </view>
       <slot name="addon"></slot>
     </view>

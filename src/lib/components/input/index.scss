@@ -19,6 +19,14 @@
     @include m(inlaid) {
       padding: 0;
       border-width: 0;
+
+      @include e(tools) {
+        margin-right: 0;
+      }
+
+      @include e(append) {
+        margin-right: 0;
+      }
     }
 
     @include m(focused) {
@@ -67,6 +75,13 @@
     }
   }
 
+  @include e(tools) {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    margin-right: calc(var(--sar-input-padding-x) * -1);
+  }
+
   @include e(prepend, append) {
     @include universal;
     align-items: center;
@@ -79,7 +94,7 @@
   }
 
   @include e(append) {
-    margin-left: var(--sar-input-append-margin-left);
+    margin-right: var(--sar-input-append-margin-right);
   }
 
   @include e(clear) {
