@@ -179,5 +179,5 @@ const qrcodeStyle = computed(() => {
 </script>
 
 <style lang="scss">
-@use './index.scss' as *;
+@import './index.scss';
 </style>
