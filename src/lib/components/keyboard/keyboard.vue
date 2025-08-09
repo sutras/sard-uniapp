@@ -111,7 +111,7 @@ import {
   type KeyboardSlots,
   type KeyboardEmits,
   type KeyBoardExpose,
-  type PlateMode,
+  type KeyboardPlateMode,
   numberKeys,
   digitKeys,
   idcardKeys,
@@ -170,7 +170,7 @@ watch(
 )
 
 // 车牌号
-const mode = ref<PlateMode>('chinese')
+const mode = ref<KeyboardPlateMode>('chinese')
 
 const toggleKey = computed(() => {
   return {
