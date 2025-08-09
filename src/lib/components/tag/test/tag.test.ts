@@ -66,7 +66,7 @@ describe('Tag', () => {
     )
 
     expect(wrapper.find(`.sar-tag`).attributes().style).includes(
-      'color: blue; background-color: red;',
+      'color: blue; background: red;',
     )
 
     await wrapper.setProps({
