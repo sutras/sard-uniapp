@@ -16,11 +16,9 @@
     <sar-form-item
       label="活动奖品"
       name="awards"
-      required
       :rules="{
         type: 'array',
         required: true,
-        trigger: 'change',
       }"
       :class="{ 'pb-0': formModel.awards.length > 0 }"
     >

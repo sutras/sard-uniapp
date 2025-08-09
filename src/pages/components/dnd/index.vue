@@ -7,10 +7,15 @@
     <doc-demo title="表单列表" full>
       <DemoFormList />
     </doc-demo>
+
+    <doc-demo title="嵌套拖拽">
+      <DemoNested />
+    </doc-demo>
   </doc-page>
 </template>
 
 <script setup lang="ts">
 import DemoBasic from './demo/Basic.vue'
 import DemoFormList from './demo/FormList.vue'
+import DemoNested from './demo/Nested.vue'
 </script>

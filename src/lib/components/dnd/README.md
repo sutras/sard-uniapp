@@ -36,6 +36,18 @@ import DndHandle from 'sard-uniapp/components/dnd-handle/dnd-handle.vue'
 
 @code('${DEMO_PATH}/dnd/demo/FormList.vue')
 
+### 嵌套拖拽
+
+拖拽里面也可以包含嵌套。
+
+@warning
+
+小程序端暂不支持嵌套拖拽，如果你有解决方案，可以提交 PR。
+
+@endwarning
+
+@code('${DEMO_PATH}/dnd/demo/Nested.vue')
+
 ## API
 
 ### DndProps\<T>
