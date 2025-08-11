@@ -16,6 +16,7 @@ export interface StepsProps {
   itemList?: StepsItem[]
   center?: boolean
   direction?: 'vertical' | 'horizontal'
+  reverse?: boolean
   status?: StepsStatus
   iconFamily?: string
   iconSize?: string
@@ -42,6 +43,7 @@ export interface StepsContext {
   waitIcon?: string
   errorIcon?: string
   status?: StepsStatus
+  reverse?: boolean
 }
 
 export const stepsContextSymbol = Symbol(

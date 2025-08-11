@@ -96,6 +96,7 @@ const stepClass = computed(() => {
     bem.m(currentStatus.value),
     bem.m(position.value),
     bem.m(context.direction),
+    bem.m('reverse', context.reverse),
     props.rootClass,
   )
 })

@@ -212,4 +212,8 @@
       align-items: flex-start;
     }
   }
+
+  @include m-intersect(horizontal, reverse) {
+    flex-direction: column-reverse;
+  }
 }

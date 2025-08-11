@@ -29,6 +29,12 @@ import Steps from 'sard-uniapp/components/steps/steps.vue'
 
 @code('${DEMO_PATH}/steps/demo/Center.vue')
 
+### 文字在上 <sup>1.23.4+</sup>
+
+可以使用 `reverse` 属性将水平排列时的文字和图标位置调换。
+
+@code('${DEMO_PATH}/steps/demo/Reverse.vue')
+
 ### 垂直步骤条
 
 设置 `direction="vertical"` 可以垂直排列。
@@ -81,21 +87,22 @@ import Steps from 'sard-uniapp/components/steps/steps.vue'
 
 ### StepsProps
 
-| 属性         | 描述                 | 类型                       | 默认值       |
-| ------------ | -------------------- | -------------------------- | ------------ |
-| root-class   | 组件根元素类名       | string                     | -            |
-| root-style   | 组件根元素样式       | StyleValue                 | -            |
-| current      | 当前步骤对应的索引值 | number                     | 0            |
-| item-list    | 所有步骤的数据       | StepsItem[]                | []           |
-| center       | 是否居中             | boolean                    | false        |
-| direction    | 排列方向             | 'vertical' \| 'horizontal' | 'horizontal' |
-| status       | 指定当前步骤的状态   | StepsStatus                | -            |
-| icon-family  | 图标字体             | string                     | -            |
-| icon-size    | 图标字号             | string                     | -            |
-| finish-icon  | 已完成状态的图标名称 | string                     | -            |
-| process-icon | 处理中状态的图标名称 | string                     | -            |
-| wait-icon    | 等待中状态的图标名称 | string                     | -            |
-| error-icon   | 错误状态的图标名称   | string                     | -            |
+| 属性         | 描述                               | 类型                       | 默认值       |
+| ------------ | ---------------------------------- | -------------------------- | ------------ |
+| root-class   | 组件根元素类名                     | string                     | -            |
+| root-style   | 组件根元素样式                     | StyleValue                 | -            |
+| current      | 当前步骤对应的索引值               | number                     | 0            |
+| item-list    | 所有步骤的数据                     | StepsItem[]                | []           |
+| center       | 是否居中                           | boolean                    | false        |
+| direction    | 排列方向                           | 'vertical' \| 'horizontal' | 'horizontal' |
+| reverse      | 水平排列时，文字和图标是否调换位置 | boolean                    | false        |
+| status       | 指定当前步骤的状态                 | StepsStatus                | -            |
+| icon-family  | 图标字体                           | string                     | -            |
+| icon-size    | 图标字号                           | string                     | -            |
+| finish-icon  | 已完成状态的图标名称               | string                     | -            |
+| process-icon | 处理中状态的图标名称               | string                     | -            |
+| wait-icon    | 等待中状态的图标名称               | string                     | -            |
+| error-icon   | 错误状态的图标名称                 | string                     | -            |
 
 ### StepsSlots
 

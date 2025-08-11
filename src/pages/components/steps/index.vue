@@ -8,6 +8,10 @@
       <DemoCenter />
     </doc-demo>
 
+    <doc-demo title="文字在上">
+      <DemoReverse />
+    </doc-demo>
+
     <doc-demo title="垂直步骤条">
       <DemoVertical />
     </doc-demo>
@@ -45,6 +49,7 @@
 <script setup lang="ts">
 import DemoBasic from './demo/Basic.vue'
 import DemoCenter from './demo/Center.vue'
+import DemoReverse from './demo/Reverse.vue'
 import DemoVertical from './demo/Vertical.vue'
 import DemoVerticalCenter from './demo/VerticalCenter.vue'
 import DemoIcon from './demo/Icon.vue'

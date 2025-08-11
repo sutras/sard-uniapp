@@ -51,6 +51,7 @@ provide(
     waitIcon: toRef(() => props.waitIcon),
     errorIcon: toRef(() => props.errorIcon),
     status: toRef(() => props.status),
+    reverse: toRef(() => props.reverse),
   }),
 )
 
