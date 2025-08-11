@@ -237,6 +237,9 @@ export const defaultConfig = {
     hintDuration: 300,
   },
   input: {
+    // #ifdef MP-ALIPAY
+    enableNative: false,
+    // #endif
     maxlength: 140,
     adjustPosition: true,
     ignoreCompositionEvent: true,

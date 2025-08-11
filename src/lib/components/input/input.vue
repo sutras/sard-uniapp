@@ -16,28 +16,8 @@
             bem.em('control', 'input-min-height', inputMinHeight),
           )
         "
-        :placeholder="placeholder"
-        :placeholder-style="mergedPlaceholderStyle"
-        :placeholder-class="placeholderClass"
-        :value="innerValue"
-        :disabled="isDisabled || isReadonly"
-        :maxlength="maxlength"
-        :focus="focus"
-        :cursor-spacing="cursorSpacing"
-        :cursor="cursor"
-        :confirm-type="confirmType"
-        :confirm-hold="confirmHold"
-        :selection-start="selectionStart"
-        :selection-end="selectionEnd"
-        :adjust-position="adjustPosition"
-        :hold-keyboard="holdKeyboard"
-        :auto-blur="autoBlur"
-        :ignore-composition-event="ignoreCompositionEvent"
-        :inputmode="inputmode"
-        autocomplete="off"
-        :fixed="fixed"
-        :show-confirm-bar="showConfirmBar"
-        :disable-default-padding="disableDefaultPadding"
+        v-bind="textareaProps"
+        :show-count="false"
         @input="onInput"
         @focus="onFocus"
         @blur="onBlur"
@@ -46,87 +26,28 @@
         @keyboardheightchange="onKeyboardheightchange"
         :auto-height="autoHeight"
         :style="controlStyle"
-        :show-count="false"
       />
       <input
         v-if="type !== 'textarea' && showPassword"
         :class="classNames(bem.e('control'), bem.em('control', 'input'))"
-        :value="innerValue"
-        :placeholder="placeholder"
-        :placeholder-style="mergedPlaceholderStyle"
-        :placeholder-class="placeholderClass"
-        :disabled="isDisabled || isReadonly"
-        :maxlength="maxlength"
-        :focus="focus"
-        :cursor-spacing="cursorSpacing"
-        :cursor="cursor"
-        :confirm-type="confirmType"
-        :confirm-hold="confirmHold"
-        :selection-start="selectionStart"
-        :selection-end="selectionEnd"
-        :adjust-position="adjustPosition"
-        :hold-keyboard="holdKeyboard"
-        :auto-blur="autoBlur"
-        :ignore-composition-event="ignoreCompositionEvent"
-        :inputmode="inputmode"
-        autocomplete="off"
+        v-bind="inputProps"
+        :password="true"
         @input="onInput"
         @focus="onFocus"
         @blur="onBlur"
         @confirm="onConfirm"
         @keyboardheightchange="onKeyboardheightchange"
-        :type="mergedType"
-        :password="true"
-        :always-embed="alwaysEmbed"
-        :safe-password-cert-path="safePasswordCertPath"
-        :safe-password-length="safePasswordLength"
-        :safe-password-time-stamp="safePasswordTimeStamp"
-        :safe-password-nonce="safePasswordNonce"
-        :safe-password-salt="safePasswordSalt"
-        :safe-password-custom-hash="safePasswordCustomHash"
-        :random-number="randomNumber"
-        :controlled="controlled"
-        :always-system="alwaysSystem"
       />
       <input
         v-if="type !== 'textarea' && !showPassword"
         :class="classNames(bem.e('control'), bem.em('control', 'input'))"
-        :value="innerValue"
-        :placeholder="placeholder"
-        :placeholder-style="mergedPlaceholderStyle"
-        :placeholder-class="placeholderClass"
-        :disabled="isDisabled || isReadonly"
-        :maxlength="maxlength"
-        :focus="focus"
-        :cursor-spacing="cursorSpacing"
-        :cursor="cursor"
-        :confirm-type="confirmType"
-        :confirm-hold="confirmHold"
-        :selection-start="selectionStart"
-        :selection-end="selectionEnd"
-        :adjust-position="adjustPosition"
-        :hold-keyboard="holdKeyboard"
-        :auto-blur="autoBlur"
-        :ignore-composition-event="ignoreCompositionEvent"
-        :inputmode="inputmode"
-        autocomplete="off"
+        v-bind="inputProps"
+        :password="false"
         @input="onInput"
         @focus="onFocus"
         @blur="onBlur"
         @confirm="onConfirm"
         @keyboardheightchange="onKeyboardheightchange"
-        :type="mergedType"
-        :password="false"
-        :always-embed="alwaysEmbed"
-        :safe-password-cert-path="safePasswordCertPath"
-        :safe-password-length="safePasswordLength"
-        :safe-password-time-stamp="safePasswordTimeStamp"
-        :safe-password-nonce="safePasswordNonce"
-        :safe-password-salt="safePasswordSalt"
-        :safe-password-custom-hash="safePasswordCustomHash"
-        :random-number="randomNumber"
-        :controlled="controlled"
-        :always-system="alwaysSystem"
       />
       <view :class="bem.e('tools')">
         <view
@@ -321,8 +242,6 @@ const showPassword = computed(() => {
   return props.type === 'password' && isPlainText.value === false
 })
 
-const mergedShowEye = computed(() => props.type === 'password' && props.showEye)
-
 const mergedType = computed(() => {
   return showPassword.value
     ? 'password'
@@ -330,6 +249,8 @@ const mergedType = computed(() => {
       ? 'text'
       : props.type
 })
+
+const mergedShowEye = computed(() => props.type === 'password' && props.showEye)
 
 // others
 const inputClass = computed(() => {
@@ -370,6 +291,86 @@ const mergedPlaceholderStyle = computed(() => {
       : null,
     props.placeholderStyle,
   )
+})
+
+// 提取 textarea 的属性
+const textareaProps = computed(() => {
+  const commonProps = {
+    value: innerValue.value,
+    placeholder: props.placeholder,
+    'placeholder-style': mergedPlaceholderStyle.value,
+    'placeholder-class': props.placeholderClass,
+    disabled: isDisabled.value || isReadonly.value,
+    maxlength: props.maxlength,
+    focus: props.focus,
+    'cursor-spacing': props.cursorSpacing,
+    cursor: props.cursor,
+    'confirm-type': props.confirmType,
+    'confirm-hold': props.confirmHold,
+    'selection-start': props.selectionStart,
+    'selection-end': props.selectionEnd,
+    'adjust-position': props.adjustPosition,
+    'hold-keyboard': props.holdKeyboard,
+    'auto-blur': props.autoBlur,
+    'ignore-composition-event': props.ignoreCompositionEvent,
+    inputmode: props.inputmode,
+    autocomplete: 'off',
+    fixed: props.fixed,
+    'show-confirm-bar': props.showConfirmBar,
+    'disable-default-padding': props.disableDefaultPadding,
+  }
+
+  return {
+    ...commonProps,
+    // 支付宝小程序特有属性
+    // #ifdef MP-ALIPAY
+    enableNative: props.enableNative,
+    // #endif
+  }
+})
+
+// 提取 input 的属性
+const inputProps = computed(() => {
+  const commonProps = {
+    value: innerValue.value,
+    placeholder: props.placeholder,
+    'placeholder-style': mergedPlaceholderStyle.value,
+    'placeholder-class': props.placeholderClass,
+    disabled: isDisabled.value || isReadonly.value,
+    maxlength: props.maxlength,
+    focus: props.focus,
+    'cursor-spacing': props.cursorSpacing,
+    cursor: props.cursor,
+    'confirm-type': props.confirmType,
+    'confirm-hold': props.confirmHold,
+    'selection-start': props.selectionStart,
+    'selection-end': props.selectionEnd,
+    'adjust-position': props.adjustPosition,
+    'hold-keyboard': props.holdKeyboard,
+    'auto-blur': props.autoBlur,
+    'ignore-composition-event': props.ignoreCompositionEvent,
+    inputmode: props.inputmode,
+    autocomplete: 'off',
+    type: mergedType.value,
+    'always-embed': props.alwaysEmbed,
+    'safe-password-cert-path': props.safePasswordCertPath,
+    'safe-password-length': props.safePasswordLength,
+    'safe-password-time-stamp': props.safePasswordTimeStamp,
+    'safe-password-nonce': props.safePasswordNonce,
+    'safe-password-salt': props.safePasswordSalt,
+    'safe-password-custom-hash': props.safePasswordCustomHash,
+    'random-number': props.randomNumber,
+    controlled: props.controlled,
+    'always-system': props.alwaysSystem,
+  }
+
+  return {
+    ...commonProps,
+    // 支付宝小程序特有属性
+    // #ifdef MP-ALIPAY
+    enableNative: props.enableNative,
+    // #endif
+  }
 })
 </script>
 
