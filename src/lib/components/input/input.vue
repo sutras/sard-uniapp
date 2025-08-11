@@ -7,6 +7,7 @@
       >
         <slot name="prepend"></slot>
       </view>
+      <!-- #ifdef MP-ALIPAY -->
       <textarea
         v-if="type === 'textarea'"
         :class="
@@ -16,10 +17,136 @@
             bem.em('control', 'input-min-height', inputMinHeight),
           )
         "
+        :enableNative="enableNative"
+        :value="innerValue"
         :placeholder="placeholder"
         :placeholder-style="mergedPlaceholderStyle"
         :placeholder-class="placeholderClass"
+        :disabled="isDisabled || isReadonly"
+        :maxlength="maxlength"
+        :focus="focus"
+        :cursor-spacing="cursorSpacing"
+        :cursor="cursor"
+        :confirm-type="confirmType"
+        :confirm-hold="confirmHold"
+        :selection-start="selectionStart"
+        :selection-end="selectionEnd"
+        :adjust-position="adjustPosition"
+        :hold-keyboard="holdKeyboard"
+        :auto-blur="autoBlur"
+        :ignore-composition-event="ignoreCompositionEvent"
+        :inputmode="inputmode"
+        autocomplete="off"
+        :fixed="fixed"
+        :show-confirm-bar="showConfirmBar"
+        :disable-default-padding="disableDefaultPadding"
+        @input="onInput"
+        @focus="onFocus"
+        @blur="onBlur"
+        @linechange="onLinechange"
+        @confirm="onConfirm"
+        @keyboardheightchange="onKeyboardheightchange"
+        :auto-height="autoHeight"
+        :style="controlStyle"
+        :show-count="false"
+      />
+      <input
+        v-if="type !== 'textarea' && showPassword"
+        :class="classNames(bem.e('control'), bem.em('control', 'input'))"
+        :enableNative="enableNative"
         :value="innerValue"
+        :placeholder="placeholder"
+        :placeholder-style="mergedPlaceholderStyle"
+        :placeholder-class="placeholderClass"
+        :disabled="isDisabled || isReadonly"
+        :maxlength="maxlength"
+        :focus="focus"
+        :cursor-spacing="cursorSpacing"
+        :cursor="cursor"
+        :confirm-type="confirmType"
+        :confirm-hold="confirmHold"
+        :selection-start="selectionStart"
+        :selection-end="selectionEnd"
+        :adjust-position="adjustPosition"
+        :hold-keyboard="holdKeyboard"
+        :auto-blur="autoBlur"
+        :ignore-composition-event="ignoreCompositionEvent"
+        :inputmode="inputmode"
+        autocomplete="off"
+        @input="onInput"
+        @focus="onFocus"
+        @blur="onBlur"
+        @confirm="onConfirm"
+        @keyboardheightchange="onKeyboardheightchange"
+        :type="mergedType"
+        :password="true"
+        :always-embed="alwaysEmbed"
+        :safe-password-cert-path="safePasswordCertPath"
+        :safe-password-length="safePasswordLength"
+        :safe-password-time-stamp="safePasswordTimeStamp"
+        :safe-password-nonce="safePasswordNonce"
+        :safe-password-salt="safePasswordSalt"
+        :safe-password-custom-hash="safePasswordCustomHash"
+        :random-number="randomNumber"
+        :controlled="controlled"
+        :always-system="alwaysSystem"
+      />
+      <input
+        v-if="type !== 'textarea' && !showPassword"
+        :class="classNames(bem.e('control'), bem.em('control', 'input'))"
+        :enableNative="enableNative"
+        :value="innerValue"
+        :placeholder="placeholder"
+        :placeholder-style="mergedPlaceholderStyle"
+        :placeholder-class="placeholderClass"
+        :disabled="isDisabled || isReadonly"
+        :maxlength="maxlength"
+        :focus="focus"
+        :cursor-spacing="cursorSpacing"
+        :cursor="cursor"
+        :confirm-type="confirmType"
+        :confirm-hold="confirmHold"
+        :selection-start="selectionStart"
+        :selection-end="selectionEnd"
+        :adjust-position="adjustPosition"
+        :hold-keyboard="holdKeyboard"
+        :auto-blur="autoBlur"
+        :ignore-composition-event="ignoreCompositionEvent"
+        :inputmode="inputmode"
+        autocomplete="off"
+        @input="onInput"
+        @focus="onFocus"
+        @blur="onBlur"
+        @confirm="onConfirm"
+        @keyboardheightchange="onKeyboardheightchange"
+        :type="mergedType"
+        :password="false"
+        :always-embed="alwaysEmbed"
+        :safe-password-cert-path="safePasswordCertPath"
+        :safe-password-length="safePasswordLength"
+        :safe-password-time-stamp="safePasswordTimeStamp"
+        :safe-password-nonce="safePasswordNonce"
+        :safe-password-salt="safePasswordSalt"
+        :safe-password-custom-hash="safePasswordCustomHash"
+        :random-number="randomNumber"
+        :controlled="controlled"
+        :always-system="alwaysSystem"
+      />
+      <!-- #endif -->
+      <!-- #ifndef MP-ALIPAY -->
+      <textarea
+        v-if="type === 'textarea'"
+        :class="
+          classNames(
+            bem.e('control'),
+            bem.em('control', 'textarea'),
+            bem.em('control', 'input-min-height', inputMinHeight),
+          )
+        "
+        :value="innerValue"
+        :placeholder="placeholder"
+        :placeholder-style="mergedPlaceholderStyle"
+        :placeholder-class="placeholderClass"
         :disabled="isDisabled || isReadonly"
         :maxlength="maxlength"
         :focus="focus"
@@ -128,6 +255,7 @@
         :controlled="controlled"
         :always-system="alwaysSystem"
       />
+      <!-- #endif -->
       <view :class="bem.e('tools')">
         <view
           v-show="clearVisible"
@@ -321,8 +449,6 @@ const showPassword = computed(() => {
   return props.type === 'password' && isPlainText.value === false
 })
 
-const mergedShowEye = computed(() => props.type === 'password' && props.showEye)
-
 const mergedType = computed(() => {
   return showPassword.value
     ? 'password'
@@ -330,6 +456,8 @@ const mergedType = computed(() => {
       ? 'text'
       : props.type
 })
+
+const mergedShowEye = computed(() => props.type === 'password' && props.showEye)
 
 // others
 const inputClass = computed(() => {
