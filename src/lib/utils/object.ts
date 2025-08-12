@@ -117,11 +117,14 @@ export function treeToMap(
  * @param object
  * @param chain 通过点分割的字符串或者字符串数组
  */
-export function chainGet(object: any, chain?: string | string[]) {
+export function chainGet(
+  object: any,
+  chain?: string | number | (string | number)[],
+) {
   let target = object
 
-  if (chain) {
-    chain = typeof chain === 'string' ? chain.split('.') : chain
+  if (chain || chain === 0) {
+    chain = Array.isArray(chain) ? chain : String(chain).split('.')
 
     for (const key of chain) {
       if (target && typeof target === 'object') {
@@ -141,10 +144,14 @@ export function chainGet(object: any, chain?: string | string[]) {
  * @param chain 通过点分割的字符串或者字符串数组
  * @param value 要设置的值
  */
-export function chainSet(object: any, chain: string | string[], value: any) {
+export function chainSet(
+  object: any,
+  chain: string | number | (string | number)[],
+  value: any,
+) {
   let target = object
 
-  chain = typeof chain === 'string' ? chain.split('.') : chain
+  chain = Array.isArray(chain) ? chain : String(chain).split('.')
 
   if (chain.length === 0) {
     return
