@@ -1,3 +1,12 @@
+## [1.23.4](https://github.com/sutras/sard-uniapp/compare/v1.23.3...v1.23.4) (2025-08-11)
+
+
+### Features
+
+* **steps:** 新增 reverse 属性 ([0b98b59](https://github.com/sutras/sard-uniapp/commit/0b98b594a94ee5e1968e54d278fb11d683a0514e))
+
+
+
 ## [1.23.3](https://github.com/sutras/sard-uniapp/compare/v1.23.2...v1.23.3) (2025-08-09)
 
 
