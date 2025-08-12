@@ -16,10 +16,11 @@
             bem.em('control', 'input-min-height', inputMinHeight),
           )
         "
+        :enableNative="enableNative"
+        :value="innerValue"
         :placeholder="placeholder"
         :placeholder-style="mergedPlaceholderStyle"
         :placeholder-class="placeholderClass"
-        :value="innerValue"
         :disabled="isDisabled || isReadonly"
         :maxlength="maxlength"
         :focus="focus"
@@ -51,6 +52,7 @@
       <input
         v-if="type !== 'textarea' && showPassword"
         :class="classNames(bem.e('control'), bem.em('control', 'input'))"
+        :enableNative="enableNative"
         :value="innerValue"
         :placeholder="placeholder"
         :placeholder-style="mergedPlaceholderStyle"
@@ -91,6 +93,7 @@
       <input
         v-if="type !== 'textarea' && !showPassword"
         :class="classNames(bem.e('control'), bem.em('control', 'input'))"
+        :enableNative="enableNative"
         :value="innerValue"
         :placeholder="placeholder"
         :placeholder-style="mergedPlaceholderStyle"
@@ -321,8 +324,6 @@ const showPassword = computed(() => {
   return props.type === 'password' && isPlainText.value === false
 })
 
-const mergedShowEye = computed(() => props.type === 'password' && props.showEye)
-
 const mergedType = computed(() => {
   return showPassword.value
     ? 'password'
@@ -330,6 +331,8 @@ const mergedType = computed(() => {
       ? 'text'
       : props.type
 })
+
+const mergedShowEye = computed(() => props.type === 'password' && props.showEye)
 
 // others
 const inputClass = computed(() => {

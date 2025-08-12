@@ -237,6 +237,7 @@ export const defaultConfig = {
     hintDuration: 300,
   },
   input: {
+    enableNative: false,
     maxlength: 140,
     adjustPosition: true,
     ignoreCompositionEvent: true,
