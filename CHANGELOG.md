@@ -1,3 +1,13 @@
+## [1.23.5](https://github.com/sutras/sard-uniapp/compare/v1.23.4...v1.23.5) (2025-08-12)
+
+
+### Features
+
+* **input:** 添加 enableNative 属性以支持支付宝小程序 ([5c8b616](https://github.com/sutras/sard-uniapp/commit/5c8b61624b35a543e87d030266f706eeda819447))
+* **update:** 允许同时选择图片和视频 ([d478208](https://github.com/sutras/sard-uniapp/commit/d4782089767950340448c87bd1bccb43759ede77))
+
+
+
 ## [1.23.4](https://github.com/sutras/sard-uniapp/compare/v1.23.3...v1.23.4) (2025-08-11)
 
 
