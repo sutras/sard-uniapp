@@ -2,6 +2,8 @@ import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface InputProps {
+  // 现支付宝小程序特有属性详情请查看: https://opendocs.alipay.com/mini/component/input
+  enableNative?: boolean
   placeholder?: string
   placeholderStyle?: string
   placeholderClass?: string
