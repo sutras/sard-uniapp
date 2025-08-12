@@ -8,6 +8,10 @@
       <DemoVideo />
     </doc-demo>
 
+    <doc-demo title="同时上传图片和视频">
+      <DemoMix />
+    </doc-demo>
+
     <doc-demo title="限定上传数量">
       <DemoMaxCount />
     </doc-demo>
@@ -53,6 +57,7 @@
 <script setup lang="ts">
 import DemoBasic from './demo/Basic.vue'
 import DemoVideo from './demo/Video.vue'
+import DemoMix from './demo/Mix.vue'
 import DemoMaxCount from './demo/MaxCount.vue'
 import DemoMultiple from './demo/Multiple.vue'
 import DemoBeforeChoose from './demo/BeforeChoose.vue'

@@ -29,6 +29,20 @@ import Upload from 'sard-uniapp/components/upload/upload.vue'
 
 @code('${DEMO_PATH}/upload/demo/Video.vue')
 
+### 同时上传图片和视频 <sup>1.23.5+</sup>
+
+@info
+
+仅 app 和微信支持。
+
+不支持的端，默认回退为选择图片。
+
+@endinfo
+
+设置 `:accept="['image', 'video']"` 允许同时选择图片和视频。
+
+@code('${DEMO_PATH}/upload/demo/Mix.vue')
+
 ### 限定上传数量
 
 通过 `maxCount` 属性可以限制上传文件的数量，上传数量达到限制后，会自动隐藏选择区域。
@@ -99,7 +113,7 @@ import Upload from 'sard-uniapp/components/upload/upload.vue'
 | -------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------- | -------------------------- |
 | root-class                       | 组件根元素类名                                                                                                                                    | string                                                                                        | -                          |
 | root-style                       | 组件根元素样式                                                                                                                                    | StyleValue                                                                                    | -                          |
-| accept                           | 允许上传的文件类型                                                                                                                                | 'image' \| 'video'                                                                            | 'image'                    |
+| accept                           | 允许上传的文件类型                                                                                                                                | 'image' \| 'video' \| ('image' \| 'video' )[]                                                 | 'image'                    |
 | multiple                         | 是否开启图片多选                                                                                                                                  | boolean                                                                                       | false                      |
 | source-type                      | 文件选择来源                                                                                                                                      | ('album' \| 'camera')[]                                                                       | ['album', 'camera']        |
 | size-type                        | 所选的图片的尺寸                                                                                                                                  | ('original' \| 'compressed')[]                                                                | ['original', 'compressed'] |

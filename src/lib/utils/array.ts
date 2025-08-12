@@ -3,7 +3,7 @@
  * @param {any} target
  * @return {array}
  */
-export function toArray(target: any): any[] {
+export function toArray<T>(target: T | T[]): T[] {
   return Array.isArray(target) ? target : [target]
 }
 

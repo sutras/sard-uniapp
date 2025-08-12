@@ -31,8 +31,7 @@ export interface UploadSelectOptions {
 export interface UploadProps {
   rootStyle?: StyleValue
   rootClass?: string
-
-  accept?: 'image' | 'video'
+  accept?: 'image' | 'video' | ('image' | 'video')[]
   multiple?: boolean
   sourceType?: ('album' | 'camera')[]
   sizeType?: ('original' | 'compressed')[]
@@ -60,7 +59,7 @@ export interface UploadProps {
 
 export const defaultUploadProps = defaultConfig.upload as Omit<
   typeof defaultConfig.upload,
-  'sourceType' | 'sizeType'
+  'sourceType' | 'sizeType' | 'accept'
 >
 
 export interface UploadSlots {

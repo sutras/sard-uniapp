@@ -2,7 +2,7 @@ import { toArray } from '../../utils'
 
 interface chooseMediaOptions {
   count?: number
-  mediaType?: 'image' | 'video'
+  mediaType?: 'image' | 'video' | ('image' | 'video')[]
   sourceType?: ('album' | 'camera')[]
   maxDuration?: number
   sizeType?: ('original' | 'compressed')[]
@@ -22,7 +22,7 @@ interface chooseMediaResult {
     fileType: 'image' | 'video'
     name: string
   }[]
-  type: 'image' | 'video'
+  type: 'image' | 'video' | 'mix'
 }
 
 export function chooseMedia(options: chooseMediaOptions) {
@@ -38,7 +38,39 @@ export function chooseMedia(options: chooseMediaOptions) {
     complete,
   } = options
 
-  if (mediaType === 'image') {
+  const arrayMediaType = toArray(mediaType)
+
+  const hasImage = arrayMediaType.includes('image')
+  const hasVideo = arrayMediaType.includes('video')
+
+  if (hasImage && hasVideo && uni.chooseMedia) {
+    return uni.chooseMedia({
+      count,
+      mediaType: ['image', 'video'],
+      sourceType,
+      maxDuration,
+      sizeType,
+      camera,
+      success(res) {
+        success?.({
+          type: res.type as chooseMediaResult['type'],
+          tempFiles: toArray(res.tempFiles).map((file) => {
+            return {
+              tempFilePath: file.tempFilePath,
+              size: file.size,
+              duration: file.duration,
+              height: file.height,
+              width: file.width,
+              name: '',
+              fileType: file.fileType,
+            }
+          }),
+        })
+      },
+      fail,
+      complete,
+    })
+  } else if (hasImage) {
     return uni.chooseImage({
       count,
       sizeType,
@@ -48,12 +80,14 @@ export function chooseMedia(options: chooseMediaOptions) {
           type: 'image',
           tempFiles: toArray(res.tempFiles).map((file) => {
             return {
-              tempFilePath: file.path,
+              tempFilePath: (
+                file as UniApp.ChooseImageSuccessCallbackResultFile
+              ).path,
               size: file.size,
               duration: 0,
               height: 0,
               width: 0,
-              name: file.name || '',
+              name: (file as File).name || '',
               fileType: 'image',
             }
           }),
@@ -62,7 +96,7 @@ export function chooseMedia(options: chooseMediaOptions) {
       fail,
       complete,
     })
-  } else {
+  } else if (hasVideo) {
     return uni.chooseVideo({
       sourceType,
       compressed: sizeType.includes('compressed'),
