@@ -435,7 +435,8 @@ request.get('admin/users', {
 下面演示如何编写一个通用的 `Request` 工厂函数，可以处理添加 token、失败状态码、错误提示、重试。
 
 ```ts
-import { Request, RequestConfig } from 'sard-uniapp'
+// @/utils/request.ts
+import { Request, type RequestConfig } from 'sard-uniapp'
 import { useUserStore } from '@/stores/user'
 
 const errToastDuration = 5000

@@ -31,6 +31,20 @@ Deprecation Warning [import]: Sass @import rules are deprecated and will be remo
 DEPRECATION WARNING: The legacy JS API is deprecated and will be removed in Dart Sass 2.0.0.
 ```
 
+或者可以通过配置 `vite.config.ts` 来静默提示：
+
+```ts
+export default defineConfig({
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ['import', 'legacy-js-api'],
+      },
+    },
+  },
+})
+```
+
 @endinfo
 
 #### 安装 sard-uniapp

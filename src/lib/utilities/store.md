@@ -22,20 +22,34 @@ npm install pinia@2
 ## 创建 pinia 实例并注册
 
 ```ts
+// @/stores/index.ts
 import { createPinia } from 'pinia'
+import type { App } from 'vue'
+
+export const pinia = createPinia()
+
+export function setupPinia(app: App) {
+  app.use(pinia)
+}
+
+// @/main.ts
 import { createSSRApp } from 'vue'
+import { setupPinia } from '@/stores'
+import App from '@/App.vue'
 
-const pinia = createPinia()
-
-const app = createSSRApp(App)
-
-app.use(pinia)
+export function createApp() {
+  const app = createSSRApp(App)
+  setupPinia(app)
+  return {
+    app,
+  }
+}
 ```
 
 ## 创建 store
 
 ```ts
-// stores/user.ts
+// @/stores/user.ts
 
 import { ref } from 'vue'
 import { defineStore } from 'pinia'
@@ -114,20 +128,23 @@ export function piniaPluginPersist(context: PiniaPluginContext) {
 ### 注册插件
 
 ```ts
-// stores/index.ts
-
+// @/stores/index.ts
 import { createPinia } from 'pinia'
+import type { App } from 'vue'
 import { piniaPluginPersist } from './plugin'
 
-const pinia = createPinia()
+export const pinia = createPinia()
 
-pinia.use(piniaPluginPersist)
+export function setupPinia(app: App) {
+  app.use(pinia)
+  pinia.use(piniaPluginPersist)
+}
 ```
 
 ### 声明需要持久化的全局状态
 
 ```ts
-// stores/user.ts
+// @/stores/user.ts
 
 import { ref } from 'vue'
 import { defineStore } from 'pinia'

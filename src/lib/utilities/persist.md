@@ -25,6 +25,8 @@ version: 1.20+
 创建 `Persist` 实例：
 
 ```ts
+// '@/utils/persist'
+
 import { Persist } from 'sard-uniapp'
 
 const persist = new Persist('Sard')

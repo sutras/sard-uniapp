@@ -30,6 +30,11 @@ export default defineConfig({
     postcss: {
       plugins: [tailwindcss()],
     },
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ['import', 'legacy-js-api'],
+      },
+    },
   },
   plugins: [
     vitePluginUncommentWxs(['pull-down-refresh.vue']),
