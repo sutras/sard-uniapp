@@ -150,7 +150,7 @@ defineExpose<KeyBoardExpose>({
   shuffle() {
     randomKeys.value = getRandomKeys()
   },
-  toggle(mode: KeyboardPlateMode) {
+  toggle(mode?: KeyboardPlateMode) {
     onToggle(mode)
   },
 })
@@ -170,7 +170,7 @@ watch(
 )
 
 // 车牌号
-const mode = ref<KeyboardPlateMode>('chinese')
+const mode = ref<KeyboardPlateMode>(props.mode)
 
 const toggleKey = computed(() => {
   return {

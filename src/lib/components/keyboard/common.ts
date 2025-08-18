@@ -6,6 +6,7 @@ export interface KeyboardProps {
   rootStyle?: StyleValue
   rootClass?: string
   type?: 'number' | 'digit' | 'idcard' | 'random' | 'plate'
+  mode?: KeyboardPlateMode
 }
 
 export const defaultKeyboardProps = defaultConfig.keyboard

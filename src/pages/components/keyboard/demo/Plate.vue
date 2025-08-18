@@ -7,7 +7,7 @@
       设置为英文
     </sar-button>
   </view>
-  <sar-keyboard ref="plateKeyboard" type="plate" />
+  <sar-keyboard ref="plateKeyboard" type="plate" mode="english" />
 </template>
 
 <script setup lang="ts">
