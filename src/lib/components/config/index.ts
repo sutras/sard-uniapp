@@ -6,6 +6,7 @@ import { type CalendarProps } from '../calendar'
 import { type CascaderInputProps } from '../cascader-input'
 import { type CheckboxGroupProps } from '../checkbox'
 import { type CheckboxInputProps } from '../checkbox-input'
+import { type CoolIconProps } from '../cool-icon'
 import { type DatetimePickerInputProps } from '../datetime-picker-input'
 import { type DatetimeRangePickerInputProps } from '../datetime-range-picker-input'
 import { type DialogProps } from '../dialog'
@@ -130,6 +131,9 @@ export const defaultConfig = {
   },
   checkboxPopout: {
     validateEvent: true,
+  },
+  coolIcon: {
+    shape: 'oval' as CoolIconProps['shape'],
   },
   countDown: {
     time: 0,

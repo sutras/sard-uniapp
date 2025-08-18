@@ -43,6 +43,7 @@ import {
   type ${pascalCaseName}Slots,
   type ${pascalCaseName}Emits,
   type ${pascalCaseName}Expose,
+  default${pascalCaseName}Props,
 } from './common'
 
 defineOptions({
@@ -52,7 +53,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<${pascalCaseName}Props>(), {})
+const props = withDefaults(defineProps<${pascalCaseName}Props>(), default${pascalCaseName}Props)
 
 defineSlots<${pascalCaseName}Slots>()
 
@@ -85,15 +86,20 @@ const ${camelCaseName}Style = computed(() => {
 export async function createComponentCommon(
   compDir: string,
   pascalCaseName: string,
+  camelCaseName: string,
 ) {
   await fse.outputFile(
     logNewFile(path.resolve(compDir, `common.ts`)),
     `import { type StyleValue } from 'vue'
 
+import { defaultConfig } from '../config'
+
 export interface ${pascalCaseName}Props {
   rootStyle?: StyleValue
   rootClass?: string
 }
+
+export const default${pascalCaseName}Props = defaultConfig.${camelCaseName}
 
 export interface ${pascalCaseName}Slots {
   default?(props: Record<string, never>): any

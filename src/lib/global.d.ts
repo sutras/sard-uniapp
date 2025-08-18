@@ -21,6 +21,7 @@ declare module 'vue' {
     SarCheckboxPopout: typeof import('./components/checkbox-popout/checkbox-popout.vue').default
     SarCol: typeof import('./components/col/col.vue').default
     SarCollapse: typeof import('./components/collapse/collapse.vue').default
+    SarCoolIcon: typeof import('./components/cool-icon/cool-icon.vue').default
     SarCountDown: typeof import('./components/count-down/count-down.vue').default
     SarCountTo: typeof import('./components/count-to/count-to.vue').default
     SarCropImage: typeof import('./components/crop-image/crop-image.vue').default

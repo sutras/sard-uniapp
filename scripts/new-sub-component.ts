@@ -27,7 +27,7 @@ async function createSubComponent(
     pascalCaseName,
   )
 
-  await createComponentCommon(compDir, pascalCaseName)
+  await createComponentCommon(compDir, pascalCaseName, camelCaseName)
 
   await createComponentIndexScss(compDir, kebabCaseName)
 

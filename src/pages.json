@@ -81,6 +81,9 @@
           "path": "collapse/index"
         },
         {
+          "path": "cool-icon/index"
+        },
+        {
           "path": "count-down/index"
         },
         {
@@ -192,6 +195,9 @@
           "path": "form/demo/Nested"
         },
         {
+          "path": "form/demo/Plain"
+        },
+        {
           "path": "form/demo/ScrollToFirstError"
         },
         {
@@ -202,9 +208,6 @@
         },
         {
           "path": "form/demo/Validate"
-        },
-        {
-          "path": "form/demo/Plain"
         },
         {
           "path": "form/index"

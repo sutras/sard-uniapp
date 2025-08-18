@@ -1,0 +1,186 @@
+@use '../style/base' as *;
+
+@mixin box-shadow {
+  &::before {
+    content: '';
+    display: block;
+    background: inherit;
+    filter: blur(5px);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 5px;
+    left: 5px;
+    z-index: -1;
+    opacity: var(--sar-cool-icon-shadow-opacity);
+    transform-origin: 0 0;
+    border-radius: inherit;
+    transform: scale(1);
+  }
+}
+
+@include bem(cool-icon) {
+  @include b() {
+    @include universal;
+
+    position: relative;
+    display: inline-block;
+
+    width: var(--sar-cool-icon-size);
+    height: var(--sar-cool-icon-size);
+    font-size: var(--sar-cool-icon-icon-size);
+
+    @include m(square) {
+      border-radius: var(--sar-cool-icon-square-border-radius);
+
+      @include e(bg) {
+        @include box-shadow;
+      }
+    }
+
+    @include m(oval) {
+      border-radius: var(--sar-cool-icon-oval-border-radius);
+
+      @include e(bg) {
+        transform: rotate(-19deg);
+        @include box-shadow;
+      }
+    }
+
+    @include m(triangle) {
+      border-radius: var(--sar-cool-icon-triangle-border-radius);
+
+      @include e(bg) {
+        @include box-shadow;
+      }
+    }
+
+    @include m(circle) {
+      border-radius: 50%;
+
+      @include e(bg) {
+        @include box-shadow;
+      }
+    }
+
+    @include m(flower) {
+      border-radius: var(--sar-cool-icon-oval-border-radius);
+
+      @include e(bg) {
+        width: 62.5%;
+        margin: auto;
+        border-radius: var(--sar-rounded-full);
+
+        &::before,
+        &::after {
+          content: '';
+          position: absolute;
+          left: 0;
+          right: 0;
+          top: 0;
+          bottom: 0;
+          width: 100%;
+          height: 100%;
+          background: inherit;
+          border-radius: inherit;
+          transform-origin: center center;
+          opacity: 0.8;
+        }
+
+        &::before {
+          transform: rotate(60deg);
+        }
+
+        &::after {
+          transform: rotate(-60deg);
+        }
+
+        @include e(adorns) {
+          display: none;
+        }
+      }
+    }
+  }
+
+  @include e(bg) {
+    @include universal;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    z-index: 1;
+  }
+
+  @include e(icon) {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: inherit;
+    line-height: 1;
+    z-index: 2;
+    border-radius: inherit;
+  }
+
+  @include e(adorns) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 1;
+    bottom: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: inherit;
+    overflow: hidden;
+  }
+
+  @include e(adorn) {
+    position: absolute;
+    border-radius: 50%;
+    background: var(--sar-cool-icon-adorn-bg);
+
+    &:nth-child(1) {
+      top: -13.33%;
+      left: -9.46%;
+      width: 45.33%;
+      height: 45.33%;
+    }
+    &:nth-child(2) {
+      top: 8.66%;
+      left: 66.66%;
+      width: 10%;
+      height: 10%;
+    }
+    &:nth-child(3) {
+      top: 79.33%;
+      left: 18%;
+      width: 6.66%;
+      height: 6.66%;
+    }
+    &:nth-child(4) {
+      top: 86%;
+      left: 26.66%;
+      width: 4%;
+      height: 4%;
+    }
+    &:nth-child(5) {
+      top: 72%;
+      left: 44.66%;
+      width: 47.33%;
+      height: 38.66%;
+    }
+    &:nth-child(6) {
+      top: 42%;
+      left: 58.66%;
+      width: 72.66%;
+      height: 66.66%;
+    }
+  }
+}

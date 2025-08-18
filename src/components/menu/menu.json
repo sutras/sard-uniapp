@@ -206,6 +206,10 @@
         "name": "collapse"
       },
       {
+        "title": "CoolIcon 酷炫图标",
+        "name": "cool-icon"
+      },
+      {
         "title": "CountDown 倒计时",
         "name": "count-down"
       },
