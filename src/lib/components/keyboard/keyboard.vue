@@ -87,7 +87,7 @@
         <view
           :class="toggleClass"
           :style="`order: ${interceptOrder}`"
-          @click="onToggle"
+          @click="onToggle()"
         >
           <view :class="bem.e('key')">
             {{ toggleKey }}
@@ -150,8 +150,8 @@ defineExpose<KeyBoardExpose>({
   shuffle() {
     randomKeys.value = getRandomKeys()
   },
-  toggle() {
-    onToggle()
+  toggle(mode: KeyboardPlateMode) {
+    onToggle(mode)
   },
 })
 
@@ -187,8 +187,8 @@ const interceptOrder = computed(() => {
   return chineseKeys.length - (overflow > 7 ? 0 : overflow + 1)
 })
 
-const onToggle = () => {
-  mode.value = mode.value === 'chinese' ? 'english' : 'chinese'
+const onToggle = (newMode?: KeyboardPlateMode) => {
+  mode.value = newMode || (mode.value === 'chinese' ? 'english' : 'chinese')
   emit('toggle', mode.value)
 }
 
