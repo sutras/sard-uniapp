@@ -6,6 +6,7 @@ export interface KeyboardProps {
   rootStyle?: StyleValue
   rootClass?: string
   type?: 'number' | 'digit' | 'idcard' | 'random' | 'plate'
+  mode?: KeyboardPlateMode
 }
 
 export const defaultKeyboardProps = defaultConfig.keyboard
@@ -22,7 +23,7 @@ export interface KeyboardEmits {
 
 export interface KeyBoardExpose {
   shuffle: () => void
-  toggle: () => void
+  toggle: (mode?: KeyboardPlateMode) => void
 }
 
 export const numberKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
