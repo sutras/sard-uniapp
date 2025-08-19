@@ -1,0 +1,60 @@
+@use '../style/base' as *;
+
+@include bem(segmented) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    align-items: stretch;
+    min-height: var(--sar-segmented-min-height);
+    padding: var(--sar-segmented-padding);
+    border-radius: var(--sar-segmented-border-radius);
+    background-color: var(--sar-segmented-bg);
+    font-size: var(--sar-segmented-font-size);
+
+    @include m(vertical) {
+      display: inline-flex;
+
+      @include e(group) {
+        flex-direction: column;
+      }
+
+      @include e(pointer) {
+        width: 100%;
+      }
+    }
+
+    @include m(small) {
+      min-height: var(--sar-segmented-small-min-height);
+    }
+
+    @include m(large) {
+      min-height: var(--sar-segmented-large-min-height);
+    }
+
+    @include m(round) {
+      border-radius: var(--sar-rounded-full);
+
+      @include e(pointer) {
+        border-radius: var(--sar-rounded-full);
+      }
+    }
+  }
+
+  @include e(pointer) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: calc(var(--sar-segmented-border-radius) - 4rpx);
+    background-color: var(--sar-segmented-pointer-bg);
+    box-shadow: var(--sar-segmented-pointer-box-shadow);
+    transition: transform var(--sar-segmented-pointer-duration);
+  }
+
+  @include e(group) {
+    @include universal;
+    flex-direction: row;
+    align-items: stretch;
+    width: 100%;
+  }
+}

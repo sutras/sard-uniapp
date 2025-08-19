@@ -1,0 +1,60 @@
+@use '../style/base' as *;
+
+@include bem(segmented-item) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    flex: 1;
+    justify-content: center;
+    align-items: center;
+    min-width: 0;
+    min-height: calc(
+      var(--sar-segmented-min-height) - var(--sar-segmented-padding) * 2
+    );
+    padding: 0 var(--sar-segmented-item-padding);
+    border-radius: calc(var(--sar-segmented-border-radius) - 4rpx);
+    color: var(--sar-segmented-item-color);
+
+    @include m(small) {
+      min-height: calc(
+        var(--sar-segmented-small-min-height) - var(--sar-segmented-padding) * 2
+      );
+    }
+
+    @include m(large) {
+      min-height: calc(
+        var(--sar-segmented-large-min-height) - var(--sar-segmented-padding) * 2
+      );
+    }
+
+    @include m(round) {
+      border-radius: var(--sar-rounded-full);
+    }
+
+    @include m(with-icon) {
+      @include e(label) {
+        margin-left: var(--sar-segmented-item-label-margin-left);
+      }
+    }
+
+    @include m-not(disabled, readonly, selected) {
+      cursor: pointer;
+
+      &:active {
+        background-color: var(--sar-segmented-item-active-bg);
+      }
+    }
+
+    @include m(selected) {
+      color: var(--sar-segmented-item-active-color);
+    }
+
+    @include m(disabled) {
+      @include disabled-text;
+    }
+  }
+
+  @include e(label) {
+    @include ellipsis;
+  }
+}

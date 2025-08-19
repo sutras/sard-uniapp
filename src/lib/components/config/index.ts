@@ -35,6 +35,7 @@ import { type RadioInputProps } from '../radio-input'
 import { type RadioPopoutProps } from '../radio-popout'
 import { type ResultProps } from '../result'
 import { type SearchProps } from '../search'
+import { type SegmentedProps } from '../segmented'
 import { type SpaceProps } from '../space'
 import { type StepperProps } from '../stepper'
 import { type StepsProps } from '../steps'
@@ -390,6 +391,12 @@ export const defaultConfig = {
   search: {
     shape: 'square' as SearchProps['shape'],
     focus: false,
+  },
+  segmented: {
+    size: 'middle' as SegmentedProps['size'],
+    shape: 'square' as SegmentedProps['shape'],
+    direction: 'horizontal' as SegmentedProps['direction'],
+    validateEvent: true,
   },
   shareSheet: {
     overlayClosable: true,

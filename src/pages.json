@@ -339,6 +339,9 @@
           "path": "search/index"
         },
         {
+          "path": "segmented/index"
+        },
+        {
           "path": "share-sheet/index"
         },
         {

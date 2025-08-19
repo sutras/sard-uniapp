@@ -1,0 +1,21 @@
+// #variables
+page,
+.sar-portal {
+  --sar-segmented-min-height: 64rpx;
+  --sar-segmented-large-min-height: 80rpx;
+  --sar-segmented-small-min-height: 48rpx;
+  --sar-segmented-padding: 4rpx;
+  --sar-segmented-font-size: var(--sar-text-base);
+  --sar-segmented-bg: var(--sar-secondary-bg);
+  --sar-segmented-border-radius: var(--sar-rounded);
+  --sar-segmented-pointer-bg: var(--sar-emphasis-bg);
+  --sar-segmented-pointer-duration: var(--sar-duration);
+  --sar-segmented-pointer-box-shadow: var(--sar-shadow-sm);
+  --sar-segmented-item-padding: 24rpx;
+  --sar-segmented-item-small-padding: 16rpx;
+  --sar-segmented-item-color: var(--sar-secondary-color);
+  --sar-segmented-item-active-bg: var(--sar-active-deep-bg);
+  --sar-segmented-item-active-color: var(--sar-emphasis-color);
+  --sar-segmented-item-label-margin-left: 12rpx;
+}
+// #endvariables

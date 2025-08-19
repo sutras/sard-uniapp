@@ -161,6 +161,10 @@
         "name": "search"
       },
       {
+        "title": "Segmented 分段控制器",
+        "name": "segmented"
+      },
+      {
         "title": "Signature 签名",
         "name": "signature"
       },

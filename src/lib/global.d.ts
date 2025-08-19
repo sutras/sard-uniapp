@@ -96,6 +96,8 @@ declare module 'vue' {
     SarScrollSpy: typeof import('./components/scroll-spy/scroll-spy.vue').default
     SarScrollSpyAnchor: typeof import('./components/scroll-spy-anchor/scroll-spy-anchor.vue').default
     SarSearch: typeof import('./components/search/search.vue').default
+    SarSegmented: typeof import('./components/segmented/segmented.vue').default
+    SarSegmentedItem: typeof import('./components/segmented-item/segmented-item.vue').default
     SarShareSheet: typeof import('./components/share-sheet/share-sheet.vue').default
     SarSidebar: typeof import('./components/sidebar/sidebar.vue').default
     SarSidebarItem: typeof import('./components/sidebar-item/sidebar-item.vue').default
