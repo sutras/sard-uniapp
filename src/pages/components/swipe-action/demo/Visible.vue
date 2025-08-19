@@ -1,8 +1,9 @@
 <template>
   <sar-list card>
     <sar-list-item>
-      <sar-tabs v-model:current="visible" :list="list" type="card" />
+      <sar-segmented v-model="visible" :options="options" />
     </sar-list-item>
+
     <sar-list-item style="padding: 1px 0 0 0">
       <sar-swipe-action v-model:visible="visible">
         <sar-list-item title="两边插槽" value="内容" />
@@ -66,11 +67,11 @@ import { ref } from 'vue'
 
 const visible = ref<SwipeActionVisible>(false)
 
-const list = ref([
-  { title: 'left', name: 'left' },
-  { title: 'false', name: false },
-  { title: 'right', name: 'right' },
-])
+const options = [
+  { label: 'left', value: 'left' },
+  { label: 'false', value: false },
+  { label: 'right', value: 'right' },
+]
 
 const onClick = (content: string, hide: () => void) => {
   toast(`点击了${content}`)

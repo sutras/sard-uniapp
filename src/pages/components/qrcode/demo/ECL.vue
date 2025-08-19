@@ -1,17 +1,10 @@
 <template>
-  <view>
-    <sar-qrcode
-      text="https://sard.wzt.zone/sard-uniapp-docs/mobile/"
-      :ecl="ecl"
-    />
+  <sar-segmented v-model="ecl" :options="eclOptions" class="mb-20" />
 
-    <sar-radio-group
-      v-model="ecl"
-      :options="eclOptions"
-      direction="horizontal"
-      root-style="margin-top: 20rpx"
-    />
-  </view>
+  <sar-qrcode
+    text="https://sard.wzt.zone/sard-uniapp-docs/mobile/"
+    :ecl="ecl"
+  />
 </template>
 
 <script lang="ts" setup>

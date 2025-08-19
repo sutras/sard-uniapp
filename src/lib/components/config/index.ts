@@ -259,6 +259,7 @@ export const defaultConfig = {
   },
   keyboard: {
     type: 'number' as KeyboardProps['type'],
+    mode: 'chinese' as KeyboardProps['mode'],
   },
   listItem: {
     arrowDirection: 'right' as ListItemProps['arrowDirection'],

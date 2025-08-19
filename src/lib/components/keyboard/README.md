@@ -51,26 +51,27 @@ import Keyboard from 'sard-uniapp/components/keyboard/keyboard.vue'
 
 ### KeyboardProps
 
-| 属性       | 描述           | 类型                                                   | 默认值   |
-| ---------- | -------------- | ------------------------------------------------------ | -------- |
-| root-class | 组件根元素类名 | string                                                 | -        |
-| root-style | 组件根元素样式 | StyleValue                                             | -        |
-| type       | 键盘类型       | 'number' \| 'digit' \| 'idcard' \| 'random' \| 'plate' | 'number' |
+| 属性                 | 描述               | 类型                                                   | 默认值    |
+| -------------------- | ------------------ | ------------------------------------------------------ | --------- |
+| root-class           | 组件根元素类名     | string                                                 | -         |
+| root-style           | 组件根元素样式     | StyleValue                                             | -         |
+| type                 | 键盘类型           | 'number' \| 'digit' \| 'idcard' \| 'random' \| 'plate' | 'number'  |
+| mode<sup>1.24+</sup> | plate 键盘时的模式 | 'chinese' \| 'english'                                 | 'chinese' |
 
 ### KeyboardEmits
 
-| 事件                      | 描述                     | 类型                                   |
-| ------------------------- | ------------------------ | -------------------------------------- |
-| input                     | 可输入按键点击时触发     | (key: string) => void                  |
-| delete                    | 点击删除按钮时触发       | () => void                             |
-| toggle <sup>1.23.3+</sup> | 切换车牌号的中英文时触发 | (mode: 'chinese' \| 'english') => void |
+| 事件                     | 描述                     | 类型                                   |
+| ------------------------ | ------------------------ | -------------------------------------- |
+| input                    | 可输入按键点击时触发     | (key: string) => void                  |
+| delete                   | 点击删除按钮时触发       | () => void                             |
+| toggle<sup>1.23.3+</sup> | 切换车牌号的中英文时触发 | (mode: 'chinese' \| 'english') => void |
 
 ### KeyBoardExpose
 
-| 属性    | 描述                   | 类型       |
-| ------- | ---------------------- | ---------- |
-| shuffle | 重新打乱随机键盘按键   | () => void |
-| toggle  | 切换车牌号的中英文按键 | () => void |
+| 属性                     | 描述                                 | 类型                                   |
+| ------------------------ | ------------------------------------ | -------------------------------------- |
+| shuffle                  | 重新打乱随机键盘按键                 | () => void                             |
+| toggle<sup>1.23.6+</sup> | 切换车牌号的中英文按键，可选传入mode | (mode?: 'chinese'\| 'english') => void |
 
 ## 主题定制
 
