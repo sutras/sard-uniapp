@@ -229,3 +229,37 @@ export function getTransformOrigin(
     rect.height / 2
   return [originX, originY]
 }
+
+/**
+ * 获取一个矩形以中心点为原点旋转一定角度后的矩形
+ */
+export function getRotatedRect(width: number, height: number, rotate: number) {
+  function normalizeAngle0To180(angle: number) {
+    let normalized = ((angle % 360) + 360) % 360
+
+    if (normalized > 180) {
+      normalized -= 180
+    }
+
+    return normalized
+  }
+
+  rotate = normalizeAngle0To180(rotate)
+
+  const radian = (rotate * Math.PI) / 180
+  const sin = Math.abs(Math.sin(radian))
+  const cos = Math.abs(Math.cos(radian))
+  const w1 = sin * height
+  const w2 = cos * width
+  const h1 = cos * height
+  const h2 = sin * width
+
+  return {
+    w1: rotate >= 90 ? w2 : w1,
+    w2: rotate >= 90 ? w1 : w2,
+    h1: rotate >= 90 ? h2 : h1,
+    h2: rotate >= 90 ? h1 : h2,
+    width: w1 + w2,
+    height: h1 + h2,
+  }
+}

@@ -224,7 +224,6 @@ class CanvasContext {
   createLinearGradient() {}
   createCircularGradient() {}
   createPattern() {}
-  measureText() {}
   save() {}
   restore() {}
   beginPath() {}
@@ -262,6 +261,11 @@ class CanvasContext {
   setFontSize() {}
   setTextAlign() {}
   setTextBaseline() {}
+  measureText() {
+    return {
+      width: 0,
+    }
+  }
 }
 
 class IntersectionObserver {

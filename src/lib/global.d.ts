@@ -136,6 +136,7 @@ declare module 'vue' {
     SarWaterfall: typeof import('./components/waterfall/waterfall.vue').default
     SarWaterfallItem: typeof import('./components/waterfall-item/waterfall-item.vue').default
     SarWaterfallLoad: typeof import('./components/waterfall-load/waterfall-load.vue').default
+    SarWatermark: typeof import('./components/watermark/watermark.vue').default
   }
 }
 

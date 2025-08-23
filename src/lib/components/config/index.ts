@@ -45,6 +45,7 @@ import { type TagProps } from '../tag'
 import { type ToastProps } from '../toast'
 import { type TreeProps } from '../tree'
 import { type UploadPreviewProps, type UploadProps } from '../upload'
+import { type WatermarkProps } from '../watermark'
 
 type DeepPartial<T> = {
   [P in keyof T]?: T[P] extends Record<any, any> ? DeepPartial<T[P]> : T[P]
@@ -251,7 +252,7 @@ export const defaultConfig = {
     modelValue: '',
     validateEvent: true,
     cursorSpacing: 30,
-    confirmType: 'done' as InputProps['confirmType'],
+    confirmType: undefined as InputProps['confirmType'],
     cursor: -1,
     selectionStart: -1,
     selectionEnd: -1,
@@ -507,6 +508,13 @@ export const defaultConfig = {
     columns: 2,
     columnGap: 16,
     rowGap: 16,
+  },
+  watermark: {
+    width: 120,
+    height: 64,
+    rotate: -22,
+    zIndex: 9,
+    gap: () => [30, 30] as NonNullable<WatermarkProps['gap']>,
   },
 }
 // #enddefaultConfig

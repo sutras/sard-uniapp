@@ -475,6 +475,12 @@
         },
         {
           "path": "waterfall/index"
+        },
+        {
+          "path": "watermark/index"
+        },
+        {
+          "path": "watermark/demo/Custom"
         }
       ]
     }
