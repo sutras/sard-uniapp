@@ -351,7 +351,7 @@ const isSingleChecked = computed(
 const [onSelectionTouchStart, onSelectionTouchEnd] = useSimulatedClick(() => {
   if (!props.node.disabled) {
     if (treeContext.selectable) {
-      treeContext.setCheckedByNode(props.node, !props.node.checked)
+      treeContext.toggleCheck(props.node, !props.node.checked)
     }
     if (canSingleSelectable.value) {
       treeContext.singleSelect(props.node)

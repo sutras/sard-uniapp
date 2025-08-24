@@ -121,10 +121,11 @@ import Tree from 'sard-uniapp/components/tree/tree.vue'
 
 ### TreeEmits
 
-| 事件                            | 描述                   | 类型                                                 |
-| ------------------------------- | ---------------------- | ---------------------------------------------------- |
-| update:current <sup>1.17+</sup> | 选择节点后触发（单选） | (key: string \| number, node: TreeStateNode) => void |
-| select <sup>1.17+</sup>         | 选择节点后触发（单选） | (key: string \| number, node: TreeStateNode) => void |
+| 事件                            | 描述                   | 类型                                                     |
+| ------------------------------- | ---------------------- | -------------------------------------------------------- |
+| update:current <sup>1.17+</sup> | 选择节点后触发（单选） | (key: string \| number, node: TreeStateNode) => void     |
+| select <sup>1.17+</sup>         | 选择节点后触发（单选） | (key: string \| number, node: TreeStateNode) => void     |
+| check <sup>1.24+</sup>          | 点击树节点复选框时触发 | (event: {checked: boolean; node: TreeStateNode}) => void |
 
 ### TreeExpose
 

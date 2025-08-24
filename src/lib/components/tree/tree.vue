@@ -438,6 +438,14 @@ const setRenderPosition = () => {
   totalLevel.value = count
 }
 
+const toggleCheck = (node: TreeStateNode, checked: boolean) => {
+  setCheckedByNode(node, checked)
+  emit('check', {
+    checked,
+    node,
+  })
+}
+
 // initial
 watch(
   () => props.data,
@@ -628,6 +636,7 @@ const context = reactive({
   levelup,
   leveldown,
   drop,
+  toggleCheck,
   edit,
   currentKey,
   singleSelect,

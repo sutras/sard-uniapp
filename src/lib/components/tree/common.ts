@@ -70,6 +70,7 @@ export const defaultTreeProps = () => ({
 export interface TreeEmits {
   (e: 'update:current', key: string | number, node: TreeStateNode): void
   (e: 'select', key: string | number, node: TreeStateNode): void
+  (e: 'check', event: { checked: boolean; node: TreeStateNode }): void
 }
 
 export interface TreeExpose {
@@ -104,7 +105,7 @@ export interface TreeContext {
   treeData: TreeStateNode[]
   setExpandedByNode: (node: TreeStateNode, expanded: boolean) => void
   toggleExpandedByNode: (node: TreeStateNode) => void
-  setCheckedByNode: (node: TreeStateNode, checked: boolean) => void
+  toggleCheck: (node: TreeStateNode, checked: boolean) => void
   levelup: (node: TreeStateNode) => void
   leveldown: (node: TreeStateNode) => void
   edit: (node: TreeStateNode, getEditRect: () => Promise<NodeRect>) => void

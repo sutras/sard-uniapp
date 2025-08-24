@@ -23,6 +23,7 @@
       selectable
       default-expand-all
       root-style="margin-top: 30rpx"
+      @check="(event) => console.log(event)"
     />
   </doc-page>
 </template>
