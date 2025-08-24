@@ -1,3 +1,30 @@
+# [1.24.0](https://github.com/sutras/sard-uniapp/compare/v1.23.5...v1.24.0) (2025-08-24)
+
+
+### Bug Fixes
+
+* *-input 类组件允许修改输入框箭头图标 ([2d2a719](https://github.com/sutras/sard-uniapp/commit/2d2a7199fcdf9cd9760a151edae8c28bb39c6f8a))
+* **cascader-input:** 修复arrow属性失效; ([5b67a7a](https://github.com/sutras/sard-uniapp/commit/5b67a7a631abb04f86de28507d4195268338a0e1))
+* **datetime-picker-input:** 修复arrow属性失效; ([f530c73](https://github.com/sutras/sard-uniapp/commit/f530c7384f78ed14e1af7f2fc5978fdcf26be17e))
+
+
+### Features
+
+* card 组件新增 collapsed 属性 ([9e6ec3b](https://github.com/sutras/sard-uniapp/commit/9e6ec3bd5e9b7a7e9834d7c1cdd69d0f0b8efaac))
+* **keyboard:** 扩展键盘toggle方法支持传入mode参数 ([25c6767](https://github.com/sutras/sard-uniapp/commit/25c67671fc35dd349380c80e83eb1d26dc582ad5))
+* **keyboard:** 添加键盘模式配置支持 ([e1dda90](https://github.com/sutras/sard-uniapp/commit/e1dda90788460c3c3b7af9f7c82d9c7a704fa910))
+* tree 组件新增 check 事件 ([4985f46](https://github.com/sutras/sard-uniapp/commit/4985f4629029744cd6298b37d04a40235379fb89))
+* 新增 cool-icon 组件 ([ba51ef1](https://github.com/sutras/sard-uniapp/commit/ba51ef12a312a7cde65d629170f8c9da2394cebb))
+* 新增 segmented 组件 ([f70464a](https://github.com/sutras/sard-uniapp/commit/f70464aa3bbef71ed44be967995c210f64d1a536))
+* 新增 watermark 组件 ([ce36afd](https://github.com/sutras/sard-uniapp/commit/ce36afd833dbc4eba4a06741faea3ba47dc704fd))
+
+
+### Performance Improvements
+
+* 压缩图片 ([8cd341f](https://github.com/sutras/sard-uniapp/commit/8cd341f601449bb8ab8d2b0c65da1faedbe3373f))
+
+
+
 ## [1.23.5](https://github.com/sutras/sard-uniapp/compare/v1.23.4...v1.23.5) (2025-08-12)
 
 
