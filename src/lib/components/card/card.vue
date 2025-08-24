@@ -8,12 +8,14 @@
         <slot name="extra">{{ extra }}</slot>
       </view>
     </view>
-    <view :class="bem.e('body')">
-      <slot></slot>
-    </view>
-    <view v-if="!footless" :class="bem.e('footer')">
-      <slot name="footer">{{ footer }}</slot>
-    </view>
+    <sar-collapse :visible="!collapsed">
+      <view :class="bem.e('body')">
+        <slot></slot>
+      </view>
+      <view v-if="!footless" :class="bem.e('footer')">
+        <slot name="footer">{{ footer }}</slot>
+      </view>
+    </sar-collapse>
   </view>
 </template>
 
@@ -26,6 +28,7 @@ import {
   isVisibleEmpty,
 } from '../../utils'
 import { type CardProps, type CardSlots, type CardEmits } from './common'
+import SarCollapse from '../collapse/collapse.vue'
 
 defineOptions({
   options: {
@@ -69,6 +72,7 @@ const cardClass = computed(() => {
     bem.m('footless', footless.value),
     bem.m('head-borderless', props.hideHeaderBorder),
     bem.m('foot-borderless', props.hideFooterBorder),
+    bem.m('collapsed', props.collapsed),
     props.rootClass,
   )
 })

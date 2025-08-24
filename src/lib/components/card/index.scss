@@ -63,7 +63,7 @@
     }
   }
 
-  @include m(head-borderless) {
+  @include m(head-borderless, collapsed) {
     @include e(header) {
       &::after {
         display: none;

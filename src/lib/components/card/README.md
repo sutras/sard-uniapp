@@ -53,6 +53,12 @@ import Card from 'sard-uniapp/components/card/card.vue'
 
 @code('${DEMO_PATH}/card/demo/Style.vue')
 
+### 折叠 <sup>1.24+</sup>
+
+可使用 `collapsed` 属性设置卡片折叠，折叠时将隐藏主体和底部，只显示头部。
+
+@code('${DEMO_PATH}/card/demo/Collapsed.vue')
+
 ## API
 
 ### CardProps
@@ -67,6 +73,7 @@ import Card from 'sard-uniapp/components/card/card.vue'
 | hover <sup>1.12.3+</sup>            | 是否开启点击反馈 | boolean    | false  |
 | hide-header-border <sup>1.20+</sup> | 是否隐藏头部边框 | boolean    | false  |
 | hide-footer-border <sup>1.20+</sup> | 是否隐藏底部边框 | boolean    | false  |
+| collapsed <sup>1.24+</sup>          | 是否折叠         | boolean    | false  |
 
 ### CardSlots
 

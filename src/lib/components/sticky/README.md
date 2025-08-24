@@ -39,6 +39,10 @@ import StickyBox from 'sard-uniapp/components/sticky-box/sticky-box.vue'
 
 @code('${DEMO_PATH}/sticky/demo/OffsetTop.vue')
 
+`@/utils`
+
+@code('${ROOT_PATH}/utils/index.ts')
+
 ### 动态插入
 
 即使是动态插入的数据，`Sticky` 组件也能重新计算其位置。

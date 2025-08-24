@@ -3,6 +3,7 @@ import { mount } from '@vue/test-utils'
 import { h } from 'vue'
 
 import Card from '../card.vue'
+import { sleep } from '../../../utils'
 
 describe('Card', () => {
   test('create', async () => {
@@ -46,5 +47,37 @@ describe('Card', () => {
     expect(
       wrapper.find('.sar-card').classes().includes('sar-card_foot-borderless'),
     ).toBeTruthy()
+  })
+
+  test('collapsed', async () => {
+    const wrapper = mount(
+      h(
+        Card,
+        {
+          title: '标题',
+          extra: '额外内容',
+          footer: '底部',
+          collapsed: false,
+          style: {
+            '--sar-collapse-transition-duration': '0s',
+          },
+        },
+        () => h('div', null, '内容'),
+      ),
+    )
+
+    expect(wrapper.find('.sar-collapse').attributes().style).includes(
+      'height: auto; overflow: visible;',
+    )
+
+    await wrapper.setProps({
+      collapsed: true,
+    })
+
+    await sleep(50)
+
+    expect(wrapper.find('.sar-collapse').attributes().style).includes(
+      'height: 0px; overflow: hidden;',
+    )
   })
 })

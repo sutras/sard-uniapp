@@ -9,6 +9,7 @@ export interface CardProps {
   hover?: boolean
   hideHeaderBorder?: boolean
   hideFooterBorder?: boolean
+  collapsed?: boolean
 }
 
 export interface CardSlots {

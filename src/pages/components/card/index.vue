@@ -23,6 +23,10 @@
     <doc-demo title="自定义样式">
       <DemoStyle />
     </doc-demo>
+
+    <doc-demo title="折叠">
+      <DemoCollapsed />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -33,4 +37,5 @@ import DemoOnlyBody from './demo/OnlyBody.vue'
 import DemoFooter from './demo/Footer.vue'
 import DemoHover from './demo/Hover.vue'
 import DemoStyle from './demo/Style.vue'
+import DemoCollapsed from './demo/Collapsed.vue'
 </script>
