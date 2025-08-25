@@ -1,16 +1,16 @@
 <template>
   <sar-segmented
     class="mx-32 mb-20"
-    model-value="english"
+    v-model="mode"
     :options="['chinese', 'english']"
-    @change="plateKeyboard?.toggle"
+    @change="(newMode) => (mode = newMode)"
   />
-  <sar-keyboard ref="plateKeyboard" type="plate" mode="english" />
+  <sar-keyboard type="plate" v-model:mode="mode" />
 </template>
 
 <script setup lang="ts">
 import { ref } from 'vue'
-import { type KeyBoardExpose } from 'sard-uniapp'
+import { type KeyboardPlateMode } from 'sard-uniapp'
 
-const plateKeyboard = ref<KeyBoardExpose>()
+const mode = ref<KeyboardPlateMode>('english')
 </script>

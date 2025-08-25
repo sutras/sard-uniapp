@@ -170,7 +170,9 @@ watch(
 )
 
 // 车牌号
-const mode = ref<KeyboardPlateMode>(props.mode)
+const mode = defineModel<KeyboardPlateMode>('mode', {
+  default: defaultKeyboardProps.mode,
+})
 
 const toggleKey = computed(() => {
   return {

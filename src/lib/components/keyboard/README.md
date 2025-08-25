@@ -51,12 +51,12 @@ import Keyboard from 'sard-uniapp/components/keyboard/keyboard.vue'
 
 ### KeyboardProps
 
-| 属性                 | 描述               | 类型                                                   | 默认值    |
-| -------------------- | ------------------ | ------------------------------------------------------ | --------- |
-| root-class           | 组件根元素类名     | string                                                 | -         |
-| root-style           | 组件根元素样式     | StyleValue                                             | -         |
-| type                 | 键盘类型           | 'number' \| 'digit' \| 'idcard' \| 'random' \| 'plate' | 'number'  |
-| mode<sup>1.24+</sup> | plate 键盘时的模式 | 'chinese' \| 'english'                                 | 'chinese' |
+| 属性                                 | 描述                | 类型                                                   | 默认值    |
+| ------------------------------------ | ------------------- | ------------------------------------------------------ | --------- |
+| root-class                           | 组件根元素类名      | string                                                 | -         |
+| root-style                           | 组件根元素样式      | StyleValue                                             | -         |
+| type                                 | 键盘类型            | 'number' \| 'digit' \| 'idcard' \| 'random' \| 'plate' | 'number'  |
+| mode(v-model:mode)<sup>1.24.1+</sup> | 'plate'键盘时的模式 | 'chinese' \| 'english'                                 | 'chinese' |
 
 ### KeyboardEmits
 

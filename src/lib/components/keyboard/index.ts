@@ -3,4 +3,5 @@ export type {
   KeyboardSlots,
   KeyboardEmits,
   KeyBoardExpose,
+  KeyboardPlateMode,
 } from './common'
