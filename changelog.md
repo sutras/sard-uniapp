@@ -1,3 +1,16 @@
+## [1.24.1](https://github.com/sutras/sard-uniapp/compare/v1.24.0...v1.24.1) (2025-08-31)
+
+
+### Features
+
+* **form:** 新增content-position属性 ([b588249](https://github.com/sutras/sard-uniapp/commit/b5882493653491d6a03f0b04f898b6b9c31a06c5))
+* **keyboard:** 为车牌键盘模式添加双向绑定支持 ([740f7bf](https://github.com/sutras/sard-uniapp/commit/740f7bf074658d845d49ad5582663af639757260))
+* **tree:** 新增node-click事件 ([a70e5d7](https://github.com/sutras/sard-uniapp/commit/a70e5d786305e580cbac7eb8c897ed79cff54059))
+* 新增checkbox-popout和radio-popout新增icon-position属性 ([32f458a](https://github.com/sutras/sard-uniapp/commit/32f458aa46ceebdb4ed46f51733f3749e60461a0))
+* 新增阿拉伯语支持 ([b0b2c60](https://github.com/sutras/sard-uniapp/commit/b0b2c6050bad21f476e767659c8ac6802bfcadb6))
+
+
+
 # [1.24.0](https://github.com/sutras/sard-uniapp/compare/v1.23.5...v1.24.0) (2025-08-24)
 
 
