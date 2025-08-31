@@ -25,7 +25,7 @@
           <view v-if="loading" :class="bem.e('loading')">
             <sar-loading />
           </view>
-          <view v-if="!isReadonly" :class="bem.e('arrow')">
+          <view v-if="!isReadonly" :class="arrowClass">
             <slot
               v-if="internalArrow !== 0 && $slots.arrow"
               name="arrow"
@@ -115,6 +115,15 @@ const onClear = () => {
   emit('clear')
 }
 
+const clearVisible = computed(() => {
+  return (
+    props.clearable &&
+    innerValue.value &&
+    !isDisabled.value &&
+    !isReadonly.value
+  )
+})
+
 // seal
 const isSealDown = ref(false)
 const interoperable = computed(() => {
@@ -165,6 +174,13 @@ const popoutInputClass = computed(() => {
 
 const popoutInputStyle = computed(() => {
   return stringifyStyle(props.rootStyle)
+})
+
+const arrowClass = computed(() => {
+  return classNames(
+    bem.e('arrow'),
+    bem.em('arrow', 'show-clear', clearVisible.value),
+  )
 })
 </script>
 

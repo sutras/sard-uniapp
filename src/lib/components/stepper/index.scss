@@ -2,9 +2,8 @@
 
 @include bem(stepper) {
   @include b() {
-    @include universal;
-    flex-direction: row;
-    justify-content: flex-start;
+    box-sizing: border-box;
+    display: inline-flex;
     align-items: stretch;
     gap: var(--sar-stepper-gap);
     height: var(--sar-stepper-height);

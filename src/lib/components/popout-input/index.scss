@@ -37,6 +37,11 @@
     @include universal;
     font-size: var(--sar-popout-input-arrow-font-size);
     color: var(--sar-popout-input-arrow-color);
+    margin-left: var(--sar-popout-input-arrow-margin-left);
+
+    @include m(show-clear) {
+      margin-left: 0;
+    }
   }
 
   @include m(readonly, loading) {

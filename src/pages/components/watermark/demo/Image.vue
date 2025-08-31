@@ -1,7 +1,7 @@
 <template>
-  <div style="position: relative; height: 240px">
+  <view style="position: relative; height: 240px">
     <sar-watermark :image="image" :width="126" :height="36" />
-  </div>
+  </view>
 </template>
 
 <script lang="ts" setup>

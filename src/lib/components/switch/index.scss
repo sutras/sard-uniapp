@@ -2,14 +2,17 @@
 
 @include bem(switch) {
   @include b() {
-    @include universal;
+    position: relative;
+    box-sizing: border-box;
+    display: inline-flex;
     width: var(--sar-switch-width);
     height: var(--sar-switch-height);
     border-radius: var(--sar-rounded-full);
     font-size: var(--sar-switch-font-size);
     background-color: var(--sar-switch-bg);
     cursor: pointer;
-    transition: background-color var(--sar-switch-transition-duration),
+    transition:
+      background-color var(--sar-switch-transition-duration),
       opacity var(--sar-switch-transition-duration);
 
     @include m(checked) {
@@ -51,8 +54,9 @@
     @include e(thumb) {
       transform: translateX(
         calc(
-          var(--sar-switch-width) - var(--sar-switch-thumb-width) -
-            var(--sar-switch-thumb-gap)
+          var(--sar-switch-width) - var(--sar-switch-thumb-width) - var(
+              --sar-switch-thumb-gap
+            )
         )
       );
     }

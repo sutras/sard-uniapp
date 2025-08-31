@@ -117,6 +117,7 @@ export function useForm(props: FormProps) {
       labelAlign: toRef(() => props.labelAlign),
       labelValign: toRef(() => props.labelValign),
       starPosition: toRef(() => props.starPosition),
+      contentPosition: toRef(() => props.contentPosition),
       hideStar: toRef(() => props.hideStar),
       showError: toRef(() => props.showError),
       scrollIntoViewOptions: toRef(() => props.scrollIntoViewOptions),

@@ -16,11 +16,16 @@
   ></sar-navbar>
 
   <!-- <template #left>
-      <sar-tabs v-model:current="locale" type="card" style="align-self: center">
-        <sar-tab name="zhCN">中文</sar-tab>
-        <sar-tab name="enUS">英文</sar-tab>
-      </sar-tabs>
-    </template> -->
+    <sar-segmented
+      v-model="locale"
+      size="small"
+      :options="[
+        { label: '中文', value: 'zhCN' },
+        { label: '英文', value: 'enUS' },
+        { label: '阿语', value: 'arSA' },
+      ]"
+    />
+  </template> -->
 
   <view
     :class="classNames(bem.b(), bem.m('emphasis', emphasis))"

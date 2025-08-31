@@ -276,6 +276,10 @@ export function useFormItem(props: FormItemProps) {
 
   const labelWidth = computed(() => props.labelWidth || formContext.labelWidth)
 
+  const contentPosition = computed(
+    () => props.contentPosition ?? formContext.contentPosition,
+  )
+
   provide<FormItemContext>(formItemContextSymbol, context)
 
   const expose = {
@@ -299,5 +303,6 @@ export function useFormItem(props: FormItemProps) {
     labelValign,
     starPosition,
     labelWidth,
+    contentPosition,
   }
 }

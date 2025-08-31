@@ -2,9 +2,8 @@
 
 @include bem(rate) {
   @include b() {
-    @include universal;
-    flex-direction: row;
-    justify-content: flex-start;
+    box-sizing: border-box;
+    display: inline-flex;
   }
 
   @include e(content) {

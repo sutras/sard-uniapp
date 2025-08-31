@@ -8,7 +8,7 @@
       <view v-if="shouldShowStar" :class="bem.e('star')">*</view>
       <slot name="label">{{ label }}</slot>
     </view>
-    <view :class="bem.e('content')">
+    <view :class="contentClass">
       <slot></slot>
       <slot name="validate" :state="validateState"></slot>
       <slot
@@ -60,6 +60,7 @@ const {
   labelValign,
   starPosition,
   labelWidth,
+  contentPosition,
 } = useFormItem(props)
 
 defineExpose<FormItemExpose>(expose)
@@ -87,6 +88,13 @@ const labelStyle = computed(() => {
   return stringifyStyle({
     width: direction.value === 'horizontal' && labelWidth.value,
   })
+})
+
+const contentClass = computed(() => {
+  return classNames(
+    bem.e('content'),
+    bem.em('content', 'right', contentPosition.value === 'right'),
+  )
 })
 </script>
 

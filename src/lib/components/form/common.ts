@@ -32,6 +32,7 @@ export interface FormProps {
   labelAlign?: 'start' | 'center' | 'end'
   labelValign?: 'start' | 'center' | 'end'
   starPosition?: 'left' | 'right'
+  contentPosition?: 'left' | 'right'
 
   hideStar?: boolean
   showError?: boolean
@@ -71,6 +72,7 @@ export interface FormItemProps {
   starPosition?: 'left' | 'right'
   label?: string
   hideStar?: boolean
+  contentPosition?: 'left' | 'right'
 
   required?: boolean | undefined
   name?: FieldName
@@ -111,6 +113,7 @@ export interface FormContext {
   labelAlign: FormProps['labelAlign']
   labelValign: FormProps['labelValign']
   starPosition: FormProps['starPosition']
+  contentPosition: FormProps['contentPosition']
   hideStar: FormProps['hideStar']
   showError: FormProps['showError']
   scrollIntoViewOptions: FormProps['scrollIntoViewOptions']

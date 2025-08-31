@@ -46,9 +46,11 @@
   }
 
   @include e(content) {
-    @include universal;
-    justify-content: center;
     flex: 1;
+
+    @include m('right') {
+      text-align: right;
+    }
   }
 
   @include e(error) {

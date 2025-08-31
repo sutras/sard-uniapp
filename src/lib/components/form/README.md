@@ -176,25 +176,26 @@ import FormItemPlain from 'sard-uniapp/components/form-item-plain/form-item-plai
 
 ### FormProps
 
-| 属性                     | 描述                                                                               | 类型                                                                 | 默认值                                              |
-| ------------------------ | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------- | --------------------------------------------------- |
-| root-class               | 组件根元素类名                                                                     | string                                                               | -                                                   |
-| root-style               | 组件根元素样式                                                                     | StyleValue                                                           | -                                                   |
-| model                    | 表单数据对象                                                                       | Record\<string, any>                                                 | -                                                   |
-| rules                    | 表单验证规则                                                                       | FormRules                                                            | -                                                   |
-| validate-trigger         | 设置字段校验的时机                                                                 | TriggerType                                                          | change                                              |
-| validate-on-rule-change  | 是否在 `rules` 属性改变后立即触发一次验证                                          | boolean                                                              | true                                                |
-| direction                | 表单排列方向                                                                       | 'horizontal' \| 'vertical'                                           | 'horizontal'                                        |
-| label-width              | 标签宽度                                                                           | string                                                               | -                                                   |
-| label-align              | 标签水平对齐方式                                                                   | 'start' \| 'center' \| 'end'                                         | 'start'                                             |
-| label-valign             | 标签垂直对齐方式                                                                   | 'start' \| 'center' \| 'end'                                         | 'start'                                             |
-| star-position            | 必填星号在标签的左边或右边                                                         | 'left' \| 'right'                                                    | 'left'                                              |
-| hide-star                | 是否隐藏必填时的星号                                                               | boolean                                                              | false                                               |
-| show-error               | 是否显示校验错误信息                                                               | boolean                                                              | true                                                |
-| scroll-to-first-error    | 当校验失败时，滚动到第一个错误表单项                                               | boolean                                                              | false                                               |
-| scroll-into-view-options | 自定义滚动配置选项                                                                 | [ScrollIntoViewOptions](../utilities/geometry#ScrollIntoViewOptions) | {position: 'nearest', startOffset: 0, endOffset: 0} |
-| disabled                 | 是否禁用该表单内的所有组件。 如果设置为 `true`, 它将覆盖内部组件的 `disabled` 属性 | boolean                                                              | false                                               |
-| readonly                 | 是否只读该表单内的所有组件。 如果设置为 `true`, 它将覆盖内部组件的 `readonly` 属性 | boolean                                                              | false                                               |
+| 属性                                | 描述                                                                               | 类型                                                                 | 默认值                                              |
+| ----------------------------------- | ---------------------------------------------------------------------------------- | -------------------------------------------------------------------- | --------------------------------------------------- |
+| root-class                          | 组件根元素类名                                                                     | string                                                               | -                                                   |
+| root-style                          | 组件根元素样式                                                                     | StyleValue                                                           | -                                                   |
+| model                               | 表单数据对象                                                                       | Record\<string, any>                                                 | -                                                   |
+| rules                               | 表单验证规则                                                                       | FormRules                                                            | -                                                   |
+| validate-trigger                    | 设置字段校验的时机                                                                 | TriggerType                                                          | change                                              |
+| validate-on-rule-change             | 是否在 `rules` 属性改变后立即触发一次验证                                          | boolean                                                              | true                                                |
+| direction                           | 表单排列方向                                                                       | 'horizontal' \| 'vertical'                                           | 'horizontal'                                        |
+| label-width                         | 标签宽度                                                                           | string                                                               | -                                                   |
+| label-align                         | 标签水平对齐方式                                                                   | 'start' \| 'center' \| 'end'                                         | 'start'                                             |
+| label-valign                        | 标签垂直对齐方式                                                                   | 'start' \| 'center' \| 'end'                                         | 'start'                                             |
+| star-position                       | 必填星号在标签的左边或右边                                                         | 'left' \| 'right'                                                    | 'left'                                              |
+| hide-star                           | 是否隐藏必填时的星号                                                               | boolean                                                              | false                                               |
+| content-position <sup>1.24.1+</sup> | 内容位置                                                                           | 'left' \| 'right'                                                    | 'left'                                              |
+| show-error                          | 是否显示校验错误信息                                                               | boolean                                                              | true                                                |
+| scroll-to-first-error               | 当校验失败时，滚动到第一个错误表单项                                               | boolean                                                              | false                                               |
+| scroll-into-view-options            | 自定义滚动配置选项                                                                 | [ScrollIntoViewOptions](../utilities/geometry#ScrollIntoViewOptions) | {position: 'nearest', startOffset: 0, endOffset: 0} |
+| disabled                            | 是否禁用该表单内的所有组件。 如果设置为 `true`, 它将覆盖内部组件的 `disabled` 属性 | boolean                                                              | false                                               |
+| readonly                            | 是否只读该表单内的所有组件。 如果设置为 `true`, 它将覆盖内部组件的 `readonly` 属性 | boolean                                                              | false                                               |
 
 ### FormSlots
 
@@ -213,23 +214,24 @@ import FormItemPlain from 'sard-uniapp/components/form-item-plain/form-item-plai
 
 ### FormItemProps
 
-| 属性             | 描述                                                                                   | 类型                         | 默认值       |
-| ---------------- | -------------------------------------------------------------------------------------- | ---------------------------- | ------------ |
-| root-class       | 组件根元素类名                                                                         | string                       | -            |
-| root-style       | 组件根元素样式                                                                         | StyleValue                   | -            |
-| direction        | 表单排列方向                                                                           | 'horizontal' \| 'vertical'   | 'horizontal' |
-| label-width      | 标签宽度                                                                               | string                       | -            |
-| label-align      | 标签水平对齐方式                                                                       | 'start' \| 'center' \| 'end' | 'start'      |
-| label-valign     | 标签垂直对齐方式                                                                       | 'start' \| 'center' \| 'end' | 'start'      |
-| star-position    | 必填星号在标签的左边或右边                                                             | 'left' \| 'right'            | 'left'       |
-| label            | 标签文本                                                                               | string                       | -            |
-| required         | 是否为必填项，如不设置，则会根据校验规则确认                                           | boolean                      | -            |
-| name             | 表单域 `model` 字段，在使用 `validate、reset` 方法的情况下，该属性是必填的。           | FieldName                    | -            |
-| rules            | 表单验证规则                                                                           | Rule \| Rule[]               | -            |
-| validate-trigger | 设置字段校验的时机                                                                     | TriggerType                  | change       |
-| error            | 表单域验证错误时的提示信息。设置该值会导致表单验证状态变为 `error`，并显示该错误信息。 | string                       | -            |
-| show-error       | 是否显示校验错误信息                                                                   | boolean                      | true         |
-| inlaid           | 去掉边框和内边距，用于嵌入到其他组件中                                                 | boolean                      | false        |
+| 属性                                | 描述                                                                                   | 类型                         | 默认值       |
+| ----------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------- | ------------ |
+| root-class                          | 组件根元素类名                                                                         | string                       | -            |
+| root-style                          | 组件根元素样式                                                                         | StyleValue                   | -            |
+| direction                           | 表单排列方向                                                                           | 'horizontal' \| 'vertical'   | 'horizontal' |
+| label-width                         | 标签宽度                                                                               | string                       | -            |
+| label-align                         | 标签水平对齐方式                                                                       | 'start' \| 'center' \| 'end' | 'start'      |
+| label-valign                        | 标签垂直对齐方式                                                                       | 'start' \| 'center' \| 'end' | 'start'      |
+| star-position                       | 必填星号在标签的左边或右边                                                             | 'left' \| 'right'            | 'left'       |
+| content-position <sup>1.24.1+</sup> | 内容位置                                                                               | 'left' \| 'right'            | 'left'       |
+| label                               | 标签文本                                                                               | string                       | -            |
+| required                            | 是否为必填项，如不设置，则会根据校验规则确认                                           | boolean                      | -            |
+| name                                | 表单域 `model` 字段，在使用 `validate、reset` 方法的情况下，该属性是必填的。           | FieldName                    | -            |
+| rules                               | 表单验证规则                                                                           | Rule \| Rule[]               | -            |
+| validate-trigger                    | 设置字段校验的时机                                                                     | TriggerType                  | change       |
+| error                               | 表单域验证错误时的提示信息。设置该值会导致表单验证状态变为 `error`，并显示该错误信息。 | string                       | -            |
+| show-error                          | 是否显示校验错误信息                                                                   | boolean                      | true         |
+| inlaid                              | 去掉边框和内边距，用于嵌入到其他组件中                                                 | boolean                      | false        |
 
 ### FormItemSlots
 

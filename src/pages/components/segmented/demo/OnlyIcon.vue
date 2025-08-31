@@ -1,9 +1,9 @@
 <template>
   <sar-segmented v-model="value" :options="options" />
 
-  <div class="flex mt-20">
+  <view class="flex mt-20">
     <sar-segmented v-model="value" :options="options" />
-  </div>
+  </view>
 </template>
 
 <script lang="ts" setup>

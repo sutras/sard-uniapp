@@ -226,6 +226,7 @@ export const defaultConfig = {
     labelAlign: 'start' as FormProps['labelAlign'],
     labelValign: 'center' as FormProps['labelValign'],
     starPosition: 'left' as FormProps['starPosition'],
+    contentPosition: 'left' as FormProps['contentPosition'],
     showError: true,
     scrollDuration: 150,
   },

@@ -4,6 +4,7 @@ import { setConfig, useLocaleProvide } from 'sard-uniapp'
 
 import zhCN from 'sard-uniapp/components/locale/lang/zh-CN'
 import enUS from 'sard-uniapp/components/locale/lang/en-US'
+import arSA from 'sard-uniapp/components/locale/lang/ar-SA'
 
 // #ifdef WEB
 import './bridge'
@@ -12,6 +13,9 @@ import './bridge'
 setConfig({
   button: {
     // loadingType: 'clock',
+  },
+  form: {
+    // contentPosition: 'right',
   },
 })
 
@@ -23,6 +27,7 @@ export function createApp() {
     {
       zhCN,
       enUS,
+      arSA,
     },
     'zhCN',
   )
