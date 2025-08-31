@@ -312,13 +312,14 @@ const isLeaf = computed(() => {
   return !props.node.children || props.node.children.length === 0
 })
 
-const onNodeClick = () => {
+const onNodeClick = (event: any) => {
   if (!isLeaf.value) {
     treeContext.toggleExpandedByNode(props.node)
   }
   if (canSingleSelectable.value && treeContext.leafOnly) {
     treeContext.singleSelect(props.node)
   }
+  treeContext.nodeClick(props.node, event)
 }
 
 const nodeActive = ref(false)

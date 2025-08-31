@@ -623,6 +623,13 @@ const singleSelect = (node: TreeStateNode) => {
   }
 }
 
+const nodeClick = (node: TreeStateNode, event: any) => {
+  emit('node-click', {
+    node,
+    event,
+  })
+}
+
 const context = reactive({
   selectable: toRef(() => props.selectable),
   draggable: toRef(() => props.draggable),
@@ -640,6 +647,7 @@ const context = reactive({
   edit,
   currentKey,
   singleSelect,
+  nodeClick,
 })
 
 // others

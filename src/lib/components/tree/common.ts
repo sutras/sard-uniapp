@@ -71,6 +71,7 @@ export interface TreeEmits {
   (e: 'update:current', key: string | number, node: TreeStateNode): void
   (e: 'select', key: string | number, node: TreeStateNode): void
   (e: 'check', event: { checked: boolean; node: TreeStateNode }): void
+  (e: 'node-click', event: { event: any; node: TreeStateNode }): void
 }
 
 export interface TreeExpose {
@@ -116,6 +117,7 @@ export interface TreeContext {
   ) => void
   currentKey: string | number | undefined
   singleSelect: (node: TreeStateNode) => void
+  nodeClick: (node: TreeStateNode, event: any) => void
 }
 
 export const treeContextSymbol = Symbol('tree-context')
