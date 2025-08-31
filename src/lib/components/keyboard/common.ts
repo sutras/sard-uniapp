@@ -19,6 +19,7 @@ export interface KeyboardEmits {
   (e: 'input', key: string): void
   (e: 'delete'): void
   (e: 'toggle', mode: KeyboardPlateMode): void
+  (e: 'update:mode', mode: KeyboardPlateMode): void
 }
 
 export interface KeyBoardExpose {

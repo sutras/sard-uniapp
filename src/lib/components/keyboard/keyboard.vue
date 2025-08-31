@@ -50,7 +50,7 @@
         </view>
       </template>
       <template v-else-if="type === 'plate'">
-        <template v-if="mode === 'chinese'">
+        <template v-if="innerMode === 'chinese'">
           <view
             v-for="(key, i) in chineseKeys"
             :key="key"
@@ -69,7 +69,7 @@
             :style="`order: ${interceptOrder}`"
           ></view>
         </template>
-        <template v-if="mode === 'english'">
+        <template v-if="innerMode === 'english'">
           <view
             v-for="(key, i) in englishKeys"
             :key="key"
@@ -170,19 +170,24 @@ watch(
 )
 
 // 车牌号
-const mode = defineModel<KeyboardPlateMode>('mode', {
-  default: defaultKeyboardProps.mode,
-})
+const innerMode = ref(props.mode)
+
+watch(
+  () => props.mode,
+  () => {
+    innerMode.value = props.mode
+  },
+)
 
 const toggleKey = computed(() => {
   return {
     chinese: 'ABC',
     english: '省份',
-  }[mode.value]
+  }[innerMode.value]
 })
 
 const interceptOrder = computed(() => {
-  if (mode.value === 'english') {
+  if (innerMode.value === 'english') {
     return englishKeys.length - 8
   }
   const overflow = chineseKeys.length % 10
@@ -190,8 +195,10 @@ const interceptOrder = computed(() => {
 })
 
 const onToggle = (newMode?: KeyboardPlateMode) => {
-  mode.value = newMode || (mode.value === 'chinese' ? 'english' : 'chinese')
-  emit('toggle', mode.value)
+  innerMode.value =
+    newMode || (innerMode.value === 'chinese' ? 'english' : 'chinese')
+  emit('toggle', innerMode.value)
+  emit('update:mode', innerMode.value)
 }
 
 // others
