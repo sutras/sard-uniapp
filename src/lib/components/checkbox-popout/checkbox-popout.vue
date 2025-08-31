@@ -61,7 +61,15 @@
                     :hover="!option.disabled"
                     @click="select(option, toggle)"
                   >
-                    <template #icon>
+                    <template v-if="iconPosition === 'left'" #icon>
+                      <sar-checkbox
+                        readonly
+                        :disabled="option.disabled"
+                        :value="option.value"
+                        :validate-event="false"
+                      />
+                    </template>
+                    <template v-if="iconPosition === 'right'" #value>
                       <sar-checkbox
                         readonly
                         :disabled="option.disabled"

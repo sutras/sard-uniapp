@@ -5,6 +5,7 @@ import { type CalendarInputProps } from '../calendar-input'
 import { type CalendarProps } from '../calendar'
 import { type CascaderInputProps } from '../cascader-input'
 import { type CheckboxGroupProps } from '../checkbox'
+import { type CheckboxPopoutProps } from '../checkbox-popout'
 import { type CheckboxInputProps } from '../checkbox-input'
 import { type CoolIconProps } from '../cool-icon'
 import { type DatetimePickerInputProps } from '../datetime-picker-input'
@@ -133,6 +134,7 @@ export const defaultConfig = {
   },
   checkboxPopout: {
     validateEvent: true,
+    iconPosition: 'left' as CheckboxPopoutProps['iconPosition'],
   },
   coolIcon: {
     shape: 'oval' as CoolIconProps['shape'],
@@ -374,6 +376,7 @@ export const defaultConfig = {
   radioPopout: {
     validateEvent: true,
     type: 'circle' as RadioPopoutProps['type'],
+    iconPosition: 'left' as RadioPopoutProps['iconPosition'],
   },
   rate: {
     count: 5,

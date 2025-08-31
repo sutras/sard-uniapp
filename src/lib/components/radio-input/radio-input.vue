@@ -32,6 +32,7 @@
       :searchable="searchable"
       :filter-placeholder="filterPlaceholder"
       :resettable="resettable"
+      :icon-position="iconPosition"
       @change="onChange"
       @visible-hook="onVisibleHook"
       @confirm="onConfirm"

@@ -50,7 +50,14 @@
                     :hover="!option.disabled"
                     @click="select(option, toggle)"
                   >
-                    <template #icon>
+                    <template v-if="iconPosition === 'left'" #icon>
+                      <sar-radio
+                        readonly
+                        :disabled="option.disabled"
+                        :value="option.value"
+                      />
+                    </template>
+                    <template v-if="iconPosition === 'right'" #value>
                       <sar-radio
                         readonly
                         :disabled="option.disabled"

@@ -11,6 +11,7 @@ export interface RadioPopoutProps extends RadioGroupProps {
   searchable?: boolean
   filterPlaceholder?: string
   resettable?: boolean
+  iconPosition?: 'left' | 'right'
 }
 
 export const defaultRadioPopoutProps = () => ({

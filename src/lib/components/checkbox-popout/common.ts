@@ -12,6 +12,7 @@ export interface CheckboxPopoutProps extends CheckboxGroupProps {
   searchable?: boolean
   filterPlaceholder?: string
   resettable?: boolean
+  iconPosition?: 'left' | 'right'
 }
 
 export const defaultCheckboxPopoutProps = () => ({
