@@ -12,18 +12,23 @@
     <view :class="popoutClass" :style="popoutStyle" @transitionend.stop>
       <view :class="classNames(bem.e('header'), bem.em('header', props.type))">
         <view v-if="type === 'compact'" :class="bem.e('button-wrap')">
-          <sar-button
-            type="pale-text"
-            theme="neutral"
-            :root-class="classNames(bem.e('header-cancel'))"
+          <slot
+            name="cancel"
+            :on-click="onCancel"
             :loading="loading.cancel"
-            block
-            @click="onCancel"
+            :text="mergedCancelText"
           >
-            <template v-if="cancelText">{{ cancelText }}</template>
-            <slot v-else-if="$slots.cancel" name="cancel"></slot>
-            <template v-else>{{ t('cancel') }}</template>
-          </sar-button>
+            <sar-button
+              type="pale-text"
+              theme="neutral"
+              :root-class="classNames(bem.e('header-cancel'))"
+              :loading="loading.cancel"
+              block
+              @click="onCancel"
+            >
+              {{ mergedCancelText }}
+            </sar-button>
+          </slot>
         </view>
         <slot name="title-prepend"></slot>
         <view :class="bem.e('title')">
@@ -33,19 +38,25 @@
           <slot v-else-if="$slots.title" name="title"></slot>
         </view>
         <view v-if="type === 'compact'" :class="bem.e('button-wrap')">
-          <sar-button
-            type="pale-text"
-            theme="primary"
-            :root-class="classNames(bem.e('header-confirm'))"
-            :loading="loading.confirm"
+          <slot
+            name="confirm"
+            :on-click="onConfirm"
             :disabled="confirmDisabled"
-            block
-            @click="onConfirm"
+            :loading="loading.confirm"
+            :text="mergedConfirmText"
           >
-            <template v-if="confirmText">{{ confirmText }}</template>
-            <slot v-else-if="$slots.confirm" name="confirm"></slot>
-            <template v-else>{{ t('confirm') }}</template>
-          </sar-button>
+            <sar-button
+              type="pale-text"
+              theme="primary"
+              :root-class="classNames(bem.e('header-confirm'))"
+              :loading="loading.confirm"
+              :disabled="confirmDisabled"
+              block
+              @click="onConfirm"
+            >
+              {{ mergedConfirmText }}
+            </sar-button>
+          </slot>
         </view>
         <view
           v-if="type === 'loose' && showClose"
@@ -60,33 +71,46 @@
       <slot></slot>
       <slot name="visible" :whole="wholeVisible" :already="already"></slot>
       <view v-if="showFooter && type === 'loose'" :class="bem.e('footer')">
-        <sar-button
-          v-if="showCancel"
-          type="pale"
-          theme="primary"
-          round
+        <slot
+          name="cancel"
+          :on-click="onCancel"
+          :visible="showCancel"
           :loading="loading.cancel"
-          block
-          @click="onCancel"
+          :text="mergedCancelText"
         >
-          <template v-if="cancelText">{{ cancelText }}</template>
-          <slot v-else-if="$slots.cancel" name="cancel"></slot>
-          <template v-else>{{ t('cancel') }}</template>
-        </sar-button>
-        <sar-button
-          v-if="showConfirm"
-          type="default"
-          theme="primary"
-          round
-          :loading="loading.confirm"
+          <sar-button
+            v-if="showCancel"
+            type="pale"
+            theme="primary"
+            round
+            :loading="loading.cancel"
+            block
+            @click="onCancel"
+          >
+            {{ mergedCancelText }}
+          </sar-button>
+        </slot>
+        <slot
+          name="confirm"
+          :visible="showConfirm"
+          :on-click="onConfirm"
           :disabled="confirmDisabled"
-          block
-          @click="onConfirm"
+          :loading="loading.confirm"
+          :text="mergedConfirmText"
         >
-          <template v-if="confirmText">{{ confirmText }}</template>
-          <slot v-else-if="$slots.confirm" name="confirm"></slot>
-          <template v-else>{{ t('confirm') }}</template>
-        </sar-button>
+          <sar-button
+            v-if="showConfirm"
+            type="default"
+            theme="primary"
+            round
+            :loading="loading.confirm"
+            :disabled="confirmDisabled"
+            block
+            @click="onConfirm"
+          >
+            {{ mergedConfirmText }}
+          </sar-button>
+        </slot>
       </view>
     </view>
   </sar-popup>
@@ -248,6 +272,14 @@ const onConfirm = () => {
 const onCancel = () => {
   perhapsClose('cancel')
 }
+
+const mergedConfirmText = computed(() => {
+  return props.confirmText || t('confirm')
+})
+
+const mergedCancelText = computed(() => {
+  return props.cancelText || t('cancel')
+})
 
 // others
 const popoutClass = computed(() => {

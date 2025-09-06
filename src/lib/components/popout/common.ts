@@ -35,8 +35,19 @@ export const defaultPopoutProps = defaultConfig.popout
 export interface PopoutSlots {
   default?(props: Record<string, never>): any
   title?(props: Record<string, never>): any
-  cancel?(props: Record<string, never>): any
-  confirm?(props: Record<string, never>): any
+  cancel?(props: {
+    onClick: () => void
+    loading: boolean
+    visible?: boolean
+    text: string
+  }): any
+  confirm?(props: {
+    onClick: () => void
+    loading: boolean
+    visible?: boolean
+    text: string
+    disabled?: boolean
+  }): any
   visible?(props: { whole: boolean; already: boolean }): any
   'title-prepend'?(props: Record<string, never>): any
 }
