@@ -6,7 +6,21 @@
     @click="onOverlayClick"
   />
 
-  <view :class="fabClass" :style="fabStyle">
+  <view
+    :class="fabClass"
+    :style="fabStyle"
+    @touchstart="onTouchStart"
+    @touchmove.stop.prevent="onTouchMove"
+    @touchend="onTouchEnd"
+    @touchcancel="onTouchEnd"
+    @mousedown="onMouseDown"
+  >
+    <view :class="itemEntryClass" @click="onItemEntryClick">
+      <view :class="bem.e('item-btn')" :style="itemEntryBtnStyle">
+        <sar-icon :family="iconFamily || 'sari'" :name="icon || 'plus'" />
+      </view>
+    </view>
+
     <view
       :class="contentClass"
       :style="contentStyle"
@@ -31,11 +45,6 @@
         </view>
       </view>
     </view>
-    <view :class="itemEntryClass" @click="onItemEntryClick">
-      <view :class="bem.e('item-btn')" :style="itemEntryBtnStyle">
-        <sar-icon :family="iconFamily || 'sari'" :name="icon || 'plus'" />
-      </view>
-    </view>
   </view>
 </template>
 
@@ -51,6 +60,7 @@ import {
 import { useTransition, useZIndex } from '../../use'
 import SarIcon from '../icon/icon.vue'
 import SarOverlay from '../overlay/overlay.vue'
+import { useFloatingBubble } from '../floating-bubble/useFloatingBubble'
 
 defineOptions({
   options: {
@@ -79,6 +89,8 @@ const { realVisible, transitionClass, onTransitionEnd } = useTransition(
 )
 
 const onItemEntryClick = (event: any) => {
+  if (stopBubbling.value) return
+
   if (props.itemList && props.itemList.length > 0) {
     visible.value = !visible.value
     if (visible.value) {
@@ -89,6 +101,8 @@ const onItemEntryClick = (event: any) => {
 }
 
 const onItemClick = (item: FabItem, index: number) => {
+  if (stopBubbling.value) return
+
   visible.value = false
   emit('select', item, index)
 }
@@ -99,38 +113,67 @@ const onOverlayClick = () => {
   }
 }
 
+// floating bubble
+const {
+  onTouchStart,
+  onTouchMove,
+  onTouchEnd,
+  onMouseDown,
+  position,
+  initialized,
+  animated,
+  bubbleId,
+  stopBubbling,
+  windowWidth,
+  windowHeight,
+} = useFloatingBubble(props, emit, {
+  disabled: visible,
+})
+
+const isTop = computed(() => {
+  return props.draggable
+    ? position.value.y > windowHeight / 2
+      ? false
+      : true
+    : !isNullish(props.top)
+})
+
+const isLeft = computed(() => {
+  return props.draggable
+    ? position.value.x > windowWidth / 2
+      ? false
+      : true
+    : !isNullish(props.left)
+})
+
 // others
 const fabClass = computed(() => {
   return classNames(
     bem.b(),
-    bem.m(isNullish(props.top) ? 'bottom' : 'top'),
-    bem.m(isNullish(props.left) ? 'right' : 'left'),
+    bem.m(isTop.value ? 'top' : 'bottom'),
+    bem.m(isLeft.value ? 'left' : 'right'),
     bem.m('visible', visible.value),
+    bem.m('animated', animated.value),
+    bem.m('initialized', initialized.value),
+    bem.m('draggable', props.draggable),
     props.rootClass,
+    bubbleId,
   )
 })
 
 const fabStyle = computed(() => {
   return stringifyStyle(props.rootStyle, {
     zIndex: visible.value ? zIndex.value : null,
-    top: props.top,
-    left: props.left,
-    right: !isNullish(props.left) ? 'auto' : props.right,
-    bottom: !isNullish(props.top) ? 'auto' : props.bottom,
-  })
-})
-
-const contentClass = computed(() => {
-  return classNames(bem.e('content'), transitionClass.value)
-})
-
-const contentStyle = computed(() => {
-  return stringifyStyle({
-    display: realVisible.value ? 'flex' : 'none',
-    transitionDuration: props.duration + 'ms',
-    transformOrigin: `${isNullish(props.top) ? 'bottom' : 'top'} ${
-      isNullish(props.left) ? 'right' : 'left'
-    }`,
+    ...(props.draggable
+      ? {
+          transform: `translate3d(${position.value.x}px, ${position.value.y}px, 0)`,
+        }
+      : {
+          top: props.top,
+          left: props.left,
+          right: isLeft.value ? 'auto' : props.right,
+          bottom: isTop.value ? 'auto' : props.bottom,
+        }),
   })
 })
 
@@ -142,6 +185,20 @@ const itemEntryBtnStyle = computed(() => {
   return stringifyStyle({
     color: props.color,
     background: props.background,
+  })
+})
+
+const contentClass = computed(() => {
+  return classNames(bem.e('content'), transitionClass.value)
+})
+
+const contentStyle = computed(() => {
+  return stringifyStyle({
+    display: realVisible.value ? 'flex' : 'none',
+    transitionDuration: props.duration + 'ms',
+    transformOrigin: `${isTop.value ? 'top' : 'bottom'} ${
+      isLeft.value ? 'left' : 'right'
+    }`,
   })
 })
 

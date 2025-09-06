@@ -3,9 +3,9 @@
     <sar-icon family="demo-icons" name="chat-dots" size="48rpx" />
   </sar-floating-bubble>
 
-  <view style="margin-top: 100rpx; text-align: center">
+  <view class="mt-100 text-center">
     <text>x: {{ offset.x.toFixed(0) }}</text>
-    <text style="margin-left: 20rpx">y: {{ offset.y.toFixed(0) }}</text>
+    <text class="ml-20">y: {{ offset.y.toFixed(0) }}</text>
   </view>
 </template>
 

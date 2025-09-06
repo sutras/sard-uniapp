@@ -16,6 +16,13 @@ export interface FabProps {
   hideName?: boolean
   overlayClosable?: boolean
   duration?: number
+
+  draggable?: boolean
+  axis?: 'x' | 'y' | 'both' | 'none'
+  magnet?: 'x' | 'y'
+  gapX?: number
+  gapY?: number
+  offset?: { x: number; y: number }
 }
 
 export const defaultFabProps = () => ({
@@ -26,6 +33,7 @@ export const defaultFabProps = () => ({
 export interface FabEmits {
   (e: 'click', event: any): void
   (e: 'select', item: FabItem, index: number): void
+  (e: 'update:offset', offset: { x: number; y: number }): void
 }
 
 export interface FabItem {

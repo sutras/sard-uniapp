@@ -70,22 +70,28 @@ import Fab from 'sard-uniapp/components/fab/fab.vue'
 
 ### FabProps
 
-| 属性             | 描述                                         | 类型       | 默认值 |
-| ---------------- | -------------------------------------------- | ---------- | ------ |
-| root-class       | 组件根元素类名                               | string     | -      |
-| root-style       | 组件根元素样式                               | StyleValue | -      |
-| top              | 设置距离窗口顶部的距离，优先级比 `bottom` 高 | string     | -      |
-| right            | 设置距离窗口右边的距离                       | string     | -      |
-| bottom           | 设置距离窗口底部的距离                       | string     | -      |
-| left             | 设置距离窗口左边的距离，优先级比 `right` 高  | string     | -      |
-| color            | 设置按钮图标的颜色                           | string     | -      |
-| background       | 设置按钮的背景色                             | string     | -      |
-| icon             | 设置入口按钮的图标                           | string     | -      |
-| icon-family      | 设置入口按钮的图标族                         | string     | -      |
-| item-list        | 设置扩展按钮                                 | FabItem[]  | []     |
-| hide-name        | 是否隐藏按钮名称                             | boolean    | false  |
-| overlay-closable | 点击遮罩是否隐藏扩展按钮                     | boolean    | false  |
-| duration         | 扩展按钮显隐动画时长，单位 ms                | number     | 150    |
+| 属性                                | 描述                                         | 类型                           | 默认值 |
+| ----------------------------------- | -------------------------------------------- | ------------------------------ | ------ |
+| root-class                          | 组件根元素类名                               | string                         | -      |
+| root-style                          | 组件根元素样式                               | StyleValue                     | -      |
+| top                                 | 设置距离窗口顶部的距离，优先级比 `bottom` 高 | string                         | -      |
+| right                               | 设置距离窗口右边的距离                       | string                         | -      |
+| bottom                              | 设置距离窗口底部的距离                       | string                         | -      |
+| left                                | 设置距离窗口左边的距离，优先级比 `right` 高  | string                         | -      |
+| color                               | 设置按钮图标的颜色                           | string                         | -      |
+| background                          | 设置按钮的背景色                             | string                         | -      |
+| icon                                | 设置入口按钮的图标                           | string                         | -      |
+| icon-family                         | 设置入口按钮的图标族                         | string                         | -      |
+| item-list                           | 设置扩展按钮                                 | FabItem[]                      | []     |
+| hide-name                           | 是否隐藏按钮名称                             | boolean                        | false  |
+| overlay-closable                    | 点击遮罩是否隐藏扩展按钮                     | boolean                        | false  |
+| duration                            | 扩展按钮显隐动画时长，单位 ms                | number                         | 150    |
+| draggable <sup>1.24.2+</sup>        | 是否可拖拽                                   | boolean                        | false  |
+| axis <sup>1.24.2+</sup>             | 允许拖拽的方向轴                             | 'x' \| 'y' \| 'both' \| 'none' | 'y'    |
+| magnet <sup>1.24.2+</sup>           | 吸附到指定轴最近的一边                       | 'x' \| 'y'                     | -      |
+| gap-x <sup>1.24.2+</sup>            | 悬浮按钮与窗口左右两边的最小间距，单位为 px  | number                         | 24     |
+| gap-y <sup>1.24.2+</sup>            | 悬浮按钮与窗口上下两边的最小间距，单位为 px  | number                         | 24     |
+| offset (v-model) <sup>1.24.2+</sup> | 控制悬浮按钮的位置                           | { x: number; y: number }       | -      |
 
 ### FabSlots
 
@@ -95,10 +101,11 @@ import Fab from 'sard-uniapp/components/fab/fab.vue'
 
 ### FabEmits
 
-| 事件   | 描述               | 类型                                   |
-| ------ | ------------------ | -------------------------------------- |
-| click  | 点击入口按钮时触发 | (event: any) => void                   |
-| select | 点击扩展按钮时触发 | (item: FabItem, index: number) => void |
+| 事件                             | 描述                         | 类型                                       |
+| -------------------------------- | ---------------------------- | ------------------------------------------ |
+| click                            | 点击入口按钮时触发           | (event: any) => void                       |
+| select                           | 点击扩展按钮时触发           | (item: FabItem, index: number) => void     |
+| update:offset <sup>1.24.2+</sup> | 因用户拖拽导致位置改变时触发 | (offset: { x: number; y: number }) => void |
 
 ### FabItem
 

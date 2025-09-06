@@ -27,6 +27,9 @@
       <DemoBottomLeft v-if="currentDemo === 'BottomLeft'" />
       <DemoNonItemList v-if="currentDemo === 'NonItemList'" />
       <DemoIcon v-if="currentDemo === 'Icon'" />
+      <DemoDraggable v-if="currentDemo === 'Draggable'" />
+      <DemoMagnet v-if="currentDemo === 'Magnet'" />
+      <DemoOffset v-if="currentDemo === 'Offset'" />
     </doc-demo>
   </doc-page>
 </template>
@@ -41,6 +44,9 @@ import DemoTopRight from './demo/TopRight.vue'
 import DemoBottomLeft from './demo/BottomLeft.vue'
 import DemoNonItemList from './demo/NonItemList.vue'
 import DemoIcon from './demo/Icon.vue'
+import DemoDraggable from './demo/Draggable.vue'
+import DemoMagnet from './demo/Magnet.vue'
+import DemoOffset from './demo/Offset.vue'
 
 const currentDemo = ref('Basic')
 
@@ -53,5 +59,8 @@ const demoOptions = [
   { value: 'BottomLeft', label: '左下角显示' },
   { value: 'NonItemList', label: '无按钮列表显示' },
   { value: 'Icon', label: '自定义图标' },
+  { value: 'Draggable', label: '可拖拽的' },
+  { value: 'Magnet', label: '自由拖拽和磁吸' },
+  { value: 'Offset', label: '双向绑定' },
 ]
 </script>

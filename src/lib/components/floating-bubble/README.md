@@ -40,15 +40,16 @@ import FloatingBubble from 'sard-uniapp/components/floating-bubble/floating-bubb
 
 ### FloatingBubbleProps
 
-| 属性             | 描述                                    | 类型                           | 默认值 |
-| ---------------- | --------------------------------------- | ------------------------------ | ------ |
-| root-class       | 组件根元素类名                          | string                         | -      |
-| root-style       | 组件根元素样式                          | StyleValue                     | -      |
-| axis             | 允许拖拽的方向轴                        | 'x' \| 'y' \| 'both' \| 'none' | 'y'    |
-| magnet           | 吸附到指定轴最近的一边                  | 'x' \| 'y'                     | -      |
-| gap-x            | 气泡与窗口左右两边的最小间距，单位为 px | number                         | 24     |
-| gap-y            | 气泡与窗口上下两边的最小间距，单位为 px | number                         | 24     |
-| offset (v-model) | 控制气泡的位置                          | { x: number; y: number }       | -      |
+| 属性                         | 描述                                    | 类型                           | 默认值 |
+| ---------------------------- | --------------------------------------- | ------------------------------ | ------ |
+| root-class                   | 组件根元素类名                          | string                         | -      |
+| root-style                   | 组件根元素样式                          | StyleValue                     | -      |
+| axis                         | 允许拖拽的方向轴                        | 'x' \| 'y' \| 'both' \| 'none' | 'y'    |
+| magnet                       | 吸附到指定轴最近的一边                  | 'x' \| 'y'                     | -      |
+| gap-x                        | 气泡与窗口左右两边的最小间距，单位为 px | number                         | 24     |
+| gap-y                        | 气泡与窗口上下两边的最小间距，单位为 px | number                         | 24     |
+| offset (v-model)             | 控制气泡的位置                          | { x: number; y: number }       | -      |
+| draggable <sup>1.24.2+</sup> | 是否可拖拽                              | boolean                        | true   |
 
 ### FloatingBubbleSlots
 

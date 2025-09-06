@@ -4,6 +4,7 @@ import { defaultConfig } from '../config'
 export interface FloatingBubbleProps {
   rootStyle?: StyleValue
   rootClass?: string
+  draggable?: boolean
   axis?: 'x' | 'y' | 'both' | 'none'
   magnet?: 'x' | 'y'
   gapX?: number

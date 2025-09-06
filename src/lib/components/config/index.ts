@@ -13,6 +13,7 @@ import { type DatetimeRangePickerInputProps } from '../datetime-range-picker-inp
 import { type DialogProps } from '../dialog'
 import { type DividerProps } from '../divider'
 import { type DropdownProps } from '../dropdown'
+import { type FabProps } from '../fab'
 import { type FloatingBubbleProps } from '../floating-bubble'
 import { type FormProps } from '../form'
 import { type GridProps } from '../grid'
@@ -208,8 +209,13 @@ export const defaultConfig = {
     overlayClosable: false,
     hideName: false,
     duration: 150,
+    draggable: false,
+    axis: 'y' as FabProps['axis'],
+    gapX: 24,
+    gapY: 24,
   },
   floatingBubble: {
+    draggable: true,
     axis: 'y' as FloatingBubbleProps['axis'],
     gapX: 24,
     gapY: 24,
