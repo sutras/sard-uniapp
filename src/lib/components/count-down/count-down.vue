@@ -1,9 +1,9 @@
 <template>
-  <text>
+  <view>
     <slot :time="currentTime">
       {{ formatTime(format, currentTime) }}
     </slot>
-  </text>
+  </view>
 </template>
 
 <script setup lang="ts">
