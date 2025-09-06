@@ -1,3 +1,19 @@
+## [1.24.2](https://github.com/sutras/sard-uniapp/compare/v1.24.1...v1.24.2) (2025-09-06)
+
+
+### Bug Fixes
+
+* **count-down:** 修复行内嵌套块的问题 ([fd8112c](https://github.com/sutras/sard-uniapp/commit/fd8112c3885c0069b34f6709c7190a298d680726))
+* **popout:** 修正按钮插槽内容 ([7f29d80](https://github.com/sutras/sard-uniapp/commit/7f29d8059ac1dd342f85a5de54f42e867879ecfc))
+* **tag:** 阻止点击关闭时的事件冒泡 ([4220f31](https://github.com/sutras/sard-uniapp/commit/4220f311f0c5564ae095db6863f415f483f7f22e))
+
+
+### Features
+
+* **fab:** 添加拖拽功能 ([4d24318](https://github.com/sutras/sard-uniapp/commit/4d243186b4ba22ebe50722c67466eb702c88cbf5))
+
+
+
 ## [1.24.1](https://github.com/sutras/sard-uniapp/compare/v1.24.0...v1.24.1) (2025-08-31)
 
 
