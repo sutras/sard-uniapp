@@ -1,6 +1,9 @@
+import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 
 export interface CountDownProps {
+  rootStyle?: StyleValue
+  rootClass?: string
   time?: number
   autoStart?: boolean
   format?: string

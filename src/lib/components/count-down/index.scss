@@ -1,0 +1,10 @@
+@use '../style/base' as *;
+
+@include bem(count-down) {
+  @include b() {
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    vertical-align: middle;
+  }
+}

@@ -57,12 +57,14 @@ import CountDown from 'sard-uniapp/components/count-down/count-down.vue'
 
 ### CountDownProps
 
-| 属性        | 描述                   | 类型    | 默认值     |
-| ----------- | ---------------------- | ------- | ---------- |
-| time        | 倒计时总时长，单位毫秒 | number  | 0          |
-| auto-start  | 是否自动开始倒计时     | boolean | true       |
-| format      | 时间格式               | string  | 'HH:mm:ss' |
-| millisecond | 是否开启毫秒级别渲染   | boolean | false      |
+| 属性                          | 描述                   | 类型       | 默认值     |
+| ----------------------------- | ---------------------- | ---------- | ---------- |
+| root-class <sup>1.24.2+</sup> | 组件根元素类名         | string     | -          |
+| root-style <sup>1.24.2+</sup> | 组件根元素样式         | StyleValue | -          |
+| time                          | 倒计时总时长，单位毫秒 | number     | 0          |
+| auto-start                    | 是否自动开始倒计时     | boolean    | true       |
+| format                        | 时间格式               | string     | 'HH:mm:ss' |
+| millisecond                   | 是否开启毫秒级别渲染   | boolean    | false      |
 
 ### CountDownSlots
 

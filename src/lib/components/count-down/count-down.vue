@@ -1,9 +1,9 @@
 <template>
-  <text>
+  <view :class="countDownClass" :style="countDownStyle">
     <slot :time="currentTime">
       {{ formatTime(format, currentTime) }}
     </slot>
-  </text>
+  </view>
 </template>
 
 <script setup lang="ts">
@@ -18,6 +18,7 @@ import {
   formatTime,
   defaultCountDownProps,
 } from './common'
+import { classNames, stringifyStyle, createBem } from '../../utils'
 
 defineOptions({
   options: {
@@ -31,6 +32,8 @@ const props = withDefaults(defineProps<CountDownProps>(), defaultCountDownProps)
 defineSlots<CountDownSlots>()
 
 const emit = defineEmits<CountDownEmits>()
+
+const bem = createBem('count-down')
 
 // main
 const remainTime = ref(props.time)
@@ -106,4 +109,17 @@ onMounted(() => {
 onBeforeUnmount(() => {
   pause()
 })
+
+// others
+const countDownClass = computed(() => {
+  return classNames(bem.b(), props.rootClass)
+})
+
+const countDownStyle = computed(() => {
+  return stringifyStyle(props.rootStyle)
+})
 </script>
+
+<style lang="scss">
+@import './index.scss';
+</style>
