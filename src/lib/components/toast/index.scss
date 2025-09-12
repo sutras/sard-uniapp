@@ -11,22 +11,6 @@
     touch-action: none;
   }
 
-  @include e(popup) {
-    width: max-content;
-    max-width: var(--sar-toast-text-max-width);
-
-    @include m(top) {
-      top: var(--sar-toast-top);
-      transform: translate(-50%, 0);
-    }
-
-    @include m(bottom) {
-      top: auto;
-      bottom: var(--sar-toast-bottom);
-      transform: translate(-50%, 0);
-    }
-  }
-
   @include e(icon) {
     @include universal;
     justify-content: center;

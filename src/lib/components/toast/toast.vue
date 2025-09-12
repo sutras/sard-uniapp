@@ -36,7 +36,7 @@ export const mapIdToast: Record<
 </script>
 
 <script setup lang="ts">
-import { computed, ref, watch, nextTick } from 'vue'
+import { computed, watch, nextTick } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarPopup from '../popup/popup.vue'
 import SarLoading from '../loading/loading.vue'
@@ -56,11 +56,8 @@ const emit = defineEmits<ToastEmits>()
 const bem = createBem('toast')
 
 // main
-const innerVisible = ref(props.visible)
-
 const { start: hideLater, stop: cancelHide } = useTimeout(
   () => {
-    innerVisible.value = false
     emit('update:visible', false)
   },
   () => props.timeout,
@@ -79,7 +76,6 @@ const reHideLater = () => {
 watch(
   () => props.visible,
   () => {
-    innerVisible.value = props.visible
     if (props.visible) {
       if (props.type !== 'loading' && props.timeout > 0) {
         hideLater()
