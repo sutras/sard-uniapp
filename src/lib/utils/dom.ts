@@ -73,8 +73,10 @@ export function getViewportScrollInfo() {
   })
 }
 
-export function toTouchEvent(event: MouseEvent | TouchEvent, windowTop = 0) {
+export function toTouchEvent(event: MouseEvent | TouchEvent) {
   if (!('touches' in event)) {
+    const { windowTop } = getWindowInfo()
+
     const touches = [
       {
         clientX: event.clientX,
