@@ -28,17 +28,18 @@ import Popup from 'sard-uniapp/components/popup/popup.vue'
 
 ### PopupProps
 
-| 属性                              | 描述                   | 类型                                                                               | 默认值 |
-| --------------------------------- | ---------------------- | ---------------------------------------------------------------------------------- | ------ |
-| root-class                        | 组件根元素类名         | string                                                                             | -      |
-| root-style                        | 组件根元素样式         | StyleValue                                                                         | -      |
-| visible (v-model)                 | 是否可见               | boolean                                                                            | false  |
-| duration                          | 显隐动画时长，单位 ms  | number                                                                             | 300    |
-| effect                            | 显隐效果               | 'slide-top' \| 'slide-right' \| 'slide-bottom' \| 'slide-left' \| 'zoom' \| 'fade' | 'fade' |
-| overlay                           | 是否显示遮罩           | boolean                                                                            | true   |
-| background                        | 遮罩背景色             | string                                                                             | -      |
-| transparent                       | 透明遮罩               | boolean                                                                            | false  |
-| overlay-closable <sup>1.22+</sup> | 是否在点击遮罩层后关闭 | boolean                                                                            | true   |
+| 属性                              | 描述                                                                                   | 类型                                                                               | 默认值 |
+| --------------------------------- | -------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------- | ------ |
+| root-class                        | 组件根元素类名                                                                         | string                                                                             | -      |
+| root-style                        | 组件根元素样式                                                                         | StyleValue                                                                         | -      |
+| visible (v-model)                 | 是否可见                                                                               | boolean                                                                            | false  |
+| duration                          | 显隐动画时长，单位 ms                                                                  | number                                                                             | 300    |
+| effect                            | 显隐效果                                                                               | 'slide-top' \| 'slide-right' \| 'slide-bottom' \| 'slide-left' \| 'zoom' \| 'fade' | 'fade' |
+| overlay                           | 是否显示遮罩                                                                           | boolean                                                                            | true   |
+| background                        | 遮罩背景色                                                                             | string                                                                             | -      |
+| transparent                       | 透明遮罩                                                                               | boolean                                                                            | false  |
+| overlay-closable <sup>1.22+</sup> | 是否在点击遮罩层后关闭                                                                 | boolean                                                                            | true   |
+| keep-render <sup>1.24.3+</sup>    | 无论刚挂载还是隐藏，都始终不设置 display 为 none，一般用于内部包含计算尺寸的组件的情况 | boolean                                                                            | false  |
 
 ### PopupSlots
 
