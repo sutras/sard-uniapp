@@ -22,6 +22,8 @@ export interface UseFloatingBubbleProps {
   gapY: number
   axis: 'x' | 'y' | 'none' | 'both'
   magnet?: 'x' | 'y'
+  navbarHeight?: number
+  tabbarHeight?: number
   offset?: {
     x: number
     y: number
@@ -48,7 +50,13 @@ export function useFloatingBubble(
   const initialized = ref(false)
 
   let bubbleRect: NodeRect | undefined
-  const { windowWidth, windowHeight } = getWindowInfo()
+  const {
+    windowWidth,
+    windowHeight,
+    windowTop,
+    statusBarHeight,
+    safeAreaInsets,
+  } = getWindowInfo()
   let downCoord = {
     x: 0,
     y: 0,
@@ -77,11 +85,19 @@ export function useFloatingBubble(
   }
 
   function getMinY() {
-    return props.gapY + 44 + 25
+    const navbarHeight = props.navbarHeight || 0
+    return props.gapY + (navbarHeight ? navbarHeight + statusBarHeight : 0)
   }
 
   function getMaxY() {
-    return windowHeight - props.gapY - bubbleRect!.height
+    const tabbarHeight = props.tabbarHeight || 0
+    return (
+      windowHeight -
+      tabbarHeight -
+      safeAreaInsets.bottom -
+      props.gapY -
+      bubbleRect!.height
+    )
   }
 
   const onTouchStart = async (event: TouchEvent) => {
@@ -202,5 +218,6 @@ export function useFloatingBubble(
     stopBubbling,
     windowWidth,
     windowHeight,
+    windowTop,
   }
 }

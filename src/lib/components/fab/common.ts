@@ -23,6 +23,8 @@ export interface FabProps {
   gapX?: number
   gapY?: number
   offset?: { x: number; y: number }
+  navbarHeight?: number
+  tabbarHeight?: number
 }
 
 export const defaultFabProps = () => ({

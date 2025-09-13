@@ -52,6 +52,7 @@ const {
   initialized,
   animated,
   bubbleId,
+  windowTop,
 } = useFloatingBubble(props, emit)
 
 const onClick = (event: any) => {
@@ -72,6 +73,7 @@ const floatingBubbleClass = computed(() => {
 const floatingBubbleStyle = computed(() => {
   const { x, y } = position.value
   return stringifyStyle(props.rootStyle, {
+    top: `${windowTop}px`,
     transform: `translate3d(${x}px, ${y}px, 0)`,
   })
 })

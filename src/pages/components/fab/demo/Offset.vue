@@ -4,6 +4,7 @@
     draggable
     axis="both"
     v-model:offset="offset"
+    :navbar-height="navbarHeight"
     @select="onSelect"
   />
 
@@ -16,6 +17,8 @@
 <script lang="ts" setup>
 import { toast, type FabItem } from 'sard-uniapp'
 import { ref } from 'vue'
+
+const navbarHeight = uni.upx2px(88)
 
 const itemList = ref<FabItem[]>([
   { name: '首页', iconFamily: 'demo-icons', icon: 'house-door' },

@@ -10,6 +10,8 @@ export interface FloatingBubbleProps {
   gapX?: number
   gapY?: number
   offset?: { x: number; y: number }
+  navbarHeight?: number
+  tabbarHeight?: number
 }
 
 export const defaultFloatingBubbleProps = defaultConfig.floatingBubble

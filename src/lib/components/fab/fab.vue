@@ -126,6 +126,7 @@ const {
   stopBubbling,
   windowWidth,
   windowHeight,
+  windowTop,
 } = useFloatingBubble(props, emit, {
   disabled: visible,
 })
@@ -166,6 +167,7 @@ const fabStyle = computed(() => {
     zIndex: visible.value ? zIndex.value : null,
     ...(props.draggable
       ? {
+          top: `${windowTop}px`,
           transform: `translate3d(${position.value.x}px, ${position.value.y}px, 0)`,
         }
       : {

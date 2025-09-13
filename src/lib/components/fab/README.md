@@ -92,6 +92,8 @@ import Fab from 'sard-uniapp/components/fab/fab.vue'
 | gap-x <sup>1.24.2+</sup>            | 悬浮按钮与窗口左右两边的最小间距，单位为 px  | number                         | 24     |
 | gap-y <sup>1.24.2+</sup>            | 悬浮按钮与窗口上下两边的最小间距，单位为 px  | number                         | 24     |
 | offset (v-model) <sup>1.24.2+</sup> | 控制悬浮按钮的位置                           | { x: number; y: number }       | -      |
+| navbar-height <sup>1.24.3+</sup>    | 自定义顶部导航栏的高度                       | number                         | 0      |
+| tabbar-height <sup>1.24.3+</sup>    | 自定义底部标签栏的高度                       | number                         | 0      |
 
 ### FabSlots
 
