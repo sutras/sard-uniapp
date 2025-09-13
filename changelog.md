@@ -1,3 +1,22 @@
+## [1.24.3](https://github.com/sutras/sard-uniapp/compare/v1.24.2...v1.24.3) (2025-09-13)
+
+
+### Bug Fixes
+
+* **cascader:** 修复allLevels属性透传问题 ([ab36e14](https://github.com/sutras/sard-uniapp/commit/ab36e14f4dee3c5162fa37514667e8362b084744))
+* **datetime-picker:** 修复农历转公历错误的问题 ([9906925](https://github.com/sutras/sard-uniapp/commit/9906925e43b4ca0f5845d932e54db0fccc4e1841))
+* **fab, floating-bubble:** 修复定位不准确的问题 ([de86205](https://github.com/sutras/sard-uniapp/commit/de862051a02c9ba9b4bda963937d07330171dbfd))
+* **input,textarea:** 修复有些机型在输入合成时被最大输入长度阻碍的问题 ([057e800](https://github.com/sutras/sard-uniapp/commit/057e8004fa06849a2e6423d56bf3c4fc85318a8a))
+* 修复web pc端展示默认导航时虚拟触摸事件clientY偏差问题 ([224c052](https://github.com/sutras/sard-uniapp/commit/224c0525e1f1171b05ed212bf4906e09e9c9374e))
+
+
+### Features
+
+* **fab:** 允许自定义按钮 ([312b425](https://github.com/sutras/sard-uniapp/commit/312b4252497b3ab2d030e10057cc73ef6a7c116b))
+* **toast:** 添加transparent属性的全局配置 ([ba14176](https://github.com/sutras/sard-uniapp/commit/ba14176e73d88413a864e35e787233b164028427))
+
+
+
 ## [1.24.2](https://github.com/sutras/sard-uniapp/compare/v1.24.1...v1.24.2) (2025-09-06)
 
 
