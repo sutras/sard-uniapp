@@ -42,6 +42,7 @@ declare module 'vue' {
     SarDropdownItem: typeof import('./components/dropdown-item/dropdown-item.vue').default
     SarEmpty: typeof import('./components/empty/empty.vue').default
     SarFab: typeof import('./components/fab/fab.vue').default
+    SarFabItem: typeof import('./components/fab-item/fab-item.vue').default
     SarFloatingBubble: typeof import('./components/floating-bubble/floating-bubble.vue').default
     SarFloatingPanel: typeof import('./components/floating-panel/floating-panel.vue').default
     SarForm: typeof import('./components/form/form.vue').default

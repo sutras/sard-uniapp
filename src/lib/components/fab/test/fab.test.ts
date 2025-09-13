@@ -51,17 +51,21 @@ describe('Fab', () => {
     ).toBeTruthy()
 
     expect(
-      wrapper.find('.sar-fab__item:nth-child(2) > .sar-fab__item-name').text(),
+      wrapper
+        .find(
+          '.sar-fab__content .sar-fab-item:nth-child(2) > .sar-fab-item__name',
+        )
+        .text(),
     ).toEqual('分享')
 
     expect(
       wrapper
-        .find('.sar-fab__item:nth-child(3) .sar-icon')
+        .find('.sar-fab-item:nth-child(3) .sar-icon')
         .attributes()
         .class.includes('demo-icons-star'),
     ).toBeTruthy()
 
-    await wrapper.find('.sar-fab__item_entry').trigger('click')
+    await wrapper.find('.sar-fab-item_entry').trigger('click')
 
     expect(wrapper.emitted().click).toBeTruthy()
 
@@ -74,7 +78,9 @@ describe('Fab', () => {
         .style.includes('display: flex'),
     ).toBeTruthy()
 
-    await wrapper.find('.sar-fab__item:nth-child(2)').trigger('click')
+    await wrapper
+      .find('.sar-fab__content .sar-fab-item:nth-child(2)')
+      .trigger('click')
 
     expect(wrapper.emitted<[FabItem, number]>().select[0][0].name).toEqual(
       '分享',
@@ -91,14 +97,14 @@ describe('Fab', () => {
 
     expect(
       wrapper
-        .find('.sar-fab__item:nth-child(2) .sar-fab__item-btn')
+        .find('.sar-fab-item:nth-child(2) .sar-fab-item__btn')
         .attributes()
         .style.includes('background: rgb(247, 149, 59)'),
     ).toBeTruthy()
 
     expect(
       wrapper
-        .find('.sar-fab__item:nth-child(3) .sar-fab__item-btn')
+        .find('.sar-fab-item:nth-child(3) .sar-fab-item__btn')
         .attributes()
         .style.includes('color: red'),
     ).toBeTruthy()
@@ -111,13 +117,13 @@ describe('Fab', () => {
       }),
     )
 
-    expect(wrapper.find('.sar-fab__item-name').exists()).toBeTruthy()
+    expect(wrapper.find('.sar-fab-item__name').exists()).toBeTruthy()
 
     await wrapper.setProps({
       hideName: true,
     })
 
-    expect(wrapper.find('.sar-fab__item-name').exists()).toBeFalsy()
+    expect(wrapper.find('.sar-fab-item__name').exists()).toBeFalsy()
   })
 
   test('Position', async () => {

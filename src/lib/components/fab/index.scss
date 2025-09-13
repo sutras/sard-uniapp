@@ -7,12 +7,12 @@
     right: var(--sar-fab-right);
     bottom: var(--sar-fab-bottom);
     z-index: var(--sar-fab-z-index);
+    opacity: 0;
   }
 
   @include e(content) {
     @include universal;
     position: absolute;
-    gap: var(--sar-fab-item-gap);
   }
 
   @include m(draggable) {
@@ -38,45 +38,6 @@
       opacity var(--sar-fab-duration) ease-out;
   }
 
-  @include e(item) {
-    @include universal;
-    flex-direction: row;
-    align-items: center;
-    gap: var(--sar-fab-item-name-gap);
-    cursor: pointer;
-
-    &:active {
-      opacity: var(--sar-fab-item-active-opacity);
-    }
-
-    @include m(entry) {
-      @include e(item-btn) {
-        transition: transform var(--sar-fab-duration);
-      }
-    }
-  }
-
-  @include e(item-name) {
-    @include universal;
-    font-size: var(--sar-fab-item-name-font-size);
-    color: var(--sar-fab-item-name-color);
-    white-space: nowrap;
-  }
-
-  @include e(item-btn) {
-    @include universal;
-    flex: none;
-    justify-content: center;
-    align-items: center;
-    width: var(--sar-fab-item-btn-size);
-    height: var(--sar-fab-item-btn-size);
-    border-radius: var(--sar-rounded-full);
-    font-size: var(--sar-fab-item-btn-font-size);
-    color: var(--sar-fab-item-btn-color);
-    background-color: var(--sar-fab-item-btn-bg);
-    box-shadow: var(--sar-fab-item-btn-box-shadow);
-  }
-
   @include m(top) {
     @include e(content) {
       top: calc(100% + var(--sar-fab-item-gap));
@@ -93,25 +54,11 @@
     @include e(content) {
       left: 0;
     }
-
-    @include e(item) {
-      flex-direction: row-reverse;
-    }
   }
 
   @include m(right) {
     @include e(content) {
       right: 0;
-    }
-  }
-
-  @include m(visible) {
-    @include e(item) {
-      @include m(entry) {
-        @include e(item-btn) {
-          transform: rotate(45deg);
-        }
-      }
     }
   }
 

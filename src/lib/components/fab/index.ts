@@ -1,1 +1,1 @@
-export type { FabProps, FabEmits, FabItem } from './common'
+export type { FabProps, FabSlots, FabEmits, FabItem } from './common'

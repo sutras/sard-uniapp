@@ -1,0 +1,44 @@
+@use '../style/base' as *;
+
+@include bem(fab-item) {
+  @include b() {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    gap: var(--sar-fab-item-name-gap);
+    cursor: pointer;
+
+    &:active {
+      opacity: var(--sar-fab-item-active-opacity);
+    }
+
+    @include m(left) {
+      flex-direction: row-reverse;
+    }
+
+    &:not(:first-child) {
+      margin-top: var(--sar-fab-item-gap);
+    }
+  }
+
+  @include e(name) {
+    @include universal;
+    font-size: var(--sar-fab-item-name-font-size);
+    color: var(--sar-fab-item-name-color);
+    white-space: nowrap;
+  }
+
+  @include e(btn) {
+    @include universal;
+    flex: none;
+    justify-content: center;
+    align-items: center;
+    width: var(--sar-fab-item-btn-size);
+    height: var(--sar-fab-item-btn-size);
+    border-radius: var(--sar-rounded-full);
+    font-size: var(--sar-fab-item-btn-font-size);
+    color: var(--sar-fab-item-btn-color);
+    background-color: var(--sar-fab-item-btn-bg);
+    box-shadow: var(--sar-fab-item-btn-box-shadow);
+  }
+}

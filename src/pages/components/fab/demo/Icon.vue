@@ -1,11 +1,19 @@
 <template>
-  <sar-fab icon="share" icon-family="demo-icons" @click="onClick" />
+  <sar-fab
+    :item-list="itemList"
+    icon="list"
+    visible-icon="close"
+    icon-family="demo-icons"
+  />
 </template>
 
 <script lang="ts" setup>
-import { toast } from 'sard-uniapp'
+import { type FabItem } from 'sard-uniapp'
+import { ref } from 'vue'
 
-const onClick = () => {
-  toast('点击了按钮')
-}
+const itemList = ref<FabItem[]>([
+  { name: '首页', iconFamily: 'demo-icons', icon: 'house-door' },
+  { name: '分享', iconFamily: 'demo-icons', icon: 'share' },
+  { name: '收藏', iconFamily: 'demo-icons', icon: 'star' },
+])
 </script>

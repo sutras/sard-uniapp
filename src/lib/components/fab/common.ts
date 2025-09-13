@@ -11,6 +11,7 @@ export interface FabProps {
   color?: string
   background?: string
   icon?: string
+  visibleIcon?: string
   iconFamily?: string
   itemList?: FabItem[]
   hideName?: boolean
@@ -32,6 +33,11 @@ export const defaultFabProps = () => ({
   itemList: () => [],
 })
 
+export interface FabSlots {
+  default?(props: { visible: boolean }): any
+  list?(props: { onItemClick: (item: FabItem, index: number) => void }): any
+}
+
 export interface FabEmits {
   (e: 'click', event: any): void
   (e: 'select', item: FabItem, index: number): void
@@ -44,4 +50,14 @@ export interface FabItem {
   background?: string
   icon?: string
   iconFamily?: string
+  [key: PropertyKey]: any
 }
+
+export interface FabContext {
+  hideName?: boolean
+  visible?: boolean
+  isLeft?: boolean
+  onItemClick: (item: FabItem, index: number) => void
+}
+
+export const fabContextSymbol = Symbol('fab-context')
