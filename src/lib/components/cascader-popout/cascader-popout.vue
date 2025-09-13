@@ -17,6 +17,7 @@
         :hint-text="hintText"
         :change-on-select="changeOnSelect"
         :label-render="labelRender"
+        :all-levels="allLevels"
         @select="(option, tabIndex) => $emit('select', option, tabIndex)"
         @change="onChange"
       >

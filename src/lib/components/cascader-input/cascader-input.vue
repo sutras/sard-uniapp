@@ -29,6 +29,7 @@
       :hint-text="hintText"
       :change-on-select="changeOnSelect"
       :label-render="labelRender"
+      :all-levels="allLevels"
       :validate-event="validateEvent"
       :resettable="resettable"
       @select="(option, tabIndex) => $emit('select', option, tabIndex)"
