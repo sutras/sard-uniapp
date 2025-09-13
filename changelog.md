@@ -1,3 +1,12 @@
+## [1.24.4](https://github.com/sutras/sard-uniapp/compare/v1.24.3...v1.24.4) (2025-09-13)
+
+
+### Bug Fixes
+
+* **form-item:** 修复滚动报错问题 ([046fc16](https://github.com/sutras/sard-uniapp/commit/046fc16abc03e260172eb9a6f763b241d58ebd05))
+
+
+
 ## [1.24.3](https://github.com/sutras/sard-uniapp/compare/v1.24.2...v1.24.3) (2025-09-13)
 
 
