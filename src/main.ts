@@ -6,8 +6,6 @@ import zhCN from 'sard-uniapp/components/locale/lang/zh-CN'
 import enUS from 'sard-uniapp/components/locale/lang/en-US'
 import arSA from 'sard-uniapp/components/locale/lang/ar-SA'
 
-console.log(uni.getWindowInfo())
-
 // #ifdef WEB
 import './bridge'
 // #endif
