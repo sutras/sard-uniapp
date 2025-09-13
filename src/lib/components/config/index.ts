@@ -490,6 +490,7 @@ export const defaultConfig = {
     type: 'text' as ToastProps['type'],
     position: 'center' as ToastProps['position'],
     overlay: false,
+    transparent: false,
     timeout: 1500,
     duration: 200,
   },
