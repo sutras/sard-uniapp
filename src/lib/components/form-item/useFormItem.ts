@@ -1,5 +1,6 @@
 import {
   computed,
+  getCurrentInstance,
   nextTick,
   onBeforeUnmount,
   onMounted,
@@ -207,11 +208,12 @@ export function useFormItem(props: FormItemProps) {
   }
 
   const fieldId = uniqid()
+  const instance = getCurrentInstance()
 
   const scrollToField = async () => {
     const [scrollInfo, fieldRect, windowInfo] = await Promise.all([
       getViewportScrollInfo(),
-      getBoundingClientRect(`.${fieldId}`),
+      getBoundingClientRect(`.${fieldId}`, instance),
       getWindowInfo(),
     ])
 
