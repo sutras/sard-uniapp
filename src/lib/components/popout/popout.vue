@@ -13,22 +13,23 @@
       <view :class="classNames(bem.e('header'), bem.em('header', props.type))">
         <view v-if="type === 'compact'" :class="bem.e('button-wrap')">
           <slot
+            v-if="$slots.cancel"
             name="cancel"
             :on-click="onCancel"
             :loading="loading.cancel"
             :text="mergedCancelText"
+          ></slot>
+          <sar-button
+            v-if="!$slots.cancel"
+            type="pale-text"
+            theme="neutral"
+            :root-class="classNames(bem.e('header-cancel'))"
+            :loading="loading.cancel"
+            block
+            @click="onCancel"
           >
-            <sar-button
-              type="pale-text"
-              theme="neutral"
-              :root-class="classNames(bem.e('header-cancel'))"
-              :loading="loading.cancel"
-              block
-              @click="onCancel"
-            >
-              {{ mergedCancelText }}
-            </sar-button>
-          </slot>
+            {{ mergedCancelText }}
+          </sar-button>
         </view>
         <slot name="title-prepend"></slot>
         <view :class="bem.e('title')">
@@ -39,24 +40,25 @@
         </view>
         <view v-if="type === 'compact'" :class="bem.e('button-wrap')">
           <slot
+            v-if="$slots.confirm"
             name="confirm"
             :on-click="onConfirm"
             :disabled="confirmDisabled"
             :loading="loading.confirm"
             :text="mergedConfirmText"
+          ></slot>
+          <sar-button
+            v-if="!$slots.confirm"
+            type="pale-text"
+            theme="primary"
+            :root-class="classNames(bem.e('header-confirm'))"
+            :loading="loading.confirm"
+            :disabled="confirmDisabled"
+            block
+            @click="onConfirm"
           >
-            <sar-button
-              type="pale-text"
-              theme="primary"
-              :root-class="classNames(bem.e('header-confirm'))"
-              :loading="loading.confirm"
-              :disabled="confirmDisabled"
-              block
-              @click="onConfirm"
-            >
-              {{ mergedConfirmText }}
-            </sar-button>
-          </slot>
+            {{ mergedConfirmText }}
+          </sar-button>
         </view>
         <view
           v-if="type === 'loose' && showClose"
@@ -72,45 +74,45 @@
       <slot name="visible" :whole="wholeVisible" :already="already"></slot>
       <view v-if="showFooter && type === 'loose'" :class="bem.e('footer')">
         <slot
+          v-if="$slots.cancel"
           name="cancel"
           :on-click="onCancel"
           :visible="showCancel"
           :loading="loading.cancel"
           :text="mergedCancelText"
+        ></slot>
+        <sar-button
+          v-if="!$slots.cancel && showCancel"
+          type="pale"
+          theme="primary"
+          round
+          :loading="loading.cancel"
+          block
+          @click="onCancel"
         >
-          <sar-button
-            v-if="showCancel"
-            type="pale"
-            theme="primary"
-            round
-            :loading="loading.cancel"
-            block
-            @click="onCancel"
-          >
-            {{ mergedCancelText }}
-          </sar-button>
-        </slot>
+          {{ mergedCancelText }}
+        </sar-button>
         <slot
+          v-if="$slots.confirm"
           name="confirm"
           :visible="showConfirm"
           :on-click="onConfirm"
           :disabled="confirmDisabled"
           :loading="loading.confirm"
           :text="mergedConfirmText"
+        ></slot>
+        <sar-button
+          v-if="!$slots.confirm && showConfirm"
+          type="default"
+          theme="primary"
+          round
+          :loading="loading.confirm"
+          :disabled="confirmDisabled"
+          block
+          @click="onConfirm"
         >
-          <sar-button
-            v-if="showConfirm"
-            type="default"
-            theme="primary"
-            round
-            :loading="loading.confirm"
-            :disabled="confirmDisabled"
-            block
-            @click="onConfirm"
-          >
-            {{ mergedConfirmText }}
-          </sar-button>
-        </slot>
+          {{ mergedConfirmText }}
+        </sar-button>
       </view>
     </view>
   </sar-popup>
