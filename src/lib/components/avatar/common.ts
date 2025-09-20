@@ -10,6 +10,7 @@ export interface AvatarProps {
   background?: string
   color?: string
   src?: string
+  index?: number
 }
 
 export const defaultAvatarProps = defaultConfig.avatar
@@ -17,4 +18,8 @@ export const defaultAvatarProps = defaultConfig.avatar
 export interface AvatarSlots {
   default?(props: Record<string, never>): any
   extra?(props: Record<string, never>): any
+}
+
+export interface AvatarEmits {
+  (e: 'click', event: any): void
 }

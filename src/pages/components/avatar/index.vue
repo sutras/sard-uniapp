@@ -27,6 +27,18 @@
     <doc-demo title="额外内容">
       <DemoExtra />
     </doc-demo>
+
+    <doc-demo title="头像组">
+      <DemoGroup />
+    </doc-demo>
+
+    <doc-demo title="实际头像数不超过最大数">
+      <DemoGroupLess />
+    </doc-demo>
+
+    <doc-demo title="覆盖面">
+      <DemoGroupCoverage />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -38,4 +50,7 @@ import DemoStyle from './demo/Style.vue'
 import DemoPicture from './demo/Picture.vue'
 import DemoChildren from './demo/Children.vue'
 import DemoExtra from './demo/Extra.vue'
+import DemoGroup from './demo/Group.vue'
+import DemoGroupLess from './demo/GroupLess.vue'
+import DemoGroupCoverage from './demo/GroupCoverage.vue'
 </script>

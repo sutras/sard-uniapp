@@ -11,6 +11,7 @@
     height: var(--sar-avatar-height);
     font-size: var(--sar-avatar-font-size);
     background-color: var(--sar-avatar-bg);
+    border: 1px solid transparent;
   }
 
   @include e(image) {
@@ -25,5 +26,24 @@
 
   @include m(square) {
     border-radius: var(--sar-avatar-square-border-radius);
+  }
+
+  @include m(in-group) {
+    border-color: var(--sar-avatar-border-color);
+  }
+
+  @include e('remain') {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    font-size: var(--sar-avatar-remain-font-size);
+    color: var(--sar-avatar-remain-color);
+    background-color: var(--sar-avatar-remain-bg);
+    border-radius: inherit;
   }
 }

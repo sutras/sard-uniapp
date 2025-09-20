@@ -1,8 +1,9 @@
 import { describe, expect, test } from 'vitest'
 import { mount } from '@vue/test-utils'
-import { h } from 'vue'
+import { h, ref } from 'vue'
 
 import Avatar from '../avatar.vue'
+import AvatarGroup from '../../avatar-group/avatar-group.vue'
 
 describe('Avatar', () => {
   test('create', async () => {
@@ -62,5 +63,40 @@ describe('Avatar', () => {
     )
 
     expect(wrapper.text()).toBe('extra')
+  })
+
+  test('AvatarGroup', async () => {
+    const avatarList = ref(
+      Array(10)
+        .fill(0)
+        .map((_, i) => ({ text: i + 1 })),
+    )
+
+    const wrapper = mount(
+      h(AvatarGroup, { total: 10, max: 5 }, () => {
+        return avatarList.value.slice(0, 5).map((item, index) => {
+          return h(
+            Avatar,
+            {
+              index,
+              key: index,
+            },
+            () => item.text,
+          )
+        })
+      }),
+    )
+
+    expect(
+      wrapper.find('.sar-avatar:last-child .sar-avatar__remain').text(),
+    ).toBe('+5')
+
+    await wrapper.setProps({
+      max: 4,
+    })
+
+    expect(
+      wrapper.find('.sar-avatar:nth-child(4) .sar-avatar__remain').text(),
+    ).toBe('+6')
   })
 })

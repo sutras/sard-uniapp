@@ -5,6 +5,7 @@ declare module 'vue' {
     SarActionSheet: typeof import('./components/action-sheet/action-sheet.vue').default
     SarAlert: typeof import('./components/alert/alert.vue').default
     SarAvatar: typeof import('./components/avatar/avatar.vue').default
+    SarAvatarGroup: typeof import('./components/avatar-group/avatar-group.vue').default
     SarBackTop: typeof import('./components/back-top/back-top.vue').default
     SarBadge: typeof import('./components/badge/badge.vue').default
     SarButton: typeof import('./components/button/button.vue').default

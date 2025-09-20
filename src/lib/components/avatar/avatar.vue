@@ -1,5 +1,5 @@
 <template>
-  <view :class="avatarClass" :style="avatarStyle">
+  <view :class="avatarClass" :style="avatarStyle" @click="onClick">
     <slot>
       <image
         v-if="src"
@@ -16,18 +16,33 @@
       />
     </slot>
     <slot name="extra"></slot>
+
+    <view
+      v-if="
+        context && context.showRemain && context.total > context.max && isLast
+      "
+      :class="remainClass"
+      @click="context.onRemainClick"
+    >
+      {{ context.remainText }}
+    </view>
   </view>
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import {
+  AvatarEmits,
   type AvatarProps,
   type AvatarSlots,
   defaultAvatarProps,
 } from './common'
+import {
+  AvatarGroupContext,
+  avatarGroupContextSymbol,
+} from '../avatar-group/common'
 
 defineOptions({
   options: {
@@ -40,13 +55,30 @@ const props = withDefaults(defineProps<AvatarProps>(), defaultAvatarProps)
 
 defineSlots<AvatarSlots>()
 
+const emit = defineEmits<AvatarEmits>()
+
 const bem = createBem('avatar')
 
 // main
+const context = inject<AvatarGroupContext | null>(
+  avatarGroupContextSymbol,
+  null,
+)
+
+const isLast = computed(() => context && context.max - 1 === props.index)
+
+const onClick = (event: any) => {
+  emit('click', event)
+}
 
 // others
 const avatarClass = computed(() => {
-  return classNames(bem.b(), bem.m(props.shape), props.rootClass)
+  return classNames(
+    bem.b(),
+    bem.m(props.shape),
+    bem.m('in-group', !!context),
+    props.rootClass,
+  )
 })
 
 const avatarStyle = computed(() => {
@@ -57,9 +89,17 @@ const avatarStyle = computed(() => {
       color: props.color,
       fontSize: props.iconSize,
       background: props.background,
+      marginLeft:
+        context && props.index !== 0
+          ? `calc(${props.size ? props.size : `var(--sar-avatar-width)`} * ${-context.coverage})`
+          : undefined,
     },
     props.rootStyle,
   )
+})
+
+const remainClass = computed(() => {
+  return classNames(bem.e('remain'))
 })
 </script>
 

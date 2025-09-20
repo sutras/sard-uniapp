@@ -43,6 +43,7 @@ export default defineConfig({
       'waterfall-item': '../waterfall',
       'waterfall-load': '../waterfall',
       'dnd-item': '../dnd',
+      'avatar-group': '../avatar',
     },
     multiDefaultExport: ['components/popup/popup.vue'],
   },

@@ -86,6 +86,10 @@ export const defaultConfig = {
   avatar: {
     shape: 'circle' as AvatarProps['shape'],
   },
+  avatarGroup: {
+    coverage: 0.5,
+    showRemain: true,
+  },
   backTop: {
     visibleHeight: 200,
   },
