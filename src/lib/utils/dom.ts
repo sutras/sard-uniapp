@@ -33,7 +33,10 @@ export function getBoundingClientRect(
  */
 export function getWindowInfo(): UniNamespace.GetWindowInfoResult {
   if (uni.getWindowInfo) {
-    return uni.getWindowInfo()
+    const windowInfo = uni.getWindowInfo()
+    if (windowInfo.safeAreaInsets) {
+      return windowInfo
+    }
   }
 
   const info = uni.getSystemInfoSync()
