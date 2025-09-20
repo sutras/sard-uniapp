@@ -5,7 +5,7 @@
     @include universal;
     width: 100%;
     height: var(--sar-skeleton-block-height);
-    background-color: var(--sar-skeleton-bg);
+    background: var(--sar-skeleton-bg);
     border-radius: var(--sar-skeleton-border-radius);
   }
 

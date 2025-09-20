@@ -12,7 +12,7 @@
     flex: 1;
     height: var(--sar-progress-bar-height);
     border-radius: var(--sar-progress-bar-border-radius);
-    background-color: var(--sar-progress-bar-track-bg);
+    background: var(--sar-progress-bar-track-bg);
     overflow: hidden;
   }
 
@@ -24,7 +24,7 @@
     border-radius: var(--sar-progress-bar-border-radius);
     font-size: var(--sar-progress-bar-piece-font-size);
     color: var(--sar-progress-bar-piece-color);
-    background-color: var(--sar-progress-bar-piece-bg);
+    background: var(--sar-progress-bar-piece-bg);
     transition: width var(--sar-progress-bar-piece-transition-duration);
   }
 
@@ -84,7 +84,7 @@
 
   @include m(success) {
     @include e(piece) {
-      background-color: var(--sar-progress-bar-success-color);
+      background: var(--sar-progress-bar-success-color);
     }
 
     @include e(status) {
@@ -94,7 +94,7 @@
 
   @include m(warning) {
     @include e(piece) {
-      background-color: var(--sar-progress-bar-warning-color);
+      background: var(--sar-progress-bar-warning-color);
     }
 
     @include e(status) {
@@ -104,7 +104,7 @@
 
   @include m(error) {
     @include e(piece) {
-      background-color: var(--sar-progress-bar-error-color);
+      background: var(--sar-progress-bar-error-color);
     }
 
     @include e(status) {

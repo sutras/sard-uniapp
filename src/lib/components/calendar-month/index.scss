@@ -66,12 +66,12 @@
     @include m(selected, same) {
       border-radius: var(--sar-calendar-day-border-radius);
       color: var(--sar-calendar-day-selected-color);
-      background-color: var(--sar-calendar-day-selected-bg);
+      background: var(--sar-calendar-day-selected-bg);
     }
 
     @include m(start, end) {
       color: var(--sar-calendar-day-selected-color);
-      background-color: var(--sar-calendar-day-selected-bg);
+      background: var(--sar-calendar-day-selected-bg);
     }
 
     @include m(start) {
@@ -86,7 +86,7 @@
 
     @include m(middle) {
       color: var(--sar-calendar-day-middle-color);
-      background-color: var(--sar-calendar-day-middle-bg);
+      background: var(--sar-calendar-day-middle-bg);
     }
   }
 

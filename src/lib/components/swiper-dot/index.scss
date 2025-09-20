@@ -27,10 +27,10 @@
       border-radius: var(--sar-rounded-full);
       font-size: var(--sar-swiper-dot-font-size);
       color: var(--sar-swiper-dot-color);
-      background-color: var(--sar-swiper-dot-bg);
+      background: var(--sar-swiper-dot-bg);
 
       @include m(active) {
-        background-color: var(--sar-swiper-dot-active-bg);
+        background: var(--sar-swiper-dot-active-bg);
       }
     }
   }
@@ -60,7 +60,7 @@
     font-size: var(--sar-swiper-dot-title-font-size);
     line-height: var(--sar-leading-snug);
     color: var(--sar-swiper-dot-title-color);
-    background-color: var(--sar-swiper-dot-title-bg);
+    background: var(--sar-swiper-dot-title-bg);
 
     @include e(item) {
       display: block;
@@ -77,6 +77,6 @@
     font-size: var(--sar-swiper-dot-fraction-font-size);
     line-height: var(--sar-leading-snug);
     color: var(--sar-swiper-dot-fraction-color);
-    background-color: var(--sar-swiper-dot-fraction-bg);
+    background: var(--sar-swiper-dot-fraction-bg);
   }
 }

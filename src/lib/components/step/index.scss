@@ -27,13 +27,13 @@
 
     @include m(behind) {
       @include e(line) {
-        background-color: var(--sar-steps-line-active-color);
+        background: var(--sar-steps-line-active-color);
       }
     }
 
     @include m(self) {
       @include e(line-before) {
-        background-color: var(--sar-steps-line-active-color);
+        background: var(--sar-steps-line-active-color);
       }
     }
 
@@ -95,7 +95,7 @@
     flex-basis: 0;
     margin-left: var(--sar-steps-line-gap);
     margin-right: var(--sar-steps-line-gap);
-    background-color: var(--sar-steps-line-color);
+    background: var(--sar-steps-line-color);
   }
 
   @include e(line-before) {

@@ -10,10 +10,10 @@
     justify-content: center;
     overflow: hidden;
     border-radius: var(--sar-upload-preview-border-radius);
-    background-color: var(--sar-upload-preview-bg);
+    background: var(--sar-upload-preview-bg);
 
     @include m(is-video) {
-      background-color: var(--sar-upload-preview-video-bg);
+      background: var(--sar-upload-preview-video-bg);
     }
   }
 
@@ -51,7 +51,7 @@
     justify-content: center;
     align-items: center;
     color: var(--sar-upload-video-play-color);
-    background-color: var(--sar-upload-video-play-bg);
+    background: var(--sar-upload-video-play-bg);
     cursor: pointer;
   }
 
@@ -98,7 +98,7 @@
     align-items: center;
     justify-content: center;
     color: var(--sar-upload-status-color);
-    background-color: var(--sar-upload-status-bg);
+    background: var(--sar-upload-status-bg);
   }
 
   @include e(status-icon) {
@@ -133,7 +133,7 @@
     border-radius: var(--sar-rounded-full);
     font-size: var(--sar-upload-close-font-size);
     color: var(--sar-upload-close-color);
-    background-color: var(--sar-upload-close-bg);
+    background: var(--sar-upload-close-bg);
     cursor: pointer;
   }
 }

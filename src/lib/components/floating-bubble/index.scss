@@ -13,7 +13,7 @@
     height: var(--sar-floating-bubble-size);
     border-radius: var(--sar-rounded-full);
     color: var(--sar-floating-bubble-color);
-    background-color: var(--sar-floating-bubble-bg);
+    background: var(--sar-floating-bubble-bg);
     box-shadow: var(--sar-floating-bubble-box-shadow);
     opacity: 0;
     cursor: pointer;

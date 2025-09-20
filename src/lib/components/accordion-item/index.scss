@@ -3,7 +3,7 @@
 @include bem(accordion-item) {
   @include b() {
     @include universal;
-    background-color: var(--sar-accordion-bg);
+    background: var(--sar-accordion-bg);
 
     &::before {
       @include border-top(var(--sar-accordion-border-color));
@@ -64,7 +64,7 @@
   @include m-not(disabled) {
     @include e(header) {
       &:active {
-        background-color: var(--sar-accordion-active-bg);
+        background: var(--sar-accordion-active-bg);
       }
     }
   }

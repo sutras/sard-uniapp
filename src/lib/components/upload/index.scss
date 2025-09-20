@@ -20,7 +20,7 @@
     height: var(--sar-upload-select-height);
     color: var(--sar-upload-select-color);
     border-radius: var(--sar-upload-select-border-radius);
-    background-color: var(--sar-upload-select-bg);
+    background: var(--sar-upload-select-bg);
     cursor: pointer;
   }
 
@@ -32,7 +32,7 @@
   @include m-not(disabled, readonly) {
     @include e(select) {
       &:active {
-        background-color: var(--sar-upload-select-active-bg);
+        background: var(--sar-upload-select-active-bg);
       }
     }
   }

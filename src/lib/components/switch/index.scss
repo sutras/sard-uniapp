@@ -9,14 +9,14 @@
     height: var(--sar-switch-height);
     border-radius: var(--sar-rounded-full);
     font-size: var(--sar-switch-font-size);
-    background-color: var(--sar-switch-bg);
+    background: var(--sar-switch-bg);
     cursor: pointer;
     transition:
       background-color var(--sar-switch-transition-duration),
       opacity var(--sar-switch-transition-duration);
 
     @include m(checked) {
-      background-color: var(--sar-switch-checked-bg);
+      background: var(--sar-switch-checked-bg);
     }
 
     @include m(disabled) {
@@ -45,7 +45,7 @@
     align-items: center;
     border-radius: var(--sar-rounded-full);
     color: var(--sar-switch-thumb-color);
-    background-color: var(--sar-switch-thumb-bg);
+    background: var(--sar-switch-thumb-bg);
     transform: translateX(var(--sar-switch-thumb-gap));
     transition: transform var(--sar-switch-thumb-transition-duration);
   }

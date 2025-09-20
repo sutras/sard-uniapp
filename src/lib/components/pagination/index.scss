@@ -28,7 +28,7 @@
     @include m(current) {
       z-index: 3;
       color: var(--sar-pagination-item-current-color);
-      background-color: var(--sar-pagination-item-current-bg);
+      background: var(--sar-pagination-item-current-bg);
       border-color: var(--sar-pagination-item-current-border-color);
     }
 
@@ -38,7 +38,7 @@
 
     @include m-not(disabled, current) {
       &:active {
-        background-color: var(--sar-pagination-item-active-bg);
+        background: var(--sar-pagination-item-active-bg);
       }
     }
   }

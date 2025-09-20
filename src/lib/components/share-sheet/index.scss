@@ -5,7 +5,7 @@
     padding-bottom: env(safe-area-inset-bottom);
     border-top-left-radius: var(--sar-share-sheet-border-radius);
     border-top-right-radius: var(--sar-share-sheet-border-radius);
-    background-color: var(--sar-share-sheet-bg);
+    background: var(--sar-share-sheet-bg);
     touch-action: pan-x;
   }
 
@@ -78,7 +78,7 @@
     border-radius: var(--sar-share-sheet-icon-wrapper-border-radius);
     font-size: var(--sar-share-sheet-icon-font-size);
     color: var(--sar-share-sheet-icon-color);
-    background-color: var(--sar-share-sheet-icon-bg);
+    background: var(--sar-share-sheet-icon-bg);
   }
 
   @include e(image) {
@@ -107,7 +107,7 @@
   @include e(gap) {
     @include universal;
     height: var(--sar-share-sheet-gap-height);
-    background-color: var(--sar-share-sheet-gap-bg);
+    background: var(--sar-share-sheet-gap-bg);
   }
 
   @include e(cancel) {
@@ -120,7 +120,7 @@
     cursor: pointer;
 
     &:active {
-      background-color: var(--sar-share-sheet-cancel-active-bg);
+      background: var(--sar-share-sheet-cancel-active-bg);
     }
   }
 

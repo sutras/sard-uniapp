@@ -8,7 +8,7 @@
     overflow: hidden;
     min-height: var(--sar-list-item-min-height);
     padding: var(--sar-list-item-padding-y) var(--sar-list-item-padding-x);
-    background-color: var(--sar-list-item-bg);
+    background: var(--sar-list-item-bg);
 
     &:first-child {
       border-top-left-radius: inherit;
@@ -40,7 +40,7 @@
       cursor: pointer;
 
       &:active {
-        background-color: var(--sar-list-item-active-bg);
+        background: var(--sar-list-item-active-bg);
       }
     }
 

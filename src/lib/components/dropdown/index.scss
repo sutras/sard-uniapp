@@ -5,7 +5,7 @@
     @include universal;
     flex-direction: row;
     height: var(--sar-dropdown-height);
-    background-color: var(--sar-dropdown-bg);
+    background: var(--sar-dropdown-bg);
   }
 
   @include e(shadow) {

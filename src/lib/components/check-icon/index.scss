@@ -23,7 +23,7 @@
 
     @include m(disabled) {
       color: var(--sar-check-icon-disabled-color);
-      background-color: var(--sar-check-icon-disabled-bg);
+      background: var(--sar-check-icon-disabled-bg);
       border-color: var(--sar-check-icon-disabled-border-color);
     }
   }

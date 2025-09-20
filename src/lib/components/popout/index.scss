@@ -6,7 +6,7 @@
     padding-bottom: env(safe-area-inset-bottom);
     border-top-left-radius: var(--sar-popout-border-top-radius);
     border-top-right-radius: var(--sar-popout-border-top-radius);
-    background-color: var(--sar-popout-bg);
+    background: var(--sar-popout-bg);
   }
 
   @include e(header) {

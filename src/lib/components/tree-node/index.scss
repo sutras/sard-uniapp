@@ -15,19 +15,19 @@
     flex-direction: row;
     align-items: center;
     padding: var(--sar-tree-node-padding-y) var(--sar-tree-node-padding-x);
-    background-color: var(--sar-tree-node-bg);
+    background: var(--sar-tree-node-bg);
 
     &::after {
       @include border-bottom(var(--sar-tree-border-color));
     }
 
     @include m(active) {
-      background-color: var(--sar-tree-node-active-bg);
+      background: var(--sar-tree-node-active-bg);
     }
 
     @include m(dragging) {
       z-index: 1;
-      background-color: var(--sar-tree-node-dragging-bg);
+      background: var(--sar-tree-node-dragging-bg);
       box-shadow: var(--sar-tree-node-dragging-shadow);
       transition: none;
     }

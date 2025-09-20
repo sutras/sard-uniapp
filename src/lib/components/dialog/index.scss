@@ -5,7 +5,7 @@
     @include universal;
     width: var(--sar-dialog-width);
     max-width: 100%;
-    background-color: var(--sar-dialog-bg);
+    background: var(--sar-dialog-bg);
     border-radius: var(--sar-dialog-border-radius);
   }
 

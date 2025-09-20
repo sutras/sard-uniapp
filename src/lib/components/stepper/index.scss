@@ -17,7 +17,7 @@
     align-items: center;
     width: var(--sar-stepper-height);
     font-size: var(--sar-stepper-button-font-size);
-    background-color: var(--sar-stepper-bg);
+    background: var(--sar-stepper-bg);
 
     cursor: pointer;
 
@@ -41,12 +41,12 @@
 
     @include m-not(disabled, readonly) {
       &:active {
-        background-color: var(--sar-stepper-button-active-bg);
+        background: var(--sar-stepper-button-active-bg);
       }
     }
 
     @include m(disabled) {
-      background-color: var(--sar-disabled-shallow-bg);
+      background: var(--sar-disabled-shallow-bg);
       color: var(--sar-disabled-color);
     }
   }
@@ -60,7 +60,7 @@
     border-radius: 0;
     font-size: var(--sar-stepper-input-font-size);
     text-align: center;
-    background-color: var(--sar-stepper-bg);
+    background: var(--sar-stepper-bg);
   }
 
   @include e(placeholder) {

@@ -43,7 +43,7 @@
     height: 100%;
     border-radius: inherit;
     opacity: 0;
-    background-color: var(--sar-button-active-bg);
+    background: var(--sar-button-active-bg);
     pointer-events: none;
   }
 
@@ -152,7 +152,7 @@
     @include m(mild-#{$theme}) {
       @include button-set-theme {
         color: $color;
-        background-color: var(--sar-button-mild-bg);
+        background: var(--sar-button-mild-bg);
       }
     }
 
