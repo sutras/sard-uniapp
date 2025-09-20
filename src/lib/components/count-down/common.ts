@@ -41,7 +41,7 @@ export function getCurrentTime(remainTime: number): CountDownCurrentTime {
     milliseconds: remainTime % 1000,
     seconds: ~~(remainTime / 1000) % 60,
     minutes: ~~(remainTime / 1000 / 60) % 60,
-    hours: ~~(remainTime / 1000 / 60 / 60) % 60,
+    hours: ~~(remainTime / 1000 / 60 / 60) % 24,
     days: ~~(remainTime / 1000 / 60 / 60 / 24),
     total: remainTime,
   }
