@@ -1,3 +1,19 @@
+## [1.24.5](https://github.com/sutras/sard-uniapp/compare/v1.24.4...v1.24.5) (2025-09-20)
+
+
+### Bug Fixes
+
+* **popout:** 修复popout类组件不显示按钮的问题 ([47bcea9](https://github.com/sutras/sard-uniapp/commit/47bcea986609b927a79d2bd917f907eda1757f82))
+* **utils:** 修复 支付宝getWindowInfo没有safeAreaInsets属性的问题 ([3d64401](https://github.com/sutras/sard-uniapp/commit/3d64401aa9f71d468e9463160493c981a3caa323))
+* 修复倒计时小时溢出的问题 ([823faa1](https://github.com/sutras/sard-uniapp/commit/823faa107517f91b1b630d70986a3e8b1206c39e))
+
+
+### Features
+
+* 新增 avatar-group 组件 ([4954219](https://github.com/sutras/sard-uniapp/commit/4954219095bc3cff12d7de74c90af188b54a99fc))
+
+
+
 ## [1.24.4](https://github.com/sutras/sard-uniapp/compare/v1.24.3...v1.24.4) (2025-09-13)
 
 
