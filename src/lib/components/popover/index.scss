@@ -10,7 +10,7 @@
     left: auto;
     overflow: visible;
     border-radius: var(--sar-popover-border-radius);
-    background-color: var(--sar-popover-bg);
+    background: var(--sar-popover-bg);
     box-shadow: var(--sar-popover-box-shadow);
     touch-action: none;
   }
@@ -38,12 +38,12 @@
   }
 
   @include m(light) {
-    background-color: var(--sar-popover-bg);
+    background: var(--sar-popover-bg);
   }
 
   @include m(dark) {
     color: var(--sar-popover-dark-color);
-    background-color: var(--sar-popover-dark-bg);
+    background: var(--sar-popover-dark-bg);
   }
 
   // zoom

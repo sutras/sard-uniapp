@@ -28,17 +28,16 @@
     width: var(--sar-password-input-ciphertext-size);
     height: var(--sar-password-input-ciphertext-size);
     border-radius: var(--sar-rounded-full);
-    background-color: var(--sar-password-input-ciphertext-bg);
+    background: var(--sar-password-input-ciphertext-bg);
   }
 
   @include e(cursor) {
     @include universal;
     width: var(--sar-password-input-cursor-width);
     height: var(--sar-password-input-cursor-height);
-    background-color: var(--sar-password-input-cursor-color);
-    animation: var(--sar-password-input-cursor-animation-duration) #{bem-ns(
-        password-input-cursor-flicker
-      )} infinite;
+    background: var(--sar-password-input-cursor-color);
+    animation: var(--sar-password-input-cursor-animation-duration)
+      #{bem-ns(password-input-cursor-flicker)} infinite;
   }
 
   @keyframes #{bem-ns(password-input-cursor-flicker)} {
@@ -128,11 +127,11 @@
     color: var(--sar-disabled-color);
 
     @include e(item) {
-      background-color: var(--sar-disabled-shallow-bg);
+      background: var(--sar-disabled-shallow-bg);
     }
 
     @include e(ciphertext) {
-      background-color: var(--sar-disabled-color);
+      background: var(--sar-disabled-color);
     }
   }
 }

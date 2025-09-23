@@ -19,6 +19,7 @@
     @include m(current) {
       font-weight: var(--sar-font-bold);
       color: var(--sar-tabs-tab-active-color);
+      background: var(--sar-tab-active-bg);
     }
 
     @include m(disabled) {
@@ -39,7 +40,7 @@
 
       @include m(current) {
         color: var(--sar-tabs-pill-current-tab-color);
-        background-color: var(--sar-tabs-pill-current-tab-bg);
+        background: var(--sar-tabs-pill-current-tab-bg);
       }
     }
   }
@@ -64,7 +65,7 @@
 
       @include m(current) {
         color: var(--sar-white);
-        background-color: var(--sar-tabs-card-theme-color);
+        background: var(--sar-tabs-card-theme-color);
       }
     }
   }

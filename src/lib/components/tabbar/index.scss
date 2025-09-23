@@ -7,7 +7,7 @@
     align-items: stretch;
     height: var(--sar-tabbar-height);
     color: var(--sar-tabbar-color);
-    background-color: var(--sar-tabbar-bg);
+    background: var(--sar-tabbar-bg);
   }
 
   @include m(fixed) {

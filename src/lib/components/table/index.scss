@@ -5,6 +5,6 @@
     @include universal;
     display: inline-flex;
     min-width: 100%;
-    background-color: var(--sar-table-bg);
+    background: var(--sar-table-bg);
   }
 }

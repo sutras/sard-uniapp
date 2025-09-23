@@ -4,7 +4,7 @@
   @include b() {
     @include universal;
     padding: var(--sar-keyboard-padding);
-    background-color: var(--sar-keyboard-bg);
+    background: var(--sar-keyboard-bg);
   }
 
   @include e(content) {
@@ -31,11 +31,11 @@
     border-radius: var(--sar-keyboard-key-border-radius);
     font-size: var(--sar-keyboard-key-font-size);
     color: var(--sar-keyboard-key-color);
-    background-color: var(--sar-keyboard-key-bg);
+    background: var(--sar-keyboard-key-bg);
     cursor: pointer;
 
     &:active {
-      background-color: var(--sar-keyboard-key-active-bg);
+      background: var(--sar-keyboard-key-active-bg);
     }
   }
 
@@ -57,10 +57,10 @@
         max-width: 20%;
 
         @include e(key) {
-          background-color: var(--sar-keyboard-key-plate-bg);
+          background: var(--sar-keyboard-key-plate-bg);
 
           &:active {
-            background-color: var(--sar-keyboard-key-plate-active-bg);
+            background: var(--sar-keyboard-key-plate-active-bg);
           }
         }
       }

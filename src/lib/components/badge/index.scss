@@ -17,7 +17,7 @@
     border: 1px solid var(--sar-badge-border-color);
     border-radius: var(--sar-rounded-full);
     color: var(--sar-badge-color);
-    background-color: var(--sar-badge-bg);
+    background: var(--sar-badge-bg);
 
     @include m(fixed) {
       position: absolute;

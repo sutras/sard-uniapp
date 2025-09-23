@@ -57,7 +57,7 @@
 
     @include m-not(disabled) {
       &:active {
-        background-color: var(--sar-cascader-option-active-bg);
+        background: var(--sar-cascader-option-active-bg);
       }
     }
   }

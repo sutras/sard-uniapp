@@ -6,7 +6,7 @@
     flex-direction: row;
     align-items: stretch;
     padding: var(--sar-search-padding-y) var(--sar-search-padding-x);
-    background-color: var(--sar-search-bg);
+    background: var(--sar-search-bg);
   }
 
   @include m(show-action) {
@@ -18,7 +18,7 @@
   }
 
   @include e(input) {
-    background-color: var(--sar-search-input-bg);
+    background: var(--sar-search-input-bg);
 
     @include m(round) {
       border-radius: var(--sar-rounded-full);
@@ -37,7 +37,7 @@
 
   @include m(disabled) {
     @include e(input) {
-      background-color: var(--sar-search-input-disabled-bg);
+      background: var(--sar-search-input-disabled-bg);
     }
   }
 }

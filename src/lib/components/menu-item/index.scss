@@ -81,7 +81,7 @@
     @include e(item) {
       @include m-not(disabled) {
         &:active {
-          background-color: var(--sar-menu-item-active-bg);
+          background: var(--sar-menu-item-active-bg);
         }
       }
 
@@ -97,7 +97,7 @@
     @include e(item) {
       @include m-not(disabled) {
         &:active {
-          background-color: var(--sar-menu-item-dark-active-bg);
+          background: var(--sar-menu-item-dark-active-bg);
         }
       }
 

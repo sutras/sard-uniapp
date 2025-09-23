@@ -14,7 +14,7 @@
     @include m(fixed-left, fixed-right) {
       position: sticky;
       z-index: 2;
-      background-color: var(--sar-table-cell-fixed-bg);
+      background: var(--sar-table-cell-fixed-bg);
 
       &::before {
         content: '';

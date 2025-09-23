@@ -20,7 +20,7 @@
     padding-right: var(--sar-grid-item-padding-x);
     padding-bottom: var(--sar-grid-item-padding-y);
     padding-left: var(--sar-grid-item-padding-x);
-    background-color: var(--sar-grid-bg);
+    background: var(--sar-grid-bg);
   }
 
   @include e(main) {
@@ -120,7 +120,7 @@
     @include e(content) {
       cursor: pointer;
       &:active {
-        background-color: var(--sar-grid-active-bg);
+        background: var(--sar-grid-active-bg);
       }
     }
   }

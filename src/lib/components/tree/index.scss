@@ -3,7 +3,7 @@
 @include bem(tree) {
   @include b() {
     @include universal;
-    background-color: var(--sar-tree-bg);
+    background: var(--sar-tree-bg);
     transition: height var(--sar-tree-duration);
   }
 

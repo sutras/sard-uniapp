@@ -8,7 +8,7 @@
     align-items: center;
     min-height: var(--sar-notice-bar-min-height);
     padding: 0 var(--sar-notice-bar-padding-x);
-    background-color: var(--sar-notice-bar-bg);
+    background: var(--sar-notice-bar-bg);
     color: var(--sar-notice-bar-color);
 
     @include m(wrap) {
@@ -64,7 +64,8 @@
 
   @include m(infinite) {
     @include e(wrapper) {
-      animation: #{bem-ns(notice-bar-scroll-infinite)} linear both running infinite;
+      animation: #{bem-ns(notice-bar-scroll-infinite)} linear both running
+        infinite;
     }
   }
 
