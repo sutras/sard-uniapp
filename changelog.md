@@ -1,3 +1,13 @@
+## [1.24.6](https://github.com/sutras/sard-uniapp/compare/v1.24.5...v1.24.6) (2025-09-23)
+
+
+### Bug Fixes
+
+* **picker:** 将空数组视为空值, 修复级联选择初始选择问题 ([2fd8d18](https://github.com/sutras/sard-uniapp/commit/2fd8d18e411a526dc65cb1c99826162bae3ba4c6))
+* 修复getWindowInfo在支付宝端缺少safeAreaInsets的问题 ([cbd26d7](https://github.com/sutras/sard-uniapp/commit/cbd26d74074d9afe9299db92b9245de7cc46177a))
+
+
+
 ## [1.24.5](https://github.com/sutras/sard-uniapp/compare/v1.24.4...v1.24.5) (2025-09-20)
 
 
