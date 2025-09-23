@@ -5,7 +5,7 @@
     padding-bottom: env(safe-area-inset-bottom);
     border-top-left-radius: var(--sar-action-sheet-border-radius);
     border-top-right-radius: var(--sar-action-sheet-border-radius);
-    background-color: var(--sar-action-sheet-bg);
+    background: var(--sar-action-sheet-bg);
     touch-action: none;
   }
 
@@ -24,7 +24,7 @@
   @include e(gap) {
     @include universal;
     height: var(--sar-action-sheet-gap-height);
-    background-color: var(--sar-action-sheet-gap-bg);
+    background: var(--sar-action-sheet-gap-bg);
   }
 
   @include e(content) {
@@ -55,7 +55,7 @@
 
     @include m-not(disabled, loading) {
       &:active {
-        background-color: var(--sar-action-sheet-active-bg);
+        background: var(--sar-action-sheet-active-bg);
       }
     }
   }
@@ -88,7 +88,7 @@
     cursor: pointer;
 
     &:active {
-      background-color: var(--sar-action-sheet-active-bg);
+      background: var(--sar-action-sheet-active-bg);
     }
   }
 

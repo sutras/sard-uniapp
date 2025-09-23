@@ -7,7 +7,7 @@
     align-items: center;
     padding: var(--sar-toast-padding-y) var(--sar-toast-padding-x);
     border-radius: var(--sar-toast-border-radius);
-    background-color: var(--sar-toast-bg);
+    background: var(--sar-toast-bg);
     touch-action: none;
   }
 

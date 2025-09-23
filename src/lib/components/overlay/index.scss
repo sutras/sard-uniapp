@@ -9,7 +9,7 @@
     right: 0;
     bottom: 0;
     z-index: var(--sar-overlay-z-index);
-    background-color: var(--sar-overlay-bg);
+    background: var(--sar-overlay-bg);
     touch-action: none;
 
     @include m(enter-from, leave-to) {

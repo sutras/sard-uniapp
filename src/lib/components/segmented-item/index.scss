@@ -41,7 +41,7 @@
       cursor: pointer;
 
       &:active {
-        background-color: var(--sar-segmented-item-active-bg);
+        background: var(--sar-segmented-item-active-bg);
       }
     }
 

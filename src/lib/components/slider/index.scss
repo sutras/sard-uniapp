@@ -13,7 +13,7 @@
     width: var(--sar-slider-track-main-axis-size);
     height: var(--sar-slider-track-cross-axis-size);
     border-radius: var(--sar-rounded-full);
-    background-color: var(--sar-slider-track-bg);
+    background: var(--sar-slider-track-bg);
   }
 
   @include e(piece) {
@@ -22,7 +22,7 @@
     width: auto;
     height: 100%;
     border-radius: var(--sar-rounded-full);
-    background-color: var(--sar-slider-piece-bg);
+    background: var(--sar-slider-piece-bg);
   }
 
   @include e(thumb-container) {
@@ -51,7 +51,7 @@
     width: var(--sar-slider-thumb-size);
     height: var(--sar-slider-thumb-size);
     border-radius: var(--sar-rounded-full);
-    background-color: var(--sar-slider-thumb-bg);
+    background: var(--sar-slider-thumb-bg);
     box-shadow: var(--sar-slider-thumb-box-shadow);
   }
 
@@ -65,7 +65,7 @@
     line-height: var(--sar-leading-none);
     color: var(--sar-slider-value-color);
     border-radius: var(--sar-rounded-sm);
-    background-color: var(--sar-slider-value-bg);
+    background: var(--sar-slider-value-bg);
     box-shadow: var(--sar-slider-value-box-shadow);
 
     &::after {
@@ -130,10 +130,10 @@
     width: var(--sar-slider-scale-size);
     height: var(--sar-slider-scale-size);
     border-radius: 50%;
-    background-color: var(--sar-slider-track-bg);
+    background: var(--sar-slider-track-bg);
 
     @include m(active) {
-      background-color: var(--sar-slider-piece-bg);
+      background: var(--sar-slider-piece-bg);
     }
   }
 
@@ -225,7 +225,7 @@
     cursor: not-allowed;
 
     @include e(piece) {
-      background-color: var(--sar-disabled-color);
+      background: var(--sar-disabled-color);
     }
   }
 

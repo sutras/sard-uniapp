@@ -45,13 +45,13 @@
     width: var(--sar-timeline-item-dot-size);
     height: var(--sar-timeline-item-dot-size);
     border-radius: 50%;
-    background-color: var(--sar-timeline-item-dot-bg);
+    background: var(--sar-timeline-item-dot-bg);
   }
 
   @include e(line) {
     @include universal;
     width: var(--sar-timeline-item-line-width);
-    background-color: var(--sar-timeline-item-line-color);
+    background: var(--sar-timeline-item-line-color);
 
     @include m(after) {
       flex: 1;

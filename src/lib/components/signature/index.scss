@@ -19,7 +19,7 @@
   @include e(canvas) {
     width: 100%;
     height: 100%;
-    background-color: var(--sar-signature-canvas-bg);
+    background: var(--sar-signature-canvas-bg);
   }
 
   @include e(covert-canvas) {
@@ -50,7 +50,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background-color: var(--sar-signature-full-bg);
+    background: var(--sar-signature-full-bg);
     touch-action: none;
 
     @include e(content) {

@@ -3,7 +3,7 @@
 @include bem(form) {
   @include b() {
     @include universal;
-    background-color: var(--sar-form-bg);
+    background: var(--sar-form-bg);
   }
 
   @include m(card) {

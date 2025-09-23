@@ -8,7 +8,7 @@
     min-height: var(--sar-segmented-min-height);
     padding: var(--sar-segmented-padding);
     border-radius: var(--sar-segmented-border-radius);
-    background-color: var(--sar-segmented-bg);
+    background: var(--sar-segmented-bg);
     font-size: var(--sar-segmented-font-size);
 
     @include m(vertical) {
@@ -46,7 +46,7 @@
     left: 0;
     height: 100%;
     border-radius: calc(var(--sar-segmented-border-radius) - 4rpx);
-    background-color: var(--sar-segmented-pointer-bg);
+    background: var(--sar-segmented-pointer-bg);
     box-shadow: var(--sar-segmented-pointer-box-shadow);
     transition: transform var(--sar-segmented-pointer-duration);
   }

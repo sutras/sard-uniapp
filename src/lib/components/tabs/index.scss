@@ -34,7 +34,7 @@
     align-items: center;
     width: var(--sar-tabs-line-width);
     height: var(--sar-tabs-line-height);
-    background-color: var(--sar-tabs-line-bg);
+    background: var(--sar-tabs-line-bg);
     pointer-events: none;
     transform: translateX(-50%);
     transition: left var(--sar-tabs-line-transition-duration);

@@ -34,7 +34,7 @@
     }
 
     @include m(disabled) {
-      background-color: var(--sar-disabled-shallow-bg);
+      background: var(--sar-disabled-shallow-bg);
     }
   }
 
@@ -58,7 +58,7 @@
     border-width: 0;
     font-size: var(--sar-input-control-font-size);
     line-height: var(--sar-input-control-line-height);
-    background-color: transparent;
+    background: var(--sar-input-bg);
 
     @include m(input) {
       height: var(--sar-input-control-input-height);

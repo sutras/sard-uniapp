@@ -10,7 +10,7 @@
     width: var(--sar-avatar-width);
     height: var(--sar-avatar-height);
     font-size: var(--sar-avatar-font-size);
-    background-color: var(--sar-avatar-bg);
+    background: var(--sar-avatar-bg);
     border: 1px solid transparent;
   }
 
@@ -43,7 +43,7 @@
     height: 100%;
     font-size: var(--sar-avatar-remain-font-size);
     color: var(--sar-avatar-remain-color);
-    background-color: var(--sar-avatar-remain-bg);
+    background: var(--sar-avatar-remain-bg);
     border-radius: inherit;
   }
 }
