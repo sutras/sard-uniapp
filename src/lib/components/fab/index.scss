@@ -8,6 +8,7 @@
     bottom: var(--sar-fab-bottom);
     z-index: var(--sar-fab-z-index);
     opacity: 0;
+    touch-action: none;
   }
 
   @include e(content) {

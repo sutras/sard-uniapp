@@ -32,26 +32,42 @@ export function getBoundingClientRect(
  * 获取可使用窗口尺寸
  */
 export function getWindowInfo(): UniNamespace.GetWindowInfoResult {
-  if (uni.getWindowInfo) {
-    const windowInfo = uni.getWindowInfo()
-    if (windowInfo.safeAreaInsets) {
-      return windowInfo
-    }
+  const windowInfo = uni.getWindowInfo?.()
+  if (windowInfo && windowInfo.safeAreaInsets) {
+    return windowInfo
   }
 
   const info = uni.getSystemInfoSync()
 
+  const {
+    pixelRatio,
+    screenWidth,
+    screenHeight,
+    windowWidth,
+    windowHeight,
+    statusBarHeight = 0,
+    windowTop = 0,
+    windowBottom = 0,
+  } = info
+
+  const safeArea = info.safeArea || windowInfo.safeArea
+
   return {
-    pixelRatio: info.pixelRatio,
-    screenWidth: info.screenWidth,
-    screenHeight: info.screenHeight,
-    windowWidth: info.windowWidth,
-    windowHeight: info.windowHeight,
-    statusBarHeight: info.statusBarHeight || 0,
-    windowTop: info.windowTop || 0,
-    windowBottom: info.windowBottom || 0,
-    safeArea: info.safeArea!,
-    safeAreaInsets: info.safeAreaInsets!,
+    pixelRatio,
+    screenWidth,
+    screenHeight,
+    windowWidth,
+    windowHeight,
+    statusBarHeight,
+    windowTop,
+    windowBottom,
+    safeArea,
+    safeAreaInsets: {
+      top: safeArea.top,
+      bottom: screenHeight - safeArea.bottom,
+      left: safeArea.left,
+      right: screenWidth - safeArea.right,
+    },
     screenTop: 0,
   }
 }
