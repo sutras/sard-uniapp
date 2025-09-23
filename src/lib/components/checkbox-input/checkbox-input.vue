@@ -57,7 +57,11 @@ import {
   type CheckboxInputSlots,
   defaultCheckboxInputProps,
 } from './common'
-import { getMayPrimitiveOption, isEmptyBinding } from '../../utils'
+import {
+  getMayPrimitiveOption,
+  isEmptyArray,
+  isEmptyBinding,
+} from '../../utils'
 import { usePopoutInput } from '../../use'
 
 defineOptions({
@@ -105,10 +109,7 @@ function getOutletText(
 }
 
 function getInputValue() {
-  if (
-    isEmptyBinding(innerValue.value) ||
-    (Array.isArray(innerValue.value) && innerValue.value.length === 0)
-  ) {
+  if (isEmptyBinding(innerValue.value) || isEmptyArray(innerValue.value)) {
     return ''
   }
   return getOutletText(props.options, fieldKeys.value, innerValue.value)

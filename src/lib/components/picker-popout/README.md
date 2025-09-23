@@ -24,6 +24,10 @@ import PickerPopout from 'sard-uniapp/components/picker-popout/picker-popout.vue
 
 @code('${DEMO_PATH}/picker-popout/demo/Basic.vue')
 
+### 级联选择
+
+@code('${DEMO_PATH}/picker-popout/demo/Cascaded.vue')
+
 ## API
 
 ### PickerPopoutProps

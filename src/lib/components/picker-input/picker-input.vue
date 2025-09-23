@@ -72,7 +72,7 @@ import {
   type PickerOption,
   type PickerOptionKeys,
 } from '../picker/common'
-import { isEmptyBinding, toArray } from '../../utils'
+import { isEmptyArray, isEmptyBinding, toArray } from '../../utils'
 import { usePopoutInput } from '../../use'
 import {
   type PickerInputProps,
@@ -134,7 +134,7 @@ function getOutletText(
 }
 
 function getInputValue() {
-  if (isEmptyBinding(innerValue.value)) {
+  if (isEmptyBinding(innerValue.value) || isEmptyArray(innerValue.value)) {
     return ''
   }
   return getOutletText(props.columns, fieldKeys.value, innerValue.value)

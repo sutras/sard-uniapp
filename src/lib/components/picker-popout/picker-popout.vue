@@ -56,7 +56,7 @@ import {
   type PickerPopoutEmits,
   defaultPickerPopoutProps,
 } from './common'
-import { isEmptyBinding, isNumber } from '../../utils'
+import { isEmptyArray, isEmptyBinding, isNumber } from '../../utils'
 import { defaultOptionKeys, getInitialValue } from '../picker/common'
 import { computed } from 'vue'
 import { useFormPopout } from '../../use'
@@ -78,6 +78,10 @@ defineSlots<PickerPopoutSlots>()
 const emit = defineEmits<PickerPopoutEmits>()
 
 // main
+const fieldKeys = computed(() => {
+  return Object.assign({}, defaultOptionKeys, props.optionKeys)
+})
+
 const {
   innerVisible,
   innerValue,
@@ -87,7 +91,7 @@ const {
   onVisibleHook,
 } = useFormPopout(props, emit, {
   onConfirmBefore() {
-    if (isEmptyBinding(popoutValue.value)) {
+    if (isEmptyBinding(popoutValue.value) || isEmptyArray(popoutValue.value)) {
       const [initialValue, selectedOptions] = getInitialValue(
         props.columns,
         fieldKeys.value,
@@ -98,13 +102,10 @@ const {
   },
 })
 
-const fieldKeys = computed(() => {
-  return Object.assign({}, defaultOptionKeys, props.optionKeys)
-})
-
 const onEnter = () => {
   if (
     !isEmptyBinding(innerValue.value) &&
+    !isEmptyArray(innerValue.value) &&
     popoutValue.value !== innerValue.value
   ) {
     popoutValue.value = innerValue.value

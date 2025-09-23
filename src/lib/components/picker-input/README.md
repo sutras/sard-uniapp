@@ -25,6 +25,10 @@ import PickerInput from 'sard-uniapp/components/picker-input/picker-input.vue'
 
 @code('${DEMO_PATH}/picker-input/demo/Basic.vue')
 
+### 级联选择
+
+@code('${DEMO_PATH}/picker-input/demo/Cascaded.vue')
+
 ## API
 
 ### PickerInputProps

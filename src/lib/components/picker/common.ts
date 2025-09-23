@@ -225,8 +225,11 @@ export function getInitialValue(
       ]
     case 'cascader': {
       const options: PickerOptionObject[] = []
+      recurse(columns, options)
       return [
-        getValueOrLabelByOption(recurse(columns, options), optionKeys.value),
+        options.map((option) =>
+          getValueOrLabelByOption(option, optionKeys.value),
+        ),
         options,
       ]
     }

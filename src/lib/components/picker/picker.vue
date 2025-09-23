@@ -39,6 +39,7 @@ import {
   arrayEqual,
   isNumber,
   isEmptyBinding,
+  isEmptyArray,
 } from '../../utils'
 import {
   type PickerProps,
@@ -103,17 +104,13 @@ const updateColumnIndexes = () => {
   }
 }
 
-watch(
-  [innerValue, () => props.columns, fieldKeys],
-  () => {
-    if (!isEmptyBinding(innerValue.value)) {
-      updateColumnIndexes()
-    }
-  },
-  {
-    immediate: true,
-  },
-)
+updateColumnIndexes()
+
+watch([innerValue, () => props.columns, fieldKeys], () => {
+  if (!isEmptyBinding(innerValue.value) && !isEmptyArray(innerValue.value)) {
+    updateColumnIndexes()
+  }
+})
 
 const onChange = (event: any) => {
   if (!props.columns || props.columns.length === 0) {
@@ -125,12 +122,15 @@ const onChange = (event: any) => {
   // 在H5弹出框中使用时，在初始化会触发change，值中会携带Infinity的下标。
   if (indexes.some((index) => index === Infinity)) {
     nextTick(() => {
-      columnIndexes.value = isEmptyBinding(innerValue.value)
-        ? columnIndexes.value.map(() => 0)
-        : [...columnIndexes.value]
+      columnIndexes.value =
+        isEmptyBinding(innerValue.value) || isEmptyArray(innerValue.value)
+          ? columnIndexes.value.map(() => 0)
+          : [...columnIndexes.value]
     })
     return
   }
+
+  indexes = renderedColumns.value.map((_, index) => indexes[index] || 0)
 
   if (columnsType.value === 'cascader') {
     let startIndex = -1
@@ -209,7 +209,7 @@ watch(
       (newValue !== oldValue &&
         columnsType.value === 'cascader' &&
         !isEmptyBinding(newValue) &&
-        (!Array.isArray(newValue) || newValue.length > 0))
+        !isEmptyArray(newValue))
     ) {
       updateRenderedColumns()
     }
@@ -219,7 +219,7 @@ watch(
 watch(
   () => props.modelValue,
   () => {
-    if (isEmptyBinding(props.modelValue)) {
+    if (isEmptyBinding(props.modelValue) || isEmptyArray(props.modelValue)) {
       updateColumnIndexes()
       updateRenderedColumns()
     }
