@@ -2,7 +2,7 @@
   <scroll-view
     :class="classNames(props.rootClass, scrollViewId)"
     :style="rootStyle"
-    scroll-y
+    :scroll-y="!disabled"
     :scroll-top="scrollTop"
     :upper-threshold="upperThreshold"
     :lower-threshold="lowerThreshold"

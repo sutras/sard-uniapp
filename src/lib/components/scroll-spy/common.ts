@@ -8,6 +8,7 @@ export interface ScrollSpyProps {
   offset?: number
   upperThreshold?: number | string
   lowerThreshold?: number | string
+  disabled?: boolean
 }
 
 export interface ScrollSpySlots {

@@ -38,14 +38,15 @@ import ScrollSpyAnchor from 'sard-uniapp/components/scroll-spy-anchor/scroll-spy
 
 ### ScrollSpyProps
 
-| 属性            | 描述                                                  | 类型             | 默认值 |
-| --------------- | ----------------------------------------------------- | ---------------- | ------ |
-| root-class      | 组件根元素类名                                        | string           | -      |
-| root-style      | 组件根元素样式                                        | StyleValue       | -      |
-| current         | 当前绑定锚点名称                                      | string \| number | -      |
-| offset          | 锚点距离顶部的偏移量                                  | number           | 0      |
-| upper-threshold | 距顶部/左边多远时（单位 px），触发 scrolltoupper 事件 | number \| string | 50     |
-| lower-threshold | 距底部/右边多远时（单位 px），触发 scrolltolower 事件 | number \| string | 50     |
+| 属性                        | 描述                                                  | 类型             | 默认值 |
+| --------------------------- | ----------------------------------------------------- | ---------------- | ------ |
+| root-class                  | 组件根元素类名                                        | string           | -      |
+| root-style                  | 组件根元素样式                                        | StyleValue       | -      |
+| current                     | 当前绑定锚点名称                                      | string \| number | -      |
+| offset                      | 锚点距离顶部的偏移量                                  | number           | 0      |
+| upper-threshold             | 距顶部/左边多远时（单位 px），触发 scrolltoupper 事件 | number \| string | 50     |
+| lower-threshold             | 距底部/右边多远时（单位 px），触发 scrolltolower 事件 | number \| string | 50     |
+| disabled <sup>1.24.7+</sup> | 是否禁用，禁用时无法滚动                              | boolean          | false  |
 
 ### ScrollSpySlots
 
