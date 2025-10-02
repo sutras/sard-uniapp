@@ -12,6 +12,10 @@
     <view :class="arrowClass">
       <sar-icon family="sari" name="right" />
     </view>
+    <sar-loading
+      v-if="node.loadStatus === 'loading'"
+      :class="bem.e('loading')"
+    />
     <view
       v-if="treeContext.selectable || canSingleSelectable"
       :class="selectionClass"
@@ -75,7 +79,12 @@
   </view>
 
   <template
-    v-if="!isLeaf && node.expanded && node.children && node.children.length > 0"
+    v-if="
+      !isMergedLeaf &&
+      node.expanded &&
+      node.children &&
+      node.children.length > 0
+    "
   >
     <template v-for="(node, index) of node.children" :key="node.key">
       <sar-tree-node v-if="node.visible" :index="index" :node="node" />
@@ -308,24 +317,61 @@ const onPopoverSelect = (option: MenuOption) => {
 }
 
 // expand
-const isLeaf = computed(() => {
-  return !props.node.children || props.node.children.length === 0
+const isMergedLeaf = computed(() => {
+  const { children, isLeaf } = props.node
+  return treeContext.lazy && treeContext.load
+    ? isLeaf
+    : !children || children.length === 0
 })
 
-const onNodeClick = (event: any) => {
-  if (!isLeaf.value) {
-    treeContext.toggleExpandedByNode(props.node)
+const onNodeClick = async (event: any) => {
+  const node = props.node
+  const { loadStatus, isLeaf } = node
+  if (loadStatus === 'loading') {
+    return
+  }
+
+  if (
+    treeContext.lazy &&
+    treeContext.load &&
+    !isLeaf &&
+    loadStatus === 'idle'
+  ) {
+    try {
+      node.loadStatus = 'loading'
+      const treeNodes = (await treeContext.load(node)) || []
+      node.loadStatus = 'loaded'
+      node.children = treeContext.toTreeStateNodes(treeNodes, node)
+      if (node.children.length === 0) {
+        node.isLeaf = true
+      } else {
+        treeContext.setRenderPosition()
+        if (node.checked) {
+          treeContext.setCheckedByNode(props.node, true)
+        }
+      }
+    } catch {
+      node.loadStatus = 'idle'
+      return
+    }
+  }
+
+  if (!isMergedLeaf.value) {
+    treeContext.toggleExpandedByNode(node)
   }
   if (canSingleSelectable.value && treeContext.leafOnly) {
-    treeContext.singleSelect(props.node)
+    treeContext.singleSelect(node)
   }
-  treeContext.nodeClick(props.node, event)
+  treeContext.nodeClick(node, event)
 }
 
 const nodeActive = ref(false)
 
 const onNodeTouchStart = () => {
-  if (!isLeaf.value || (canSingleSelectable.value && treeContext.leafOnly)) {
+  if (
+    !isMergedLeaf.value ||
+    (canSingleSelectable.value && treeContext.leafOnly)
+  ) {
     nodeActive.value = true
   }
 }
@@ -342,7 +388,10 @@ const onNodeMouseDown = useMouseDown(
 
 // select
 const canSingleSelectable = computed(() => {
-  return treeContext.singleSelectable && (!treeContext.leafOnly || isLeaf.value)
+  return (
+    treeContext.singleSelectable &&
+    (!treeContext.leafOnly || isMergedLeaf.value)
+  )
 })
 
 const isSingleChecked = computed(
@@ -419,7 +468,7 @@ const arrowClass = computed(() => {
   return classNames(
     bem.e('arrow'),
     bem.em('arrow', 'expanded', props.node.expanded),
-    bem.em('arrow', 'is-leaf', isLeaf.value),
+    bem.em('arrow', 'is-leaf', isMergedLeaf.value),
   )
 })
 

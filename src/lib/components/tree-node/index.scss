@@ -52,6 +52,12 @@
     }
   }
 
+  @include e(loading) {
+    margin-right: var(--sar-tree-node-loading-margin-right);
+    font-size: var(--sar-tree-loading-size);
+    color: var(--sar-tree-loading-color);
+  }
+
   @include e(selection) {
     @include universal;
     margin: calc(var(--sar-tree-node-padding-y) * -1) 0

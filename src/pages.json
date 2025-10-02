@@ -447,6 +447,9 @@
           "path": "tree/demo/StrictFilter"
         },
         {
+          "path": "tree/demo/Lazy"
+        },
+        {
           "path": "tree/index"
         },
         {

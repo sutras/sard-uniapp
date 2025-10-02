@@ -121,5 +121,7 @@ export default {
     removeNode: 'Remove node',
     edit: 'Edit node',
     please: 'Please input title',
+    error: 'Request failed. Click to reload',
+    noData: 'No data',
   },
 }

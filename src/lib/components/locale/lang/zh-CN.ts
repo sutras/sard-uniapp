@@ -121,5 +121,7 @@ export default {
     removeNode: '删除节点',
     edit: '编辑节点',
     please: '请输入标题',
+    error: '请求失败，点击重新加载',
+    noData: '暂无数据',
   },
 }

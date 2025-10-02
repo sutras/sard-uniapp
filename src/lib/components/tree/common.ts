@@ -7,6 +7,7 @@ export interface TreeNode {
   key?: any
   children?: TreeNode[]
   disabled?: boolean
+  isLeaf?: boolean
   [prop: string]: any
 }
 
@@ -28,18 +29,23 @@ export interface TreeStateNode {
   offsetLevel: number
   visible: boolean
   disabled: boolean
+  isLeaf: boolean
+  loadStatus: 'idle' | 'loading' | 'loaded'
+  depth: number
 }
 
 export interface TreeNodeKeys {
   title?: string
   key?: string
   children?: string
+  isLeaf?: string
 }
 
 export const defaultNodeKeys = {
   title: 'title',
   key: 'key',
   children: 'children',
+  isLeaf: 'isLeaf',
 }
 
 export interface TreeProps {
@@ -60,6 +66,8 @@ export interface TreeProps {
   editable?: boolean
   filterMode?: 'lenient' | 'strict'
   filterMethod?: (value: string, node: TreeStateNode) => boolean
+  lazy?: boolean
+  load?: (node?: TreeStateNode) => Promise<TreeNode[]> | TreeNode[]
 }
 
 export const defaultTreeProps = () => ({
@@ -106,6 +114,7 @@ export interface TreeContext {
   treeData: TreeStateNode[]
   setExpandedByNode: (node: TreeStateNode, expanded: boolean) => void
   toggleExpandedByNode: (node: TreeStateNode) => void
+  setCheckedByNode: (node: TreeStateNode, checked: boolean) => void
   toggleCheck: (node: TreeStateNode, checked: boolean) => void
   levelup: (node: TreeStateNode) => void
   leveldown: (node: TreeStateNode) => void
@@ -118,6 +127,13 @@ export interface TreeContext {
   currentKey: string | number | undefined
   singleSelect: (node: TreeStateNode) => void
   nodeClick: (node: TreeStateNode, event: any) => void
+  load: TreeProps['load']
+  lazy: boolean
+  toTreeStateNodes: (
+    nodes: TreeNode[],
+    parent: TreeStateNode | null,
+  ) => TreeStateNode[]
+  setRenderPosition: () => void
 }
 
 export const treeContextSymbol = Symbol('tree-context')

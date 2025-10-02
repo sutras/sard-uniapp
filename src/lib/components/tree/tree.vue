@@ -1,5 +1,18 @@
 <template>
   <view :class="treeClass" :style="treeStyle">
+    <view v-if="lazy && !!load" :class="bem.e('load-status')">
+      <sar-loading v-if="loadStatus === 'loading'" />
+      <text
+        v-else-if="loadStatus === 'error'"
+        :class="bem.e('error')"
+        @click="onErrorClick"
+      >
+        {{ t('error') }}
+      </text>
+      <text v-else-if="loadStatus === 'loaded' && treeData.length === 0">
+        {{ t('noData') }}
+      </text>
+    </view>
     <template v-for="(node, index) of treeData" :key="node.key">
       <sar-tree-node v-if="node.visible" :index="index" :node="node" />
     </template>
@@ -56,6 +69,7 @@ import {
 } from './common'
 import SarTreeNode from '../tree-node/tree-node.vue'
 import SarPopover from '../popover/popover.vue'
+import SarLoading from '../loading/loading.vue'
 import { usePopover } from '../popover'
 import SarInput from '../input/input.vue'
 import { type MenuOption } from '../menu'
@@ -93,7 +107,7 @@ let treeMap: Record<string | number, TreeStateNode> = {}
 const totalLevel = ref(0)
 
 // methods
-const recurRawNode = (nodes: TreeNode[], parent: TreeStateNode | null) => {
+const toTreeStateNodes = (nodes: TreeNode[], parent: TreeStateNode | null) => {
   return nodes.map((node): TreeStateNode => {
     const key = node[fieldKeys.value.key] ?? uniqid()
     const stateNode = reactive<TreeStateNode>({
@@ -107,10 +121,13 @@ const recurRawNode = (nodes: TreeNode[], parent: TreeStateNode | null) => {
       offsetLevel: 0,
       visible: true,
       disabled: !!node.disabled,
+      isLeaf: node[fieldKeys.value.isLeaf],
+      loadStatus: 'idle',
+      depth: parent ? parent.depth + 1 : 0,
     })
 
     if (node.children && node.children.length) {
-      stateNode.children = recurRawNode(node.children, stateNode)
+      stateNode.children = toTreeStateNodes(node.children, stateNode)
     }
 
     treeMap[key] = stateNode
@@ -424,17 +441,18 @@ const getCleanTreeData = () => {
 
 const setRenderPosition = () => {
   let count = 0
-  function recur(nodes: TreeStateNode[]) {
+  function recur(nodes: TreeStateNode[], parent: TreeStateNode | null) {
     nodes.forEach((node) => {
+      node.depth = parent ? parent.depth + 1 : 0
       if (node.visible) {
         node.level = count++
       }
       if (node.children && node.expanded) {
-        recur(node.children)
+        recur(node.children, node)
       }
     })
   }
-  recur(treeData.value)
+  recur(treeData.value, null)
   totalLevel.value = count
 }
 
@@ -447,23 +465,47 @@ const toggleCheck = (node: TreeStateNode, checked: boolean) => {
 }
 
 // initial
+const loadStatus = ref<'idle' | 'loading' | 'error' | 'loaded'>('loaded')
+
+const initialize = async () => {
+  if (props.lazy && props.load) {
+    try {
+      loadStatus.value = 'loading'
+      const data = await props.load()
+      loadStatus.value = 'loaded'
+      initializeTree(data)
+    } catch {
+      loadStatus.value = 'error'
+    }
+  } else {
+    initializeTree(props.data)
+  }
+}
+
+const initializeTree = (data: TreeNode[]) => {
+  treeData.value = toTreeStateNodes(data, null)
+
+  if (props.defaultCheckedKeys && props.defaultCheckedKeys.length > 0) {
+    setCheckedKeys(props.defaultCheckedKeys)
+  }
+  if (props.defaultExpandedKeys && props.defaultExpandedKeys.length > 0) {
+    setExpandedKeys(props.defaultExpandedKeys)
+  }
+  setRenderPosition()
+}
+
+const onErrorClick = () => {
+  initialize()
+}
+
 watch(
   () => props.data,
   () => {
-    treeData.value = recurRawNode(props.data, null)
-
-    if (props.defaultCheckedKeys && props.defaultCheckedKeys.length > 0) {
-      setCheckedKeys(props.defaultCheckedKeys)
-    }
-    if (props.defaultExpandedKeys && props.defaultExpandedKeys.length > 0) {
-      setExpandedKeys(props.defaultExpandedKeys)
-    }
-    setRenderPosition()
-  },
-  {
-    immediate: true,
+    initializeTree(props.data)
   },
 )
+
+initialize()
 
 // edit
 const popoverOptions = [
@@ -534,6 +576,9 @@ const beforeClose: DialogProps['beforeClose'] = (type) => {
           offsetLevel: 0,
           visible: true,
           disabled: false,
+          isLeaf: false,
+          loadStatus: 'idle',
+          depth: 0,
         })
         switch (currentEditType.value) {
           case 'sibling':
@@ -637,6 +682,8 @@ const context = reactive({
   singleSelectable: toRef(() => props.singleSelectable),
   leafOnly: toRef(() => props.leafOnly),
   treeData: toRef(() => treeData.value),
+  load: toRef(() => props.load),
+  lazy: toRef(() => props.lazy),
   setExpandedByNode,
   toggleExpandedByNode,
   setCheckedByNode,
@@ -648,6 +695,8 @@ const context = reactive({
   currentKey,
   singleSelect,
   nodeClick,
+  toTreeStateNodes,
+  setRenderPosition,
 })
 
 // others

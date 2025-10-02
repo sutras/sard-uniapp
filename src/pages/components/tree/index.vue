@@ -68,6 +68,7 @@
           hover
           @click="navigateTo('StrictFilter')"
         />
+        <sar-list-item title="懒加载" arrow hover @click="navigateTo('Lazy')" />
       </sar-list>
     </doc-demo>
   </doc-page>

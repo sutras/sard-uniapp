@@ -10,4 +10,17 @@
   @include e(input-wrapper) {
     padding: var(--sar-dialog-body-padding-y) var(--sar-dialog-body-padding-x);
   }
+
+  @include e(load-status) {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    margin: var(--sar-tree-loading-margin-y) 0;
+    font-size: var(--sar-tree-loading-size);
+    color: var(--sar-tree-loading-color);
+  }
+
+  @include e(error) {
+    cursor: pointer;
+  }
 }
