@@ -5,6 +5,7 @@ export interface IndexesProps {
   rootStyle?: StyleValue
   rootClass?: string
   current?: number | string
+  hintDuration?: number
 }
 
 export interface IndexesSlots {

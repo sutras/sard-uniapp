@@ -65,7 +65,7 @@ const show: ToastShowFunction = (
 
   options.type = internalType
 
-  const { id = defaultConfig.toastAgent.id } = options
+  const { id = defaultConfig.toastAgent.id as string } = options
 
   const imperative = getAvailableImperative<ToastImperative>(imperativeName, id)
   if (imperative) {
@@ -101,7 +101,7 @@ const loading: ToastSimpleShowFunction = (
   show(optionsOrTitle, options, 'loading')
 }
 
-const hide = (id = defaultConfig.toastAgent.id) => {
+const hide = (id = defaultConfig.toastAgent.id as string) => {
   const imperatives = getImperatives<ToastImperative>(imperativeName, id)
   if (imperatives && imperatives.length > 0) {
     imperatives.forEach((item) => {

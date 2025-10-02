@@ -35,7 +35,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, Ref, ref } from 'vue'
 import SarDialog from '../dialog/dialog.vue'
 import {
   type DialogAgentEmits,
@@ -61,7 +61,7 @@ const props = withDefaults(
 const emit = defineEmits<DialogAgentEmits>()
 
 // main
-const innerProps = ref({ ...props })
+const innerProps = ref({ ...props }) as unknown as Ref<DialogAgentProps>
 
 const imperative: DialogImperative = {
   show(newProps: Record<string, any>) {
@@ -147,6 +147,6 @@ const onLeaveCancelled = () => {
 useImperative(
   imperativeName,
   imperative,
-  computed(() => innerProps.value.id),
+  computed(() => innerProps.value.id!),
 )
 </script>

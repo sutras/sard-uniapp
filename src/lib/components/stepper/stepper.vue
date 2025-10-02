@@ -92,7 +92,7 @@ const isReadonly = computed(() => {
 })
 
 // 输入框
-const innerValue = ref(props.modelValue)
+const innerValue = ref<string | number | null | undefined>(props.modelValue)
 const inputValue = ref(props.modelValue)
 
 watch(

@@ -22,7 +22,7 @@ export interface CropImageImperative {
 }
 
 const cropImage = (options: CropImageOptions) => {
-  const { id = defaultConfig.cropImageAgent.id } = options
+  const { id = defaultConfig.cropImageAgent.id as string } = options
 
   const imperative = getAvailableImperative<CropImageImperative>(
     imperativeName,

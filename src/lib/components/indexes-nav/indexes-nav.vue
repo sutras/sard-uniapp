@@ -99,7 +99,7 @@ const getNavRect = async () => {
 const { realVisible, transitionClass, onTransitionEnd } = useTransition(
   reactive({
     visible: hintVisible,
-    duration: defaultConfig.indexes.hintDuration,
+    duration: defaultConfig.indexes.hintDuration as number,
     prefix: bem.em('hint', ''),
   }),
 )

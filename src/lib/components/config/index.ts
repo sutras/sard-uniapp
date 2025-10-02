@@ -1,60 +1,223 @@
-import { type AvatarProps } from '../avatar'
+import { type ActionSheetProps } from '../action-sheet'
 import { type AlertProps } from '../alert'
+import { type AvatarGroupProps } from '../avatar-group'
+import { type AvatarProps } from '../avatar'
+import { type BackTopProps } from '../back-top'
+import { type BadgeProps } from '../badge'
 import { type ButtonProps } from '../button'
 import { type CalendarInputProps } from '../calendar-input'
+import { type CalendarPopoutProps } from '../calendar-popout'
 import { type CalendarProps } from '../calendar'
 import { type CascaderInputProps } from '../cascader-input'
-import { type CheckboxGroupProps } from '../checkbox'
-import { type CheckboxPopoutProps } from '../checkbox-popout'
+import { type CascaderPopoutProps } from '../cascader-popout'
 import { type CheckboxInputProps } from '../checkbox-input'
+import { type CheckboxPopoutProps } from '../checkbox-popout'
+import { type CheckboxProps, type CheckboxGroupProps } from '../checkbox'
 import { type CoolIconProps } from '../cool-icon'
+import { type CountDownProps } from '../count-down'
+import { type CountToProps } from '../count-to'
+import { type CropImageAgentProps } from '../crop-image-agent'
+import { type CropImageProps } from '../crop-image'
 import { type DatetimePickerInputProps } from '../datetime-picker-input'
+import { type DatetimePickerPopoutProps } from '../datetime-picker-popout'
+import { type DatetimePickerProps } from '../datetime-picker'
 import { type DatetimeRangePickerInputProps } from '../datetime-range-picker-input'
+import { type DatetimeRangePickerPopoutProps } from '../datetime-range-picker-popout'
+import { type DatetimeRangePickerProps } from '../datetime-range-picker'
+import { type DialogAgentProps } from '../dialog-agent'
 import { type DialogProps } from '../dialog'
 import { type DividerProps } from '../divider'
 import { type DropdownProps } from '../dropdown'
+import { type EmptyProps } from '../empty'
 import { type FabProps } from '../fab'
 import { type FloatingBubbleProps } from '../floating-bubble'
-import { type FormProps } from '../form'
+import { type FloatingPanelProps } from '../floating-panel'
+import { type FormItemProps, type FormProps } from '../form'
 import { type GridProps } from '../grid'
 import { type IconProps } from '../icon'
+import { type IndexesProps } from '../indexes'
 import { type InputProps } from '../input'
 import { type KeyboardProps } from '../keyboard'
 import { type ListItemProps } from '../list'
 import { type LoadingProps } from '../loading'
 import { type MarqueeProps } from '../marquee'
 import { type NoticeBarProps } from '../notice-bar'
+import { type NotifyAgentProps } from '../notify-agent'
 import { type NotifyProps } from '../notify'
+import { type OverlayProps } from '../overlay'
 import { type PaginationProps } from '../pagination'
 import { type PasswordInputProps } from '../password-input'
 import { type PickerInputProps } from '../picker-input'
+import { type PickerPopoutProps } from '../picker-popout'
+import { type PickerProps } from '../picker'
+import { type PopoutInputProps } from '../popout-input'
 import { type PopoutProps } from '../popout'
 import { type PopoverProps } from '../popover'
 import { type PopupProps } from '../popup'
+import { type ProgressBarProps } from '../progress-bar'
+import { type ProgressCircleProps } from '../progress-circle'
+import { type PullDownRefreshProps } from '../pull-down-refresh'
 import { type QrcodeProps } from '../qrcode'
 import { type RadioGroupProps } from '../radio'
 import { type RadioInputProps } from '../radio-input'
 import { type RadioPopoutProps } from '../radio-popout'
+import { type RateProps } from '../rate'
+import { type ReadMoreProps } from '../read-more'
+import { type ResizeSensorProps } from '../resize-sensor'
 import { type ResultProps } from '../result'
 import { type SearchProps } from '../search'
 import { type SegmentedProps } from '../segmented'
+import { type ShareSheetProps } from '../share-sheet'
+import { type SignatureProps } from '../signature'
+import { type SkeletonProps } from '../skeleton'
+import { type SliderProps } from '../slider'
 import { type SpaceProps } from '../space'
+import { type StatusBarProps } from '../status-bar'
 import { type StepperProps } from '../stepper'
 import { type StepsProps } from '../steps'
 import { type SwiperDotProps } from '../swiper-dot'
+import { type SwitchProps } from '../switch'
+import { type TabbarProps } from '../tabbar'
+import { type TableProps } from '../table'
 import { type TabsProps } from '../tabs'
 import { type TagProps } from '../tag'
+import { type ToastAgentProps } from '../toast-agent'
 import { type ToastProps } from '../toast'
 import { type TreeProps } from '../tree'
 import { type UploadPreviewProps, type UploadProps } from '../upload'
+import { type WaterfallProps } from '../waterfall'
 import { type WatermarkProps } from '../watermark'
 
-type DeepPartial<T> = {
-  [P in keyof T]?: T[P] extends Record<any, any> ? DeepPartial<T[P]> : T[P]
+type NativeType =
+  | null
+  | number
+  | string
+  | boolean
+  | symbol
+  | ((...args: any[]) => any)
+
+type InferDefault<P, T> =
+  | ((props: P) => T & {})
+  | (T extends NativeType ? T : never)
+
+type InferDefaults<T> = {
+  [K in keyof T]?: InferDefault<T, T[K]>
+}
+
+type LooseRequired<T> = {
+  [P in keyof (T & Required<T>)]: T[P]
+}
+
+export interface ConfigOptions {
+  initialZIndex?: number
+  valueOnClear?: () => any
+  actionSheet?: InferDefaults<LooseRequired<ActionSheetProps>>
+  alert?: InferDefaults<LooseRequired<AlertProps>>
+  avatar?: InferDefaults<LooseRequired<AvatarProps>>
+  avatarGroup?: InferDefaults<LooseRequired<AvatarGroupProps>>
+  backTop?: InferDefaults<LooseRequired<BackTopProps>>
+  badge?: InferDefaults<LooseRequired<BadgeProps>>
+  button?: InferDefaults<LooseRequired<ButtonProps>>
+  calendar?: InferDefaults<LooseRequired<CalendarProps>>
+  calendarInput?: InferDefaults<LooseRequired<CalendarInputProps>>
+  calendarPopout?: InferDefaults<LooseRequired<CalendarPopoutProps>>
+  cascaderPopout?: InferDefaults<LooseRequired<CascaderPopoutProps>>
+  cascaderInput?: InferDefaults<LooseRequired<CascaderInputProps>>
+  checkbox?: InferDefaults<LooseRequired<CheckboxProps>>
+  checkboxGroup?: InferDefaults<LooseRequired<CheckboxGroupProps>>
+  checkboxInput?: InferDefaults<LooseRequired<CheckboxInputProps>>
+  checkboxPopout?: InferDefaults<LooseRequired<CheckboxPopoutProps>>
+  coolIcon?: InferDefaults<LooseRequired<CoolIconProps>>
+  countDown?: InferDefaults<LooseRequired<CountDownProps>>
+  countTo?: InferDefaults<LooseRequired<CountToProps>>
+  cropImage?: InferDefaults<LooseRequired<CropImageProps>>
+  cropImageAgent?: InferDefaults<LooseRequired<CropImageAgentProps>>
+  datetimePicker?: InferDefaults<LooseRequired<DatetimePickerProps>>
+  datetimePickerInput?: InferDefaults<LooseRequired<DatetimePickerInputProps>>
+  datetimePickerPopout?: InferDefaults<LooseRequired<DatetimePickerPopoutProps>>
+  datetimeRangePicker?: InferDefaults<LooseRequired<DatetimeRangePickerProps>>
+  datetimeRangePickerInput?: InferDefaults<
+    LooseRequired<DatetimeRangePickerInputProps>
+  >
+  datetimeRangePickerPopout?: InferDefaults<
+    LooseRequired<DatetimeRangePickerPopoutProps>
+  >
+  dialog?: InferDefaults<LooseRequired<DialogProps>>
+  dialogAgent?: InferDefaults<LooseRequired<DialogAgentProps>>
+  divider?: InferDefaults<LooseRequired<DividerProps>>
+  dropdown?: InferDefaults<LooseRequired<DropdownProps>>
+  empty?: InferDefaults<LooseRequired<EmptyProps>>
+  fab?: InferDefaults<LooseRequired<FabProps>>
+  floatingBubble?: InferDefaults<LooseRequired<FloatingBubbleProps>>
+  floatingPanel?: InferDefaults<LooseRequired<FloatingPanelProps>>
+  form?: InferDefaults<LooseRequired<FormProps>>
+  formItem?: InferDefaults<LooseRequired<FormItemProps>>
+  grid?: InferDefaults<LooseRequired<GridProps>>
+  icon?: InferDefaults<LooseRequired<IconProps>>
+  indexes?: InferDefaults<LooseRequired<IndexesProps>>
+  input?: InferDefaults<LooseRequired<InputProps>>
+  keyboard?: InferDefaults<LooseRequired<KeyboardProps>>
+  listItem?: InferDefaults<LooseRequired<ListItemProps>>
+  loading?: InferDefaults<LooseRequired<LoadingProps>>
+  marquee?: InferDefaults<LooseRequired<MarqueeProps>>
+  noticeBar?: InferDefaults<LooseRequired<NoticeBarProps>>
+  notify?: InferDefaults<LooseRequired<NotifyProps>>
+  notifyAgent?: InferDefaults<LooseRequired<NotifyAgentProps>>
+  overlay?: InferDefaults<LooseRequired<OverlayProps>>
+  pagination?: InferDefaults<LooseRequired<PaginationProps>>
+  passwordInput?: InferDefaults<LooseRequired<PasswordInputProps>>
+  picker?: InferDefaults<LooseRequired<PickerProps>>
+  pickerInput?: InferDefaults<LooseRequired<PickerInputProps>>
+  pickerPopout?: InferDefaults<LooseRequired<PickerPopoutProps>>
+  popout?: InferDefaults<LooseRequired<PopoutProps>>
+  popoutInput?: InferDefaults<LooseRequired<PopoutInputProps>>
+  popover?: InferDefaults<LooseRequired<PopoverProps>>
+  popup?: InferDefaults<LooseRequired<PopupProps>>
+  progressBar?: InferDefaults<LooseRequired<ProgressBarProps>>
+  progressCircle?: InferDefaults<LooseRequired<ProgressCircleProps>>
+  pullDownRefresh?: InferDefaults<LooseRequired<PullDownRefreshProps>>
+  qrcode?: InferDefaults<LooseRequired<QrcodeProps>>
+  radioGroup?: InferDefaults<LooseRequired<RadioGroupProps>>
+  radioInput?: InferDefaults<LooseRequired<RadioInputProps>>
+  radioPopout?: InferDefaults<LooseRequired<RadioPopoutProps>>
+  rate?: InferDefaults<LooseRequired<RateProps>>
+  readMore?: InferDefaults<LooseRequired<ReadMoreProps>>
+  resizeSensor?: InferDefaults<LooseRequired<ResizeSensorProps>>
+  result?: InferDefaults<LooseRequired<ResultProps>>
+  search?: InferDefaults<LooseRequired<SearchProps>>
+  segmented?: InferDefaults<LooseRequired<SegmentedProps>>
+  shareSheet?: InferDefaults<LooseRequired<ShareSheetProps>>
+  signature?: InferDefaults<LooseRequired<SignatureProps>>
+  skeleton?: InferDefaults<LooseRequired<SkeletonProps>>
+  slider?: InferDefaults<LooseRequired<SliderProps>>
+  space?: InferDefaults<LooseRequired<SpaceProps>>
+  statusBar?: InferDefaults<LooseRequired<StatusBarProps>>
+  stepper?: InferDefaults<LooseRequired<StepperProps>>
+  steps?: InferDefaults<LooseRequired<StepsProps>>
+  swiperDot?: InferDefaults<LooseRequired<SwiperDotProps>>
+  switch?: InferDefaults<LooseRequired<SwitchProps>>
+  tabbar?: InferDefaults<LooseRequired<TabbarProps>>
+  table?: InferDefaults<LooseRequired<TableProps>>
+  tabs?: InferDefaults<LooseRequired<TabsProps>>
+  tag?: InferDefaults<LooseRequired<TagProps>>
+  toast?: InferDefaults<LooseRequired<ToastProps>>
+  toastAgent?: InferDefaults<LooseRequired<ToastAgentProps>>
+  tree?: InferDefaults<LooseRequired<TreeProps>>
+  upload?: InferDefaults<LooseRequired<UploadProps>>
+  uploadPreview?: InferDefaults<LooseRequired<UploadPreviewProps>>
+  waterfall?: InferDefaults<LooseRequired<WaterfallProps>>
+  watermark?: InferDefaults<LooseRequired<WatermarkProps>>
+}
+
+export type RequiredConfigOptions = Omit<
+  Required<ConfigOptions>,
+  'valueOnClear'
+> & {
+  valueOnClear: ConfigOptions['valueOnClear']
 }
 
 // #defaultConfig
-export const defaultConfig = {
+export const defaultConfig: RequiredConfigOptions = {
   // 全局初始 zIndex
   initialZIndex: 1000,
 
@@ -74,17 +237,17 @@ export const defaultConfig = {
    * - PickerInput
    * - RadioInput
    */
-  valueOnClear: undefined as (() => any) | undefined,
+  valueOnClear: undefined,
 
   actionSheet: {
     overlayClosable: true,
     duration: 250,
   },
   alert: {
-    type: 'primary' as AlertProps['type'],
+    type: 'primary',
   },
   avatar: {
-    shape: 'circle' as AvatarProps['shape'],
+    shape: 'circle',
   },
   avatarGroup: {
     coverage: 0.5,
@@ -98,23 +261,21 @@ export const defaultConfig = {
     max: 99,
   },
   button: {
-    type: 'default' as ButtonProps['type'],
-    theme: 'primary' as ButtonProps['theme'],
-    size: 'medium' as ButtonProps['size'],
+    type: 'default',
+    theme: 'primary',
+    size: 'medium',
     hoverStopPropagation: false,
     lang: 'en',
     showMessageCard: false,
     block: true,
-    loadingType: undefined as LoadingProps['type'],
   },
   calendar: {
-    type: 'single' as CalendarProps['type'],
+    type: 'single',
     maxDays: Number.MAX_SAFE_INTEGER,
     weekStartsOn: 0,
   },
   calendarInput: {
     outletFormat: 'YYYY-MM-DD',
-    valueOnClear: undefined as CalendarInputProps['valueOnClear'],
   },
   calendarPopout: {
     showConfirm: true,
@@ -124,25 +285,21 @@ export const defaultConfig = {
     showConfirm: true,
     validateEvent: true,
   },
-  cascaderInput: {
-    valueOnClear: undefined as CascaderInputProps['valueOnClear'],
-  },
+  cascaderInput: {},
   checkbox: {
     validateEvent: true,
   },
   checkboxGroup: {
-    direction: 'vertical' as CheckboxGroupProps['direction'],
+    direction: 'vertical',
     validateEvent: true,
   },
-  checkboxInput: {
-    valueOnClear: undefined as CheckboxInputProps['valueOnClear'],
-  },
+  checkboxInput: {},
   checkboxPopout: {
     validateEvent: true,
-    iconPosition: 'left' as CheckboxPopoutProps['iconPosition'],
+    iconPosition: 'left',
   },
   coolIcon: {
-    shape: 'oval' as CoolIconProps['shape'],
+    shape: 'oval',
   },
   countDown: {
     time: 0,
@@ -158,7 +315,7 @@ export const defaultConfig = {
   cropImage: {
     duration: 150,
     cropScale: '1:1',
-    type: 'png' as const,
+    type: 'png',
     quality: 0.92,
   },
   cropImageAgent: {
@@ -166,26 +323,22 @@ export const defaultConfig = {
   },
   datetimePicker: {
     type: 'yMd',
-    calendar: 'solar' as const,
+    calendar: 'solar',
   },
-  datetimePickerInput: {
-    valueOnClear: undefined as DatetimePickerInputProps['valueOnClear'],
-  },
+  datetimePickerInput: {},
   datetimePickerPopout: {
     validateEvent: true,
   },
   datetimeRangePicker: {
     type: 'yMd',
   },
-  datetimeRangePickerInput: {
-    valueOnClear: undefined as DatetimeRangePickerInputProps['valueOnClear'],
-  },
+  datetimeRangePickerInput: {},
   datetimeRangePickerPopout: {
     validateEvent: true,
   },
   dialog: {
     headed: true,
-    buttonType: 'round' as DialogProps['buttonType'],
+    buttonType: 'round',
     showCancel: true,
     showConfirm: true,
     overlayClosable: true,
@@ -195,12 +348,12 @@ export const defaultConfig = {
     id: 'dialog',
   },
   divider: {
-    type: 'solid' as DividerProps['type'],
+    type: 'solid',
     hairline: true,
-    position: 'center' as DividerProps['position'],
+    position: 'center',
   },
   dropdown: {
-    direction: 'down' as DropdownProps['direction'],
+    direction: 'down',
     disabled: false,
     awayClosable: true,
     overlayClosable: true,
@@ -214,13 +367,13 @@ export const defaultConfig = {
     hideName: false,
     duration: 150,
     draggable: false,
-    axis: 'y' as FabProps['axis'],
+    axis: 'y',
     gapX: 24,
     gapY: 24,
   },
   floatingBubble: {
     draggable: true,
-    axis: 'y' as FloatingBubbleProps['axis'],
+    axis: 'y',
     gapX: 24,
     gapY: 24,
   },
@@ -230,13 +383,13 @@ export const defaultConfig = {
     safeAreaInsetBottom: true,
   },
   form: {
-    validateTrigger: 'change' as FormProps['validateTrigger'],
+    validateTrigger: 'change',
     validateOnRuleChange: true,
-    direction: 'horizontal' as FormProps['direction'],
-    labelAlign: 'start' as FormProps['labelAlign'],
-    labelValign: 'center' as FormProps['labelValign'],
-    starPosition: 'left' as FormProps['starPosition'],
-    contentPosition: 'left' as FormProps['contentPosition'],
+    direction: 'horizontal',
+    labelAlign: 'start',
+    labelValign: 'center',
+    starPosition: 'left',
+    contentPosition: 'left',
     showError: true,
     scrollDuration: 150,
   },
@@ -245,12 +398,12 @@ export const defaultConfig = {
   },
   grid: {
     columns: 4,
-    direction: 'vertical' as GridProps['direction'],
+    direction: 'vertical',
   },
   icon: {
     name: '',
     family: 'sari',
-    separate: false as IconProps['separate'],
+    separate: false,
   },
   indexes: {
     hintDuration: 300,
@@ -265,36 +418,35 @@ export const defaultConfig = {
     modelValue: '',
     validateEvent: true,
     cursorSpacing: 30,
-    confirmType: undefined as InputProps['confirmType'],
     cursor: -1,
     selectionStart: -1,
     selectionEnd: -1,
-    inputmode: 'text' as InputProps['inputmode'],
+    inputmode: 'text',
   },
   keyboard: {
-    type: 'number' as KeyboardProps['type'],
-    mode: 'chinese' as KeyboardProps['mode'],
+    type: 'number',
+    mode: 'chinese',
   },
   listItem: {
-    arrowDirection: 'right' as ListItemProps['arrowDirection'],
+    arrowDirection: 'right',
   },
   loading: {
-    type: 'circular' as LoadingProps['type'],
+    type: 'circular',
   },
   marquee: {
-    direction: 'vertical' as MarqueeProps['direction'],
+    direction: 'vertical',
     delay: 1000,
     speed: 50,
   },
   noticeBar: {
     delay: 1000,
     speed: 50,
-    scrollable: 'auto' as NoticeBarProps['scrollable'],
+    scrollable: 'auto',
     visible: true,
   },
   notify: {
-    type: 'primary' as NotifyProps['type'],
-    position: 'top' as NotifyProps['position'],
+    type: 'primary',
+    position: 'top',
     duration: 250,
     timeout: 3000,
   },
@@ -309,25 +461,23 @@ export const defaultConfig = {
     pageSize: 10,
     current: 1,
     pageButtonCount: 5,
-    type: 'multi' as PaginationProps['type'],
+    type: 'multi',
     multiCount: 5,
   },
   passwordInput: {
     length: 6,
-    type: 'border' as PasswordInputProps['type'],
+    type: 'border',
     validateEvent: true,
   },
   picker: {
     immediateChange: false,
   },
-  pickerInput: {
-    valueOnClear: undefined as PickerInputProps['valueOnClear'],
-  },
+  pickerInput: {},
   pickerPopout: {
     validateEvent: true,
   },
   popout: {
-    type: 'loose' as PopoutProps['type'],
+    type: 'loose',
     showConfirm: true,
     showClose: true,
     showFooter: true,
@@ -339,9 +489,9 @@ export const defaultConfig = {
     arrowFamily: 'sari',
   },
   popover: {
-    position: 'bottom' as PopoverProps['position'],
-    direction: 'vertical' as PopoverProps['direction'],
-    theme: 'light' as PopoverProps['theme'],
+    position: 'bottom',
+    direction: 'vertical',
+    theme: 'light',
     refGap: 10,
     viewportGap: 10,
     transparent: true,
@@ -349,7 +499,7 @@ export const defaultConfig = {
   },
   popup: {
     duration: 250,
-    effect: 'fade' as PopupProps['effect'],
+    effect: 'fade',
     overlay: true,
     overlayClosable: true,
   },
@@ -368,26 +518,24 @@ export const defaultConfig = {
     doneDuration: 0,
   },
   qrcode: {
-    ecl: 'M' as QrcodeProps['ecl'],
+    ecl: 'M',
     size: '320rpx',
     canvasSize: 400,
-    type: 'canvas' as QrcodeProps['type'],
+    type: 'canvas',
     text: '',
     color: '#000',
     bgColor: '#fff',
     quietZoneModules: 2,
   },
   radioGroup: {
-    direction: 'vertical' as RadioGroupProps['direction'],
+    direction: 'vertical',
     validateEvent: true,
   },
-  radioInput: {
-    valueOnClear: undefined as RadioInputProps['valueOnClear'],
-  },
+  radioInput: {},
   radioPopout: {
     validateEvent: true,
-    type: 'circle' as RadioPopoutProps['type'],
-    iconPosition: 'left' as RadioPopoutProps['iconPosition'],
+    type: 'circle',
+    iconPosition: 'left',
   },
   rate: {
     count: 5,
@@ -402,16 +550,16 @@ export const defaultConfig = {
     threshold: 150,
   },
   result: {
-    status: 'info' as ResultProps['status'],
+    status: 'info',
   },
   search: {
-    shape: 'square' as SearchProps['shape'],
+    shape: 'square',
     focus: false,
   },
   segmented: {
-    size: 'middle' as SegmentedProps['size'],
-    shape: 'square' as SegmentedProps['shape'],
-    direction: 'horizontal' as SegmentedProps['direction'],
+    size: 'middle',
+    shape: 'square',
+    direction: 'horizontal',
     validateEvent: true,
   },
   shareSheet: {
@@ -423,8 +571,8 @@ export const defaultConfig = {
     fullScreen: false,
     color: '#000',
     duration: 150,
-    type: 'png' as const,
-    target: 'dataURL' as const,
+    type: 'png',
+    target: 'dataURL',
     quality: 0.92,
   },
   skeleton: {
@@ -438,35 +586,33 @@ export const defaultConfig = {
     validateEvent: true,
   },
   space: {
-    direction: 'horizontal' as SpaceProps['direction'],
-    size: 'middle' as SpaceProps['size'],
+    direction: 'horizontal',
+    size: 'middle',
   },
-  statusBar: {
-    height: '',
-  },
+  statusBar: {},
   stepper: {
     min: Number.MIN_SAFE_INTEGER,
     max: Number.MAX_SAFE_INTEGER,
     step: 1,
-    inputType: 'number' as StepperProps['inputType'],
+    inputType: 'number',
     press: true,
     pressTime: 350,
     interval: 150,
     validateEvent: true,
-    size: 'medium' as StepperProps['size'],
+    size: 'medium',
   },
   steps: {
     current: 0,
     center: false,
     itemList: () => [],
-    direction: 'horizontal' as StepsProps['direction'],
+    direction: 'horizontal',
     finishIcon: 'check-circle-fill',
     processIcon: 'circle',
     waitIcon: 'circle',
     errorIcon: 'x-circle',
   },
   swiperDot: {
-    type: 'dot' as SwiperDotProps['type'],
+    type: 'dot',
     current: 0,
     total: 0,
     field: 'title',
@@ -484,15 +630,15 @@ export const defaultConfig = {
     underline: false,
   },
   tabs: {
-    type: 'line' as TabsProps['type'],
+    type: 'line',
   },
   tag: {
-    theme: 'default' as TagProps['theme'],
-    size: 'medium' as TagProps['size'],
+    theme: 'default',
+    size: 'medium',
   },
   toast: {
-    type: 'text' as ToastProps['type'],
-    position: 'center' as ToastProps['position'],
+    type: 'text',
+    position: 'center',
     overlay: false,
     transparent: false,
     timeout: 1500,
@@ -503,13 +649,13 @@ export const defaultConfig = {
   },
   tree: {
     defaultExpandAll: false,
-    filterMode: 'lenient' as TreeProps['filterMode'],
+    filterMode: 'lenient',
     accordion: false,
   },
   upload: {
-    accept: 'image' as UploadProps['accept'],
-    sourceType: () => ['album', 'camera'] as UploadProps['sourceType'],
-    sizeType: () => ['original', 'compressed'] as UploadProps['sizeType'],
+    accept: 'image',
+    sourceType: () => ['album', 'camera'],
+    sizeType: () => ['original', 'compressed'],
     maxDuration: 60,
     maxCount: Number.MAX_SAFE_INTEGER,
     maxSize: Number.MAX_SAFE_INTEGER,
@@ -517,7 +663,7 @@ export const defaultConfig = {
     validateEvent: true,
   },
   uploadPreview: {
-    status: 'pending' as UploadPreviewProps['status'],
+    status: 'pending',
   },
   waterfall: {
     columns: 2,
@@ -529,30 +675,26 @@ export const defaultConfig = {
     height: 64,
     rotate: -22,
     zIndex: 9,
-    gap: () => [30, 30] as NonNullable<WatermarkProps['gap']>,
+    gap: () => [30, 30],
   },
 }
 // #enddefaultConfig
 
-export type ConfigOptions = typeof defaultConfig
-
 function extendProps(source: object, target: object) {
   Object.keys(target).forEach((key) => {
-    if (key in source) {
-      const sourceValue = source[key as keyof typeof source]
-      const targetValue = target[key as keyof typeof target]
-      if (targetValue !== undefined && targetValue !== null) {
-        if (typeof sourceValue !== 'object') {
-          source[key as keyof typeof source] = targetValue
-        } else if (typeof targetValue === 'object') {
-          extendProps(sourceValue, targetValue)
-        }
+    const sourceValue = source[key as keyof typeof source]
+    const targetValue = target[key as keyof typeof target]
+    if (targetValue !== undefined && targetValue !== null) {
+      if (typeof sourceValue !== 'object') {
+        source[key as keyof typeof source] = targetValue
+      } else if (typeof targetValue === 'object') {
+        extendProps(sourceValue, targetValue)
       }
     }
   })
 }
 
-export function setConfig(...optionsArgs: DeepPartial<ConfigOptions>[]) {
+export function setConfig(...optionsArgs: ConfigOptions[]) {
   optionsArgs.forEach((options) => {
     extendProps(defaultConfig, options)
   })

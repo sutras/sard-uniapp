@@ -65,7 +65,7 @@ const show: NotifyShowFunction = (
 
   options.type = internalType
 
-  const { id = defaultConfig.notifyAgent.id } = options
+  const { id = defaultConfig.notifyAgent.id as string } = options
 
   const imperative = getAvailableImperative<NotifyImperative>(
     imperativeName,
@@ -104,7 +104,7 @@ const error: NotifySimpleShowFunction = (
   show(optionsOrMessage, options, 'error')
 }
 
-const hide = (id = defaultConfig.notifyAgent.id) => {
+const hide = (id = defaultConfig.notifyAgent.id as string) => {
   const imperatives = getImperatives<NotifyImperative>(imperativeName, id)
   if (imperatives && imperatives.length > 0) {
     imperatives.forEach((item) => {

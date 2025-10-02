@@ -73,7 +73,7 @@ const show: DialogShowFunction = (
 
   options = Object.assign({}, defaultDialogOptions, options, internalOptions)
 
-  const { id = defaultConfig.dialogAgent.id } = options
+  const { id = defaultConfig.dialogAgent.id as string } = options
 
   const imperative = getAvailableImperative<DialogImperative>(
     imperativeName,
@@ -107,7 +107,7 @@ const confirm: DialogSimpleShowFunction = (
   })
 }
 
-const hide = (id = defaultConfig.dialogAgent.id) => {
+const hide = (id = defaultConfig.dialogAgent.id as string) => {
   const imperatives = getImperatives<DialogImperative>(imperativeName, id)
   if (imperatives && imperatives.length > 0) {
     imperatives.forEach((item) => {
