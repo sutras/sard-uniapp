@@ -16,7 +16,6 @@ export interface FormPlainExpose extends FormExpose {}
 export interface FormItemPlainProps extends FormItemProps {}
 
 export interface FormItemPlainSlotsProps {
-  fieldId: string
   validateState: ValidateState
   shouldShowStar: boolean
   validateMessage: string

@@ -345,18 +345,17 @@ type ValidateState = '' | 'success' | 'error' | 'validating'
 
 ### FormItemPlainSlotsProps <sup>1.23+</sup>
 
-| 属性            | 描述                     | 类型                      |
-| --------------- | ------------------------ | ------------------------- |
-| fieldId         | 表单项类名，用于滚动定位 | string                    |
-| validateState   | 表单验证状态             | ValidateState             |
-| shouldShowStar  | 是否显示星号             | boolean                   |
-| validateMessage | 当前验证信息             | string                    |
-| shouldShowError | 是否显示错误信息         | boolean                   |
-| direction       | 表单排列方向             | FormProps['direction']    |
-| labelAlign      | 标签水平对齐方式         | FormProps['labelAlign']   |
-| labelValign     | 标签垂直对齐方式         | FormProps['labelValign']  |
-| starPosition    | 星号位置                 | FormProps['starPosition'] |
-| labelWidth      | 标签宽度                 | FormProps['labelWidth']   |
+| 属性            | 描述             | 类型                      |
+| --------------- | ---------------- | ------------------------- |
+| validateState   | 表单验证状态     | ValidateState             |
+| shouldShowStar  | 是否显示星号     | boolean                   |
+| validateMessage | 当前验证信息     | string                    |
+| shouldShowError | 是否显示错误信息 | boolean                   |
+| direction       | 表单排列方向     | FormProps['direction']    |
+| labelAlign      | 标签水平对齐方式 | FormProps['labelAlign']   |
+| labelValign     | 标签垂直对齐方式 | FormProps['labelValign']  |
+| starPosition    | 星号位置         | FormProps['starPosition'] |
+| labelWidth      | 标签宽度         | FormProps['labelWidth']   |
 
 ### FormItemPlainExpose <sup>1.23+</sup>
 

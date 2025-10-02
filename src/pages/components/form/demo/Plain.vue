@@ -21,8 +21,8 @@
         </view>
         <view class="section-content">
           <sar-form-item-plain name="staff_name" class="form-item">
-            <template #custom="{ shouldShowStar, fieldId }">
-              <view class="form-label" :class="fieldId">
+            <template #custom="{ shouldShowStar }">
+              <view class="form-label">
                 <text v-if="shouldShowStar" class="form-star">*</text>
                 服务人员姓名/工号：
               </view>
@@ -38,8 +38,8 @@
           </sar-form-item-plain>
 
           <sar-form-item-plain name="service_date">
-            <template #custom="{ shouldShowStar, fieldId }">
-              <view class="form-label" :class="fieldId">
+            <template #custom="{ shouldShowStar }">
+              <view class="form-label">
                 <text v-if="shouldShowStar" class="form-star">*</text>
                 服务日期：
               </view>
@@ -54,8 +54,8 @@
           </sar-form-item-plain>
 
           <sar-form-item-plain name="contact">
-            <template #custom="{ shouldShowStar, fieldId }">
-              <view class="form-label" :class="fieldId">
+            <template #custom="{ shouldShowStar }">
+              <view class="form-label">
                 <text v-if="shouldShowStar" class="form-star">*</text>
                 您的联系方式（可选）
               </view>
@@ -82,8 +82,8 @@
         </view>
         <view class="section-content">
           <sar-form-item-plain name="professionalism">
-            <template #custom="{ shouldShowStar, fieldId }">
-              <view class="form-label" :class="fieldId">
+            <template #custom="{ shouldShowStar }">
+              <view class="form-label">
                 <text v-if="shouldShowStar" class="form-star">*</text>
                 专业能力：是否具备足够的知识和技能？
               </view>
@@ -95,8 +95,8 @@
           </sar-form-item-plain>
 
           <sar-form-item-plain name="attitude">
-            <template #custom="{ shouldShowStar, fieldId }">
-              <view class="form-label" :class="fieldId">
+            <template #custom="{ shouldShowStar }">
+              <view class="form-label">
                 <text v-if="shouldShowStar" class="form-star">*</text>
                 服务态度：是否礼貌、耐心、热情？
               </view>
@@ -108,8 +108,8 @@
           </sar-form-item-plain>
 
           <sar-form-item-plain name="response_speed">
-            <template #custom="{ shouldShowStar, fieldId }">
-              <view class="form-label" :class="fieldId">
+            <template #custom="{ shouldShowStar }">
+              <view class="form-label">
                 <text v-if="shouldShowStar" class="form-star">*</text>
                 响应速度：问题处理是否及时？
               </view>
@@ -121,8 +121,8 @@
           </sar-form-item-plain>
 
           <sar-form-item-plain name="communication">
-            <template #custom="{ shouldShowStar, fieldId }">
-              <view class="form-label" :class="fieldId">
+            <template #custom="{ shouldShowStar }">
+              <view class="form-label">
                 <text v-if="shouldShowStar" class="form-star">*</text>
                 沟通能力：表达是否清晰、易于理解？
               </view>
@@ -134,8 +134,8 @@
           </sar-form-item-plain>
 
           <sar-form-item-plain name="problem_solving">
-            <template #custom="{ shouldShowStar, fieldId }">
-              <view class="form-label" :class="fieldId">
+            <template #custom="{ shouldShowStar }">
+              <view class="form-label">
                 <text v-if="shouldShowStar" class="form-star">*</text>
                 问题解决：是否有效解决您的需求？
               </view>
@@ -155,8 +155,8 @@
         </view>
         <view class="section-content">
           <sar-form-item-plain name="overall_satisfaction">
-            <template #custom="{ shouldShowStar, fieldId }">
-              <view class="form-label" :class="fieldId">
+            <template #custom="{ shouldShowStar }">
+              <view class="form-label">
                 <text v-if="shouldShowStar" class="form-star">*</text>
                 本次服务的整体满意度
               </view>
@@ -168,8 +168,8 @@
           </sar-form-item-plain>
 
           <sar-form-item-plain name="would_return">
-            <template #custom="{ shouldShowStar, fieldId }">
-              <view class="form-label" :class="fieldId">
+            <template #custom="{ shouldShowStar }">
+              <view class="form-label">
                 <text v-if="shouldShowStar" class="form-star">*</text>
                 您是否会再次选择该服务人员？
               </view>
