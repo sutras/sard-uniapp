@@ -23,6 +23,7 @@ export const defaultTabsProps = defaultConfig.tabs
 
 export interface TabsSlots {
   default?(props: Record<string, never>): any
+  line?(props: Record<string, never>): any
 }
 
 export interface TabsEmits {

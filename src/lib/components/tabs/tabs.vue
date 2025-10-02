@@ -24,7 +24,9 @@
             v-if="type === 'line'"
             :class="bem.e('line')"
             :style="lineStyle"
-          />
+          >
+            <slot name="line"></slot>
+          </view>
         </view>
       </view>
     </scroll-view>

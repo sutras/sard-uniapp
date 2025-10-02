@@ -96,9 +96,10 @@ import Tab from 'sard-uniapp/components/tab/tab.vue'
 
 ### TabSlots
 
-| 插槽    | 描述           | 属性 |
-| ------- | -------------- | ---- |
-| default | 自定义默认内容 | -    |
+| 插槽                    | 描述           | 属性 |
+| ----------------------- | -------------- | ---- |
+| default                 | 自定义默认内容 | -    |
+| line <sup>1.24.7+</sup> | 自定义线条内容 | -    |
 
 ### TabEmits
 
