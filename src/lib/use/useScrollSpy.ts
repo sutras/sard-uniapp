@@ -71,7 +71,11 @@ export function useScrollSpy(options: UseScrollSpyOptions) {
       const item = anchorRectList.value.find((item) => item[0] === name)
       if (item) {
         const offset = item[1].top
-        scrollTop.value = offset - startOffset.value
+        const nextScrollTop = offset - startOffset.value
+        scrollTop.value =
+          nextScrollTop === scrollTop.value
+            ? nextScrollTop + 0.1
+            : nextScrollTop
 
         lockScroll = true
         unLockScrollLater()
