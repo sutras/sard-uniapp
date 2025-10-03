@@ -1,3 +1,21 @@
+## [1.24.7](https://github.com/sutras/sard-uniapp/compare/v1.24.6...v1.24.7) (2025-10-02)
+
+
+### Bug Fixes
+
+* **form:** 修复FormItemPlain错误定位问题 ([3b35b05](https://github.com/sutras/sard-uniapp/commit/3b35b05b6df5c5b3de447ffec9f7ff37b7be8ab3))
+* **scroll-spy:** 修复因重复设置current导致不滚动的问题 ([cb6ba8c](https://github.com/sutras/sard-uniapp/commit/cb6ba8c0563657ae0e826e7a3816430c9ff711d7))
+
+
+### Features
+
+* **config:** 允许全局配置组件的任意属性 ([889ad5b](https://github.com/sutras/sard-uniapp/commit/889ad5b1df4f9ddcfdeaffc6d2492d95f16550d3))
+* **scroll-spy:** 新增 disabled 属性 ([0d20897](https://github.com/sutras/sard-uniapp/commit/0d20897bdf2c97f2f6423a58ab90327ba606fae7))
+* **tabs:** 新增line插槽 ([1d05dd0](https://github.com/sutras/sard-uniapp/commit/1d05dd05893b3264a805e42abe6792212a4ba95a))
+* **tree:** 添加懒加载功能 ([f4c7d38](https://github.com/sutras/sard-uniapp/commit/f4c7d38aa952d67b0056922c22f47c04519f5a25))
+
+
+
 ## [1.24.6](https://github.com/sutras/sard-uniapp/compare/v1.24.5...v1.24.6) (2025-09-23)
 
 
