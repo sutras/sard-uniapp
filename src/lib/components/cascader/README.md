@@ -12,7 +12,7 @@ group: 表单组件
 ## 引入
 
 ```ts
-import { Cascader } from 'sard'
+import Cascader from 'sard-uniapp/components/cascader/cascader.vue'
 ```
 
 ## 代码演示

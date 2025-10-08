@@ -12,7 +12,7 @@ group: 数据展示
 ## 引入
 
 ```ts
-import { Empty } from 'sard'
+import Empty from 'sard-uniapp/components/empty/empty.vue'
 ```
 
 ## 代码演示
