@@ -89,31 +89,32 @@ import FabItem from 'sard-uniapp/components/fab-item/fab-item.vue'
 
 ### FabProps
 
-| 属性                                | 描述                                                      | 类型                           | 默认值 |
-| ----------------------------------- | --------------------------------------------------------- | ------------------------------ | ------ |
-| root-class                          | 组件根元素类名                                            | string                         | -      |
-| root-style                          | 组件根元素样式                                            | StyleValue                     | -      |
-| top                                 | 设置距离窗口顶部的距离，优先级比 `bottom` 高              | string                         | -      |
-| right                               | 设置距离窗口右边的距离                                    | string                         | -      |
-| bottom                              | 设置距离窗口底部的距离                                    | string                         | -      |
-| left                                | 设置距离窗口左边的距离，优先级比 `right` 高               | string                         | -      |
-| color                               | 设置按钮图标的颜色                                        | string                         | -      |
-| background                          | 设置按钮的背景色                                          | string                         | -      |
-| icon                                | 设置入口按钮的图标                                        | string                         | -      |
-| visible-icon <sup>1.24.3+</sup>     | 设置弹出扩展按钮时的入口按钮的图标                        | string                         | -      |
-| icon-family                         | 设置入口按钮的图标族                                      | string                         | -      |
-| item-list                           | 设置扩展按钮                                              | FabItem[]                      | []     |
-| hide-name                           | 是否隐藏按钮名称                                          | boolean                        | false  |
-| overlay-closable                    | 点击遮罩是否隐藏扩展按钮                                  | boolean                        | false  |
-| duration                            | 扩展按钮显隐动画时长，单位 ms                             | number                         | 150    |
-| draggable <sup>1.24.2+</sup>        | 是否可拖拽                                                | boolean                        | false  |
-| axis <sup>1.24.2+</sup>             | 允许拖拽的方向轴                                          | 'x' \| 'y' \| 'both' \| 'none' | 'y'    |
-| magnet <sup>1.24.2+</sup>           | 吸附到指定轴最近的一边，在拖拽时使用                      | 'x' \| 'y'                     | -      |
-| gap-x <sup>1.24.2+</sup>            | 悬浮按钮与窗口左右两边的最小间距，单位为 px，在拖拽时使用 | number                         | 24     |
-| gap-y <sup>1.24.2+</sup>            | 悬浮按钮与窗口上下两边的最小间距，单位为 px，在拖拽时使用 | number                         | 24     |
-| offset (v-model) <sup>1.24.2+</sup> | 控制悬浮按钮的位置，在拖拽时使用                          | { x: number; y: number }       | -      |
-| navbar-height <sup>1.24.3+</sup>    | 自定义顶部导航栏的高度，在拖拽时使用                      | number                         | 0      |
-| tabbar-height <sup>1.24.3+</sup>    | 自定义底部标签栏的高度，在拖拽时使用                      | number                         | 0      |
+| 属性                                 | 描述                                                      | 类型                           | 默认值 |
+| ------------------------------------ | --------------------------------------------------------- | ------------------------------ | ------ |
+| root-class                           | 组件根元素类名                                            | string                         | -      |
+| root-style                           | 组件根元素样式                                            | StyleValue                     | -      |
+| visible (v-model) <sup>1.24.8+</sup> | 控制扩展按钮的显示状态，支持双向绑定                      | boolean                        | false  |
+| top                                  | 设置距离窗口顶部的距离，优先级比 `bottom` 高              | string                         | -      |
+| right                                | 设置距离窗口右边的距离                                    | string                         | -      |
+| bottom                               | 设置距离窗口底部的距离                                    | string                         | -      |
+| left                                 | 设置距离窗口左边的距离，优先级比 `right` 高               | string                         | -      |
+| color                                | 设置按钮图标的颜色                                        | string                         | -      |
+| background                           | 设置按钮的背景色                                          | string                         | -      |
+| icon                                 | 设置入口按钮的图标                                        | string                         | -      |
+| visible-icon <sup>1.24.3+</sup>      | 设置弹出扩展按钮时的入口按钮的图标                        | string                         | -      |
+| icon-family                          | 设置入口按钮的图标族                                      | string                         | -      |
+| item-list                            | 设置扩展按钮，长度为0时不会展示遮罩                       | FabItem[]                      | []     |
+| hide-name                            | 是否隐藏按钮名称                                          | boolean                        | false  |
+| overlay-closable                     | 点击遮罩是否隐藏扩展按钮                                  | boolean                        | false  |
+| duration                             | 扩展按钮显隐动画时长，单位 ms                             | number                         | 150    |
+| draggable <sup>1.24.2+</sup>         | 是否可拖拽                                                | boolean                        | false  |
+| axis <sup>1.24.2+</sup>              | 允许拖拽的方向轴                                          | 'x' \| 'y' \| 'both' \| 'none' | 'y'    |
+| magnet <sup>1.24.2+</sup>            | 吸附到指定轴最近的一边，在拖拽时使用                      | 'x' \| 'y'                     | -      |
+| gap-x <sup>1.24.2+</sup>             | 悬浮按钮与窗口左右两边的最小间距，单位为 px，在拖拽时使用 | number                         | 24     |
+| gap-y <sup>1.24.2+</sup>             | 悬浮按钮与窗口上下两边的最小间距，单位为 px，在拖拽时使用 | number                         | 24     |
+| offset (v-model) <sup>1.24.2+</sup>  | 控制悬浮按钮的位置，在拖拽时使用                          | { x: number; y: number }       | -      |
+| navbar-height <sup>1.24.3+</sup>     | 自定义顶部导航栏的高度，在拖拽时使用                      | number                         | 0      |
+| tabbar-height <sup>1.24.3+</sup>     | 自定义底部标签栏的高度，在拖拽时使用                      | number                         | 0      |
 
 ### FabSlots <sup>1.24.3+</sup>
 

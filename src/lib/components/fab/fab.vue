@@ -1,6 +1,6 @@
 <template>
   <sar-overlay
-    :visible="visible"
+    :visible="visible && itemList?.length > 0"
     :z-index="zIndex"
     background="var(--sar-fab-mask)"
     @click="onOverlayClick"
@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide, reactive, ref, toRef } from 'vue'
+import { computed, provide, reactive, toRef } from 'vue'
 import { classNames, stringifyStyle, createBem, isNullish } from '../../utils'
 import {
   type FabProps,
@@ -82,7 +82,7 @@ const emit = defineEmits<FabEmits>()
 const bem = createBem('fab')
 
 // main
-const visible = ref(false)
+const visible = defineModel('visible', { default: false })
 
 const [zIndex, increaseZIndex] = useZIndex()
 

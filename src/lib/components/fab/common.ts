@@ -4,6 +4,7 @@ import { defaultConfig } from '../config'
 export interface FabProps {
   rootStyle?: StyleValue
   rootClass?: string
+  visible?: boolean
   top?: string
   right?: string
   bottom?: string
