@@ -1,6 +1,6 @@
 <template>
   <sar-overlay
-    :visible="visible && itemList?.length > 0"
+    :visible="calcOverlayVisible"
     :z-index="zIndex"
     background="var(--sar-fab-mask)"
     @click="onOverlayClick"
@@ -49,7 +49,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, provide, reactive, toRef } from 'vue'
+import { computed, provide, reactive, ref, toRef } from 'vue'
 import { classNames, stringifyStyle, createBem, isNullish } from '../../utils'
 import {
   type FabProps,
@@ -75,14 +75,14 @@ defineOptions({
 
 const props = withDefaults(defineProps<FabProps>(), defaultFabProps())
 
-defineSlots<FabSlots>()
+const slots = defineSlots<FabSlots>()
 
 const emit = defineEmits<FabEmits>()
 
 const bem = createBem('fab')
 
 // main
-const visible = defineModel('visible', { default: false })
+const visible = ref<boolean>(props.visible)
 
 const [zIndex, increaseZIndex] = useZIndex()
 
@@ -94,6 +94,10 @@ const { realVisible, transitionClass, onTransitionEnd } = useTransition(
   }),
 )
 
+const calcOverlayVisible = computed(() => {
+  return visible.value && (props.itemList?.length > 0 || Boolean(slots.list))
+})
+
 const entryIcon = computed(() => {
   return visible.value ? props.visibleIcon || 'close' : props.icon || 'plus'
 })
@@ -102,6 +106,8 @@ const onItemEntryClick = (event: any) => {
   if (stopBubbling.value) return
 
   visible.value = !visible.value
+  emit('update:visible', visible.value)
+
   if (visible.value) {
     increaseZIndex()
   }
@@ -111,12 +117,14 @@ const onItemEntryClick = (event: any) => {
 
 const onItemClick = (item: FabItem, index: number) => {
   visible.value = false
+  emit('update:visible', visible.value)
   emit('select', item, index)
 }
 
 const onOverlayClick = () => {
   if (props.overlayClosable) {
     visible.value = false
+    emit('update:visible', visible.value)
   }
 }
 
@@ -135,7 +143,7 @@ const {
   windowHeight,
   windowTop,
 } = useFloatingBubble(props, emit, {
-  disabled: visible,
+  disabled: calcOverlayVisible,
 })
 
 const isTop = computed(() => {

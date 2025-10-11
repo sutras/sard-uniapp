@@ -43,6 +43,7 @@ export interface FabEmits {
   (e: 'click', event: any): void
   (e: 'select', item: FabItem, index: number): void
   (e: 'update:offset', offset: { x: number; y: number }): void
+  (e: 'update:visible', visible: boolean): void
 }
 
 export interface FabItem {
