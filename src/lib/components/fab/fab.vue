@@ -1,6 +1,7 @@
 <template>
   <sar-overlay
-    :visible="calcOverlayVisible"
+    v-if="props.overlay"
+    :visible="visible"
     :z-index="zIndex"
     background="var(--sar-fab-mask)"
     @click="onOverlayClick"
@@ -75,7 +76,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<FabProps>(), defaultFabProps())
 
-const slots = defineSlots<FabSlots>()
+defineSlots<FabSlots>()
 
 const emit = defineEmits<FabEmits>()
 
@@ -94,10 +95,6 @@ const { realVisible, transitionClass, onTransitionEnd } = useTransition(
   }),
 )
 
-const calcOverlayVisible = computed(() => {
-  return visible.value && (props.itemList?.length > 0 || Boolean(slots.list))
-})
-
 const entryIcon = computed(() => {
   return visible.value ? props.visibleIcon || 'close' : props.icon || 'plus'
 })
@@ -105,8 +102,7 @@ const entryIcon = computed(() => {
 const onItemEntryClick = (event: any) => {
   if (stopBubbling.value) return
 
-  visible.value = !visible.value
-  emit('update:visible', visible.value)
+  emit('update:visible', (visible.value = !visible.value))
 
   if (visible.value) {
     increaseZIndex()
@@ -116,15 +112,15 @@ const onItemEntryClick = (event: any) => {
 }
 
 const onItemClick = (item: FabItem, index: number) => {
-  visible.value = false
-  emit('update:visible', visible.value)
+  if (props.autoClose) {
+    emit('update:visible', (visible.value = false))
+  }
   emit('select', item, index)
 }
 
 const onOverlayClick = () => {
   if (props.overlayClosable) {
-    visible.value = false
-    emit('update:visible', visible.value)
+    emit('update:visible', (visible.value = false))
   }
 }
 
@@ -143,7 +139,7 @@ const {
   windowHeight,
   windowTop,
 } = useFloatingBubble(props, emit, {
-  disabled: calcOverlayVisible,
+  disabled: visible,
 })
 
 const isTop = computed(() => {

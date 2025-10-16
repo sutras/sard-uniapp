@@ -5,6 +5,7 @@ export interface FabProps {
   rootStyle?: StyleValue
   rootClass?: string
   visible?: boolean
+  autoClose?: boolean
   top?: string
   right?: string
   bottom?: string
@@ -16,6 +17,7 @@ export interface FabProps {
   iconFamily?: string
   itemList?: FabItem[]
   hideName?: boolean
+  overlay?: boolean
   overlayClosable?: boolean
   duration?: number
 

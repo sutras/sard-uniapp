@@ -94,6 +94,7 @@ import FabItem from 'sard-uniapp/components/fab-item/fab-item.vue'
 | root-class                           | 组件根元素类名                                            | string                         | -      |
 | root-style                           | 组件根元素样式                                            | StyleValue                     | -      |
 | visible (v-model) <sup>1.24.8+</sup> | 控制扩展按钮的显示状态，支持双向绑定                      | boolean                        | false  |
+| auto-close <sup>1.24.8+</sup>        | 点击扩展按钮后是否自动关闭                                | boolean                        | true   |
 | top                                  | 设置距离窗口顶部的距离，优先级比 `bottom` 高              | string                         | -      |
 | right                                | 设置距离窗口右边的距离                                    | string                         | -      |
 | bottom                               | 设置距离窗口底部的距离                                    | string                         | -      |
@@ -105,6 +106,7 @@ import FabItem from 'sard-uniapp/components/fab-item/fab-item.vue'
 | icon-family                          | 设置入口按钮的图标族                                      | string                         | -      |
 | item-list                            | 设置扩展按钮，长度为0时不会展示遮罩                       | FabItem[]                      | []     |
 | hide-name                            | 是否隐藏按钮名称                                          | boolean                        | false  |
+| overlay <sup>1.24.8+</sup>           | 是否展示遮罩层                                            | boolean                        | true   |
 | overlay-closable                     | 点击遮罩是否隐藏扩展按钮                                  | boolean                        | false  |
 | duration                             | 扩展按钮显隐动画时长，单位 ms                             | number                         | 150    |
 | draggable <sup>1.24.2+</sup>         | 是否可拖拽                                                | boolean                        | false  |
