@@ -1,5 +1,6 @@
 <template>
   <sar-overlay
+    v-if="props.overlay"
     :visible="visible"
     :z-index="zIndex"
     background="var(--sar-fab-mask)"
@@ -82,7 +83,7 @@ const emit = defineEmits<FabEmits>()
 const bem = createBem('fab')
 
 // main
-const visible = ref(false)
+const visible = ref<boolean>(props.visible)
 
 const [zIndex, increaseZIndex] = useZIndex()
 
@@ -101,7 +102,8 @@ const entryIcon = computed(() => {
 const onItemEntryClick = (event: any) => {
   if (stopBubbling.value) return
 
-  visible.value = !visible.value
+  emit('update:visible', (visible.value = !visible.value))
+
   if (visible.value) {
     increaseZIndex()
   }
@@ -110,13 +112,15 @@ const onItemEntryClick = (event: any) => {
 }
 
 const onItemClick = (item: FabItem, index: number) => {
-  visible.value = false
+  if (props.autoClose) {
+    emit('update:visible', (visible.value = false))
+  }
   emit('select', item, index)
 }
 
 const onOverlayClick = () => {
   if (props.overlayClosable) {
-    visible.value = false
+    emit('update:visible', (visible.value = false))
   }
 }
 

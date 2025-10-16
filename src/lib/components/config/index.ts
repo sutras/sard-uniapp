@@ -363,6 +363,8 @@ export const defaultConfig: RequiredConfigOptions = {
     icon: 'empty',
   },
   fab: {
+    autoClose: true,
+    overlay: true,
     overlayClosable: false,
     hideName: false,
     duration: 150,

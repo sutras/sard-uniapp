@@ -4,6 +4,8 @@ import { defaultConfig } from '../config'
 export interface FabProps {
   rootStyle?: StyleValue
   rootClass?: string
+  visible?: boolean
+  autoClose?: boolean
   top?: string
   right?: string
   bottom?: string
@@ -15,6 +17,7 @@ export interface FabProps {
   iconFamily?: string
   itemList?: FabItem[]
   hideName?: boolean
+  overlay?: boolean
   overlayClosable?: boolean
   duration?: number
 
@@ -42,6 +45,7 @@ export interface FabEmits {
   (e: 'click', event: any): void
   (e: 'select', item: FabItem, index: number): void
   (e: 'update:offset', offset: { x: number; y: number }): void
+  (e: 'update:visible', visible: boolean): void
 }
 
 export interface FabItem {
