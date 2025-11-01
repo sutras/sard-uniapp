@@ -50,7 +50,7 @@ export function spreadEach(
  * 判断两数组是否相等，浅比较，元素个数和位置都要相等才为真。
  */
 export function arrayEqual(arr1: any[], arr2: any[]): boolean {
-  return arr1.length === arr1.length && arr1.every((el, i) => el === arr2[i])
+  return arr1.length === arr2.length && arr1.every((el, i) => el === arr2[i])
 }
 
 /**
