@@ -1,5 +1,5 @@
 <template>
-  <view :class="loadingClass">
+  <view :class="loadingClass" :style="loadingStyle">
     <view :class="iconClass" :style="iconStyle">
       <slot v-if="type === 'circular'" name="circular">
         <view :class="bem.e('spinner')"></view>
@@ -69,7 +69,11 @@ const scaleShowNum = computed(() => {
 
 // others
 const loadingClass = computed(() => {
-  return classNames(bem.b(), bem.m('vertical', props.vertical))
+  return classNames(bem.b(), bem.m('vertical', props.vertical), props.rootClass)
+})
+
+const loadingStyle = computed(() => {
+  return stringifyStyle(props.rootStyle)
 })
 
 const iconClass = computed(() => {
@@ -91,15 +95,11 @@ const iconStyle = computed(() => {
           transform: `rotate(${props.progress * 360}deg)`,
         }
       : null,
-    props.rootClass,
   )
 })
 
 const loadingTextStyle = computed(() => {
-  return stringifyStyle(
-    { color: props.textColor, fontSize: props.textSize },
-    props.rootStyle,
-  )
+  return stringifyStyle({ color: props.textColor, fontSize: props.textSize })
 })
 </script>
 
