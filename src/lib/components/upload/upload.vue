@@ -60,6 +60,7 @@ import {
   type UploadProps,
   type UploadSlots,
   type UploadEmits,
+  type UploadExpose,
   type UploadFile,
   type UploadFileItem,
   type UploadSelectOptions,
@@ -219,7 +220,7 @@ function toChain(files: UploadFile[]) {
 
 let isSelectPending = false
 
-const onSelect = () => {
+const select = () => {
   if (
     isSelectPending ||
     isDisabled.value ||
@@ -269,6 +270,10 @@ const onSelect = () => {
   } else {
     next()
   }
+}
+
+const onSelect = () => {
+  select()
 }
 
 // # remove
@@ -339,6 +344,10 @@ const onImageClick = (index: number) => {
 const onItemClick = (index: number, fileItem: UploadFileItem) => {
   emit('item-click', fileItem, index)
 }
+
+defineExpose<UploadExpose>({
+  select,
+})
 
 // # others
 

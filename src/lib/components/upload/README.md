@@ -156,6 +156,12 @@ interface UploadSelectOptions {
 | remove                      | 删除文件时触发           | (index: number, item: UploadFileItem) => void |
 | item-click <sup>1.20+</sup> | 点击文件项时触发         | (item: UploadFileItem, index: number) => void |
 
+### UploadExpose
+
+| 属性                      | 描述             | 类型       |
+| ------------------------- | ---------------- | ---------- |
+| select <sup>1.25.0+</sup> | 手动调起文件选择 | () => void |
+
 ### UploadFileItem
 
 | 属性     | 描述                                                                              | 类型         | 默认值    |

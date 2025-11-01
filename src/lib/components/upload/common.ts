@@ -79,6 +79,10 @@ export interface UploadEmits {
   (e: 'item-click', item: UploadFileItem, index: number): void
 }
 
+export interface UploadExpose {
+  select: () => void
+}
+
 export interface ChainNode {
   (data: any, next: (...args: any[]) => void): void
 }
