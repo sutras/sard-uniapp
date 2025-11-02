@@ -35,6 +35,7 @@ import { type FloatingPanelProps } from '../floating-panel'
 import { type FormItemProps, type FormProps } from '../form'
 import { type GridProps } from '../grid'
 import { type IconProps } from '../icon'
+import { type ImageProps } from '../image'
 import { type IndexesProps } from '../indexes'
 import { type InputProps } from '../input'
 import { type KeyboardProps } from '../keyboard'
@@ -154,6 +155,7 @@ export interface ConfigOptions {
   formItem?: InferDefaults<LooseRequired<FormItemProps>>
   grid?: InferDefaults<LooseRequired<GridProps>>
   icon?: InferDefaults<LooseRequired<IconProps>>
+  image?: InferDefaults<LooseRequired<ImageProps>>
   indexes?: InferDefaults<LooseRequired<IndexesProps>>
   input?: InferDefaults<LooseRequired<InputProps>>
   keyboard?: InferDefaults<LooseRequired<KeyboardProps>>
@@ -404,6 +406,16 @@ export const defaultConfig: RequiredConfigOptions = {
     name: '',
     family: 'sari',
     separate: false,
+  },
+  image: {
+    mode: 'aspectFill',
+    shape: 'square',
+    fade: true,
+    loadingIcon: 'image',
+    errorIcon: 'image-error',
+    showMenuByLongpress: true,
+    showLoading: true,
+    showError: true,
   },
   indexes: {
     hintDuration: 300,

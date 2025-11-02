@@ -219,6 +219,9 @@
           "path": "icon/index"
         },
         {
+          "path": "image/index"
+        },
+        {
           "path": "indexes/demo/FullPage"
         },
         {
