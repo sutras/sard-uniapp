@@ -106,7 +106,7 @@ const checkIconType = computed(() => {
 
 const iconColor = computed(() => {
   return innerChecked.value && !isDisabled.value
-    ? props.checkedColor ?? groupContext?.checkedColor
+    ? (props.checkedColor ?? groupContext?.checkedColor)
     : undefined
 })
 
