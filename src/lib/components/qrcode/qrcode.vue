@@ -36,7 +36,11 @@ import {
   uniqid,
   qrcode,
 } from '../../utils'
-import { defaultQrcodeProps, type QrcodeProps } from './common'
+import {
+  defaultQrcodeProps,
+  type QrcodeProps,
+  type QrcodeEmits,
+} from './common'
 
 defineOptions({
   options: {
@@ -46,6 +50,8 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<QrcodeProps>(), defaultQrcodeProps)
+
+const emit = defineEmits<QrcodeEmits>()
 
 const bem = createBem('qrcode')
 
@@ -106,6 +112,7 @@ const drawQrcode = async () => {
         canvasId: canvasId,
         success(res) {
           dataURL.value = res.tempFilePath
+          emit('success', res.tempFilePath)
         },
         fail(err) {
           console.log('uni.canvasToTempFilePath fail', err)

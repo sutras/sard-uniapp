@@ -23,3 +23,7 @@ export const defaultQrcodeProps = defaultConfig.qrcode
 export interface QrcodeSlots {
   default?(props: Record<string, never>): any
 }
+
+export interface QrcodeEmits {
+  (e: 'success', tempFilePath: string): void
+}
