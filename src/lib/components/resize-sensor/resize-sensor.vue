@@ -114,7 +114,7 @@ const debouncedUpdate = debounce(
   props.threshold,
   {
     maxWait: 0,
-    leading: false,
+    leading: true,
     trailing: true,
   },
 )

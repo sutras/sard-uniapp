@@ -1,0 +1,13 @@
+// #variables
+page,
+.sar-portal {
+  --sar-image-bg: var(--sar-secondary-bg);
+  --sar-image-width: 320px;
+  --sar-image-height: 240px;
+  --sar-image-loading-font-size: 48rpx;
+  --sar-image-loading-color: var(--sar-fourth-color);
+  --sar-image-error-font-size: 48rpx;
+  --sar-image-error-color: var(--sar-fourth-color);
+  --sar-image-fade-duration: var(--sar-duration-slow);
+}
+// #endvariables

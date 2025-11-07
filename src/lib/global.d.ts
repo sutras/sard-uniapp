@@ -53,6 +53,7 @@ declare module 'vue' {
     SarGrid: typeof import('./components/grid/grid.vue').default
     SarGridItem: typeof import('./components/grid-item/grid-item.vue').default
     SarIcon: typeof import('./components/icon/icon.vue').default
+    SarImage: typeof import('./components/image/image.vue').default
     SarIndexes: typeof import('./components/indexes/indexes.vue').default
     SarIndexesAnchor: typeof import('./components/indexes-anchor/indexes-anchor.vue').default
     SarInput: typeof import('./components/input/input.vue').default

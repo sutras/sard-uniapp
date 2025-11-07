@@ -1,3 +1,19 @@
+# [1.25.0](https://github.com/sutras/sard-uniapp/compare/v1.24.7...v1.25.0) (2025-11-03)
+
+
+### Bug Fixes
+
+* **loading:** 修复根类名和样式设置错乱问题 ([f4ef355](https://github.com/sutras/sard-uniapp/commit/f4ef355e31d68e200868811a656f989ce6c7bd64))
+* **util:** 修复数组浅比较问题 ([7f04c96](https://github.com/sutras/sard-uniapp/commit/7f04c961210dfddfb475f41299dca6391e418060))
+
+
+### Features
+
+* **upload:** 允许通过调用方法调起文件选择 ([a78a645](https://github.com/sutras/sard-uniapp/commit/a78a6456f44c3fa6a7d1bba46b8354b07e458d1f))
+* 新增image组件 ([7c61f4d](https://github.com/sutras/sard-uniapp/commit/7c61f4da58ad4f3307da6472e9c9df85e0f82f59))
+
+
+
 ## [1.24.7](https://github.com/sutras/sard-uniapp/compare/v1.24.6...v1.24.7) (2025-10-02)
 
 
