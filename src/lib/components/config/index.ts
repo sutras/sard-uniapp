@@ -493,6 +493,7 @@ export const defaultConfig: RequiredConfigOptions = {
     showConfirm: true,
     showClose: true,
     showFooter: true,
+    overlay: true,
     overlayClosable: true,
     duration: 250,
   },

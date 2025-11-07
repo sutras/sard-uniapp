@@ -36,6 +36,8 @@ import Popup from 'sard-uniapp/components/popup/popup.vue'
 | duration                          | 显隐动画时长，单位 ms                                                                  | number                                                                             | 300    |
 | effect                            | 显隐效果                                                                               | 'slide-top' \| 'slide-right' \| 'slide-bottom' \| 'slide-left' \| 'zoom' \| 'fade' | 'fade' |
 | overlay                           | 是否显示遮罩                                                                           | boolean                                                                            | true   |
+| overlay-class                     | 添加到遮罩的类名                                                                       | string                                                                             | -      |
+| overlay-style                     | 添加到遮罩的样式                                                                       | string                                                                             | -      |
 | background                        | 遮罩背景色                                                                             | string                                                                             | -      |
 | transparent                       | 透明遮罩                                                                               | boolean                                                                            | false  |
 | overlay-closable <sup>1.22+</sup> | 是否在点击遮罩层后关闭                                                                 | boolean                                                                            | true   |

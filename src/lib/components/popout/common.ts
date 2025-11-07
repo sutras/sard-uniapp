@@ -25,6 +25,11 @@ export interface PopoutProps {
   confirmDisabled?: boolean
   showClose?: boolean
   showFooter?: boolean
+  overlay?: boolean
+  overlayClass?: string
+  overlayStyle?: string
+  background?: string
+  transparent?: boolean
   overlayClosable?: boolean
   beforeClose?: PopoutBeforeClose
   keepRender?: boolean
