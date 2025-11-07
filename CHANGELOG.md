@@ -1,3 +1,14 @@
+## [1.25.1](https://github.com/sutras/sard-uniapp/compare/v1.25.0...v1.25.1) (2025-11-07)
+
+
+### Features
+
+* **locale:** 添加越南语语言包 ([8f1611a](https://github.com/sutras/sard-uniapp/commit/8f1611a73e9f291ea4a64c23319de1b646de7457))
+* **popout:** 添加遮罩相关属性 ([8ee1ad8](https://github.com/sutras/sard-uniapp/commit/8ee1ad86787f8ff970fcf60cb305aa4c484537df))
+* **qrcode:** 新增success事件 ([91195a9](https://github.com/sutras/sard-uniapp/commit/91195a9a13f14b518421811c95c29d3f364ee88f))
+
+
+
 # [1.25.0](https://github.com/sutras/sard-uniapp/compare/v1.24.7...v1.25.0) (2025-11-03)
 
 
