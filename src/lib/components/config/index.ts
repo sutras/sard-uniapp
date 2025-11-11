@@ -422,6 +422,7 @@ export const defaultConfig: RequiredConfigOptions = {
   },
   input: {
     enableNative: false,
+    controlled: true,
     maxlength: 140,
     adjustPosition: true,
     ignoreCompositionEvent: true,

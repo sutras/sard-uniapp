@@ -17,6 +17,7 @@
           )
         "
         :enableNative="enableNative"
+        :controlled="controlled"
         :value="innerValue"
         :placeholder="placeholder"
         :placeholder-style="mergedPlaceholderStyle"
@@ -38,6 +39,7 @@
         :fixed="fixed"
         :show-confirm-bar="showConfirmBar"
         :disable-default-padding="disableDefaultPadding"
+        :maxlength="maxLength"
         @input="onInput"
         @focus="onFocus"
         @blur="onBlur"
@@ -52,6 +54,7 @@
         v-if="type !== 'textarea' && showPassword"
         :class="classNames(bem.e('control'), bem.em('control', 'input'))"
         :enableNative="enableNative"
+        :controlled="controlled"
         :value="innerValue"
         :placeholder="placeholder"
         :placeholder-style="mergedPlaceholderStyle"
@@ -70,6 +73,7 @@
         :ignore-composition-event="ignoreCompositionEvent"
         :inputmode="inputmode"
         autocomplete="off"
+        :maxlength="maxLength"
         @input="onInput"
         @focus="onFocus"
         @blur="onBlur"
@@ -85,12 +89,12 @@
         :safe-password-salt="safePasswordSalt"
         :safe-password-custom-hash="safePasswordCustomHash"
         :random-number="randomNumber"
-        :controlled="controlled"
         :always-system="alwaysSystem"
       />
       <input
         v-if="type !== 'textarea' && !showPassword"
         :class="classNames(bem.e('control'), bem.em('control', 'input'))"
+        :controlled="controlled"
         :enableNative="enableNative"
         :value="innerValue"
         :placeholder="placeholder"
@@ -110,6 +114,7 @@
         :ignore-composition-event="ignoreCompositionEvent"
         :inputmode="inputmode"
         autocomplete="off"
+        :maxlength="maxLength"
         @input="onInput"
         @focus="onFocus"
         @blur="onBlur"
@@ -125,7 +130,6 @@
         :safe-password-salt="safePasswordSalt"
         :safe-password-custom-hash="safePasswordCustomHash"
         :random-number="randomNumber"
-        :controlled="controlled"
         :always-system="alwaysSystem"
       />
       <view :class="bem.e('tools')">
@@ -154,14 +158,15 @@
       <slot name="addon"></slot>
     </view>
     <view v-if="showCount" :class="bem.e('count')">
-      {{ innerValue.length }} / {{ maxlength }}
+      <view v-if="maxlength === -1">{{ innerValue.length }}</view>
+      <view v-else>{{ innerValue.length }} / {{ maxlength }}</view>
     </view>
   </view>
 </template>
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
+import { classNames, stringifyStyle, createBem, isWeb } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
 import {
@@ -219,9 +224,13 @@ watch(
 
 const onInput = (event: any) => {
   let value = event.detail.value
-  if (props.maxlength >= 0) {
-    value = value.slice(0, props.maxlength)
+
+  if (!isWeb) {
+    if (props.maxlength >= 0) {
+      value = value.slice(0, props.maxlength)
+    }
   }
+
   setInnerValue(value)
   return value
 }
@@ -307,6 +316,11 @@ const onKeyboardheightchange = (event: any) => {
 const onClick = (event: any) => {
   emit('click', event)
 }
+
+// max length
+const maxLength = computed(() => {
+  return isWeb ? props.maxlength : -1
+})
 
 // eye
 const isPlainText = ref(false)
