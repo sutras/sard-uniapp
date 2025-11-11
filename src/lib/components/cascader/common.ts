@@ -79,10 +79,9 @@ export function getSelectedOptionsByValue(
     return selectedOptions
   } else {
     for (const option of options) {
-      if (option[fieldKeys.value] === value) {
-        return [option]
-      }
 
+      // 优先在子结点中查找，找到后再向上回溯路径
+      // 这样可以处理存在重复值场景时候更偏向于更深层次的选项
       if (Array.isArray(option[fieldKeys.children])) {
         const selectedOptions = getSelectedOptionsByValue(
           option[fieldKeys.children],
@@ -93,6 +92,11 @@ export function getSelectedOptionsByValue(
           return [option, ...selectedOptions]
         }
       }
+
+      if (option[fieldKeys.value] === value) {
+        return [option]
+      }
+
     }
   }
 }
