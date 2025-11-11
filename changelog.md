@@ -1,3 +1,13 @@
+## [1.25.2](https://github.com/sutras/sard-uniapp/compare/v1.25.1...v1.25.2) (2025-11-11)
+
+
+### Bug Fixes
+
+* **cascader:** 节点值相同时优先绑定后代节点 ([3937b2d](https://github.com/sutras/sard-uniapp/commit/3937b2d3ee47afe875d5d1544d211ca31f7490a0))
+* **input:** 修复web端最大字数限制无效问题 ([8811d13](https://github.com/sutras/sard-uniapp/commit/8811d13ef1c5294ad16fb52b1d1b56fd2c37f356))
+
+
+
 ## [1.25.1](https://github.com/sutras/sard-uniapp/compare/v1.25.0...v1.25.1) (2025-11-07)
 
 
