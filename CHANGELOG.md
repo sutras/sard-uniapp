@@ -1,3 +1,12 @@
+## [1.25.3](https://github.com/sutras/sard-uniapp/compare/v1.25.2...v1.25.3) (2025-11-12)
+
+
+### Bug Fixes
+
+* 修复ios微信端水印渲染失败问题 ([0bea433](https://github.com/sutras/sard-uniapp/commit/0bea433bf0246bbbb1f4cf7701fb75a2879aed90))
+
+
+
 ## [1.25.2](https://github.com/sutras/sard-uniapp/compare/v1.25.1...v1.25.2) (2025-11-11)
 
 
