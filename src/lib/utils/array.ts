@@ -47,11 +47,7 @@ export function spreadEach(
 }
 
 /**
- * 判断两数组是否相等，浅比较。
- * @param {any[]} arr1 第一个数组
- * @param {any[]} arr2 第二个数组
- * @param {Boolean} checkOrder 是否需要检查元素顺序，默认为true
- * @returns {Boolean} 如果数组相等返回true，否则返回false
+ * 判断两数组是否相等，浅比较，元素个数和位置都要相等才为真。
  */
 export function arrayEqual(arr1: any[], arr2: any[]): boolean {
   return arr1.length === arr2.length && arr1.every((el, i) => el === arr2[i])
