@@ -223,7 +223,8 @@ const drawWatermark = () => {
         destHeight: clipHeight,
         canvasId: canvasId,
         success(res) {
-          dataURL.value = res.tempFilePath
+            const base64 = 'data:image/png;base64,'+ uni.getFileSystemManager().readFileSync(res.tempFilePath,"base64")
+            dataURL.value = base64
         },
       },
       instance,
