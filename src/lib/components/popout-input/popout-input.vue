@@ -11,7 +11,7 @@
       :type="multiline ? 'textarea' : undefined"
       :auto-height="multiline"
       :input-min-height="multiline"
-      :internal-prepend="$slots.prepend ? 1 : 0"
+      :internal-prepend="internalAppend ?? ($slots.prepend ? 1 : 0)"
       v-bind="inputProps"
       @clear="onClear"
       @change="onChange"
@@ -20,8 +20,8 @@
         <slot name="prepend"></slot>
       </template>
       <template #append>
-        <slot name="append"></slot>
         <view :class="bem.e('append')">
+          <slot name="append"></slot>
           <view v-if="loading" :class="bem.e('loading')">
             <sar-loading />
           </view>

@@ -7,6 +7,13 @@
 <p align="center">sard-uniapp 是一套基于 Uniapp + Vue3 框架开发的兼容多端的 UI 组件库。</p>
 
 <p align="center">
+  <a href="https://www.npmjs.com/package/sard-uniapp"><img src="https://img.shields.io/npm/dm/sard-uniapp.svg" alt="Total Downloads"></a>
+  <a href="https://github.com/sutras/sard-uniapp/tags"><img src="https://img.shields.io/npm/v/sard-uniapp.svg" alt="Latest Release"></a>
+  <a href="https://github.com/sutras/sard-uniapp/graphs/contributors"><img src="https://img.shields.io/github/contributors/sutras/sard-uniapp" alt="Contributors"></a>
+  <a href="https://github.com/sutras/sard-uniapp/blob/master/LICENSE"><img src="https://img.shields.io/npm/l/tailwindcss.svg" alt="License"></a>
+</p>
+
+<p align="center">
   国内：📖 <a href="http://sard.wzt.zone/sard-uniapp-docs">文档</a>&nbsp;&nbsp;&nbsp;&nbsp;
   🧑🏻‍🏫 <a href="http://sard.wzt.zone/sard-uniapp-docs/mobile/">案例演示</a>&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
@@ -156,3 +163,11 @@ npm run release
 - 将 gitee 发行版 apk 资源链接转换为二维码图片
 - 将图片更新到 `sard-assets` 项目，并发布到 npm
 - 最后等待 http://fastly.jsdelivr.net 链接生效
+
+## 贡献者
+
+感谢这些优秀的人：
+
+<p align="center">
+  <a href="https://www.npmjs.com/package/sard-uniapp"><img src="https://contrib.rocks/image?repo=sutras/sard-uniapp&columns=10&anon=1" alt="Contributors"></a>
+</p>

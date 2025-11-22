@@ -44,9 +44,7 @@ import CheckboxInput from 'sard-uniapp/components/checkbox-input/checkbox-input.
 
 ### CheckboxInputSlots
 
-| 插槽                   | 描述       | 属性       |
-| ---------------------- | ---------- | ---------- |
-| arrow <sup>1.22+</sup> | 自定义箭头 | () => void |
+继承 [`PopoutInputSlots`](./popout-input#PopoutInputSlots)
 
 ### CheckboxInputEmits
 

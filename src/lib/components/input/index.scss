@@ -21,6 +21,7 @@
       border-width: 0;
 
       @include e(tools) {
+        min-width: 0;
         margin-right: 0;
       }
 
@@ -79,6 +80,7 @@
     @include universal;
     flex-direction: row;
     align-items: center;
+    min-width: var(--sar-input-padding-x);
     margin-right: calc(var(--sar-input-padding-x) * -1);
   }
 

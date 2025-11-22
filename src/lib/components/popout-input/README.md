@@ -44,9 +44,11 @@ import PopoutInput from 'sard-uniapp/components/popout-input/popout-input.vue'
 
 ### PopoutInputSlots
 
-| 插槽                   | 描述       | 属性       |
-| ---------------------- | ---------- | ---------- |
-| arrow <sup>1.22+</sup> | 自定义箭头 | () => void |
+| 插槽                       | 描述                 | 属性       |
+| -------------------------- | -------------------- | ---------- |
+| arrow <sup>1.22+</sup>     | 自定义箭头           | () => void |
+| prepend <sup>1.25.4+</sup> | 自定义输入框前置内容 | () => void |
+| append <sup>1.25.4+</sup>  | 自定义输入框后置内容 | () => void |
 
 ### PopoutInputEmits
 

@@ -13,6 +13,8 @@ export interface PopoutInputProps {
   multiline?: boolean
   arrow?: string
   arrowFamily?: string
+  internalPrepend?: number
+  internalAppend?: number
   internalArrow?: number
   inputProps?: InputProps
 }
@@ -27,5 +29,7 @@ export interface PopoutInputEmits {
 }
 
 export interface PopoutInputSlots {
-  'arrow'(): any
+  prepend(): any
+  append(): any
+  arrow(): any
 }

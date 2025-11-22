@@ -58,9 +58,7 @@ import DatetimeRangePickerInput from 'sard-uniapp/components/datetime-range-pick
 
 ### DatetimeRangePickerInputSlots
 
-| 插槽                   | 描述       | 属性       |
-| ---------------------- | ---------- | ---------- |
-| arrow <sup>1.22+</sup> | 自定义箭头 | () => void |
+继承 [`PopoutInputSlots`](./popout-input#PopoutInputSlots)
 
 ### DatetimeRangePickerInputEmits
 

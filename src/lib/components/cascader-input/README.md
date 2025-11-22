@@ -47,11 +47,7 @@ import CascaderInput from 'sard-uniapp/components/cascader-input/cascader-input.
 
 ### CascaderInputSlots
 
-继承 [`CascaderPopoutSlots`](./cascader-popout#CascaderPopoutSlots)，并有以下额外插槽：
-
-| 插槽                   | 描述       | 属性       |
-| ---------------------- | ---------- | ---------- |
-| arrow <sup>1.22+</sup> | 自定义箭头 | () => void |
+继承 [`CascaderPopoutSlots`](./cascader-popout#CascaderPopoutSlots)和[`PopoutInputSlots`](./popout-input#PopoutInputSlots)
 
 ### CascaderInputEmits
 

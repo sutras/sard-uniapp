@@ -9,11 +9,19 @@
     :root-style="rootStyle"
     :arrow="arrow"
     :internal-arrow="$slots.arrow ? 1 : 0"
+    :internal-prepend="$slots.prepend ? 1 : 0"
+    :internal-append="$slots.append ? 1 : 0"
     :input-props="inputProps"
     @clear="onClear"
     @click="show"
   >
-    <template v-if="$slots.arrow" #arrow>
+    <template #prepend>
+      <slot name="prepend"></slot>
+    </template>
+    <template #append>
+      <slot name="append"></slot>
+    </template>
+    <template #arrow>
       <slot name="arrow"></slot>
     </template>
     <sar-datetime-picker-popout

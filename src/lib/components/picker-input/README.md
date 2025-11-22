@@ -51,13 +51,7 @@ import PickerInput from 'sard-uniapp/components/picker-input/picker-input.vue'
 
 ### PickerInputSlots
 
-| 插槽                   | 描述       | 属性       |
-| ---------------------- | ---------- | ---------- |
-| arrow <sup>1.22+</sup> | 自定义箭头 | () => void |
-
-### PickerSlots
-
-继承 [`PickerPopoutSlots`](./picker-popout#PickerPopoutSlots)
+继承 [`PickerPopoutSlots`](./picker-popout#PickerPopoutSlots)和[`PopoutInputSlots`](./popout-input#PopoutInputSlots)
 
 ### PickerInputEmits
 
