@@ -1,3 +1,12 @@
+## [1.25.4](https://github.com/sutras/sard-uniapp/compare/v1.25.3...v1.25.4) (2025-11-22)
+
+
+### Features
+
+* *-input 类组件新增input前置/后置插槽 ([98d879b](https://github.com/sutras/sard-uniapp/commit/98d879bea01faa8f7c72f6c24f59e42e9da165ef))
+
+
+
 ## [1.25.3](https://github.com/sutras/sard-uniapp/compare/v1.25.2...v1.25.3) (2025-11-12)
 
 
