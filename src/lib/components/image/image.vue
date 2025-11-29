@@ -14,7 +14,12 @@
       <slot v-if="$slots.error" name="error"></slot>
       <sar-icon v-else :family="iconFamily || 'sari'" :name="errorIcon" />
     </view>
-    <view v-else :class="displayClass" :style="displayStyle"></view>
+    <view
+      v-else
+      :class="displayClass"
+      :style="displayStyle"
+      @animationend="isAnimationEnd = true"
+    ></view>
     <!-- #ifdef WEB -->
     <img
       :src="src"
@@ -91,6 +96,8 @@ enum STATUS {
 const status = ref<STATUS>(STATUS.UNSTATED)
 const isLoaded = ref(false)
 
+const isAnimationEnd = ref(false)
+
 const resizeSensorVisible = computed(
   () => FIX_MODES[props.mode as keyof typeof FIX_MODES],
 )
@@ -164,7 +171,7 @@ const imageClass = computed(() => {
   return classNames(
     bem.b(),
     bem.m(props.shape),
-    bem.m('animated', props.fade),
+    bem.m('animated', props.fade && !isAnimationEnd.value),
     props.rootClass,
   )
 })

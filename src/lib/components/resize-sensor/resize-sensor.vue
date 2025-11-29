@@ -1,5 +1,9 @@
 <template>
-  <view :class="resizeClass" :style="resizeStyle">
+  <view
+    :class="resizeClass"
+    :style="resizeStyle"
+    @animationend="onAnimationEnd"
+  >
     <scroll-view
       :class="bem.e('scroll-view')"
       scroll-x
@@ -132,6 +136,10 @@ const onDebouncedScroll = debounce(
     trailing: false,
   },
 )
+
+const onAnimationEnd = () => {
+  debouncedUpdate()
+}
 
 onMounted(() => {
   nextTick(reset)

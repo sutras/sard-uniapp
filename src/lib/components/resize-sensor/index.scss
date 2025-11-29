@@ -11,6 +11,13 @@
     overflow: hidden;
     pointer-events: none;
     visibility: hidden;
+    animation: #{bem-ns(resize-sensor)} 1ms;
+  }
+
+  @keyframes #{bem-ns(resize-sensor)} {
+    0% {
+      top: 0;
+    }
   }
 
   @include e(scroll-view) {
