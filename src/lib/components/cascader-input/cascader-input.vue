@@ -13,6 +13,7 @@
     :internal-prepend="$slots.prepend ? 1 : 0"
     :internal-append="$slots.append ? 1 : 0"
     :input-props="inputProps"
+    :multiline="multiple"
     @clear="onClear"
     @click="show"
   >
@@ -38,6 +39,10 @@
       :change-on-select="changeOnSelect"
       :label-render="labelRender"
       :all-levels="allLevels"
+      :multiple="multiple"
+      :check-strictly="checkStrictly"
+      :lazy="lazy"
+      :load="load"
       :validate-event="validateEvent"
       :resettable="resettable"
       @select="(option, tabIndex) => $emit('select', option, tabIndex)"
@@ -53,16 +58,18 @@
 </template>
 
 <script setup lang="ts">
-import { watch, computed } from 'vue'
+import { watch, computed, shallowRef, provide } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarCascaderPopout from '../cascader-popout/cascader-popout.vue'
 import {
   type CascaderFieldKeys,
   type CascaderOption,
+  cascaderOptionsContextSymbol,
+  type CascaderValue,
   defaultFieldKeys,
   getSelectedOptionsByValue,
 } from '../cascader/common'
-import { isEmptyBinding } from '../../utils'
+import { isEmptyArray, isEmptyBinding, isNullish } from '../../utils'
 import { usePopoutInput } from '../../use'
 import {
   type CascaderInputProps,
@@ -111,33 +118,85 @@ const fieldkeys = computed(() => {
   ) as Required<CascaderFieldKeys>
 })
 
+const lazyOptions = shallowRef<CascaderOption[]>([])
+
+provide(cascaderOptionsContextSymbol, {
+  set(options) {
+    lazyOptions.value = options
+  },
+})
+
+const renderedOptions = computed(() => {
+  return props.lazy && !!props.load ? lazyOptions.value : props.options
+})
+
 function getOutletText(
   options: CascaderOption[],
-  value: string | number,
+  value: CascaderValue,
   fieldKeys: Required<CascaderFieldKeys>,
-): string {
-  const selectedOptions = getSelectedOptionsByValue(options, value, fieldKeys)
+): string | string[] {
+  const selectedOptions = getSelectedOptionsByValue(
+    options,
+    value,
+    fieldKeys,
+    props.multiple,
+  )
 
-  if (!selectedOptions) {
-    return isEmptyBinding(value) ? '' : String(value)
+  if (!selectedOptions || selectedOptions.length === 0) {
+    return getValueDisplay(value)
   }
 
-  const labels = selectedOptions.map((option) => option[fieldKeys.label])
+  const labels = selectedOptions.map((option) => {
+    return Array.isArray(option)
+      ? option.map((item) => item[fieldKeys.label] as string)
+      : (option[fieldKeys.label] as string)
+  })
 
-  return labels.join('/')
+  return props.multiple
+    ? labels.map((item) => (item as string[]).join('/'))
+    : labels.join('/')
 }
 
-function getInputValue() {
-  if (isEmptyBinding(innerValue.value) || !props.options) {
+function getValueDisplay(value: unknown) {
+  if (Array.isArray(value)) {
+    return value.map((item) =>
+      Array.isArray(item) ? item.join('/') : item,
+    ) as string[]
+  }
+  return isNullish(value) ? '' : String(value)
+}
+
+function getInputValue(options: CascaderOption[]) {
+  if (isEmptyBinding(innerValue.value) || isEmptyArray(innerValue.value)) {
     return ''
   }
-  return getOutletText(props.options, innerValue.value, fieldkeys.value)
+  if (!options || isEmptyArray(options)) {
+    return getValueDisplay(innerValue.value)
+  }
+  return getOutletText(options, innerValue.value, fieldkeys.value)
+}
+
+function getMayMultilineText(value: string | string[]) {
+  if (Array.isArray(value)) {
+    const diff =
+      value.length -
+      (props.maxRows === -1 ? Number.MAX_SAFE_INTEGER : props.maxRows)
+
+    const rows = value.slice(0, props.maxRows)
+
+    if (diff > 0) {
+      rows.push(`+${diff}`)
+    }
+
+    return rows.join('\n')
+  }
+  return value
 }
 
 watch(
-  [innerValue, () => props.options],
+  [innerValue, renderedOptions],
   () => {
-    inputValue.value = getInputValue()
+    inputValue.value = getMayMultilineText(getInputValue(renderedOptions.value))
   },
   {
     immediate: true,

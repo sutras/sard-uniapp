@@ -49,11 +49,19 @@
 <script setup lang="ts">
 import { computed, provide, reactive, ref, shallowRef, toRef, watch } from 'vue'
 import {
+  type NodeRect,
   classNames,
   stringifyStyle,
   createBem,
-  type NodeRect,
   uniqid,
+  walkAncestor,
+  walkNodes,
+  walkDescendant,
+  setCheckedRecursively,
+  updateAncestorsChecked,
+  initializeCheckNodes,
+  getTreeCheckedKeys,
+  getTreeHalfCheckedKeys,
 } from '../../utils'
 import {
   type TreeProps,
@@ -77,7 +85,6 @@ import SarDialog from '../dialog/dialog.vue'
 import SarToast from '../toast/toast.vue'
 import { type DialogProps } from '../dialog'
 import { useTranslate } from '../locale'
-import { recurAncestor, recurDescendant, recurNodes } from './utils'
 import { type TransitionHookName } from '../../use'
 
 defineOptions({
@@ -142,7 +149,7 @@ const setExpandedByNode = (
 ) => {
   node.expanded = expanded
   if (node.expanded) {
-    recurAncestor(node.parent, (node) => {
+    walkAncestor(node.parent, (node) => {
       node.expanded = true
     })
 
@@ -180,7 +187,7 @@ const toggleExpanded = (key: string | number) => {
 }
 
 const setExpandedKeys = (keys: (string | number)[]) => {
-  recurNodes(treeData.value, (node) => {
+  walkNodes(treeData.value, (node) => {
     node.expanded = false
   })
 
@@ -197,66 +204,25 @@ const setExpandedKeys = (keys: (string | number)[]) => {
 const getExpandedKeys = () => {
   const expandedKeys: (number | string)[] = []
 
-  treeData.value.forEach((node) => {
-    recurDescendant(node, (node) => {
-      if (node.expanded) {
-        expandedKeys.push(node.key)
-      }
-    })
+  walkNodes(treeData.value, (node) => {
+    if (node.expanded) {
+      expandedKeys.push(node.key)
+    }
   })
 
   return expandedKeys
 }
 
 const setCheckedByNode = (node: TreeStateNode, checked: boolean) => {
-  if (props.checkStrictly) {
-    node.checked = checked
-  } else {
-    recurDescendant(node, (node) => {
-      node.checked = checked
-      node.indeterminate = false
-    })
-    updateAncestorChecked(node.parent)
-  }
+  setCheckedRecursively(node, checked, props.checkStrictly)
 }
 
-const updateAncestorChecked = (parentNode: TreeStateNode | null) => {
-  if (!props.checkStrictly) {
-    recurAncestor(parentNode, (node) => {
-      const children = node.children || []
-
-      const numChecked = children.filter((node) => node.checked).length
-      node.checked = numChecked > 0 && numChecked === children.length
-      node.indeterminate =
-        !node.checked &&
-        (numChecked > 0 || children.some((node) => node.indeterminate))
-    })
-  }
+const bubbleChecked = (parentNode: TreeStateNode | null) => {
+  updateAncestorsChecked(parentNode, props.checkStrictly)
 }
 
 const setCheckedKeys = (keys: (string | number)[]) => {
-  if (props.checkStrictly) {
-    const mapKeys = keys.reduce<Record<string | number, true>>((map, key) => {
-      map[key] = true
-      return map
-    }, {})
-
-    recurNodes(treeData.value, (node) => {
-      node.checked = mapKeys[node.key] ? true : false
-    })
-  } else {
-    recurNodes(treeData.value, (node) => {
-      node.checked = false
-      node.indeterminate = false
-    })
-
-    keys.forEach((key) => {
-      const node = treeMap[key]
-      if (node && !node.checked) {
-        setCheckedByNode(node, true)
-      }
-    })
-  }
+  initializeCheckNodes(treeData.value, treeMap, keys, props.checkStrictly)
 }
 
 const setChecked = (key: string | number, checked: boolean) => {
@@ -267,31 +233,11 @@ const setChecked = (key: string | number, checked: boolean) => {
 }
 
 const getCheckedKeys = () => {
-  const checkedKeys: (number | string)[] = []
-
-  treeData.value.forEach((node) => {
-    recurDescendant(node, (node) => {
-      if (node.checked) {
-        checkedKeys.push(node.key)
-      }
-    })
-  })
-
-  return checkedKeys
+  return getTreeCheckedKeys(treeData.value)
 }
 
 const getHalfCheckedKeys = () => {
-  const halfCheckedKeys: (number | string)[] = []
-
-  treeData.value.forEach((node) => {
-    recurDescendant(node, (node) => {
-      if (node.indeterminate) {
-        halfCheckedKeys.push(node.key)
-      }
-    })
-  })
-
-  return halfCheckedKeys
+  return getTreeHalfCheckedKeys(treeData.value)
 }
 
 const prepend = (node: TreeStateNode, newNode: TreeStateNode) => {
@@ -300,9 +246,9 @@ const prepend = (node: TreeStateNode, newNode: TreeStateNode) => {
   newNode.parent = node
 
   node.expanded = true
-  updateAncestorChecked(node.parent)
+  bubbleChecked(node.parent)
 
-  recurDescendant(newNode, (node) => {
+  walkDescendant(newNode, (node) => {
     treeMap[node.key] = node
   })
 
@@ -315,9 +261,9 @@ const append = (node: TreeStateNode, newNode: TreeStateNode) => {
   newNode.parent = node
 
   node.expanded = true
-  updateAncestorChecked(node.parent)
+  bubbleChecked(node.parent)
 
-  recurDescendant(newNode, (node) => {
+  walkDescendant(newNode, (node) => {
     treeMap[node.key] = node
   })
 
@@ -328,7 +274,7 @@ const appendRoot = (newNode: TreeStateNode) => {
   treeData.value.push(newNode)
   newNode.parent = null
 
-  recurDescendant(newNode, (node) => {
+  walkDescendant(newNode, (node) => {
     treeMap[node.key] = node
   })
 
@@ -340,9 +286,9 @@ const before = (node: TreeStateNode, newNode: TreeStateNode) => {
   siblings.splice(siblings.indexOf(node), 0, newNode)
   newNode.parent = node.parent
 
-  updateAncestorChecked(node.parent)
+  bubbleChecked(node.parent)
 
-  recurDescendant(newNode, (node) => {
+  walkDescendant(newNode, (node) => {
     treeMap[node.key] = node
   })
 
@@ -354,9 +300,9 @@ const after = (node: TreeStateNode, newNode: TreeStateNode) => {
   siblings.splice(siblings.indexOf(node) + 1, 0, newNode)
   newNode.parent = node.parent
 
-  updateAncestorChecked(node.parent)
+  bubbleChecked(node.parent)
 
-  recurDescendant(newNode, (node) => {
+  walkDescendant(newNode, (node) => {
     treeMap[node.key] = node
   })
 
@@ -370,9 +316,9 @@ const remove = (node: TreeStateNode, reflow = true) => {
     node.parent.children = undefined
   }
 
-  updateAncestorChecked(node.parent)
+  bubbleChecked(node.parent)
 
-  recurDescendant(node, (node) => {
+  walkDescendant(node, (node) => {
     delete treeMap[node.key]
   })
 
@@ -625,7 +571,7 @@ function filter(searchString: string) {
 
       if (node.children) {
         if (node.visible && props.filterMode === 'lenient') {
-          recurNodes(node.children, (node) => {
+          walkNodes(node.children, (node) => {
             node.visible = true
           })
         } else {
@@ -638,7 +584,7 @@ function filter(searchString: string) {
       }
 
       if (node.visible) {
-        recurAncestor(node.parent, (node) => {
+        walkAncestor(node.parent, (node) => {
           node.expanded = true
         })
       }

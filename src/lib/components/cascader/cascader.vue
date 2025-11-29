@@ -5,15 +5,7 @@
     <slot name="top" :tab-index="currentTab"></slot>
 
     <view :class="bem.e('container')">
-      <view
-        :class="bem.e('wrapper')"
-        :style="
-          stringifyStyle({
-            transform: `translateX(${-Number(currentTab) * 100}%)`,
-            transitionDuration: renderedPane ? null : '0s',
-          })
-        "
-      >
+      <view :class="bem.e('wrapper')" :style="wrapperStyle">
         <view
           v-for="(panel, panelIndex) in panels"
           :key="panelIndex"
@@ -22,52 +14,76 @@
           <view :class="bem.e('options')">
             <scroll-view scroll-y trap-scroll :class="bem.e('scroll')">
               <view
-                v-for="(option, optionIndex) in panel.options"
+                v-for="(node, optionIndex) in panel.nodes"
                 :key="optionIndex"
                 :class="
                   classNames(
                     bem.e('option'),
-                    bem.em(
-                      'option',
-                      'selected',
-                      panel.selected &&
-                        panel.selected[mergedFieldKeys.value] ===
-                          option[mergedFieldKeys.value],
-                    ),
-                    bem.em(
-                      'option',
-                      'disabled',
-                      option[mergedFieldKeys.disabled],
-                    ),
+                    bem.em('option', 'selected', node.selected),
+                    bem.em('option', 'checked', node.checked),
+                    bem.em('option', 'disabled', node.disabled),
                   )
                 "
-                @click="onOptionClick(option, panelIndex)"
+                @click="onNodeClick(node, panelIndex)"
               >
-                <view :class="bem.e('option-label')">
-                  {{
-                    labelRender
-                      ? labelRender(option)
-                      : option[mergedFieldKeys.label]
-                  }}
+                <view
+                  v-if="multiple"
+                  :class="bem.e('selection')"
+                  @click.stop="onCheckClick(node)"
+                >
+                  <sar-checkbox
+                    readonly
+                    :checked="node.checked"
+                    :indeterminate="node.indeterminate"
+                    :disabled="node.disabled"
+                  />
                 </view>
-                <view :class="bem.e('option-icon')">
+                <view
+                  :class="
+                    classNames(
+                      bem.e('option-loading'),
+                      bem.em(
+                        'option-loading',
+                        'show',
+                        node.loadStatus === 'loading',
+                      ),
+                    )
+                  "
+                >
+                  <sar-loading />
+                </view>
+                <view :class="bem.e('option-label')">
+                  {{ node.label }}
+                </view>
+                <view v-if="!multiple" :class="bem.e('option-icon')">
                   <sar-icon family="sari" name="success" />
                 </view>
               </view>
             </scroll-view>
-            <view
-              :class="
-                classNames(
-                  bem.e('loading-wrapper'),
-                  bem.em('loading-wrapper', 'show', panel.options.length === 0),
-                )
-              "
-            >
-              <view :class="bem.e('loading')">
-                <sar-loading />
-              </view>
-            </view>
           </view>
+        </view>
+      </view>
+
+      <view v-if="lazy && !!load" :class="loadStatusWrapperClass">
+        <view :class="bem.e('load-status')">
+          <sar-loading
+            v-if="loadStatus === 'loading'"
+            :class="bem.e('loading')"
+          />
+          <text
+            v-else-if="loadStatus === 'error'"
+            :class="bem.e('error')"
+            @click="initialize"
+          >
+            {{ t('error') }}
+          </text>
+          <text
+            v-else-if="loadStatus === 'loaded' && treeData.length === 0"
+            :class="bem.e('empty')"
+            @click="initialize"
+          >
+            {{ t('noData') }}
+          </text>
         </view>
       </view>
     </view>
@@ -76,28 +92,23 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import {
-  classNames,
-  stringifyStyle,
-  createBem,
-  isEmptyBinding,
-  isEmptyArray,
-} from '../../utils'
-import { useTranslate } from '../locale'
+import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarTabs from '../tabs/tabs.vue'
 import SarIcon from '../icon/icon.vue'
 import SarLoading from '../loading/loading.vue'
+import SarCheckbox from '../checkbox/checkbox.vue'
 import {
   type CascaderProps,
   type CascaderSlots,
   type CascaderEmits,
-  type CascaderOption,
   type CascaderFieldKeys,
-  type CascaderPanel,
+  type CascaderStateNode,
   defaultFieldKeys,
-  getSelectedOptionsByValue,
   defaultCascaderProps,
 } from './common'
+import { useCascaderTree } from './useCascaderTree'
+import { useCascaderTabs } from './useCascaderTabs'
+import { useTranslate } from '../locale'
 
 defineOptions({
   options: {
@@ -114,126 +125,9 @@ const emit = defineEmits<CascaderEmits>()
 
 const bem = createBem('cascader')
 
-// main
 const { t } = useTranslate('cascader')
 
-// utils
-const updatePanels = () => {
-  let nextPanels: CascaderPanel[]
-
-  if (isEmptyBinding(tempValue) || isEmptyArray(tempValue)) {
-    nextPanels = [
-      {
-        options: props.options || [],
-        selected: null,
-      },
-    ]
-  } else {
-    const selectedOptions = getSelectedOptionsByValue(
-      props.options || [],
-      tempValue,
-      mergedFieldKeys.value,
-    )
-
-    if (selectedOptions && selectedOptions.length > 0) {
-      let nextOptions: CascaderOption[] | undefined = props.options
-
-      nextPanels = selectedOptions.map((option) => {
-        const panel: CascaderPanel = {
-          options: nextOptions || [],
-          selected: option,
-        }
-
-        nextOptions = option[mergedFieldKeys.value.children]
-
-        return panel
-      })
-
-      if (nextOptions) {
-        nextPanels.push({
-          options: nextOptions,
-          selected: null,
-        })
-      }
-    } else {
-      nextPanels = [
-        {
-          options: props.options || [],
-          selected: null,
-        },
-      ]
-    }
-  }
-
-  panels.value = nextPanels
-  currentTab.value = nextPanels.length - 1
-
-  if (!renderedPane.value) {
-    setTimeout(() => {
-      renderedPane.value = true
-      // 确保小程序端已渲染完毕
-    }, 30)
-  }
-}
-
-const isLastOption = (option: CascaderOption) => {
-  return !Array.isArray(option[mergedFieldKeys.value.children])
-}
-
-const onOptionClick = (option: CascaderOption, panelIndex: number) => {
-  if (option.disabled) {
-    return
-  }
-
-  let nextPanels = panels.value.slice()
-
-  nextPanels[panelIndex].selected = option
-
-  const selectBack = panelIndex < nextPanels.length - 1
-
-  if (selectBack) {
-    nextPanels = nextPanels.slice(0, panelIndex + 1)
-  }
-
-  const isLast = isLastOption(option)
-
-  if (!isLast) {
-    const nextPanel = {
-      options: option[mergedFieldKeys.value.children],
-      selected: null,
-    }
-    nextPanels.push(nextPanel)
-  }
-
-  currentTab.value = isLast ? panelIndex : nextPanels.length - 1
-
-  if (props.allLevels) {
-    tempValue = nextPanels
-      .map((panel) => panel.selected)
-      .filter(Boolean)
-      .map((option) => option![mergedFieldKeys.value.value])
-  } else {
-    tempValue = option[mergedFieldKeys.value.value]
-  }
-
-  panels.value = nextPanels
-  emit('select', option, panelIndex)
-
-  // finish
-  if (isLast || props.changeOnSelect) {
-    const selectedOptions = nextPanels
-      .map((panel) => panel.selected)
-      .filter(Boolean) as CascaderOption[]
-
-    emit('update:model-value', tempValue!, selectedOptions)
-    emit('change', tempValue!, selectedOptions)
-  }
-}
-
 // main
-const innerPaceholder = computed(() => {
-  return props.hintText || t('pleaseSelect')
-})
 
 const mergedFieldKeys = computed(() => {
   return Object.assign(
@@ -243,63 +137,167 @@ const mergedFieldKeys = computed(() => {
   ) as Required<CascaderFieldKeys>
 })
 
-let tempValue = props.modelValue
+const innerValue = ref<typeof props.modelValue>()
 
-const currentTab = ref(0)
-
-const renderedPane = ref(false)
-
-const panels = ref<CascaderPanel[]>([])
-
-const tabList = computed(() => {
-  return panels.value.map((panel) => {
-    const { selected } = panel
-    const label = selected
-      ? selected[mergedFieldKeys.value.label]
-      : innerPaceholder.value
-    return {
-      title: label,
-    }
-  })
+const {
+  treeData,
+  originalTreeData,
+  loadStatus,
+  legacyLoadChildren,
+  toStateNodes,
+  setSelectedByNode,
+  updateChecked,
+  setCheckedByNode,
+  isLeaf,
+  getCheckedLeaves,
+  getCheckedNodes,
+  getAncestors,
+  initialize,
+} = useCascaderTree(props, {
+  fieldKeys: mergedFieldKeys,
+  innerValue,
 })
+
+initialize()
+
+const { renderedPane, panels, currentTab, tabList } = useCascaderTabs(props, {
+  treeData,
+})
+
+const triggerMultipleChange = () => {
+  const nodes = props.checkStrictly ? getCheckedNodes() : getCheckedLeaves()
+
+  const nextValue = props.allLevels
+    ? nodes.map((node) => getAncestors(node).map((node) => node.value))
+    : nodes.map((node) => node.value)
+
+  innerValue.value = nextValue
+
+  const options = nodes.map((node) =>
+    getAncestors(node).map((node) => node.option),
+  )
+
+  emit('update:model-value', nextValue, options)
+  emit('change', nextValue, options)
+}
+
+const triggerSingleChange = (node: CascaderStateNode) => {
+  const nextValue = props.allLevels
+    ? panels.value
+        .map((panel) => panel.selected)
+        .filter(Boolean)
+        .map((node) => node!.value)
+    : node.value
+
+  innerValue.value = nextValue
+
+  const options = panels.value
+    .map((panel) => panel.selected)
+    .filter(Boolean)
+    .map((node) => node!.option)
+
+  emit('update:model-value', nextValue, options)
+  emit('change', nextValue, options)
+}
+
+const onCheckClick = (node: CascaderStateNode) => {
+  if (node.disabled) return
+
+  setCheckedByNode(node, !node.checked)
+  triggerMultipleChange()
+}
+
+const onNodeClick = async (node: CascaderStateNode, panelIndex: number) => {
+  if (node.disabled) return
+
+  if (node.loadStatus === 'loading') {
+    return
+  }
+
+  if (props.lazy && props.load && !node.isLeaf && node.loadStatus === 'idle') {
+    try {
+      node.loadStatus = 'loading'
+      const treeNodes = (await props.load(node)) || []
+      node.loadStatus = 'loaded'
+      node.children = toStateNodes(treeNodes, node)
+      updateChecked(innerValue.value)
+      node.option.children = treeNodes
+      originalTreeData.value = [...originalTreeData.value]
+      if (node.children.length === 0) {
+        node.isLeaf = true
+      } else {
+        if (node.checked) {
+          setCheckedByNode(node, true)
+        }
+      }
+    } catch {
+      node.loadStatus = 'idle'
+      return
+    }
+  }
+
+  setSelectedByNode(node)
+
+  const isLast = isLeaf(node)
+
+  if (!isLast) {
+    currentTab.value = panels.value.length - 1
+  }
+
+  if (!isLast && node.children && node.children.length === 0) {
+    node.loadStatus = 'loading'
+  }
+
+  // legacy load
+  const proxyOption = new Proxy(node.option, {
+    set(target, p, newValue) {
+      if (p === mergedFieldKeys.value.children) {
+        legacyLoadChildren.value = true
+
+        node.loadStatus = 'loaded'
+        node.children = toStateNodes(newValue, node)
+        if (node.children.length === 0) {
+          node.isLeaf = true
+        }
+
+        const isLast = isLeaf(node)
+
+        if (!isLast) {
+          currentTab.value = panels.value.length - 1
+        }
+      }
+      return Reflect.set(target, p, newValue)
+    },
+  })
+
+  emit('select', proxyOption, panelIndex)
+
+  // 多选
+  if (props.multiple) {
+    if (isLast) {
+      setCheckedByNode(node, !node.checked)
+      triggerMultipleChange()
+    }
+  }
+
+  // 单选
+  else {
+    if (isLast || props.changeOnSelect) {
+      triggerSingleChange(node)
+    }
+  }
+}
 
 watch(
   () => props.modelValue,
-  () => {
-    if (Array.isArray(props.modelValue)) {
-      if (props.modelValue.length > 0) {
-        if (
-          props.modelValue.every(
-            (item, index) =>
-              panels.value[index].selected?.[mergedFieldKeys.value.value] ===
-              item,
-          )
-        ) {
-          return
-        }
-      }
-    } else {
-      if (!isEmptyBinding(props.modelValue)) {
-        if (
-          panels.value.some(
-            (panel) =>
-              panel.selected?.[mergedFieldKeys.value.value] ===
-              props.modelValue,
-          )
-        ) {
-          return
-        }
-      }
-    }
-    tempValue = props.modelValue
-    updatePanels()
-  },
-)
+  (value) => {
+    if (value === innerValue.value) return
 
-watch(
-  () => props.options,
-  () => {
-    updatePanels()
+    innerValue.value = value
+
+    updateChecked(value)
+
+    currentTab.value = panels.value.length - 1
   },
   {
     immediate: true,
@@ -313,6 +311,24 @@ const cascaderClass = computed(() => {
 
 const cascaderStyle = computed(() => {
   return stringifyStyle(props.rootStyle)
+})
+
+const wrapperStyle = computed(() => {
+  return stringifyStyle({
+    transform: `translateX(${-Number(currentTab.value) * 100}%)`,
+    transitionDuration: renderedPane.value ? null : '0s',
+  })
+})
+
+const loadStatusWrapperClass = computed(() => {
+  return classNames(
+    bem.e('load-status-wrapper'),
+    bem.em(
+      'load-status-wrapper',
+      'show',
+      loadStatus.value !== 'loaded' || treeData.value.length === 0,
+    ),
+  )
 })
 </script>
 

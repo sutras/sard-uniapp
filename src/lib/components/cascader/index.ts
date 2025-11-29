@@ -4,4 +4,6 @@ export type {
   CascaderProps,
   CascaderSlots,
   CascaderEmits,
+  CascaderValue,
+  CascaderStateNode,
 } from './common'

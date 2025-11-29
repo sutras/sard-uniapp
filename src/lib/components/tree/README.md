@@ -61,8 +61,6 @@ import Tree from 'sard-uniapp/components/tree/tree.vue'
 
 设置 `leaf-only` 属性让其仅能选择叶子节点。
 
-此时，点击节点任意位置都能选择节点，而不仅仅是单选按钮，因为折叠和选择操作不冲突。
-
 @code('${DEMO_PATH}/tree/demo/LeafOnly.vue')
 
 ### 可拖拽的

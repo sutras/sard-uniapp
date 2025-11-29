@@ -2,7 +2,7 @@
   "id": "sard-uniapp",
   "name": "sard-uniapp",
   "displayName": "sard-uniapp",
-  "version": "1.25.4",
+  "version": "1.25.5",
   "description": "sard-uniapp 是一套基于 Uniapp + Vue3 框架开发的兼容多端的 UI 组件库",
   "main": "index.js",
   "scripts": {
@@ -142,6 +142,7 @@
   "author": "wuzhitao",
   "license": "MIT",
   "repository": "https://github.com/sutras/sard-uniapp",
+  "homepage": "https://sard.wzt.zone/sard-uniapp-docs/",
   "keywords": [
     "uniapp",
     "UI",

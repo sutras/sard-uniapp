@@ -95,7 +95,6 @@ describe('Cascader', () => {
                 children: tabIndex < 1 ? [] : undefined,
               }
             })
-
           options = options.slice()
           wrapper.setProps({ options })
         })
@@ -130,7 +129,7 @@ describe('Cascader', () => {
         .length,
     ).toBe(0)
 
-    await sleep(50)
+    await sleep(1)
 
     expect(
       wrapper.findAll('.sar-cascader__pane:nth-child(2) .sar-cascader__option')
@@ -148,7 +147,7 @@ describe('Cascader', () => {
         .length,
     ).toBe(0)
 
-    await sleep(0)
+    await sleep(1)
 
     expect(
       wrapper.findAll('.sar-cascader__pane:nth-child(2) .sar-cascader__option')
@@ -260,5 +259,136 @@ describe('Cascader', () => {
       .trigger('click')
 
     expect(wrapper.findAll('.sar-cascader__pane').length).toBe(2)
+  })
+
+  test('multiple', async () => {
+    const wrapper = mount(
+      h(Cascader, {
+        options: regionData,
+        fieldKeys: { label: 'name', value: 'code' },
+        multiple: true,
+        modelValue: [440106, 440111],
+      }),
+    )
+
+    // initial
+    expect(
+      wrapper
+        .findAll('.sar-cascader__option_checked')
+        .map((item) => item.text()),
+    ).toEqual(['天河区', '白云区'])
+
+    // check
+    await wrapper
+      .find('.sar-cascader__pane:last-child .sar-cascader__option:nth-child(3)')
+      .trigger('click')
+
+    expect(wrapper.emitted('update:model-value')![0][0]).toEqual([
+      440105, 440106, 440111,
+    ])
+    expect(
+      wrapper
+        .findAll('.sar-cascader__option_checked')
+        .map((item) => item.text()),
+    ).toEqual(['海珠区', '天河区', '白云区'])
+
+    // uncheck
+    await wrapper
+      .find('.sar-cascader__pane:last-child .sar-cascader__option:nth-child(4)')
+      .trigger('click')
+
+    expect(wrapper.emitted('update:model-value')![1][0]).toEqual([
+      440105, 440111,
+    ])
+    expect(
+      wrapper
+        .findAll('.sar-cascader__option_checked')
+        .map((item) => item.text()),
+    ).toEqual(['海珠区', '白云区'])
+
+    // check parent
+    await wrapper
+      .find(
+        '.sar-cascader__pane:nth-child(2) .sar-cascader__option:nth-child(1) .sar-cascader__selection',
+      )
+      .trigger('click')
+
+    expect(wrapper.emitted('update:model-value')![2][0]).toEqual([
+      440103, 440104, 440105, 440106, 440111, 440112, 440113, 440114, 440115,
+      440117, 440118,
+    ])
+
+    // clear
+    await wrapper.setProps({
+      modelValue: undefined,
+    })
+
+    expect(wrapper.findAll('.sar-cascader__option_checked').length).toBe(0)
+  })
+
+  test('multiple allLevels', async () => {
+    const wrapper = mount(
+      h(Cascader, {
+        options: regionData,
+        fieldKeys: { label: 'name', value: 'code' },
+        multiple: true,
+        allLevels: true,
+        modelValue: [[440106], [440111]],
+      }),
+    )
+
+    // initial
+
+    expect(
+      wrapper
+        .findAll('.sar-cascader__option_checked')
+        .map((item) => item.text()),
+    ).toEqual(['天河区', '白云区'])
+
+    // check
+    await wrapper
+      .find('.sar-cascader__pane:last-child .sar-cascader__option:nth-child(3)')
+      .trigger('click')
+    expect(wrapper.emitted('update:model-value')![0][0]).toEqual([
+      [440000, 440100, 440105],
+      [440000, 440100, 440106],
+      [440000, 440100, 440111],
+    ])
+    expect(
+      wrapper
+        .findAll('.sar-cascader__option_checked')
+        .map((item) => item.text()),
+    ).toEqual(['海珠区', '天河区', '白云区'])
+  })
+
+  test('multiple check-strictly', async () => {
+    const wrapper = mount(
+      h(Cascader, {
+        options: regionData,
+        fieldKeys: { label: 'name', value: 'code' },
+        multiple: true,
+        checkStrictly: true,
+        modelValue: [440106, 440111],
+      }),
+    )
+
+    // initial
+
+    expect(
+      wrapper
+        .findAll('.sar-cascader__option_checked')
+        .map((item) => item.text()),
+    ).toEqual(['天河区', '白云区'])
+
+    // check parent
+    await wrapper
+      .find(
+        '.sar-cascader__pane:nth-child(2) .sar-cascader__option:nth-child(1) .sar-cascader__selection',
+      )
+      .trigger('click')
+
+    expect(wrapper.emitted('update:model-value')![0][0]).toEqual([
+      440100, 440106, 440111,
+    ])
   })
 })

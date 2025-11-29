@@ -18,6 +18,10 @@
         :change-on-select="changeOnSelect"
         :label-render="labelRender"
         :all-levels="allLevels"
+        :multiple="multiple"
+        :check-strictly="checkStrictly"
+        :lazy="lazy"
+        :load="load"
         @select="(option, tabIndex) => $emit('select', option, tabIndex)"
         @change="onChange"
       >

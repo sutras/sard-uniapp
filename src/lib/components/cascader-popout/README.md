@@ -24,6 +24,12 @@ import CascaderPopout from 'sard-uniapp/components/cascader-popout/cascader-popo
 
 @code('${DEMO_PATH}/cascader-popout/demo/Basic.vue')
 
+### 多选
+
+设置 `multiple` 可进行多选。
+
+@code('${DEMO_PATH}/cascader-popout/demo/Multiple.vue')
+
 ## API
 
 ### CascaderPopoutProps

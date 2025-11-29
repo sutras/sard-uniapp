@@ -12,6 +12,10 @@
       <DemoAsync />
     </doc-demo>
 
+    <doc-demo title="懒加载">
+      <DemoLazy />
+    </doc-demo>
+
     <doc-demo title="自定义面板上方内容">
       <DemoOptionTop />
     </doc-demo>
@@ -23,6 +27,22 @@
     <doc-demo title="绑定所有级别的值">
       <DemoAllLevels />
     </doc-demo>
+
+    <doc-demo title="多选">
+      <DemoMultiple />
+    </doc-demo>
+
+    <doc-demo title="多选-绑定所有级别的值">
+      <DemoMultipleAllLevels />
+    </doc-demo>
+
+    <doc-demo title="多选-选择任意级别">
+      <DemoCheckStrictly />
+    </doc-demo>
+
+    <doc-demo title="多选-选择任意级别-绑定所有级别">
+      <DemoCheckStrictlyAllLevels />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -30,9 +50,14 @@
 import DemoBasic from './demo/Basic.vue'
 import DemoChangeOnSelect from './demo/ChangeOnSelect.vue'
 import DemoAsync from './demo/Async.vue'
+import DemoLazy from './demo/Lazy.vue'
 import DemoOptionTop from './demo/OptionTop.vue'
 import DemoDisabled from './demo/Disabled.vue'
 import DemoAllLevels from './demo/AllLevels.vue'
+import DemoMultiple from './demo/Multiple.vue'
+import DemoMultipleAllLevels from './demo/MultipleAllLevels.vue'
+import DemoCheckStrictly from './demo/CheckStrictly.vue'
+import DemoCheckStrictlyAllLevels from './demo/CheckStrictlyAllLevels.vue'
 </script>
 
 <style lang="scss" scoped>

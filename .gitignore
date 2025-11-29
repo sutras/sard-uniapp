@@ -30,3 +30,5 @@ uni_modules/
 *.sw?
 
 pages.d.ts
+
+__snapshots__

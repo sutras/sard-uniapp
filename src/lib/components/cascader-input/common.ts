@@ -13,6 +13,7 @@ export interface CascaderInputProps
   extends CascaderPopoutProps,
     Omit<PopoutInputProps, 'modelValue'> {
   valueOnClear?: () => any
+  maxRows?: number
 }
 
 export const defaultCascaderInputProps = () => ({

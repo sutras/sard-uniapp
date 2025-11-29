@@ -5,7 +5,6 @@
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "sourceMap": true,
-    "baseUrl": ".",
     "lib": ["esnext", "dom"],
     "types": [
       "@dcloudio/types",
@@ -15,14 +14,16 @@
     ],
     "ignoreDeprecations": "5.0",
     "esModuleInterop": true,
-    "moduleResolution": "Node",
     "resolveJsonModule": true,
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strictNullChecks": true,
     "jsx": "preserve",
     "paths": {
-      "@/*": ["./src/*"],
+      "@/*": [
+        "./src/{components,pages,utils,style}/*",
+        "./src/{App.vue,main.ts}"
+      ],
       "sard-uniapp": ["./src/lib"],
       "sard-uniapp/*": ["./src/lib/*"]
     }

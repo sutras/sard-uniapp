@@ -19,6 +19,8 @@ export default {
   },
   cascader: {
     pleaseSelect: 'Vui lòng chọn',
+    error: 'Yêu cầu thất bại, nhấn để tải lại',
+    noData: 'Không có dữ liệu',
   },
   cropImage: {
     confirm: 'Xác nhận',

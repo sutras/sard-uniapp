@@ -19,6 +19,8 @@ export default {
   },
   cascader: {
     pleaseSelect: '请选择',
+    error: '请求失败，点击重新加载',
+    noData: '暂无数据',
   },
   cropImage: {
     confirm: '确定',

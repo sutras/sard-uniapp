@@ -2,9 +2,11 @@
 page,
 .sar-portal {
   --sar-cascader-wrapper-duration: var(--sar-duration);
-  --sar-cascader-loading-wrapper-duration: var(--sar-duration);
+  --sar-cascader-load-status-wrapper-duration: var(--sar-duration);
 
   --sar-cascader-selected-color: var(--sar-primary);
+
+  --sar-cascader-selection-padding-x: 24rpx;
 
   --sar-cascader-options-height: 640rpx;
 
@@ -14,7 +16,12 @@ page,
   --sar-cascader-option-line-height: 48rpx;
   --sar-cascader-option-active-bg: var(--sar-active-bg);
 
+  --sar-cascader-option-loading-size: var(--sar-text-base);
+  --sar-cascader-option-loading-color: var(--sar-fourth-color);
+  --sar-cascader-option-loading-margin-right: 16rpx;
+
+  --sar-cascader-load-status-size: var(--sar-text-base);
+  --sar-cascader-load-status-color: var(--sar-fourth-color);
   --sar-cascader-loading-size: var(--sar-text-xl);
-  --sar-cascader-loading-color: var(--sar-tertiary-color);
 }
 // #endvariables

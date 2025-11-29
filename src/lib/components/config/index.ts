@@ -287,7 +287,9 @@ export const defaultConfig: RequiredConfigOptions = {
     showConfirm: true,
     validateEvent: true,
   },
-  cascaderInput: {},
+  cascaderInput: {
+    maxRows: 3,
+  },
   checkbox: {
     validateEvent: true,
   },

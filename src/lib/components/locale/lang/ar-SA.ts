@@ -19,6 +19,8 @@ export default {
   },
   cascader: {
     pleaseSelect: 'الرجاء الاختيار',
+    error: 'فشل الطلب. انقر لإعادة التحميل',
+    noData: 'لا توجد بيانات',
   },
   cropImage: {
     confirm: 'موافق',

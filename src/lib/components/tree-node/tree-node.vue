@@ -113,6 +113,8 @@ import {
   clamp,
   stringifyStyle,
   uniqid,
+  getNodeLevel,
+  walkDescendant,
 } from '../../utils'
 import {
   type TreeContext,
@@ -127,7 +129,6 @@ import SarRadio from '../radio/radio.vue'
 import SarPopover from '../popover/popover.vue'
 import SarLoading from '../loading/loading.vue'
 import { usePopover } from '../popover'
-import { getNodeLevel, recurDescendant } from '../tree/utils'
 import { type MenuOption } from '../menu/common'
 
 defineOptions({
@@ -174,7 +175,7 @@ let obviousNodes: TreeStateNode[] = []
 const onDragStart = () => {
   obviousNodes = []
   treeContext.treeData.forEach((node) => {
-    recurDescendant(node, (node) => {
+    walkDescendant(node, (node) => {
       obviousNodes.push(node)
       if (!node.expanded) {
         return true
@@ -360,7 +361,10 @@ const onNodeClick = async (event: any) => {
   if (!isMergedLeaf.value) {
     treeContext.toggleExpandedByNode(node)
   }
-  if (canSingleSelectable.value && treeContext.leafOnly) {
+  if (treeContext.selectable && !node.disabled && isMergedLeaf.value) {
+    treeContext.toggleCheck(node, !node.checked)
+  }
+  if (canSingleSelectable.value && !node.disabled && isMergedLeaf.value) {
     treeContext.singleSelect(node)
   }
   treeContext.nodeClick(node, event)
