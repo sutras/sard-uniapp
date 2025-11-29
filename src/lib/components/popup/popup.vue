@@ -150,7 +150,7 @@ const popupStyle = computed(() => {
 })
 </script>
 
-<!-- #ifdef APP-PLUS -->
+<!-- #ifdef APP-PLUS || APP-HARMONY -->
 <script module="render" lang="renderjs">
 // @ts-expect-error ignore renderjs
 export default {

@@ -26,6 +26,9 @@ import {
   uniqid,
   toArray,
   getRotatedRect,
+  readAsDataURL,
+  isWeixin,
+  isHarmony,
 } from '../../utils'
 import {
   type WatermarkProps,
@@ -223,15 +226,10 @@ const drawWatermark = () => {
         destHeight: clipHeight,
         canvasId: canvasId,
         success(res) {
-          // #ifdef MP-WEIXIN
           dataURL.value =
-            'data:image/png;base64,' +
-            uni.getFileSystemManager().readFileSync(res.tempFilePath, 'base64')
-          // #endif
-
-          // #ifndef MP-WEIXIN
-          dataURL.value = res.tempFilePath
-          // #endif
+            isWeixin || isHarmony
+              ? readAsDataURL(res.tempFilePath)
+              : res.tempFilePath
         },
       },
       instance,

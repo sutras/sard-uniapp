@@ -35,6 +35,7 @@ import {
   createBem,
   uniqid,
   qrcode,
+  logError,
 } from '../../utils'
 import {
   defaultQrcodeProps,
@@ -115,7 +116,7 @@ const drawQrcode = async () => {
           emit('success', res.tempFilePath)
         },
         fail(err) {
-          console.log('uni.canvasToTempFilePath fail', err)
+          logError(err)
         },
       },
       instance,
@@ -145,8 +146,8 @@ const loadIcon = (path: string) => {
         resolve(res)
       },
       fail(err) {
-        console.log('uni.getImageInfo fail', path)
-        console.log('uni.getImageInfo fail', err)
+        logError(`uni.getImageInfo fail, path: ${path}`)
+        logError(err)
         reject(err)
       },
     })

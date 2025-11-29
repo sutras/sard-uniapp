@@ -1,3 +1,6 @@
+import { logError } from './log'
+import { isHarmony } from './system'
+
 /**
  * @description: 判断url是否为图片url
  * @param {string} url
@@ -75,16 +78,37 @@ export function getFileName(path: string, ext = true): string {
   return ext ? name : name.replace(/\.[^.]+$/, '')
 }
 
+/**
+ * 将临时文件路径转换为 base64 编码字符串
+ * @param filePath
+ * @returns
+ */
+export function readAsDataURL(filePath: string) {
+  return (
+    'data:image/png;base64,' +
+    uni.getFileSystemManager().readFileSync(filePath, 'base64')
+  )
+}
+
 export async function plusToDataURL(filePath: string) {
-  return new Promise<string>((resolve) => {
-    plus.io.resolveLocalFileSystemURL(filePath, (entry) => {
-      ;(entry as any).file((file: any) => {
-        const fileReader = new plus.io.FileReader()
-        fileReader.readAsDataURL(file, 'utf-8')
-        fileReader.onloadend = (evt) => {
-          resolve((evt.target as any).result)
-        }
-      })
+  if (isHarmony) {
+    return readAsDataURL(filePath)
+  } else {
+    return new Promise<string>((resolve, reject) => {
+      try {
+        plus.io.resolveLocalFileSystemURL(filePath, (entry) => {
+          ;(entry as any).file((file: any) => {
+            const fileReader = new plus.io.FileReader()
+            fileReader.readAsDataURL(file, 'utf-8')
+            fileReader.onloadend = (evt) => {
+              resolve((evt.target as any).result)
+            }
+          })
+        })
+      } catch (err) {
+        logError(err)
+        reject(err)
+      }
     })
-  })
+  }
 }

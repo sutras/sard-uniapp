@@ -1,3 +1,4 @@
+import { logError } from './log'
 import { URLQuery } from './url-query'
 
 interface RouterExtraOptions {
@@ -167,7 +168,7 @@ export class Router {
       }
     } catch (err) {
       this.status = 'idle'
-      console.error(err)
+      logError(err)
       return
     }
 

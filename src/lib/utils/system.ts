@@ -1,6 +1,6 @@
 let platform = ''
 
-// #ifdef APP
+// #ifdef APP-PLUS || APP-HARMONY
 platform = 'app'
 // #endif
 
@@ -16,8 +16,15 @@ platform = 'mp-alipay'
 platform = 'web'
 // #endif
 
+let isHarmony = false
+
+// #ifdef APP-HARMONY
+isHarmony = true
+// #endif
+
 export const isWeb = platform === 'web'
 export const isApp = platform === 'app'
 export const isMp = platform.startsWith('mp-')
 export const isWeixin = platform === 'mp-weixin'
 export const isAlipay = platform === 'mp-alipay'
+export { isHarmony }
