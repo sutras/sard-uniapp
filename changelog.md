@@ -1,3 +1,19 @@
+## [1.25.5](https://github.com/sutras/sard-uniapp/compare/v1.25.4...v1.25.5) (2025-11-30)
+
+
+### Bug Fixes
+
+* **image:** 修复image动态展示时无法获取正确尺寸的问题 ([432d8b3](https://github.com/sutras/sard-uniapp/commit/432d8b368a3b49e70f79d8c0b3a7ce65969171e5))
+
+
+### Features
+
+* **cascader:** 级联组件新增多选功能 ([7f104c1](https://github.com/sutras/sard-uniapp/commit/7f104c1a393509a6b1c97b2565520f9f8e6f8361))
+* 兼容鸿蒙 ([53924d7](https://github.com/sutras/sard-uniapp/commit/53924d7f9562bb4cbe162083998f1485590c629f))
+* 阻止页面滚动(弹窗中的滚动穿透) ([21b43c0](https://github.com/sutras/sard-uniapp/commit/21b43c0924ba1197b217b6fd1020fbd07d5b04fe))
+
+
+
 ## [1.25.4](https://github.com/sutras/sard-uniapp/compare/v1.25.3...v1.25.4) (2025-11-22)
 
 
