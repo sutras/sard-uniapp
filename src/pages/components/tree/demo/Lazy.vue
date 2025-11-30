@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="基础用法">
     <sar-tree
       lazy
@@ -9,7 +10,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { mapProvinces, mapCities, mapCounties } from 'region-data'
 import { type TreeStateNode } from 'sard-uniapp'
 
@@ -55,4 +57,6 @@ const loadNode = async (node?: TreeStateNode) => {
     leaf: node?.depth === 1,
   }))
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

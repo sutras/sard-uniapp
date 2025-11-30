@@ -10,7 +10,7 @@
   </sar-avatar-group>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
 const avatarList = ref(

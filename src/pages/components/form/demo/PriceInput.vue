@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <sar-space align="center">
     <sar-input
       type="text"
@@ -20,6 +21,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { useFormItemContext, type FormItemContext } from 'sard-uniapp'
 
 export type Currency = 'rmb' | 'dollar'
@@ -55,4 +57,6 @@ const onNumberChange = (value: string) => {
 const onCurrencyChange = (newCurrency: Currency) => {
   triggerChange({ currency: newCurrency })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

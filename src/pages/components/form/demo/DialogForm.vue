@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="弹出层中的新建表单">
     <doc-demo>
       <sar-button @click="visible = true">New Collection</sar-button>
@@ -37,7 +38,8 @@
     </sar-dialog>
   </doc-page>
 </template>
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { reactive, ref, toRaw } from 'vue'
 import { toast, type FormExpose, type FieldValidateError } from 'sard-uniapp'
 
@@ -71,4 +73,6 @@ const beforeClose = (type: string) => {
       })
   }
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

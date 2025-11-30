@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="方向与对齐">
     <doc-demo>
       <doc-title>排列方向</doc-title>
@@ -52,7 +53,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { reactive, ref } from 'vue'
 
 const labelAlign = ref<any>('start')
@@ -65,4 +67,6 @@ const formLabelAlign = reactive({
   region: '',
   type: '',
 })
+
+const { isLocked } = useCurrentPageLock()
 </script>

@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="可选择的">
     <sar-list>
       <sar-list-item
@@ -28,7 +29,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { getRegionData } from 'region-data'
 import { toast, type TreeExpose } from 'sard-uniapp'
 import { ref } from 'vue'
@@ -56,4 +58,6 @@ const getCheckedKeys = () => {
 const clear = () => {
   treeRef.value?.setCheckedKeys([])
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

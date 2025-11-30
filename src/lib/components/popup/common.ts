@@ -22,6 +22,7 @@ export interface PopupProps {
   transparent?: boolean
   keepRender?: boolean
   overlayClosable?: boolean
+  lockScroll?: boolean
 }
 
 export const defaultPopupProps = defaultConfig.popup

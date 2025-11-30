@@ -2,7 +2,7 @@
   <sar-segmented v-model="value" :options="options" :size="value" />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { type SegmentedSize } from 'sard-uniapp'
 import { ref } from 'vue'
 

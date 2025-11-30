@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Popover 气泡弹出框">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -39,6 +40,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoDark from './demo/Dark.vue'
 import DemoIcon from './demo/Icon.vue'
@@ -48,6 +50,8 @@ import DemoContent from './demo/Content.vue'
 import DemoCustomReference from './demo/CustomReference.vue'
 import DemoPosition from './demo/Position.vue'
 import DemoManual from './demo/Manual.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>
 
 <style lang="scss" scoped>

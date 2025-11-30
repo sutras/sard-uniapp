@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="自定义锚点">
     <sar-floating-panel v-model:height="height" :anchors="anchors">
       <view style="padding: 20rpx; text-align: center">
@@ -15,7 +16,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { getWindowInfo } from 'sard-uniapp'
 import { ref } from 'vue'
 
@@ -28,4 +30,5 @@ const anchors = [
 ]
 
 const height = ref(anchors[0])
+const { isLocked } = useCurrentPageLock()
 </script>

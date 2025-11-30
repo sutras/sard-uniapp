@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <view class="relative box-border" :style="{ paddingTop }">
     <view class="absolute inset-0 flex justify-center items-center sbg-fourth">
       <text>{{ meta.width }}</text>
@@ -9,6 +10,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { random, useTimeout } from 'sard-uniapp'
 import { computed, onMounted, ref } from 'vue'
 
@@ -58,4 +60,5 @@ const { start } = useTimeout(
 onMounted(() => {
   start()
 })
+const { isLocked } = useCurrentPageLock()
 </script>

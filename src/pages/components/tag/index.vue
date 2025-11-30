@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page emphasis title="Tag 标签">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -31,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoPlain from './demo/Plain.vue'
 import DemoRound from './demo/Round.vue'
@@ -38,6 +40,8 @@ import DemoMark from './demo/Mark.vue'
 import DemoSize from './demo/Size.vue'
 import DemoStyle from './demo/Style.vue'
 import DemoClosable from './demo/Closable.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>
 
 <style lang="scss" scoped>

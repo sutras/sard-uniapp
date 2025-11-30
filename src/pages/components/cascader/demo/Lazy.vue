@@ -11,7 +11,7 @@
   </sar-list>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { mapProvinces, mapCities, mapCounties } from 'region-data'
 import { type CascaderOption, type CascaderStateNode } from 'sard-uniapp'
 

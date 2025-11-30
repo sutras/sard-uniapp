@@ -15,7 +15,7 @@
   <image v-if="dataURL" style="width: 100%" mode="widthFix" :src="dataURL" />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
 const dataURL = ref('')

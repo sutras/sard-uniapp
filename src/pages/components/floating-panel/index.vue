@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="FloatingPanel 浮动面板">
     <doc-demo>
       <sar-list card>
@@ -26,9 +27,12 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 const navigateTo = (url: string) => {
   uni.navigateTo({
     url: `/pages/components/floating-panel/demo/${url}`,
   })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

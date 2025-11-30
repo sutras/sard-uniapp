@@ -20,10 +20,7 @@
     "strictNullChecks": true,
     "jsx": "preserve",
     "paths": {
-      "@/*": [
-        "./src/{components,pages,utils,style}/*",
-        "./src/{App.vue,main.ts}"
-      ],
+      "@/*": ["./src/*"],
       "sard-uniapp": ["./src/lib"],
       "sard-uniapp/*": ["./src/lib/*"]
     }

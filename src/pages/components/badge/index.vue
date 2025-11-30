@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page emphasis title="Badge 徽标">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -35,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoMax from './demo/Max.vue'
 import DemoShowZero from './demo/ShowZero.vue'
@@ -43,6 +45,8 @@ import DemoColor from './demo/Color.vue'
 import DemoOnlyBadge from './demo/OnlyBadge.vue'
 import DemoCustom from './demo/Custom.vue'
 import DemoUnWrap from './demo/UnWrap.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>
 
 <style lang="scss" scoped>

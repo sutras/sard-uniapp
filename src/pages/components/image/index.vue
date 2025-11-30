@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Image 图片">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -31,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoMode from './demo/Mode.vue'
 import DemoShape from './demo/Shape.vue'
@@ -38,4 +40,6 @@ import DemoLazyLoad from './demo/LazyLoad.vue'
 import DemoLoading from './demo/Loading.vue'
 import DemoError from './demo/Error.vue'
 import DemoFade from './demo/Fade.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

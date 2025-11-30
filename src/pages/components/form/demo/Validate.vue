@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="表单校验">
     <sar-form ref="ruleFormRef" :model="ruleForm" :rules="rules">
       <sar-form-item label="Activity name" name="name">
@@ -94,7 +95,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { reactive, ref } from 'vue'
 import {
   toast,
@@ -208,4 +210,6 @@ const options = Array.from({ length: 100 }).map((_, idx) => ({
   value: `${idx + 1}`,
   label: `${idx + 1}`,
 }))
+
+const { isLocked } = useCurrentPageLock()
 </script>

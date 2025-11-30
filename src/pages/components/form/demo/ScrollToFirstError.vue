@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="滚动到第一个错误字段" padding="0">
     <sar-form
       :model="formState"
@@ -43,7 +44,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { ref, toRaw, onMounted } from 'vue'
 import {
   toast,
@@ -99,6 +101,8 @@ onMounted(() => {
     })
     .exec()
 })
+
+const { isLocked } = useCurrentPageLock()
 </script>
 
 <style lang="scss" scoped>

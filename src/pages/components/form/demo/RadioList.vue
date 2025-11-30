@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <sar-radio-group v-model="value">
     <template #custom="{ toggle }">
       <sar-list hide-border>
@@ -18,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 const value = defineModel<string>()
 
 defineProps<{
@@ -26,4 +28,6 @@ defineProps<{
     value: string
   }[]
 }>()
+
+const { isLocked } = useCurrentPageLock()
 </script>

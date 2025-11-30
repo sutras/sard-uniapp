@@ -12,7 +12,7 @@
   </sar-sidebar>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
 const current = ref('1')

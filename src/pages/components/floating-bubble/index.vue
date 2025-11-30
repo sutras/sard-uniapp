@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="FloatingBubble 浮动气泡">
     <doc-demo>
       <sar-radio-group v-model="currentDemo">
@@ -27,6 +28,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { ref } from 'vue'
 import DemoBasic from './demo/Basic.vue'
 import DemoMagnet from './demo/Magnet.vue'
@@ -39,4 +41,6 @@ const demoOptions = [
   { value: 'Magnet', label: '自由拖拽和磁吸' },
   { value: 'Offset', label: '双向绑定' },
 ]
+
+const { isLocked } = useCurrentPageLock()
 </script>

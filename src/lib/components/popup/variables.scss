@@ -5,3 +5,9 @@ page,
   --sar-popup-duration: var(--sar-duration);
 }
 // #endvariables
+
+/* #ifdef WEB */
+.sar-popup-hidden {
+  overflow: hidden;
+}
+/* #endif */

@@ -2,7 +2,7 @@
   <sar-segmented v-model="value" :options="options" shape="round" />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
 const options = ['Daily', 'Weekly', 'Monthly']

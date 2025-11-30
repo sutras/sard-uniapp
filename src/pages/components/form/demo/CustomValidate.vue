@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="自定义校验规则">
     <sar-form ref="ruleFormRef" :model="ruleForm" :rules="rules">
       <sar-form-item label="Password" name="pass">
@@ -33,7 +34,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { reactive, ref } from 'vue'
 import { toast, type FormRules, type FormExpose } from 'sard-uniapp'
 
@@ -110,4 +112,6 @@ const resetForm = (formEl: any) => {
   if (!formEl) return
   formEl.reset()
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="树节点过滤">
     <view style="padding: 32rpx; background: var(--sar-emphasis-bg)">
       <sar-input v-model="searchString" placeholder="请输入过滤关键词" />
@@ -12,7 +13,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { type TreeExpose } from 'sard-uniapp'
 import { ref, watch } from 'vue'
 import { getRegionData } from 'region-data'
@@ -34,4 +36,6 @@ const treeData = regionData.slice(0, 5).map((item) => ({
     children: item.children.slice(0, 3),
   })),
 }))
+
+const { isLocked } = useCurrentPageLock()
 </script>

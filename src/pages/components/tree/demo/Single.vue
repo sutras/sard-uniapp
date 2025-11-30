@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="单一选择">
     <sar-tree
       :data="treeData"
@@ -12,7 +13,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { getRegionData } from 'region-data'
 import { type TreeStateNode } from 'sard-uniapp'
 import { ref } from 'vue'
@@ -34,4 +36,6 @@ const value = ref(110102)
 const onSelect = (key: number | string, node: TreeStateNode) => {
   console.log(key, node)
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

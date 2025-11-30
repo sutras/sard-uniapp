@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="可拖拽的">
     <sar-tree
       :data="treeData"
@@ -8,7 +9,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { getRegionData } from 'region-data'
 
 const regionData = getRegionData()
@@ -20,4 +22,6 @@ const treeData = regionData.slice(0, 5).map((item) => ({
     children: item.children.slice(0, 3),
   })),
 }))
+
+const { isLocked } = useCurrentPageLock()
 </script>

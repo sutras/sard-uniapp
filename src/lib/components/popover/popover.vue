@@ -45,7 +45,7 @@ import {
   getBoundingClientRect,
   uniqid,
 } from '../../utils'
-import { useTransition, useZIndex } from '../../use'
+import { useLockScroll, useTransition, useZIndex } from '../../use'
 import { getPopoverPosition } from './utils'
 import SarOverlay from '../overlay/overlay.vue'
 import SarMenu from '../menu/menu.vue'
@@ -149,6 +149,8 @@ watch(innerVisible, () => {
     transitionVisible.value = false
   }
 })
+
+useLockScroll(innerVisible)
 
 const onOverlayClick = () => {
   innerVisible.value = false

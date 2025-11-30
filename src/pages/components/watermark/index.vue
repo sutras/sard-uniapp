@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Watermark 水印" emphasis>
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -26,6 +27,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoMultiLine from './demo/MultiLine.vue'
 import DemoImage from './demo/Image.vue'
@@ -35,4 +37,6 @@ const navigateTo = (url: string) => {
     url: `/pages/components/watermark/demo/${url}`,
   })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

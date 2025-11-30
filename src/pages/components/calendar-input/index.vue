@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="CalendarInput 日历输入框">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -19,8 +20,11 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoOutletFormat from './demo/OutletFormat.vue'
 import DemoValueFormat from './demo/ValueFormat.vue'
 import DemoType from './demo/Type.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

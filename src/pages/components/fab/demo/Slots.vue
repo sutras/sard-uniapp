@@ -15,7 +15,7 @@
   </sar-fab>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { toast } from 'sard-uniapp'
 import { ref } from 'vue'
 

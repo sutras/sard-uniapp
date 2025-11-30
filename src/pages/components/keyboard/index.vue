@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Keyboard 键盘">
     <doc-demo title="数字键盘" full>
       <DemoNumber />
@@ -23,9 +24,12 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoNumber from './demo/Number.vue'
 import DemoDigit from './demo/Digit.vue'
 import DemoIdcard from './demo/Idcard.vue'
 import DemoRandom from './demo/Random.vue'
 import DemoPlate from './demo/Plate.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

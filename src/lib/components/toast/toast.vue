@@ -5,6 +5,7 @@
     :duration="duration"
     :transparent="transparent"
     :root-style="popupStyle"
+    :lock-scroll="false"
     effect="fade"
     @visible-hook="onVisibleHook"
   >

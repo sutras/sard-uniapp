@@ -34,7 +34,7 @@
   </view>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { columns, data } from './level-data'
 
 const statusBarHeight = uni.getWindowInfo().statusBarHeight

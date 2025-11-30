@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page emphasis title="Stepper 步进器">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -27,12 +28,15 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoMinMax from './demo/MinMax.vue'
 import DemoStep from './demo/Step.vue'
 import DemoPrecision from './demo/Precision.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoSize from './demo/Size.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>
 
 <style lang="scss" scoped>

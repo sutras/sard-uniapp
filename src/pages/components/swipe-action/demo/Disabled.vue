@@ -54,7 +54,7 @@
   </sar-list>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { toast } from 'sard-uniapp'
 
 const onClick = (content: string) => {

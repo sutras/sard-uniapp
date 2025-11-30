@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="仅选择叶子节点">
     <sar-tree
       :data="treeData"
@@ -12,7 +13,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { getRegionData } from 'region-data'
 import { type TreeStateNode } from 'sard-uniapp'
 
@@ -29,4 +31,6 @@ const treeData = regionData.slice(0, 5).map((item) => ({
 const onSelect = (key: number | string, node: TreeStateNode) => {
   console.log(key, node)
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

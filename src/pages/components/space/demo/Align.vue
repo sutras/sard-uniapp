@@ -8,7 +8,7 @@
   </view>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 const alignments = ['start', 'center', 'end', 'baseline'] as const
 </script>
 

@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="自定义绘制">
     <sar-watermark
       class="fixed"
@@ -49,7 +50,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { computed, ref } from 'vue'
 
 const rotate = ref(-22)
@@ -68,4 +70,6 @@ const content = computed(() =>
     .map((item) => item.trim()),
 )
 const color = ref('rgba(128,128,128,.3)')
+
+const { isLocked } = useCurrentPageLock()
 </script>

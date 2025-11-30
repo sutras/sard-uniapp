@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="多表单联动">
     <sar-form ref="formRef" :model="formState" label-width="200rpx">
       <sar-form-item
@@ -67,7 +68,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { reactive, ref, toRaw } from 'vue'
 import { toast, type FormExpose, type FieldValidateError } from 'sard-uniapp'
 
@@ -110,4 +112,6 @@ const onSubmit = () => {
       console.log('error', error)
     })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

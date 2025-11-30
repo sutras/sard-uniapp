@@ -518,6 +518,7 @@ export const defaultConfig: RequiredConfigOptions = {
     effect: 'fade',
     overlay: true,
     overlayClosable: true,
+    lockScroll: true,
   },
   progressBar: {
     percent: 0,

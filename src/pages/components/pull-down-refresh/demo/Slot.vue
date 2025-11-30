@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page emphasis title="自定义插槽" padding="20rpx">
     <scroll-view
       scroll-y
@@ -63,6 +64,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const loading = ref(false)
@@ -98,4 +100,6 @@ const onRefresh = () => {
       loading.value = false
     })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

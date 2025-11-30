@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="自定义表单控件">
     <sar-form :model="formState" ref="formRef">
       <sar-form-item
@@ -15,7 +16,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { reactive, ref, toRaw } from 'vue'
 import PriceInput, { type Currency } from './PriceInput.vue'
 import { toast, type FormExpose } from 'sard-uniapp'
@@ -47,4 +49,6 @@ const checkPrice = (value: { number: number }) => {
   }
   return 'Price must be greater than zero!'
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

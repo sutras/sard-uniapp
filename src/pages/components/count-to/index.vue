@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="CountTo 数字滚动">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -19,9 +20,12 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoPrecision from './demo/Precision.vue'
 import DemoSeparator from './demo/Separator.vue'
 import DemoDuration from './demo/Duration.vue'
 import DemoRandom from './demo/Random.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

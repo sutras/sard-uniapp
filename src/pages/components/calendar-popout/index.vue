@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="CalendarPopout 日历弹出框">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -35,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoType from './demo/Type.vue'
 import DemoMinMax from './demo/MinMax.vue'
@@ -43,4 +45,6 @@ import DemoDisabledDate from './demo/DisabledDate.vue'
 import DemoWeekStartsOn from './demo/WeekStartsOn.vue'
 import DemoFormatter from './demo/Formatter.vue'
 import DemoSeveral from './demo/Several.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

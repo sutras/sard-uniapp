@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page emphasis title="基于页面的刷新">
     <sar-pull-down-refresh
       ref="pullDownRefresh"
@@ -25,7 +26,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { toast } from 'sard-uniapp'
 import { ref } from 'vue'
 import { onPageScroll } from '@dcloudio/uni-app'
@@ -58,4 +60,6 @@ const onRefresh = () => {
       loading.value = false
     })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

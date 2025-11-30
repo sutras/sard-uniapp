@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Label 宽度">
     <sar-form :model="formState" ref="formRef" label-width="200rpx">
       <sar-form-item label="Activity name">
@@ -32,7 +33,8 @@
     </sar-form>
   </doc-page>
 </template>
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { reactive, toRaw, ref, type UnwrapRef } from 'vue'
 import { type FormExpose } from 'sard-uniapp'
 
@@ -57,4 +59,6 @@ const onSubmit = () => {
     console.log('submit!', toRaw(formState))
   })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

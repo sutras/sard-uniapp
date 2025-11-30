@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page emphasis padding="0" title="场景2">
     <sar-scroll-spy
       v-model:current="current"
@@ -103,6 +104,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { getWindowInfo } from 'sard-uniapp'
 import { ref } from 'vue'
 
@@ -124,4 +126,6 @@ const list = ref(
 
 const current = ref(0)
 const tabList = [{ title: '标签0' }, { title: '标签1' }, { title: '标签2' }]
+
+const { isLocked } = useCurrentPageLock()
 </script>

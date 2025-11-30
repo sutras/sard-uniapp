@@ -9,7 +9,7 @@
   </sar-list>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 const navigateTo = (url: string) => {
   uni.navigateTo({
     url: `/pages/components/table/demo/${url}`,

@@ -30,7 +30,7 @@
   </sar-timeline>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 const logistics = [
   {
     description: '收货地址：广东广州xxx1号店',

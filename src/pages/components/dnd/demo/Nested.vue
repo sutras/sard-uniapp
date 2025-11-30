@@ -137,7 +137,7 @@
   </sar-form-plain>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { reactive, ref } from 'vue'
 import { toast, type FormExpose } from 'sard-uniapp'
 

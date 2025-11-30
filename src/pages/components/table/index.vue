@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page emphasis title="Table 表格">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -40,6 +41,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoBorder from './demo/Border.vue'
 import DemoUnderline from './demo/Underline.vue'
@@ -52,4 +54,6 @@ import DemoFixed from './demo/Fixed.vue'
 import DemoFullScreenEntry from './demo/FullScreenEntry.vue'
 import DemoMultilevelHeader from './demo/MultilevelHeader.vue'
 import DemoMerge from './demo/Merge.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

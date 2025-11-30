@@ -5,7 +5,12 @@
     <!-- #ifdef MP -->
     <root-portal>
       <!-- #endif -->
-      <view v-show="pageVisible" class="sar-portal">
+      <view
+        v-show="pageVisible"
+        class="sar-portal"
+        :data-visible="visible ? 'show' : 'hide'"
+        :data-lock="props.lockScroll ? 'lockable' : 'unlockable'"
+      >
         <sar-overlay
           v-if="overlay"
           :visible="visible"
@@ -48,8 +53,13 @@
 <script setup lang="ts">
 import { computed, reactive, ref, toRef } from 'vue'
 import { onHide, onShow } from '@dcloudio/uni-app'
-import { classNames, stringifyStyle, createBem, isWeb } from '../../utils'
-import { type UseTransitionOptions, useTransition, useZIndex } from '../../use'
+import { classNames, stringifyStyle, createBem } from '../../utils'
+import {
+  type UseTransitionOptions,
+  useLockScroll,
+  useTransition,
+  useZIndex,
+} from '../../use'
 import SarOverlay from '../overlay/overlay.vue'
 import {
   type PopupProps,
@@ -118,17 +128,17 @@ const onOverlayClick = (event: any) => {
 
 const pageVisible = ref(true)
 
+// #ifdef WEB
 onShow(() => {
-  if (isWeb) {
-    pageVisible.value = true
-  }
+  pageVisible.value = true
 })
 
 onHide(() => {
-  if (isWeb) {
-    pageVisible.value = false
-  }
+  pageVisible.value = false
 })
+// #endif
+
+useLockScroll(() => props.visible, props.lockScroll)
 
 // others
 const popupClass = computed(() => {
@@ -150,18 +160,77 @@ const popupStyle = computed(() => {
 })
 </script>
 
+<!--
+用于APP端传送节点，以及自动阻止页面滚动
+-->
 <!-- #ifdef APP-PLUS || APP-HARMONY -->
 <script module="render" lang="renderjs">
 // @ts-expect-error ignore renderjs
 export default {
   mounted() {
-    const root = document.querySelector('uni-app') || document.body
     // @ts-expect-error ignore renderjs
-    if (this.$ownerInstance.$el) {
-      // @ts-expect-error ignore renderjs
-      root.appendChild(this.$ownerInstance.$el)
+    const el = this.$ownerInstance.$el
+
+    let hiddenCls = ''
+
+    const lock = () => {
+      document.body.classList.add(hiddenCls)
     }
-  }
+
+    const unlock = () => {
+      document.body.classList.remove(hiddenCls)
+    }
+
+    const toggleLock = (visible) => {
+      if (visible === 'show') {
+        lock()
+      } else {
+        unlock()
+      }
+    }
+
+    let style = null
+
+    const addStyle = () => {
+      style = document.createElement('style')
+      style.textContent = `.${hiddenCls}{overflow:hidden}`
+      document.head.appendChild(style)
+    }
+
+    const removeStyle = () => {
+      if (style) {
+        style.remove()
+      }
+    }
+
+    if (el) {
+      document.body.appendChild(el)
+
+      const lockable = el.getAttribute("data-lock") === 'lockable'
+
+      if (lockable) {
+        hiddenCls = 'sar-popup-hidden-' + (~~(Math.random() * 10e8)).toString(36)
+        addStyle()
+        toggleLock(el.getAttribute("data-visible"))
+
+        const observer = new MutationObserver((mutationsList) => {
+          for (let mutation of mutationsList) {
+            if (mutation.type === "attributes" ) {
+              if (mutation.attributeName === "data-visible") {
+                toggleLock(el.getAttribute("data-visible"))
+              }
+            } else if (mutation.type === "childList") {
+              if (!el.isConnected) {
+                removeStyle()
+                observer.disconnect()
+              }
+            }
+          }
+        })
+        observer.observe(el, { attributes: true, childList: true, attributeFilter: ['data-visible']})
+      }
+    }
+  },
 }
 </script>
 <!-- #endif -->

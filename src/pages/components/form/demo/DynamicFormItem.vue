@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="添加/删除表单项">
     <sar-form ref="formRef" :model="dynamicValidateForm">
       <sar-form-item
@@ -60,7 +61,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { reactive, ref } from 'vue'
 import { toast, type FormExpose } from 'sard-uniapp'
 
@@ -114,4 +116,6 @@ const resetForm = (formEl?: FormExpose) => {
   if (!formEl) return
   formEl.reset()
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

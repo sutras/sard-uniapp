@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="基础使用">
     <sar-waterfall class="mx-32" @load="onLoad">
       <sar-waterfall-item v-for="(item, index) in list" :key="index">
@@ -11,7 +12,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { random, toast } from 'sard-uniapp'
 import { nextTick, onMounted, ref } from 'vue'
 import SimulatedImage from './SimulatedImage.vue'
@@ -58,4 +60,5 @@ onMounted(async () => {
   })
   list.value.push(...(await getData()))
 })
+const { isLocked } = useCurrentPageLock()
 </script>

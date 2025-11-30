@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page emphasis title="Upload 上传">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -55,6 +56,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoVideo from './demo/Video.vue'
 import DemoMix from './demo/Mix.vue'
@@ -68,6 +70,8 @@ import DemoReuploadCancel from './demo/ReuploadCancel.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoCustomSelect from './demo/CustomSelect.vue'
 import DemoCustom from './demo/Custom.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>
 
 <style lang="scss" scoped>

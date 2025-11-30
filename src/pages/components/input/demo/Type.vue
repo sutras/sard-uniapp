@@ -32,7 +32,7 @@
   </sar-input>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 const isPlainText = ref(false)
 </script>

@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Search 搜索">
     <doc-demo title="基础使用" full>
       <DemoBasic />
@@ -35,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoSearchButton from './demo/SearchButton.vue'
 import DemoCancelButton from './demo/CancelButton.vue'
@@ -43,4 +45,6 @@ import DemoAlign from './demo/Align.vue'
 import DemoBackground from './demo/Background.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoSlot from './demo/Slot.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

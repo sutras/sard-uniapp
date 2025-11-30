@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Indexes 索引">
     <sar-indexes
       :root-style="{
@@ -28,6 +29,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { getWindowInfo, toast } from 'sard-uniapp'
 import areaCode from 'tel-area-code'
 import { ref } from 'vue'
@@ -74,4 +76,6 @@ const sectionList = ref<Section[]>(getSectionList())
 const onSelect = (code: string) => {
   toast(code)
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

@@ -29,7 +29,7 @@
   </sar-list>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { dialog } from 'sard-uniapp'
 import { ref } from 'vue'
 

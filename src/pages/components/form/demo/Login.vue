@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="登录框">
     <sar-form :model="formState" ref="formRef">
       <sar-form-item
@@ -46,7 +47,8 @@
     </sar-form>
   </doc-page>
 </template>
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { reactive, computed, ref } from 'vue'
 import { toast, type FormExpose, type FieldValidateError } from 'sard-uniapp'
 
@@ -78,4 +80,6 @@ const submitForm = () => {
 const disabled = computed(() => {
   return !(formState.username && formState.password)
 })
+
+const { isLocked } = useCurrentPageLock()
 </script>

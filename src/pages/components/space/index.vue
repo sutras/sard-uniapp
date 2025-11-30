@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Space 间距">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -22,10 +23,13 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoVertical from './demo/Vertical.vue'
 import DemoSize from './demo/Size.vue'
 import DemoCustomSize from './demo/CustomSize.vue'
 import DemoWrap from './demo/Wrap.vue'
 import DemoAlign from './demo/Align.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

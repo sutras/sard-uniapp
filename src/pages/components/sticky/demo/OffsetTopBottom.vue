@@ -8,6 +8,6 @@
   </sar-sticky>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { safeAreaTop } from '@/utils'
 </script>

@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="表单只读和禁用">
     <sar-list>
       <sar-list-item title="只读">
@@ -84,7 +85,8 @@
     </sar-form>
   </doc-page>
 </template>
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { ref, reactive } from 'vue'
 
 const formDisabled = ref(true)
@@ -104,4 +106,6 @@ const options = reactive([
     ],
   },
 ])
+
+const { isLocked } = useCurrentPageLock()
 </script>

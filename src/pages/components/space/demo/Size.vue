@@ -14,7 +14,7 @@
   </sar-space>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { spaceSizes, type SpaceSize } from 'sard-uniapp'
 import { ref } from 'vue'
 

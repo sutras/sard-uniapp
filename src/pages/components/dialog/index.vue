@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Dialog 对话框">
     <sar-dialog-agent />
 
@@ -33,6 +34,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoAsyncClose from './demo/AsyncClose.vue'
 import DemoRound from './demo/Round.vue'
@@ -40,4 +42,6 @@ import DemoHeaded from './demo/Headed.vue'
 import DemoContent from './demo/Content.vue'
 import DemoButtonProps from './demo/ButtonProps.vue'
 import DemoPopupContent from './demo/PopupContent.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

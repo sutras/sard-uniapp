@@ -42,6 +42,7 @@ import Popup from 'sard-uniapp/components/popup/popup.vue'
 | transparent                       | 透明遮罩                                                                               | boolean                                                                            | false  |
 | overlay-closable <sup>1.22+</sup> | 是否在点击遮罩层后关闭                                                                 | boolean                                                                            | true   |
 | keep-render <sup>1.24.3+</sup>    | 无论刚挂载还是隐藏，都始终不设置 display 为 none，一般用于内部包含计算尺寸的组件的情况 | boolean                                                                            | false  |
+| lock-scroll <sup>1.25.5+</sup>    | 弹出框显示时，是否阻止页面滚动                                                         | boolean                                                                            | true   |
 
 ### PopupSlots
 

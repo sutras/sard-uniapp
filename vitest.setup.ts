@@ -280,3 +280,11 @@ Object.defineProperty(globalThis, 'uni', {
     return uniObject
   },
 })
+
+Object.defineProperty(globalThis, 'getCurrentPages', {
+  get() {
+    return () => {
+      return [{ route: '' }]
+    }
+  },
+})

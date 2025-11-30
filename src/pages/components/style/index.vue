@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Style 样式">
     <doc-demo title="基础颜色">
       <DemoBasic />
@@ -19,8 +20,11 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoGray from './demo/Gray.vue'
 import DemoTheme from './demo/Theme.vue'
 import DemoNeutral from './demo/Neutral.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="BackTop 回到顶部">
     <doc-demo>
       <sar-list card>
@@ -44,9 +45,12 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 const navigateTo = (url: string) => {
   uni.navigateTo({
     url: `/pages/components/back-top/demo/${url}`,
   })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Dnd 拖放">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -15,7 +16,10 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoFormList from './demo/FormList.vue'
 import DemoNested from './demo/Nested.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

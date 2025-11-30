@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="服务人员满意度评分表" emphasis padding-bottom="0">
     <sar-form-plain
       ref="formRef"
@@ -242,7 +243,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { reactive, ref } from 'vue'
 import {
   toast,
@@ -336,6 +338,8 @@ const returnOptions = [
   { value: 'no', label: '否' },
   { value: 'unsure', label: '不确定' },
 ]
+
+const { isLocked } = useCurrentPageLock()
 </script>
 
 <style lang="scss" scoped>

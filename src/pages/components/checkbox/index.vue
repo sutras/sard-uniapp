@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Checkbox 复选框">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -47,6 +48,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoSize from './demo/Size.vue'
@@ -58,4 +60,6 @@ import DemoDirection from './demo/Direction.vue'
 import DemoGroupOptions from './demo/GroupOptions.vue'
 import DemoCustom from './demo/Custom.vue'
 import DemoIndeterminate from './demo/Indeterminate.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

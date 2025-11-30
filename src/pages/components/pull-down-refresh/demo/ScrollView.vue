@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page emphasis title="基于 scroll-view 的刷新" padding="20rpx">
     <sar-button @click="loading = !loading">toggle loading</sar-button>
     <scroll-view
@@ -38,6 +39,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { toast } from 'sard-uniapp'
 import { ref } from 'vue'
 
@@ -72,4 +74,6 @@ const onRefresh = () => {
       loading.value = false
     })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

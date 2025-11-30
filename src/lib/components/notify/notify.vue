@@ -4,6 +4,7 @@
     :overlay="false"
     :effect="effect"
     :duration="duration"
+    :lock-scroll="false"
     @visible-hook="onVisibleHook"
   >
     <view :class="notifyClass" :style="notifyStyle" @click="onClick">

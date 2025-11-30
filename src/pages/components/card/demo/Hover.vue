@@ -8,7 +8,7 @@
   </sar-card>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 const onClick = () => {
   console.log('click')
 }

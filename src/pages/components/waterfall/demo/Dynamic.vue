@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="结合下拉刷新与触底加载">
     <sar-pull-down-refresh
       ref="pullDownRefresh"
@@ -42,7 +43,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { onPageScroll, onReachBottom } from '@dcloudio/uni-app'
 import {
   shuffle,
@@ -172,4 +174,5 @@ onMounted(() => {
 const onDelete = (item: ListItem) => {
   list.value.splice(list.value.indexOf(item), 1)
 }
+const { isLocked } = useCurrentPageLock()
 </script>

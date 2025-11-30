@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Grid 宫格">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -43,6 +44,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoBorder from './demo/Border.vue'
 import DemoColumns from './demo/Columns.vue'
@@ -53,6 +55,8 @@ import DemoReverse from './demo/Reverse.vue'
 import DemoClickable from './demo/Clickable.vue'
 import DemoBadge from './demo/Badge.vue'
 import DemoCustom from './demo/Custom.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>
 
 <style lang="scss" scoped>

@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page emphasis title="Slider 滑块">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -47,6 +48,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoRange from './demo/Range.vue'
 import DemoShowValue from './demo/ShowValue.vue'
@@ -58,4 +60,6 @@ import DemoColor from './demo/Color.vue'
 import DemoSize from './demo/Size.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoSlot from './demo/Slot.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

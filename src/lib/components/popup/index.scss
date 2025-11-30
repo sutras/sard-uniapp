@@ -88,12 +88,14 @@
     }
 
     @include m(zoom-enter-active) {
-      transition: transform var(--sar-popup-duration) ease-out,
+      transition:
+        transform var(--sar-popup-duration) ease-out,
         opacity var(--sar-popup-duration) ease-out;
     }
 
     @include m(zoom-leave-active) {
-      transition: transform var(--sar-popup-duration) ease-out,
+      transition:
+        transform var(--sar-popup-duration) ease-out,
         opacity var(--sar-popup-duration) ease-in;
     }
 

@@ -2,7 +2,7 @@
   <sar-fab :item-list="itemList" left="48rpx" />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { type FabItem } from 'sard-uniapp'
 import { ref } from 'vue'
 

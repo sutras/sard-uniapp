@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Segmented 分段控制器">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -35,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoSize from './demo/Size.vue'
 import DemoShape from './demo/Shape.vue'
@@ -43,4 +45,6 @@ import DemoOnlyIcon from './demo/OnlyIcon.vue'
 import DemoDirection from './demo/Direction.vue'
 import DemoDisabled from './demo/Disabled.vue'
 import DemoCustom from './demo/Custom.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

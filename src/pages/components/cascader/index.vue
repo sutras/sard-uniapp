@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Cascader 级联选择">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -47,6 +48,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoChangeOnSelect from './demo/ChangeOnSelect.vue'
 import DemoAsync from './demo/Async.vue'
@@ -58,6 +60,8 @@ import DemoMultiple from './demo/Multiple.vue'
 import DemoMultipleAllLevels from './demo/MultipleAllLevels.vue'
 import DemoCheckStrictly from './demo/CheckStrictly.vue'
 import DemoCheckStrictlyAllLevels from './demo/CheckStrictlyAllLevels.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>
 
 <style lang="scss" scoped>

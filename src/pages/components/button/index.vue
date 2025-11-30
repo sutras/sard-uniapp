@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Button 按钮">
     <doc-demo title="按钮类型">
       <DemoType />
@@ -43,6 +44,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoType from './demo/Type.vue'
 import DemoTheme from './demo/Theme.vue'
 import DemoColor from './demo/Color.vue'
@@ -53,6 +55,8 @@ import DemoSize from './demo/Size.vue'
 import DemoLoading from './demo/Loading.vue'
 import DemoBlock from './demo/Block.vue'
 import DemoIcon from './demo/Icon.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>
 
 <style lang="scss" scoped>

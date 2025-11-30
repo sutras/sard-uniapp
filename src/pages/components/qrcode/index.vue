@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Qrcode 二维码">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -35,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoDisplaySize from './demo/DisplaySize.vue'
 import DemoCanvasSize from './demo/CanvasSize.vue'
@@ -43,4 +45,6 @@ import DemoIcon from './demo/Icon.vue'
 import DemoIconProps from './demo/IconProps.vue'
 import DemoQuietZoneModules from './demo/QuietZoneModules.vue'
 import DemoECL from './demo/ECL.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

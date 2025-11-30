@@ -7,7 +7,7 @@
   />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { type QrcodeECL } from 'sard-uniapp'
 import { ref } from 'vue'
 

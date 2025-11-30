@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="scroll-view 组件滚动">
     <scroll-view
       scroll-y
@@ -15,8 +16,11 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { useScrollViewBackTop } from 'sard-uniapp'
 
 const { scrollTop, onScroll, onClick } = useScrollViewBackTop()
+
+const { isLocked } = useCurrentPageLock()
 </script>

@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Indexes 索引">
     <doc-demo title="基础使用" full>
       <DemoBasic />
@@ -18,6 +19,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 
 const navigateTo = (url: string) => {
@@ -25,4 +27,6 @@ const navigateTo = (url: string) => {
     url: `/pages/components/indexes/demo/${url}`,
   })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

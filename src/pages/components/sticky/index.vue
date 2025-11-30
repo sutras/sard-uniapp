@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Sticky 粘性布局" padding-bottom="120vh">
     <doc-demo title="吸顶">
       <DemoOffsetTop />
@@ -31,6 +32,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoOffsetTop from './demo/OffsetTop.vue'
 import DemoDynamic from './demo/Dynamic.vue'
 import DemoOffsetBottom from './demo/OffsetBottom.vue'
@@ -38,4 +40,6 @@ import DemoOffsetTopBottom from './demo/OffsetTopBottom.vue'
 import DemoBoxTop from './demo/BoxTop.vue'
 import DemoBoxBottom from './demo/BoxBottom.vue'
 import DemoBoxTopBottom from './demo/BoxTopBottom.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

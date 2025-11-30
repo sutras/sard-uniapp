@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="典型表单">
     <sar-form :model="form" label-width="240rpx">
       <sar-form-item label="Activity name">
@@ -91,7 +92,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { reactive } from 'vue'
 import { toast } from 'sard-uniapp'
 
@@ -111,4 +113,6 @@ const form = reactive({
 const onSubmit = () => {
   toast('submit!')
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

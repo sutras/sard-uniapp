@@ -2,7 +2,7 @@
   <sar-navbar title="标题" show-back back-text="返回" @back="onBack" />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { toast } from 'sard-uniapp'
 
 const onBack = () => {

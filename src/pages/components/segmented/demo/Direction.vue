@@ -5,7 +5,7 @@
   </sar-space>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
 const options1 = ['home', 'card', 'message']

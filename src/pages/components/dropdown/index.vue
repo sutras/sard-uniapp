@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Dropdown 下拉菜单">
     <doc-demo title="基础使用" full>
       <DemoBasic />
@@ -35,6 +36,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoPlaceholder from './demo/Placeholder.vue'
 import DemoLabel from './demo/Label.vue'
@@ -43,4 +45,6 @@ import DemoDisabled from './demo/Disabled.vue'
 import DemoContent from './demo/Content.vue'
 import DemoAsync from './demo/Async.vue'
 import DemoTogglable from './demo/Togglable.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

@@ -13,7 +13,7 @@
   </sar-grid>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ImageProps } from 'sard-uniapp'
 
 const modes: ImageProps['mode'][] = [

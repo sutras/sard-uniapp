@@ -31,7 +31,7 @@
   <sar-button @click="loading = !loading">toggle loading</sar-button>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 const loading = ref(false)
 </script>

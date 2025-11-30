@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="可编辑的">
     <sar-button @click="addRootNode" root-style="margin: 32rpx">
       添加根节点
@@ -16,7 +17,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { getRegionData } from 'region-data'
 import { toast, type TreeExpose } from 'sard-uniapp'
 import { ref } from 'vue'
@@ -41,4 +43,6 @@ const getCleanTreeData = () => {
   toast('打开控制台查看')
   console.log(treeRef.value?.getCleanTreeData())
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

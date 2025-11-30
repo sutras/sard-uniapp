@@ -24,7 +24,7 @@
   </view>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { sleep } from 'sard-uniapp'
 import { ref } from 'vue'
 

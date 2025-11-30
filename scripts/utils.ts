@@ -257,6 +257,7 @@ export async function createDemo(
   await fse.outputFile(
     logNewFile(path.resolve(demoDir, `index.vue`)),
     `<template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="${pascalCaseName} ${cnName}">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -265,8 +266,12 @@ export async function createDemo(
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>
+
 `,
   )
 

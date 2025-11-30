@@ -2,7 +2,7 @@
   <sar-segmented v-model="value" :options="options" />
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { ref } from 'vue'
 
 const options = [

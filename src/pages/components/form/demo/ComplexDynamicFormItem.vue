@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="复杂的动态增减表单项">
     <sar-form ref="formRef" :model="dynamicValidateForm">
       <sar-form-item
@@ -71,7 +72,8 @@
     </sar-form>
   </doc-page>
 </template>
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { toRaw } from 'vue'
 import { reactive, ref, watch } from 'vue'
 import { toast, type FormExpose } from 'sard-uniapp'
@@ -129,4 +131,6 @@ const onSubmit = () => {
       console.log('fail')
     })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

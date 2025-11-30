@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="默认展开以及默认选中">
     <sar-tree
       :data="treeData"
@@ -10,7 +11,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { getRegionData } from 'region-data'
 
 const regionData = getRegionData()
@@ -25,4 +27,6 @@ const treeData = regionData.slice(0, 5).map((item) => ({
 
 const defaultCheckedKeys = [110101, 120100]
 const defaultExpandedKeys = [110101, 120100]
+
+const { isLocked } = useCurrentPageLock()
 </script>

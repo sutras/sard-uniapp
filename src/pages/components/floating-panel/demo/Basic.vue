@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="基础用法">
     <sar-floating-panel>
       <sar-list>
@@ -11,3 +12,9 @@
     </sar-floating-panel>
   </doc-page>
 </template>
+
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
+
+const { isLocked } = useCurrentPageLock()
+</script>

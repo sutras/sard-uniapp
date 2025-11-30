@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="动态校验规则">
     <sar-form ref="formRef" :model="formState">
       <sar-form-item
@@ -35,7 +36,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { reactive, ref, watch, toRaw } from 'vue'
 import { toast, type FormExpose, type FieldValidateError } from 'sard-uniapp'
 
@@ -70,4 +72,6 @@ const onCheck = async () => {
       console.log('Failed:', error)
     })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

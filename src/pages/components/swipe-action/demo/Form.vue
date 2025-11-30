@@ -57,7 +57,7 @@
   </sar-form>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { toRaw, reactive, ref } from 'vue'
 import { toast, type FormExpose } from 'sard-uniapp'
 

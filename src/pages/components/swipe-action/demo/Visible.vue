@@ -61,7 +61,7 @@
   </sar-list>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
 import { type SwipeActionVisible, toast } from 'sard-uniapp'
 import { ref } from 'vue'
 

@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Picker 选择器">
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -27,12 +28,15 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoObjectOption from './demo/ObjectOption.vue'
 import DemoMultiple from './demo/Multiple.vue'
 import DemoObjectMultiple from './demo/ObjectMultiple.vue'
 import DemoCascaded from './demo/Cascaded.vue'
 import DemoSlot from './demo/Slot.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>
 
 <style lang="scss" scoped>

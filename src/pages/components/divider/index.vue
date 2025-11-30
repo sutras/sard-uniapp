@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Divider 分割线" emphasis>
     <doc-demo title="基础使用">
       <DemoBasic />
@@ -27,10 +28,13 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoText from './demo/Text.vue'
 import DemoPosition from './demo/Position.vue'
 import DemoType from './demo/Type.vue'
 import DemoStyle from './demo/Style.vue'
 import DemoVertical from './demo/Vertical.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>

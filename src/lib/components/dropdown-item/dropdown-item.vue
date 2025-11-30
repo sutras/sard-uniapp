@@ -110,7 +110,12 @@ import {
   defaultDropdownItemProps,
   defaultValueOnClear,
 } from '../dropdown/common'
-import { type TransitionHookName, useTransition, useZIndex } from '../../use'
+import {
+  type TransitionHookName,
+  useLockScroll,
+  useTransition,
+  useZIndex,
+} from '../../use'
 
 defineOptions({
   options: {
@@ -181,6 +186,8 @@ watch(innerVisible, () => {
     popupVisible.value = false
   }
 })
+
+useLockScroll(popupVisible)
 
 const popupInset = ref('')
 const awayInset = ref('')

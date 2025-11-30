@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page emphasis title="NoticeBar 公告栏">
     <doc-demo title="基础使用" full>
       <DemoBasic />
@@ -47,6 +48,7 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasic from './demo/Basic.vue'
 import DemoAsync from './demo/Async.vue'
 import DemoScrollable from './demo/Scrollable.vue'
@@ -58,6 +60,8 @@ import DemoLinkable from './demo/Linkable.vue'
 import DemoRightIcon from './demo/RightIcon.vue'
 import DemoStyle from './demo/Style.vue'
 import DemoVertical from './demo/Vertical.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>
 
 <style lang="scss" scoped>

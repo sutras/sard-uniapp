@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="toast显示验证错误信息">
     <sar-form ref="formRef" :model="formState" class="form" :showError="false">
       <sar-form-item
@@ -38,7 +39,8 @@
   </doc-page>
 </template>
 
-<script lang="ts" setup>
+<script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import { ref, reactive, toRaw } from 'vue'
 import { toast, type FormExpose, type FieldValidateError } from 'sard-uniapp'
 
@@ -66,4 +68,6 @@ const submitForm = () => {
       console.log('Failed:', error)
     })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

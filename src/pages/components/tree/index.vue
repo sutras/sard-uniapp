@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="Tree 树形">
     <doc-demo>
       <sar-list card>
@@ -75,9 +76,12 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 const navigateTo = (url: string) => {
   uni.navigateTo({
     url: `/pages/components/tree/demo/${url}`,
   })
 }
+
+const { isLocked } = useCurrentPageLock()
 </script>

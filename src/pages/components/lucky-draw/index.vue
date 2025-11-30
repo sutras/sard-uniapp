@@ -1,4 +1,5 @@
 <template>
+  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="LuckyDraw 幸运抽奖">
     <doc-demo title="九宫格">
       <DemoBasicGrid />
@@ -16,8 +17,11 @@
 </template>
 
 <script setup lang="ts">
+import { useCurrentPageLock } from 'sard-uniapp'
 import DemoBasicGrid from './demo/BasicGrid.vue'
 import DemoGridSize from './demo/GridSize.vue'
 import DemoWheel from './demo/Wheel.vue'
 import DemoSlotMechine from './demo/SlotMechine.vue'
+
+const { isLocked } = useCurrentPageLock()
 </script>
