@@ -189,7 +189,7 @@ export default {
       }
     }
 
-    let style = null
+    let style
 
     const addStyle = () => {
       style = document.createElement('style')
