@@ -37,10 +37,10 @@
           </view>
         </view>
       </view>
-      <template v-if="cancel">
+      <template v-if="mergedShowCancel">
         <view :class="bem.e('gap')"></view>
         <view :class="bem.e('cancel')" @click="onCancel">
-          {{ cancel }}
+          {{ cancel || t('cancel') }}
         </view>
       </template>
     </view>
@@ -48,7 +48,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, reactive, readonly, ref, watch } from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -66,6 +66,7 @@ import {
   defaultActionSheetProps,
 } from './common'
 import { type TransitionHookName } from '../../use'
+import { useTranslate } from '../locale'
 
 defineOptions({
   options: {
@@ -83,6 +84,8 @@ const emit = defineEmits<ActionSheetEmits>()
 
 const bem = createBem('action-sheet')
 
+const { t } = useTranslate('actionSheet')
+
 // main
 const innerVisible = ref(props.visible)
 
@@ -93,9 +96,49 @@ watch(
   },
 )
 
-const perhapsClose = (type: 'close' | 'cancel' | 'select') => {
+const mergedShowCancel = computed(() => props.showCancel || props.cancel)
+
+const loading = reactive({
+  cancel: false,
+  select: false,
+  close: false,
+})
+
+const readonlyLoading = readonly(loading)
+
+const asyncSet = new Set<{ valid: boolean }>()
+
+watch(
+  innerVisible,
+  () => {
+    if (innerVisible.value === false) {
+      asyncSet.forEach((obj) => {
+        obj.valid = false
+      })
+      Object.assign(loading, {
+        cancel: false,
+        select: false,
+        close: false,
+      })
+    }
+  },
+  {
+    flush: 'sync',
+  },
+)
+
+function perhapsClose(type: 'close' | 'cancel'): any
+function perhapsClose(type: 'select', item: ActionSheetItem, index: number): any
+function perhapsClose(
+  type: 'close' | 'cancel' | 'select',
+  item?: ActionSheetItem,
+  index?: number,
+) {
   if (isFunction(props.beforeClose)) {
-    const result = props.beforeClose(type)
+    const result =
+      type === 'select'
+        ? props.beforeClose(type, item!, index!, readonlyLoading)
+        : props.beforeClose(type, readonlyLoading)
     if (isObject(result) && isFunction(result.then)) {
       return result
         .then(() => {
@@ -113,8 +156,8 @@ const perhapsClose = (type: 'close' | 'cancel' | 'select') => {
 }
 
 const onOverlayClick = () => {
-  emit('close')
   if (props.overlayClosable) {
+    emit('close')
     perhapsClose('close')
   }
 }
@@ -122,7 +165,7 @@ const onOverlayClick = () => {
 const onSelect = (item: ActionSheetItem, index: number) => {
   if (!item.disabled && !item.loading) {
     emit('select', item, index)
-    perhapsClose('select')
+    perhapsClose('select', item, index)
   }
 }
 

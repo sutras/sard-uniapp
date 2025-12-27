@@ -1,6 +1,9 @@
 const formTypeTemplate = '${label}không phải là một ${type} hợp lệ'
 
 export default {
+  actionSheet: {
+    cancel: 'Hủy',
+  },
   calendar: {
     weeks: {
       0: 'CN',

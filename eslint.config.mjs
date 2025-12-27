@@ -20,6 +20,13 @@ export default [
       '@typescript-eslint/no-explicit-any': 'off',
       '@typescript-eslint/no-this-alias': 'off',
       '@typescript-eslint/no-empty-object-type': 'off',
+      'no-redeclare': 'off',
+      '@typescript-eslint/no-redeclare': [
+        'error',
+        {
+          ignoreDeclarationMerge: true,
+        },
+      ],
     },
   },
   {

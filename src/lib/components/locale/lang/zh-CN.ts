@@ -1,6 +1,9 @@
 const formTypeTemplate = '${label}不是一个有效的${type}'
 
 export default {
+  actionSheet: {
+    cancel: '取消',
+  },
   calendar: {
     weeks: {
       0: '日',

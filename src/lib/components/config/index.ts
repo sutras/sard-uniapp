@@ -1,4 +1,5 @@
 import { type ActionSheetProps } from '../action-sheet'
+import { type ActionSheetAgentProps } from '../action-sheet-agent'
 import { type AlertProps } from '../alert'
 import { type AvatarGroupProps } from '../avatar-group'
 import { type AvatarProps } from '../avatar'
@@ -113,6 +114,7 @@ export interface ConfigOptions {
   initialZIndex?: number
   valueOnClear?: () => any
   actionSheet?: InferDefaults<LooseRequired<ActionSheetProps>>
+  actionSheetAgent?: InferDefaults<LooseRequired<ActionSheetAgentProps>>
   alert?: InferDefaults<LooseRequired<AlertProps>>
   avatar?: InferDefaults<LooseRequired<AvatarProps>>
   avatarGroup?: InferDefaults<LooseRequired<AvatarGroupProps>>
@@ -244,6 +246,9 @@ export const defaultConfig: RequiredConfigOptions = {
   actionSheet: {
     overlayClosable: true,
     duration: 250,
+  },
+  actionSheetAgent: {
+    id: 'actionSheet',
   },
   alert: {
     type: 'primary',

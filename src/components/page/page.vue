@@ -2,6 +2,7 @@
   <sar-toast-agent />
   <sar-dialog-agent />
   <sar-notify-agent status-bar />
+  <sar-action-sheet-agent />
   <sar-navbar
     :title="title"
     show-back

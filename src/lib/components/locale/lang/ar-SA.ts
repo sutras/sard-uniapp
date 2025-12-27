@@ -1,6 +1,9 @@
 const formTypeTemplate = '${label} ليس ${type} صالحاً'
 
 export default {
+  actionSheet: {
+    cancel: 'إلغاء',
+  },
   calendar: {
     weeks: {
       0: 'الأحد',

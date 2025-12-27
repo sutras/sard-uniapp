@@ -204,6 +204,11 @@ const onCancel = () => {
   perhapsClose('cancel')
 }
 
+const onVisibleHook = (name: TransitionHookName) => {
+  emit('visible-hook', name)
+  emit(name as any)
+}
+
 const buttonProps = computed(() => {
   return {
     text: {
@@ -234,11 +239,6 @@ const buttonProps = computed(() => {
     [p in 'cancel' | 'confirm']: ButtonProps
   }
 })
-
-const onVisibleHook = (name: TransitionHookName) => {
-  emit('visible-hook', name)
-  emit(name as any)
-}
 
 // others
 const dialogClass = computed(() => {

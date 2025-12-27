@@ -2,15 +2,35 @@ import { type StyleValue } from 'vue'
 import { defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 
+export type ActionSheetBeforeClose = ((
+  type: 'close' | 'cancel',
+  loading: {
+    readonly cancel: boolean
+    readonly select: boolean
+    readonly close: boolean
+  },
+) => any | Promise<any>) &
+  ((
+    type: 'select',
+    item: ActionSheetItem,
+    index: number,
+    loading: {
+      readonly cancel: boolean
+      readonly select: boolean
+      readonly close: boolean
+    },
+  ) => any | Promise<any>)
+
 export interface ActionSheetProps {
   rootStyle?: StyleValue
   rootClass?: string
   description?: string
   itemList?: ActionSheetItem[]
   cancel?: string
+  showCancel?: boolean
   visible?: boolean
   overlayClosable?: boolean
-  beforeClose?: (type: 'close' | 'cancel' | 'select') => boolean | Promise<any>
+  beforeClose?: ActionSheetBeforeClose
   duration?: number
 }
 

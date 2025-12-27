@@ -1,5 +1,6 @@
 export * from './components/accordion'
 export * from './components/action-sheet'
+export * from './components/action-sheet-agent'
 export * from './components/alert'
 export * from './components/avatar'
 export * from './components/avatar-group'

@@ -14,6 +14,7 @@ export default defineConfig({
     mapReadme: {
       'accordion-item': '../accordion',
       'dialog-agent': '../dialog',
+      'action-sheet-agent': '../action-sheet',
       'dropdown-item': '../dropdown',
       'checkbox-group': '../checkbox',
       col: '../layout',

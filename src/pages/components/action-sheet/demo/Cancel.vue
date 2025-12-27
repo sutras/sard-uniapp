@@ -2,7 +2,7 @@
   <sar-button @click="visible = true">显示</sar-button>
   <sar-action-sheet
     v-model:visible="visible"
-    cancel="取消"
+    show-cancel
     :item-list="itemList"
   />
 </template>
