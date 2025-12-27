@@ -1,3 +1,12 @@
+## [1.25.6](https://github.com/sutras/sard-uniapp/compare/v1.25.5...v1.25.6) (2025-12-27)
+
+
+### Features
+
+* **ActionSheet:** 动作面板允许命令式使用 ([d17e03a](https://github.com/sutras/sard-uniapp/commit/d17e03abcb1d9179844a2d6856e4b6d34c0c3a0e))
+
+
+
 ## [1.25.5](https://github.com/sutras/sard-uniapp/compare/v1.25.4...v1.25.5) (2025-11-30)
 
 
