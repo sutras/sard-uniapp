@@ -3,8 +3,10 @@
     effect="slide-bottom"
     :visible="innerVisible"
     :duration="duration"
+    back-press="close"
     @overlay-click="onOverlayClick"
     @visible-hook="onVisibleHook"
+    @back-press="onBackPress"
   >
     <view :class="shareSheetClass" :style="shareSheetStyle">
       <view v-if="title || description" :class="bem.e('header')">
@@ -171,6 +173,11 @@ const onCancel = () => {
 const onVisibleHook = (name: TransitionHookName) => {
   emit('visible-hook', name)
   emit(name as any)
+}
+
+const onBackPress = () => {
+  innerVisible.value = false
+  emit('update:visible', false)
 }
 
 const isImg = (url: any) => {

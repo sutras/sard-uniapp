@@ -72,7 +72,7 @@ export function addSeparator(num: number | string, separator = ',', digit = 3) {
 }
 
 /**
- * 生成唯一ID，用于设置元素的ID，以便获取
+ * 生成唯一ID，可作为元素选择器，或者用于表示全局唯一字符串
  */
 export function uniqid(prefix = '__sar_'): string {
   return prefix + (~~(Math.random() * 10e8)).toString(36)

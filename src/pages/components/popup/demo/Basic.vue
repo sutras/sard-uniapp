@@ -1,9 +1,5 @@
 <template>
-  <sar-popup
-    :visible="visible"
-    :effect="effect"
-    @overlay-click="onOverlayClick"
-  >
+  <sar-popup v-model:visible="visible" :effect="effect">
     <view :class="bem.e('content')">
       <sar-button @click="onClick">跳转</sar-button>
     </view>
@@ -32,10 +28,6 @@ const effect = ref<PopupProps['effect']>('fade')
 const show = (e: PopupProps['effect']) => {
   visible.value = true
   effect.value = e
-}
-
-const onOverlayClick = () => {
-  visible.value = false
 }
 
 const onClick = () => {

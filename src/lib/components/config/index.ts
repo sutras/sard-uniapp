@@ -504,6 +504,7 @@ export const defaultConfig: RequiredConfigOptions = {
     overlay: true,
     overlayClosable: true,
     duration: 250,
+    backPress: 'close',
   },
   popoutInput: {
     arrow: 'caret-right',
@@ -524,6 +525,7 @@ export const defaultConfig: RequiredConfigOptions = {
     overlay: true,
     overlayClosable: true,
     lockScroll: true,
+    backPress: 'close',
   },
   progressBar: {
     percent: 0,

@@ -33,6 +33,7 @@ export interface PopoutProps {
   overlayClosable?: boolean
   beforeClose?: PopoutBeforeClose
   keepRender?: boolean
+  backPress?: 'close' | 'back' | 'stop'
 }
 
 export const defaultPopoutProps = defaultConfig.popout
@@ -62,4 +63,5 @@ export interface PopoutEmits extends TransitionHookEmits {
   (e: 'close'): void
   (e: 'cancel'): void
   (e: 'confirm'): void
+  (e: 'back-press'): void
 }

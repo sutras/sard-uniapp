@@ -9,10 +9,12 @@
     :overlay-style="overlayStyle"
     :background="background"
     :transparent="transparent"
+    :back-press="backPress"
     @overlay-click="onOverlayClick"
     @before-enter="onBeforeEnter"
     @after-leave="onAfterLeave"
     @visible-hook="onVisibleHook"
+    @back-press="onBackPress"
   >
     <view :class="popoutClass" :style="popoutStyle" @transitionend.stop>
       <view :class="classNames(bem.e('header'), bem.em('header', props.type))">
@@ -198,6 +200,14 @@ const onVisibleHook = (name: TransitionHookName) => {
   callVisibleHook(name)
   emit('visible-hook', name)
   emit(name as any)
+}
+
+const onBackPress = () => {
+  emit('back-press')
+  if (props.backPress === 'close') {
+    innerVisible.value = false
+    emit('update:visible', false)
+  }
 }
 
 const loading = reactive({

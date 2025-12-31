@@ -23,6 +23,7 @@ export interface PopupProps {
   keepRender?: boolean
   overlayClosable?: boolean
   lockScroll?: boolean
+  backPress?: 'close' | 'back' | 'stop'
 }
 
 export const defaultPopupProps = defaultConfig.popup
@@ -58,6 +59,7 @@ export interface TransitionHookCallbacks {
 export interface PopupEmits extends TransitionHookEmits {
   (e: 'overlay-click', event: any): void
   (e: 'update:visible', visible: boolean): void
+  (e: 'back-press'): void
 }
 
 export interface PopupContext {

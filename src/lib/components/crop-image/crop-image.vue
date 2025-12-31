@@ -4,8 +4,10 @@
     :visible="visible"
     :duration="duration"
     :overlay="false"
+    back-press="close"
     @after-enter="onAfterEnter"
     @visible-hook="onVisibleHook"
+    @back-press="onBackPress"
   >
     <view :class="cropImageClass" :style="cropImageStyle">
       <view
@@ -157,6 +159,11 @@ const close = () => {
 const onVisibleHook = (name: TransitionHookName) => {
   emit('visible-hook', name)
   emit(name as any)
+}
+
+const onBackPress = () => {
+  innerVisible.value = false
+  emit('update:visible', false)
 }
 
 // focus & mask

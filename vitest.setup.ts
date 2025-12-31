@@ -6,6 +6,7 @@ config.global.stubs = {
   PickerView: h('div'),
   PickerViewColumn: h('div'),
   RootPortal: h('div'),
+  PageContainer: h('div'),
   teleport: true,
 }
 

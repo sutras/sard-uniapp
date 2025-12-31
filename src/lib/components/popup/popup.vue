@@ -1,4 +1,17 @@
 <template>
+  <!-- #ifdef MP -->
+  <page-container
+    v-if="backPress !== 'back' && isTopLayer && backPressVisible"
+    :show="visible"
+    :duration="0"
+    :z-index="0"
+    :overlay="false"
+    custom-style="display: none"
+    @beforeleave="onBeforeLeave"
+    @before-leave="onBeforeLeave"
+  ></page-container>
+  <!-- #endif -->
+
   <!-- #ifdef WEB -->
   <teleport to="body">
     <!-- #endif -->
@@ -51,12 +64,14 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, ref, toRef } from 'vue'
+import { computed, reactive, ref, toRef, watch } from 'vue'
 import { onHide, onShow } from '@dcloudio/uni-app'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import {
   type UseTransitionOptions,
   useLockScroll,
+  useTimeout,
+  useTopPopup,
   useTransition,
   useZIndex,
 } from '../../use'
@@ -125,6 +140,44 @@ const onOverlayClick = (event: any) => {
     emit('update:visible', false)
   }
 }
+
+// #ifdef MP
+const { isTopLayer } = useTopPopup(
+  () => props.visible,
+  () => props.backPress === 'back',
+)
+
+const onBeforeLeave = () => {
+  emit('back-press')
+  if (props.backPress === 'stop') {
+    backPressVisible.value = false
+    setTimeout(() => {
+      backPressVisible.value = true
+    }, 50)
+  } else {
+    emit('update:visible', false)
+  }
+}
+
+const backPressVisible = ref(false)
+
+// 确保两个 page-container 间有足够的时间切换
+const { start: setVisibleLater, stop: cancelDelayVisible } = useTimeout(() => {
+  backPressVisible.value = true
+}, 50)
+
+watch(
+  () => props.visible,
+  (visible) => {
+    if (visible) {
+      setVisibleLater()
+    } else {
+      backPressVisible.value = false
+      cancelDelayVisible()
+    }
+  },
+)
+// #endif
 
 const pageVisible = ref(true)
 

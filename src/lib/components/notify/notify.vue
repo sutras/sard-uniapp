@@ -5,6 +5,7 @@
     :effect="effect"
     :duration="duration"
     :lock-scroll="false"
+    back-press="back"
     @visible-hook="onVisibleHook"
   >
     <view :class="notifyClass" :style="notifyStyle" @click="onClick">

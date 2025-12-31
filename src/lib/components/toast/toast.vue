@@ -6,6 +6,7 @@
     :transparent="transparent"
     :root-style="popupStyle"
     :lock-scroll="false"
+    back-press="back"
     effect="fade"
     @visible-hook="onVisibleHook"
   >
