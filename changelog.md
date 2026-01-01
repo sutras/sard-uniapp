@@ -1,3 +1,18 @@
+## [1.25.7](https://github.com/sutras/sard-uniapp/compare/v1.25.6...v1.25.7) (2026-01-01)
+
+
+### Bug Fixes
+
+* 修复notice-bar错位问题 ([f4a7e6b](https://github.com/sutras/sard-uniapp/commit/f4a7e6ba0840c9723d51f0add89677c1fe985b07))
+
+
+### Features
+
+* app端允许页面返回时关闭弹出框 ([c538d7f](https://github.com/sutras/sard-uniapp/commit/c538d7fd35ade7bb07f192f35aed2db2515456b9))
+* 小程序端允许页面返回操作关闭弹出框 ([a4fdc64](https://github.com/sutras/sard-uniapp/commit/a4fdc647ae5425ea5c4302493ca00852a7cc3a7a))
+
+
+
 ## [1.25.6](https://github.com/sutras/sard-uniapp/compare/v1.25.5...v1.25.6) (2025-12-27)
 
 
