@@ -27,7 +27,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 const navigateTo = (url: string) => {
   uni.navigateTo({
     url: `/pages/components/pull-down-refresh/demo/${url}`,
@@ -35,4 +36,13 @@ const navigateTo = (url: string) => {
 }
 
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>

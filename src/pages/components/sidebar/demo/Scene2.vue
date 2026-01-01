@@ -104,7 +104,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 import { getWindowInfo } from 'sard-uniapp'
 import { ref } from 'vue'
 
@@ -128,4 +129,13 @@ const current = ref(0)
 const tabList = [{ title: '标签0' }, { title: '标签1' }, { title: '标签2' }]
 
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>

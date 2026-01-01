@@ -28,7 +28,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 import DemoBasic from './demo/Basic.vue'
 import DemoUnderline from './demo/Underline.vue'
 import DemoGap from './demo/Gap.vue'
@@ -37,4 +38,13 @@ import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoCustomKeyboard from './demo/CustomKeyboard.vue'
 
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>

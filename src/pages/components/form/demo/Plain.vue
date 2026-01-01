@@ -244,7 +244,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 import { reactive, ref } from 'vue'
 import {
   toast,
@@ -340,6 +341,15 @@ const returnOptions = [
 ]
 
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>
 
 <style lang="scss" scoped>

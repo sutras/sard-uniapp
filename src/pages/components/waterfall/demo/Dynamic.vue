@@ -44,7 +44,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 import { onPageScroll, onReachBottom } from '@dcloudio/uni-app'
 import {
   shuffle,
@@ -175,4 +176,13 @@ const onDelete = (item: ListItem) => {
   list.value.splice(list.value.indexOf(item), 1)
 }
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>

@@ -27,7 +27,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 import { toast } from 'sard-uniapp'
 import { ref } from 'vue'
 import { onPageScroll } from '@dcloudio/uni-app'
@@ -62,4 +63,13 @@ const onRefresh = () => {
 }
 
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>

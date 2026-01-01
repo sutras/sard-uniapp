@@ -40,7 +40,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 import DemoBasic from './demo/Basic.vue'
 import DemoDark from './demo/Dark.vue'
 import DemoIcon from './demo/Icon.vue'
@@ -52,6 +53,15 @@ import DemoPosition from './demo/Position.vue'
 import DemoManual from './demo/Manual.vue'
 
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>
 
 <style lang="scss" scoped>

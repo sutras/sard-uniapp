@@ -32,7 +32,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 import { ref, reactive, toRaw } from 'vue'
 import { toast, type FormExpose, type FieldValidateError } from 'sard-uniapp'
 
@@ -63,4 +64,13 @@ const submitForm = () => {
 }
 
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>

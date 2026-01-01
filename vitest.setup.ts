@@ -174,6 +174,10 @@ const uniObject = {
   createIntersectionObserver() {
     return new IntersectionObserver()
   },
+  $on() {},
+  $off() {},
+  $emit() {},
+  $once() {},
 }
 
 class NodesRef {

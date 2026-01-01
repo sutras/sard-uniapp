@@ -29,7 +29,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 import { getWindowInfo, toast } from 'sard-uniapp'
 import areaCode from 'tel-area-code'
 import { ref } from 'vue'
@@ -78,4 +79,13 @@ const onSelect = (code: string) => {
 }
 
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>

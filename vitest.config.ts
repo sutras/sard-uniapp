@@ -60,4 +60,11 @@ const vitestConfig = vitestDefineConfig({
 export default defineConfig({
   plugins: [transformRenderjs(), vue(), VueJsx()],
   ...(vitestConfig as any),
+  css: {
+    preprocessorOptions: {
+      scss: {
+        silenceDeprecations: ['import', 'legacy-js-api'],
+      },
+    },
+  },
 })

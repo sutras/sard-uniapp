@@ -41,7 +41,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 import DemoBasic from './demo/Basic.vue'
 import DemoBorder from './demo/Border.vue'
 import DemoUnderline from './demo/Underline.vue'
@@ -56,4 +57,13 @@ import DemoMultilevelHeader from './demo/MultilevelHeader.vue'
 import DemoMerge from './demo/Merge.vue'
 
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>

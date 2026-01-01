@@ -14,7 +14,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 import { type TreeExpose } from 'sard-uniapp'
 import { ref, watch } from 'vue'
 import { getRegionData } from 'region-data'
@@ -38,4 +39,13 @@ const treeData = regionData.slice(0, 5).map((item) => ({
 }))
 
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>

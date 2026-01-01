@@ -19,7 +19,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 import { random, shuffle, toast } from 'sard-uniapp'
 import { nextTick, onMounted, ref } from 'vue'
 import { text } from '../../read-more/demo/data'
@@ -60,4 +61,13 @@ onMounted(async () => {
   list.value.push(...shuffle(await getData()))
 })
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>

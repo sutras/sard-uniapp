@@ -141,10 +141,14 @@ const onOverlayClick = (event: any) => {
   }
 }
 
-// #ifdef MP
+// #ifndef WEB
 const { isTopLayer } = useTopPopup(
   () => props.visible,
   () => props.backPress === 'back',
+  () => {
+    emit('back-press')
+    emit('update:visible', false)
+  },
 )
 
 const onBeforeLeave = () => {
@@ -262,7 +266,7 @@ export default {
       const lockable = el.getAttribute("data-lock") === 'lockable'
 
       if (lockable) {
-        hiddenCls = 'sar-popup-hidden-' + (~~(Math.random() * 10e8)).toString(36)
+        hiddenCls = 'sar-popup-hidden-' + (Math.floor(Math.random() * 10e10)).toString(36)
         addStyle()
         toggleLock(el.getAttribute("data-visible"))
 

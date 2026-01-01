@@ -24,7 +24,8 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock } from 'sard-uniapp'
+import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
+import { onBackPress } from '@dcloudio/uni-app'
 import DemoNumber from './demo/Number.vue'
 import DemoDigit from './demo/Digit.vue'
 import DemoIdcard from './demo/Idcard.vue'
@@ -32,4 +33,13 @@ import DemoRandom from './demo/Random.vue'
 import DemoPlate from './demo/Plate.vue'
 
 const { isLocked } = useCurrentPageLock()
+
+const { shouldStopBack, backPress } = usePageTopPopup()
+
+onBackPress(() => {
+  if (shouldStopBack.value) {
+    backPress()
+    return true
+  }
+})
 </script>
