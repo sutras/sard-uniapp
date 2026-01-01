@@ -108,9 +108,11 @@ const update = async () => {
 
 const firstLap = ref(true)
 
-const onAnimationEnd = () => {
-  if (firstLap.value) {
-    firstLap.value = false
+const onAnimationEnd = (event: any) => {
+  if (event.target.id === wrapperId) {
+    if (firstLap.value) {
+      firstLap.value = false
+    }
   }
 }
 

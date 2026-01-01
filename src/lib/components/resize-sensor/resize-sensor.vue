@@ -2,7 +2,7 @@
   <view
     :class="resizeClass"
     :style="resizeStyle"
-    @animationend="onAnimationEnd"
+    @animationend.stop="onAnimationEnd"
   >
     <scroll-view
       :class="bem.e('scroll-view')"
