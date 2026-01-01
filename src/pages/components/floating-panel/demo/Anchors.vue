@@ -33,11 +33,11 @@ const anchors = [
 const height = ref(anchors[0])
 const { isLocked } = useCurrentPageLock()
 
-const { shouldStopBack, backPress } = usePageTopPopup()
+const { shouldStopBack, hidePopup } = usePageTopPopup()
 
 onBackPress(() => {
   if (shouldStopBack.value) {
-    backPress()
+    hidePopup()
     return true
   }
 })

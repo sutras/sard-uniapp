@@ -44,11 +44,11 @@ import DemoCollapsed from './demo/Collapsed.vue'
 
 const { isLocked } = useCurrentPageLock()
 
-const { shouldStopBack, backPress } = usePageTopPopup()
+const { shouldStopBack, hidePopup } = usePageTopPopup()
 
 onBackPress(() => {
   if (shouldStopBack.value) {
-    backPress()
+    hidePopup()
     return true
   }
 })

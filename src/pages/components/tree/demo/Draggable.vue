@@ -26,11 +26,11 @@ const treeData = regionData.slice(0, 5).map((item) => ({
 
 const { isLocked } = useCurrentPageLock()
 
-const { shouldStopBack, backPress } = usePageTopPopup()
+const { shouldStopBack, hidePopup } = usePageTopPopup()
 
 onBackPress(() => {
   if (shouldStopBack.value) {
-    backPress()
+    hidePopup()
     return true
   }
 })

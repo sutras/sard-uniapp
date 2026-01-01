@@ -39,11 +39,11 @@ import DemoSize from './demo/Size.vue'
 
 const { isLocked } = useCurrentPageLock()
 
-const { shouldStopBack, backPress } = usePageTopPopup()
+const { shouldStopBack, hidePopup } = usePageTopPopup()
 
 onBackPress(() => {
   if (shouldStopBack.value) {
-    backPress()
+    hidePopup()
     return true
   }
 })

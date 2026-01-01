@@ -130,11 +130,11 @@ const tabList = [{ title: '标签0' }, { title: '标签1' }, { title: '标签2' 
 
 const { isLocked } = useCurrentPageLock()
 
-const { shouldStopBack, backPress } = usePageTopPopup()
+const { shouldStopBack, hidePopup } = usePageTopPopup()
 
 onBackPress(() => {
   if (shouldStopBack.value) {
-    backPress()
+    hidePopup()
     return true
   }
 })
