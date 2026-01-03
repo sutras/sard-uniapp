@@ -141,7 +141,6 @@ const onOverlayClick = (event: any) => {
   }
 }
 
-// #ifndef WEB
 const { isTopLayer } = useTopPopup(
   () => props.visible,
   () => props.backPress === 'back',
@@ -181,7 +180,6 @@ watch(
     }
   },
 )
-// #endif
 
 const pageVisible = ref(true)
 
