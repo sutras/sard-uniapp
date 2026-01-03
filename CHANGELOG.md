@@ -1,3 +1,12 @@
+## [1.25.8](https://github.com/sutras/sard-uniapp/compare/v1.25.7...v1.25.8) (2026-01-03)
+
+
+### Bug Fixes
+
+* 修复popup在h5端报错问题 ([ab1b409](https://github.com/sutras/sard-uniapp/commit/ab1b4096318a1f742cc978d3d0fb6ef79d3404c8))
+
+
+
 ## [1.25.7](https://github.com/sutras/sard-uniapp/compare/v1.25.6...v1.25.7) (2026-01-01)
 
 
