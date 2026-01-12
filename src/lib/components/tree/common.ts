@@ -68,6 +68,7 @@ export interface TreeProps {
   filterMethod?: (value: string, node: TreeStateNode) => boolean
   lazy?: boolean
   load?: (node?: TreeStateNode) => Promise<TreeNode[]> | TreeNode[]
+  autoHeight?: boolean
 }
 
 export const defaultTreeProps = () => ({
@@ -108,6 +109,7 @@ export interface TreeBranchProps {
 export interface TreeContext {
   selectable: TreeProps['selectable']
   draggable: TreeProps['draggable']
+  autoHeight: TreeProps['autoHeight']
   editable: TreeProps['editable']
   singleSelectable: TreeProps['singleSelectable']
   leafOnly: TreeProps['leafOnly']

@@ -6,6 +6,8 @@ export interface CollapseProps {
   contentClass?: string
   contentStyle?: string
   visible?: boolean
+  lazy?: boolean
+  destroyOnClose?: boolean
 }
 
 export interface CollapseSlots {

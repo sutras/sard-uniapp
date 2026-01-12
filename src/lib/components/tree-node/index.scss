@@ -3,15 +3,8 @@
 @include bem(tree) {
   @include e(node) {
     @include universal;
-    position: absolute;
-    top: 0;
-    left: 0;
     width: 100%;
-    height: var(--sar-tree-node-height);
-    transition:
-      transform var(--sar-tree-duration),
-      opacity var(--sar-tree-duration);
-
+    min-height: var(--sar-tree-node-height);
     flex-direction: row;
     align-items: center;
     padding: var(--sar-tree-node-padding-y) var(--sar-tree-node-padding-x);
@@ -25,11 +18,27 @@
       background: var(--sar-tree-node-active-bg);
     }
 
+    @include m(draggable) {
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: var(--sar-tree-node-height);
+      transition:
+        transform var(--sar-tree-duration),
+        opacity var(--sar-tree-duration);
+    }
+
     @include m(dragging) {
       z-index: 1;
       background: var(--sar-tree-node-dragging-bg);
       box-shadow: var(--sar-tree-node-dragging-shadow);
       transition: none;
+    }
+
+    @include m(truncated) {
+      @include e(title) {
+        @include ellipsis;
+      }
     }
   }
 
@@ -69,6 +78,12 @@
     @include m(disabled) {
       cursor: not-allowed;
     }
+  }
+
+  @include e(title) {
+    flex: 1;
+    min-width: 0;
+    line-height: var(--sar-leading-snug);
   }
 
   @include e(toolbar) {

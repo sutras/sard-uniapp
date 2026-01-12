@@ -28,9 +28,11 @@ import Collapse from 'sard-uniapp/components/collapse/collapse.vue'
 
 ### CollapseProps
 
-| 属性    | 描述     | 类型    | 默认值 |
-| ------- | -------- | ------- | ------ |
-| visible | 是否可见 | boolean | false  |
+| 属性                                | 描述                   | 类型    | 默认值 |
+| ----------------------------------- | ---------------------- | ------- | ------ |
+| visible                             | 是否可见               | boolean | false  |
+| lazy <sup>1.25.9+</sup>             | 是否延迟渲染折叠内容   | boolean | false  |
+| destroy-on-close <sup>1.25.9+</sup> | 关闭时是否销毁折叠内容 | boolean | false  |
 
 ### CollapseSlots
 

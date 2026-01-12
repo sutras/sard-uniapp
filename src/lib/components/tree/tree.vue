@@ -1,6 +1,11 @@
 <template>
   <view :class="treeClass" :style="treeStyle">
-    <view v-if="lazy && !!load" :class="bem.e('load-status')">
+    <view
+      v-if="
+        lazy && !!load && (loadStatus !== 'loaded' || treeData.length === 0)
+      "
+      :class="bem.e('load-status')"
+    >
       <sar-loading v-if="loadStatus === 'loading'" />
       <text
         v-else-if="loadStatus === 'error'"
@@ -625,6 +630,7 @@ const context = reactive({
   selectable: toRef(() => props.selectable),
   draggable: toRef(() => props.draggable),
   editable: toRef(() => props.editable),
+  autoHeight: toRef(() => props.autoHeight),
   singleSelectable: toRef(() => props.singleSelectable),
   leafOnly: toRef(() => props.leafOnly),
   treeData: toRef(() => treeData.value),
@@ -668,9 +674,11 @@ const treeClass = computed(() => {
 
 const treeStyle = computed(() => {
   return stringifyStyle(
-    {
-      height: `calc(var(--sar-tree-node-height) * ${totalLevel.value})`,
-    },
+    props.draggable
+      ? {
+          height: `calc(var(--sar-tree-node-height) * ${totalLevel.value})`,
+        }
+      : null,
     props.rootStyle,
   )
 })

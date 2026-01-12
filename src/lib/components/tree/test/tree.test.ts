@@ -168,7 +168,7 @@ describe('Tree', () => {
       wrapper.find('.sar-tree__node_current .sar-tree__title').text(),
     ).toBe('西城区')
 
-    await wrapper.find('.sar-tree__node:nth-child(8)').trigger('click')
+    await wrapper.findAll('.sar-tree__node').at(7)!.trigger('click')
 
     expect(
       wrapper.find('.sar-tree__node_current .sar-tree__title').text(),

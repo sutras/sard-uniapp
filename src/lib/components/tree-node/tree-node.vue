@@ -80,6 +80,7 @@
 
   <template
     v-if="
+      treeContext.draggable &&
       !isMergedLeaf &&
       node.expanded &&
       node.children &&
@@ -90,6 +91,22 @@
       <sar-tree-node v-if="node.visible" :index="index" :node="node" />
     </template>
   </template>
+
+  <sar-collapse
+    v-if="
+      !treeContext.draggable &&
+      !isMergedLeaf &&
+      node.children &&
+      node.children.length > 0
+    "
+    lazy
+    destroy-on-close
+    :visible="node.expanded"
+  >
+    <template v-for="(node, index) of node.children" :key="node.key">
+      <sar-tree-node v-if="node.visible" :index="index" :node="node" />
+    </template>
+  </sar-collapse>
 
   <sar-popover
     v-if="treeContext.draggable"
@@ -128,6 +145,7 @@ import SarCheckbox from '../checkbox/checkbox.vue'
 import SarRadio from '../radio/radio.vue'
 import SarPopover from '../popover/popover.vue'
 import SarLoading from '../loading/loading.vue'
+import SarCollapse from '../collapse/collapse.vue'
 import { usePopover } from '../popover'
 import { type MenuOption } from '../menu/common'
 
@@ -445,17 +463,25 @@ const nodeClass = computed(() => {
     bem.em('node', 'selectable', treeContext.selectable),
     bem.em('node', 'active', nodeActive.value),
     bem.em('node', 'current', isSingleChecked.value),
+    bem.em('node', 'draggable', treeContext.draggable),
+    bem.em(
+      'node',
+      'truncated',
+      treeContext.draggable || !treeContext.autoHeight,
+    ),
     nodeId,
   )
 })
 
 const nodeStyle = computed(() => {
-  return stringifyStyle({
-    transform: `translate3d(0,calc(var(--sar-tree-node-height) * ${
-      props.node.level + props.node.offsetLevel
-    } + ${dragging.value ? translateY.value : 0}px),0)`,
-    opacity: nodeOpacity.value,
-  })
+  return treeContext.draggable
+    ? stringifyStyle({
+        transform: `translate3d(0,calc(var(--sar-tree-node-height) * ${
+          props.node.level + props.node.offsetLevel
+        } + ${dragging.value ? translateY.value : 0}px),0)`,
+        opacity: nodeOpacity.value,
+      })
+    : ''
 })
 
 const editClass = computed(() => {

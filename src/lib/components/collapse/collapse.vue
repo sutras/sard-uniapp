@@ -5,6 +5,7 @@
     @transitionend="onTransitionEnd"
   >
     <view
+      v-if="rendered"
       :class="classNames(bem.e('content'), contentClass)"
       :style="stringifyStyle(contentStyle)"
       :id="contentId"
@@ -48,8 +49,11 @@ const getHeight = async () => {
 
 const collapseHeight = ref<string>(props.visible ? 'auto' : '0px')
 
+const rendered = ref(!props.lazy || props.visible)
+
 const open = () => {
   collapseHeight.value = '0px'
+  rendered.value = true
 
   setTimeout(async () => {
     const height = await getHeight()
@@ -69,6 +73,9 @@ const close = async () => {
 const onTransitionEnd = () => {
   if (collapseHeight.value !== '0px') {
     collapseHeight.value = 'auto'
+  }
+  if (!props.visible && props.destroyOnClose) {
+    rendered.value = false
   }
 }
 
