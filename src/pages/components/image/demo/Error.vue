@@ -1,11 +1,11 @@
 <template>
   <sar-image
-    src="https://fastly.jsdelivr.net/npm/@sard/assets/images/cat100.jpg"
+    src="https://fastly.jsdelivr.net/nonexistent.jpg"
     width="240rpx"
     height="240rpx"
   ></sar-image>
   <sar-image
-    src="https://fastly.jsdelivr.net/npm/@sard/assets/images/cat100.jpg"
+    src="https://fastly.jsdelivr.net/nonexistent.jpg"
     width="240rpx"
     height="240rpx"
     class="ml-10"

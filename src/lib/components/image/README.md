@@ -39,7 +39,7 @@ import Image from 'sard-uniapp/components/image/image.vue'
 
 ### 懒加载
 
-设置 `lazy-load` 属性可懒加载图片，在 web 端使用 `loading="lazy"` 实现，在其他端参考 `uniapp` 的实现。
+设置 `lazy-load` 属性可懒加载图片，仅小程序支持。
 
 @code('${DEMO_PATH}/image/demo/LazyLoad.vue')
 

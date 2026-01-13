@@ -23,7 +23,7 @@ describe('Image', () => {
 
     const style = wrapper.find('.sar-image').attributes().style
     expect(style).includes('width: 160px; height: 160px;')
-    expect(wrapper.find('img').attributes().src).equal(url)
+    expect(wrapper.find('image').attributes().src).equal(url)
   })
 
   test('mode', async () => {
@@ -44,12 +44,7 @@ describe('Image', () => {
       await wrapper.setProps({
         mode: mode,
       })
-
-      const style = wrapper.find('.sar-image__display').attributes().style
-      if (IMAGE_MODES[mode][0]) {
-        expect(style).includes(`background-position: ${IMAGE_MODES[mode][0]}`)
-      }
-      expect(style).includes(`background-size: ${IMAGE_MODES[mode][1]}`)
+      expect(wrapper.find('image').attributes().mode).equal(mode)
     }
   })
 
@@ -80,7 +75,7 @@ describe('Image', () => {
       <Image src={url} width="160px" height="160px" lazyLoad></Image>,
     )
 
-    expect(wrapper.find('img').attributes().loading).equal('lazy')
+    expect(wrapper.find('image').attributes()['lazy-load']).equal('true')
   })
 
   test('loading', async () => {
@@ -142,14 +137,12 @@ describe('Image', () => {
       <Image src={url} width="160px" height="160px"></Image>,
     )
 
-    expect(wrapper.find('.sar-image').classes()).includes('sar-image_animated')
+    expect(wrapper.find('.sar-image').classes()).not.includes('sar-image_show')
 
     await wrapper.setProps({
       fade: false,
     })
 
-    expect(wrapper.find('.sar-image').classes()).not.includes(
-      'sar-image_animated',
-    )
+    expect(wrapper.find('.sar-image').classes()).includes('sar-image_show')
   })
 })
