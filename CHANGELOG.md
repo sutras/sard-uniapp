@@ -1,3 +1,12 @@
+## [1.25.9](https://github.com/sutras/sard-uniapp/compare/v1.25.8...v1.25.9) (2026-01-12)
+
+
+### Bug Fixes
+
+* **tree:** 修复文字过长产生的错位问题, 新增 auto-height 属性 ([5cb9535](https://github.com/sutras/sard-uniapp/commit/5cb953517c631ebcd9431190d3f5cc60c27d7e86))
+
+
+
 ## [1.25.8](https://github.com/sutras/sard-uniapp/compare/v1.25.7...v1.25.8) (2026-01-03)
 
 
