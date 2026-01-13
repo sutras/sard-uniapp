@@ -1,3 +1,12 @@
+## [1.25.10](https://github.com/sutras/sard-uniapp/compare/v1.25.9...v1.25.10) (2026-01-13)
+
+
+### Bug Fixes
+
+* **image:** 修复h5端当设置基础路径时图片加载失败问题 ([3676098](https://github.com/sutras/sard-uniapp/commit/36760986f382b14febb1afa0e353fc60a4d9d0bd))
+
+
+
 ## [1.25.9](https://github.com/sutras/sard-uniapp/compare/v1.25.8...v1.25.9) (2026-01-12)
 
 
