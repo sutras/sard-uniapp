@@ -89,6 +89,7 @@ const bem = createBem('image')
 const getRealPath = (filePath: string) => {
   // #ifdef WEB
   if (filePath && /^\/(?!\/)/.test(filePath)) {
+    // @ts-expect-error __uniConfig
     const base = typeof __uniConfig === 'object' ? __uniConfig.router?.base : ''
     if (base) {
       return base + filePath.slice(1)
