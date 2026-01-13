@@ -32,6 +32,7 @@ import {
   waterfallContextKey,
 } from './common'
 import { type WaterfallItemInfo } from '../waterfall-item/common'
+import { onShow } from '@dcloudio/uni-app'
 
 defineOptions({
   options: {
@@ -159,6 +160,12 @@ watch([() => props.columns, () => props.columnGap, () => props.rowGap], () => {
   setTimeout(() => {
     reflow()
   }, 50)
+})
+
+onShow(() => {
+  // #ifdef WEB
+  reflow()
+  // #endif
 })
 
 provide(
