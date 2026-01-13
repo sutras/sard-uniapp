@@ -1,3 +1,12 @@
+## [1.25.11](https://github.com/sutras/sard-uniapp/compare/v1.25.10...v1.25.11) (2026-01-13)
+
+
+### Bug Fixes
+
+* **image:** 修复绝对路径图片不能在小程序展示的问题 ([68d5649](https://github.com/sutras/sard-uniapp/commit/68d5649976e93f96b95098578b26ee6f2e46183f))
+
+
+
 ## [1.25.10](https://github.com/sutras/sard-uniapp/compare/v1.25.9...v1.25.10) (2026-01-13)
 
 
