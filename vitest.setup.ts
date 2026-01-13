@@ -293,3 +293,13 @@ Object.defineProperty(globalThis, 'getCurrentPages', {
     }
   },
 })
+
+Object.defineProperty(globalThis, '__uniConfig', {
+  get() {
+    return {
+      router: {
+        base: '',
+      },
+    }
+  },
+})

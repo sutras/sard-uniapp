@@ -22,7 +22,7 @@
     ></view>
     <!-- #ifdef WEB -->
     <img
-      :src="src"
+      :src="realPath"
       :loading="lazyLoad ? 'lazy' : 'eager'"
       :class="interactionClass"
       @load="onLoad"
@@ -31,7 +31,7 @@
     <!-- #endif -->
     <!-- #ifndef WEB -->
     <image
-      :src="src"
+      :src="realPath"
       :lazy-load="lazyLoad"
       :webp="webp"
       :show-menu-by-longpress="showMenuByLongpress"
@@ -86,6 +86,20 @@ const emit = defineEmits<ImageEmits>()
 const bem = createBem('image')
 
 // main
+const getRealPath = (filePath: string) => {
+  // #ifdef WEB
+  if (filePath && /^\/(?!\/)/.test(filePath)) {
+    const base = typeof __uniConfig === 'object' ? __uniConfig.router?.base : ''
+    if (base) {
+      return base + filePath.slice(1)
+    }
+  }
+  // #endif
+  return filePath
+}
+
+const realPath = computed(() => getRealPath(props.src))
+
 enum STATUS {
   UNSTATED = 0,
   FIRST_LOADING = 1 << 0,
@@ -125,7 +139,7 @@ const doLoad = (event: any) => {
   aspectRatio.value = width / height
   status.value = STATUS.LOADED
   isLoaded.value = true
-  loadedUrl.value = props.src
+  loadedUrl.value = realPath.value
   emit('load', event)
 }
 
@@ -145,9 +159,9 @@ const onClick = (event: any) => {
 }
 
 watch(
-  () => props.src,
+  realPath,
   async () => {
-    if (props.src) {
+    if (realPath.value) {
       status.value =
         isLoaded.value && !(status.value & STATUS.ERROR)
           ? STATUS.LATER_LOADING

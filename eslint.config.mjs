@@ -46,6 +46,7 @@ export default [
         uni: true,
         plus: true,
         my: true,
+        __uniConfig: true,
       },
     },
   },
