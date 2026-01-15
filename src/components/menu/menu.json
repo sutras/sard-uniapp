@@ -443,6 +443,10 @@
     "title": "其他",
     "children": [
       {
+        "title": "PuzzleVerify 拼图验证",
+        "name": "puzzle-verify"
+      },
+      {
         "title": "RotateVerify 旋转验证",
         "name": "rotate-verify"
       },

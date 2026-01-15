@@ -16,15 +16,11 @@
       :reset-when-error="resetWhenError"
       :show-target="showTarget"
       :verify="verify"
+      @start="emit('start', $event)"
+      @move="emit('move', $event)"
+      @end="emit('end', $event)"
       @change="onChange"
-    >
-      <template #text-before>
-        <slot name="text-before"></slot>
-      </template>
-      <template #text-after>
-        <slot name="text-after"></slot>
-      </template>
-    </sar-slide-verify>
+    />
   </view>
 </template>
 

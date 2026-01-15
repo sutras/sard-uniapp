@@ -309,6 +309,9 @@
           "path": "pull-down-refresh/index"
         },
         {
+          "path": "puzzle-verify/index"
+        },
+        {
           "path": "qrcode/index"
         },
         {

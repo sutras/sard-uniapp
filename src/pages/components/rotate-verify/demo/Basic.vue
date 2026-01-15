@@ -1,17 +1,21 @@
 <template>
-  <sar-rotate-verify
-    ref="verifyRef"
-    text="请按住滑块拖动"
-    success-text="验证通过"
-    :src="src"
-    :target-pos="targetPos"
-    :verify="verify"
-  ></sar-rotate-verify>
+  <view class="mx-80">
+    <sar-rotate-verify
+      ref="verifyRef"
+      text="请按住滑块拖动"
+      success-text="验证通过"
+      :src="src"
+      :target-pos="targetPos"
+      :verify="verify"
+    ></sar-rotate-verify>
 
-  <sar-button type="pale-text" class="mt-40" @click="onReset">
-    重置验证
-  </sar-button>
-  <sar-button type="pale-text" class="mt-20" @click="onUpdate">更新</sar-button>
+    <sar-button type="pale-text" class="mt-40" @click="onReset">
+      重置验证
+    </sar-button>
+    <sar-button type="pale-text" class="mt-20" @click="onUpdate">
+      更新
+    </sar-button>
+  </view>
 </template>
 
 <script setup lang="ts">

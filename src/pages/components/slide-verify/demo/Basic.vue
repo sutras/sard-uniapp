@@ -1,14 +1,16 @@
 <template>
-  <sar-slide-verify
-    ref="verifyRef"
-    text="请按住滑块拖动"
-    success-text="验证通过"
-    :verify="verify"
-  ></sar-slide-verify>
+  <view class="mx-80">
+    <sar-slide-verify
+      ref="verifyRef"
+      text="请按住滑块拖动"
+      success-text="验证通过"
+      :verify="verify"
+    ></sar-slide-verify>
 
-  <sar-button type="pale-text" class="mt-40" @click="onReset">
-    重置验证
-  </sar-button>
+    <sar-button type="pale-text" class="mt-40" @click="onReset">
+      重置验证
+    </sar-button>
+  </view>
 </template>
 
 <script setup lang="ts">

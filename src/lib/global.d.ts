@@ -86,6 +86,7 @@ declare module 'vue' {
     SarProgressBar: typeof import('./components/progress-bar/progress-bar.vue').default
     SarProgressCircle: typeof import('./components/progress-circle/progress-circle.vue').default
     SarPullDownRefresh: typeof import('./components/pull-down-refresh/pull-down-refresh.vue').default
+    SarPuzzleVerify: typeof import('./components/puzzle-verify/puzzle-verify.vue').default
     SarQrcode: typeof import('./components/qrcode/qrcode.vue').default
     SarRadio: typeof import('./components/radio/radio.vue').default
     SarRadioGroup: typeof import('./components/radio-group/radio-group.vue').default

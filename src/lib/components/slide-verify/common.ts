@@ -24,13 +24,12 @@ export interface SlideVerifyProps {
 
 export const defaultSlideVerifyProps = defaultConfig.slideVerify
 
-export interface SlideVerifySlots {
-  default?(props: Record<string, never>): any
-  'text-before'?(props: Record<string, never>): any
-  'text-after'?(props: Record<string, never>): any
-}
+export interface SlideVerifySlots {}
 
 export interface SlideVerifyEmits {
+  (e: 'start', event: any): void
+  (e: 'move', event: any): void
+  (e: 'end', event: any): void
   (e: 'change', percent: number): void
 }
 

@@ -16,10 +16,6 @@
     <doc-demo title="自定义主题色">
       <DemoTheme />
     </doc-demo>
-
-    <doc-demo title="自定义插槽内容">
-      <DemoSlot />
-    </doc-demo>
   </doc-page>
 </template>
 
@@ -29,7 +25,6 @@ import DemoBasic from './demo/Basic.vue'
 import DemoShowTarget from './demo/ShowTarget.vue'
 import DemoShowError from './demo/ShowError.vue'
 import DemoTheme from './demo/Theme.vue'
-import DemoSlot from './demo/Slot.vue'
 
 const { isLocked } = useCurrentPageLock()
 </script>

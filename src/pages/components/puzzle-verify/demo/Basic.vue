@@ -1,18 +1,20 @@
 <template>
   <view class="mx-80">
-    <sar-slide-verify
+    <sar-puzzle-verify
       ref="verifyRef"
-      text="拖动滑块至虚线框内"
+      text="请按住滑块拖动"
       success-text="验证通过"
-      error-text="验证失败"
-      show-target
+      :src="src"
       :target-pos="targetPos"
-      :reset-when-error="false"
       :verify="verify"
-    ></sar-slide-verify>
+      :aspect-ratio="320 / 219"
+    ></sar-puzzle-verify>
 
     <sar-button type="pale-text" class="mt-40" @click="onReset">
       重置验证
+    </sar-button>
+    <sar-button type="pale-text" class="mt-20" @click="onUpdate">
+      更新
     </sar-button>
   </view>
 </template>
@@ -26,12 +28,13 @@ import {
 } from 'sard-uniapp'
 import { ref } from 'vue'
 
-const targetPos = ref(random(50, 100))
+const targetPos = ref(random(30, 80))
+const src = ref('')
 
-const verify = async ({ targetPos, actualPos }: SlideVerifyResult) => {
-  await sleep(300)
+const verify = async ({ actualPos, targetPos }: SlideVerifyResult) => {
+  await sleep(100)
 
-  const errorValue = 2
+  const errorValue = 3
   if (
     actualPos >= targetPos - errorValue &&
     actualPos <= targetPos + errorValue
@@ -45,6 +48,17 @@ const verifyRef = ref<SlideVerifyExpose>()
 
 const onReset = () => {
   verifyRef.value?.reset()
-  targetPos.value = random(50, 100)
+  targetPos.value = random(30, 80)
+}
+
+let i = 0
+function update() {
+  src.value = `https://fastly.jsdelivr.net/npm/@sard/assets/images/cat${(i = ++i % 12) || 12}.jpg`
+}
+update()
+
+const onUpdate = () => {
+  update()
+  onReset()
 }
 </script>

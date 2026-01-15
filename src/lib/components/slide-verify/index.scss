@@ -5,6 +5,7 @@
     position: relative;
     height: var(--sar-slide-verify-heigt);
     border-radius: var(--sar-slide-verify-border-radius);
+    background: var(--sar-slide-verify-bg);
     overflow: hidden;
   }
 
@@ -14,7 +15,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: var(--sar-slide-verify-bg);
   }
 
   @include e(track-text) {
@@ -98,6 +98,7 @@
     background-color: var(--sar-emphasis-bg);
     cursor: move;
     transition: left var(--sar-slide-verify-duration);
+    touch-action: none;
   }
 
   @include m(down) {
@@ -109,9 +110,6 @@
   @include m(success) {
     @include e(thumb) {
       color: var(--sar-slide-verify-theme-color);
-    }
-    @include e(target) {
-      display: none;
     }
   }
 
@@ -126,7 +124,7 @@
   }
 
   @include m(success, error) {
-    @include e(fulfill) {
+    @include e(track, fulfill, target) {
       display: none;
     }
   }

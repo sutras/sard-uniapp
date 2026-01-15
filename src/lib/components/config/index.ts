@@ -59,6 +59,7 @@ import { type PopupProps } from '../popup'
 import { type ProgressBarProps } from '../progress-bar'
 import { type ProgressCircleProps } from '../progress-circle'
 import { type PullDownRefreshProps } from '../pull-down-refresh'
+import { type PuzzleVerifyProps } from '../puzzle-verify'
 import { type QrcodeProps } from '../qrcode'
 import { type RadioGroupProps } from '../radio'
 import { type RadioInputProps } from '../radio-input'
@@ -67,6 +68,7 @@ import { type RateProps } from '../rate'
 import { type ReadMoreProps } from '../read-more'
 import { type ResizeSensorProps } from '../resize-sensor'
 import { type ResultProps } from '../result'
+import { type RotateVerifyProps } from '../rotate-verify'
 import { type SearchProps } from '../search'
 import { type SegmentedProps } from '../segmented'
 import { type ShareSheetProps } from '../share-sheet'
@@ -181,6 +183,7 @@ export interface ConfigOptions {
   progressBar?: InferDefaults<LooseRequired<ProgressBarProps>>
   progressCircle?: InferDefaults<LooseRequired<ProgressCircleProps>>
   pullDownRefresh?: InferDefaults<LooseRequired<PullDownRefreshProps>>
+  puzzleVerify?: InferDefaults<LooseRequired<PuzzleVerifyProps>>
   qrcode?: InferDefaults<LooseRequired<QrcodeProps>>
   radioGroup?: InferDefaults<LooseRequired<RadioGroupProps>>
   radioInput?: InferDefaults<LooseRequired<RadioInputProps>>
@@ -189,6 +192,7 @@ export interface ConfigOptions {
   readMore?: InferDefaults<LooseRequired<ReadMoreProps>>
   resizeSensor?: InferDefaults<LooseRequired<ResizeSensorProps>>
   result?: InferDefaults<LooseRequired<ResultProps>>
+  rotateVerify?: InferDefaults<LooseRequired<RotateVerifyProps>>
   search?: InferDefaults<LooseRequired<SearchProps>>
   segmented?: InferDefaults<LooseRequired<SegmentedProps>>
   shareSheet?: InferDefaults<LooseRequired<ShareSheetProps>>
@@ -543,6 +547,7 @@ export const defaultConfig: RequiredConfigOptions = {
     transitionDuration: 300,
     doneDuration: 0,
   },
+  puzzleVerify: {},
   qrcode: {
     ecl: 'M',
     size: '320rpx',
@@ -578,6 +583,7 @@ export const defaultConfig: RequiredConfigOptions = {
   result: {
     status: 'info',
   },
+  rotateVerify: {},
   search: {
     shape: 'square',
     focus: false,

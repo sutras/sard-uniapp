@@ -47,12 +47,6 @@ import SlideVerify from 'sard-uniapp/components/slide-verify/slide-verify.vue'
 
 @code('${DEMO_PATH}/slide-verify/demo/Theme.vue')
 
-### 自定义插槽内容
-
-可通过 `text-before` 插槽在文案前面插入需要的内容。
-
-@code('${DEMO_PATH}/slide-verify/demo/Slot.vue')
-
 ## API
 
 ### SlideVerifyProps
@@ -90,18 +84,14 @@ interface SlideVerifyResult {
 | endTime    | 拖拽结束时间戳                                   |
 | trajectory | 拖拽轨迹点数组，记录每个轨迹点的屏幕坐标和时间戳 |
 
-### SlideVerifySlots
-
-| 插槽        | 描述                 | 属性 |
-| ----------- | -------------------- | ---- |
-| text-before | 自定义文案前面的内容 | -    |
-| text-after  | 自定义文案后面的内容 | -    |
-
 ### SlideVerifyEmits
 
 | 事件   | 描述                                                   | 类型                      |
 | ------ | ------------------------------------------------------ | ------------------------- |
 | change | 拖拽或重置使当前滑块变动时触发，接收当前拖拽的百分比值 | (percent: number) => void |
+| start  | 拖拽开始时触发                                         | (event: any) => void      |
+| move   | 拖拽移动时触发                                         | (event: any) => void      |
+| end    | 拖拽结束时触发                                         | (event: any) => void      |
 
 ### SlideVerifyExpose
 

@@ -12,6 +12,7 @@ export interface RotateVerifyProps extends SlideVerifyProps {
 
 export const defaultRotateVerifyProps = {
   ...defaultConfig.slideVerify,
+  ...defaultConfig.rotateVerify,
 }
 
 export interface RotateVerifySlots extends SlideVerifySlots {}

@@ -6,9 +6,9 @@
 
   @include e(image) {
     display: flex;
-    width: var(--rotate-verify-image-size);
-    height: var(--rotate-verify-image-size);
-    margin: 0 auto var(--rotate-verify-image-margin-bottom);
+    width: var(--sar-rotate-verify-image-size);
+    height: var(--sar-rotate-verify-image-size);
+    margin: 0 auto var(--sar-rotate-verify-image-margin-bottom);
     border-radius: 50%;
     overflow: hidden;
   }

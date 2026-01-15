@@ -34,10 +34,6 @@ import RotateVerify from 'sard-uniapp/components/rotate-verify/rotate-verify.vue
 | ---- | ------------ | ------ | ------ |
 | src  | 图片资源地址 | string | -      |
 
-### RotateVerifySlots
-
-继承 [`SlideVerifySlots`](./slide-verify#SlideVerifySlots)
-
 ### RotateVerifyEmits
 
 继承 [`SlideVerifyEmits`](./slide-verify#SlideVerifyEmits)

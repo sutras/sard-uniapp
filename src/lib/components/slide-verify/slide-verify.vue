@@ -1,11 +1,9 @@
 <template>
   <view :class="slideVerifyClass" :style="slideVerifyStyle">
     <view :class="bem.e('track')" :id="trackId">
-      <slot name="text-before"></slot>
       <text :class="bem.e('track-text')">
         {{ text }}
       </text>
-      <slot name="text-after"></slot>
     </view>
     <view :class="bem.e('valid-track')">
       <view :class="bem.e('fill')">
@@ -39,9 +37,7 @@
       <view v-if="showTarget" :class="bem.e('target')"></view>
     </view>
     <view :class="bem.e('fulfill')">
-      <slot name="text-before"></slot>
       <text>{{ text }}</text>
-      <slot name="text-after"></slot>
     </view>
   </view>
 </template>
@@ -142,6 +138,9 @@ const onTouchStart = async (event: TouchEvent) => {
   trajectory.push([clientX, clientY, startTime])
 
   downX = clientX
+
+  emit('start', event)
+
   trackRect = await getBoundingClientRect(`#${trackId}`, instance)
 }
 
@@ -164,9 +163,11 @@ const onTouchMove = (event: TouchEvent) => {
   const x = clamp(deltaX, 0, total)
   percent.value = (x / total) * 100
   trackPercent.value = (x / width) * 100
+
+  emit('move', event)
 }
 
-const onTouchEnd = async () => {
+const onTouchEnd = async (event: TouchEvent) => {
   if (props.disabled || !(status.value & STATUS.INITIAL)) {
     return
   }
@@ -182,6 +183,8 @@ const onTouchEnd = async () => {
   }
 
   trajectory = []
+
+  emit('end', event)
 
   try {
     status.value = STATUS.LOADING

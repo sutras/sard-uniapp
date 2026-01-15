@@ -54,27 +54,4 @@ describe('SlideVerify', () => {
 
     expect(wrapper.find('.sar-slide-verify__target').exists()).toBeTruthy()
   })
-
-  test('Slot', async () => {
-    const wrapper = mount(
-      <SlideVerify
-        text="拖动滑块至虚线框内"
-        success-text="验证通过"
-        show-target
-        targetPos={60}
-      >
-        {{
-          'text-before': () => 123,
-          'text-after': () => 456,
-        }}
-      </SlideVerify>,
-    )
-
-    expect(wrapper.find('.sar-slide-verify__track').text()).toEqual(
-      '123拖动滑块至虚线框内456',
-    )
-    expect(wrapper.find('.sar-slide-verify__fulfill').text()).toEqual(
-      '123拖动滑块至虚线框内456',
-    )
-  })
 })

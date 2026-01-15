@@ -1,0 +1,64 @@
+@use '../style/base' as *;
+
+@include bem(puzzle-verify) {
+  @include b() {
+    --valid-y: calc((100% - var(--sar-puzzle-verify-piece-height)) * var(--y));
+    --valid-target-x: calc(
+      (100% - var(--sar-puzzle-verify-piece-width)) * var(--target-x)
+    );
+    --valid-actual-x: calc(
+      (100% - var(--sar-puzzle-verify-piece-width)) * var(--actual-x)
+    );
+    --inset: var(--valid-y)
+      calc(100% - var(--sar-puzzle-verify-piece-width) - var(--valid-target-x))
+      calc(100% - var(--valid-y) - var(--sar-puzzle-verify-piece-height))
+      var(--valid-target-x);
+  }
+
+  @include e(frame) {
+    position: relative;
+    display: flex;
+    padding-top: var(--padding-top);
+    margin-bottom: var(--sar-puzzle-verify-image-margin-bottom);
+    overflow: hidden;
+  }
+
+  @include e(whole, piece, piece-img) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(hollow) {
+    position: absolute;
+    background-color: var(--sar-white);
+    inset: var(--inset);
+    box-shadow: var(--sar-puzzle-verify-hollow-box-shadow);
+  }
+
+  @include e(piece) {
+    left: var(--valid-actual-x);
+    transform: translateX(calc(var(--valid-target-x) * -1));
+    pointer-events: none;
+    transition: left var(--sar-slide-verify-duration);
+  }
+
+  @include m(down) {
+    @include e(piece) {
+      transition: none;
+    }
+  }
+
+  @include e(piece-img) {
+    clip-path: inset(var(--inset));
+  }
+
+  @include e(piece-shadow) {
+    position: absolute;
+    inset: var(--inset);
+    box-shadow: var(--sar-puzzle-verify-piece-box-shadow);
+    pointer-events: auto;
+  }
+}
