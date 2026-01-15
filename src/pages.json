@@ -363,6 +363,9 @@
           "path": "skeleton/index"
         },
         {
+          "path": "slide-verify/index"
+        },
+        {
           "path": "slider/index"
         },
         {
@@ -438,6 +441,9 @@
           "path": "tree/demo/Filter"
         },
         {
+          "path": "tree/demo/Lazy"
+        },
+        {
           "path": "tree/demo/LeafOnly"
         },
         {
@@ -448,9 +454,6 @@
         },
         {
           "path": "tree/demo/StrictFilter"
-        },
-        {
-          "path": "tree/demo/Lazy"
         },
         {
           "path": "tree/index"
@@ -483,10 +486,10 @@
           "path": "waterfall/index"
         },
         {
-          "path": "watermark/index"
+          "path": "watermark/demo/Custom"
         },
         {
-          "path": "watermark/demo/Custom"
+          "path": "watermark/index"
         }
       ]
     }

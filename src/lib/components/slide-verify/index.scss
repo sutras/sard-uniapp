@@ -1,0 +1,146 @@
+@use '../style/base' as *;
+
+@include bem(slide-verify) {
+  @include b() {
+    position: relative;
+    height: var(--sar-slide-verify-heigt);
+    border-radius: var(--sar-slide-verify-border-radius);
+    overflow: hidden;
+  }
+
+  @include e(track) {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: var(--sar-slide-verify-bg);
+  }
+
+  @include e(track-text) {
+    background-image: linear-gradient(
+      90deg,
+      var(--sar-gray-800) 45%,
+      var(--sar-white) 50%,
+      var(--sar-gray-800) 55%
+    );
+    background-size: 200% 100%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: #{bem-ns(slide-verify-light)} 2s infinite;
+  }
+
+  @keyframes #{bem-ns(slide-verify-light)} {
+    0% {
+      background-position-x: 100%;
+    }
+    100% {
+      background-position-x: 0%;
+    }
+  }
+
+  @include e(valid-track) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: calc(100% - var(--sar-slide-verify-heigt));
+  }
+
+  @include e(fill) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--valid-track-x);
+    white-space: nowrap;
+    color: var(--sar-white);
+    background: var(--sar-slide-verify-theme-color);
+    transition: width var(--sar-slide-verify-duration);
+  }
+
+  @include e(fulfill) {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--sar-white);
+    clip-path: inset(0 calc(100% - var(--track-x)) 0 0);
+    transition: clip-path var(--sar-slide-verify-duration);
+  }
+
+  @include e(target) {
+    position: absolute;
+    top: 0;
+    left: var(--target-x);
+    box-sizing: border-box;
+    width: var(--sar-slide-verify-heigt);
+    height: var(--sar-slide-verify-heigt);
+    border: 1px dashed var(--sar-slide-verify-border-color);
+    pointer-events: none;
+  }
+
+  @include e(thumb) {
+    position: absolute;
+    top: 0;
+    left: var(--valid-track-x);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: var(--sar-slide-verify-heigt);
+    height: var(--sar-slide-verify-heigt);
+    font-size: var(--sar-text-lg);
+    background-color: var(--sar-emphasis-bg);
+    cursor: move;
+    transition: left var(--sar-slide-verify-duration);
+  }
+
+  @include m(down) {
+    @include e(thumb, fill, fulfill) {
+      transition: none;
+    }
+  }
+
+  @include m(success) {
+    @include e(thumb) {
+      color: var(--sar-slide-verify-theme-color);
+    }
+    @include e(target) {
+      display: none;
+    }
+  }
+
+  @include m(error) {
+    @include e(thumb) {
+      color: var(--sar-danger);
+    }
+
+    @include e(fill) {
+      background: var(--sar-danger);
+    }
+  }
+
+  @include m(success, error) {
+    @include e(fulfill) {
+      display: none;
+    }
+  }
+
+  @include m(success, error, loading) {
+    @include e(track-text) {
+      animation: none;
+      background: none;
+      -webkit-background-clip: unset;
+      background-clip: unset;
+      -webkit-text-fill-color: unset;
+    }
+    @include e(thumb) {
+      cursor: unset;
+    }
+  }
+}

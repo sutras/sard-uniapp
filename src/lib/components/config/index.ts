@@ -73,6 +73,7 @@ import { type ShareSheetProps } from '../share-sheet'
 import { type SignatureProps } from '../signature'
 import { type SkeletonProps } from '../skeleton'
 import { type SliderProps } from '../slider'
+import { type SlideVerifyProps } from '../slide-verify'
 import { type SpaceProps } from '../space'
 import { type StatusBarProps } from '../status-bar'
 import { type StepperProps } from '../stepper'
@@ -194,6 +195,7 @@ export interface ConfigOptions {
   signature?: InferDefaults<LooseRequired<SignatureProps>>
   skeleton?: InferDefaults<LooseRequired<SkeletonProps>>
   slider?: InferDefaults<LooseRequired<SliderProps>>
+  slideVerify?: InferDefaults<LooseRequired<SlideVerifyProps>>
   space?: InferDefaults<LooseRequired<SpaceProps>>
   statusBar?: InferDefaults<LooseRequired<StatusBarProps>>
   stepper?: InferDefaults<LooseRequired<StepperProps>>
@@ -608,6 +610,9 @@ export const defaultConfig: RequiredConfigOptions = {
     max: 100,
     step: 1,
     validateEvent: true,
+  },
+  slideVerify: {
+    resetWhenError: true,
   },
   space: {
     direction: 'horizontal',

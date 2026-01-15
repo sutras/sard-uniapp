@@ -443,6 +443,10 @@
     "title": "其他",
     "children": [
       {
+        "title": "SlideVerify 滑动验证",
+        "name": "slide-verify"
+      },
+      {
         "title": "Watermark 水印",
         "name": "watermark"
       }

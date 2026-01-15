@@ -111,6 +111,7 @@ declare module 'vue' {
     SarSkeletonBlock: typeof import('./components/skeleton-block/skeleton-block.vue').default
     SarSkeletonParagraph: typeof import('./components/skeleton-paragraph/skeleton-paragraph.vue').default
     SarSkeletonTitle: typeof import('./components/skeleton-title/skeleton-title.vue').default
+    SarSlideVerify: typeof import('./components/slide-verify/slide-verify.vue').default
     SarSlider: typeof import('./components/slider/slider.vue').default
     SarSpace: typeof import('./components/space/space.vue').default
     SarStatusBar: typeof import('./components/status-bar/status-bar.vue').default
