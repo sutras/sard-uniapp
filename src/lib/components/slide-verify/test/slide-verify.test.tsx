@@ -38,6 +38,8 @@ describe('SlideVerify', () => {
         trajectory: expect.arrayContaining([]),
       }),
     )
+
+    expect(typeof wrapper.emitted<[number]>().change[0][0]).toBe('number')
   })
 
   test('ShowTarget', async () => {

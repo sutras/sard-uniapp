@@ -333,6 +333,9 @@
           "path": "result/index"
         },
         {
+          "path": "rotate-verify/index"
+        },
+        {
           "path": "scroll-list/index"
         },
         {

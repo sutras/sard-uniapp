@@ -1,0 +1,15 @@
+@use '../style/base' as *;
+
+@include bem(rotate-verify) {
+  @include b() {
+  }
+
+  @include e(image) {
+    display: flex;
+    width: var(--rotate-verify-image-size);
+    height: var(--rotate-verify-image-size);
+    margin: 0 auto var(--rotate-verify-image-margin-bottom);
+    border-radius: 50%;
+    overflow: hidden;
+  }
+}

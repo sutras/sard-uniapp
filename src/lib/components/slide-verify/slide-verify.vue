@@ -47,7 +47,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance, ref } from 'vue'
+import { computed, getCurrentInstance, ref, watch } from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -83,7 +83,7 @@ const props = withDefaults(
 
 defineSlots<SlideVerifySlots>()
 
-defineEmits<SlideVerifyEmits>()
+const emit = defineEmits<SlideVerifyEmits>()
 
 const bem = createBem('slide-verify')
 
@@ -200,6 +200,10 @@ const onTouchEnd = async () => {
 }
 
 const onMouseDown = useMouseDown(onTouchStart, onTouchMove, onTouchEnd)
+
+watch(percent, () => {
+  emit('change', percent.value)
+})
 
 // others
 defineExpose<SlideVerifyExpose>({ reset })

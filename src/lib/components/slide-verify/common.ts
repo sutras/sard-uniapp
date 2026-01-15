@@ -30,7 +30,9 @@ export interface SlideVerifySlots {
   'text-after'?(props: Record<string, never>): any
 }
 
-export interface SlideVerifyEmits {}
+export interface SlideVerifyEmits {
+  (e: 'change', percent: number): void
+}
 
 export interface SlideVerifyExpose {
   reset: () => void
