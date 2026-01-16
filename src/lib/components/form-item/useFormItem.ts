@@ -34,7 +34,8 @@ import { type Rule, type VdaliteFailResult } from '../form/Validator'
 
 export function useFormItem(props: FormItemProps) {
   // main
-  const formContext = useFormContext()
+  // 解决在微信小程序中 被插槽隔离的表单项无法通过inject获得上下文，此时可通过插槽的转发获得上下文
+  const formContext = props.context || useFormContext()
 
   if (!formContext) {
     throw new Error('FormItem must be included in Form.')
