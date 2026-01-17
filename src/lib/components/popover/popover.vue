@@ -27,7 +27,7 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends MenuOption">
 import {
   computed,
   ref,
@@ -67,11 +67,11 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<PopoverProps>(), defaultPopoverProps)
+const props = withDefaults(defineProps<PopoverProps<T>>(), defaultPopoverProps)
 
 defineSlots<PopoverSlots>()
 
-const emit = defineEmits<PopoverEmits>()
+const emit = defineEmits<PopoverEmits<T>>()
 
 const bem = createBem('popover')
 
@@ -157,7 +157,7 @@ const onOverlayClick = () => {
   emit('update:visible', false)
 }
 
-const onSelect = (option: MenuOption) => {
+const onSelect = (option: T) => {
   innerVisible.value = false
   emit('select', option)
   emit('update:visible', false)

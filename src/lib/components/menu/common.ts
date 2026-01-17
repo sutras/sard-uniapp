@@ -8,10 +8,10 @@ export interface MenuOption {
   [prop: PropertyKey]: any
 }
 
-export interface MenuProps {
+export interface MenuProps<T extends MenuOption> {
   rootStyle?: StyleValue
   rootClass?: string
-  options?: MenuOption[]
+  options?: T[]
   direction?: 'vertical' | 'horizontal'
   theme?: 'dark' | 'light'
 }
@@ -20,8 +20,8 @@ export const defaultMenuProps = {
   options: () => [],
 }
 
-export interface MenuEmits {
-  (e: 'select', option: MenuOption): void
+export interface MenuEmits<T extends MenuOption> {
+  (e: 'select', option: T): void
 }
 
 export interface MenuItemProps {

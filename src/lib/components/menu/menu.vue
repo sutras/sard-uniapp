@@ -14,7 +14,7 @@
   </view>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts" generic="T extends MenuOption">
 import { computed } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarMenuItem from '../menu-item/menu-item.vue'
@@ -32,14 +32,14 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<MenuProps>(), defaultMenuProps)
+const props = withDefaults(defineProps<MenuProps<T>>(), defaultMenuProps)
 
-const emit = defineEmits<MenuEmits>()
+const emit = defineEmits<MenuEmits<T>>()
 
 const bem = createBem('menu')
 
 // main
-const onClick = (option: MenuOption) => {
+const onClick = (option: T) => {
   if (!option.disabled) {
     emit('select', option)
   }

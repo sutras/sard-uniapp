@@ -5,11 +5,11 @@ import { PopoverController } from './usePopover'
 import { type Position } from './utils'
 import { defaultConfig } from '../config'
 
-export interface PopoverProps {
+export interface PopoverProps<T extends MenuOption> {
   rootStyle?: StyleValue
   rootClass?: string
   visible?: boolean
-  options?: MenuOption[]
+  options?: T[]
   position?: Position
   direction?: 'vertical' | 'horizontal'
   theme?: 'dark' | 'light'
@@ -27,9 +27,9 @@ export interface PopoverSlots {
   content?(props: Record<string, never>): any
 }
 
-export interface PopoverEmits {
+export interface PopoverEmits<T extends MenuOption> {
   (e: 'update:visible', visible: boolean): void
-  (e: 'select', option: MenuOption): void
+  (e: 'select', option: T): void
 }
 
 export interface ReferenceExpose {
