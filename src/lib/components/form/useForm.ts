@@ -105,30 +105,29 @@ export function useForm(props: FormProps) {
     },
     { deep: true, flush: 'post' },
   )
+  // 导出上下文
+  const formContext: FormContext = reactive({
+    model: toRef(() => props.model),
+    rules: toRef(() => props.rules),
+    validateTrigger: toRef(() => props.validateTrigger),
+    direction: toRef(() => props.direction),
+    labelWidth: toRef(() => props.labelWidth),
+    labelAlign: toRef(() => props.labelAlign),
+    labelValign: toRef(() => props.labelValign),
+    starPosition: toRef(() => props.starPosition),
+    contentPosition: toRef(() => props.contentPosition),
+    hideStar: toRef(() => props.hideStar),
+    showError: toRef(() => props.showError),
+    scrollIntoViewOptions: toRef(() => props.scrollIntoViewOptions),
+    disabled: toRef(() => props.disabled),
+    readonly: toRef(() => props.readonly),
+    scrollDuration: toRef(() => props.scrollDuration as number),
+    addField,
+    removeField,
+    validator,
+  })
 
-  provide<FormContext>(
-    formContextSymbol,
-    reactive({
-      model: toRef(() => props.model),
-      rules: toRef(() => props.rules),
-      validateTrigger: toRef(() => props.validateTrigger),
-      direction: toRef(() => props.direction),
-      labelWidth: toRef(() => props.labelWidth),
-      labelAlign: toRef(() => props.labelAlign),
-      labelValign: toRef(() => props.labelValign),
-      starPosition: toRef(() => props.starPosition),
-      contentPosition: toRef(() => props.contentPosition),
-      hideStar: toRef(() => props.hideStar),
-      showError: toRef(() => props.showError),
-      scrollIntoViewOptions: toRef(() => props.scrollIntoViewOptions),
-      disabled: toRef(() => props.disabled),
-      readonly: toRef(() => props.readonly),
-      scrollDuration: toRef(() => props.scrollDuration as number),
-      addField,
-      removeField,
-      validator,
-    }),
-  )
+  provide<FormContext>(formContextSymbol, formContext)
 
   const expose = {
     validate,
@@ -139,5 +138,6 @@ export function useForm(props: FormProps) {
 
   return {
     expose,
+    formContext,
   }
 }

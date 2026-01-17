@@ -1,6 +1,7 @@
 import {
   type FormExpose,
   type FormProps,
+  type FormContext,
   type FormSlots,
   type FormItemProps,
   type FormItemExpose,
@@ -13,7 +14,9 @@ export interface FormPlainSlots extends FormSlots {}
 
 export interface FormPlainExpose extends FormExpose {}
 
-export interface FormItemPlainProps extends FormItemProps {}
+export interface FormItemPlainProps extends FormItemProps {
+  context?: FormContext
+}
 
 export interface FormItemPlainSlotsProps {
   validateState: ValidateState

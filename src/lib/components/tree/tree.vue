@@ -48,7 +48,10 @@
     </view>
   </sar-dialog>
 
-  <sar-toast v-model:visible="toastVisible" :title="t('please')" />
+  <sar-toast
+    v-model:visible="toastVisible"
+    :title="toastTitle || t('please')"
+  />
 </template>
 
 <script setup lang="ts">
@@ -245,7 +248,24 @@ const getHalfCheckedKeys = () => {
   return getTreeHalfCheckedKeys(treeData.value)
 }
 
-const prepend = (node: TreeStateNode, newNode: TreeStateNode) => {
+const showToast = async (title: string) => {
+  toastTitle.value = title
+  toastVisible.value = true
+  return false
+}
+
+const prepend = async (node: TreeStateNode, newNode: TreeStateNode) => {
+  if (props.editMethod) {
+    const res = await props.editMethod({
+      editNode: newNode,
+      editType: 'drag',
+      editValue: newNode.title,
+      parentNode: node,
+    })
+    if (res.errMsg) {
+      return showToast(res.errMsg)
+    }
+  }
   const children = (node.children ??= [])
   children.unshift(newNode)
   newNode.parent = node
@@ -260,7 +280,18 @@ const prepend = (node: TreeStateNode, newNode: TreeStateNode) => {
   setRenderPosition()
 }
 
-const append = (node: TreeStateNode, newNode: TreeStateNode) => {
+const append = async (node: TreeStateNode, newNode: TreeStateNode) => {
+  if (props.editMethod) {
+    const res = await props.editMethod({
+      editNode: newNode,
+      editType: 'drag',
+      editValue: newNode.title,
+      parentNode: node,
+    })
+    if (res.errMsg) {
+      return showToast(res.errMsg)
+    }
+  }
   const children = (node.children ??= [])
   children.push(newNode)
   newNode.parent = node
@@ -286,7 +317,18 @@ const appendRoot = (newNode: TreeStateNode) => {
   setRenderPosition()
 }
 
-const before = (node: TreeStateNode, newNode: TreeStateNode) => {
+const before = async (node: TreeStateNode, newNode: TreeStateNode) => {
+  if (props.editMethod) {
+    const res = await props.editMethod({
+      editNode: newNode,
+      editType: 'drag',
+      editValue: newNode.title,
+      parentNode: node.parent,
+    })
+    if (res.errMsg) {
+      return showToast(res.errMsg)
+    }
+  }
   const siblings = node.parent ? node.parent.children! : treeData.value
   siblings.splice(siblings.indexOf(node), 0, newNode)
   newNode.parent = node.parent
@@ -300,7 +342,18 @@ const before = (node: TreeStateNode, newNode: TreeStateNode) => {
   setRenderPosition()
 }
 
-const after = (node: TreeStateNode, newNode: TreeStateNode) => {
+const after = async (node: TreeStateNode, newNode: TreeStateNode) => {
+  if (props.editMethod) {
+    const res = await props.editMethod({
+      editNode: newNode,
+      editType: 'drag',
+      editValue: newNode.title,
+      parentNode: node.parent,
+    })
+    if (res.errMsg) {
+      return showToast(res.errMsg)
+    }
+  }
   const siblings = node.parent ? node.parent.children! : treeData.value
   siblings.splice(siblings.indexOf(node) + 1, 0, newNode)
   newNode.parent = node.parent
@@ -459,12 +512,16 @@ watch(
 initialize()
 
 // edit
-const popoverOptions = [
-  { id: 'sibling', icon: 'plus', text: t('addSibling') },
-  { id: 'child', icon: 'plus', text: t('addChild') },
-  { id: 'minus', icon: 'minus', text: t('removeNode') },
-  { id: 'edit', icon: 'pencil-square', text: t('edit') },
-]
+const popoverOptions = computed<MenuOption[]>(() => {
+  return (
+    props.editOptions || [
+      { id: 'sibling', icon: 'plus', text: t('addSibling') },
+      { id: 'child', icon: 'plus', text: t('addChild') },
+      { id: 'minus', icon: 'minus', text: t('removeNode') },
+      { id: 'edit', icon: 'pencil-square', text: t('edit') },
+    ]
+  )
+})
 
 const popover = usePopover()
 
@@ -472,19 +529,33 @@ let currentEditNode: TreeStateNode | undefined
 const currentEditType = ref<'sibling' | 'child' | 'minus' | 'edit' | 'root'>()
 const currentEditValue = ref('')
 
-const mapEditTypeTitle = {
-  sibling: t('addSibling'),
-  child: t('addChild'),
-  root: t('addRoot'),
-  edit: t('edit'),
-  minus: '',
-}
+const mapEditTypeTitle = computed(() => {
+  const baseTitles = {
+    sibling: t('addSibling'),
+    child: t('addChild'),
+    root: t('addRoot'),
+    edit: t('edit'),
+    minus: '',
+  }
+
+  // 添加来自 editOptions 的标题映射
+  const customTitles = {}
+  if (props.editOptions) {
+    props.editOptions.forEach((option) => {
+      customTitles[option.id] = option.text
+    })
+  }
+
+  return { ...baseTitles, ...customTitles }
+})
+
 const currentEditTitle = computed(() => {
-  return mapEditTypeTitle[currentEditType.value!]
+  return mapEditTypeTitle.value[currentEditType.value!]
 })
 
 const dialogVisible = ref(false)
 const toastVisible = ref(false)
+const toastTitle = ref('')
 
 const onPopoverSelect = (option: MenuOption) => {
   currentEditType.value = option.id
@@ -499,17 +570,32 @@ const onPopoverSelect = (option: MenuOption) => {
         dialogVisible.value = true
         break
       case 'minus':
-        remove(currentEditNode)
+        currentEditValue.value = String(currentEditNode.title)
+        dialogVisible.value = true
         break
     }
   }
 }
 
-const beforeClose: DialogProps['beforeClose'] = (type) => {
+const beforeClose: DialogProps['beforeClose'] = async (type) => {
   if (type === 'confirm') {
     if (currentEditValue.value.trim() === '') {
+      toastTitle.value = t('please')
       toastVisible.value = true
       return false
+    }
+
+    let key = uniqid()
+    if (props.editMethod) {
+      const res = await props.editMethod({
+        editNode: currentEditNode,
+        editType: currentEditType.value!,
+        editValue: currentEditValue.value,
+      })
+      if (res.errMsg) {
+        return showToast(res.errMsg)
+      }
+      key = res.key
     }
 
     switch (currentEditType.value) {
@@ -518,7 +604,7 @@ const beforeClose: DialogProps['beforeClose'] = (type) => {
       case 'root': {
         const newNode = reactive<TreeStateNode>({
           title: currentEditValue.value,
-          key: uniqid(),
+          key,
           expanded: false,
           checked: false,
           indeterminate: false,
@@ -546,6 +632,9 @@ const beforeClose: DialogProps['beforeClose'] = (type) => {
       }
       case 'edit':
         currentEditNode!.title = currentEditValue.value
+        break
+      case 'minus':
+        remove(currentEditNode)
         break
     }
   }
