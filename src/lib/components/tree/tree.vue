@@ -37,10 +37,16 @@
     v-model:visible="dialogVisible"
     :title="currentEditTitle"
     :before-close="beforeClose"
+    :headed="false"
+    button-type="text"
     @visible-hook="onVisibleHook"
   >
     <view :class="bem.e('input-wrapper')">
+      <view v-if="currentEditType === 'delete'" :class="bem.e('input-text')">
+        {{ currentEditValue }}
+      </view>
       <sar-input
+        v-else
         v-model="currentEditValue"
         :placeholder="t('please')"
         :focus="focused"
@@ -67,6 +73,8 @@ import {
   initializeCheckNodes,
   getTreeCheckedKeys,
   getTreeHalfCheckedKeys,
+  isObject,
+  isFunction,
 } from '../../utils'
 import {
   type TreeProps,
@@ -76,16 +84,18 @@ import {
   type TreeStateNode,
   type TreeContext,
   type TreeCleanNode,
+  type TreeDropType,
   defaultNodeKeys,
   treeContextSymbol,
   defaultTreeProps,
+  TreeEditType,
+  TreeEditOption,
 } from './common'
 import SarTreeNode from '../tree-node/tree-node.vue'
 import SarPopover from '../popover/popover.vue'
 import SarLoading from '../loading/loading.vue'
 import { usePopover } from '../popover'
 import SarInput from '../input/input.vue'
-import { type MenuOption } from '../menu'
 import SarDialog from '../dialog/dialog.vue'
 import SarToast from '../toast/toast.vue'
 import { type DialogProps } from '../dialog'
@@ -332,44 +342,66 @@ const remove = (node: TreeStateNode, reflow = true) => {
   }
 }
 
-const levelup = (node: TreeStateNode) => {
+const levelup = async (node: TreeStateNode) => {
   if (node.parent) {
+    await beforeDrop(node, node.parent, 'after')
     remove(node, false)
-    after(node.parent, node)
+    after(node.parent!, node)
   }
 }
 
-const leveldown = (node: TreeStateNode) => {
+const leveldown = async (node: TreeStateNode) => {
   const siblings = node.parent ? node.parent.children! : treeData.value
   const index = siblings.indexOf(node)
   if (index > 0) {
-    remove(node, false)
     const prevNode = siblings[index - 1]
+    await beforeDrop(node, prevNode, 'append')
+    remove(node, false)
     prevNode.expanded = true
     append(prevNode, node)
   }
 }
 
-const drop = (
-  dropOriginNode: TreeStateNode,
-  dropTargetNode: TreeStateNode,
+const beforeDrop = async (
+  draggingNode: TreeStateNode,
+  dropNode: TreeStateNode,
+  type: TreeDropType,
+) => {
+  if (props.beforeDrop) {
+    const result = props.beforeDrop(draggingNode, dropNode, type)
+    if (isObject(result) && isFunction(result.then)) {
+      await (result as Promise<any>)
+    } else if (result === false) {
+      return Promise.reject()
+    }
+  }
+}
+
+const drop = async (
+  draggingNode: TreeStateNode,
+  dropNode: TreeStateNode,
   position: number,
 ) => {
-  remove(dropOriginNode, false)
   if (position === -1) {
-    before(dropTargetNode, dropOriginNode)
+    await beforeDrop(draggingNode, dropNode, 'before')
+    remove(draggingNode, false)
+    before(dropNode, draggingNode)
   } else {
-    if (dropTargetNode.children && dropTargetNode.expanded) {
-      prepend(dropTargetNode, dropOriginNode)
+    if (dropNode.children && dropNode.expanded) {
+      await beforeDrop(draggingNode, dropNode, 'prepend')
+      remove(draggingNode, false)
+      prepend(dropNode, draggingNode)
     } else {
-      after(dropTargetNode, dropOriginNode)
+      await beforeDrop(draggingNode, dropNode, 'after')
+      remove(draggingNode, false)
+      after(dropNode, draggingNode)
     }
   }
 }
 
 const addRootNode = () => {
   currentEditValue.value = ''
-  currentEditType.value = 'root'
+  currentEditType.value = 'addRoot'
   dialogVisible.value = true
 }
 
@@ -459,25 +491,29 @@ watch(
 initialize()
 
 // edit
-const popoverOptions = [
-  { id: 'sibling', icon: 'plus', text: t('addSibling') },
-  { id: 'child', icon: 'plus', text: t('addChild') },
-  { id: 'minus', icon: 'minus', text: t('removeNode') },
-  { id: 'edit', icon: 'pencil-square', text: t('edit') },
-]
+const popoverOptions = computed<TreeEditOption[]>(() => {
+  return (
+    props.editOptions || [
+      { type: 'addSibling', icon: 'plus', text: t('addSibling') },
+      { type: 'addChild', icon: 'plus', text: t('addChild') },
+      { type: 'delete', icon: 'minus', text: t('removeNode') },
+      { type: 'edit', icon: 'pencil-square', text: t('edit') },
+    ]
+  )
+})
 
 const popover = usePopover()
 
 let currentEditNode: TreeStateNode | undefined
-const currentEditType = ref<'sibling' | 'child' | 'minus' | 'edit' | 'root'>()
+const currentEditType = ref<TreeEditType>()
 const currentEditValue = ref('')
 
 const mapEditTypeTitle = {
-  sibling: t('addSibling'),
-  child: t('addChild'),
-  root: t('addRoot'),
+  addSibling: t('addSibling'),
+  addChild: t('addChild'),
+  addRoot: t('addRoot'),
   edit: t('edit'),
-  minus: '',
+  delete: t('removeNode'),
 }
 const currentEditTitle = computed(() => {
   return mapEditTypeTitle[currentEditType.value!]
@@ -486,36 +522,54 @@ const currentEditTitle = computed(() => {
 const dialogVisible = ref(false)
 const toastVisible = ref(false)
 
-const onPopoverSelect = (option: MenuOption) => {
-  currentEditType.value = option.id
+const onPopoverSelect = (option: TreeEditOption) => {
+  currentEditType.value = option.type
 
   if (currentEditNode) {
-    switch (option.id) {
-      case 'sibling':
-      case 'child':
+    switch (option.type) {
+      case 'addSibling':
+      case 'addChild':
       case 'edit':
+      case 'delete': {
         currentEditValue.value =
-          option.id === 'edit' ? String(currentEditNode.title) : ''
+          option.type === 'edit' || option.type === 'delete'
+            ? String(currentEditNode.title)
+            : ''
         dialogVisible.value = true
         break
-      case 'minus':
-        remove(currentEditNode)
-        break
+      }
     }
   }
 }
 
-const beforeClose: DialogProps['beforeClose'] = (type) => {
+const beforeClose: DialogProps['beforeClose'] = async (type) => {
   if (type === 'confirm') {
     if (currentEditValue.value.trim() === '') {
       toastVisible.value = true
-      return false
+      return Promise.reject()
+    }
+
+    if (props.beforeEdit) {
+      const result = props.beforeEdit(
+        currentEditNode!,
+        currentEditValue.value,
+        currentEditType.value!,
+      )
+      if (isObject(result) && isFunction(result.then)) {
+        try {
+          await (result as Promise<any>)
+        } catch {
+          return Promise.reject()
+        }
+      } else if (result === false) {
+        return Promise.reject()
+      }
     }
 
     switch (currentEditType.value) {
-      case 'sibling':
-      case 'child':
-      case 'root': {
+      case 'addSibling':
+      case 'addChild':
+      case 'addRoot': {
         const newNode = reactive<TreeStateNode>({
           title: currentEditValue.value,
           key: uniqid(),
@@ -532,13 +586,13 @@ const beforeClose: DialogProps['beforeClose'] = (type) => {
           depth: 0,
         })
         switch (currentEditType.value) {
-          case 'sibling':
+          case 'addSibling':
             after(currentEditNode!, newNode)
             break
-          case 'child':
+          case 'addChild':
             append(currentEditNode!, newNode)
             break
-          case 'root':
+          case 'addRoot':
             appendRoot(newNode)
             break
         }
@@ -546,6 +600,9 @@ const beforeClose: DialogProps['beforeClose'] = (type) => {
       }
       case 'edit':
         currentEditNode!.title = currentEditValue.value
+        break
+      case 'delete':
+        remove(currentEditNode!)
         break
     }
   }
@@ -633,6 +690,7 @@ const context = reactive({
   autoHeight: toRef(() => props.autoHeight),
   singleSelectable: toRef(() => props.singleSelectable),
   leafOnly: toRef(() => props.leafOnly),
+  allowDrag: toRef(() => props.allowDrag),
   treeData: toRef(() => treeData.value),
   load: toRef(() => props.load),
   lazy: toRef(() => props.lazy),

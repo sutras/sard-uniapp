@@ -58,6 +58,12 @@
           @click="navigateTo('Editable')"
         />
         <sar-list-item
+          title="异步编辑与拖拽"
+          arrow
+          hover
+          @click="navigateTo('Async')"
+        />
+        <sar-list-item
           title="树节点过滤"
           arrow
           hover

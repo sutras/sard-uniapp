@@ -40,6 +40,12 @@
         @include ellipsis;
       }
     }
+
+    @include m(disallowed) {
+      @include e(drag) {
+        visibility: hidden;
+      }
+    }
   }
 
   @include e(arrow) {

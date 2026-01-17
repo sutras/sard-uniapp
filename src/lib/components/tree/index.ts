@@ -4,4 +4,7 @@ export type {
   TreeExpose,
   TreeNode,
   TreeStateNode,
+  TreeDropType,
+  TreeEditType,
+  TreeEditOption,
 } from './common'

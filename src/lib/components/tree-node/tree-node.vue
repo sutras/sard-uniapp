@@ -69,12 +69,16 @@
         @mousedown.stop="onDragMouseDown"
         @click.stop
       >
-        <sar-icon family="sari" name="list" />
-        <view :class="bem.e('level-btn')">
-          <sar-icon v-if="isLastNode" family="sari" name="left" />
-          <sar-icon v-if="index !== 0" family="sari" name="right" />
-        </view>
+        <sar-loading v-if="dropLoading" />
+        <template v-else>
+          <sar-icon family="sari" name="list" />
+          <view :class="bem.e('level-btn')">
+            <sar-icon v-if="isLastNode" family="sari" name="left" />
+            <sar-icon v-if="index !== 0" family="sari" name="right" />
+          </view>
+        </template>
       </view>
+      <view></view>
     </view>
   </view>
 
@@ -180,17 +184,24 @@ onMounted(() => {
 const instance = getCurrentInstance()
 const nodeId = uniqid()
 
-let dropTargetNode: TreeStateNode | undefined
+const allowDrag = computed(() => {
+  return !treeContext.allowDrag || treeContext.allowDrag(props.node)
+})
+
+let dropNode: TreeStateNode | undefined
 let dropPosition: number | undefined
 
 const dragging = ref(false)
 let nodeRect: NodeRect | undefined
+const dropLoading = ref(false)
 
 const translateY = ref(0)
 
 let obviousNodes: TreeStateNode[] = []
 
 const onDragStart = () => {
+  dragging.value = true
+
   obviousNodes = []
   treeContext.treeData.forEach((node) => {
     walkDescendant(node, (node) => {
@@ -220,7 +231,7 @@ const onDragMove = (offset: Point) => {
 
   const targetNode = obviousNodes[targetIndex]
 
-  if (dropTargetNode !== targetNode) {
+  if (dropNode !== targetNode) {
     obviousNodes.forEach((node, index) => {
       node.offsetLevel =
         index < currentIndex
@@ -233,22 +244,29 @@ const onDragMove = (offset: Point) => {
               : 0
             : 0
     })
-    dropTargetNode = targetNode
+    dropNode = targetNode
     dropPosition = targetNode === props.node ? 0 : offset.y < 0 ? -1 : 1
   }
 }
 
-const onDragEnd = () => {
-  if (dropTargetNode && dropPosition && dropTargetNode !== props.node) {
-    treeContext.drop(props.node, dropTargetNode, dropPosition)
+const onDragEnd = async () => {
+  try {
+    dropLoading.value = true
+    if (dropNode && dropPosition && dropNode !== props.node) {
+      await treeContext.drop(props.node, dropNode, dropPosition)
+    }
+  } catch {
+    void 0
+  } finally {
+    dropLoading.value = false
+    dragging.value = false
+    dropNode = undefined
+    dropPosition = undefined
+    obviousNodes.forEach((node) => {
+      node.offsetLevel = 0
+    })
+    translateY.value = 0
   }
-  dropTargetNode = undefined
-  dropPosition = undefined
-
-  obviousNodes.forEach((node) => {
-    node.offsetLevel = 0
-  })
-  translateY.value = 0
 }
 
 const [onDragSimulatedClickTouchStart, onDragSimulatedClickTouchEnd] =
@@ -264,7 +282,6 @@ const [
   onDragSimulatedPressTouchEnd,
 ] = useSimulatedPress({
   start: () => {
-    dragging.value = true
     treeContext.setExpandedByNode(props.node, false)
     onDragStart()
   },
@@ -274,23 +291,28 @@ const [
     }
   },
   end: () => {
-    dragging.value = false
     onDragEnd()
   },
   duration: 150,
 })
 
 const onDragTouchStart = async (event: TouchEvent) => {
+  if (!allowDrag.value || dropLoading.value) return
+
   onDragSimulatedPressTouchStart(event)
   onDragSimulatedClickTouchStart(event)
   nodeRect = await getBoundingClientRect(`.${nodeId}`, instance)
 }
 
 const onDragTouchMove = (event: TouchEvent) => {
+  if (!allowDrag.value || dropLoading.value) return
+
   onDragSimulatedPressTouchMove(event)
 }
 
 const onDragTouchEnd = (event: TouchEvent) => {
+  if (!allowDrag.value || dropLoading.value) return
+
   nodeRect = undefined
 
   onDragSimulatedClickTouchEnd(event)
@@ -325,14 +347,22 @@ const popoverOptions = computed(() => {
   return options
 })
 
-const onPopoverSelect = (option: MenuOption) => {
-  switch (option.id) {
-    case 'left':
-      treeContext.levelup(props.node)
-      break
-    case 'right':
-      treeContext.leveldown(props.node)
-      break
+const onPopoverSelect = async (option: MenuOption) => {
+  try {
+    dropLoading.value = true
+
+    switch (option.id) {
+      case 'left':
+        await treeContext.levelup(props.node)
+        break
+      case 'right':
+        await treeContext.leveldown(props.node)
+        break
+    }
+  } catch {
+    void 0
+  } finally {
+    dropLoading.value = false
   }
 }
 
@@ -345,6 +375,8 @@ const isMergedLeaf = computed(() => {
 })
 
 const onNodeClick = async (event: any) => {
+  if (dropLoading.value) return
+
   const node = props.node
   const { loadStatus, isLeaf } = node
   if (loadStatus === 'loading') {
@@ -391,6 +423,8 @@ const onNodeClick = async (event: any) => {
 const nodeActive = ref(false)
 
 const onNodeTouchStart = () => {
+  if (dropLoading.value) return
+
   if (
     !isMergedLeaf.value ||
     (canSingleSelectable.value && treeContext.leafOnly)
@@ -446,6 +480,8 @@ const getEditRect = async () => {
 }
 
 const [onEditTouchStart, onEditTouchEnd] = useSimulatedClick(() => {
+  if (dropLoading.value) return
+
   treeContext.edit(props.node, getEditRect)
 })
 
@@ -464,6 +500,7 @@ const nodeClass = computed(() => {
     bem.em('node', 'active', nodeActive.value),
     bem.em('node', 'current', isSingleChecked.value),
     bem.em('node', 'draggable', treeContext.draggable),
+    bem.em('node', 'disallowed', !allowDrag.value),
     bem.em(
       'node',
       'truncated',

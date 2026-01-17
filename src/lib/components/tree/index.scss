@@ -8,7 +8,11 @@
   }
 
   @include e(input-wrapper) {
-    padding: var(--sar-dialog-body-padding-y) var(--sar-dialog-body-padding-x);
+    padding: 0 var(--sar-dialog-body-padding-x) var(--sar-dialog-body-padding-y);
+  }
+
+  @include e(input-text) {
+    text-align: center;
   }
 
   @include e(load-status) {

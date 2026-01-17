@@ -48,6 +48,20 @@ export const defaultNodeKeys = {
   isLeaf: 'isLeaf',
 }
 
+export type TreeDropType = 'before' | 'after' | 'prepend' | 'append'
+export type TreeEditType =
+  | 'addSibling'
+  | 'addChild'
+  | 'addRoot'
+  | 'edit'
+  | 'delete'
+
+export interface TreeEditOption {
+  type: TreeEditType
+  icon?: string
+  text?: string
+}
+
 export interface TreeProps {
   rootStyle?: StyleValue
   rootClass?: string
@@ -69,6 +83,18 @@ export interface TreeProps {
   lazy?: boolean
   load?: (node?: TreeStateNode) => Promise<TreeNode[]> | TreeNode[]
   autoHeight?: boolean
+  allowDrag?: (node: TreeStateNode) => boolean
+  beforeDrop?: (
+    draggingNode: TreeStateNode,
+    dropNode: TreeStateNode,
+    type: TreeDropType,
+  ) => any | Promise<any>
+  beforeEdit?: (
+    node: TreeStateNode,
+    title: string,
+    type: TreeEditType,
+  ) => any | Promise<any>
+  editOptions?: TreeEditOption[]
 }
 
 export const defaultTreeProps = () => ({
@@ -113,19 +139,20 @@ export interface TreeContext {
   editable: TreeProps['editable']
   singleSelectable: TreeProps['singleSelectable']
   leafOnly: TreeProps['leafOnly']
+  allowDrag: TreeProps['allowDrag']
   treeData: TreeStateNode[]
   setExpandedByNode: (node: TreeStateNode, expanded: boolean) => void
   toggleExpandedByNode: (node: TreeStateNode) => void
   setCheckedByNode: (node: TreeStateNode, checked: boolean) => void
   toggleCheck: (node: TreeStateNode, checked: boolean) => void
-  levelup: (node: TreeStateNode) => void
-  leveldown: (node: TreeStateNode) => void
+  levelup: (node: TreeStateNode) => any | Promise<any>
+  leveldown: (node: TreeStateNode) => any | Promise<any>
   edit: (node: TreeStateNode, getEditRect: () => Promise<NodeRect>) => void
   drop: (
-    dropOriginNode: TreeStateNode,
-    dropTargetNode: TreeStateNode,
+    draggingNode: TreeStateNode,
+    dropNode: TreeStateNode,
     position: number,
-  ) => void
+  ) => any | Promise<any>
   currentKey: string | number | undefined
   singleSelect: (node: TreeStateNode) => void
   nodeClick: (node: TreeStateNode, event: any) => void

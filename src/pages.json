@@ -444,6 +444,9 @@
           "path": "tree/demo/Editable"
         },
         {
+          "path": "tree/demo/Async"
+        },
+        {
           "path": "tree/demo/Filter"
         },
         {

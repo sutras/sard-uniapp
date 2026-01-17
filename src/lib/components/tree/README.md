@@ -76,6 +76,14 @@ import Tree from 'sard-uniapp/components/tree/tree.vue'
 
 @code('${DEMO_PATH}/tree/demo/Editable.vue')
 
+### 异步编辑与拖拽 <sup>1.26+</sup>
+
+使用 `before-drop` 和 `before-edit` 属性可在节点拖拽或编辑时与远程服务器通信，在接口请求失败时会取消拖拽和编辑。
+
+这两属性也可用于同步阻止拖拽或编辑。
+
+@code('${DEMO_PATH}/tree/demo/Async.vue')
+
 ### 树节点过滤
 
 树节点是可以被过滤的。
@@ -103,28 +111,32 @@ import Tree from 'sard-uniapp/components/tree/tree.vue'
 
 ### TreeProps
 
-| 属性                               | 描述                                                                         | 类型                                                        | 默认值          |
-| ---------------------------------- | ---------------------------------------------------------------------------- | ----------------------------------------------------------- | --------------- |
-| root-class                         | 组件根元素类名                                                               | string                                                      | -               |
-| root-style                         | 组件根元素样式                                                               | StyleValue                                                  | -               |
-| data                               | 树形数据                                                                     | TreeNode[]                                                  | -               |
-| node-keys                          | 节点对象的键名                                                               | TreeNodeKeys                                                | defaultNodeKeys |
-| default-expand-all                 | 是否默认展开所有节点                                                         | boolean                                                     | false           |
-| default-expanded-keys              | 默认展开的节点的 key                                                         | (string \| number)[]                                        | -               |
-| accordion                          | 是否每次只展示一个同级树节点                                                 | boolean                                                     | false           |
-| selectable                         | 节点是否可被选择（复选）                                                     | boolean                                                     | false           |
-| check-strictly                     | 可选时是否严格遵循父子不关联的做法（复选）                                   | boolean                                                     | false           |
-| default-checked-keys               | 默认勾选的节点的 key 的数组（复选）                                          | (string \| number)[]                                        | -               |
-| single-selectable <sup>1.17+</sup> | 节点是否可被选择（单选）                                                     | boolean                                                     | false           |
-| leaf-only <sup>1.17+</sup>         | 是否只能选择叶子节点（单选）                                                 | boolean                                                     | false           |
-| current (v-model) <sup>1.17+</sup> | 当前选择的节点的 key（单选）                                                 | string \| number                                            | -               |
-| draggable                          | 是否可以拖拽节点                                                             | boolean                                                     | false           |
-| editable                           | 是否可编辑节点（增删改）                                                     | boolean                                                     | false           |
-| filter-mode                        | 节点过滤模式                                                                 | 'lenient' \| 'strict'                                       | 'lenient'       |
-| filter-method                      | 自定义过滤方法                                                               | (value: string, node: TreeStateNode) => boolean             | -               |
-| lazy <sup>1.24.7+</sup>            | 是否懒加载子节点，需与 load 方法结合使用                                     | boolean                                                     | false           |
-| load <sup>1.24.7+</sup>            | 加载子树数据的方法，仅当 lazy 属性为true 时生效                              | (node?: TreeStateNode) => Promise<TreeNode[]> \| TreeNode[] | -               |
-| auto-height <sup>1.25.9+</sup>     | 默认只可展示一行文字，设置此属性可让节点高度跟随内容变化，只可用在非拖拽模式 | boolean                                                     | false           |
+| 属性                               | 描述                                                                         | 类型                                                                                               | 默认值          |
+| ---------------------------------- | ---------------------------------------------------------------------------- | -------------------------------------------------------------------------------------------------- | --------------- |
+| root-class                         | 组件根元素类名                                                               | string                                                                                             | -               |
+| root-style                         | 组件根元素样式                                                               | StyleValue                                                                                         | -               |
+| data                               | 树形数据                                                                     | TreeNode[]                                                                                         | -               |
+| node-keys                          | 节点对象的键名                                                               | TreeNodeKeys                                                                                       | defaultNodeKeys |
+| default-expand-all                 | 是否默认展开所有节点                                                         | boolean                                                                                            | false           |
+| default-expanded-keys              | 默认展开的节点的 key                                                         | (string \| number)[]                                                                               | -               |
+| accordion                          | 是否每次只展示一个同级树节点                                                 | boolean                                                                                            | false           |
+| selectable                         | 节点是否可被选择（复选）                                                     | boolean                                                                                            | false           |
+| check-strictly                     | 可选时是否严格遵循父子不关联的做法（复选）                                   | boolean                                                                                            | false           |
+| default-checked-keys               | 默认勾选的节点的 key 的数组（复选）                                          | (string \| number)[]                                                                               | -               |
+| single-selectable <sup>1.17+</sup> | 节点是否可被选择（单选）                                                     | boolean                                                                                            | false           |
+| leaf-only <sup>1.17+</sup>         | 是否只能选择叶子节点（单选）                                                 | boolean                                                                                            | false           |
+| current (v-model) <sup>1.17+</sup> | 当前选择的节点的 key（单选）                                                 | string \| number                                                                                   | -               |
+| draggable                          | 是否可以拖拽节点                                                             | boolean                                                                                            | false           |
+| editable                           | 是否可编辑节点（增删改）                                                     | boolean                                                                                            | false           |
+| filter-mode                        | 节点过滤模式                                                                 | 'lenient' \| 'strict'                                                                              | 'lenient'       |
+| filter-method                      | 自定义过滤方法                                                               | (value: string, node: TreeStateNode) => boolean                                                    | -               |
+| lazy <sup>1.24.7+</sup>            | 是否懒加载子节点，需与 load 方法结合使用                                     | boolean                                                                                            | false           |
+| load <sup>1.24.7+</sup>            | 加载子树数据的方法，仅当 lazy 属性为true 时生效                              | (node?: TreeStateNode) => Promise<TreeNode[]> \| TreeNode[]                                        | -               |
+| auto-height <sup>1.25.9+</sup>     | 默认只可展示一行文字，设置此属性可让节点高度跟随内容变化，只可用在非拖拽模式 | boolean                                                                                            | false           |
+| allow-drag <sup>1.26+</sup>        | 判断节点能否被拖拽，返回 false 不允许拖拽                                    | (node: TreeStateNode) => boolean                                                                   | -               |
+| before-drop <sup>1.26+</sup>       | 拖拽完放置前回调，返回 `false` 或 `Promise{<rejected>}` 可阻止放置           | (draggingNode: TreeStateNode, dropNode: TreeStateNode, type: TreeDropType) => any \| Promise\<any> | -               |
+| before-edit <sup>1.26+</sup>       | 节点编辑前回调，返回 `false` 或 `Promise{<rejected>}` 可阻止编辑             | (node: TreeStateNode, title: string, type: TreeEditType) => any \| Promise \<any>                  | -               |
+| edit-options <sup>1.26+</sup>      | 自定义编辑菜单选项                                                           | TreeEditOption[]                                                                                   | -               |
 
 ### TreeEmits
 
@@ -149,6 +161,28 @@ import Tree from 'sard-uniapp/components/tree/tree.vue'
 | addRootNode        | 添加根节点             | () => void                                         |
 | getCleanTreeData   | 获取干净的当前树形数据 | () => TreeCleanNode[]                              |
 | filter             | 过滤树节点             | (searchString: string) => void                     |
+
+### TreeDropType
+
+```ts
+type TreeDropType = 'before' | 'after' | 'prepend' | 'append'
+```
+
+### TreeEditType
+
+```ts
+type TreeEditType = 'addSibling' | 'addChild' | 'addRoot' | 'edit' | 'delete'
+```
+
+### TreeEditOption
+
+```ts
+interface TreeEditOption {
+  type: TreeEditType
+  icon?: string
+  text?: string
+}
+```
 
 ### TreeNode
 
