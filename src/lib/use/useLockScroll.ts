@@ -84,13 +84,21 @@ export function useLockScroll(
     }
   })
 
-  watch(visible, (visible) => {
-    if (visible) {
-      lock()
-    } else {
-      unlock()
-    }
-  })
+  watch(
+    visible,
+    (visible) => {
+      if (visible) {
+        lock()
+      } else {
+        unlock()
+      }
+    },
+    {
+      // 使用同步，避免 visible 为 false 且组件销毁时不执行 watch 回调，
+      // 并因 visible 为 false，导致 onBeforeUnmount 中不能执行 unlock。
+      flush: 'sync',
+    },
+  )
 }
 
 /**
