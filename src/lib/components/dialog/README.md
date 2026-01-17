@@ -71,26 +71,26 @@ import { dialog } from 'sard-uniapp'
 
 ### DialogProps
 
-| 属性                           | 描述                                                                 | 类型              | 默认值  |
-| ------------------------------ | -------------------------------------------------------------------- | ----------------- | ------- |
-| root-class                     | 对话框根元素类名                                                     | string            | -       |
-| root-style                     | 对话框根元素样式                                                     | StyleValue        | -       |
-| popup-class <sup>1.14.1+</sup> | 弹窗框根元素类名                                                     | string            | -       |
-| popup-style <sup>1.14.1+</sup> | 弹窗框根元素样式                                                     | StyleValue        | -       |
-| visible (v-model)              | 是否可见                                                             | boolean           | false   |
-| title                          | 标题                                                                 | string            | -       |
-| message                        | 文本内容                                                             | string            | -       |
-| headed                         | 是否显示带头部类型                                                   | boolean           | true    |
-| button-type                    | 按钮类型                                                             | 'round' \| 'text' | 'round' |
-| show-cancel                    | 是否显示取消按钮                                                     | boolean           | true    |
-| cancel-text                    | 取消按钮文案                                                         | string            | '取消'  |
-| show-confirm                   | 是否显示确定按钮                                                     | boolean           | true    |
-| confirm-text                   | 确定按钮文案                                                         | string            | '确定'  |
-| overlay-closable               | 点击遮罩是否关闭                                                     | boolean           | false   |
-| before-close                   | 关闭前的回调，返回 `false` 或 `rejected` 状态的 `Promise` 可阻止关闭 | DialogBeforeClose | -       |
-| duration                       | 显隐动画时长，单位 ms                                                | number            | 300     |
-| confirm-props <sup>1.10+</sup> | 设置确定按钮 props                                                   | ButtonProps       | -       |
-| cancel-props <sup>1.10+</sup>  | 设置取消按钮 props                                                   | ButtonProps       | -       |
+| 属性                           | 描述                                                           | 类型              | 默认值  |
+| ------------------------------ | -------------------------------------------------------------- | ----------------- | ------- |
+| root-class                     | 对话框根元素类名                                               | string            | -       |
+| root-style                     | 对话框根元素样式                                               | StyleValue        | -       |
+| popup-class <sup>1.14.1+</sup> | 弹窗框根元素类名                                               | string            | -       |
+| popup-style <sup>1.14.1+</sup> | 弹窗框根元素样式                                               | StyleValue        | -       |
+| visible (v-model)              | 是否可见                                                       | boolean           | false   |
+| title                          | 标题                                                           | string            | -       |
+| message                        | 文本内容                                                       | string            | -       |
+| headed                         | 是否显示带头部类型                                             | boolean           | true    |
+| button-type                    | 按钮类型                                                       | 'round' \| 'text' | 'round' |
+| show-cancel                    | 是否显示取消按钮                                               | boolean           | true    |
+| cancel-text                    | 取消按钮文案                                                   | string            | '取消'  |
+| show-confirm                   | 是否显示确定按钮                                               | boolean           | true    |
+| confirm-text                   | 确定按钮文案                                                   | string            | '确定'  |
+| overlay-closable               | 点击遮罩是否关闭                                               | boolean           | false   |
+| before-close                   | 关闭前的回调，返回 `false` 或 `Promise{<rejected>}` 可阻止关闭 | DialogBeforeClose | -       |
+| duration                       | 显隐动画时长，单位 ms                                          | number            | 300     |
+| confirm-props <sup>1.10+</sup> | 设置确定按钮 props                                             | ButtonProps       | -       |
+| cancel-props <sup>1.10+</sup>  | 设置取消按钮 props                                             | ButtonProps       | -       |
 
 #### DialogBeforeClose
 
