@@ -1,6 +1,7 @@
 <template>
   <view :class="formClass" :style="formStyle">
-    <slot></slot>
+    <!-- 默认插槽，并将 context 传出去 -->
+    <slot :context="formContext"></slot>
   </view>
 </template>
 
@@ -29,7 +30,7 @@ defineSlots<FormSlots>()
 const bem = createBem('form')
 
 // main
-const { expose } = useForm(props)
+const { expose, formContext } = useForm(props)
 
 defineExpose<FormExpose>(expose)
 

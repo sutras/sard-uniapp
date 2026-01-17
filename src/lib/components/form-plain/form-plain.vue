@@ -1,6 +1,7 @@
 <template>
   <view :class="rootClass" :style="rootStyle">
-    <slot></slot>
+    <!-- 默认插槽，并将 context 传出去 -->
+    <slot :context="formContext"></slot>
   </view>
 </template>
 
@@ -25,7 +26,7 @@ const props = withDefaults(defineProps<FormPlainProps>(), defaultFormProps)
 defineSlots<FormPlainSlots>()
 
 // main
-const { expose } = useForm(props)
+const { expose, formContext } = useForm(props)
 
 defineExpose<FormPlainExpose>(expose)
 </script>

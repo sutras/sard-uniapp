@@ -51,7 +51,7 @@ export const defaultFormProps = defaultConfig.form as Omit<
 >
 
 export interface FormSlots {
-  default?(props: Record<string, never>): any
+  default?(props: { context: FormContext }): any
 }
 
 export interface FormExpose {
@@ -62,6 +62,7 @@ export interface FormExpose {
 }
 
 export interface FormItemProps {
+  context?: FormContext
   rootStyle?: StyleValue
   rootClass?: string
 
