@@ -178,7 +178,7 @@ export interface ConfigOptions {
   pickerPopout?: InferDefaults<LooseRequired<PickerPopoutProps>>
   popout?: InferDefaults<LooseRequired<PopoutProps>>
   popoutInput?: InferDefaults<LooseRequired<PopoutInputProps>>
-  popover?: InferDefaults<LooseRequired<PopoverProps>>
+  popover?: InferDefaults<LooseRequired<PopoverProps<any>>>
   popup?: InferDefaults<LooseRequired<PopupProps>>
   progressBar?: InferDefaults<LooseRequired<ProgressBarProps>>
   progressCircle?: InferDefaults<LooseRequired<ProgressCircleProps>>
