@@ -1,5 +1,4 @@
 <template>
-  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <view class="relative box-border" :style="{ paddingTop }">
     <view class="absolute inset-0 flex justify-center items-center sbg-fourth">
       <text>{{ meta.width }}</text>
@@ -10,8 +9,6 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
-import { onBackPress } from '@dcloudio/uni-app'
 import { random, useTimeout } from 'sard-uniapp'
 import { computed, onMounted, ref } from 'vue'
 
@@ -60,15 +57,5 @@ const { start } = useTimeout(
 
 onMounted(() => {
   start()
-})
-const { isLocked } = useCurrentPageLock()
-
-const { shouldStopBack, hidePopup } = usePageTopPopup()
-
-onBackPress(() => {
-  if (shouldStopBack.value) {
-    hidePopup()
-    return true
-  }
 })
 </script>

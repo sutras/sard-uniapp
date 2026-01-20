@@ -164,7 +164,9 @@ watch([() => props.columns, () => props.columnGap, () => props.rowGap], () => {
 
 onShow(() => {
   // #ifdef WEB
-  reflow()
+  nextTick(() => {
+    reflow()
+  })
   // #endif
 })
 
