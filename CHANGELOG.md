@@ -1,3 +1,12 @@
+## [1.26.1](https://github.com/sutras/sard-uniapp/compare/v1.26.0...v1.26.1) (2026-01-20)
+
+
+### Bug Fixes
+
+* **waterfall:** 修复回流时获取不到高度导致重叠问题 ([41f434b](https://github.com/sutras/sard-uniapp/commit/41f434b86cb5cd76a8533690505924cd2942eb1e))
+
+
+
 # [1.26.0](https://github.com/sutras/sard-uniapp/compare/v1.25.11...v1.26.0) (2026-01-17)
 
 
