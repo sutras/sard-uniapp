@@ -23,7 +23,7 @@ export interface PopupProps {
   keepRender?: boolean
   overlayClosable?: boolean
   lockScroll?: boolean
-  backPress?: 'close' | 'back' | 'stop'
+  backPress?: 'close' | 'back'
 }
 
 export const defaultPopupProps = defaultConfig.popup

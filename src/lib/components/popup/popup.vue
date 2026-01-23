@@ -1,7 +1,7 @@
 <template>
   <!-- #ifdef MP -->
   <page-container
-    v-if="backPress !== 'back' && isTopLayer && backPressVisible"
+    v-if="realBackPressVisible"
     :show="visible"
     :duration="0"
     :z-index="0"
@@ -152,34 +152,40 @@ const { isTopLayer } = useTopPopup(
 
 const onBeforeLeave = () => {
   emit('back-press')
-  if (props.backPress === 'stop') {
-    backPressVisible.value = false
-    setTimeout(() => {
-      backPressVisible.value = true
-    }, 50)
-  } else {
-    emit('update:visible', false)
-  }
+  emit('update:visible', false)
 }
 
-const backPressVisible = ref(false)
+const backPressVisible = computed(() => {
+  return props.backPress === 'close' && isTopLayer.value && props.visible
+})
 
-// 确保两个 page-container 间有足够的时间切换
-const { start: setVisibleLater, stop: cancelDelayVisible } = useTimeout(() => {
-  backPressVisible.value = true
-}, 50)
+const realBackPressVisible = ref(backPressVisible.value)
 
-watch(
-  () => props.visible,
-  (visible) => {
-    if (visible) {
-      setVisibleLater()
-    } else {
-      backPressVisible.value = false
-      cancelDelayVisible()
-    }
+// 销毁之前确保有足够时间给 page-container 做一些隐藏操作（例如：移除页面样式）
+const { start: hideBackPressLater, stop: cancelBackPressHide } = useTimeout(
+  () => {
+    realBackPressVisible.value = false
   },
+  30,
 )
+
+// 创建之前确保有足够时间给上一个 popup 做销毁工作，确保一个页面仅存在一个 page-container
+const { start: showBackPressLater, stop: cancelBackPressShow } = useTimeout(
+  () => {
+    realBackPressVisible.value = true
+  },
+  40,
+)
+
+watch(backPressVisible, (visible) => {
+  if (visible) {
+    cancelBackPressHide()
+    showBackPressLater()
+  } else {
+    cancelBackPressShow()
+    hideBackPressLater()
+  }
+})
 
 const pageVisible = ref(true)
 
