@@ -1,3 +1,12 @@
+## [1.26.2](https://github.com/sutras/sard-uniapp/compare/v1.26.1...v1.26.2) (2026-01-23)
+
+
+### Bug Fixes
+
+* 修复弹出框关闭后页面无法滚动的问题 ([f5a7a92](https://github.com/sutras/sard-uniapp/commit/f5a7a92a015d1c6b2cb0ad7ab885b001b14dae0f))
+
+
+
 ## [1.26.1](https://github.com/sutras/sard-uniapp/compare/v1.26.0...v1.26.1) (2026-01-20)
 
 
