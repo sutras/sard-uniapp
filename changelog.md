@@ -1,3 +1,12 @@
+## [1.27.1](https://github.com/sutras/sard-uniapp/compare/v1.27.0...v1.27.1) (2026-03-07)
+
+
+### Features
+
+* **select-popout:** 新增show-confirm属性 ([017d4ba](https://github.com/sutras/sard-uniapp/commit/017d4ba86f05ebe368ace11d4b47f2ff6f752c67))
+
+
+
 # [1.27.0](https://github.com/sutras/sard-uniapp/compare/v1.26.3...v1.27.0) (2026-02-23)
 
 
