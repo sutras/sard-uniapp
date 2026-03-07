@@ -38,6 +38,7 @@ export interface SelectSlots {
 export interface SelectEmits {
   (e: 'update:model-value', value: any): void
   (e: 'change', value: any): void
+  (e: 'select', value: any): void
 }
 
 export interface SelectExpose {}
@@ -59,6 +60,7 @@ export interface SelectContext {
   getEnabledValue: () => any[]
   selectItems: Ref<SelectItem[]>
   setToggle: (toggle: (value: any) => void) => void
+  setSelect: (select: (value: any) => void) => void
 }
 
 export const selectContextSymbol = Symbol('select-context')

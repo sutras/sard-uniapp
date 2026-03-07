@@ -156,11 +156,15 @@ const isGroupable = computed(() => {
 
 const scrollViewId = uniqid()
 
-const { innerValue, selectItems, getEnabledValue, setToggle } =
+const { innerValue, selectItems, getEnabledValue, setToggle, setSelect } =
   inject<SelectContext | null>(selectContextSymbol, null) || useSelect(props)
 
 setToggle((value: any) => {
   triggerChange(value)
+})
+
+setSelect((value: any) => {
+  emit('select', value)
 })
 
 watch(

@@ -608,6 +608,7 @@ export const defaultConfig: RequiredConfigOptions = {
     maxLabels: 10,
   },
   selectPopout: {
+    showConfirm: true,
     validateEvent: true,
   },
   shareSheet: {

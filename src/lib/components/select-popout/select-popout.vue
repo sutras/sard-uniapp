@@ -2,6 +2,7 @@
   <sar-popout
     v-model:visible="innerVisible"
     :title="$slots.title ? '' : title"
+    :show-confirm="showConfirm"
     :root-class="popoutClass"
     :root-style="popoutStyle"
     @confirm="onConfirm"
@@ -14,6 +15,7 @@
         :model-value="popoutValue"
         :internal-default="internalDefault"
         @change="onChange"
+        @select="onSelect"
       >
         <slot></slot>
       </sar-select>
@@ -58,6 +60,13 @@ const omittedProps = omitFormPopoutProps(props)
 
 const { innerVisible, popoutValue, onChange, onConfirm, onVisibleHook } =
   useFormPopout(props, emit)
+
+const onSelect = () => {
+  if (!props.multiple && !props.showConfirm) {
+    onConfirm(false)
+    innerVisible.value = false
+  }
+}
 
 const internalDefault = computed(() =>
   isNumber(props.internalDefault)

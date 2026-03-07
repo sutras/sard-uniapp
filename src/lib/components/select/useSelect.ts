@@ -30,6 +30,7 @@ export function useSelect(props: { multiple: boolean; multipleLimit: number }) {
   }
 
   let onToggle: ((value: any) => void) | null
+  let onSelect: ((value: any) => void) | null
 
   const toggle = (value: any) => {
     let nextValue: any
@@ -39,15 +40,23 @@ export function useSelect(props: { multiple: boolean; multipleLimit: number }) {
         ? innerValue.value.filter((val: any) => val !== value)
         : innerValue.value.concat(value)
     } else {
-      if (value === innerValue.value) return
+      if (value === innerValue.value) {
+        onSelect?.(value)
+        return
+      }
       nextValue = value
     }
 
     onToggle?.(nextValue)
+    onSelect?.(value)
   }
 
   const setToggle = (toggle: (value: any) => void) => {
     onToggle = toggle
+  }
+
+  const setSelect = (select: (value: any) => void) => {
+    onSelect = select
   }
 
   const context: SelectContext = {
@@ -60,6 +69,7 @@ export function useSelect(props: { multiple: boolean; multipleLimit: number }) {
     getEnabledValue,
     selectItems,
     setToggle,
+    setSelect,
   }
 
   provide<SelectContext>(selectContextSymbol, context)
