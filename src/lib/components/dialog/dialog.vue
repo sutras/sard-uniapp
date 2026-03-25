@@ -32,9 +32,9 @@
         <view v-if="!headed && title" :class="bem.e('title')">
           {{ title }}
         </view>
-        <view v-if="message" :class="bem.e('message')">
+        <text v-if="message" :class="bem.e('message')">
           {{ message }}
-        </view>
+        </text>
       </view>
       <slot></slot>
 
