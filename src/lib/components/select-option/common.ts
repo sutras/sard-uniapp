@@ -9,7 +9,7 @@ export interface SelectOptionProps {
   plain?: boolean
 }
 
-export const defaultSelectOptionProps = {}
+export const defaultSelectOptionProps = () => ({})
 
 export interface SelectOptionSlots {
   default?(props: { disabled: boolean; selected: boolean }): any

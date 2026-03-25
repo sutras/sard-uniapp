@@ -53,7 +53,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<ScrollListProps>(),
-  defaultScrollListProps,
+  defaultScrollListProps(),
 )
 
 defineSlots<ScrollListSlots>()

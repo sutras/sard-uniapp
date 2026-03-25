@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type InputProps } from '../input'
 export interface PopoutInputProps {
   rootStyle?: StyleValue
@@ -19,7 +19,11 @@ export interface PopoutInputProps {
   inputProps?: InputProps
 }
 
-export const defaultPopoutInputProps = defaultConfig.popoutInput
+export const defaultPopoutInputProps = (): DefaultProps<PopoutInputProps> => ({
+  arrow: 'caret-right',
+  arrowFamily: 'sari',
+  ...defaultConfig.popoutInput,
+})
 
 export interface PopoutInputEmits {
   (e: 'click', event: any): void

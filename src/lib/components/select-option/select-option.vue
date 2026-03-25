@@ -67,7 +67,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<SelectOptionProps>(),
-  defaultSelectOptionProps,
+  defaultSelectOptionProps(),
 )
 
 defineSlots<SelectOptionSlots>()

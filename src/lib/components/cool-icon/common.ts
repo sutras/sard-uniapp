@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface CoolIconProps {
   rootStyle?: StyleValue
@@ -11,7 +11,10 @@ export interface CoolIconProps {
   background?: string
 }
 
-export const defaultCoolIconProps = defaultConfig.coolIcon
+export const defaultCoolIconProps = (): DefaultProps<CoolIconProps> => ({
+  shape: 'oval',
+  ...defaultConfig.coolIcon,
+})
 
 export interface CoolIconSlots {
   default?(props: Record<string, never>): any

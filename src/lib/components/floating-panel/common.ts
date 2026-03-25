@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface FloatingPanelProps {
   rootStyle?: StyleValue
@@ -11,7 +11,13 @@ export interface FloatingPanelProps {
   safeAreaInsetBottom?: boolean
 }
 
-export const defaultFloatingPanelProps = defaultConfig.floatingPanel
+export const defaultFloatingPanelProps =
+  (): DefaultProps<FloatingPanelProps> => ({
+    duration: 300,
+    contentDraggable: true,
+    safeAreaInsetBottom: true,
+    ...defaultConfig.floatingPanel,
+  })
 
 export interface FloatingPanelSlots {
   default?(props: Record<string, never>): any

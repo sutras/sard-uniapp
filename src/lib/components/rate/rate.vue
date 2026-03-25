@@ -74,7 +74,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<RateProps>(), defaultRateProps)
+const props = withDefaults(defineProps<RateProps>(), defaultRateProps())
 
 const emit = defineEmits<RateEmits>()
 

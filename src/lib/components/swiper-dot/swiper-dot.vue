@@ -35,7 +35,10 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<SwiperDotProps>(), defaultSwiperDotProps)
+const props = withDefaults(
+  defineProps<SwiperDotProps>(),
+  defaultSwiperDotProps(),
+)
 
 const bem = createBem('swiper-dot')
 

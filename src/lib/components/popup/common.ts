@@ -1,6 +1,6 @@
 import { type StyleValue, inject, ref, provide, watch, reactive } from 'vue'
 import { type TransitionHookName } from '../../use'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface PopupProps {
   rootStyle?: StyleValue
@@ -26,7 +26,15 @@ export interface PopupProps {
   backPress?: 'close' | 'back'
 }
 
-export const defaultPopupProps = defaultConfig.popup
+export const defaultPopupProps = (): DefaultProps<PopupProps> => ({
+  duration: 250,
+  effect: 'fade',
+  overlay: true,
+  overlayClosable: true,
+  lockScroll: true,
+  backPress: 'close',
+  ...defaultConfig.popup,
+})
 
 export interface PopupSlots {
   default?(props: Record<string, never>): any

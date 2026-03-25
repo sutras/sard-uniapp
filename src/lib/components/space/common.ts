@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export type SpaceSize = 'small' | 'middle' | 'large'
 export type SpaceAlign = 'start' | 'end' | 'center' | 'baseline'
@@ -36,7 +36,11 @@ export const spaceMapJustify: Record<string, string> = {
   evenly: 'space-evenly',
 }
 
-export const defaultSpaceProps = defaultConfig.space
+export const defaultSpaceProps = (): DefaultProps<SpaceProps> => ({
+  direction: 'horizontal',
+  size: 'middle',
+  ...defaultConfig.space,
+})
 
 export interface SpaceSlots {
   default?(props: Record<string, never>): any

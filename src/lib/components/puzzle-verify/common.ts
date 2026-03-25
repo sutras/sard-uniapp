@@ -1,4 +1,4 @@
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import {
   type SlideVerifyEmits,
   type SlideVerifyExpose,
@@ -11,10 +11,12 @@ export interface PuzzleVerifyProps extends SlideVerifyProps {
   aspectRatio?: number
 }
 
-export const defaultPuzzleVerifyProps = {
-  ...defaultConfig.slideVerify,
-  ...defaultConfig.puzzleVerify,
-}
+export const defaultPuzzleVerifyProps =
+  (): DefaultProps<PuzzleVerifyProps> => ({
+    resetWhenError: true,
+    ...defaultConfig.slideVerify,
+    ...defaultConfig.puzzleVerify,
+  })
 
 export interface PuzzleVerifySlots extends SlideVerifySlots {}
 

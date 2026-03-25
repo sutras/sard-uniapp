@@ -1,4 +1,4 @@
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import {
   type SlideVerifySlots,
   type SlideVerifyProps,
@@ -10,10 +10,12 @@ export interface RotateVerifyProps extends SlideVerifyProps {
   src?: string
 }
 
-export const defaultRotateVerifyProps = {
-  ...defaultConfig.slideVerify,
-  ...defaultConfig.rotateVerify,
-}
+export const defaultRotateVerifyProps =
+  (): DefaultProps<RotateVerifyProps> => ({
+    resetWhenError: true,
+    ...defaultConfig.slideVerify,
+    ...defaultConfig.rotateVerify,
+  })
 
 export interface RotateVerifySlots extends SlideVerifySlots {}
 

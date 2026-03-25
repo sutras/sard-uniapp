@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface IconProps {
   rootStyle?: StyleValue
@@ -11,7 +11,12 @@ export interface IconProps {
   separate?: boolean
 }
 
-export const defaultIconProps = defaultConfig.icon
+export const defaultIconProps = (): DefaultProps<IconProps> => ({
+  name: '',
+  family: 'sari',
+  separate: false,
+  ...defaultConfig.icon,
+})
 
 export interface IconEmits {
   (e: 'click', event: any): void

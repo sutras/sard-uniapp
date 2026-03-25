@@ -51,7 +51,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<PasswordInputProps>(),
-  defaultPasswordInputProps,
+  defaultPasswordInputProps(),
 )
 
 const emit = defineEmits<PasswordInputEmits>()

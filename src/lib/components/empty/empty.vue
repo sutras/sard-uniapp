@@ -31,7 +31,7 @@ defineOptions({
 })
 
 const { t } = useTranslate('empty')
-const props = withDefaults(defineProps<EmptyProps>(), defaultEmptyProps)
+const props = withDefaults(defineProps<EmptyProps>(), defaultEmptyProps())
 
 defineSlots<EmptySlots>()
 

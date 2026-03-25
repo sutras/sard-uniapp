@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface LoadingProps {
   rootStyle?: StyleValue
@@ -15,7 +15,8 @@ export interface LoadingProps {
   progress?: number
 }
 
-export const defaultLoadingProps = () => ({
+export const defaultLoadingProps = (): DefaultProps<LoadingProps> => ({
+  type: 'circular',
   ...defaultConfig.loading,
   animated: true,
   progress: 1,

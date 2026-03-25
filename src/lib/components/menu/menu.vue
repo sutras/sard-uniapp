@@ -32,7 +32,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<MenuProps<T>>(), defaultMenuProps)
+const props = withDefaults(defineProps<MenuProps<T>>(), defaultMenuProps())
 
 const emit = defineEmits<MenuEmits<T>>()
 

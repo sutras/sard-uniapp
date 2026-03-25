@@ -62,7 +62,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<ImageProps>(), defaultImageProps)
+const props = withDefaults(defineProps<ImageProps>(), defaultImageProps())
 
 defineSlots<ImageSlots>()
 

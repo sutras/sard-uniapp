@@ -109,7 +109,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<SliderProps>(), defaultSliderProps)
+const props = withDefaults(defineProps<SliderProps>(), defaultSliderProps())
 
 defineSlots<SliderSlots>()
 

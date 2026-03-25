@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface NoticeBarProps {
   rootStyle?: StyleValue
@@ -17,7 +17,13 @@ export interface NoticeBarProps {
   vertical?: boolean
 }
 
-export const defaultNoticeBarProps = defaultConfig.noticeBar
+export const defaultNoticeBarProps = (): DefaultProps<NoticeBarProps> => ({
+  delay: 1000,
+  speed: 50,
+  scrollable: 'auto',
+  visible: true,
+  ...defaultConfig.noticeBar,
+})
 
 export interface NoticeBarSlots {
   default?(props: Record<string, never>): any

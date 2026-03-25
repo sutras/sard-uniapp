@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface SearchProps {
   rootStyle?: StyleValue
@@ -18,7 +18,11 @@ export interface SearchProps {
   focus?: boolean
 }
 
-export const defaultSearchProps = defaultConfig.search
+export const defaultSearchProps = (): DefaultProps<SearchProps> => ({
+  shape: 'square',
+  focus: false,
+  ...defaultConfig.search,
+})
 
 export interface SearchSlots {
   prepend?(props: Record<string, never>): any

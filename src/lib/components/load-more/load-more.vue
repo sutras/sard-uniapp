@@ -36,7 +36,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<LoadMoreProps>(), defaultLoadMoreProps)
+const props = withDefaults(defineProps<LoadMoreProps>(), defaultLoadMoreProps())
 
 defineSlots<LoadMoreSlots>()
 

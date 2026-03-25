@@ -7,7 +7,7 @@ export interface SelectOptionGroupProps {
   disabled?: boolean
 }
 
-export const defaultSelectOptionGroupProps = {}
+export const defaultSelectOptionGroupProps = () => ({})
 
 export interface SelectOptionGroupSlots {
   default?(props: Record<string, never>): any

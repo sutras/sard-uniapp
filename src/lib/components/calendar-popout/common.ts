@@ -1,14 +1,20 @@
 import { type CalendarProps } from '../calendar/common'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 import { type FormPopoutProps } from '../../use/useFormPopout'
 
 export interface CalendarPopoutProps extends FormPopoutProps, CalendarProps {}
 
-export const defaultCalendarPopoutProps = () => ({
-  ...defaultConfig.calendar,
-  ...defaultConfig.calendarPopout,
-})
+export const defaultCalendarPopoutProps =
+  (): DefaultProps<CalendarPopoutProps> => ({
+    type: 'single',
+    maxDays: Number.MAX_SAFE_INTEGER,
+    weekStartsOn: 0,
+    ...defaultConfig.calendar,
+    showConfirm: true,
+    validateEvent: true,
+    ...defaultConfig.calendarPopout,
+  })
 
 export interface CalendarPopoutSlots {
   default?(props: Record<string, never>): any

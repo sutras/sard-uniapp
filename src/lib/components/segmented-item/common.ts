@@ -12,7 +12,7 @@ export interface SegmentedItemProps {
   readonly?: boolean
 }
 
-export const defaultSegmentedItemProps = {}
+export const defaultSegmentedItemProps = () => ({})
 
 export interface SegmentedItemSlots {
   default?(props: Record<string, never>): any

@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface BackTopProps {
   rootStyle?: StyleValue
@@ -10,7 +10,8 @@ export interface BackTopProps {
   bottom?: string
 }
 
-export const defaultBackTopProps = () => ({
+export const defaultBackTopProps = (): DefaultProps<BackTopProps> => ({
+  visibleHeight: 200,
   ...defaultConfig.backTop,
   scrollTop: 0,
 })

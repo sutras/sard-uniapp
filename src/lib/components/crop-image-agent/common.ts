@@ -1,5 +1,5 @@
 import { getAvailableImperative } from '../../use'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { CropImageProps, defaultCropImageProps } from '../crop-image/common'
 
 export interface CropImageAgentProps extends CropImageProps {
@@ -9,10 +9,12 @@ export interface CropImageAgentProps extends CropImageProps {
 export type CropImageOptions = Omit<CropImageAgentProps, 'src'> &
   Required<Pick<CropImageAgentProps, 'src'>>
 
-export const defaultCropImageAgentProps = () => ({
-  ...defaultCropImageProps,
-  ...defaultConfig.cropImageAgent,
-})
+export const defaultCropImageAgentProps =
+  (): DefaultProps<CropImageAgentProps> => ({
+    ...defaultCropImageProps(),
+    id: 'cropImage',
+    ...defaultConfig.cropImageAgent,
+  })
 
 export const imperativeName = 'cropImage'
 
@@ -22,7 +24,7 @@ export interface CropImageImperative {
 }
 
 const cropImage = (options: CropImageOptions) => {
-  const { id = defaultConfig.cropImageAgent.id as string } = options
+  const { id = defaultCropImageAgentProps().id as string } = options
 
   const imperative = getAvailableImperative<CropImageImperative>(
     imperativeName,

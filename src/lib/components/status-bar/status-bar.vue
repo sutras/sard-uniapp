@@ -27,7 +27,10 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<StatusBarProps>(), defaultStatusBarProps)
+const props = withDefaults(
+  defineProps<StatusBarProps>(),
+  defaultStatusBarProps(),
+)
 
 defineSlots<StatusBarSlots>()
 

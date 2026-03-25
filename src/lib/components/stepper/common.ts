@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface StepperProps {
   rootStyle?: StyleValue
@@ -22,7 +22,18 @@ export interface StepperProps {
   size?: 'small' | 'medium'
 }
 
-export const defaultStepperProps = defaultConfig.stepper
+export const defaultStepperProps = (): DefaultProps<StepperProps> => ({
+  min: Number.MIN_SAFE_INTEGER,
+  max: Number.MAX_SAFE_INTEGER,
+  step: 1,
+  inputType: 'number',
+  press: true,
+  pressTime: 350,
+  interval: 150,
+  validateEvent: true,
+  size: 'medium',
+  ...defaultConfig.stepper,
+})
 
 export interface StepperEmits {
   (e: 'update:model-value', value: number | string | undefined): void

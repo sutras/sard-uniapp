@@ -33,7 +33,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<FloatingBubbleProps>(),
-  defaultFloatingBubbleProps,
+  defaultFloatingBubbleProps(),
 )
 
 defineSlots<FloatingBubbleSlots>()

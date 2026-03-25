@@ -41,7 +41,10 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<SegmentedProps>(), defaultSegmentedProps)
+const props = withDefaults(
+  defineProps<SegmentedProps>(),
+  defaultSegmentedProps(),
+)
 
 defineSlots<SegmentedSlots>()
 

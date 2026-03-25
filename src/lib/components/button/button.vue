@@ -70,7 +70,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<ButtonProps>(), defaultButtonProps)
+const props = withDefaults(defineProps<ButtonProps>(), defaultButtonProps())
 
 defineSlots<ButtonSlots>()
 

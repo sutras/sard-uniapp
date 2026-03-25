@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type BadgeProps } from '../badge'
 
 export interface GridProps {
@@ -14,7 +14,11 @@ export interface GridProps {
   direction?: 'horizontal' | 'vertical'
 }
 
-export const defaultGridProps = defaultConfig.grid
+export const defaultGridProps = (): DefaultProps<GridProps> => ({
+  columns: 4,
+  direction: 'vertical',
+  ...defaultConfig.grid,
+})
 
 export interface GridSlots {
   default?(props: Record<string, never>): any

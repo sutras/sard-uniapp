@@ -46,7 +46,10 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<WatermarkProps>(), defaultWatermarkProps)
+const props = withDefaults(
+  defineProps<WatermarkProps>(),
+  defaultWatermarkProps(),
+)
 
 defineSlots<WatermarkSlots>()
 

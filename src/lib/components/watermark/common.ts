@@ -1,6 +1,6 @@
 import { type StyleValue } from 'vue'
 
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface WatermarkFont {
   color?: string
@@ -25,7 +25,14 @@ export interface WatermarkProps {
   offset?: [number, number]
 }
 
-export const defaultWatermarkProps = defaultConfig.watermark
+export const defaultWatermarkProps = (): DefaultProps<WatermarkProps> => ({
+  width: 120,
+  height: 64,
+  rotate: -22,
+  zIndex: 9,
+  gap: () => [30, 30],
+  ...defaultConfig.watermark,
+})
 
 export const defaultWatermarkFont: Required<WatermarkFont> = {
   color: 'rgba(0,0,0,.15)',

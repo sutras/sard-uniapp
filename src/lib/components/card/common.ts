@@ -1,4 +1,5 @@
 import { type StyleValue } from 'vue'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface CardProps {
   rootStyle?: StyleValue
@@ -11,6 +12,10 @@ export interface CardProps {
   hideFooterBorder?: boolean
   collapsed?: boolean
 }
+
+export const defaultCardProps = (): DefaultProps<CardProps> => ({
+  ...defaultConfig.card,
+})
 
 export interface CardSlots {
   default?(props: Record<string, never>): any

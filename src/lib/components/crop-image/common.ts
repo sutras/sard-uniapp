@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 
 export interface CropImageProps {
@@ -21,7 +21,13 @@ export interface CropImageProps {
   confirmText?: string
 }
 
-export const defaultCropImageProps = defaultConfig.cropImage
+export const defaultCropImageProps = (): DefaultProps<CropImageProps> => ({
+  duration: 150,
+  cropScale: '1:1',
+  type: 'png',
+  quality: 0.92,
+  ...defaultConfig.cropImage,
+})
 
 export interface CropImageSlots {
   default?(props: Record<string, never>): any

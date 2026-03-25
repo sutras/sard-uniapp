@@ -11,7 +11,7 @@ export interface ScrollListProps {
   lowerThreshold?: number
 }
 
-export const defaultScrollListProps = {}
+export const defaultScrollListProps = () => ({})
 
 export interface ScrollListSlots {
   default?(props: Record<string, never>): any

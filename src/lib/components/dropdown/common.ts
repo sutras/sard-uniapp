@@ -1,5 +1,5 @@
 import { type StyleValue, type Ref } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 
 export interface DropdownProps {
@@ -14,7 +14,14 @@ export interface DropdownProps {
   valueOnClear?: () => any
 }
 
-export const defaultDropdownProps = defaultConfig.dropdown
+export const defaultDropdownProps = (): DefaultProps<DropdownProps> => ({
+  direction: 'down',
+  disabled: false,
+  awayClosable: true,
+  overlayClosable: true,
+  duration: 200,
+  ...defaultConfig.dropdown,
+})
 
 export interface DropdownSlots {
   default?(props: Record<string, never>): any
@@ -53,9 +60,9 @@ export interface DropdownItemProps {
   beforeOpen?: DropdownBeforeOpen
 }
 
-export const defaultDropdownItemProps = {
+export const defaultDropdownItemProps = () => ({
   options: () => [],
-}
+})
 
 export interface DropdownItemSlots {
   default?(props: Record<string, never>): any

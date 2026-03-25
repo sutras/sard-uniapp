@@ -1,4 +1,4 @@
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import {
   type DatetimeRangePickerPopoutProps,
   type DatetimeRangePickerPopoutSlots,
@@ -16,11 +16,14 @@ export interface DatetimeRangePickerInputProps
   valueOnClear?: () => any
 }
 
-export const defaultDatetimeRangePickerInputProps = () => ({
-  ...defaultConfig.datetimeRangePicker,
-  ...defaultConfig.datetimeRangePickerPopout,
-  ...defaultConfig.datetimeRangePickerInput,
-})
+export const defaultDatetimeRangePickerInputProps =
+  (): DefaultProps<DatetimeRangePickerInputProps> => ({
+    type: 'yMd',
+    ...defaultConfig.datetimeRangePicker,
+    validateEvent: true,
+    ...defaultConfig.datetimeRangePickerPopout,
+    ...defaultConfig.datetimeRangePickerInput,
+  })
 
 export interface DatetimeRangePickerInputSlots
   extends DatetimeRangePickerPopoutSlots,

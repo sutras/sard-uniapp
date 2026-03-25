@@ -50,7 +50,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<QrcodeProps>(), defaultQrcodeProps)
+const props = withDefaults(defineProps<QrcodeProps>(), defaultQrcodeProps())
 
 const emit = defineEmits<QrcodeEmits>()
 

@@ -183,7 +183,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<InputProps>(), defaultInputProps)
+const props = withDefaults(defineProps<InputProps>(), defaultInputProps())
 
 defineSlots<InputSlots>()
 

@@ -24,7 +24,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<SwitchProps>(), defaultSwitchProps)
+const props = withDefaults(defineProps<SwitchProps>(), defaultSwitchProps())
 
 const emit = defineEmits<SwitchEmits>()
 

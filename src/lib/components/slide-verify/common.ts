@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface SlideVerifyResult {
   targetPos: number
@@ -22,7 +22,10 @@ export interface SlideVerifyProps {
   verify?: (result: SlideVerifyResult) => Promise<boolean> | boolean
 }
 
-export const defaultSlideVerifyProps = defaultConfig.slideVerify
+export const defaultSlideVerifyProps = (): DefaultProps<SlideVerifyProps> => ({
+  resetWhenError: true,
+  ...defaultConfig.slideVerify,
+})
 
 export interface SlideVerifySlots {}
 

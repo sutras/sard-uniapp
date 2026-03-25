@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 
 export interface ShareSheetProps {
@@ -15,7 +15,11 @@ export interface ShareSheetProps {
   duration?: number
 }
 
-export const defaultShareSheetProps = defaultConfig.shareSheet
+export const defaultShareSheetProps = (): DefaultProps<ShareSheetProps> => ({
+  overlayClosable: true,
+  duration: 250,
+  ...defaultConfig.shareSheet,
+})
 
 export interface ShareSheetEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void

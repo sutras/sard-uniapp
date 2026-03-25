@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type OptionKeys } from '../../use'
 
 export type IconType = 'square' | 'circle'
@@ -19,7 +19,10 @@ export interface CheckboxProps {
   validateEvent?: boolean
 }
 
-export const defaultCheckboxProps = defaultConfig.checkbox
+export const defaultCheckboxProps = (): DefaultProps<CheckboxProps> => ({
+  validateEvent: true,
+  ...defaultConfig.checkbox,
+})
 
 export interface CheckboxSlots {
   default?(props: Record<string, never>): any
@@ -55,7 +58,12 @@ export interface CheckboxGroupProps {
   optionKeys?: OptionKeys
 }
 
-export const defaultCheckboxGroupProps = defaultConfig.checkboxGroup
+export const defaultCheckboxGroupProps =
+  (): DefaultProps<CheckboxGroupProps> => ({
+    direction: 'vertical',
+    validateEvent: true,
+    ...defaultConfig.checkboxGroup,
+  })
 
 export interface CheckboxGroupSlots {
   default?(props: Record<string, never>): any

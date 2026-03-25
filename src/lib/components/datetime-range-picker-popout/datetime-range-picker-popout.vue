@@ -35,7 +35,7 @@ import {
   type DatetimeRangePickerPopoutProps,
   type DatetimeRangePickerPopoutSlots,
   type DatetimeRangePickerPopoutEmits,
-  defaultDatetimeRangePickerInputProps,
+  defaultDatetimeRangePickerPopoutProps,
 } from './common'
 import { isEmptyBinding, toDate } from '../../utils'
 import {
@@ -54,7 +54,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<DatetimeRangePickerPopoutProps>(),
-  defaultDatetimeRangePickerInputProps(),
+  defaultDatetimeRangePickerPopoutProps(),
 )
 
 defineSlots<DatetimeRangePickerPopoutSlots>()

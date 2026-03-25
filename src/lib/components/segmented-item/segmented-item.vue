@@ -39,7 +39,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<SegmentedItemProps>(),
-  defaultSegmentedItemProps,
+  defaultSegmentedItemProps(),
 )
 
 defineSlots<SegmentedItemSlots>()

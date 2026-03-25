@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface AlertProps {
   rootStyle?: StyleValue
@@ -11,7 +11,10 @@ export interface AlertProps {
   background?: string
 }
 
-export const defaultAlertProps = defaultConfig.alert
+export const defaultAlertProps = (): DefaultProps<AlertProps> => ({
+  type: 'primary',
+  ...defaultConfig.alert,
+})
 
 export interface AlertSlots {
   default?(props: Record<string, never>): any

@@ -1,4 +1,4 @@
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import {
   type SelectPopoutEmits,
   type SelectPopoutProps,
@@ -17,8 +17,9 @@ export interface SelectInputProps
   maxLabels?: number
 }
 
-export const defaultSelectInputProps = () => ({
+export const defaultSelectInputProps = (): DefaultProps<SelectInputProps> => ({
   ...defaultSelectPopoutProps(),
+  maxLabels: 10,
   ...defaultConfig.selectInput,
 })
 

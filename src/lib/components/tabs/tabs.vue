@@ -68,7 +68,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<TabsProps>(), defaultTabsProps)
+const props = withDefaults(defineProps<TabsProps>(), defaultTabsProps())
 
 defineSlots<TabsSlots>()
 

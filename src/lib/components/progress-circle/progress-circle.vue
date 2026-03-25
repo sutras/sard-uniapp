@@ -34,7 +34,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<ProgressCircleProps>(),
-  defaultProgressCircle,
+  defaultProgressCircle(),
 )
 
 defineSlots<ProgressCircleSlots>()

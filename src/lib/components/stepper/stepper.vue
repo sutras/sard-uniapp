@@ -73,7 +73,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<StepperProps>(), defaultStepperProps)
+const props = withDefaults(defineProps<StepperProps>(), defaultStepperProps())
 
 const emit = defineEmits<StepperEmits>()
 

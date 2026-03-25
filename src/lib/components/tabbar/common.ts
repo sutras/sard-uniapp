@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface TabbarProps {
   rootStyle?: StyleValue
@@ -12,7 +12,10 @@ export interface TabbarProps {
   safeAreaInsetBottom?: boolean
 }
 
-export const defaultTabbarProps = defaultConfig.tabbar
+export const defaultTabbarProps = (): DefaultProps<TabbarProps> => ({
+  bordered: true,
+  ...defaultConfig.tabbar,
+})
 
 export interface TabbarSlots {
   default?(props: Record<string, never>): any

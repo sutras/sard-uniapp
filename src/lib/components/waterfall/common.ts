@@ -1,5 +1,5 @@
 import { InjectionKey, type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type WaterfallItemInfo } from '../waterfall-item/common'
 
 export interface WaterfallProps {
@@ -10,7 +10,12 @@ export interface WaterfallProps {
   rowGap?: number
 }
 
-export const defaultWaterfallProps = defaultConfig.waterfall
+export const defaultWaterfallProps = (): DefaultProps<WaterfallProps> => ({
+  columns: 2,
+  columnGap: 16,
+  rowGap: 16,
+  ...defaultConfig.waterfall,
+})
 
 export interface WaterfallSlots {
   default?(props: Record<string, never>): any

@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface FabProps {
   rootStyle?: StyleValue
@@ -28,7 +28,14 @@ export interface FabProps {
   tabbarHeight?: number
 }
 
-export const defaultFabProps = () => ({
+export const defaultFabProps = (): DefaultProps<FabProps> => ({
+  overlayClosable: false,
+  hideName: false,
+  duration: 150,
+  draggable: false,
+  axis: 'y',
+  gapX: 24,
+  gapY: 24,
   ...defaultConfig.fab,
   itemList: () => [],
 })

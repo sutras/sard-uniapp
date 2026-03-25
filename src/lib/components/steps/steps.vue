@@ -31,7 +31,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<StepsProps>(), defaultStepsProps)
+const props = withDefaults(defineProps<StepsProps>(), defaultStepsProps())
 
 defineSlots<StepsSlots>()
 

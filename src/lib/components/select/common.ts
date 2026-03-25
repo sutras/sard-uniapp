@@ -1,5 +1,5 @@
 import { type Ref, type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type NodeRect } from '../../utils'
 import { type OptionKeys } from '../../use'
 
@@ -26,7 +26,9 @@ export interface SelectProps {
   internalDefault?: number
 }
 
-export const defaultSelectProps = () => ({
+export const defaultSelectProps = (): DefaultProps<SelectProps> => ({
+  multipleLimit: 0,
+  threshold: 500,
   ...defaultConfig.select,
   options: () => [],
 })

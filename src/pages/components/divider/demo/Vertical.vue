@@ -9,4 +9,5 @@
     vertical
     root-style="border-color: rgba(var(--sar-primary-rgb), 0.6)"
   ></sar-divider>
+  <text>文本</text>
 </template>

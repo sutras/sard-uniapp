@@ -87,7 +87,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<UploadPreviewProps>(),
-  defaultUploadPreviewProps,
+  defaultUploadPreviewProps(),
 )
 
 const emit = defineEmits<UploadPreviewEmits>()

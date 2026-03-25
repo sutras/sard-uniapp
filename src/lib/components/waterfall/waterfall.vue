@@ -41,7 +41,10 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<WaterfallProps>(), defaultWaterfallProps)
+const props = withDefaults(
+  defineProps<WaterfallProps>(),
+  defaultWaterfallProps(),
+)
 
 defineSlots<WaterfallSlots>()
 

@@ -3,7 +3,7 @@ import {
   type NotifyProps,
   defaultNotifyProps,
 } from '../notify/common'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import {
   getAllImperatives,
   getAvailableImperative,
@@ -15,8 +15,9 @@ export interface NotifyAgentProps extends NotifyProps, TransitionHookCallbacks {
   id?: string
 }
 
-export const defaultNotifyAgentProps = () => ({
-  ...defaultNotifyProps,
+export const defaultNotifyAgentProps = (): DefaultProps<NotifyAgentProps> => ({
+  ...defaultNotifyProps(),
+  id: 'notify',
   ...defaultConfig.notifyAgent,
 })
 
@@ -65,7 +66,7 @@ const show: NotifyShowFunction = (
 
   options.type = internalType
 
-  const { id = defaultConfig.notifyAgent.id as string } = options
+  const { id = defaultNotifyAgentProps().id as string } = options
 
   const imperative = getAvailableImperative<NotifyImperative>(
     imperativeName,
@@ -104,7 +105,7 @@ const error: NotifySimpleShowFunction = (
   show(optionsOrMessage, options, 'error')
 }
 
-const hide = (id = defaultConfig.notifyAgent.id as string) => {
+const hide = (id = defaultNotifyAgentProps().id as string) => {
   const imperatives = getImperatives<NotifyImperative>(imperativeName, id)
   if (imperatives && imperatives.length > 0) {
     imperatives.forEach((item) => {

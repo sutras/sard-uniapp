@@ -1,7 +1,7 @@
 import { type StyleValue, type Ref, inject } from 'vue'
 import { type Validator, type Rule } from './Validator'
 import { type ScrollIntoViewOptions } from '../../utils'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface FormRules {
   [key: PropertyKey]: Rule | Rule[] | FormRules
@@ -45,10 +45,19 @@ export interface FormProps {
   card?: boolean
 }
 
-export const defaultFormProps = defaultConfig.form as Omit<
-  typeof defaultConfig.form,
-  'validateTrigger'
->
+export const defaultFormProps = (): DefaultProps<FormProps> =>
+  ({
+    validateTrigger: 'change',
+    validateOnRuleChange: true,
+    direction: 'horizontal',
+    labelAlign: 'start',
+    labelValign: 'center',
+    starPosition: 'left',
+    contentPosition: 'left',
+    showError: true,
+    scrollDuration: 150,
+    ...defaultConfig.form,
+  }) as Omit<typeof defaultConfig.form, 'validateTrigger'>
 
 export interface FormSlots {
   default?(props: { context: FormContext }): any
@@ -84,7 +93,8 @@ export interface FormItemProps {
   inlaid?: boolean
 }
 
-export const defaultFormItemProps = () => ({
+export const defaultFormItemProps = (): DefaultProps<FormItemProps> => ({
+  showError: true,
   ...defaultConfig.formItem,
   required: undefined,
 })

@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type ButtonProps } from '../button'
 import { type TransitionHookEmits } from '../popup/common'
 
@@ -33,7 +33,15 @@ export interface DialogProps {
   confirmProps?: ButtonProps
 }
 
-export const defaultDialogProps = defaultConfig.dialog
+export const defaultDialogProps = (): DefaultProps<DialogProps> => ({
+  headed: true,
+  buttonType: 'round',
+  showCancel: true,
+  showConfirm: true,
+  overlayClosable: true,
+  duration: 200,
+  ...defaultConfig.dialog,
+})
 
 export interface DialogSlots {
   default?(props: Record<string, never>): any

@@ -29,7 +29,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<CoolIconProps>(), defaultCoolIconProps)
+const props = withDefaults(defineProps<CoolIconProps>(), defaultCoolIconProps())
 
 defineSlots<CoolIconSlots>()
 

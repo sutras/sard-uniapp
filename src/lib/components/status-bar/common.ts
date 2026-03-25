@@ -8,7 +8,7 @@ export interface StatusBarProps {
   reverse?: boolean
 }
 
-export const defaultStatusBarProps = defaultConfig.statusBar
+export const defaultStatusBarProps = () => ({ ...defaultConfig.statusBar })
 
 export interface StatusBarSlots {
   default?(props: Record<string, never>): any

@@ -16,7 +16,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<IconProps>(), defaultIconProps)
+const props = withDefaults(defineProps<IconProps>(), defaultIconProps())
 
 const emit = defineEmits<IconEmits>()
 

@@ -129,7 +129,10 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<CropImageProps>(), defaultCropImageProps)
+const props = withDefaults(
+  defineProps<CropImageProps>(),
+  defaultCropImageProps(),
+)
 
 defineSlots<CropImageSlots>()
 

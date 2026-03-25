@@ -3,7 +3,7 @@ import {
   getAvailableImperative,
   getImperatives,
 } from '../../use'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookCallbacks } from '../popup/common'
 import {
   type ToastEmits,
@@ -15,8 +15,9 @@ export interface ToastAgentProps extends ToastProps, TransitionHookCallbacks {
   id?: string
 }
 
-export const defaultToastAgentProps = () => ({
-  ...defaultToastProps,
+export const defaultToastAgentProps = (): DefaultProps<ToastAgentProps> => ({
+  ...defaultToastProps(),
+  id: 'toast',
   ...defaultConfig.toastAgent,
 })
 
@@ -65,7 +66,7 @@ const show: ToastShowFunction = (
 
   options.type = internalType
 
-  const { id = defaultConfig.toastAgent.id as string } = options
+  const { id = defaultToastAgentProps().id as string } = options
 
   const imperative = getAvailableImperative<ToastImperative>(imperativeName, id)
   if (imperative) {
@@ -101,7 +102,7 @@ const loading: ToastSimpleShowFunction = (
   show(optionsOrTitle, options, 'loading')
 }
 
-const hide = (id = defaultConfig.toastAgent.id as string) => {
+const hide = (id = defaultToastAgentProps().id as string) => {
   const imperatives = getImperatives<ToastImperative>(imperativeName, id)
   if (imperatives && imperatives.length > 0) {
     imperatives.forEach((item) => {

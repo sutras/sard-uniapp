@@ -48,7 +48,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<RadioGroupProps>(),
-  defaultRadioGroupProps,
+  defaultRadioGroupProps(),
 )
 
 defineSlots<RadioGroupSlots>()

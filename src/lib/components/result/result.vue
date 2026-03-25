@@ -40,7 +40,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<ResultProps>(), defaultResultProps)
+const props = withDefaults(defineProps<ResultProps>(), defaultResultProps())
 
 defineSlots<ResultSlots>()
 

@@ -69,7 +69,7 @@ const { t } = useTranslate('pagination')
 
 const props = withDefaults(
   defineProps<PaginationProps>(),
-  defaultPaginationProps,
+  defaultPaginationProps(),
 )
 
 defineSlots<PaginationSlots>()

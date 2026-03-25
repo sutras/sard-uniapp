@@ -31,7 +31,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<AlertProps>(), defaultAlertProps)
+const props = withDefaults(defineProps<AlertProps>(), defaultAlertProps())
 
 defineSlots<AlertSlots>()
 

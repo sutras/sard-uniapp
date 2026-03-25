@@ -92,7 +92,7 @@ defineOptions({
   inheritAttrs: false,
 })
 
-const props = withDefaults(defineProps<PopupProps>(), defaultPopupProps)
+const props = withDefaults(defineProps<PopupProps>(), defaultPopupProps())
 
 defineSlots<PopupSlots>()
 

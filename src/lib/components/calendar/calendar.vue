@@ -140,7 +140,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<CalendarProps>(), defaultCalendarProps)
+const props = withDefaults(defineProps<CalendarProps>(), defaultCalendarProps())
 
 const emit = defineEmits<CalendarEmits>()
 

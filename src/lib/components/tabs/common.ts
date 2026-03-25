@@ -1,6 +1,6 @@
 import { type StyleValue } from 'vue'
 import { type NodeRect } from '../../utils'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface TabOption {
   rootStyle?: StyleValue
@@ -19,7 +19,10 @@ export interface TabsProps {
   scrollable?: boolean
 }
 
-export const defaultTabsProps = defaultConfig.tabs
+export const defaultTabsProps = (): DefaultProps<TabsProps> => ({
+  type: 'line',
+  ...defaultConfig.tabs,
+})
 
 export interface TabsSlots {
   default?(props: Record<string, never>): any

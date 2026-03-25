@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface SwitchProps {
   rootStyle?: StyleValue
@@ -17,7 +17,12 @@ export interface SwitchProps {
   validateEvent?: boolean
 }
 
-export const defaultSwitchProps = defaultConfig.switch
+export const defaultSwitchProps = (): DefaultProps<SwitchProps> => ({
+  checkedValue: true,
+  uncheckedValue: false,
+  validateEvent: true,
+  ...defaultConfig.switch,
+})
 
 export interface SwitchEmits {
   (e: 'click', event: any): void

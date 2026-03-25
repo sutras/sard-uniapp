@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface ReadMoreProps {
   rootStyle?: StyleValue
@@ -12,7 +12,10 @@ export interface ReadMoreProps {
   keepLocation?: boolean
 }
 
-export const defaultReadMoreProps = defaultConfig.readMore
+export const defaultReadMoreProps = (): DefaultProps<ReadMoreProps> => ({
+  maxHeight: 200,
+  ...defaultConfig.readMore,
+})
 
 export interface ReadMoreSlots {
   default?(props: Record<string, never>): any

@@ -1,11 +1,16 @@
 import { type CascaderOption, type CascaderProps } from '../cascader/common'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 import { type FormPopoutProps } from '../../use/useFormPopout'
 
 export interface CascaderPopoutProps extends FormPopoutProps, CascaderProps {}
 
-export const defaultCascaderPopoutProps = defaultConfig.cascaderPopout
+export const defaultCascaderPopoutProps =
+  (): DefaultProps<CascaderPopoutProps> => ({
+    showConfirm: true,
+    validateEvent: true,
+    ...defaultConfig.cascaderPopout,
+  })
 
 export interface CascaderPopoutSlots {
   top?(props: { tabIndex: number }): any

@@ -12,9 +12,9 @@ export interface LoadMoreProps {
   errorText?: string
 }
 
-export const defaultLoadMoreProps = {
+export const defaultLoadMoreProps = () => ({
   status: 'incomplete' as const,
-}
+})
 
 export interface LoadMoreSlots {
   incomplete?(props: Record<string, never>): any

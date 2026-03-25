@@ -4,7 +4,7 @@ import {
   type ActionSheetItem,
   defaultActionSheetProps,
 } from '../action-sheet/common'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import {
   getAllImperatives,
   getAvailableImperative,
@@ -21,10 +21,12 @@ export interface ActionSheetAgentProps
   onSelect?: (item: ActionSheetItem, index: number) => void
 }
 
-export const defaultActionSheetAgentProps = () => ({
-  ...defaultActionSheetProps,
-  ...defaultConfig.actionSheetAgent,
-})
+export const defaultActionSheetAgentProps =
+  (): DefaultProps<ActionSheetAgentProps> => ({
+    ...defaultActionSheetProps(),
+    id: 'actionSheet',
+    ...defaultConfig.actionSheetAgent,
+  })
 
 export interface ActionSheetAgentEmits extends ActionSheetEmits {}
 
@@ -51,7 +53,7 @@ export type ActionSheetFunction = ActionSheetSimpleShowFunction & {
 }
 
 const show: ActionSheetShowFunction = (options = {}) => {
-  const { id = defaultConfig.actionSheetAgent.id as string } = options
+  const { id = defaultActionSheetAgentProps().id as string } = options
 
   const imperative = getAvailableImperative<ActionSheetImperative>(
     imperativeName,
@@ -66,7 +68,7 @@ const actionSheet: ActionSheetFunction = (options?: ActionSheetOptions) => {
   show(options)
 }
 
-const hide = (id = defaultConfig.actionSheetAgent.id as string) => {
+const hide = (id = defaultActionSheetAgentProps().id as string) => {
   const imperatives = getImperatives<ActionSheetImperative>(imperativeName, id)
   if (imperatives && imperatives.length > 0) {
     imperatives.forEach((item) => {

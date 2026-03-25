@@ -1,6 +1,6 @@
 import { type NodeRect } from '../../utils'
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface ResizeSensorProps {
   rootStyle?: StyleValue
@@ -9,7 +9,11 @@ export interface ResizeSensorProps {
   threshold?: number
 }
 
-export const defaultResizeSensorProps = defaultConfig.resizeSensor
+export const defaultResizeSensorProps =
+  (): DefaultProps<ResizeSensorProps> => ({
+    threshold: 150,
+    ...defaultConfig.resizeSensor,
+  })
 
 export interface ResizeSensorSlots {
   default?(props: Record<string, never>): any

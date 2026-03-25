@@ -14,7 +14,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<CountToProps>(), defaultCountToProps)
+const props = withDefaults(defineProps<CountToProps>(), defaultCountToProps())
 
 // main
 const number = ref(0)

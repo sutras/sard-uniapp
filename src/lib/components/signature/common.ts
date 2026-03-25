@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface SignatureProps {
   rootStyle?: StyleValue
@@ -19,7 +19,16 @@ export interface SignatureProps {
   quality?: number
 }
 
-export const defaultSignatureProps = defaultConfig.signature
+export const defaultSignatureProps = (): DefaultProps<SignatureProps> => ({
+  lineWidth: 3,
+  fullScreen: false,
+  color: '#000',
+  duration: 150,
+  type: 'png',
+  target: 'dataURL',
+  quality: 0.92,
+  ...defaultConfig.signature,
+})
 
 export interface SignatureSlots {
   default?(props: Record<string, never>): any

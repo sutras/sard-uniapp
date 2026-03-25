@@ -1,4 +1,4 @@
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface CountToProps {
   value?: number
@@ -8,4 +8,10 @@ export interface CountToProps {
   duration?: number
 }
 
-export const defaultCountToProps = defaultConfig.countTo
+export const defaultCountToProps = (): DefaultProps<CountToProps> => ({
+  value: 0,
+  precision: 0,
+  separatorDigit: 3,
+  duration: 2000,
+  ...defaultConfig.countTo,
+})

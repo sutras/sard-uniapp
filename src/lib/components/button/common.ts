@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface ButtonProps {
   rootStyle?: StyleValue
@@ -43,7 +43,16 @@ export interface ButtonProps {
   publicId?: string
 }
 
-export const defaultButtonProps = defaultConfig.button
+export const defaultButtonProps = (): DefaultProps<ButtonProps> => ({
+  type: 'default',
+  theme: 'primary',
+  size: 'medium',
+  hoverStopPropagation: false,
+  lang: 'en',
+  showMessageCard: false,
+  block: true,
+  ...defaultConfig.button,
+})
 
 export interface ButtonSlots {
   default?(props: Record<string, never>): any

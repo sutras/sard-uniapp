@@ -26,7 +26,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<AvatarGroupProps>(),
-  defaultAvatarGroupProps,
+  defaultAvatarGroupProps(),
 )
 
 defineSlots<AvatarGroupSlots>()

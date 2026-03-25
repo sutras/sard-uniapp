@@ -1,5 +1,5 @@
 import { type RadioGroupProps } from '../radio/common'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 import { type FormPopoutProps } from '../../use/useFormPopout'
 
@@ -9,7 +9,10 @@ export interface RadioPopoutProps extends FormPopoutProps, RadioGroupProps {
   iconPosition?: 'left' | 'right'
 }
 
-export const defaultRadioPopoutProps = () => ({
+export const defaultRadioPopoutProps = (): DefaultProps<RadioPopoutProps> => ({
+  validateEvent: true,
+  type: 'circle',
+  iconPosition: 'left',
   ...defaultConfig.radioPopout,
   options: () => [],
 })

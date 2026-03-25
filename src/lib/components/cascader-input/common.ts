@@ -2,7 +2,7 @@ import {
   type PopoutInputSlots,
   type PopoutInputProps,
 } from '../popout-input/common'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import {
   type CascaderPopoutProps,
   type CascaderPopoutEmits,
@@ -16,10 +16,14 @@ export interface CascaderInputProps
   maxRows?: number
 }
 
-export const defaultCascaderInputProps = () => ({
-  ...defaultConfig.cascaderPopout,
-  ...defaultConfig.cascaderInput,
-})
+export const defaultCascaderInputProps =
+  (): DefaultProps<CascaderInputProps> => ({
+    showConfirm: true,
+    validateEvent: true,
+    ...defaultConfig.cascaderPopout,
+    maxRows: 3,
+    ...defaultConfig.cascaderInput,
+  })
 
 export interface CascaderInputSlots
   extends CascaderPopoutSlots,

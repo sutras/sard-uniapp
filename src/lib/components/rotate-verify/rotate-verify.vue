@@ -46,7 +46,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<RotateVerifyProps>(),
-  defaultRotateVerifyProps,
+  defaultRotateVerifyProps(),
 )
 
 defineSlots<RotateVerifySlots>()

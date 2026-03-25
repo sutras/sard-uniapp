@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 
 export type ActionSheetBeforeClose = ((
@@ -34,7 +34,11 @@ export interface ActionSheetProps {
   duration?: number
 }
 
-export const defaultActionSheetProps = defaultConfig.actionSheet
+export const defaultActionSheetProps = (): DefaultProps<ActionSheetProps> => ({
+  overlayClosable: true,
+  duration: 250,
+  ...defaultConfig.actionSheet,
+})
 
 export interface ActionSheetEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void

@@ -1,6 +1,7 @@
 import { OptionKeys, UseOptionKeysReturn } from '../../use'
 import { isNullish } from '../../utils'
 import { InjectionKey, type StyleValue } from 'vue'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface CascaderOption {
   label?: string
@@ -52,9 +53,10 @@ export interface CascaderProps {
   ) => Promise<CascaderOption[]> | CascaderOption[]
 }
 
-export const defaultCascaderProps = {
+export const defaultCascaderProps = (): DefaultProps<CascaderProps> => ({
+  ...defaultConfig.cascader,
   options: () => [],
-}
+})
 
 export interface CascaderSlots {
   top?(props: { tabIndex: number }): any

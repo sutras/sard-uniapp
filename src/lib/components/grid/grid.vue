@@ -22,7 +22,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<GridProps>(), defaultGridProps)
+const props = withDefaults(defineProps<GridProps>(), defaultGridProps())
 
 defineSlots<GridSlots>()
 

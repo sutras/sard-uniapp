@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type OptionKeys, type UseOptionKeysReturn } from '../../use'
 
 export interface PickerOptionObject {
@@ -18,7 +18,8 @@ export interface PickerProps {
   internalCustom?: number
 }
 
-export const defaultPickerProps = () => ({
+export const defaultPickerProps = (): DefaultProps<PickerProps> => ({
+  immediateChange: false,
   ...defaultConfig.picker,
   columns: () => [],
 })

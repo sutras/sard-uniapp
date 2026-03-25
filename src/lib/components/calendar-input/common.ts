@@ -6,7 +6,7 @@ import {
   type PopoutInputSlots,
   type PopoutInputProps,
 } from '../popout-input/common'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface CalendarInputProps
   extends CalendarPopoutProps,
@@ -15,11 +15,18 @@ export interface CalendarInputProps
   valueOnClear?: () => any
 }
 
-export const defaultCalendarInputProps = () => ({
-  ...defaultConfig.calendar,
-  ...defaultConfig.calendarPopout,
-  ...defaultConfig.calendarInput,
-})
+export const defaultCalendarInputProps =
+  (): DefaultProps<CalendarInputProps> => ({
+    type: 'single',
+    maxDays: Number.MAX_SAFE_INTEGER,
+    weekStartsOn: 0,
+    ...defaultConfig.calendar,
+    showConfirm: true,
+    validateEvent: true,
+    ...defaultConfig.calendarPopout,
+    outletFormat: 'YYYY-MM-DD',
+    ...defaultConfig.calendarInput,
+  })
 
 export interface CalendarInputSlots extends PopoutInputSlots {}
 

@@ -29,7 +29,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<OverlayProps>(), defaultOverlayProps)
+const props = withDefaults(defineProps<OverlayProps>(), defaultOverlayProps())
 
 defineSlots<OverlaySlots>()
 

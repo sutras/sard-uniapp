@@ -1,6 +1,6 @@
 import { type StyleValue } from 'vue'
 
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type OptionKeys } from '../../use'
 
 export type SegmentedOption =
@@ -27,7 +27,13 @@ export interface SegmentedProps {
   validateEvent?: boolean
 }
 
-export const defaultSegmentedProps = defaultConfig.segmented
+export const defaultSegmentedProps = (): DefaultProps<SegmentedProps> => ({
+  size: 'middle',
+  shape: 'square',
+  direction: 'horizontal',
+  validateEvent: true,
+  ...defaultConfig.segmented,
+})
 
 export interface SegmentedSlots {
   default?(props: Record<string, never>): any

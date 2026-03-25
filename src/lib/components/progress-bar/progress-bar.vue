@@ -35,7 +35,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<ProgressBarProps>(),
-  defaultProgressBarProps,
+  defaultProgressBarProps(),
 )
 
 defineSlots<ProgressBarSlots>()

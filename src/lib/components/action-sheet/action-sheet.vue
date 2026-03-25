@@ -79,7 +79,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<ActionSheetProps>(),
-  defaultActionSheetProps,
+  defaultActionSheetProps(),
 )
 
 const emit = defineEmits<ActionSheetEmits>()

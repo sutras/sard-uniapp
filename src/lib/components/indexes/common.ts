@@ -1,5 +1,6 @@
 import { type StyleValue } from 'vue'
 import { type NodeRect } from '../../utils'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface IndexesProps {
   rootStyle?: StyleValue
@@ -7,6 +8,11 @@ export interface IndexesProps {
   current?: number | string
   hintDuration?: number
 }
+
+export const defaultIndexesProps = (): DefaultProps<IndexesProps> => ({
+  hintDuration: 300,
+  ...defaultConfig.indexes,
+})
 
 export interface IndexesSlots {
   default?(props: Record<string, never>): any

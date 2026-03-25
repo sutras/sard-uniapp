@@ -47,7 +47,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<ReadMoreProps>(), defaultReadMoreProps)
+const props = withDefaults(defineProps<ReadMoreProps>(), defaultReadMoreProps())
 
 defineSlots<ReadMoreSlots>()
 

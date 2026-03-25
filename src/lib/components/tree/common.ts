@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type NodeRect } from '../../utils'
 
 export interface TreeNode {
@@ -97,7 +97,10 @@ export interface TreeProps {
   editOptions?: TreeEditOption[]
 }
 
-export const defaultTreeProps = () => ({
+export const defaultTreeProps = (): DefaultProps<TreeProps> => ({
+  defaultExpandAll: false,
+  filterMode: 'lenient',
+  accordion: false,
   ...defaultConfig.tree,
   data: () => [],
 })

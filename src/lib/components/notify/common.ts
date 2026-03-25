@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 
 export interface NotifyProps {
@@ -16,7 +16,13 @@ export interface NotifyProps {
   statusBar?: boolean
 }
 
-export const defaultNotifyProps = defaultConfig.notify
+export const defaultNotifyProps = (): DefaultProps<NotifyProps> => ({
+  type: 'primary',
+  position: 'top',
+  duration: 250,
+  timeout: 3000,
+  ...defaultConfig.notify,
+})
 
 export interface NotifySlots {
   default?(props: Record<string, never>): any

@@ -76,7 +76,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<UploadProps>(), defaultUploadProps)
+const props = withDefaults(defineProps<UploadProps>(), defaultUploadProps())
 
 defineSlots<UploadSlots>()
 

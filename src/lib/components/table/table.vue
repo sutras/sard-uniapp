@@ -49,7 +49,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<TableProps>(), defaultTableProps)
+const props = withDefaults(defineProps<TableProps>(), defaultTableProps())
 
 defineSlots<TableSlots>()
 

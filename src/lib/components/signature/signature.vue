@@ -115,7 +115,10 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<SignatureProps>(), defaultSignatureProps)
+const props = withDefaults(
+  defineProps<SignatureProps>(),
+  defaultSignatureProps(),
+)
 
 defineSlots<SignatureSlots>()
 
@@ -466,8 +469,8 @@ const confirm = async () => {
   const dataURL = isEmpty
     ? ''
     : props.fullScreen
-    ? await getRotateCanvasTarget()
-    : await getCanvasTarget()
+      ? await getRotateCanvasTarget()
+      : await getCanvasTarget()
 
   emit('confirm', dataURL)
 

@@ -16,9 +16,9 @@ export interface MenuProps<T extends MenuOption> {
   theme?: 'dark' | 'light'
 }
 
-export const defaultMenuProps = {
+export const defaultMenuProps = () => ({
   options: () => [],
-}
+})
 
 export interface MenuEmits<T extends MenuOption> {
   (e: 'select', option: T): void

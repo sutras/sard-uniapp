@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface InputProps {
   // 现支付宝小程序特有属性详情请查看: https://opendocs.alipay.com/mini/component/input
@@ -78,7 +78,23 @@ export interface InputProps {
   internalPrepend?: number
 }
 
-export const defaultInputProps = defaultConfig.input
+export const defaultInputProps = (): DefaultProps<InputProps> => ({
+  enableNative: false,
+  controlled: true,
+  maxlength: 140,
+  adjustPosition: true,
+  ignoreCompositionEvent: true,
+  showConfirmBar: true,
+  disableDefaultPadding: true,
+  modelValue: '',
+  validateEvent: true,
+  cursorSpacing: 30,
+  cursor: -1,
+  selectionStart: -1,
+  selectionEnd: -1,
+  inputmode: 'text',
+  ...defaultConfig.input,
+})
 
 export interface InputSlots {
   prepend?(props: Record<string, never>): any

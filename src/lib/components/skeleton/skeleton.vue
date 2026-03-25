@@ -38,7 +38,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<SkeletonProps>(), defaultSkeletonProps)
+const props = withDefaults(defineProps<SkeletonProps>(), defaultSkeletonProps())
 
 defineSlots<SkeletonSlots>()
 

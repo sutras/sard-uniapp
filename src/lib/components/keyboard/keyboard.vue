@@ -129,7 +129,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<KeyboardProps>(), defaultKeyboardProps)
+const props = withDefaults(defineProps<KeyboardProps>(), defaultKeyboardProps())
 
 defineSlots<KeyboardSlots>()
 

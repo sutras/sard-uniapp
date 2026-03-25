@@ -106,7 +106,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<DialogProps>(), defaultDialogProps)
+const props = withDefaults(defineProps<DialogProps>(), defaultDialogProps())
 
 defineSlots<DialogSlots>()
 

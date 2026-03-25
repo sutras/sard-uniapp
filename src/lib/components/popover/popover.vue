@@ -67,7 +67,10 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<PopoverProps<T>>(), defaultPopoverProps)
+const props = withDefaults(
+  defineProps<PopoverProps<T>>(),
+  defaultPopoverProps(),
+)
 
 defineSlots<PopoverSlots>()
 

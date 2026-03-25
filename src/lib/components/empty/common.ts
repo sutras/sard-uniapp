@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface EmptyProps {
   rootStyle?: StyleValue
@@ -11,7 +11,10 @@ export interface EmptyProps {
   size?: 'small' | 'medium'
 }
 
-export const defaultEmptyProps = defaultConfig.empty
+export const defaultEmptyProps = (): DefaultProps<EmptyProps> => ({
+  icon: 'empty',
+  ...defaultConfig.empty,
+})
 
 export interface EmptySlots {
   default?(props: Record<string, never>): any

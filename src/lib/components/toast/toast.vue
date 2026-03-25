@@ -51,7 +51,7 @@ import {
   defaultToastProps,
 } from './common'
 
-const props = withDefaults(defineProps<ToastProps>(), defaultToastProps)
+const props = withDefaults(defineProps<ToastProps>(), defaultToastProps())
 
 const emit = defineEmits<ToastEmits>()
 

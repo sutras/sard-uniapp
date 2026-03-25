@@ -116,7 +116,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<CascaderProps>(), defaultCascaderProps)
+const props = withDefaults(defineProps<CascaderProps>(), defaultCascaderProps())
 
 defineSlots<CascaderSlots>()
 

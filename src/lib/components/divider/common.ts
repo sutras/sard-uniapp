@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface DividerProps {
   rootStyle?: StyleValue
@@ -10,7 +10,12 @@ export interface DividerProps {
   vertical?: boolean
 }
 
-export const defaultDividerProps = defaultConfig.divider
+export const defaultDividerProps = (): DefaultProps<DividerProps> => ({
+  type: 'solid',
+  hairline: true,
+  position: 'center',
+  ...defaultConfig.divider,
+})
 
 export interface DividerSlots {
   default?(props: Record<string, never>): any

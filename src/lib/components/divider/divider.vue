@@ -22,7 +22,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<DividerProps>(), defaultDividerProps)
+const props = withDefaults(defineProps<DividerProps>(), defaultDividerProps())
 
 const slots = defineSlots<DividerSlots>()
 

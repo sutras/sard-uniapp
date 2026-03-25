@@ -74,7 +74,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<SlideVerifyProps>(),
-  defaultSlideVerifyProps,
+  defaultSlideVerifyProps(),
 )
 
 defineSlots<SlideVerifySlots>()

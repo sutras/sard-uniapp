@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface SwiperDotProps {
   rootStyle?: StyleValue
@@ -11,4 +11,10 @@ export interface SwiperDotProps {
   field?: string
 }
 
-export const defaultSwiperDotProps = defaultConfig.swiperDot
+export const defaultSwiperDotProps = (): DefaultProps<SwiperDotProps> => ({
+  type: 'dot',
+  current: 0,
+  total: 0,
+  field: 'title',
+  ...defaultConfig.swiperDot,
+})

@@ -1,5 +1,5 @@
 import { type CheckboxGroupProps } from '../checkbox/common'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 import { type FormPopoutProps } from '../../use/useFormPopout'
 
@@ -12,10 +12,13 @@ export interface CheckboxPopoutProps
   iconPosition?: 'left' | 'right'
 }
 
-export const defaultCheckboxPopoutProps = () => ({
-  ...defaultConfig.checkboxPopout,
-  options: () => [],
-})
+export const defaultCheckboxPopoutProps =
+  (): DefaultProps<CheckboxPopoutProps> => ({
+    validateEvent: true,
+    iconPosition: 'left',
+    ...defaultConfig.checkboxPopout,
+    options: () => [],
+  })
 
 export interface CheckboxPopoutSlots {
   default?(props: Record<string, never>): any

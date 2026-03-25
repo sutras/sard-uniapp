@@ -36,7 +36,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<CheckboxProps>(), defaultCheckboxProps)
+const props = withDefaults(defineProps<CheckboxProps>(), defaultCheckboxProps())
 
 defineSlots<CheckboxSlots>()
 
@@ -122,7 +122,7 @@ const checkIconType = computed(() => {
 
 const iconColor = computed(() => {
   return innerChecked.value && !isDisabled.value
-    ? props.checkedColor ?? groupContext?.checkedColor
+    ? (props.checkedColor ?? groupContext?.checkedColor)
     : undefined
 })
 

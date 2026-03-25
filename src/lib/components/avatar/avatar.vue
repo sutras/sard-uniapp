@@ -51,7 +51,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<AvatarProps>(), defaultAvatarProps)
+const props = withDefaults(defineProps<AvatarProps>(), defaultAvatarProps())
 
 defineSlots<AvatarSlots>()
 

@@ -60,7 +60,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<PuzzleVerifyProps>(),
-  defaultPuzzleVerifyProps,
+  defaultPuzzleVerifyProps(),
 )
 
 defineSlots<PuzzleVerifySlots>()

@@ -3,16 +3,18 @@ import {
   type PickerSlots,
   type PickerProps,
 } from '../picker/common'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 import { type FormPopoutProps } from '../../use/useFormPopout'
 
 export interface PickerPopoutProps extends FormPopoutProps, PickerProps {}
 
-export const defaultPickerPopoutProps = () => ({
-  ...defaultPickerProps(),
-  ...defaultConfig.pickerPopout,
-})
+export const defaultPickerPopoutProps =
+  (): DefaultProps<PickerPopoutProps> => ({
+    ...defaultPickerProps(),
+    validateEvent: true,
+    ...defaultConfig.pickerPopout,
+  })
 
 export interface PickerPopoutSlots extends PickerSlots {}
 

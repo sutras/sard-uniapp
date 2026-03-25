@@ -64,7 +64,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<ListItemProps>(), defaultListItemProps)
+const props = withDefaults(defineProps<ListItemProps>(), defaultListItemProps())
 
 const slots = defineSlots<ListItemSlots>()
 

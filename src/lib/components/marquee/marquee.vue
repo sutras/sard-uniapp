@@ -32,7 +32,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<MarqueeProps>(), defaultMarqueeProps)
+const props = withDefaults(defineProps<MarqueeProps>(), defaultMarqueeProps())
 
 defineSlots<MarqueeSlots>()
 

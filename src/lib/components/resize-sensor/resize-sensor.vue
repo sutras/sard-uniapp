@@ -61,7 +61,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<ResizeSensorProps>(),
-  defaultResizeSensorProps,
+  defaultResizeSensorProps(),
 )
 
 defineSlots<ResizeSensorSlots>()

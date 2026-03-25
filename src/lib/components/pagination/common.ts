@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface PaginationProps {
   rootStyle?: StyleValue
@@ -15,7 +15,15 @@ export interface PaginationProps {
   multiCount?: number
 }
 
-export const defaultPaginationProps = defaultConfig.pagination
+export const defaultPaginationProps = (): DefaultProps<PaginationProps> => ({
+  total: 0,
+  pageSize: 10,
+  current: 1,
+  pageButtonCount: 5,
+  type: 'multi',
+  multiCount: 5,
+  ...defaultConfig.pagination,
+})
 
 export interface PaginationSlots {
   prev?(props: Record<string, never>): any

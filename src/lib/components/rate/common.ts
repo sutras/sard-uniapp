@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface RateProps {
   rootStyle?: StyleValue
@@ -22,7 +22,13 @@ export interface RateProps {
   validateEvent?: boolean
 }
 
-export const defaultRateProps = defaultConfig.rate
+export const defaultRateProps = (): DefaultProps<RateProps> => ({
+  count: 5,
+  icon: 'star-fill',
+  voidIcon: 'star',
+  validateEvent: true,
+  ...defaultConfig.rate,
+})
 
 export interface RateEmits {
   (e: 'update:model-value', value: number): void

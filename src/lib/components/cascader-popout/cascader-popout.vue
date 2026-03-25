@@ -45,7 +45,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<CascaderPopoutProps>(),
-  defaultCascaderPopoutProps,
+  defaultCascaderPopoutProps(),
 )
 
 defineSlots<CascaderPopoutSlots>()

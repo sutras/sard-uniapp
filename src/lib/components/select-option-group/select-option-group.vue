@@ -31,7 +31,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<SelectOptionGroupProps>(),
-  defaultSelectOptionGroupProps,
+  defaultSelectOptionGroupProps(),
 )
 
 defineSlots<SelectOptionGroupSlots>()

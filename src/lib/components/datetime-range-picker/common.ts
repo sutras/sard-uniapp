@@ -1,4 +1,4 @@
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import {
   type DatetimePickerSlots,
   type DatetimePickerProps,
@@ -10,7 +10,11 @@ export interface DatetimeRangePickerProps
   tabs?: string[]
 }
 
-export const defaultDatetimeRangePickerProps = defaultConfig.datetimeRangePicker
+export const defaultDatetimeRangePickerProps =
+  (): DefaultProps<DatetimeRangePickerProps> => ({
+    type: 'yMd',
+    ...defaultConfig.datetimeRangePicker,
+  })
 
 export interface DatetimeRangePickerSlots extends DatetimePickerSlots {
   header?(props: Record<string, never>): any

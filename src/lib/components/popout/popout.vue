@@ -155,7 +155,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<PopoutProps>(), defaultPopoutProps)
+const props = withDefaults(defineProps<PopoutProps>(), defaultPopoutProps())
 
 defineSlots<PopoutSlots>()
 

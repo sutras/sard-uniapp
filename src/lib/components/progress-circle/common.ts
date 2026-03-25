@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { defaultConfig, DefaultProps } from '../config'
 
 export interface ProgressCircleProps {
   rootStyle?: StyleValue
@@ -12,7 +12,11 @@ export interface ProgressCircleProps {
   status?: 'success' | 'warning' | 'error'
 }
 
-export const defaultProgressCircle = defaultConfig.progressCircle
+export const defaultProgressCircle = (): DefaultProps<ProgressCircleProps> => ({
+  percent: 0,
+  thickness: 4,
+  ...defaultConfig.progressCircle,
+})
 
 export interface ProgressCircleSlots {
   default?(props: Record<string, never>): any

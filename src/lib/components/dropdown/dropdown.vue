@@ -23,7 +23,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<DropdownProps>(), defaultDropdownProps)
+const props = withDefaults(defineProps<DropdownProps>(), defaultDropdownProps())
 
 defineSlots<DropdownSlots>()
 

@@ -1,5 +1,5 @@
 import { InjectionKey, type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export type StepsStatus = 'wait' | 'process' | 'error' | 'finish'
 
@@ -26,7 +26,17 @@ export interface StepsProps {
   errorIcon?: string
 }
 
-export const defaultStepsProps = defaultConfig.steps
+export const defaultStepsProps = (): DefaultProps<StepsProps> => ({
+  current: 0,
+  center: false,
+  itemList: () => [],
+  direction: 'horizontal',
+  finishIcon: 'check-circle-fill',
+  processIcon: 'circle',
+  waitIcon: 'circle',
+  errorIcon: 'x-circle',
+  ...defaultConfig.steps,
+})
 
 export interface StepsSlots {
   default?(props: Record<string, never>): any

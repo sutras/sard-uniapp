@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 
 export type PopoutBeforeClose = (
@@ -36,7 +36,17 @@ export interface PopoutProps {
   backPress?: 'close' | 'back'
 }
 
-export const defaultPopoutProps = defaultConfig.popout
+export const defaultPopoutProps = (): DefaultProps<PopoutProps> => ({
+  type: 'loose',
+  showConfirm: true,
+  showClose: true,
+  showFooter: true,
+  overlay: true,
+  overlayClosable: true,
+  duration: 250,
+  backPress: 'close',
+  ...defaultConfig.popout,
+})
 
 export interface PopoutSlots {
   default?(props: Record<string, never>): any

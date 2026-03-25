@@ -39,7 +39,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<NotifyProps>(), defaultNotifyProps)
+const props = withDefaults(defineProps<NotifyProps>(), defaultNotifyProps())
 
 defineSlots<NotifySlots>()
 

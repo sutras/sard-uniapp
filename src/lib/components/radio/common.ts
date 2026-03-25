@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type OptionKeys } from '../../use'
 
 export type IconType = 'circle' | 'record'
@@ -49,7 +49,11 @@ export interface RadioGroupProps {
   optionKeys?: OptionKeys
 }
 
-export const defaultRadioGroupProps = defaultConfig.radioGroup
+export const defaultRadioGroupProps = (): DefaultProps<RadioGroupProps> => ({
+  direction: 'vertical',
+  validateEvent: true,
+  ...defaultConfig.radioGroup,
+})
 
 export interface RadioGroupSlots {
   default?(props: Record<string, never>): any

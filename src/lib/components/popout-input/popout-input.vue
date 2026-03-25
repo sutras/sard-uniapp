@@ -72,7 +72,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<PopoutInputProps>(),
-  defaultPopoutInputProps,
+  defaultPopoutInputProps(),
 )
 
 const emit = defineEmits<PopoutInputEmits>()

@@ -48,7 +48,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<CheckboxGroupProps>(),
-  defaultCheckboxGroupProps,
+  defaultCheckboxGroupProps(),
 )
 
 defineSlots<CheckboxGroupSlots>()

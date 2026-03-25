@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface SliderProps {
   rootStyle?: StyleValue
@@ -26,7 +26,13 @@ export interface SliderProps {
   validateEvent?: boolean
 }
 
-export const defaultSliderProps = defaultConfig.slider
+export const defaultSliderProps = (): DefaultProps<SliderProps> => ({
+  min: 0,
+  max: 100,
+  step: 1,
+  validateEvent: true,
+  ...defaultConfig.slider,
+})
 
 export interface SliderSlots {
   'start-thumb'?(props: { value: number }): any

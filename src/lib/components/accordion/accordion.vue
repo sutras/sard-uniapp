@@ -13,6 +13,7 @@ import {
   type AccordionEmits,
   type AccoridonContext,
   accoridonContextSymbol,
+  defaultAccordionProps,
 } from './common'
 
 defineOptions({
@@ -22,7 +23,10 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<AccordionProps>(), {})
+const props = withDefaults(
+  defineProps<AccordionProps>(),
+  defaultAccordionProps(),
+)
 
 defineSlots<AccordionSlots>()
 

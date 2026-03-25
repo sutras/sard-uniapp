@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface SkeletonProps {
   rootStyle?: StyleValue
@@ -15,7 +15,11 @@ export interface SkeletonProps {
   animated?: boolean
 }
 
-export const defaultSkeletonProps = defaultConfig.skeleton
+export const defaultSkeletonProps = (): DefaultProps<SkeletonProps> => ({
+  rows: 3,
+  loading: true,
+  ...defaultConfig.skeleton,
+})
 
 export interface SkeletonSlots {
   default?(props: Record<string, never>): any

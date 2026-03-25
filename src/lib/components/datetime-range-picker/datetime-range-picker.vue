@@ -65,7 +65,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<DatetimeRangePickerProps>(),
-  defaultDatetimeRangePickerProps,
+  defaultDatetimeRangePickerProps(),
 )
 
 defineSlots<DatetimeRangePickerSlots>()

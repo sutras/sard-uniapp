@@ -53,7 +53,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<FloatingPanelProps>(),
-  defaultFloatingPanelProps,
+  defaultFloatingPanelProps(),
 )
 
 defineSlots<FloatingPanelSlots>()

@@ -3,7 +3,7 @@ import {
   type DialogProps,
   defaultDialogProps,
 } from '../dialog/common'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import {
   getAllImperatives,
   getAvailableImperative,
@@ -18,8 +18,9 @@ export interface DialogAgentProps extends DialogProps, TransitionHookCallbacks {
   onConfirm?: () => void
 }
 
-export const defaultDialogAgentProps = () => ({
-  ...defaultDialogProps,
+export const defaultDialogAgentProps = (): DefaultProps<DialogAgentProps> => ({
+  ...defaultDialogProps(),
+  id: 'dialog',
   ...defaultConfig.dialogAgent,
 })
 
@@ -73,7 +74,7 @@ const show: DialogShowFunction = (
 
   options = Object.assign({}, defaultDialogOptions, options, internalOptions)
 
-  const { id = defaultConfig.dialogAgent.id as string } = options
+  const { id = defaultDialogAgentProps().id as string } = options
 
   const imperative = getAvailableImperative<DialogImperative>(
     imperativeName,
@@ -107,7 +108,7 @@ const confirm: DialogSimpleShowFunction = (
   })
 }
 
-const hide = (id = defaultConfig.dialogAgent.id as string) => {
+const hide = (id = defaultDialogAgentProps().id as string) => {
   const imperatives = getImperatives<DialogImperative>(imperativeName, id)
   if (imperatives && imperatives.length > 0) {
     imperatives.forEach((item) => {

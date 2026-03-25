@@ -3,7 +3,7 @@ import { type MenuOption } from '../menu/common'
 import { type NodeRect } from '../../utils'
 import { PopoverController } from './usePopover'
 import { type Position } from './utils'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface PopoverProps<T extends MenuOption> {
   rootStyle?: StyleValue
@@ -20,7 +20,16 @@ export interface PopoverProps<T extends MenuOption> {
   duration?: number
 }
 
-export const defaultPopoverProps = defaultConfig.popover
+export const defaultPopoverProps = (): DefaultProps<PopoverProps<any>> => ({
+  position: 'bottom',
+  direction: 'vertical',
+  theme: 'light',
+  refGap: 10,
+  viewportGap: 10,
+  transparent: true,
+  duration: 150,
+  ...defaultConfig.popover,
+})
 
 export interface PopoverSlots {
   default?(props: Record<string, never>): any

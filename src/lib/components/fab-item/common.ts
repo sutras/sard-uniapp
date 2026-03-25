@@ -14,7 +14,7 @@ export interface FabItemProps {
   item?: FabItem
 }
 
-export const defaultFabItemProps = {}
+export const defaultFabItemProps = () => ({})
 
 export interface FabItemSlots {
   default?(props: Record<string, never>): any

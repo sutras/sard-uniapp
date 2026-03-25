@@ -26,7 +26,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<BadgeProps>(), defaultBadgeProps)
+const props = withDefaults(defineProps<BadgeProps>(), defaultBadgeProps())
 
 const slots = defineSlots<BadgeSlots>()
 
@@ -41,10 +41,10 @@ const innerValue = computed(() => {
   return props.dot
     ? ''
     : typeof props.value === 'number' && props.value > props.max
-    ? `${props.max}+`
-    : props.value === 0 && !props.showZero
-    ? ''
-    : props.value
+      ? `${props.max}+`
+      : props.value === 0 && !props.showZero
+        ? ''
+        : props.value
 })
 
 // others

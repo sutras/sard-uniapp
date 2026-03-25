@@ -126,7 +126,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<DropdownItemProps>(),
-  defaultDropdownItemProps,
+  defaultDropdownItemProps(),
 )
 
 defineSlots<DropdownItemSlots>()

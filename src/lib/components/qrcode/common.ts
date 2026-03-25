@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export type QrcodeECL = 'L' | 'M' | 'Q' | 'H'
 
@@ -18,7 +18,17 @@ export interface QrcodeProps {
   icon?: string
 }
 
-export const defaultQrcodeProps = defaultConfig.qrcode
+export const defaultQrcodeProps = (): DefaultProps<QrcodeProps> => ({
+  ecl: 'M',
+  size: '320rpx',
+  canvasSize: 400,
+  type: 'canvas',
+  text: '',
+  color: '#000',
+  bgColor: '#fff',
+  quietZoneModules: 2,
+  ...defaultConfig.qrcode,
+})
 
 export interface QrcodeSlots {
   default?(props: Record<string, never>): any

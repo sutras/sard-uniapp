@@ -42,7 +42,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<FabItemProps>(), defaultFabItemProps)
+const props = withDefaults(defineProps<FabItemProps>(), defaultFabItemProps())
 
 defineSlots<FabItemSlots>()
 

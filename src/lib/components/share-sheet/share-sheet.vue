@@ -102,7 +102,7 @@ defineOptions({
 
 const props = withDefaults(
   defineProps<ShareSheetProps>(),
-  defaultShareSheetProps,
+  defaultShareSheetProps(),
 )
 
 const emit = defineEmits<ShareSheetEmits>()

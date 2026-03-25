@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 // table
 export interface TableProps {
@@ -10,7 +10,11 @@ export interface TableProps {
   height?: string
 }
 
-export const defaultTableProps = defaultConfig.table
+export const defaultTableProps = (): DefaultProps<TableProps> => ({
+  bordered: false,
+  underline: false,
+  ...defaultConfig.table,
+})
 
 export interface TableSlots {
   default?(props: Record<string, never>): any

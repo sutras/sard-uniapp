@@ -1,6 +1,6 @@
 import { type StyleValue } from 'vue'
 
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export type ImageMode =
   | 'scaleToFill'
@@ -41,7 +41,17 @@ export interface ImageProps {
   customLoad?: (callback: (event: any) => void) => any
 }
 
-export const defaultImageProps = defaultConfig.image
+export const defaultImageProps = (): DefaultProps<ImageProps> => ({
+  mode: 'aspectFill',
+  shape: 'square',
+  fade: true,
+  loadingIcon: 'image',
+  errorIcon: 'image-error',
+  showMenuByLongpress: true,
+  showLoading: true,
+  showError: true,
+  ...defaultConfig.image,
+})
 
 export interface ImageSlots {
   loading?(props: Record<string, never>): any

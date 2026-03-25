@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { shuffle } from '../../utils'
 
 export interface KeyboardProps {
@@ -9,7 +9,11 @@ export interface KeyboardProps {
   mode?: KeyboardPlateMode
 }
 
-export const defaultKeyboardProps = defaultConfig.keyboard
+export const defaultKeyboardProps = (): DefaultProps<KeyboardProps> => ({
+  type: 'number',
+  mode: 'chinese',
+  ...defaultConfig.keyboard,
+})
 
 export interface KeyboardSlots {
   default?(props: Record<string, never>): any

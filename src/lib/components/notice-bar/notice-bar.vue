@@ -58,7 +58,10 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<NoticeBarProps>(), defaultNoticeBarProps)
+const props = withDefaults(
+  defineProps<NoticeBarProps>(),
+  defaultNoticeBarProps(),
+)
 
 defineSlots<NoticeBarSlots>()
 

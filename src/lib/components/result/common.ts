@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface ResultProps {
   rootStyle?: StyleValue
@@ -12,7 +12,10 @@ export interface ResultProps {
   description?: string
 }
 
-export const defaultResultProps = defaultConfig.result
+export const defaultResultProps = (): DefaultProps<ResultProps> => ({
+  status: 'info',
+  ...defaultConfig.result,
+})
 
 export interface ResultSlots {
   default?(props: Record<string, never>): any

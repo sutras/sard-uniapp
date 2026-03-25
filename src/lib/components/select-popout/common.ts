@@ -1,4 +1,4 @@
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import {
   defaultSelectProps,
   type SelectSlots,
@@ -9,10 +9,13 @@ import { type FormPopoutProps } from '../../use/useFormPopout'
 
 export interface SelectPopoutProps extends FormPopoutProps, SelectProps {}
 
-export const defaultSelectPopoutProps = () => ({
-  ...defaultSelectProps(),
-  ...defaultConfig.selectPopout,
-})
+export const defaultSelectPopoutProps =
+  (): DefaultProps<SelectPopoutProps> => ({
+    ...defaultSelectProps(),
+    showConfirm: true,
+    validateEvent: true,
+    ...defaultConfig.selectPopout,
+  })
 
 export interface SelectPopoutSlots extends SelectSlots {}
 

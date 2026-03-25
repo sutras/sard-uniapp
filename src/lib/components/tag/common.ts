@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface TagProps {
   rootStyle?: StyleValue
@@ -21,7 +21,11 @@ export interface TagProps {
   closable?: boolean
 }
 
-export const defaultTagProps = defaultConfig.tag
+export const defaultTagProps = (): DefaultProps<TagProps> => ({
+  theme: 'default',
+  size: 'medium',
+  ...defaultConfig.tag,
+})
 
 export interface TagSlots {
   default?(props: Record<string, never>): any

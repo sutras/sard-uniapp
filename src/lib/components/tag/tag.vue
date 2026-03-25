@@ -29,7 +29,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<TagProps>(), defaultTagProps)
+const props = withDefaults(defineProps<TagProps>(), defaultTagProps())
 
 defineSlots<TagSlots>()
 

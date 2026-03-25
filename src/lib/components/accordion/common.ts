@@ -1,4 +1,5 @@
 import { type StyleValue } from 'vue'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface AccordionProps {
   rootStyle?: StyleValue
@@ -7,6 +8,10 @@ export interface AccordionProps {
   multiple?: boolean
   hideBorder?: boolean
 }
+
+export const defaultAccordionProps = (): DefaultProps<AccordionProps> => ({
+  ...defaultConfig.accordion,
+})
 
 export interface AccordionEmits {
   (e: 'update:model-value', event: any): void

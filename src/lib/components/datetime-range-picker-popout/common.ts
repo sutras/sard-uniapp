@@ -2,7 +2,7 @@ import {
   type DatetimeRangePickerProps,
   type DatetimeRangePickerSlots,
 } from '../datetime-range-picker/common'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 import { type FormPopoutProps } from '../../use/useFormPopout'
 
@@ -10,10 +10,13 @@ export interface DatetimeRangePickerPopoutProps
   extends FormPopoutProps,
     DatetimeRangePickerProps {}
 
-export const defaultDatetimeRangePickerInputProps = () => ({
-  ...defaultConfig.datetimeRangePicker,
-  ...defaultConfig.datetimeRangePickerPopout,
-})
+export const defaultDatetimeRangePickerPopoutProps =
+  (): DefaultProps<DatetimeRangePickerPopoutProps> => ({
+    type: 'yMd',
+    ...defaultConfig.datetimeRangePicker,
+    validateEvent: true,
+    ...defaultConfig.datetimeRangePickerPopout,
+  })
 
 export interface DatetimeRangePickerPopoutSlots
   extends DatetimeRangePickerSlots {}

@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface BadgeProps {
   rootStyle?: StyleValue
@@ -13,7 +13,11 @@ export interface BadgeProps {
   fixed?: boolean
 }
 
-export const defaultBadgeProps = defaultConfig.badge
+export const defaultBadgeProps = (): DefaultProps<BadgeProps> => ({
+  value: 0,
+  max: 99,
+  ...defaultConfig.badge,
+})
 
 export interface BadgeSlots {
   default?(props: Record<string, never>): any

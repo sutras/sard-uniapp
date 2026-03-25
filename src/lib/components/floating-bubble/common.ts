@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface FloatingBubbleProps {
   rootStyle?: StyleValue
@@ -14,7 +14,14 @@ export interface FloatingBubbleProps {
   tabbarHeight?: number
 }
 
-export const defaultFloatingBubbleProps = defaultConfig.floatingBubble
+export const defaultFloatingBubbleProps =
+  (): DefaultProps<FloatingBubbleProps> => ({
+    draggable: true,
+    axis: 'y',
+    gapX: 24,
+    gapY: 24,
+    ...defaultConfig.floatingBubble,
+  })
 
 export interface FloatingBubbleSlots {
   default?(props: Record<string, never>): any

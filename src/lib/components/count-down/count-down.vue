@@ -27,7 +27,10 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<CountDownProps>(), defaultCountDownProps)
+const props = withDefaults(
+  defineProps<CountDownProps>(),
+  defaultCountDownProps(),
+)
 
 defineSlots<CountDownSlots>()
 

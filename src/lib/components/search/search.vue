@@ -77,7 +77,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<SearchProps>(), defaultSearchProps)
+const props = withDefaults(defineProps<SearchProps>(), defaultSearchProps())
 
 defineSlots<SearchSlots>()
 

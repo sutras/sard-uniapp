@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface OverlayProps {
   rootStyle?: StyleValue
@@ -11,7 +11,10 @@ export interface OverlayProps {
   transparent?: boolean
 }
 
-export const defaultOverlayProps = defaultConfig.overlay
+export const defaultOverlayProps = (): DefaultProps<OverlayProps> => ({
+  duration: 250,
+  ...defaultConfig.overlay,
+})
 
 export interface OverlaySlots {
   default?(props: Record<string, never>): any

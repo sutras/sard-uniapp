@@ -2,7 +2,7 @@ import {
   type PopoutInputSlots,
   type PopoutInputProps,
 } from '../popout-input/common'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import {
   type DatetimePickerPopoutProps,
   type DatetimePickerPopoutEmits,
@@ -16,11 +16,15 @@ export interface DatetimePickerInputProps
   valueOnClear?: () => any
 }
 
-export const defaultDatetimePickerInputProps = () => ({
-  ...defaultConfig.datetimePicker,
-  ...defaultConfig.datetimePickerPopout,
-  ...defaultConfig.datetimePickerInput,
-})
+export const defaultDatetimePickerInputProps =
+  (): DefaultProps<DatetimePickerInputProps> => ({
+    type: 'yMd',
+    calendar: 'solar',
+    ...defaultConfig.datetimePicker,
+    validateEvent: true,
+    ...defaultConfig.datetimePickerPopout,
+    ...defaultConfig.datetimePickerInput,
+  })
 
 export interface DatetimePickerInputSlots
   extends DatetimePickerPopoutSlots,

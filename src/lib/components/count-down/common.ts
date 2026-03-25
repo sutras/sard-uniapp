@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface CountDownProps {
   rootStyle?: StyleValue
@@ -10,7 +10,12 @@ export interface CountDownProps {
   millisecond?: boolean
 }
 
-export const defaultCountDownProps = defaultConfig.countDown
+export const defaultCountDownProps = (): DefaultProps<CountDownProps> => ({
+  time: 0,
+  autoStart: true,
+  format: 'HH:mm:ss',
+  ...defaultConfig.countDown,
+})
 
 export interface CountDownSlots {
   default?(props: { time: CountDownCurrentTime }): any

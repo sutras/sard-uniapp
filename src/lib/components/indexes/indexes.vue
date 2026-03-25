@@ -43,6 +43,7 @@ import {
   type IndexesContext,
   type IndexesExpose,
   indexesContextSymbol,
+  defaultIndexesProps,
 } from './common'
 import { useScrollSpy } from '../../use'
 import SarIndexesNav from '../indexes-nav/indexes-nav.vue'
@@ -54,7 +55,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<IndexesProps>(), {})
+const props = withDefaults(defineProps<IndexesProps>(), defaultIndexesProps())
 
 defineSlots<IndexesSlots>()
 

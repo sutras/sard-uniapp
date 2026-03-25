@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface AvatarGroupProps {
   rootStyle?: StyleValue
@@ -11,7 +11,11 @@ export interface AvatarGroupProps {
   remainText?: string | number
 }
 
-export const defaultAvatarGroupProps = defaultConfig.avatarGroup
+export const defaultAvatarGroupProps = (): DefaultProps<AvatarGroupProps> => ({
+  coverage: 0.5,
+  showRemain: true,
+  ...defaultConfig.avatarGroup,
+})
 
 export interface AvatarGroupSlots {
   default?(props: Record<string, never>): any

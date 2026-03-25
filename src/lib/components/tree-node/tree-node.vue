@@ -91,8 +91,8 @@
       node.children.length > 0
     "
   >
-    <template v-for="(node, index) of node.children" :key="node.key">
-      <sar-tree-node v-if="node.visible" :index="index" :node="node" />
+    <template v-for="(subNode, index) of node.children" :key="subNode.key">
+      <sar-tree-node v-if="subNode.visible" :index="index" :node="subNode" />
     </template>
   </template>
 
@@ -107,8 +107,8 @@
     destroy-on-close
     :visible="node.expanded"
   >
-    <template v-for="(node, index) of node.children" :key="node.key">
-      <sar-tree-node v-if="node.visible" :index="index" :node="node" />
+    <template v-for="(subNode, index) of node.children" :key="subNode.key">
+      <sar-tree-node v-if="subNode.visible" :index="index" :node="subNode" />
     </template>
   </sar-collapse>
 

@@ -12,7 +12,7 @@ import {
   solarToLunar,
   toDate,
 } from '../../utils'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type PickerSlots } from '../picker/common'
 
 export interface DatetimePickerProps {
@@ -38,7 +38,12 @@ export interface DatetimePickerProps {
   valueFormat?: string
 }
 
-export const defaultDatetimePickerProps = defaultConfig.datetimePicker
+export const defaultDatetimePickerProps =
+  (): DefaultProps<DatetimePickerProps> => ({
+    type: 'yMd',
+    calendar: 'solar',
+    ...defaultConfig.datetimePicker,
+  })
 
 export interface DatetimePickerSlots extends PickerSlots {}
 

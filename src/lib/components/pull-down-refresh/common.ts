@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export type PullDownRefreshStatus =
   | 'initial'
@@ -20,22 +20,27 @@ export interface PullDownRefreshProps {
   disabled?: boolean
 }
 
-export const defaultPullDownRefreshProps = () => ({
-  ...defaultConfig.pullDownRefresh,
-  loading: false,
-  disabled: false,
-})
+export const defaultPullDownRefreshProps =
+  (): DefaultProps<PullDownRefreshProps> => ({
+    threshold: 50,
+    headerHeight: 50,
+    transitionDuration: 300,
+    doneDuration: 0,
+    ...defaultConfig.pullDownRefresh,
+    loading: false,
+    disabled: false,
+  })
 
 export const pullDownRefreshProps = {
   rootStyle: [String, Object, Array],
   rootClass: String,
   threshold: {
     type: Number,
-    default: defaultConfig.pullDownRefresh.threshold,
+    default: defaultPullDownRefreshProps().threshold,
   },
   headerHeight: {
     type: Number,
-    default: defaultConfig.pullDownRefresh.headerHeight,
+    default: defaultPullDownRefreshProps().headerHeight,
   },
   loading: {
     type: Boolean,
@@ -43,11 +48,11 @@ export const pullDownRefreshProps = {
   },
   transitionDuration: {
     type: Number,
-    default: defaultConfig.pullDownRefresh.transitionDuration,
+    default: defaultPullDownRefreshProps().transitionDuration,
   },
   doneDuration: {
     type: Number,
-    default: defaultConfig.pullDownRefresh.doneDuration,
+    default: defaultPullDownRefreshProps().doneDuration,
   },
   disabled: {
     type: Boolean,

@@ -1,7 +1,7 @@
 import { type StyleValue } from 'vue'
 import { type LocaleTranslate } from '../locale'
 import { type Bem } from '../../utils'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export type CalendarType = 'single' | 'multiple' | 'range'
 
@@ -37,7 +37,12 @@ export interface CalendarProps {
   sameDateText?: string
 }
 
-export const defaultCalendarProps = defaultConfig.calendar
+export const defaultCalendarProps = (): DefaultProps<CalendarProps> => ({
+  type: 'single',
+  maxDays: Number.MAX_SAFE_INTEGER,
+  weekStartsOn: 0,
+  ...defaultConfig.calendar,
+})
 
 export interface CalendarEmits {
   (e: 'update:model-value', value: Date | Date[] | string | string[]): void

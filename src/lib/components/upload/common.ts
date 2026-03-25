@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export type UploadStatus = 'pending' | 'uploading' | 'failed' | 'done'
 
@@ -57,10 +57,17 @@ export interface UploadProps {
   validateEvent?: boolean
 }
 
-export const defaultUploadProps = defaultConfig.upload as Omit<
-  typeof defaultConfig.upload,
-  'sourceType' | 'sizeType' | 'accept'
->
+export const defaultUploadProps = (): DefaultProps<UploadProps> => ({
+  accept: 'image',
+  sourceType: () => ['album', 'camera'],
+  sizeType: () => ['original', 'compressed'],
+  maxDuration: 60,
+  maxCount: Number.MAX_SAFE_INTEGER,
+  maxSize: Number.MAX_SAFE_INTEGER,
+  removable: true,
+  validateEvent: true,
+  ...defaultConfig.upload,
+})
 
 export interface UploadSlots {
   default?(props: {
@@ -103,7 +110,11 @@ export interface UploadPreviewProps {
   readonly?: boolean
 }
 
-export const defaultUploadPreviewProps = defaultConfig.uploadPreview
+export const defaultUploadPreviewProps =
+  (): DefaultProps<UploadPreviewProps> => ({
+    status: 'pending',
+    ...defaultConfig.uploadPreview,
+  })
 
 export interface UploadPreviewEmits {
   (e: 'image-click'): void

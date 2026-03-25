@@ -23,7 +23,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<TabbarProps>(), defaultTabbarProps)
+const props = withDefaults(defineProps<TabbarProps>(), defaultTabbarProps())
 
 defineSlots<TabbarSlots>()
 

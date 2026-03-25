@@ -1,5 +1,5 @@
 import { InjectionKey, type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface ListProps {
   rootStyle?: StyleValue
@@ -32,7 +32,10 @@ export interface ListItemProps {
   iconFamily?: string
 }
 
-export const defaultListItemProps = defaultConfig.listItem
+export const defaultListItemProps = (): DefaultProps<ListItemProps> => ({
+  arrowDirection: 'right',
+  ...defaultConfig.listItem,
+})
 
 export interface ListItemEmits {
   (e: 'click', event: any): void

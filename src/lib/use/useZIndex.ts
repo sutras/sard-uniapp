@@ -5,7 +5,7 @@ let currentZIndex = 0
 
 export function useZIndex() {
   if (currentZIndex === 0) {
-    currentZIndex = defaultConfig.initialZIndex
+    currentZIndex = defaultConfig.initialZIndex ?? 1000
   }
   const zIndex = ref(currentZIndex)
 

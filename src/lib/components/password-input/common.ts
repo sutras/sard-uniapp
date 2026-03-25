@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface PasswordInputProps {
   rootStyle?: StyleValue
@@ -16,7 +16,13 @@ export interface PasswordInputProps {
   validateEvent?: boolean
 }
 
-export const defaultPasswordInputProps = defaultConfig.passwordInput
+export const defaultPasswordInputProps =
+  (): DefaultProps<PasswordInputProps> => ({
+    length: 6,
+    type: 'border',
+    validateEvent: true,
+    ...defaultConfig.passwordInput,
+  })
 
 export interface PasswordInputEmits {
   (e: 'update:model-value', value: string): void

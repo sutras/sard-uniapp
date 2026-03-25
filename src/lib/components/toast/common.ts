@@ -1,5 +1,5 @@
 import { type StyleValue } from 'vue'
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 
 export interface ToastProps {
@@ -15,7 +15,15 @@ export interface ToastProps {
   duration?: number
 }
 
-export const defaultToastProps = defaultConfig.toast
+export const defaultToastProps = (): DefaultProps<ToastProps> => ({
+  type: 'text',
+  position: 'center',
+  overlay: false,
+  transparent: false,
+  timeout: 1500,
+  duration: 200,
+  ...defaultConfig.toast,
+})
 
 export interface ToastEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void

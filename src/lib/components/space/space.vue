@@ -23,7 +23,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<SpaceProps>(), defaultSpaceProps)
+const props = withDefaults(defineProps<SpaceProps>(), defaultSpaceProps())
 
 defineSlots<SpaceSlots>()
 
