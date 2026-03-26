@@ -12,6 +12,7 @@ import './bridge'
 
 setConfig({
   button: {
+    // block: false,
     // loadingType: 'clock',
   },
   form: {
