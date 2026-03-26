@@ -49,6 +49,22 @@
   @return $result;
 }
 
+@function bem-m($b, $m) {
+  $block: '.' + $sar-namespace + $sar-block-separator + $b;
+
+  $sep-modifier: ();
+
+  @each $item in $m {
+    $sep-modifier: list.append(
+      $sep-modifier,
+      $block + $sar-modifier-separator + $item,
+      $separator: comma
+    );
+  }
+
+  @return $sep-modifier;
+}
+
 // 兼容旧版本
 @function str-split($string, $separator) {
   // empty array/list

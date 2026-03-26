@@ -20,6 +20,10 @@
     "title": "布局",
     "children": [
       {
+        "title": "Compact 紧凑布局",
+        "name": "compact"
+      },
+      {
         "title": "Divider 分割线",
         "name": "divider"
       },

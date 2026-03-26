@@ -50,4 +50,23 @@
   @include m(disabled) {
     cursor: not-allowed;
   }
+
+  // # 紧凑模式
+  @include m(compact-horizontal) {
+    width: auto;
+    flex: 0 1 auto;
+
+    &:not(:first-child) {
+      --sar-popout-input-start-radius: 0;
+      margin-left: -1px;
+    }
+
+    &:not(:last-child) {
+      --sar-popout-input-end-radius: 0;
+    }
+  }
+
+  @include m(compact-block) {
+    flex: 1 1 auto;
+  }
 }

@@ -17,6 +17,7 @@ import { type CascaderPopoutProps } from '../cascader-popout'
 import { type CheckboxInputProps } from '../checkbox-input'
 import { type CheckboxPopoutProps } from '../checkbox-popout'
 import { type CheckboxProps, type CheckboxGroupProps } from '../checkbox'
+import { type CompactProps } from '../compact'
 import { type CoolIconProps } from '../cool-icon'
 import { type CountDownProps } from '../count-down'
 import { type CountToProps } from '../count-to'
@@ -145,6 +146,7 @@ export interface ConfigOptions {
   checkboxGroup?: InferDefaults<LooseRequired<CheckboxGroupProps>>
   checkboxInput?: InferDefaults<LooseRequired<CheckboxInputProps>>
   checkboxPopout?: InferDefaults<LooseRequired<CheckboxPopoutProps>>
+  compact?: InferDefaults<LooseRequired<CompactProps>>
   coolIcon?: InferDefaults<LooseRequired<CoolIconProps>>
   countDown?: InferDefaults<LooseRequired<CountDownProps>>
   countTo?: InferDefaults<LooseRequired<CountToProps>>

@@ -62,6 +62,8 @@ import {
   defaultPopoutInputProps,
 } from './common'
 import SarLoading from '../loading/loading.vue'
+import { type CompactContext, compactContextSymbol } from '../compact/common'
+import { inject } from 'vue'
 
 defineOptions({
   options: {
@@ -81,6 +83,8 @@ const bem = createBem('popout-input')
 
 // main
 const formContext = useFormContext()
+
+const compactContext = inject<CompactContext | null>(compactContextSymbol, null)
 
 const isDisabled = computed(() => {
   return formContext?.disabled || props.disabled
@@ -168,6 +172,8 @@ const popoutInputClass = computed(() => {
     bem.m('loading', props.loading),
     bem.m('readonly', isReadonly.value),
     bem.m('disabled', isDisabled.value),
+    bem.m(`compact-${compactContext?.direction}`, compactContext),
+    bem.m('compact-block', compactContext?.block),
     props.rootClass,
   )
 })

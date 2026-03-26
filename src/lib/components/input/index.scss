@@ -32,6 +32,7 @@
 
     @include m(focused) {
       border-color: var(--sar-input-focused-border-color);
+      z-index: 1;
     }
 
     @include m(disabled) {
@@ -151,6 +152,59 @@
     @include e(control) {
       pointer-events: none;
     }
+  }
+
+  // # 尺寸
+  @include m(small) {
+    padding: var(--sar-input-padding-y-sm) var(--sar-input-padding-x);
+
+    @include e(control) {
+      font-size: var(--sar-input-control-font-size-sm);
+    }
+  }
+
+  @include m(large) {
+    @include e(control) {
+      font-size: var(--sar-input-control-font-size-lg);
+    }
+  }
+
+  // # 紧凑模式
+  @include m(compact-horizontal) {
+    width: auto;
+    flex: 0 1 auto;
+
+    border-top-left-radius: var(
+      --sar-popout-input-start-radius,
+      var(--sar-input-border-radius)
+    );
+    border-bottom-left-radius: var(
+      --sar-popout-input-start-radius,
+      var(--sar-input-border-radius)
+    );
+
+    border-top-right-radius: var(
+      --sar-popout-input-end-radius,
+      var(--sar-input-border-radius)
+    );
+    border-bottom-right-radius: var(
+      --sar-popout-input-end-radius,
+      var(--sar-input-border-radius)
+    );
+
+    &:not(:first-child) {
+      border-top-left-radius: 0;
+      border-bottom-left-radius: 0;
+      margin-left: -1px;
+    }
+    &:not(:last-child) {
+      border-top-right-radius: 0;
+      border-bottom-right-radius: 0;
+    }
+  }
+
+  @include m(compact-block) {
+    flex: 1 1 auto;
   }
 }
 

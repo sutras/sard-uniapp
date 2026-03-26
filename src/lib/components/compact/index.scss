@@ -1,0 +1,17 @@
+@use '../style/base' as *;
+
+@include bem(compact) {
+  @include b() {
+    box-sizing: border-box;
+    display: inline-flex;
+    flex-wrap: nowrap;
+  }
+
+  @include m(vertical) {
+    flex-direction: column;
+  }
+
+  @include m(block) {
+    display: flex;
+  }
+}

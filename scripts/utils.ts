@@ -53,7 +53,7 @@ defineOptions({
   },
 })
 
-const props = withDefaults(defineProps<${pascalCaseName}Props>(), default${pascalCaseName}Props)
+const props = withDefaults(defineProps<${pascalCaseName}Props>(), default${pascalCaseName}Props())
 
 defineSlots<${pascalCaseName}Slots>()
 
@@ -92,14 +92,16 @@ export async function createComponentCommon(
     logNewFile(path.resolve(compDir, `common.ts`)),
     `import { type StyleValue } from 'vue'
 
-import { defaultConfig } from '../config'
+import { type DefaultProps, defaultConfig } from '../config'
 
 export interface ${pascalCaseName}Props {
   rootStyle?: StyleValue
   rootClass?: string
 }
 
-export const default${pascalCaseName}Props = defaultConfig.${camelCaseName}
+export const default${pascalCaseName}Props = (): DefaultProps<${pascalCaseName}Props> => ({
+  ...defaultConfig.${camelCaseName},
+})
 
 export interface ${pascalCaseName}Slots {
   default?(props: Record<string, never>): any

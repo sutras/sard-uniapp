@@ -23,6 +23,7 @@ declare module 'vue' {
     SarCheckboxPopout: typeof import('./components/checkbox-popout/checkbox-popout.vue').default
     SarCol: typeof import('./components/col/col.vue').default
     SarCollapse: typeof import('./components/collapse/collapse.vue').default
+    SarCompact: typeof import('./components/compact/compact.vue').default
     SarCoolIcon: typeof import('./components/cool-icon/cool-icon.vue').default
     SarCountDown: typeof import('./components/count-down/count-down.vue').default
     SarCountTo: typeof import('./components/count-to/count-to.vue').default
@@ -104,8 +105,8 @@ declare module 'vue' {
     SarSearch: typeof import('./components/search/search.vue').default
     SarSegmented: typeof import('./components/segmented/segmented.vue').default
     SarSegmentedItem: typeof import('./components/segmented-item/segmented-item.vue').default
-    SarSelectInput: typeof import('./components/select-input/select-input.vue').default
     SarSelect: typeof import('./components/select/select.vue').default
+    SarSelectInput: typeof import('./components/select-input/select-input.vue').default
     SarSelectOption: typeof import('./components/select-option/select-option.vue').default
     SarSelectOptionGroup: typeof import('./components/select-option-group/select-option-group.vue').default
     SarSelectPopout: typeof import('./components/select-popout/select-popout.vue').default

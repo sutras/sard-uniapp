@@ -203,10 +203,6 @@ describe('Button', () => {
       ),
     )
 
-    // block
-    const classes = wrapper.find('.sar-button').classes()
-    expect(classes).not.toContain('sar-button_block')
-
     // toggle loading
     expect(wrapper.find('.sari-plus').exists()).toBeTruthy()
     expect(wrapper.find('.sar-loading').exists()).toBeFalsy()

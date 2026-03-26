@@ -68,7 +68,7 @@ import DropdownItem from 'sard-uniapp/components/dropdown-item/dropdown-item.vue
 
 @code('${DEMO_PATH}/dropdown/demo/Togglable.vue')
 
-### 可取消选择 <sup>1.27.2+</sup>
+### 可取消选择 <sup>1.28+</sup>
 
 可以使用 `separator` 来设置菜单与面板之间的分割线类型。
 
@@ -89,7 +89,7 @@ import DropdownItem from 'sard-uniapp/components/dropdown-item/dropdown-item.vue
 | duration                          | 显隐动画时长，单位 ms        | number                       | 300       |
 | togglable <sup>1.19.3+</sup>      | 是否可取消选中的选项         | boolean                      | false     |
 | value-on-clear <sup>1.19.3+</sup> | 取消选项时设置的值           | any                          | undefined |
-| separator <sup>1.27.2+</sup>      | 菜单与面板之间的分割线类型   | 'shadow' \| 'line' \| 'none' | 'shadow'  |
+| separator <sup>1.28+</sup>        | 菜单与面板之间的分割线类型   | 'shadow' \| 'line' \| 'none' | 'shadow'  |
 
 ### DropdownSlots
 

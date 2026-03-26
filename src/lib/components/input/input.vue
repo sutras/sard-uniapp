@@ -165,7 +165,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, inject, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem, isWeb } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
@@ -175,6 +175,7 @@ import {
   type InputEmits,
   defaultInputProps,
 } from './common'
+import { type CompactContext, compactContextSymbol } from '../compact/common'
 
 defineOptions({
   options: {
@@ -194,6 +195,8 @@ const bem = createBem('input')
 // main
 const formContext = useFormContext()
 const formItemContext = useFormItemContext()
+
+const compactContext = inject<CompactContext | null>(compactContextSymbol, null)
 
 const isDisabled = computed(() => {
   return formContext?.disabled || props.disabled
@@ -349,11 +352,14 @@ const mergedShowEye = computed(() => props.type === 'password' && props.showEye)
 const inputClass = computed(() => {
   return classNames(
     bem.b(),
+    bem.m(props.size),
     bem.m('inlaid', props.inlaid),
     bem.m('borderless', props.borderless),
     bem.m('disabled', isDisabled.value),
     bem.m('readonly', isReadonly.value),
     bem.m('focused', innerFocused.value),
+    bem.m(`compact-${compactContext?.direction}`, compactContext),
+    bem.m('compact-block', compactContext?.block),
     props.rootClass,
   )
 })
@@ -373,7 +379,7 @@ const mergedPlaceholderStyle = computed(() => {
   return stringifyStyle(
     {
       color: 'var(--sar-input-placeholder-color)',
-      fontSize: 'var(--sar-input-control-font-size)',
+      fontSize: `var(--sar-input-control-font-size${props.size === 'small' ? '-sm' : props.size === 'large' ? '-lg' : ''})`,
       lineHeight: 'var(--sar-input-control-line-height)',
     },
     props.inputMinHeight

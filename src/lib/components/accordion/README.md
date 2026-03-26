@@ -44,7 +44,7 @@ import AccordionItem from 'sard-uniapp/components/accordion-item/accordion-item.
 
 @code('${DEMO_PATH}/accordion/demo/HideBorder.vue')
 
-### 插槽 <sup>1.27.2+</sup>
+### 插槽 <sup>1.28+</sup>
 
 可以使用 `title`, `extra`, `arrow` 插槽来自定义内容。
 
@@ -81,19 +81,19 @@ import AccordionItem from 'sard-uniapp/components/accordion-item/accordion-item.
 | root-class                      | 组件根元素类名 | string           | -      |
 | root-style                      | 组件根元素样式 | StyleValue       | -      |
 | title                           | 面板标题       | string           | -      |
-| extra <sup>1.27.2+</sup>        | 面板右边的内容 | string           | -      |
+| extra <sup>1.28+</sup>          | 面板右边的内容 | string           | -      |
 | value (同extra，建议使用 extra) | 面板右边的内容 | string           | -      |
 | name                            | 面板的唯一标识 | string \| number | -      |
 | disabled                        | 禁用面板       | boolean          | false  |
 
 ### AccordionItemSlots
 
-| 插槽                     | 描述             | 属性                 |
-| ------------------------ | ---------------- | -------------------- |
-| default                  | 自定义默认内容   | -                    |
-| title <sup>1.27.2+</sup> | 自定义标题内容   | -                    |
-| extra <sup>1.27.2+</sup> | 自定义值内容内容 | -                    |
-| arrow <sup>1.27.2+</sup> | 自定义箭头       | { visible: boolean } |
+| 插槽                   | 描述             | 属性                 |
+| ---------------------- | ---------------- | -------------------- |
+| default                | 自定义默认内容   | -                    |
+| title <sup>1.28+</sup> | 自定义标题内容   | -                    |
+| extra <sup>1.28+</sup> | 自定义值内容内容 | -                    |
+| arrow <sup>1.28+</sup> | 自定义箭头       | { visible: boolean } |
 
 ### AccordionItemEmits
 

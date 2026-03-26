@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue'
+import { computed, inject } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarLoading from '../loading/loading.vue'
 import SarIcon from '../icon/icon.vue'
@@ -62,6 +62,7 @@ import {
   type ButtonEmits,
   defaultButtonProps,
 } from './common'
+import { type CompactContext, compactContextSymbol } from '../compact/common'
 
 defineOptions({
   options: {
@@ -80,6 +81,8 @@ const bem = createBem('button')
 
 // main
 const formContext = useFormContext()
+
+const compactContext = inject<CompactContext | null>(compactContextSymbol, null)
 
 const isDisabled = computed(() => {
   return formContext?.disabled || props.disabled
@@ -152,8 +155,9 @@ const buttonClass = computed(() => {
     bem.m('square', props.square),
     bem.m('disabled', isDisabled.value),
     bem.m('loading', props.loading),
-    bem.m('block', props.inline ? false : props.block),
+    bem.m('block', props.inline ? false : props.block || compactContext?.block),
     bem.m('iconic', !!props.icon || props.loading),
+    bem.m(`compact-${compactContext?.direction}`, compactContext),
     props.rootClass,
   )
 })

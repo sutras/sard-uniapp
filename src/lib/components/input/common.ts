@@ -75,6 +75,8 @@ export interface InputProps {
   validateEvent?: boolean
   showEye?: boolean
 
+  size?: 'mini' | 'small' | 'medium' | 'large'
+
   internalPrepend?: number
 }
 
