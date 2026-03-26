@@ -35,6 +35,7 @@ export interface AccordionItemProps {
   rootClass?: string
   title?: string
   value?: string
+  extra?: string
   name?: string | number
   disabled?: boolean
 }
@@ -45,4 +46,7 @@ export interface AccordionItemEmits {
 
 export interface AccordionItemSlots {
   default?(props: Record<string, never>): any
+  title?(props: Record<string, never>): any
+  extra?(props: Record<string, never>): any
+  arrow?(props: { visible: boolean }): any
 }

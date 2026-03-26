@@ -31,6 +31,10 @@
     line-height: var(--sar-accordion-item-title-line-height);
   }
 
+  @include e(extra) {
+    margin-left: auto;
+  }
+
   @include e(arrow) {
     @include universal;
     align-items: center;

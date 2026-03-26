@@ -16,6 +16,10 @@
     <doc-demo title="隐藏边框" full>
       <DemoHideBorder />
     </doc-demo>
+
+    <doc-demo title="插槽" full>
+      <DemoSlot />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -26,6 +30,7 @@ import DemoBasic from './demo/Basic.vue'
 import DemoMultiple from './demo/Multiple.vue'
 import DemoDisabled from './demo/Disabled.vue'
 import DemoHideBorder from './demo/HideBorder.vue'
+import DemoSlot from './demo/Slot.vue'
 
 const { isLocked } = useCurrentPageLock()
 

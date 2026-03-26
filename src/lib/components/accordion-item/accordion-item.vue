@@ -1,10 +1,16 @@
 <template>
   <view :class="accordionItemClass" :style="accordionItemStyle">
     <view :class="classNames(bem.e('header'))" @click="onClick">
-      <view :class="bem.e('title')">{{ title }}</view>
-      <view v-if="value" :class="bem.e('value')">{{ value }}</view>
+      <view :class="bem.e('title')">
+        <slot name="title">{{ title }}</slot>
+      </view>
+      <view v-if="extra || value || $slots.extra" :class="bem.e('extra')">
+        <slot name="extra">{{ extra || value }}</slot>
+      </view>
       <view :class="bem.e('arrow')">
-        <sar-icon family="sari" :name="arrowName" />
+        <slot name="arrow" :visible="visible">
+          <sar-icon family="sari" :name="arrowName" />
+        </slot>
       </view>
     </view>
     <sar-collapse :visible="visible">
