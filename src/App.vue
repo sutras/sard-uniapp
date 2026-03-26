@@ -48,5 +48,6 @@ page,
   line-height: 1.5;
   color: var(--sar-body-color);
   -webkit-tap-highlight-color: transparent;
+  // --sar-dropdown-box-shadow: 0 1px 0 var(--sar-border-color);
 }
 </style>

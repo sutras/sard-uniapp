@@ -20,8 +20,36 @@
   }
 
   @include m(show) {
-    @include e(shadow) {
+    @include e(shadow, line) {
       z-index: calc(var(--sar-dropdown-popup-z-index) + 1);
+    }
+  }
+
+  @include e(line) {
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    height: var(--sar-border-width);
+    background: var(--sar-dropdown-line-color);
+    pointer-events: none;
+    transform: scaleY(0.5);
+  }
+
+  @include m(up) {
+    @include e(shadow) {
+      transform: rotateX(180deg);
+    }
+    @include e(line) {
+      top: 0;
+      bottom: auto;
+    }
+  }
+
+  @include m(down) {
+    @include e(line) {
+      top: auto;
+      bottom: 0;
     }
   }
 }

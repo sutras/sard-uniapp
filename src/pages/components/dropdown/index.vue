@@ -32,6 +32,10 @@
     <doc-demo title="可取消选择" full>
       <DemoTogglable />
     </doc-demo>
+
+    <doc-demo title="分隔线" full>
+      <DemoSeparator />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -46,6 +50,7 @@ import DemoDisabled from './demo/Disabled.vue'
 import DemoContent from './demo/Content.vue'
 import DemoAsync from './demo/Async.vue'
 import DemoTogglable from './demo/Togglable.vue'
+import DemoSeparator from './demo/Separator.vue'
 
 const { isLocked } = useCurrentPageLock()
 

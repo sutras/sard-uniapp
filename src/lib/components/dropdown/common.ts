@@ -12,6 +12,7 @@ export interface DropdownProps {
   duration?: number
   togglable?: boolean
   valueOnClear?: () => any
+  separator?: 'shadow' | 'line' | 'none'
 }
 
 export const defaultDropdownProps = (): DefaultProps<DropdownProps> => ({
@@ -20,6 +21,7 @@ export const defaultDropdownProps = (): DefaultProps<DropdownProps> => ({
   awayClosable: true,
   overlayClosable: true,
   duration: 200,
+  separator: 'shadow',
   ...defaultConfig.dropdown,
 })
 

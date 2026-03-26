@@ -17,6 +17,9 @@ setConfig({
   form: {
     // contentPosition: 'right',
   },
+  dropdown: {
+    // separator: 'line',
+  },
 })
 
 export function createApp() {

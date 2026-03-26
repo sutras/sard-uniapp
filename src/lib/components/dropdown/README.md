@@ -68,21 +68,28 @@ import DropdownItem from 'sard-uniapp/components/dropdown-item/dropdown-item.vue
 
 @code('${DEMO_PATH}/dropdown/demo/Togglable.vue')
 
+### 可取消选择 <sup>1.27.2+</sup>
+
+可以使用 `separator` 来设置菜单与面板之间的分割线类型。
+
+@code('${DEMO_PATH}/dropdown/demo/Separator.vue')
+
 ## API
 
 ### DropdownProps
 
-| 属性                              | 描述                         | 类型           | 默认值    |
-| --------------------------------- | ---------------------------- | -------------- | --------- |
-| root-class                        | 组件根元素类名               | string         | -         |
-| root-style                        | 组件根元素样式               | StyleValue     | -         |
-| direction                         | 菜单弹出方向                 | 'down' \| 'up' | 'down'    |
-| disabled                          | 是否禁用                     | boolean        | false     |
-| away-closable                     | 是否在点击外部区域后自动隐藏 | boolean        | true      |
-| overlay-closable                  | 是否在点击遮罩后自动隐藏     | boolean        | true      |
-| duration                          | 显隐动画时长，单位 ms        | number         | 300       |
-| togglable <sup>1.19.3+</sup>      | 是否可取消选中的选项         | boolean        | false     |
-| value-on-clear <sup>1.19.3+</sup> | 取消选项时设置的值           | any            | undefined |
+| 属性                              | 描述                         | 类型                         | 默认值    |
+| --------------------------------- | ---------------------------- | ---------------------------- | --------- |
+| root-class                        | 组件根元素类名               | string                       | -         |
+| root-style                        | 组件根元素样式               | StyleValue                   | -         |
+| direction                         | 菜单弹出方向                 | 'down' \| 'up'               | 'down'    |
+| disabled                          | 是否禁用                     | boolean                      | false     |
+| away-closable                     | 是否在点击外部区域后自动隐藏 | boolean                      | true      |
+| overlay-closable                  | 是否在点击遮罩后自动隐藏     | boolean                      | true      |
+| duration                          | 显隐动画时长，单位 ms        | number                       | 300       |
+| togglable <sup>1.19.3+</sup>      | 是否可取消选中的选项         | boolean                      | false     |
+| value-on-clear <sup>1.19.3+</sup> | 取消选项时设置的值           | any                          | undefined |
+| separator <sup>1.27.2+</sup>      | 菜单与面板之间的分割线类型   | 'shadow' \| 'line' \| 'none' | 'shadow'  |
 
 ### DropdownSlots
 

@@ -1,6 +1,7 @@
 <template>
   <view :class="dropdownClass" :style="dropdownStyle">
-    <view :class="bem.e('shadow')" />
+    <view v-if="separator === 'shadow'" :class="bem.e('shadow')" />
+    <view v-if="separator === 'line'" :class="bem.e('line')" />
     <slot></slot>
   </view>
 </template>
@@ -72,7 +73,12 @@ provide<DropdownContext>(
 
 // others
 const dropdownClass = computed(() => {
-  return classNames(bem.b(), bem.m('show', someVisible.value), props.rootClass)
+  return classNames(
+    bem.b(),
+    bem.m('show', someVisible.value),
+    bem.m(props.direction),
+    props.rootClass,
+  )
 })
 
 const dropdownStyle = computed(() => {
