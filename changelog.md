@@ -1,3 +1,23 @@
+# [1.28.0](https://github.com/sutras/sard-uniapp/compare/v1.27.1...v1.28.0) (2026-03-27)
+
+
+### Bug Fixes
+
+* **button:** 设置icon对是否块级不影响 ([14ee315](https://github.com/sutras/sard-uniapp/commit/14ee315b594ac8f2d10af830a6974bdbb590f703))
+* **faq:** 修复文字长度不一导致图标不对齐问题 ([2805d43](https://github.com/sutras/sard-uniapp/commit/2805d436859952ad39271c043b176ec7e646791a))
+* 优化form和switch布局 ([aae9bc1](https://github.com/sutras/sard-uniapp/commit/aae9bc1d382dd287005bce28fc459ab52a3f7b0d))
+
+
+### Features
+
+* **accordion:** 新增title, extra, arrow插槽 ([76f56d7](https://github.com/sutras/sard-uniapp/commit/76f56d71cd6a20681b56a845db0cd942e7b18697))
+* **alert:** 新增 square 属性,添加默认圆角 ([45b59af](https://github.com/sutras/sard-uniapp/commit/45b59af19477f67f29f48b1dacd85299a75841dc))
+* **compact:** 新增 Compact 组件 ([84b9dc4](https://github.com/sutras/sard-uniapp/commit/84b9dc40689a0817b436347fbbe44b20dcf647fc))
+* **dialog:** 使用text元素包裹message,以支持转义字符 ([b66c347](https://github.com/sutras/sard-uniapp/commit/b66c34705244263724361c0dfdb709f357a04587))
+* **dropdown:** 新增分割线类型 ([0cd77cd](https://github.com/sutras/sard-uniapp/commit/0cd77cd31cdbbea390f266d0d337a4863919b087))
+
+
+
 ## [1.27.1](https://github.com/sutras/sard-uniapp/compare/v1.27.0...v1.27.1) (2026-03-07)
 
 
