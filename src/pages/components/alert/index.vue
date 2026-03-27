@@ -13,6 +13,9 @@
     <doc-demo title="可关闭的">
       <DemoClosable />
     </doc-demo>
+    <doc-demo title="方形警告框">
+      <DemoSquare />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -23,6 +26,7 @@ import DemoBasic from './demo/Basic.vue'
 import DemoType from './demo/Type.vue'
 import DemoShowIcon from './demo/ShowIcon.vue'
 import DemoClosable from './demo/Closable.vue'
+import DemoSquare from './demo/Square.vue'
 
 const { isLocked } = useCurrentPageLock()
 

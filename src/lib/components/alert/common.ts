@@ -9,6 +9,7 @@ export interface AlertProps {
   type?: 'primary' | 'success' | 'warning' | 'danger'
   color?: string
   background?: string
+  square?: boolean
 }
 
 export const defaultAlertProps = (): DefaultProps<AlertProps> => ({

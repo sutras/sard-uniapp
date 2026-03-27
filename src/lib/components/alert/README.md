@@ -40,19 +40,26 @@ import Alert from 'sard-uniapp/components/alert/alert.vue'
 
 @code('${DEMO_PATH}/alert/demo/Closable.vue')
 
+### 方形警告框 <sup>1.28+</sup>
+
+警告框默认带有圆角，设置 `square` 可去掉其圆角。
+
+@code('${DEMO_PATH}/alert/demo/Closable.vue')
+
 ## API
 
 ### AlertProps
 
-| 属性       | 描述             | 类型                                            | 默认值    |
-| ---------- | ---------------- | ----------------------------------------------- | --------- |
-| root-class | 组件根元素类名   | string                                          | -         |
-| root-style | 组件根元素样式   | StyleValue                                      | -         |
-| type       | 警告提示样式类型 | 'primary' \| 'success' \| 'warning' \| 'danger' | 'primary' |
-| show-icon  | 是否显示图标     | StyleValue                                      | -         |
-| closable   | 是否显示关闭按钮 | boolean                                         | false     |
-| color      | 字体颜色         | string                                          | -         |
-| background | 背景颜色         | string                                          | -         |
+| 属性                    | 描述             | 类型                                            | 默认值    |
+| ----------------------- | ---------------- | ----------------------------------------------- | --------- |
+| root-class              | 组件根元素类名   | string                                          | -         |
+| root-style              | 组件根元素样式   | StyleValue                                      | -         |
+| type                    | 警告提示样式类型 | 'primary' \| 'success' \| 'warning' \| 'danger' | 'primary' |
+| show-icon               | 是否显示图标     | StyleValue                                      | -         |
+| closable                | 是否显示关闭按钮 | boolean                                         | false     |
+| color                   | 字体颜色         | string                                          | -         |
+| background              | 背景颜色         | string                                          | -         |
+| square <sup>1.28+</sup> | 方形警告框       | boolean                                         | false     |
 
 ### AlertSlots
 

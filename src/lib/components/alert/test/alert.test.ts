@@ -92,4 +92,18 @@ describe('Alert', () => {
     expect(wrapper.emitted('close')).not.toBeUndefined()
     expect(wrapper.find('.sar-alert').exists()).toBeFalsy()
   })
+
+  test('square', async () => {
+    const wrapper = mount(
+      h(
+        Alert,
+        {
+          square: true,
+        },
+        () => '这是警告提示',
+      ),
+    )
+
+    expect(wrapper.find('.sar-alert.sar-alert_square').exists()).toBe(true)
+  })
 })

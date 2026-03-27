@@ -50,7 +50,12 @@ const onClose = () => {
 
 // others
 const alertClass = computed(() => {
-  return classNames(bem.b(), bem.m(props.type), props.rootClass)
+  return classNames(
+    bem.b(),
+    bem.m(props.type),
+    bem.m('square', props.square),
+    props.rootClass,
+  )
 })
 
 const alertStyle = computed(() => {
