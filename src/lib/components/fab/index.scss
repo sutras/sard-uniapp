@@ -54,12 +54,14 @@
   @include m(left) {
     @include e(content) {
       left: 0;
+      align-items: flex-start;
     }
   }
 
   @include m(right) {
     @include e(content) {
       right: 0;
+      align-items: flex-end;
     }
   }
 

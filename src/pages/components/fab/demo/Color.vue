@@ -17,7 +17,7 @@ const itemList = ref<FabItem[]>([
     background: 'rgb(59, 190, 136)',
   },
   {
-    name: '分享',
+    name: '分享好友',
     iconFamily: 'demo-icons',
     icon: 'share',
     background: 'rgb(247, 149, 59)',

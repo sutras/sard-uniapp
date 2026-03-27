@@ -22,7 +22,7 @@ const navbarHeight = uni.upx2px(88)
 
 const itemList = ref<FabItem[]>([
   { name: '首页', iconFamily: 'demo-icons', icon: 'house-door' },
-  { name: '分享', iconFamily: 'demo-icons', icon: 'share' },
+  { name: '分享好友', iconFamily: 'demo-icons', icon: 'share' },
   { name: '收藏', iconFamily: 'demo-icons', icon: 'star' },
 ])
 
