@@ -1,0 +1,15 @@
+// #region variables
+page,
+.sar-portal {
+  --sar-loading-icon-animation-duration: 0.8s;
+
+  --sar-loading-scale-width: 9.38%;
+  --sar-loading-scale-min-width: 2px;
+  --sar-loading-scale-scale-x: 0.75;
+  --sar-loading-scale-height: 28%;
+  --sar-loading-scale-border-radius: 40%;
+
+  --sar-loading-text-margin-left: 16rpx;
+  --sar-loading-text-vertical-margin-top: 16rpx;
+}
+// #endregion variables

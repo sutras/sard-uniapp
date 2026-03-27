@@ -1,0 +1,12 @@
+// #region variables
+page,
+.sar-portal {
+  --sar-popup-z-index: 1000;
+  --sar-popup-duration: var(--sar-duration);
+}
+// #endregion variables
+/* #ifdef WEB */
+.sar-popup-hidden {
+  overflow: hidden;
+}
+/* #endif */

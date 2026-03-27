@@ -1,6 +1,6 @@
 node_modules/
 dist/
-docs/
+/docs/
 uni_modules/
 changelog.md
 CHANGELOG.md

@@ -36,6 +36,8 @@ export default [
       '**/uni_modules/',
       '**/lwa.slim.js',
       '**/lwa.slim.d.ts',
+      '**/__code/',
+      '**/.vitepress/cache/',
     ],
   },
   {

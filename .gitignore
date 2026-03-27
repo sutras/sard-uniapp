@@ -15,7 +15,7 @@ dist
 
 node_modules/
 dist/
-docs/
+/docs/
 uni_modules/
 
 # eslint
@@ -32,3 +32,6 @@ uni_modules/
 pages.d.ts
 
 __snapshots__
+
+/packages/docs/.vitepress/cache/
+__code/

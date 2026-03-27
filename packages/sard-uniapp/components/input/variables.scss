@@ -1,0 +1,43 @@
+// #region variables
+page,
+.sar-portal {
+  --sar-input-padding-y-sm: 6rpx;
+  --sar-input-control-font-size-sm: var(--sar-text-sm);
+
+  --sar-input-control-font-size-lg: var(--sar-text-lg);
+
+  --sar-input-padding-y: 10rpx;
+  --sar-input-padding-borderless-y: 12rpx;
+  --sar-input-padding-x: 24rpx;
+  --sar-input-border-radius: var(--sar-rounded);
+  --sar-input-border-color: var(--sar-border-color);
+  --sar-input-transition-duration: var(--sar-duration);
+
+  --sar-input-focused-border-color: var(--sar-primary);
+
+  --sar-input-control-font-size: var(--sar-text-base);
+  --sar-input-control-input-height: 48rpx;
+  --sar-input-control-line-height: var(--sar-leading-normal);
+  --sar-input-control-textarea-height: 168rpx;
+
+  --sar-input-placeholder-color: var(--sar-fourth-color);
+
+  --sar-input-prepend-margin-right: 16rpx;
+  --sar-input-append-margin-right: var(--sar-input-padding-x);
+
+  --sar-input-clear-margin-right: 0;
+  --sar-input-clear-padding-x: 16rpx;
+  --sar-input-clear-font-size: 32rpx;
+  --sar-input-clear-color: var(--sar-fourth-color);
+
+  --sar-input-eye-margin-left: 0;
+  --sar-input-eye-margin-right: 0;
+  --sar-input-eye-padding-x: 16rpx;
+  --sar-input-eye-font-size: 36rpx;
+  --sar-input-eye-color: var(--sar-fourth-color);
+
+  --sar-input-count-font-size: var(--sar-text-sm);
+  --sar-input-count-line-height: var(--sar-leading-tight);
+  --sar-input-count-color: var(--sar-tertiary-color);
+}
+// #endregion variables

@@ -1,6 +1,5 @@
 import { defineConfig, type PluginOption } from 'vite'
 import uni from '@dcloudio/vite-plugin-uni'
-import path from 'node:path'
 import { transformIndexHtmlPlugin } from './transformIndexHtmlPlugin'
 import tailwindcss from 'tailwindcss'
 import vitePluginPagesTypings from './vite-plugin-pages-typings'
@@ -42,16 +41,4 @@ export default defineConfig({
     transformIndexHtmlPlugin(),
     vitePluginPagesTypings(),
   ],
-  resolve: {
-    alias: [
-      {
-        find: /^sard-uniapp/,
-        replacement: path.resolve(process.cwd(), './src/lib'),
-      },
-      {
-        find: /^sard-uniapp$/,
-        replacement: path.resolve(process.cwd(), './src/lib/index.ts'),
-      },
-    ],
-  },
 })

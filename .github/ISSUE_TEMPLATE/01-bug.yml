@@ -39,10 +39,9 @@ body:
       options:
         - CLI命令行
         - HBuilderX
-        
+
     validations:
       required: true
-      
 
   - type: textarea
     id: sard-uniapp-dependencies

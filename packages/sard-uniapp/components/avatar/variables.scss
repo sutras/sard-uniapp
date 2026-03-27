@@ -1,0 +1,16 @@
+// #region variables
+page,
+.sar-portal {
+  --sar-avatar-width: 128rpx;
+  --sar-avatar-height: 128rpx;
+  --sar-avatar-font-size: 64rpx;
+  --sar-avatar-bg: var(--sar-secondary-bg);
+  --sar-avatar-border-color: var(--sar-emphasis-bg);
+
+  --sar-avatar-square-border-radius: var(--sar-rounded);
+
+  --sar-avatar-remain-bg: var(--sar-mask);
+  --sar-avatar-remain-color: var(--sar-white);
+  --sar-avatar-remain-font-size: var(--sar-text-base);
+}
+// #endregion variables

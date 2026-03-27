@@ -6,5 +6,7 @@ declare module '*.vue' {
   export default component
 }
 
+declare module '*.css'
+
 declare const my: any
 declare const __uniConfig: any

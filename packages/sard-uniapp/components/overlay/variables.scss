@@ -1,0 +1,8 @@
+// #region variables
+page,
+.sar-portal {
+  --sar-overlay-bg: var(--sar-mask);
+  --sar-overlay-z-index: 1000;
+  --sar-overlay-duration: var(--sar-duration);
+}
+// #endregion variables

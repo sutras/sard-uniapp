@@ -27,7 +27,7 @@ function transformRenderjs() {
 
 const vitestConfig = vitestDefineConfig({
   test: {
-    include: ['./src/lib/**/*.test.*'],
+    include: ['./packages/sard-uniapp/**/*.test.*'],
     environment: 'happy-dom',
     environmentOptions: {
       happyDOM: {
