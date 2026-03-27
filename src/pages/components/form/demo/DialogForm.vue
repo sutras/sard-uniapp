@@ -28,7 +28,11 @@
           <sar-input type="textarea" v-model="formState.description" />
         </sar-form-item>
         <sar-form-item name="modifier">
-          <sar-radio-group v-model="formState.modifier" direction="horizontal">
+          <sar-radio-group
+            v-model="formState.modifier"
+            direction="horizontal"
+            class="ml-auto"
+          >
             <sar-radio value="public">Public</sar-radio>
             <sar-radio value="private">Private</sar-radio>
           </sar-radio-group>

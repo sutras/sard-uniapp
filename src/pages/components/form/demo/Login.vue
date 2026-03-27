@@ -29,7 +29,7 @@
       <sar-form-item>
         <sar-space justify="between">
           <sar-form-item name="remember" inlaid>
-            <sar-checkbox v-model:checked="formState.remember">
+            <sar-checkbox v-model:checked="formState.remember" class="my-auto">
               Remember me
             </sar-checkbox>
           </sar-form-item>

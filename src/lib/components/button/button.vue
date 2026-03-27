@@ -155,7 +155,14 @@ const buttonClass = computed(() => {
     bem.m('square', props.square),
     bem.m('disabled', isDisabled.value),
     bem.m('loading', props.loading),
-    bem.m('block', props.inline ? false : props.block || compactContext?.block),
+    bem.m(
+      'block',
+      props.inline
+        ? false
+        : compactContext
+          ? compactContext?.block
+          : props.block,
+    ),
     bem.m('iconic', !!props.icon || props.loading),
     bem.m(`compact-${compactContext?.direction}`, compactContext),
     props.rootClass,

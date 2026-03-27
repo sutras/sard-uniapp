@@ -1,5 +1,4 @@
 <template>
-  <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <sar-radio-group v-model="value">
     <template #custom="{ toggle }">
       <sar-list hide-border>
@@ -19,8 +18,6 @@
 </template>
 
 <script setup lang="ts">
-import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
-import { onBackPress } from '@dcloudio/uni-app'
 const value = defineModel<string>()
 
 defineProps<{
@@ -29,15 +26,4 @@ defineProps<{
     value: string
   }[]
 }>()
-
-const { isLocked } = useCurrentPageLock()
-
-const { shouldStopBack, hidePopup } = usePageTopPopup()
-
-onBackPress(() => {
-  if (shouldStopBack.value) {
-    hidePopup()
-    return true
-  }
-})
 </script>
