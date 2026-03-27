@@ -68,7 +68,7 @@ import DropdownItem from 'sard-uniapp/components/dropdown-item/dropdown-item.vue
 
 @code('${DEMO_PATH}/dropdown/demo/Togglable.vue')
 
-### 可取消选择 <sup>1.28+</sup>
+### 分隔线 <sup>1.28+</sup>
 
 可以使用 `separator` 来设置菜单与面板之间的分割线类型。
 
