@@ -12,7 +12,7 @@ group:
 
 ## 开启暗黑模式
 
-`sard-uniapp` 暗黑主题是通过 `prefers-color-scheme` 媒体查询特性实现的，并提供了暗黑主题的样式文件 `dark.scss`，将其置于全局样式文件之后便可随着系统或浏览器的主题变化而修改颜色。
+`sard-uniapp` 暗黑主题是通过 `prefers-color-scheme` 媒体查询特性实现的，并提供了暗黑主题的样式文件 `dark.scss`，将其置于全局样式文件之后便可随着系统的主题变化而修改颜色。
 
 ```html
 <!-- App.vue -->
@@ -21,3 +21,7 @@ group:
   @import 'sard-uniapp/dark.scss';
 </style>
 ```
+
+## 动态暗黑模式
+
+默认情况下会随着系统的主题变化而修改颜色，在 web 端，如果希望动态切换暗黑模式，可以使用 [color-scheme](https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/color-scheme) 属性。

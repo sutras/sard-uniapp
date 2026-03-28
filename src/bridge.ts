@@ -8,9 +8,11 @@ const strategies: {
       url: `/pages/components/${data}/index`,
     })
   },
-  scrollTo(data: string) {
+
+  hashchange(data: string) {
     const titles = document.querySelectorAll('.doc-demo__title')
-    Array.prototype.slice.call(titles).some((el) => {
+
+    ;[...titles].some((el) => {
       if (el.textContent.replace(/\s/g, '') === data) {
         window.scrollBy({
           top: el.getBoundingClientRect().top - 60 - 10,
@@ -20,38 +22,44 @@ const strategies: {
       }
     })
   },
+
   theme(data: string) {
     document.documentElement.dataset.sardTheme = data
   },
+
+  getUrl() {
+    sendMessage({
+      type: 'url',
+      data: window.location.href,
+    })
+  },
 }
 
-function monitor() {
-  window.addEventListener(
-    'message',
-    (
-      event: MessageEvent<{
-        type: string
-        data: any
-      }>,
-    ) => {
-      const {
-        data: { type, data },
-      } = event
+function sendMessage(message: { type: string; data?: any }) {
+  parent.postMessage(message, '*')
+}
 
-      const handler = strategies[type]
-      if (typeof handler === 'function') {
-        handler(data)
-      }
-    },
-  )
+window.addEventListener(
+  'message',
+  (
+    event: MessageEvent<{
+      type: string
+      data: any
+    }>,
+  ) => {
+    const {
+      data: { type, data },
+    } = event
 
-  function sendMessage(message: { type: string; data?: any }) {
-    parent.postMessage(message, '*')
-  }
+    const handler = strategies[type]
+    if (typeof handler === 'function') {
+      handler(data)
+    }
+  },
+)
 
+window.addEventListener('load', () => {
   sendMessage({
     type: 'loaded',
   })
-}
-
-monitor()
+})

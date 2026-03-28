@@ -290,6 +290,8 @@ function transpileTypeScript(code: string, fileName: string) {
       jsx: ts.JsxEmit.Preserve,
       removeComments: false,
       verbatimModuleSyntax: false,
+      noEmit: true,
+      declarationMap: false,
     },
     fileName,
     reportDiagnostics: true,

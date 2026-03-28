@@ -5,11 +5,4 @@
       @content;
     }
   }
-
-  /* #ifdef WEB */
-  :root[data-sard-theme='dark'] page,
-  :root[data-sard-theme='dark'] .sar-portal {
-    @content;
-  }
-  /* #endif */
 }

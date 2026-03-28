@@ -1,6 +1,6 @@
 import fs from 'node:fs'
 import path from 'node:path'
-import ts from 'typescript'
+import esbuild from 'esbuild'
 
 type SnippetAlias = '@demo' | '@comp' | '@src' | '@cwd'
 
@@ -37,27 +37,14 @@ function cleanupTranspiledOutput(code: string) {
 }
 
 function transpileTypeScript(code: string, fileName: string) {
-  const result = ts.transpileModule(code, {
-    compilerOptions: {
-      target: ts.ScriptTarget.ES2020,
-      module: ts.ModuleKind.ESNext,
-      jsx: ts.JsxEmit.Preserve,
-      removeComments: false,
-      verbatimModuleSyntax: false,
-    },
-    fileName,
-    reportDiagnostics: true,
+  const result = esbuild.transformSync(code, {
+    loader: 'ts',
+    legalComments: 'inline',
+    sourcefile: fileName,
+    format: 'esm',
   })
 
-  const hasErrors = result.diagnostics?.some(
-    (diagnostic) => diagnostic.category === ts.DiagnosticCategory.Error,
-  )
-
-  if (hasErrors) {
-    return null
-  }
-
-  return cleanupTranspiledOutput(result.outputText) || null
+  return cleanupTranspiledOutput(result.code) || null
 }
 
 function transpileVueTypeScript(code: string, fileName: string) {

@@ -10,7 +10,7 @@ import {
   partialData,
   columns,
   data,
-} from '../../../../pages/components/table/demo/data'
+} from '../../../../../src/pages/components/table/demo/data'
 import { type TableProps } from '../common'
 
 const createBasicTable = (props?: TableProps) => {

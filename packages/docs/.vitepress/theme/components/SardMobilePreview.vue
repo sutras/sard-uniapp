@@ -24,22 +24,15 @@ const previewOrigin = import.meta.env.VITE_H5_LOCAL_URL
 
 const previewLink = computed(() => previewOrigin)
 
-function postRouteMessage() {
-  if (
-    !previewReady.value ||
-    !iframeRef.value?.contentWindow ||
-    !componentName.value
-  ) {
-    return
-  }
+function sendMessage(message: { type: string; data?: any }) {
+  iframeRef.value?.contentWindow?.postMessage(message, '*')
+}
 
-  iframeRef.value.contentWindow.postMessage(
-    {
-      type: 'route',
-      data: componentName.value,
-    },
-    '*',
-  )
+function postRouteMessage() {
+  sendMessage({
+    type: 'route',
+    data: componentName.value,
+  })
 }
 
 function handleMessage(event: MessageEvent<BridgeMessage>) {
@@ -47,9 +40,21 @@ function handleMessage(event: MessageEvent<BridgeMessage>) {
     return
   }
 
-  if (event.data?.type === 'loaded') {
-    previewReady.value = true
-    postRouteMessage()
+  const { type, data } = event.data || {}
+
+  switch (type) {
+    case 'loaded':
+      previewReady.value = true
+      postRouteMessage()
+      setTimeout(() => {
+        postHashchangeMessage()
+      }, 150)
+      break
+    case 'url':
+      window.open(data as string, '_blank')
+      break
+    default:
+      break
   }
 }
 
@@ -63,13 +68,29 @@ watch(isComponentDoc, (value) => {
   }
 })
 
+const postHashchangeMessage = () => {
+  sendMessage({
+    type: 'hashchange',
+    data: decodeURIComponent(location.hash.slice(1)),
+  })
+}
+
 onMounted(() => {
   window.addEventListener('message', handleMessage)
+  window.addEventListener('hashchange', postHashchangeMessage)
 })
 
 onBeforeUnmount(() => {
   window.removeEventListener('message', handleMessage)
+  window.removeEventListener('hashchange', postHashchangeMessage)
 })
+
+const handleOpenNewWindow = (event: MouseEvent) => {
+  event.preventDefault()
+  sendMessage({
+    type: 'getUrl',
+  })
+}
 </script>
 
 <template>
@@ -86,6 +107,7 @@ onBeforeUnmount(() => {
         :href="previewLink"
         target="_blank"
         rel="noreferrer"
+        @click="handleOpenNewWindow"
       >
         在新窗口打开⤴
       </a>
