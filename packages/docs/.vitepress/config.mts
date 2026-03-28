@@ -2,9 +2,9 @@ import fs from 'node:fs'
 import path from 'node:path'
 import { fileURLToPath } from 'node:url'
 import { defineConfig, type DefaultTheme } from 'vitepress'
-import { vitepressSnippetPlugin } from './snippetPlugin.mts'
+import { vitepressSnippetPlugin } from './snippetPlugin.mjs'
 
-import packageJson from '../../sard-uniapp/package.json' with { type: 'json' }
+import packageJson from 'sard-uniapp/package.json' with { type: 'json' }
 
 type DocMeta = {
   title: string
@@ -183,8 +183,6 @@ function sortPages(pages: DocPage[]) {
 }
 
 function buildSidebar(
-  sectionTitle: string,
-  overviewLink: string,
   pages: DocPage[],
   getItemText: (page: DocPage) => string = formatSidebarText,
 ): DefaultTheme.SidebarItem[] {
@@ -297,9 +295,9 @@ export default defineConfig({
       },
     ],
     sidebar: {
-      '/guide/': buildSidebar('指引', '/guide/', guidePages),
-      '/components/': buildSidebar('组件', '/components/', componentPages),
-      '/utilities/': buildSidebar('工具', '/utilities/', utilityPages),
+      '/guide/': buildSidebar(guidePages),
+      '/components/': buildSidebar(componentPages),
+      '/utilities/': buildSidebar(utilityPages),
     },
     socialLinks: [
       { icon: 'github', link: 'https://github.com/sutras/sard-uniapp' },

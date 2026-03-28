@@ -2,6 +2,7 @@
   "compilerOptions": {
     "module": "esnext",
     "target": "esnext",
+    "moduleResolution": "bundler",
     "forceConsistentCasingInFileNames": true,
     "strict": true,
     "sourceMap": true,
@@ -9,7 +10,7 @@
     "types": [
       "@dcloudio/types",
       "sard-uniapp/global",
-      "./pages.d.ts",
+      "vite/client",
       "./env.d.ts"
     ],
     "ignoreDeprecations": "5.0",
@@ -20,21 +21,19 @@
     "strictNullChecks": true,
     "jsx": "preserve",
     "paths": {
-      "@/*": ["./src/*"],
-      "sard-uniapp": ["./src/lib"],
-      "sard-uniapp/*": ["./src/lib/*"]
+      "@/*": ["./src/*"]
     }
   },
   "include": [
-    "src/**/*.ts",
-    "src/**/*.d.ts",
-    "src/**/*.tsx",
-    "src/**/*.vue",
-    "pakageks/**/*"
+    "src/**/*",
+    "packages/**/*",
+    "packages/docs/.vitepress/**/*",
+    "scripts/**/*"
   ],
   "exclude": [
     "**/dist/**",
-    "**/docs/**",
+    "**/cache/**",
+    "docs/**",
     "**/node_modules/**",
     "**/uni_modules/**"
   ]

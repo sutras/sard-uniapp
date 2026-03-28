@@ -534,7 +534,7 @@
   },
   "easycom": {
     "custom": {
-      "^sar-(.*)": "@/lib/components/$1/$1.vue",
+      "^sar-(.*)": "sard-uniapp/components/$1/$1.vue",
       "^doc-(.*)": "@/components/$1/$1.vue"
     }
   }

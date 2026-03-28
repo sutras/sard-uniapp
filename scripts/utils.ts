@@ -3,7 +3,7 @@ import path from 'node:path'
 import fs from 'node:fs/promises'
 import fse from 'fs-extra'
 
-export const libDir = path.resolve(process.cwd(), 'src/lib')
+export const libDir = path.resolve(process.cwd(), 'packages/sard-uniapp')
 const srcDir = path.resolve(process.cwd(), 'src')
 
 export async function replaceFileContent(
@@ -170,7 +170,6 @@ export async function createComponentReadme(
   await fse.outputFile(
     logNewFile(path.resolve(compDir, `README.md`)),
     `---
-nav: 组件
 title: ${pascalCaseName}
 subtitle: ${cnName}
 group: ${groupCnName}
@@ -190,7 +189,7 @@ import ${pascalCaseName} from 'sard-uniapp/components/${kebabCaseName}/${kebabCa
 
 ### 基础使用
 
-@code('\${DEMO_PATH}/${kebabCaseName}/demo/Basic.vue')
+<<< @demo/${kebabCaseName}/demo/Basic.vue
 
 ## API
 
@@ -223,7 +222,7 @@ import ${pascalCaseName} from 'sard-uniapp/components/${kebabCaseName}/${kebabCa
 
 ### CSS 变量
 
-@code('./variables.scss#variables')
+<<< @comp/${kebabCaseName}/variables.scss#variables
 `,
   )
 }
@@ -381,7 +380,9 @@ export async function addDemoMenu(
   await replaceFileContent(
     path.resolve(srcDir, 'components/menu/menu.json'),
     (content) => {
-      const obj = JSON.parse(content)
+      const obj = JSON.parse(
+        content,
+      ) as typeof import('../src/components/menu/menu.json')
       const group = obj.find((item) => item.title === groupCnName)
       if (!group) {
         consola.warn(`找不到菜单组: ${groupCnName}`)
