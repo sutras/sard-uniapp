@@ -20,7 +20,7 @@ const componentName = computed(() => {
 
 const isComponentDoc = computed(() => Boolean(componentName.value))
 
-const previewOrigin = import.meta.env.VITE_H5_LOCAL_URL
+const previewOrigin = import.meta.env.VITE_H5_LOCAL_URL || '/mobile/'
 
 const previewLink = computed(() => previewOrigin)
 

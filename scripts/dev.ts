@@ -14,7 +14,7 @@ function createMobileProcess() {
 
 function createDocsProcess(h5LocalUrl: string) {
   const child = child_process.exec(
-    `vitepress dev ${docsRelativeDir} --base /${docsBase}/ --host`,
+    `vitepress dev ${docsRelativeDir} --base ${docsBase} --host`,
     {
       env: {
         ...process.env,

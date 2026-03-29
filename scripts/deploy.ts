@@ -7,17 +7,11 @@ interface Remote {
   name: string
   branch: string
   docsRepo: string
-  success?: () => void
 }
 
 const remotes = gitRepositories.map((item) => {
   return {
     ...item,
-    success: item.pages
-      ? () => {
-          consola.info(`需要到 ${item.name} 后台手动更新: ${item.pages}`)
-        }
-      : undefined,
   }
 })
 
@@ -76,7 +70,6 @@ async function deploy() {
   try {
     for (const config of configs) {
       await doDeploy(config)
-      config.success?.()
     }
   } catch (err) {
     consola.error(err)

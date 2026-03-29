@@ -1,10 +1,7 @@
 <template>
   <sar-segmented v-model="ecl" :options="eclOptions" class="mb-20" />
 
-  <sar-qrcode
-    text="https://sard.wzt.zone/sard-uniapp-docs/mobile/"
-    :ecl="ecl"
-  />
+  <sar-qrcode text="https://sard.wzt.zone/mobile/" :ecl="ecl" />
 </template>
 
 <script setup lang="ts">

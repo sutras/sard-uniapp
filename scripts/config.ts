@@ -14,8 +14,8 @@ export const docsSrcDir = path.resolve(CWD, docsRelativeDir)
 export const docsOutDir = path.resolve(CWD, 'docs')
 export const docsMobileOutDir = path.resolve(docsOutDir, 'mobile')
 
-export const docsBase = 'sard-uniapp-docs'
-export const docsMobileBase = `${docsBase}/mobile`
+export const docsBase = '/'
+export const docsMobileBase = `mobile`
 
 export const changelogPath = path.resolve(CWD, 'CHANGELOG.md')
 

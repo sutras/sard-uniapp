@@ -15,14 +15,7 @@ async function buildSite() {
     child_process
       .spawn(
         'vitepress',
-        [
-          'build',
-          docsRelativeDir,
-          '--base',
-          `/${docsBase}/`,
-          '--outDir',
-          docsOutDir,
-        ],
+        ['build', docsRelativeDir, '--base', docsBase, '--outDir', docsOutDir],
         {
           shell: true,
           stdio: 'inherit',

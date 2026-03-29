@@ -14,12 +14,8 @@
 </p>
 
 <p align="center">
-  国内：📖 <a href="http://sard.wzt.zone/sard-uniapp-docs">文档</a>&nbsp;&nbsp;&nbsp;&nbsp;
-  🧑🏻‍🏫 <a href="http://sard.wzt.zone/sard-uniapp-docs/mobile/">案例演示</a>&nbsp;&nbsp;&nbsp;&nbsp;
-</p>
-<p align="center">
-  国外：📖 <a href="http://sutras.github.io/sard-uniapp-docs">文档</a>&nbsp;&nbsp;&nbsp;&nbsp;
-  🧑🏻‍🏫 <a href="http://sutras.github.io/sard-uniapp-docs/mobile/">案例演示</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  国内：📖 <a href="http://sard.wzt.zone/">文档</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  🧑🏻‍🏫 <a href="http://sard.wzt.zone/mobile/">案例演示</a>&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 
 ---
@@ -80,10 +76,10 @@ npm run dev
 运行上面命令后会生成四个链接：
 
 ```bash
-Local:   http://localhost:5173/sard-uniapp-docs/mobile/    （演示）
-Network: http://192.168.1.121:5173/sard-uniapp-docs/mobile/ (局域网演示）
-Local:   http://localhost:7761/sard-uniapp-docs/           （文档）
-Network: http://192.168.1.121:7761/sard-uniapp-docs/       （局域网文档）
+Local:   http://localhost:5173/mobile/    （演示）
+Network: http://192.168.1.121:5173/mobile/ (局域网演示）
+Local:   http://localhost:7761/           （文档）
+Network: http://192.168.1.121:7761/       （局域网文档）
 ```
 
 ### 测试
