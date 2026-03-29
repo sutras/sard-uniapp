@@ -9,10 +9,10 @@ import {
   createComponentVue,
   declareGlobalComponent,
   exportComponent,
-  libDir,
   runSteps,
 } from './utils'
 import fs from 'node:fs/promises'
+import { libSrcDir } from './config'
 
 async function createSubComponent(
   compDir: string,
@@ -74,7 +74,7 @@ async function newSubComponent() {
   const camelCaseName = camelCase(compForm.enName)
   const pascalCaseName = upperFirst(camelCaseName)
 
-  const compDir = path.resolve(libDir, `components/${kebabCaseName}`)
+  const compDir = path.resolve(libSrcDir, `components/${kebabCaseName}`)
 
   try {
     await fs.access(compDir)

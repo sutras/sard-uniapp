@@ -129,7 +129,6 @@ declare module 'vue' {
     SarSticky: typeof import('./components/sticky/sticky.vue').default
     SarStickyBox: typeof import('./components/sticky-box/sticky-box.vue').default
     SarSwipeAction: typeof import('./components/swipe-action/swipe-action.vue').default
-    SarSwipeActionAgent: typeof import('./components/swipe-action-agent/swipe-action-agent.vue').default
     SarSwiperDot: typeof import('./components/swiper-dot/swiper-dot.vue').default
     SarSwitch: typeof import('./components/switch/switch.vue').default
     SarTab: typeof import('./components/tab/tab.vue').default

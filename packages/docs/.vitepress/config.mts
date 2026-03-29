@@ -232,7 +232,6 @@ export default defineConfig({
   title: 'Sard Uniapp',
   description:
     'sard-uniapp 是一套基于 Uniapp + Vue3 框架开发的兼容多端的 UI 组件库',
-  base: '/sard-uniapp-docs/',
   cleanUrls: true,
   markdown: {
     config(md) {
@@ -240,6 +239,9 @@ export default defineConfig({
     },
   },
   vite: {
+    build: {
+      emptyOutDir: true,
+    },
     resolve: {
       alias: snippetAliasRoots,
     },

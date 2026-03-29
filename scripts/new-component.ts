@@ -15,10 +15,10 @@ import {
   declareGlobalComponent,
   exportComponent,
   exportCssVariable,
-  libDir,
   runSteps,
 } from './utils'
 import fs from 'node:fs/promises'
+import { libSrcDir } from './config'
 
 async function createComponent(
   compDir: string,
@@ -105,7 +105,7 @@ async function newComponent() {
   const pascalCaseName = upperFirst(camelCaseName)
   const cnName = compForm.cnName
 
-  const compDir = path.resolve(libDir, `components/${kebabCaseName}`)
+  const compDir = path.resolve(libSrcDir, `components/${kebabCaseName}`)
 
   try {
     await fs.access(compDir)

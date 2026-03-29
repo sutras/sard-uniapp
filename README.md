@@ -55,7 +55,7 @@
 
 ### 前提条件
 
-- 确保 node >= 20
+- 确保 node >= v22.22.2
 - 建议使用 pnpm 包管理器
 - 建议使用 vscode 编辑器
 
@@ -126,7 +126,7 @@ npm run release
 
 - 修复问题
 - 测试 `npm run test`
-- 修改版本号
+- 修改版本号 `packages/sard-uniapp/package.json`
 - 暂存 `git add .`
 - 提交 `git commit -m 'fix: '`
 - 给提交打标签 `npm run tag`

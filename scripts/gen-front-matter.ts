@@ -9,7 +9,7 @@ async function update() {
   function getGroup(title: string) {
     return components.find(
       (group) =>
-        group.children!.findIndex((item) => {
+        group.children!.findIndex((item: any) => {
           return item.title === title
         }) !== -1,
     )?.title

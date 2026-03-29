@@ -1,9 +1,9 @@
-import child_process from 'child_process'
+import child_process from 'node:child_process'
 import stripAnsi from 'strip-ansi'
-import packageJson from '../package.json' with { type: 'json' }
+import { docsBase, docsMobileBase, docsRelativeDir } from './config'
 
 function createMobileProcess() {
-  return child_process.exec(`npx uni --base sard-uniapp-docs/mobile --host`, {
+  return child_process.exec(`npx uni --base ${docsMobileBase} --host`, {
     env: {
       ...process.env,
       FORCE_COLOR: 'true',
@@ -13,14 +13,17 @@ function createMobileProcess() {
 }
 
 function createDocsProcess(h5LocalUrl: string) {
-  const child = child_process.exec(`npx ${packageJson.scripts['docs:dev']}`, {
-    env: {
-      ...process.env,
-      VITE_H5_LOCAL_URL: h5LocalUrl,
-      FORCE_COLOR: 'true',
-      CI: 'false',
+  const child = child_process.exec(
+    `vitepress dev ${docsRelativeDir} --base /${docsBase}/ --host`,
+    {
+      env: {
+        ...process.env,
+        VITE_H5_LOCAL_URL: h5LocalUrl,
+        FORCE_COLOR: 'true',
+        CI: 'false',
+      },
     },
-  })
+  )
 
   child.stdout?.on('data', (data) => {
     console.log(data)

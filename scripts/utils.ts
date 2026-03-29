@@ -1,18 +1,26 @@
 import consola from 'consola'
 import path from 'node:path'
-import fs from 'node:fs/promises'
-import fse from 'fs-extra'
+import fs from 'node:fs'
+import fsp from 'node:fs/promises'
+import { libSrcDir } from './config'
 
-export const libDir = path.resolve(process.cwd(), 'packages/sard-uniapp')
 const srcDir = path.resolve(process.cwd(), 'src')
+
+async function writeFileWithDirs(filePath: string, content: string) {
+  const dir = path.dirname(filePath)
+  if (!fs.existsSync(dir)) {
+    await fsp.mkdir(dir, { recursive: true })
+  }
+  await fsp.writeFile(filePath, content)
+}
 
 export async function replaceFileContent(
   filePath: string,
   replacement: (content: string) => string,
 ) {
-  let content = await fs.readFile(filePath, 'utf8')
+  let content = await fsp.readFile(filePath, 'utf8')
   content = replacement(content)
-  await fs.writeFile(filePath, content)
+  await writeFileWithDirs(filePath, content)
 }
 
 export function logNewFile(file: string) {
@@ -27,7 +35,7 @@ export async function createComponentVue(
   camelCaseName: string,
   pascalCaseName: string,
 ) {
-  await fse.outputFile(
+  await writeFileWithDirs(
     logNewFile(path.resolve(compDir, `${kebabCaseName}.vue`)),
     `<template>
   <view :class="${camelCaseName}Class" :style="${camelCaseName}Style">
@@ -88,7 +96,7 @@ export async function createComponentCommon(
   pascalCaseName: string,
   camelCaseName: string,
 ) {
-  await fse.outputFile(
+  await writeFileWithDirs(
     logNewFile(path.resolve(compDir, `common.ts`)),
     `import { type StyleValue } from 'vue'
 
@@ -119,7 +127,7 @@ export async function createComponentIndexScss(
   compDir: string,
   kebabCaseName: string,
 ) {
-  await fse.outputFile(
+  await writeFileWithDirs(
     logNewFile(path.resolve(compDir, `index.scss`)),
     `@use '../style/base' as *;
 
@@ -147,7 +155,7 @@ export async function createComponentIndex(
   compDir: string,
   pascalCaseName: string,
 ) {
-  await fse.outputFile(
+  await writeFileWithDirs(
     logNewFile(path.resolve(compDir, `index.ts`)),
     `export type {
   ${pascalCaseName}Props,
@@ -167,7 +175,7 @@ export async function createComponentReadme(
   cnName: string,
   groupCnName: string,
 ) {
-  await fse.outputFile(
+  await writeFileWithDirs(
     logNewFile(path.resolve(compDir, `README.md`)),
     `---
 title: ${pascalCaseName}
@@ -229,7 +237,7 @@ import ${pascalCaseName} from 'sard-uniapp/components/${kebabCaseName}/${kebabCa
 
 // variables.scss
 export async function createComponentVariables(compDir: string) {
-  await fse.outputFile(
+  await writeFileWithDirs(
     logNewFile(path.resolve(compDir, `variables.scss`)),
     `// #variables
 page,
@@ -247,7 +255,7 @@ export async function createDemo(
   const demoDir = path.resolve(srcDir, `pages/components/${kebabCaseName}`)
 
   try {
-    await fs.access(demoDir)
+    await fsp.access(demoDir)
     consola.error(`案例目录已存在: ${demoDir}`)
     process.exit(1)
   } catch {
@@ -255,7 +263,7 @@ export async function createDemo(
   }
 
   // index.vue
-  await fse.outputFile(
+  await writeFileWithDirs(
     logNewFile(path.resolve(demoDir, `index.vue`)),
     `<template>
   <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
@@ -277,7 +285,7 @@ const { isLocked } = useCurrentPageLock()
   )
 
   // Basic.vue
-  await fse.outputFile(
+  await writeFileWithDirs(
     logNewFile(path.resolve(demoDir, `demo/Basic.vue`)),
     `<template>
   <sar-${kebabCaseName}></sar-${kebabCaseName}>
@@ -287,7 +295,7 @@ const { isLocked } = useCurrentPageLock()
 }
 
 export async function exportCssVariable(kebabCaseName: string) {
-  await replaceFileContent(path.resolve(libDir, 'index.scss'), (content) => {
+  await replaceFileContent(path.resolve(libSrcDir, 'index.scss'), (content) => {
     return (
       [
         ...new Set(
@@ -305,7 +313,7 @@ export async function exportCssVariable(kebabCaseName: string) {
 }
 
 export async function exportComponent(kebabCaseName: string) {
-  await replaceFileContent(path.resolve(libDir, 'index.ts'), (content) => {
+  await replaceFileContent(path.resolve(libSrcDir, 'index.ts'), (content) => {
     return (
       [
         ...new Set(
@@ -324,26 +332,29 @@ export async function declareGlobalComponent(
   kebabCaseName: string,
   pascalCaseName: string,
 ) {
-  await replaceFileContent(path.resolve(libDir, 'global.d.ts'), (content) => {
-    return (
-      `declare module 'vue' {\n  export interface GlobalComponents {\n` +
-      [
-        ...new Set(
-          content
-            .split(/[{}]/)[2]
-            .trim()
-            .split('\n')
-            .map((item) => item.trim())
-            .concat([
-              `Sar${pascalCaseName}: typeof import('./components/${kebabCaseName}/${kebabCaseName}.vue').default`,
-            ])
-            .sort()
-            .map((item) => `    ${item}`),
-        ),
-      ].join('\n') +
-      `\n  }\n}\n\nexport {}\n`
-    )
-  })
+  await replaceFileContent(
+    path.resolve(libSrcDir, 'global.d.ts'),
+    (content) => {
+      return (
+        `declare module 'vue' {\n  export interface GlobalComponents {\n` +
+        [
+          ...new Set(
+            content
+              .split(/[{}]/)[2]
+              .trim()
+              .split('\n')
+              .map((item) => item.trim())
+              .concat([
+                `Sar${pascalCaseName}: typeof import('./components/${kebabCaseName}/${kebabCaseName}.vue').default`,
+              ])
+              .sort()
+              .map((item) => `    ${item}`),
+          ),
+        ].join('\n') +
+        `\n  }\n}\n\nexport {}\n`
+      )
+    },
+  )
 }
 
 export async function addDemoRoute(kebabCaseName: string) {
