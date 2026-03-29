@@ -1,7 +1,7 @@
 import * as ghpages from 'gh-pages'
 import consola from 'consola'
 import inquirer from 'inquirer'
-import { gitRepositories, libOutDir } from './config'
+import { gitRepositories, docsOutDir } from './config'
 
 interface Remote {
   name: string
@@ -33,7 +33,7 @@ async function doDeploy(config: Remote) {
   return new Promise<void>((resolve, reject) => {
     consola.start(`[${config.name}] (${config.docsRepo}) 开始部署...`)
     ghpages.publish(
-      libOutDir,
+      docsOutDir,
       {
         branch: config.branch,
         repo: config.docsRepo,
