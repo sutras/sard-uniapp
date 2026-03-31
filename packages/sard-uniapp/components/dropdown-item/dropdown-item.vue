@@ -211,18 +211,18 @@ const setPosition = async () => {
   }
 
   if (context.direction === 'down') {
-    nextPopupInset.top = `calc(${itemRect.bottom}px + var(--window-top))`
+    nextPopupInset.top = `calc(${itemRect.bottom}px + var(--window-top, 0px))`
     nextPopupInset.bottom = 0
 
     nextAwayInset.top = 0
     nextAwayInset.bottom = `calc(${
       windowHeight - itemRect.bottom
-    }px + var(--window-top))`
+    }px + var(--window-top, 0px))`
   } else {
     nextPopupInset.top = 0
     nextPopupInset.bottom = `${windowHeight - itemRect.top}px`
 
-    nextAwayInset.top = `calc(${itemRect.bottom}px + var(--window-top))`
+    nextAwayInset.top = `calc(${itemRect.bottom}px + var(--window-top, 0px))`
     nextAwayInset.bottom = 0
   }
 

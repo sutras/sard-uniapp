@@ -11,7 +11,7 @@
       :type="multiline ? 'textarea' : undefined"
       :auto-height="multiline"
       :input-min-height="multiline"
-      :internal-prepend="internalAppend ?? ($slots.prepend ? 1 : 0)"
+      :internal-prepend="internalPrepend ?? ($slots.prepend ? 1 : 0)"
       v-bind="inputProps"
       @clear="onClear"
       @change="onChange"

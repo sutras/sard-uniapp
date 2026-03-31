@@ -263,3 +263,11 @@ export function getRotatedRect(width: number, height: number, rotate: number) {
     height: h1 + h2,
   }
 }
+
+export const getTouchPoint = (event: TouchEvent): Point => {
+  const touch = event.touches[0] || event.changedTouches[0]
+  return {
+    x: touch.clientX,
+    y: touch.clientY,
+  }
+}

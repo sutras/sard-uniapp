@@ -1,0 +1,165 @@
+@use '../style/base' as *;
+
+@include bem(color-picker) {
+  @include b() {
+    @include universal;
+    padding: var(--sar-color-picker-padding);
+    gap: 24rpx;
+  }
+
+  @include e(panel) {
+    @include universal;
+    position: relative;
+    height: var(--sar-color-picker-panel-height);
+    border-radius: var(--sar-rounded-lg);
+    overflow: hidden;
+    cursor: pointer;
+  }
+
+  @include e(thumb) {
+    @include universal;
+    position: absolute;
+    top: 50%;
+    width: var(--sar-color-picker-thumb-size);
+    height: var(--sar-color-picker-thumb-size);
+    border: 4rpx solid var(--sar-white);
+    border-radius: var(--sar-rounded-full);
+    box-shadow: 0 0 0 2rpx rgba(0, 0, 0, 0.12);
+    background: transparent;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+    cursor: pointer;
+  }
+
+  @include e(slider-bar) {
+    @include universal;
+    position: relative;
+    height: var(--sar-color-picker-slider-bar-height);
+    border-radius: var(--sar-rounded-full);
+    cursor: pointer;
+
+    @include m(alpha) {
+      background: var(--sar-color-picker-checker-bg);
+    }
+
+    @include m(hue) {
+      background: linear-gradient(
+        90deg,
+        rgb(255, 0, 0) 0%,
+        rgb(255, 255, 0) 17%,
+        rgb(0, 255, 0) 33%,
+        rgb(0, 255, 255) 50%,
+        rgb(0, 0, 255) 67%,
+        rgb(255, 0, 255) 83%,
+        rgb(255, 0, 0) 100%
+      );
+    }
+  }
+
+  @include e(alpha-fill) {
+    @include universal;
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+  }
+
+  @include e(info) {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    gap: 16rpx;
+  }
+
+  @include e(preview) {
+    @include universal;
+    flex: none;
+    width: var(--sar-color-picker-preview-size);
+    height: var(--sar-color-picker-preview-size);
+    border-radius: var(--sar-rounded-full);
+    background: var(--sar-color-picker-checker-bg);
+    overflow: hidden;
+  }
+
+  @include e(preview-fill) {
+    @include universal;
+    flex: 1;
+  }
+
+  @include e(value) {
+    @include universal;
+    flex: 1;
+    min-width: 0;
+    justify-content: center;
+    align-items: center;
+    height: var(--sar-color-picker-value-size);
+    padding: 0 20rpx;
+    font-size: var(--sar-text-sm);
+    word-break: break-all;
+    border: 1px solid var(--sar-border-color);
+    border-radius: var(--sar-rounded);
+  }
+
+  @include e(format) {
+    @include universal;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    flex: none;
+    height: var(--sar-color-picker-value-size);
+    padding: 0 20rpx;
+    gap: 8rpx;
+    border-radius: var(--sar-rounded-sm);
+    font-size: var(--sar-text-sm);
+    cursor: pointer;
+
+    &:active {
+      background: var(--sar-active-bg);
+    }
+
+    @include m(active) {
+      background: var(--sar-active-bg);
+    }
+  }
+
+  @include e(presets) {
+    @include universal;
+  }
+
+  @include e(preset-list) {
+    @include universal;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 16rpx;
+  }
+
+  @include e(preset) {
+    @include universal;
+    flex: none;
+    width: 56rpx;
+    height: 56rpx;
+    border-radius: var(--sar-rounded);
+    border: 2rpx solid var(--sar-border-color);
+    background: var(--sar-color-picker-checker-bg);
+    overflow: hidden;
+    cursor: pointer;
+
+    @include m(active) {
+      box-shadow: 0 0 0 4rpx rgba(var(--sar-primary-rgb), 0.25);
+    }
+  }
+
+  @include e(preset-fill) {
+    @include universal;
+    flex: 1;
+  }
+
+  @include m(disabled, readonly) {
+    @include e(panel, slider-bar, thumb, format, preset) {
+      pointer-events: none;
+    }
+  }
+
+  @include m(disabled) {
+    opacity: var(--sar-disabled-opacity);
+  }
+}

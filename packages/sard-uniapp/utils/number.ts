@@ -9,7 +9,8 @@ export function clamp(n: number, min: number, max: number): number {
  * 把一个数四舍五入到指定位数小数。
  */
 export function round(n: number, precision = 0): number {
-  return Math.round(+(n + 'e' + precision)) / 10 ** precision
+  const factor = 10 ** precision
+  return Math.round(n * factor) / factor
 }
 
 /**

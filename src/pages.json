@@ -75,6 +75,15 @@
           "path": "checkbox-popout/index"
         },
         {
+          "path": "color-picker/index"
+        },
+        {
+          "path": "color-picker-input/index"
+        },
+        {
+          "path": "color-picker-popout/index"
+        },
+        {
           "path": "checkbox/index"
         },
         {

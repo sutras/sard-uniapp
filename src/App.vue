@@ -23,7 +23,7 @@ onHide(() => {
 }
 
 page {
-  min-height: calc(100vh - var(--window-top) - var(--window-bottom));
+  min-height: calc(100vh - var(--window-top, 0px) - var(--window-bottom, 0px));
   background-color: var(--sar-body-bg);
 }
 

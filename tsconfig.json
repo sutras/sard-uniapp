@@ -27,7 +27,8 @@
     "src/**/*",
     "packages/**/*",
     "packages/docs/.vitepress/**/*",
-    "scripts/**/*"
+    "scripts/**/*",
+    "./*.ts"
   ],
   "exclude": [
     "**/dist/**",

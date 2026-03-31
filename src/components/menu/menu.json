@@ -93,6 +93,18 @@
         "name": "checkbox-popout"
       },
       {
+        "title": "ColorPicker 颜色选择器",
+        "name": "color-picker"
+      },
+      {
+        "title": "ColorPickerInput 颜色选择器输入框",
+        "name": "color-picker-input"
+      },
+      {
+        "title": "ColorPickerPopout 颜色选择器弹出框",
+        "name": "color-picker-popout"
+      },
+      {
         "title": "DatetimePicker 日期时间选择器",
         "name": "datetime-picker"
       },

@@ -1,0 +1,17 @@
+// #variables
+page,
+.sar-portal {
+  --sar-color-picker-padding: 0 32rpx 20rpx;
+  --sar-color-picker-checker-bg: repeating-conic-gradient(
+      from 0deg,
+      #ccc 0deg 90deg,
+      transparent 90deg 180deg
+    )
+    center / 24rpx 24rpx;
+  --sar-color-picker-panel-height: 400rpx;
+  --sar-color-picker-preview-size: 80rpx;
+  --sar-color-picker-value-size: 64rpx;
+  --sar-color-picker-slider-bar-height: 32rpx;
+  --sar-color-picker-thumb-size: 36rpx;
+}
+// #endvariables

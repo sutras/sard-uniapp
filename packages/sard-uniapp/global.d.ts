@@ -23,6 +23,9 @@ declare module 'vue' {
     SarCheckboxPopout: typeof import('./components/checkbox-popout/checkbox-popout.vue').default
     SarCol: typeof import('./components/col/col.vue').default
     SarCollapse: typeof import('./components/collapse/collapse.vue').default
+    SarColorPicker: typeof import('./components/color-picker/color-picker.vue').default
+    SarColorPickerInput: typeof import('./components/color-picker-input/color-picker-input.vue').default
+    SarColorPickerPopout: typeof import('./components/color-picker-popout/color-picker-popout.vue').default
     SarCompact: typeof import('./components/compact/compact.vue').default
     SarCoolIcon: typeof import('./components/cool-icon/cool-icon.vue').default
     SarCountDown: typeof import('./components/count-down/count-down.vue').default

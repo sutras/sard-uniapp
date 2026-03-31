@@ -21,6 +21,11 @@ function vitePluginUncommentWxs(files: string[]): PluginOption {
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  server: {
+    watch: {
+      ignored: ['!**/sard-uniapp/**'],
+    },
+  },
   optimizeDeps: {
     exclude: ['sard-uniapp'],
     force: true,

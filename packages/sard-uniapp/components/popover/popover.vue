@@ -115,7 +115,7 @@ const getAndSetPosition = async () => {
     )
 
     popperPositionStyle.value = {
-      top: `calc(${popperPosition.top}px + var(--window-top))`,
+      top: `calc(${popperPosition.top}px + var(--window-top, 0px))`,
       left: popperPosition.left + 'px',
     }
 

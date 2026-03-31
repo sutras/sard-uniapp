@@ -1,0 +1,18 @@
+@use '../style/base' as *;
+
+@include bem(color-picker-input) {
+  @include e(preview) {
+    @include universal;
+    flex: none;
+    width: 48rpx;
+    height: 48rpx;
+    border-radius: var(--sar-rounded-sm);
+    background: var(--sar-color-picker-checker-bg);
+    overflow: hidden;
+  }
+
+  @include e(preview-fill) {
+    @include universal;
+    flex: 1;
+  }
+}
