@@ -52,7 +52,9 @@ describe('ColorPicker', () => {
       }),
     )
 
-    expect(wrapper.find('.sar-color-picker__value').text()).toContain('#1989FA')
+    expect(wrapper.find('.sar-color-picker__value').text()).toContain(
+      'rgb(25, 137, 250)',
+    )
   })
 
   test('formats initial value', async () => {
@@ -85,6 +87,7 @@ describe('ColorPicker', () => {
       h(ColorPicker, {
         modelValue: '#ff0000',
         format: 'hex',
+        showFormat: true,
       }),
     )
 
@@ -108,12 +111,13 @@ describe('ColorPicker', () => {
     const wrapper = mount(
       h(ColorPicker, {
         presets: ['#00ff00'],
+        showPresets: true,
       }),
     )
 
     await wrapper.find('.sar-color-picker__preset').trigger('click')
 
-    expect(wrapper.emitted().change?.[0]).toEqual(['#00FF00'])
+    expect(wrapper.emitted().change?.[0]).toEqual(['rgb(0, 255, 0)'])
   })
 
   test('filters invalid presets and marks current preset active', async () => {
@@ -121,6 +125,7 @@ describe('ColorPicker', () => {
       h(ColorPicker, {
         modelValue: '#00FF00',
         presets: ['invalid', '#00FF00', '#FF0000'],
+        showPresets: true,
       }),
     )
 
@@ -212,7 +217,10 @@ describe('ColorPicker', () => {
     const wrapper = mount(
       h(ColorPicker, {
         modelValue: '#ff0000',
+        format: 'hex',
+        showFormat: true,
         presets: ['#00ff00'],
+        showPresets: true,
         disabled: true,
       }),
     )

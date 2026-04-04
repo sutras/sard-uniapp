@@ -1,12 +1,51 @@
-import { describe, expect, test } from 'vitest'
+import { afterEach, describe, expect, test, vi } from 'vitest'
 import { mount } from '@vue/test-utils'
 
 import Signature from '../signature.vue'
 import { h } from 'vue'
-import { sleep } from '../../../utils'
+import * as utils from '../../../utils'
+
+const createMockCanvasContext = () => ({
+  fillStyle: '',
+  lineCap: 'round',
+  lineJoin: 'round',
+  lineWidth: 0,
+  strokeStyle: '',
+  setTransform() {},
+  scale() {},
+  clearRect() {},
+  fillRect() {},
+  beginPath() {},
+  moveTo() {},
+  lineTo() {},
+  stroke() {},
+  closePath() {},
+  save() {},
+  translate() {},
+  rotate() {},
+  drawImage() {},
+  restore() {},
+})
+
+const createMockCanvasNode = () => ({
+  width: 0,
+  height: 0,
+  getContext() {
+    return createMockCanvasContext()
+  },
+  toDataURL() {
+    return 'data:image/png;base64,mock-signature'
+  },
+})
+
+afterEach(() => {
+  vi.restoreAllMocks()
+})
 
 describe('Signature', () => {
   test('event', async () => {
+    vi.spyOn(utils, 'getNode').mockResolvedValue(createMockCanvasNode())
+
     const wrapper = mount(h(Signature, {}))
 
     await wrapper.find('button:last-of-type').trigger('click')
@@ -19,6 +58,8 @@ describe('Signature', () => {
   })
 
   test('fullScreen', async () => {
+    vi.spyOn(utils, 'getNode').mockResolvedValue(createMockCanvasNode())
+
     const wrapper = mount(
       h(Signature, {
         fullScreen: true,
@@ -46,7 +87,7 @@ describe('Signature', () => {
     expect(wrapper.emitted('update:visible')![0][0]).toBe(false)
     expect(wrapper.emitted('cancel')![0][0]).toBe(undefined)
 
-    await sleep(180)
+    await utils.sleep(180)
 
     expect(
       wrapper
@@ -56,6 +97,8 @@ describe('Signature', () => {
   })
 
   test('buttonText', async () => {
+    vi.spyOn(utils, 'getNode').mockResolvedValue(createMockCanvasNode())
+
     const wrapper = mount(
       h(Signature, {
         fullScreen: true,

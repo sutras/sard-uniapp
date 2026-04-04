@@ -121,7 +121,7 @@ describe('Barcode', () => {
   test('component render emits success and updates image source', async () => {
     const tempFilePath = 'http://temp/generated-barcode.png'
     const uniObject = Reflect.get(globalThis, 'uni') as any
-    const context = {
+    vi.spyOn(uniObject, 'createCanvasContext').mockReturnValue({
       font: '',
       clearRect() {},
       setFillStyle() {},
@@ -129,6 +129,8 @@ describe('Barcode', () => {
       setTextBaseline() {},
       setTextAlign() {},
       fillText() {},
+      setTransform() {},
+      scale() {},
       measureText() {
         return {
           width: 48,
@@ -137,11 +139,7 @@ describe('Barcode', () => {
       draw(_: boolean, callback?: () => void) {
         callback?.()
       },
-    }
-
-    vi.spyOn(uniObject, 'createCanvasContext').mockReturnValue(
-      context as unknown as object,
-    )
+    })
     vi.spyOn(uniObject, 'canvasToTempFilePath').mockImplementation(
       ({ success }: any) => {
         success?.({ tempFilePath })
