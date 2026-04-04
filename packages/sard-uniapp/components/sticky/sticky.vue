@@ -4,7 +4,7 @@
       <view :class="fixationClass" :style="fixationStyle">
         <view :class="boundClass" :style="boundStyle">
           <slot></slot>
-          <sar-resize-sensor initial :threshold="0" @resize="onResize" />
+          <sar-resize-sensor :threshold="0" @resize="onResize" />
         </view>
       </view>
     </view>
@@ -22,11 +22,11 @@ import {
   toRef,
 } from 'vue'
 import {
+  type Size,
   classNames,
   stringifyStyle,
   createBem,
   uniqid,
-  type NodeRect,
   isNumber,
 } from '../../utils'
 import { useIntersectionObserver } from '../../use'
@@ -143,9 +143,9 @@ if (context) {
   boxRecreate = recreate
 }
 
-const onResize = (res: NodeRect) => {
-  width.value = res.width
-  height.value = res.height
+const onResize = (size: Size) => {
+  width.value = size.width
+  height.value = size.height
 
   recreate()
 }

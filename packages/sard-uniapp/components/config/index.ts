@@ -38,6 +38,7 @@ import { type DialogProps } from '../dialog'
 import { type DividerProps } from '../divider'
 import { type DropdownProps } from '../dropdown'
 import { type EmptyProps } from '../empty'
+import { type EllipsisProps } from '../ellipsis'
 import { type FabProps } from '../fab'
 import { type FloatingBubbleProps } from '../floating-bubble'
 import { type FloatingPanelProps } from '../floating-panel'
@@ -175,6 +176,7 @@ export interface ConfigOptions {
   divider?: InferDefaults<LooseRequired<DividerProps>>
   dropdown?: InferDefaults<LooseRequired<DropdownProps>>
   empty?: InferDefaults<LooseRequired<EmptyProps>>
+  ellipsis?: InferDefaults<LooseRequired<EllipsisProps>>
   fab?: InferDefaults<LooseRequired<FabProps>>
   floatingBubble?: InferDefaults<LooseRequired<FloatingBubbleProps>>
   floatingPanel?: InferDefaults<LooseRequired<FloatingPanelProps>>

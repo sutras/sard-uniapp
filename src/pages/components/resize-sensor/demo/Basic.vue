@@ -22,27 +22,23 @@
       </view>
     </sar-list-item>
     <sar-list-item>
-      <view>width: {{ rect?.width }}</view>
-      <view>height: {{ rect?.height }}</view>
-      <view>top: {{ rect?.top }}</view>
-      <view>left: {{ rect?.left }}</view>
-      <view>right: {{ rect?.right }}</view>
-      <view>bottom: {{ rect?.bottom }}</view>
+      <view>width: {{ size?.width }}</view>
+      <view>height: {{ size?.height }}</view>
     </sar-list-item>
   </sar-list>
 </template>
 
 <script setup lang="ts">
+import { type Size } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const width = ref(50)
 const height = ref(50)
 
-const rect = ref<any>()
+const size = ref<Size>()
 
-const onResize = (value: any) => {
-  console.log(value)
-  rect.value = value
+const onResize = (value: Size) => {
+  size.value = value
 }
 </script>
 

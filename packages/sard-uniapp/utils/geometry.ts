@@ -1,5 +1,10 @@
 export type ScrollIntoViewPosition = 'start' | 'center' | 'end' | 'nearest'
 
+export type Size = {
+  width: number
+  height: number
+}
+
 export interface ScrollIntoViewOptions {
   position?: ScrollIntoViewPosition
   startOffset?: number

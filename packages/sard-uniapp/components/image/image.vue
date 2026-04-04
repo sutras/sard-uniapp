@@ -29,7 +29,6 @@
 
     <sar-resize-sensor
       v-if="resizeSensorVisible"
-      initial
       :threshold="0"
       @resize="onResize"
     />
@@ -38,12 +37,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch } from 'vue'
-import {
-  classNames,
-  stringifyStyle,
-  createBem,
-  type NodeRect,
-} from '../../utils'
+import { classNames, stringifyStyle, createBem, type Size } from '../../utils'
 import {
   type ImageProps,
   type ImageSlots,
@@ -87,9 +81,9 @@ const resizeSensorVisible = computed(
 const sensorWidth = ref(0)
 const sensorHeight = ref(0)
 
-const onResize = (res: NodeRect) => {
-  sensorWidth.value = res.width
-  sensorHeight.value = res.height
+const onResize = (size: Size) => {
+  sensorWidth.value = size.width
+  sensorHeight.value = size.height
 }
 
 const aspectRatio = ref(0)

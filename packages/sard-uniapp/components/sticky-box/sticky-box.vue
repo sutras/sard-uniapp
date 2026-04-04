@@ -2,18 +2,18 @@
   <view :class="stickyBoxClass" :style="stickyBoxStyle">
     <view :class="observeClass"></view>
     <slot></slot>
-    <sar-resize-sensor initial :threshold="0" @resize="handleResize" />
+    <sar-resize-sensor :threshold="0" @resize="handleResize" />
   </view>
 </template>
 
 <script setup lang="ts">
 import { computed, getCurrentInstance, provide } from 'vue'
 import {
+  type Size,
   classNames,
   stringifyStyle,
   createBem,
   uniqid,
-  type NodeRect,
 } from '../../utils'
 import {
   type StickyBoxProps,
@@ -42,24 +42,24 @@ const bem = createBem('sticky-box')
 // main
 const boxId = uniqid()
 
-const resizeHandlers: ((res: NodeRect) => void)[] = []
+const resizeHandlers: ((size: Size) => void)[] = []
 
-const onResize = (handler: (res: NodeRect) => void) => {
+const onResize = (handler: (size: Size) => void) => {
   const index = resizeHandlers.indexOf(handler)
   if (index === -1) {
     resizeHandlers.push(handler)
   }
 }
 
-const offResize = (handler: (res: NodeRect) => void) => {
+const offResize = (handler: (size: Size) => void) => {
   const index = resizeHandlers.indexOf(handler)
   if (index !== -1) {
     resizeHandlers.splice(index, 1)
   }
 }
 
-const handleResize = (res: NodeRect) => {
-  resizeHandlers.forEach((handler) => handler(res))
+const handleResize = (size: Size) => {
+  resizeHandlers.forEach((handler) => handler(size))
 }
 
 const instance = getCurrentInstance()!

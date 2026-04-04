@@ -1,4 +1,4 @@
-import { type NodeRect } from '../../utils'
+import { type Size } from '../../utils'
 import { type StyleValue } from 'vue'
 import { type DefaultProps, defaultConfig } from '../config'
 
@@ -20,7 +20,7 @@ export interface ResizeSensorSlots {
 }
 
 export interface ResizeSensorEmits {
-  (e: 'resize', value: NodeRect): void
+  (e: 'resize', value: Size): void
 }
 
 export interface ResizeSensorExpose {}

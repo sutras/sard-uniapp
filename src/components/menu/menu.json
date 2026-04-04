@@ -262,6 +262,10 @@
         "name": "empty"
       },
       {
+        "title": "Ellipsis 文本省略",
+        "name": "ellipsis"
+      },
+      {
         "title": "List 列表",
         "name": "list"
       },

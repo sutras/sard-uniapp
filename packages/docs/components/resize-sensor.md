@@ -31,23 +31,18 @@ import ResizeSensor from 'sard-uniapp/components/resize-sensor/resize-sensor.vue
 | ---------- | ---------------------------------- | ---------- | ------ |
 | root-class | 组件根元素类名                     | string     | -      |
 | root-style | 组件根元素样式                     | StyleValue | -      |
-| initial    | 是否在初始化时触发 `resize` 事件   | boolean    | false  |
 | threshold  | 触发 `resize` 事件的阈值，单位毫秒 | number     | 150    |
 
 ### ResizeSensorEmits
 
-| 事件   | 描述                       | 类型                        |
-| ------ | -------------------------- | --------------------------- |
-| resize | 在元素宽或高发生变化时触发 | `(value: NodeRect) => void` |
+| 事件   | 描述                       | 类型                    |
+| ------ | -------------------------- | ----------------------- |
+| resize | 在元素宽或高发生变化时触发 | `(value: Size) => void` |
 
-#### NodeRect
+#### Size
 
 ```ts
-interface NodeRect {
-  top: number
-  right: number
-  bottom: number
-  left: number
+interface Size {
   height: number
   width: number
 }

@@ -1,4 +1,4 @@
-import { type NodeRect } from '../../utils'
+import { type Size } from '../../utils'
 import {
   type ComponentInternalInstance,
   type InjectionKey,
@@ -20,7 +20,7 @@ export interface StickyBoxExpose {}
 
 export const stickyContextSymbol = Symbol('sticky-context') as InjectionKey<{
   boxId: string
-  onResize: (callback: (res: NodeRect) => void) => void
-  offResize: (callback: (res: NodeRect) => void) => void
+  onResize: (callback: (size: Size) => void) => void
+  offResize: (callback: (size: Size) => void) => void
   instance: ComponentInternalInstance
 }>

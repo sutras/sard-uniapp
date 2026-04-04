@@ -1,0 +1,57 @@
+@use '../style/base' as *;
+
+@include bem(ellipsis) {
+  @include b() {
+    box-sizing: border-box;
+  }
+
+  @include e(wrapper) {
+    position: relative;
+    box-sizing: border-box;
+  }
+
+  @include e(content) {
+    position: relative;
+    box-sizing: border-box;
+    display: block;
+    white-space: pre-wrap;
+    word-break: break-all;
+
+    @include m(clamp) {
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+  }
+
+  @include e(action) {
+    position: relative;
+    box-sizing: border-box;
+    display: inline;
+    margin-left: var(--sar-ellipsis-action-margin-left);
+    color: var(--sar-ellipsis-action-color);
+    line-height: inherit;
+    cursor: pointer;
+    vertical-align: bottom;
+    white-space: nowrap;
+  }
+
+  @include e(measure) {
+    position: absolute;
+    box-sizing: border-box;
+    display: block;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: -1;
+    width: 100%;
+    opacity: 0;
+    pointer-events: none;
+    white-space: pre-wrap;
+    word-break: break-all;
+  }
+
+  @include e(line) {
+    white-space: nowrap;
+  }
+}

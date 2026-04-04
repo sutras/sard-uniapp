@@ -11,7 +11,7 @@
     >
       <view :id="contentId" :class="bem.e('content')">
         <slot></slot>
-        <sar-resize-sensor initial :threshold="0" @resize="onResize" />
+        <sar-resize-sensor :threshold="0" @resize="onResize" />
       </view>
     </scroll-view>
     <view

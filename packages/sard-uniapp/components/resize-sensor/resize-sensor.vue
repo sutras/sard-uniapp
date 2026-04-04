@@ -2,7 +2,7 @@
   <view
     :class="resizeClass"
     :style="resizeStyle"
-    @animationend.stop="onAnimationEnd"
+    @animationend.stop="debouncedUpdate"
   >
     <scroll-view
       :class="bem.e('scroll-view')"
@@ -10,7 +10,7 @@
       scroll-y
       :scroll-left="scrollValue"
       :scroll-top="scrollValue"
-      @scroll="onDebouncedScroll"
+      @scroll="debouncedUpdate"
     >
       <view :class="bem.e('increase')"></view>
     </scroll-view>
@@ -20,7 +20,7 @@
       scroll-y
       :scroll-left="scrollValue"
       :scroll-top="scrollValue"
-      @scroll="onDebouncedScroll"
+      @scroll="debouncedUpdate"
     >
       <view :class="bem.e('decrease')"></view>
     </scroll-view>
@@ -28,14 +28,7 @@
 </template>
 
 <script setup lang="ts">
-import {
-  computed,
-  getCurrentInstance,
-  nextTick,
-  onMounted,
-  ref,
-  watch,
-} from 'vue'
+import { computed, getCurrentInstance, reactive, ref, watch } from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -76,23 +69,17 @@ const instance = getCurrentInstance()
 
 const resizeId = uniqid()
 
-const bounding = ref({
-  top: 0,
-  right: 0,
-  bottom: 0,
-  left: 0,
+const size = reactive({
   height: 0,
   width: 0,
 })
 
-let firstTime = true
-
-watch(bounding, () => {
-  if (!firstTime || props.initial) {
-    emit('resize', { ...bounding.value })
-  }
-  firstTime = false
-})
+watch(
+  () => Object.assign({}, size),
+  (value) => {
+    emit('resize', value)
+  },
+)
 
 const scrollValue = ref(0)
 
@@ -106,14 +93,9 @@ const reset = () => {
 const debouncedUpdate = debounce(
   async () => {
     const rect = await getBoundingClientRect(`.${resizeId}`, instance)
-    bounding.value = {
-      top: rect.top,
-      right: rect.right,
-      bottom: rect.bottom,
-      left: rect.left,
-      height: rect.height,
-      width: rect.width,
-    }
+    size.width = rect.width
+    size.height = rect.height
+    reset()
   },
   props.threshold,
   {
@@ -122,28 +104,6 @@ const debouncedUpdate = debounce(
     trailing: true,
   },
 )
-
-// 避免 increase + decrease 触发两次
-const onDebouncedScroll = debounce(
-  () => {
-    reset()
-    debouncedUpdate()
-  },
-  15,
-  {
-    maxWait: 0,
-    leading: true,
-    trailing: false,
-  },
-)
-
-const onAnimationEnd = () => {
-  debouncedUpdate()
-}
-
-onMounted(() => {
-  nextTick(reset)
-})
 
 defineExpose<ResizeSensorExpose>({})
 

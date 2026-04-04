@@ -16,9 +16,9 @@ title: 组件
 
 ## 布局
 
-- [Grid 宫格](/components/grid)
 - [Compact 紧凑布局](/components/compact)
 - [Divider 分割线](/components/divider)
+- [Grid 宫格](/components/grid)
 - [Layout 布局](/components/layout)
 - [Space 间距](/components/space)
 - [StatusBar 状态栏](/components/status-bar)
@@ -76,6 +76,7 @@ title: 组件
 - [CountDown 倒计时](/components/count-down)
 - [CountTo 数字滚动](/components/count-to)
 - [Empty 空状态](/components/empty)
+- [Ellipsis 文本省略](/components/ellipsis)
 - [List 列表](/components/list)
 - [NoticeBar 公告栏](/components/notice-bar)
 - [Popout 弹出框](/components/popout)

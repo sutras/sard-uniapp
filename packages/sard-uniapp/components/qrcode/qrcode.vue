@@ -1,8 +1,9 @@
 <template>
   <view :class="qrcodeClass" :style="qrcodeStyle">
-    <sar-resize-sensor initial @resize="onResize" />
+    <sar-resize-sensor @resize="onResize" />
     <view :class="bem.e('canvas-wrapper')">
       <canvas
+        v-if="canvasSize"
         :id="canvasId"
         :canvas-id="canvasId"
         :class="canvasId"
@@ -34,13 +35,13 @@ import {
   watch,
 } from 'vue'
 import {
+  type Size,
   classNames,
   stringifyStyle,
   createBem,
   uniqid,
   qrcode,
   logError,
-  NodeRect,
   getWindowInfo,
 } from '../../utils'
 import {
@@ -70,8 +71,8 @@ const contextRef = shallowRef<ReturnType<typeof uni.createCanvasContext>>()
 
 const canvasSize = ref(0)
 
-const onResize = (rect: NodeRect) => {
-  canvasSize.value = rect.width
+const onResize = (size: Size) => {
+  canvasSize.value = size.width
 }
 
 const qrcodeMap = computed(() => {
@@ -123,7 +124,7 @@ const drawQrcode = async () => {
   context.draw(false, () => {
     uni.canvasToTempFilePath(
       {
-        canvasId: canvasId,
+        canvasId,
         success(res) {
           dataURL.value = res.tempFilePath
           emit('success', res.tempFilePath)
@@ -159,7 +160,6 @@ const loadIcon = (path: string) => {
         resolve(res)
       },
       fail(err) {
-        logError(`uni.getImageInfo fail, path: ${path}`)
         logError(err)
         reject(err)
       },

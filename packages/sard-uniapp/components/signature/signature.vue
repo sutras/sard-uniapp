@@ -9,7 +9,7 @@
     <view :class="bem.e('content')">
       <view :class="bem.e('body')">
         <view :id="contentId" :class="bem.e('canvas-content')">
-          <sar-resize-sensor initial @resize="onResize" />
+          <sar-resize-sensor @resize="onResize" />
           <canvas
             type="2d"
             :id="canvasId"
@@ -81,6 +81,7 @@ import {
   shallowRef,
 } from 'vue'
 import {
+  type Size,
   classNames,
   stringifyStyle,
   createBem,
@@ -156,9 +157,9 @@ const covertCanvasHeight = ref(1)
 const canvasCSSWidth = ref(1)
 const canvasCSSHeight = ref(1)
 
-const onResize = (rect: NodeRect) => {
-  canvasCSSWidth.value = rect.height
-  canvasCSSHeight.value = rect.width
+const onResize = (size: Size) => {
+  canvasCSSWidth.value = size.height
+  canvasCSSHeight.value = size.width
 }
 
 let prevPoints: [number, number] = [0, 0]
