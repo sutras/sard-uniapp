@@ -76,6 +76,7 @@
     width: var(--sar-color-picker-preview-size);
     height: var(--sar-color-picker-preview-size);
     border-radius: var(--sar-rounded-full);
+    border: 1px solid var(--sar-border-color);
     background: var(--sar-color-picker-checker-bg);
     overflow: hidden;
   }

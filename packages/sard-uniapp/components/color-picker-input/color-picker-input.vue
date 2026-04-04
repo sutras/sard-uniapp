@@ -3,6 +3,7 @@
     v-bind="popoutInputProps"
     v-model="inputValue"
     :internal-prepend="1"
+    :class="bem.b()"
     @clear="onClear"
     @click="show"
   >

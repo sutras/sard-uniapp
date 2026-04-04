@@ -51,7 +51,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, provide, ref, watch, inject } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarInput from '../input/input.vue'
 import SarIcon from '../icon/icon.vue'
@@ -60,10 +60,10 @@ import {
   type PopoutInputProps,
   type PopoutInputEmits,
   defaultPopoutInputProps,
+  popoutInputContextSymbol,
 } from './common'
 import SarLoading from '../loading/loading.vue'
 import { type CompactContext, compactContextSymbol } from '../compact/common'
-import { inject } from 'vue'
 
 defineOptions({
   options: {
@@ -163,6 +163,8 @@ const onSealClick = (event: any) => {
     emit('click', event)
   }
 }
+
+provide(popoutInputContextSymbol, {})
 
 // others
 const popoutInputClass = computed(() => {

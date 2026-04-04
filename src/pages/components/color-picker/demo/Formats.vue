@@ -2,7 +2,7 @@
   <sar-space direction="vertical" size="large">
     <sar-list card>
       <sar-list-item class="px-0 py-20">
-        <sar-color-picker v-model="hexColor" format="hex" />
+        <sar-color-picker v-model="hexColor" format="hex" show-alpha />
       </sar-list-item>
       <sar-list-item>HEX：{{ hexColor }}</sar-list-item>
     </sar-list>
@@ -16,7 +16,7 @@
 
     <sar-list card>
       <sar-list-item class="px-0 py-20">
-        <sar-color-picker v-model="hslColor" format="hsl" />
+        <sar-color-picker v-model="hslColor" format="hsl" show-alpha />
       </sar-list-item>
       <sar-list-item>HSL：{{ hslColor }}</sar-list-item>
     </sar-list>

@@ -25,6 +25,7 @@ export interface SegmentedProps {
   options?: SegmentedOption[]
   optionKeys?: OptionKeys
   validateEvent?: boolean
+  ellipsis?: boolean
 }
 
 export const defaultSegmentedProps = (): DefaultProps<SegmentedProps> => ({
@@ -32,6 +33,7 @@ export const defaultSegmentedProps = (): DefaultProps<SegmentedProps> => ({
   shape: 'square',
   direction: 'horizontal',
   validateEvent: true,
+  ellipsis: true,
   ...defaultConfig.segmented,
 })
 
@@ -51,6 +53,7 @@ export interface SegmentedContext {
   readonly: SegmentedProps['readonly']
   size: SegmentedProps['size']
   shape: SegmentedProps['shape']
+  ellipsis: boolean
   value: any
   toggle: (value: any) => void
 }

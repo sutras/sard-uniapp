@@ -111,6 +111,7 @@ provide<SegmentedContext>(
     readonly: toRef(() => props.readonly),
     size: toRef(() => props.size),
     shape: toRef(() => props.shape),
+    ellipsis: toRef(() => props.ellipsis),
     value: innerValue,
     toggle,
   }),

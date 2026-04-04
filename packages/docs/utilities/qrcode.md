@@ -11,20 +11,11 @@ group:
 
 ## 使用
 
-::: code-group
-
-```ts [ts]
+```ts
 import { qrcode } from 'sard-uniapp'
 
 qrcode('https://github.com/sutras/sard-uniapp')
 ```
-
-```js [js]
-import { qrcode } from 'sard-uniapp'
-qrcode('https://github.com/sutras/sard-uniapp')
-```
-
-:::
 
 ## 接口
 

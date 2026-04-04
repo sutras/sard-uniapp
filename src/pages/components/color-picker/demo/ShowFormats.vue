@@ -1,7 +1,7 @@
 <template>
   <sar-list card>
     <sar-list-item class="px-0 py-20">
-      <sar-color-picker v-model="color" show-presets />
+      <sar-color-picker v-model="color" show-presets show-alpha show-format />
     </sar-list-item>
     <sar-list-item>当前颜色：{{ color }}</sar-list-item>
   </sar-list>
@@ -10,5 +10,5 @@
 <script setup lang="ts">
 import { ref } from 'vue'
 
-const color = ref('#2ECC71')
+const color = ref('rgba(25, 137, 250, 0.6)')
 </script>

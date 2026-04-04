@@ -44,7 +44,7 @@
         <sar-input v-model="strContent" type="textarea" />
       </sar-form-item>
       <sar-form-item label="color">
-        <sar-input v-model="color" />
+        <sar-color-picker-input v-model="color" show-alpha show-presets />
       </sar-form-item>
     </sar-form>
   </doc-page>

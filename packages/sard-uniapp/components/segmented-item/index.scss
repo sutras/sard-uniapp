@@ -54,7 +54,9 @@
     }
   }
 
-  @include e(label) {
-    @include ellipsis;
+  @include m(ellipsis) {
+    @include e(label) {
+      @include ellipsis;
+    }
   }
 }

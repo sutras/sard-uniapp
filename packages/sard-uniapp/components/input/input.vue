@@ -176,6 +176,7 @@ import {
   defaultInputProps,
 } from './common'
 import { type CompactContext, compactContextSymbol } from '../compact/common'
+import { popoutInputContextSymbol } from '../popout-input/common'
 
 defineOptions({
   options: {
@@ -195,6 +196,7 @@ const bem = createBem('input')
 // main
 const formContext = useFormContext()
 const formItemContext = useFormItemContext()
+const popoutInputContext = inject(popoutInputContextSymbol, null)
 
 const compactContext = inject<CompactContext | null>(compactContextSymbol, null)
 
@@ -360,6 +362,7 @@ const inputClass = computed(() => {
     bem.m('focused', innerFocused.value),
     bem.m(`compact-${compactContext?.direction}`, compactContext),
     bem.m('compact-block', compactContext?.block),
+    bem.m('in-popout-input', popoutInputContext),
     props.rootClass,
   )
 })

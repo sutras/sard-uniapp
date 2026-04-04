@@ -6,7 +6,8 @@
         title="选择颜色"
         placeholder="请选择颜色"
         show-alpha
-        format="rgb"
+        show-format
+        show-presets
         clearable
       />
     </sar-list-item>

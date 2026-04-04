@@ -29,12 +29,6 @@ import Qrcode from 'sard-uniapp/components/qrcode/qrcode.vue'
 
 <<< @demo/qrcode/demo/DisplaySize.vue
 
-### 画板的大小
-
-画板大小决定了二维码图片的分辨率。
-
-<<< @demo/qrcode/demo/CanvasSize.vue
-
 ### 自定义颜色
 
 通过设置 `color` 自定义二维码暗模块颜色，
@@ -88,7 +82,6 @@ import Qrcode from 'sard-uniapp/components/qrcode/qrcode.vue'
 | text                                      | 要编码的字符串数据           | string                   | -      |
 | ecl                                       | 错误纠错级别                 | 'L' \| 'M' \| 'Q' \| 'H' | 'M'    |
 | size                                      | 二维码呈现的大小             | string                   | 320rpx |
-| canvas-size                               | 画板的大小                   | number                   | 400    |
 | color                                     | 二维码颜色                   | string                   | #000   |
 | bg-color                                  | 二维码背景颜色               | string                   | #fff   |
 | quiet-zone-modules                        | 安静区域模块数               | number                   | 2      |

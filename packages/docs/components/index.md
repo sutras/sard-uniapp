@@ -83,6 +83,7 @@ title: 组件
 - [Popup 弹出层](/components/popup)
 - [ProgressBar 条形进度条](/components/progress-bar)
 - [ProgressCircle 环形进度条](/components/progress-circle)
+- [Barcode 条形码](/components/barcode)
 - [Qrcode 二维码](/components/qrcode)
 - [ReadMore 阅读更多](/components/read-more)
 - [ScrollList 横向滚动列表](/components/scroll-list)

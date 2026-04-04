@@ -57,6 +57,10 @@ const snippetAliasRoots = [
     find: '@comp',
     replacement: path.join(rootDir, 'packages', 'sard-uniapp', 'components'),
   },
+  {
+    find: '@lib',
+    replacement: path.join(rootDir, 'packages', 'sard-uniapp'),
+  },
   { find: '@src', replacement: path.join(rootDir, 'src') },
   { find: '@cwd', replacement: rootDir },
 ]
@@ -214,7 +218,7 @@ function buildSidebar(
         return leftGroup.order - rightGroup.order
       }
 
-      return leftTitle.localeCompare(rightTitle, 'zh-Hans-CN')
+      return leftTitle.localeCompare(rightTitle, 'en-US')
     })
     .map(([title, group]) => ({
       text: title,
@@ -239,6 +243,18 @@ export default defineConfig({
     },
   },
   vite: {
+    server: {
+      watch: {
+        ignored: [
+          '!**/sard-uniapp/**',
+          '**/node_modules/**',
+          '**/uni_modules/**',
+          '**/.git/**',
+          '**/dist/**',
+          '**/cache/**',
+        ],
+      },
+    },
     build: {
       emptyOutDir: true,
     },
@@ -249,7 +265,7 @@ export default defineConfig({
       vitepressSnippetPlugin({
         docsDir,
         aliasRoots: snippetAliasRoots.map(({ find, replacement }) => ({
-          prefix: find as '@demo' | '@comp' | '@src' | '@cwd',
+          prefix: find as any,
           dir: replacement,
         })),
       }) as never,

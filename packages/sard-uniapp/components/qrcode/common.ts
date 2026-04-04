@@ -10,6 +10,7 @@ export interface QrcodeProps {
   ecl?: QrcodeECL
   type?: 'canvas' | 'image'
   size?: string
+  /** @deprecated */
   canvasSize?: number
   color?: string
   bgColor?: string
@@ -21,7 +22,6 @@ export interface QrcodeProps {
 export const defaultQrcodeProps = (): DefaultProps<QrcodeProps> => ({
   ecl: 'M',
   size: '320rpx',
-  canvasSize: 400,
   type: 'canvas',
   text: '',
   color: '#000',

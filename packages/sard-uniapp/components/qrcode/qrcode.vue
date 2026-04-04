@@ -1,13 +1,17 @@
 <template>
   <view :class="qrcodeClass" :style="qrcodeStyle">
+    <sar-resize-sensor initial @resize="onResize" />
     <view :class="bem.e('canvas-wrapper')">
       <canvas
-        :class="canvasId"
-        :width="canvasSize"
-        :height="canvasSize"
-        :style="{ width: canvasSize + 'px', height: canvasSize + 'px' }"
-        :canvas-id="canvasId"
         :id="canvasId"
+        :canvas-id="canvasId"
+        :class="canvasId"
+        :width="canvasSize * pixelRatio"
+        :height="canvasSize * pixelRatio"
+        :style="{
+          width: size,
+          height: size,
+        }"
       ></canvas>
     </view>
     <image
@@ -36,6 +40,8 @@ import {
   uniqid,
   qrcode,
   logError,
+  NodeRect,
+  getWindowInfo,
 } from '../../utils'
 import {
   defaultQrcodeProps,
@@ -59,7 +65,14 @@ const bem = createBem('qrcode')
 // main
 const instance = getCurrentInstance()
 const canvasId = uniqid()
+const { pixelRatio } = getWindowInfo()
 const contextRef = shallowRef<ReturnType<typeof uni.createCanvasContext>>()
+
+const canvasSize = ref(0)
+
+const onResize = (rect: NodeRect) => {
+  canvasSize.value = rect.width
+}
 
 const qrcodeMap = computed(() => {
   return qrcode(props.text, {
@@ -71,12 +84,18 @@ const dataURL = ref('')
 
 const drawQrcode = async () => {
   const context = contextRef.value
-  if (!context) {
+  const size = canvasSize.value
+
+  if (!context || !size) {
     return
   }
 
+  // #ifdef MP-ALIPAY
+  context.setTransform(1, 0, 0, 1, 0, 0)
+  context.scale(pixelRatio, pixelRatio)
+  // #endif
+
   const map = qrcodeMap.value
-  const size = props.canvasSize
   const moduleSize = size / (map.length + props.quietZoneModules * 2)
   const margin = moduleSize * props.quietZoneModules
 
@@ -104,12 +123,6 @@ const drawQrcode = async () => {
   context.draw(false, () => {
     uni.canvasToTempFilePath(
       {
-        x: 0,
-        y: 0,
-        width: size,
-        height: size,
-        destWidth: size,
-        destHeight: size,
         canvasId: canvasId,
         success(res) {
           dataURL.value = res.tempFilePath
@@ -129,7 +142,7 @@ const drawIcon = async (ctx: any) => {
   if (props.icon) {
     const iconInfo = (await loadIcon(props.icon)) as any
 
-    const size = props.canvasSize
+    const size = canvasSize.value
     ctx.save()
     ctx.beginPath()
     ctx.drawImage(iconInfo.path, size * 0.4, size * 0.4, size * 0.2, size * 0.2)
@@ -158,7 +171,7 @@ watch(
   [
     contextRef,
     qrcodeMap,
-    () => props.canvasSize,
+    canvasSize,
     () => props.color,
     () => props.bgColor,
     () => props.quietZoneModules,

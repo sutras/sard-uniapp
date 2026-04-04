@@ -4,7 +4,8 @@
     v-model="color"
     title="选择颜色"
     show-alpha
-    format="rgb"
+    show-format
+    show-presets
   />
 
   <sar-list card>

@@ -8,6 +8,7 @@ declare module 'vue' {
     SarAvatar: typeof import('./components/avatar/avatar.vue').default
     SarAvatarGroup: typeof import('./components/avatar-group/avatar-group.vue').default
     SarBackTop: typeof import('./components/back-top/back-top.vue').default
+    SarBarcode: typeof import('./components/barcode/barcode.vue').default
     SarBadge: typeof import('./components/badge/badge.vue').default
     SarButton: typeof import('./components/button/button.vue').default
     SarCalendar: typeof import('./components/calendar/calendar.vue').default

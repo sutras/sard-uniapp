@@ -58,9 +58,10 @@
 
   @include e(canvas-wrapper) {
     position: fixed;
-    left: 200vw;
-    width: 9999px;
-    height: 9999px;
+    left: -999999px;
+    opacity: 0;
+    pointer-events: none;
+    touch-action: none;
   }
 
   @include e(loading) {

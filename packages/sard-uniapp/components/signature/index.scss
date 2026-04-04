@@ -12,6 +12,7 @@
   }
 
   @include e(canvas-content) {
+    position: relative;
     width: 100%;
     height: 100%;
   }
@@ -22,9 +23,12 @@
     background: var(--sar-signature-canvas-bg);
   }
 
-  @include e(covert-canvas) {
+  @include e(covert-canvas-wrapper) {
     position: fixed;
-    left: 200vw;
+    left: -999999px;
+    opacity: 0;
+    pointer-events: none;
+    touch-action: none;
   }
 
   @include e(footer) {

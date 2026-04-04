@@ -11,7 +11,7 @@ export interface CropImageProps {
   type?: 'png' | 'jpg'
   quality?: number
   duration?: number
-  success?: (filePath: string) => void
+  success?: (filePath: string, info: { width: number; height: number }) => void
   fail?: (err: any) => void
   complete?: () => void
   cancel?: () => void

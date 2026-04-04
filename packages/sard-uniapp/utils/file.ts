@@ -1,5 +1,6 @@
+import { isObject, isString } from './is'
 import { logError } from './log'
-import { isHarmony } from './system'
+import { isHarmony, isMp, isWeb } from './system'
 
 /**
  * @description: 判断url是否为图片url
@@ -84,31 +85,39 @@ export function getFileName(path: string, ext = true): string {
  * @returns
  */
 export function readAsDataURL(filePath: string) {
-  return (
-    'data:image/png;base64,' +
-    uni.getFileSystemManager().readFileSync(filePath, 'base64')
-  )
+  if (isString(filePath) && filePath.startsWith('data:')) {
+    return filePath
+  }
+
+  const result = uni.getFileSystemManager().readFileSync(filePath, 'base64')
+
+  const data = isObject(result) && 'data' in result ? result.data : result
+
+  return 'data:image/png;base64,' + (isString(data) ? data : '')
 }
 
-export async function plusToDataURL(filePath: string) {
-  if (isHarmony) {
-    return readAsDataURL(filePath)
-  } else {
-    return new Promise<string>((resolve, reject) => {
-      try {
-        plus.io.resolveLocalFileSystemURL(filePath, (entry) => {
-          ;(entry as any).file((file: any) => {
-            const fileReader = new plus.io.FileReader()
-            fileReader.readAsDataURL(file, 'utf-8')
-            fileReader.onloadend = (evt) => {
-              resolve((evt.target as any).result)
-            }
-          })
-        })
-      } catch (err) {
-        logError(err)
-        reject(err)
-      }
-    })
+export async function filePathToDataURL(filePath: string) {
+  if (isWeb) {
+    return filePath
   }
+  if (isMp || isHarmony) {
+    return readAsDataURL(filePath)
+  }
+
+  return new Promise<string>((resolve, reject) => {
+    try {
+      plus.io.resolveLocalFileSystemURL(filePath, (entry) => {
+        ;(entry as any).file((file: any) => {
+          const fileReader = new plus.io.FileReader()
+          fileReader.readAsDataURL(file, 'utf-8')
+          fileReader.onloadend = (evt) => {
+            resolve((evt.target as any).result)
+          }
+        })
+      })
+    } catch (err) {
+      logError(err)
+      reject(err)
+    }
+  })
 }

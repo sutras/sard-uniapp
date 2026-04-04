@@ -2,9 +2,9 @@
   <view :class="watermarkClass" :style="watermarkStyle">
     <view :class="bem.e('canvas-wrapper')">
       <canvas
-        :class="bem.e('canvas')"
-        :canvas-id="canvasId"
         :id="canvasId"
+        :canvas-id="canvasId"
+        :class="bem.e('canvas')"
       ></canvas>
     </view>
   </view>
@@ -29,6 +29,7 @@ import {
   readAsDataURL,
   isWeixin,
   isHarmony,
+  getWindowInfo,
 } from '../../utils'
 import {
   type WatermarkProps,
@@ -73,6 +74,7 @@ const mergedFont = computed(() => {
 
 const instance = getCurrentInstance()
 const canvasId = uniqid()
+const { pixelRatio } = getWindowInfo()
 const contextRef = shallowRef<ReturnType<typeof uni.createCanvasContext>>()
 
 const dataURL = ref('')
@@ -113,6 +115,9 @@ const drawWatermark = () => {
     return
   }
 
+  context.setTransform(1, 0, 0, 1, 0, 0)
+  context.scale(pixelRatio, pixelRatio)
+
   context.clearRect(0, 0, 999, 999)
 
   let width = 0
@@ -132,11 +137,12 @@ const drawWatermark = () => {
     const textHeight = fontSize
     context.font = [
       fontStyle,
-      'normal',
-      fontWeight,
+      fontWeight === 'normal' ? '' : fontWeight,
       fontSize + 'px',
       fontFamily,
-    ].join(' ')
+    ]
+      .filter(Boolean)
+      .join(' ')
     context.setFillStyle(color)
     context.setTextBaseline('top')
 
@@ -221,12 +227,10 @@ const drawWatermark = () => {
 
     uni.canvasToTempFilePath(
       {
-        x: 0,
-        y: 0,
-        width: clipWidth,
-        height: clipHeight,
-        destWidth: clipWidth,
-        destHeight: clipHeight,
+        width: clipWidth * pixelRatio,
+        height: clipHeight * pixelRatio,
+        destWidth: clipWidth * pixelRatio,
+        destHeight: clipHeight * pixelRatio,
         canvasId: canvasId,
         success(res) {
           dataURL.value =

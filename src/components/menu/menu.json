@@ -234,6 +234,10 @@
         "name": "badge"
       },
       {
+        "title": "Barcode 条形码",
+        "name": "barcode"
+      },
+      {
         "title": "Card 卡片",
         "name": "card"
       },

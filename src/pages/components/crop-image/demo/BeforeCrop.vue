@@ -4,7 +4,11 @@
   <image
     :src="url"
     mode="aspectFit"
-    style="width: 320rpx; height: 320rpx; margin-top: 20rpx"
+    :style="{
+      width: width + 'px',
+      height: height + 'px',
+      marginTop: '20rpx',
+    }"
   />
 </template>
 
@@ -13,6 +17,9 @@ import { ref } from 'vue'
 import { cropImage } from 'sard-uniapp'
 
 const url = ref('')
+
+const width = ref(0)
+const height = ref(0)
 
 const onClick = () => {
   uni.chooseImage({
@@ -25,8 +32,10 @@ const onClick = () => {
         beforeCrop() {
           return 0.3
         },
-        success(filePath) {
+        success(filePath, info) {
           url.value = filePath
+          width.value = info.width
+          height.value = info.height
         },
       })
     },

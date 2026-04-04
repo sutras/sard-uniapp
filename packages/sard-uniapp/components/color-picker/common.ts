@@ -7,18 +7,22 @@ export interface ColorPickerProps {
   rootStyle?: StyleValue
   rootClass?: string
   modelValue?: string
-  format?: ColorFormat
   showAlpha?: boolean
+  format?: ColorFormat
+  showFormat?: boolean
   presets?: string[]
+  showPresets?: boolean
   disabled?: boolean
   readonly?: boolean
   validateEvent?: boolean
 }
 
 export const defaultColorPickerProps = (): DefaultProps<ColorPickerProps> => ({
-  format: 'hex',
   showAlpha: false,
+  format: 'rgb',
+  showFormat: false,
   presets: () => defaultColorPickerPresets.slice(),
+  showPresets: false,
   validateEvent: true,
   ...defaultConfig.colorPicker,
 })

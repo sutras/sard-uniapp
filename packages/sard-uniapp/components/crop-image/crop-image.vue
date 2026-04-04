@@ -1,98 +1,108 @@
 <template>
-  <sar-popup
-    effect="full-fade"
-    :visible="visible"
-    :duration="duration"
-    :overlay="false"
-    back-press="close"
-    @after-enter="onAfterEnter"
-    @visible-hook="onVisibleHook"
-    @back-press="onBackPress"
-  >
-    <view :class="cropImageClass" :style="cropImageStyle">
-      <view
-        :class="bem.e('sensor')"
-        @mousedown="onMouseDown"
-        @touchstart="onTouchStart"
-        @touchmove.stop.prevent="onTouchMove"
-        @touchend="onTouchEnd"
-        @touchcancel="onTouchEnd"
-      >
-        <view :class="bem.e('focus')" :style="focusStyle">
-          <view :class="bem.e('puppet')" :style="puppetStyle">
-            <image
-              v-if="imageOrigSize[0] > 0"
-              mode="scaleToFill"
-              :src="src"
-              :class="bem.e('image')"
-              :style="imageStyle"
-              @touchstart="onImageTouchStart"
-            />
+  <view>
+    <sar-popup
+      effect="full-fade"
+      :visible="visible"
+      :duration="duration"
+      :overlay="false"
+      back-press="close"
+      @visible-hook="onVisibleHook"
+      @back-press="onBackPress"
+    >
+      <view :class="cropImageClass" :style="cropImageStyle">
+        <view
+          :class="bem.e('sensor')"
+          @mousedown="onMouseDown"
+          @touchstart="onTouchStart"
+          @touchmove.stop.prevent="onTouchMove"
+          @touchend="onTouchEnd"
+          @touchcancel="onTouchEnd"
+        >
+          <view :class="bem.e('focus')" :style="focusStyle">
+            <view :class="bem.e('puppet')" :style="puppetStyle">
+              <image
+                v-if="imageOrigSize[0] > 0"
+                mode="scaleToFill"
+                :src="src"
+                :class="bem.e('image')"
+                :style="imageStyle"
+                @touchstart="onImageTouchStart"
+              />
+            </view>
           </view>
         </view>
+        <view :class="bem.e('mask')" :style="maskStyle"></view>
+
+        <view :class="bem.e('toolbar')">
+          <sar-button
+            size="small"
+            type="pale-text"
+            color="white"
+            block
+            @click="onCancel"
+          >
+            <text style="font-size: var(--sar-text-base); font-weight: bold">
+              {{ cancelText || t('cancel') }}
+            </text>
+          </sar-button>
+          <sar-button
+            size="small"
+            type="pale-text"
+            color="white"
+            block
+            @click="onReset"
+          >
+            <sar-icon family="sari" name="undo" size="var(--sar-text-xl)" />
+          </sar-button>
+          <sar-button
+            size="small"
+            type="pale-text"
+            color="white"
+            block
+            @click="onRotate"
+          >
+            <sar-icon
+              family="sari"
+              name="rotate-left"
+              size="var(--sar-text-xl)"
+            />
+          </sar-button>
+          <sar-button size="small" block @click="onConfirm">
+            <text style="font-weight: bold">
+              {{ confirmText || t('confirm') }}
+            </text>
+          </sar-button>
+        </view>
       </view>
-      <view :class="bem.e('mask')" :style="maskStyle"></view>
 
-      <view :class="bem.e('toolbar')">
-        <sar-button
-          size="small"
-          type="pale-text"
-          color="white"
-          block
-          @click="onCancel"
-        >
-          <text style="font-size: var(--sar-text-base); font-weight: bold">
-            {{ cancelText || t('cancel') }}
-          </text>
-        </sar-button>
-        <sar-button
-          size="small"
-          type="pale-text"
-          color="white"
-          block
-          @click="onReset"
-        >
-          <sar-icon family="sari" name="undo" size="var(--sar-text-xl)" />
-        </sar-button>
-        <sar-button
-          size="small"
-          type="pale-text"
-          color="white"
-          block
-          @click="onRotate"
-        >
-          <sar-icon
-            family="sari"
-            name="rotate-left"
-            size="var(--sar-text-xl)"
-          />
-        </sar-button>
-        <sar-button size="small" block @click="onConfirm">
-          <text style="font-weight: bold">
-            {{ confirmText || t('confirm') }}
-          </text>
-        </sar-button>
+      <view v-if="isCropping" :class="bem.e('loading')">
+        <sar-loading />
       </view>
-    </view>
+    </sar-popup>
 
-    <view v-if="isCropping" :class="bem.e('loading')">
-      <sar-loading />
+    <view :class="bem.e('canvas-wrapper')">
+      <canvas
+        :id="canvasId"
+        :canvas-id="canvasId"
+        :style="{
+          width: canvasWidth + 'px',
+          height: canvasHeight + 'px',
+        }"
+      ></canvas>
     </view>
-  </sar-popup>
-
-  <view :class="bem.e('canvas-wrapper')">
-    <canvas
-      type="2d"
-      :hidpi="false"
-      :canvas-id="canvasId"
-      :id="canvasId"
-      :style="canvasStyle"
-    ></canvas>
   </view>
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance, onBeforeUnmount, ref, watch } from 'vue'
+import {
+  computed,
+  getCurrentInstance,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  shallowRef,
+  watch,
+} from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -101,12 +111,9 @@ import {
   getAspectFillSize,
   getAspectFitSize,
   uniqid,
-  isApp,
-  getNode,
   isWeb,
   createInertialAnimate,
-  isAlipay,
-  sleep,
+  logError,
 } from '../../utils'
 import {
   type CropImageProps,
@@ -170,7 +177,7 @@ const onBackPress = () => {
 }
 
 // focus & mask
-const { windowWidth, windowHeight, pixelRatio } = getWindowInfo()
+const { windowWidth, windowHeight } = getWindowInfo()
 
 const aspectRatio = computed(() => {
   const [w, h] = props.cropScale.split(':').map(Number)
@@ -567,150 +574,112 @@ const { onMouseDown, onTouchStart, onTouchMove, onTouchEnd } = useDragPinch({
 // canvas
 const instance = getCurrentInstance()
 const canvasId = uniqid()
-let context: CanvasRenderingContext2D
-let canvas: HTMLCanvasElement
-
-const getCanvas = async () => {
-  if (isApp) {
-    context = uni.createCanvasContext(canvasId, instance) as any
-  } else {
-    canvas = await getNode(`#${canvasId}`, instance)
-    context = canvas!.getContext('2d')!
-  }
-}
-
-const onAfterEnter = () => {
-  getCanvas()
-}
-
-const canvasWidth = ref(0)
-const canvasHeight = ref(0)
-
-const canvasStyle = computed(() => {
-  return {
-    width: canvasWidth.value + 'px',
-    height: canvasHeight.value + 'px',
-  }
-})
+const contextRef = shallowRef<ReturnType<typeof uni.createCanvasContext>>()
+const canvasWidth = ref(1)
+const canvasHeight = ref(1)
 
 const cropImage = async () => {
-  return new Promise<string>((resolve, reject) => {
-    const [imgOrigW, imgOrigH] = imageOrigSize.value
-    const [, , focusWidth, focusHeight] = focusRect.value
+  return new Promise<{ path: string; width: number; height: number }>(
+    (resolve, reject) => {
+      const [imgOrigW, imgOrigH] = imageOrigSize.value
+      const [, , focusWidth, focusHeight] = focusRect.value
 
-    const rotate = actualRotate.value % 360
+      const rotate = actualRotate.value % 360
 
-    let scale = (rotate % 180 !== 0 ? imgOrigH : imgOrigW) / imgWidth.value
+      let scale = (rotate % 180 !== 0 ? imgOrigH : imgOrigW) / imgWidth.value
 
-    let canvasW = focusWidth * scale
-    let canvasH = focusHeight * scale
+      let canvasW = focusWidth * scale
+      let canvasH = focusHeight * scale
 
-    let customScale = 1
+      let customScale = 1
 
-    if (props.beforeCrop) {
-      customScale = props.beforeCrop(canvasW, canvasH)
-    }
-
-    canvasW *= customScale
-    canvasH *= customScale
-    scale *= customScale
-
-    const imgL = imgLeft.value * scale
-    const imgT = imgTop.value * scale
-    const imgW = imgOrigW * customScale
-    const imgH = imgOrigH * customScale
-
-    let tx = 0
-    let ty = 0
-
-    switch (rotate) {
-      case 0:
-        tx = imgL
-        ty = imgT
-        break
-      case -90:
-        tx = (imgW + imgT) * -1
-        ty = imgL
-        break
-      case -180:
-        tx = (imgW + imgL) * -1
-        ty = (imgH + imgT) * -1
-        break
-      case -270:
-        tx = imgT
-        ty = (imgH + imgL) * -1
-        break
-    }
-
-    canvasWidth.value = canvasW
-    canvasHeight.value = canvasH
-
-    if (!isApp) {
-      canvas.width = canvasW
-      canvas.height = canvasH
-    }
-
-    const canvasToTempFilePath = () => {
-      let width = canvasWidth.value
-      let height = canvasHeight.value
-      if (isWeb || isApp) {
-        width /= pixelRatio
-        height /= pixelRatio
+      if (props.beforeCrop) {
+        customScale = props.beforeCrop(canvasW, canvasH)
       }
 
-      const options = {
-        x: 0,
-        y: 0,
-        width,
-        height,
-        destWidth: canvasWidth.value,
-        destHeight: canvasHeight.value,
-        canvasId: canvasId,
-        canvas: canvas,
-        fileType: props.type,
-        quality: props.quality,
-        success(res: any) {
-          resolve(res.tempFilePath)
-        },
-        fail(err: any) {
-          reject(err)
-        },
-      }
-      if (isAlipay) {
-        ;(canvas as any).toTempFilePath(options)
-      } else {
-        uni.canvasToTempFilePath(options)
-      }
-    }
+      canvasW *= customScale
+      canvasH *= customScale
+      scale *= customScale
 
-    const drawCanvas = (imgOrUrl: any) => {
-      context.clearRect(0, 0, canvasW, canvasH)
-      context.save()
-      context.rotate(rotate * (Math.PI / 180))
-      context.translate(tx, ty)
-      context.scale(customScale, customScale)
-      context.drawImage(
-        imgOrUrl,
-        0,
-        0,
-        imgOrigW,
-        imgOrigH,
-        0,
-        0,
-        imgOrigW,
-        imgOrigH,
-      )
-      context.restore()
-      if (isApp) {
-        ;(context as any).draw(false, () => {
-          canvasToTempFilePath()
+      const imgL = imgLeft.value * scale
+      const imgT = imgTop.value * scale
+      const imgW = imgOrigW * customScale
+      const imgH = imgOrigH * customScale
+
+      let tx = 0
+      let ty = 0
+
+      switch (rotate) {
+        case 0:
+          tx = imgL
+          ty = imgT
+          break
+        case -90:
+          tx = (imgW + imgT) * -1
+          ty = imgL
+          break
+        case -180:
+          tx = (imgW + imgL) * -1
+          ty = (imgH + imgT) * -1
+          break
+        case -270:
+          tx = imgT
+          ty = (imgH + imgL) * -1
+          break
+      }
+
+      canvasWidth.value = canvasW
+      canvasHeight.value = canvasH
+
+      const drawCanvas = (imgOrUrl: any) => {
+        const context = contextRef.value!
+
+        context.clearRect(0, 0, canvasW, canvasH)
+        context.save()
+        context.rotate(rotate * (Math.PI / 180))
+        context.translate(tx, ty)
+        context.scale(customScale, customScale)
+        context.drawImage(
+          imgOrUrl,
+          0,
+          0,
+          imgOrigW,
+          imgOrigH,
+          0,
+          0,
+          imgOrigW,
+          imgOrigH,
+        )
+        context.restore()
+
+        context.draw(false, () => {
+          uni.canvasToTempFilePath(
+            {
+              x: 0,
+              y: 0,
+              width: canvasWidth.value,
+              height: canvasHeight.value,
+              destWidth: canvasWidth.value,
+              destHeight: canvasHeight.value,
+              canvasId,
+              fileType: props.type,
+              quality: props.quality,
+              success(res: any) {
+                resolve({
+                  path: res.tempFilePath,
+                  width: canvasW,
+                  height: canvasH,
+                })
+              },
+              fail(err: any) {
+                reject(err)
+              },
+            },
+            instance,
+          )
         })
-      } else {
-        canvasToTempFilePath()
       }
-    }
 
-    if (isApp) {
       uni.getImageInfo({
         src: props.src!,
         success(res) {
@@ -722,20 +691,8 @@ const cropImage = async () => {
           reject(err)
         },
       })
-    } else {
-      const image = (canvas as any).createImage
-        ? (canvas as any).createImage()
-        : new Image()
-      image.src = props.src!
-      image.onload = async () => {
-        await sleep(50)
-        drawCanvas(image)
-      }
-      image.onerror = (err: any) => {
-        reject(err)
-      }
-    }
-  })
+    },
+  )
 }
 
 // toolbar
@@ -762,11 +719,15 @@ const onConfirm = () => {
   }
   isCropping.value = true
   cropImage()
-    .then((filePath) => {
+    .then(({ path: filePath, width, height }) => {
       close()
-      props.success?.(filePath)
+      props.success?.(filePath, {
+        width,
+        height,
+      })
     })
     .catch((err) => {
+      logError(err)
       props.fail?.(err)
     })
     .finally(() => {
@@ -774,6 +735,10 @@ const onConfirm = () => {
       props.complete?.()
     })
 }
+
+onMounted(async () => {
+  contextRef.value = uni.createCanvasContext(canvasId, instance)
+})
 
 // others
 const cropImageClass = computed(() => {

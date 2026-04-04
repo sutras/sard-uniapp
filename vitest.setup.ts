@@ -173,6 +173,11 @@ const uniObject = {
   createSelectorQuery() {
     return new SelectorQuery()
   },
+  canvasToTempFilePath({ success }: any) {
+    success?.({
+      tempFilePath: 'http://temp/barcode.png',
+    })
+  },
   onWindowResize() {},
   createCanvasContext() {
     return new CanvasContext()

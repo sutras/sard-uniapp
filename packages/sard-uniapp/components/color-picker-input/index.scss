@@ -1,6 +1,8 @@
 @use '../style/base' as *;
 
 @include bem(color-picker-input) {
+  text-align: left;
+
   @include e(preview) {
     @include universal;
     flex: none;

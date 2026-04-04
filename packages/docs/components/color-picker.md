@@ -31,13 +31,25 @@ import ColorPicker from 'sard-uniapp/components/color-picker/color-picker.vue'
 
 ### 预定义颜色
 
-ColorPicker 支持预定义颜色。
+设置 `show-presets` 属性展示预定义颜色。
 
 <<< @demo/color-picker/demo/Presets.vue
 
+### 自定义预定义颜色
+
+使用 `presets` 属性设置预定义颜色。
+
+<<< @demo/color-picker/demo/CustomPresets.vue
+
 ### 颜色的格式
 
-支持 `hex`、`rgb`、`hsl` 三种格式切换。
+可以使用 `format` 属性设置 `hex`、`rgb`、`hsl` 三种格式。
+
+<<< @demo/color-picker/demo/Formats.vue
+
+### 允许切换格式
+
+设置 `show-format` 属性可以让用户自行设置格式。
 
 <<< @demo/color-picker/demo/Formats.vue
 
@@ -45,16 +57,18 @@ ColorPicker 支持预定义颜色。
 
 ### ColorPickerProps
 
-| 属性        | 描述               | 类型                    | 默认值    |
-| ----------- | ------------------ | ----------------------- | --------- |
-| root-class  | 组件根元素类名     | string                  | -         |
-| root-style  | 组件根元素样式     | StyleValue              | -         |
-| model-value | 当前颜色值         | string                  | `#1989FA` |
-| format      | 输出颜色格式       | `hex` \| `rgb` \| `hsl` | `hex`     |
-| show-alpha  | 是否启用透明度选择 | boolean                 | false     |
-| presets     | 预定义颜色列表     | string[]                | -         |
-| disabled    | 是否禁用           | boolean                 | false     |
-| readonly    | 是否只读           | boolean                 | false     |
+| 属性         | 描述                 | 类型                    | 默认值    |
+| ------------ | -------------------- | ----------------------- | --------- |
+| root-class   | 组件根元素类名       | string                  | -         |
+| root-style   | 组件根元素样式       | StyleValue              | -         |
+| model-value  | 当前颜色值           | string                  | `#1989FA` |
+| show-alpha   | 是否启用透明度选择   | boolean                 | false     |
+| format       | 输出颜色格式         | `hex` \| `rgb` \| `hsl` | `hex`     |
+| show-format  | 是否启用格式选择     | boolean                 | false     |
+| presets      | 预定义颜色列表       | string[]                | -         |
+| show-presets | 是否启用预设颜色选择 | boolean                 | false     |
+| disabled     | 是否禁用             | boolean                 | false     |
+| readonly     | 是否只读             | boolean                 | false     |
 
 ### ColorPickerEmits
 

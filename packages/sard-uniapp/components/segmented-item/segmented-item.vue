@@ -85,6 +85,7 @@ const segmentedItemClass = computed(() => {
     bem.m('selected', isSelected.value),
     bem.m('disabled', isDisabled.value),
     bem.m('readonly', isReadonly.value),
+    bem.m('ellipsis', context.ellipsis),
     bem.m('with-icon', !!props.icon),
     bem.m(context.size),
     bem.m(context.shape),

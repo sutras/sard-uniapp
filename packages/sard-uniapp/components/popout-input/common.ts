@@ -37,3 +37,5 @@ export interface PopoutInputSlots {
   append?(): any
   arrow?(): any
 }
+
+export const popoutInputContextSymbol = Symbol('popout-input-context')

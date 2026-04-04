@@ -5,6 +5,7 @@ import { type AlertProps } from '../alert'
 import { type AvatarGroupProps } from '../avatar-group'
 import { type AvatarProps } from '../avatar'
 import { type BackTopProps } from '../back-top'
+import { type BarcodeProps } from '../barcode'
 import { type BadgeProps } from '../badge'
 import { type ButtonProps } from '../button'
 import { type CalendarInputProps } from '../calendar-input'
@@ -136,6 +137,7 @@ export interface ConfigOptions {
   avatar?: InferDefaults<LooseRequired<AvatarProps>>
   avatarGroup?: InferDefaults<LooseRequired<AvatarGroupProps>>
   backTop?: InferDefaults<LooseRequired<BackTopProps>>
+  barcode?: InferDefaults<LooseRequired<BarcodeProps>>
   badge?: InferDefaults<LooseRequired<BadgeProps>>
   button?: InferDefaults<LooseRequired<ButtonProps>>
   calendar?: InferDefaults<LooseRequired<CalendarProps>>

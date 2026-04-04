@@ -9,10 +9,6 @@
       <DemoDisplaySize />
     </doc-demo>
 
-    <doc-demo title="画板的大小">
-      <DemoCanvasSize />
-    </doc-demo>
-
     <doc-demo title="自定义颜色">
       <DemoColor />
     </doc-demo>
@@ -40,7 +36,6 @@ import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
 import { onBackPress } from '@dcloudio/uni-app'
 import DemoBasic from './demo/Basic.vue'
 import DemoDisplaySize from './demo/DisplaySize.vue'
-import DemoCanvasSize from './demo/CanvasSize.vue'
 import DemoColor from './demo/Color.vue'
 import DemoIcon from './demo/Icon.vue'
 import DemoIconProps from './demo/IconProps.vue'

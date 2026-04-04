@@ -9,15 +9,12 @@
     <view :class="bem.e('content')">
       <view :class="bem.e('body')">
         <view :id="contentId" :class="bem.e('canvas-content')">
+          <sar-resize-sensor initial @resize="onResize" />
           <canvas
             type="2d"
-            :class="bem.e('canvas')"
-            :style="{
-              width: canvasCSSWidth,
-              height: canvasCSSHeight,
-            }"
-            :canvas-id="canvasId"
             :id="canvasId"
+            :canvas-id="canvasId"
+            :class="bem.e('canvas')"
             disable-scroll
             @touchstart="onTouchStart"
             @touchmove="onTouchMove"
@@ -26,17 +23,19 @@
             @mousedown="onMouseDown"
             @ready="onCanvasReady"
           ></canvas>
-          <canvas
-            type="2d"
-            :class="bem.e('covert-canvas')"
-            :style="{
-              width: covertCanvasCSSWidth,
-              height: covertCanvasCSSHeight,
-            }"
-            :canvas-id="covertCanvasId"
-            :id="covertCanvasId"
-            @ready="onCanvasReady"
-          ></canvas>
+
+          <view :class="bem.e('covert-canvas-wrapper')">
+            <canvas
+              type="2d"
+              :id="covertCanvasId"
+              :canvas-id="covertCanvasId"
+              :style="{
+                width: canvasCSSWidth + 'px',
+                height: canvasCSSHeight + 'px',
+              }"
+              @ready="onCovertCanvasReady"
+            ></canvas>
+          </view>
         </view>
       </view>
 
@@ -79,6 +78,7 @@ import {
   ref,
   reactive,
   toRef,
+  shallowRef,
 } from 'vue'
 import {
   classNames,
@@ -87,13 +87,13 @@ import {
   uniqid,
   getBoundingClientRect,
   NodeRect,
-  getNode,
   getWindowInfo,
   sleep,
-  isWeb,
   isApp,
-  isAlipay,
-  plusToDataURL,
+  filePathToDataURL,
+  isMp,
+  getNode,
+  isWeb,
 } from '../../utils'
 import {
   type SignatureProps,
@@ -107,6 +107,7 @@ import { useTransition, useZIndex } from '../../use'
 import { type TransitionHookName } from '../../use/useTransition'
 import { useTranslate } from '../locale'
 import SarStatusBar from '../status-bar/status-bar.vue'
+import SarResizeSensor from '../resize-sensor/resize-sensor.vue'
 
 defineOptions({
   options: {
@@ -129,125 +130,104 @@ const bem = createBem('signature')
 const { t } = useTranslate('signature')
 
 // main
+type CanvasContext = ReturnType<typeof uni.createCanvasContext>
+
 const instance = getCurrentInstance()
 
-const dpr = getWindowInfo().pixelRatio
+const { pixelRatio } = getWindowInfo()
 
 const contentId = uniqid()
 
-const canvasCSSWidth = ref('')
-const canvasCSSHeight = ref('')
-
-let canvasWidth = 0
-let canvasHeight = 0
-
-const covertCanvasCSSWidth = ref('')
-const covertCanvasCSSHeight = ref('')
-
-let covertCanvasWidth = 0
-let covertCanvasHeight = 0
-
 const canvasId = uniqid()
-let canvas: HTMLCanvasElement
-let context: CanvasRenderingContext2D
-
 const covertCanvasId = uniqid()
-let covertCanvas: HTMLCanvasElement
-let covertContext: CanvasRenderingContext2D
+
+const contextRef = shallowRef<CanvasRenderingContext2D>()
+const covertContextRef = shallowRef<CanvasRenderingContext2D>()
+
+const canvasRef = shallowRef<HTMLCanvasElement>()
+const covertCanvasRef = shallowRef<HTMLCanvasElement>()
+
+const canvasWidth = ref(1)
+const canvasHeight = ref(1)
+
+const covertCanvasWidth = ref(1)
+const covertCanvasHeight = ref(1)
+
+const canvasCSSWidth = ref(1)
+const canvasCSSHeight = ref(1)
+
+const onResize = (rect: NodeRect) => {
+  canvasCSSWidth.value = rect.height
+  canvasCSSHeight.value = rect.width
+}
 
 let prevPoints: [number, number] = [0, 0]
 
 let isEmpty = true
 
-const mapImageType = {
-  jpg: 'image/jpeg',
+const mapImgType = {
   png: 'image/png',
+  jpg: 'image/jpeg',
 }
 
-const setCanvasSize = async () => {
-  const bodyRect = await getBoundingClientRect(`#${contentId}`, instance)
-
-  canvasWidth = bodyRect.width * dpr
-  canvasHeight = bodyRect.height * dpr
-
-  covertCanvasWidth = canvasHeight
-  covertCanvasHeight = canvasWidth
-
-  if (!isApp && canvas) {
-    canvas.width = canvasWidth
-    canvas.height = canvasHeight
-  }
-
-  if (!isWeb && !isApp) {
-    context.resetTransform()
-    context.scale(dpr, dpr)
-  }
-
-  canvasCSSWidth.value = bodyRect.width + 'px'
-  canvasCSSHeight.value = bodyRect.height + 'px'
-
-  if (!isApp && covertCanvas) {
-    covertCanvas.width = covertCanvasWidth
-    covertCanvas.height = covertCanvasHeight
-  }
-
-  if (!isWeb && !isApp) {
-    covertContext.resetTransform()
-    covertContext.scale(dpr, dpr)
-  }
-
-  covertCanvasCSSWidth.value = bodyRect.height + 'px'
-  covertCanvasCSSHeight.value = bodyRect.width + 'px'
-}
-
+// ============================ ready ============================
 const getCanvas = async () => {
-  if (isApp) {
-    context = uni.createCanvasContext(
-      canvasId,
-      instance,
-    ) as unknown as CanvasRenderingContext2D
-
-    covertContext = uni.createCanvasContext(
-      covertCanvasId,
-      instance,
-    ) as unknown as CanvasRenderingContext2D
-  } else {
-    canvas = await getNode(`#${canvasId}`, instance)
-    if (canvas) {
-      context = canvas.getContext('2d') as CanvasRenderingContext2D
-    }
-
-    covertCanvas = await getNode(`#${covertCanvasId}`, instance)
-    if (covertCanvas) {
-      covertContext = covertCanvas.getContext('2d') as CanvasRenderingContext2D
-    }
-  }
-
-  if (!props.fullScreen) {
-    await initialCanvas()
-    if (isAlipay) {
-      await initialCanvas()
-    }
-  }
+  canvasRef.value = (await getNode(`#${canvasId}`, instance))!
+  contextRef.value = canvasRef.value.getContext('2d')!
 }
 
-onMounted(() => {
-  if (!isAlipay) {
-    getCanvas()
-  }
+const getCovertCanvas = async () => {
+  covertCanvasRef.value = (await getNode(`#${covertCanvasId}`, instance))!
+  covertContextRef.value = covertCanvasRef.value.getContext('2d')!
+}
+
+onMounted(async () => {
+  // #ifdef MP-WEIXIN || WEB
+  await getCanvas()
+  await getCovertCanvas()
+  initialCanvas()
+  // #endif
+
+  // #ifdef APP-PLUS || APP-HARMONY
+  contextRef.value = uni.createCanvasContext(
+    canvasId,
+    instance,
+  ) as unknown as CanvasRenderingContext2D
+  covertContextRef.value = uni.createCanvasContext(
+    covertCanvasId,
+    instance,
+  ) as unknown as CanvasRenderingContext2D
+  initialCanvas()
+  // #endif
 })
 
-let canvasReadyCount = 0
+let readyCount = 0
 
-const onCanvasReady = () => {
-  canvasReadyCount++
-  if (isAlipay && canvasReadyCount === 2) {
-    getCanvas()
+const ready = () => {
+  readyCount++
+  if (readyCount === 2) {
+    initialCanvas()
   }
 }
 
-// touch event
-const onTouchStart = (event: TouchEvent) => {
+const onCanvasReady = async () => {
+  // #ifdef MP-ALIPAY
+  await getCanvas()
+  ready()
+  // #endif
+}
+
+const onCovertCanvasReady = async () => {
+  // #ifdef MP-ALIPAY
+  await getCovertCanvas()
+  ready()
+  // #endif
+}
+
+// ========================== touch event =========================
+const onTouchStart = async (event: TouchEvent) => {
+  const context = contextRef.value!
+
   const { x, y } = event.touches[0] as unknown as { x: number; y: number }
 
   context.lineCap = 'round'
@@ -261,14 +241,16 @@ const onTouchStart = (event: TouchEvent) => {
   prevPoints = [x, y]
   context.stroke()
 
-  if (isApp) {
-    ;(context as any).draw(true)
-  }
+  // #ifdef APP-PLUS || APP-HARMONY
+  ;(context as unknown as CanvasContext).draw(true)
+  // #endif
 
   isEmpty = false
 }
 
 const onTouchMove = (event: TouchEvent) => {
+  const context = contextRef.value!
+
   const { x, y } = event.touches[0] as unknown as { x: number; y: number }
 
   context.moveTo(...prevPoints)
@@ -276,33 +258,38 @@ const onTouchMove = (event: TouchEvent) => {
   prevPoints = [x, y]
   context.stroke()
 
-  if (isApp) {
-    ;(context as any).draw(true)
-  }
+  // #ifdef APP-PLUS || APP-HARMONY
+  ;(context as unknown as CanvasContext).draw(true)
+  // #endif
 }
 
 const onTouchEnd = () => {
+  const context = contextRef.value!
+
   context.closePath()
 }
 
-// mouse event
-let rect: NodeRect
+// =========================== mouse event ==========================
+let downRect: NodeRect
 let isDown = false
 
 const onMouseDown = async (event: MouseEvent) => {
-  if (isApp) {
+  if ('ontouchstart' in document || isApp) {
     return
   }
+
   isDown = true
 
   document.addEventListener('mousemove', onMouseMove, true)
   document.addEventListener('mouseup', onMouseUp, true)
 
-  rect = await getBoundingClientRect(`#${canvasId}`, instance)
+  downRect = await getBoundingClientRect(`#${canvasId}`, instance)
 
   const touchEvent = {
     ...event,
-    touches: [{ x: event.clientX - rect.left, y: event.clientY - rect.top }],
+    touches: [
+      { x: event.clientX - downRect.left, y: event.clientY - downRect.top },
+    ],
   }
 
   onTouchStart(touchEvent as unknown as TouchEvent)
@@ -316,7 +303,9 @@ const onMouseMove = (event: MouseEvent) => {
 
   const touchEvent = {
     ...event,
-    touches: [{ x: event.clientX - rect.left, y: event.clientY - rect.top }],
+    touches: [
+      { x: event.clientX - downRect.left, y: event.clientY - downRect.top },
+    ],
   }
   onTouchMove(touchEvent as unknown as TouchEvent)
 }
@@ -330,125 +319,33 @@ const onMouseUp = () => {
   document.removeEventListener('mouseup', onMouseUp, true)
 }
 
-// methods
-const initialCanvas = async () => {
-  await setCanvasSize()
-
-  if (!isWeb && !isApp) {
-    await sleep(50)
-  }
-
-  if (context) {
-    context.clearRect(0, 0, canvasWidth, canvasHeight)
-    if (isApp) {
-      ;(context as any).draw()
-    }
-
-    if (props.background) {
-      context.fillStyle = props.background
-      context.fillRect(0, 0, canvasWidth, canvasHeight)
-      if (isApp) {
-        ;(context as any).draw()
-      }
-    }
-  }
-
-  isEmpty = true
-}
-
-const clear = () => {
-  initialCanvas()
-  emit('clear')
+// ======================= get canvas info =======================
+const getCanvasFilePath = async () => {
+  return await new Promise<string>((resolve, reject) => {
+    uni.canvasToTempFilePath(
+      {
+        canvasId: isMp ? '' : canvasId,
+        canvas: canvasRef.value,
+        fileType: props.type,
+        quality: props.quality,
+        success(res: any) {
+          resolve(res.tempFilePath)
+        },
+        fail(err) {
+          reject(err)
+        },
+      },
+      instance,
+    )
+  })
 }
 
 const getCanvasDataURL = async () => {
-  if (isApp) {
-    return await plusToDataURL(await getCanvasFilePath())
-  }
-  return canvas.toDataURL(mapImageType[props.type])
-}
-
-const getCanvasFilePath = async () => {
-  return await new Promise<string>((resolve) => {
-    const options = {
-      x: 0,
-      y: 0,
-      width: canvasWidth,
-      height: canvasHeight,
-      destWidth: canvasWidth,
-      destHeight: canvasHeight,
-      canvasId: canvasId,
-      canvas: canvas,
-      fileType: props.type,
-      quality: props.quality,
-      success(res: any) {
-        resolve(res.tempFilePath)
-      },
-    }
-    if (isAlipay) {
-      ;(canvas as any).toTempFilePath(options)
-    } else {
-      uni.canvasToTempFilePath(options)
-    }
-  })
-}
-
-const drawRotateCanvas = async () => {
-  covertContext.clearRect(0, 0, covertCanvasWidth, covertCanvasHeight)
-  covertContext.save()
-  covertContext.scale(1 / dpr, 1 / dpr)
-  covertContext.translate(0, covertCanvasHeight)
-  covertContext.rotate(-Math.PI / 2)
-  if (isApp) {
-    const dataURL = await getCanvasDataURL()
-    covertContext.drawImage(dataURL as any, 0, 0)
-  } else {
-    covertContext.drawImage(canvas, 0, 0)
-  }
-  covertContext.restore()
-  if (isApp) {
-    await new Promise<void>((resolve) => {
-      ;(covertContext as any).draw(false, () => {
-        resolve()
-      })
-    })
-  }
-}
-
-const getRotateCanvasDataUrl = async () => {
-  if (isApp) {
-    return await plusToDataURL(await getRotateCanvasFilePath())
+  if (isMp || isWeb) {
+    return canvasRef.value!.toDataURL(mapImgType[props.type], props.quality)
   }
 
-  await drawRotateCanvas()
-  return covertCanvas.toDataURL(mapImageType[props.type])
-}
-
-const getRotateCanvasFilePath = async () => {
-  await drawRotateCanvas()
-
-  return await new Promise<string>((resolve) => {
-    const options = {
-      x: 0,
-      y: 0,
-      width: covertCanvasWidth,
-      height: covertCanvasHeight,
-      destWidth: covertCanvasWidth,
-      destHeight: covertCanvasHeight,
-      canvasId: covertCanvasId,
-      canvas: covertCanvas,
-      fileType: props.type,
-      quality: props.quality,
-      success(res: any) {
-        resolve(res.tempFilePath)
-      },
-    }
-    if (isAlipay) {
-      ;(canvas as any).toTempFilePath(options)
-    } else {
-      uni.canvasToTempFilePath(options)
-    }
-  })
+  return filePathToDataURL(await getCanvasFilePath())
 }
 
 const getCanvasTarget = async () => {
@@ -458,18 +355,152 @@ const getCanvasTarget = async () => {
   return await getCanvasFilePath()
 }
 
-const getRotateCanvasTarget = async () => {
-  if (props.target === 'dataURL') {
-    return await getRotateCanvasDataUrl()
+const drawCovertCanvas = async () => {
+  // #ifdef MP || WEB
+  const covertContext = covertContextRef.value!
+  const covertCanvas = covertCanvasRef.value!
+  const canvas = canvasRef.value!
+
+  covertContext.clearRect(0, 0, covertCanvas.width, covertCanvas.height)
+  covertContext.save()
+  // #ifdef WEB
+  covertContext.scale(1 / pixelRatio, 1 / pixelRatio)
+  // #endif
+  covertContext.translate(0, covertCanvas.height)
+  covertContext.rotate(-Math.PI / 2)
+  covertContext.drawImage(canvas, 0, 0)
+  covertContext.restore()
+  // #endif
+
+  // #ifdef APP-PLUS || APP-HARMONY
+  const oldCovertContext = covertContextRef.value as unknown as CanvasContext
+
+  oldCovertContext.clearRect(
+    0,
+    0,
+    covertCanvasWidth.value,
+    covertCanvasHeight.value,
+  )
+  oldCovertContext.save()
+  oldCovertContext.scale(1 / pixelRatio, 1 / pixelRatio)
+  oldCovertContext.translate(0, covertCanvasHeight.value)
+  oldCovertContext.rotate(-Math.PI / 2)
+  oldCovertContext.drawImage(await getCanvasFilePath(), 0, 0)
+  oldCovertContext.restore()
+
+  await new Promise<void>((resolve) => {
+    oldCovertContext.draw(false, () => {
+      resolve()
+    })
+  })
+  // #endif
+}
+
+const getCovertCanvasFilePath = async () => {
+  await drawCovertCanvas()
+
+  return await new Promise<string>((resolve, reject) => {
+    uni.canvasToTempFilePath(
+      {
+        canvasId: isMp ? '' : covertCanvasId,
+        canvas: covertCanvasRef.value,
+        fileType: props.type,
+        quality: props.quality,
+        success(res: any) {
+          resolve(res.tempFilePath)
+        },
+        fail(err) {
+          reject(err)
+        },
+      },
+      instance,
+    )
+  })
+}
+
+const getCovertCanvasDataUrl = async () => {
+  if (isMp || isWeb) {
+    await drawCovertCanvas()
+    return covertCanvasRef.value!.toDataURL(
+      mapImgType[props.type],
+      props.quality,
+    )
   }
-  return await getRotateCanvasFilePath()
+  return filePathToDataURL(await getCovertCanvasFilePath())
+}
+
+const getCovertCanvasTarget = async () => {
+  if (props.target === 'dataURL') {
+    return await getCovertCanvasDataUrl()
+  }
+  return await getCovertCanvasFilePath()
+}
+
+// ========================= methods =========================
+const initialCanvas = async () => {
+  const bodyRect = await getBoundingClientRect(`#${contentId}`, instance)
+
+  // #ifdef MP || WEB
+  const context = contextRef.value
+  const covertContext = contextRef.value
+  const canvas = canvasRef.value
+  const covertCanvas = covertCanvasRef.value
+
+  if (context && covertContext && canvas && covertCanvas) {
+    // #ifdef MP
+    canvas.width = bodyRect.width * pixelRatio
+    canvas.height = bodyRect.height * pixelRatio
+    covertCanvas.width = canvas.height
+    covertCanvas.height = canvas.width
+
+    context.setTransform(1, 0, 0, 1, 0, 0)
+    context.scale(pixelRatio, pixelRatio)
+    covertContext.setTransform(1, 0, 0, 1, 0, 0)
+    covertContext.scale(pixelRatio, pixelRatio)
+    // #endif
+
+    context.clearRect(0, 0, canvas.width, canvas.height)
+
+    if (props.background) {
+      context.fillStyle = props.background
+      context.fillRect(0, 0, canvas.width, canvas.height)
+    }
+  }
+  // #endif
+
+  // #ifdef APP-PLUS || APP-HARMONY
+  const oldContext = contextRef.value as unknown as CanvasContext
+  const oldCovertContext = covertContextRef.value as unknown as CanvasContext
+
+  if (oldContext && oldCovertContext) {
+    canvasWidth.value = bodyRect.width * pixelRatio
+    canvasHeight.value = bodyRect.height * pixelRatio
+    covertCanvasWidth.value = canvasHeight.value
+    covertCanvasHeight.value = canvasWidth.value
+
+    oldContext.clearRect(0, 0, canvasWidth.value, canvasHeight.value)
+
+    if (props.background) {
+      oldContext.fillStyle = props.background
+      oldContext.fillRect(0, 0, canvasWidth.value, canvasHeight.value)
+    }
+    oldContext.draw()
+  }
+  // #endif
+
+  isEmpty = true
+}
+
+const clear = () => {
+  initialCanvas()
+  emit('clear')
 }
 
 const confirm = async () => {
   const dataURL = isEmpty
     ? ''
     : props.fullScreen
-      ? await getRotateCanvasTarget()
+      ? await getCovertCanvasTarget()
       : await getCanvasTarget()
 
   emit('confirm', dataURL)
@@ -484,6 +515,10 @@ const close = () => {
   emit('update:visible', false)
 }
 
+const resize = () => {
+  initialCanvas()
+}
+
 const onCancel = () => {
   close()
   emit('cancel')
@@ -495,10 +530,6 @@ const onClear = () => {
 
 const onConfirm = () => {
   confirm()
-}
-
-const resize = () => {
-  initialCanvas()
 }
 
 // visible

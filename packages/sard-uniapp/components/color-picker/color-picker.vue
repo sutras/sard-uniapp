@@ -47,6 +47,7 @@
       <view :class="bem.e('value')">{{ outputValue }}</view>
 
       <sar-popover
+        v-if="showFormat"
         v-model:visible="formartPopoverVisible"
         :options="formatOptions"
         position="top"
@@ -70,7 +71,10 @@
       </sar-popover>
     </view>
 
-    <view v-if="normalizedPresets.length" :class="bem.e('presets')">
+    <view
+      v-if="showPresets && normalizedPresets.length"
+      :class="bem.e('presets')"
+    >
       <view :class="bem.e('preset-list')">
         <view
           v-for="preset in normalizedPresets"

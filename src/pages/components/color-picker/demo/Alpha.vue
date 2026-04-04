@@ -1,7 +1,7 @@
 <template>
   <sar-list card>
     <sar-list-item class="px-0 py-20">
-      <sar-color-picker v-model="color" show-alpha format="rgb" />
+      <sar-color-picker v-model="color" show-alpha />
     </sar-list-item>
     <sar-list-item>当前颜色：{{ color }}</sar-list-item>
   </sar-list>
