@@ -1,0 +1,30 @@
+// #region variables
+page,
+.sar-portal {
+  --sar-date-strip-column-gap: 16rpx;
+
+  --sar-date-strip-item-width: 128rpx;
+  --sar-date-strip-item-padding-y: 18rpx;
+  --sar-date-strip-item-padding-x: 12rpx;
+  --sar-date-strip-item-border-radius: var(--sar-rounded);
+  --sar-date-strip-item-border-color: transparent;
+  --sar-date-strip-item-bg: transparent;
+
+  --sar-date-strip-item-week-font-size: var(--sar-text-sm);
+  --sar-date-strip-item-week-color: var(--sar-secondary-color);
+  --sar-date-strip-item-week-order: 1;
+
+  --sar-date-strip-item-day-font-size: var(--sar-text-base);
+  --sar-date-strip-item-day-color: inherit;
+  --sar-date-strip-item-day-order: 2;
+
+  --sar-date-strip-item-info-font-size: var(--sar-text-xs);
+  --sar-date-strip-item-info-color: var(--sar-tertiary-color);
+  --sar-date-strip-item-info-order: 3;
+
+  --sar-date-strip-item-selected-color: var(--sar-white);
+  --sar-date-strip-item-selected-bg: var(--sar-primary);
+  --sar-date-strip-item-middle-bg: rgba(var(--sar-blue-rgb), 0.1);
+  --sar-date-strip-item-today-color: var(--sar-primary);
+}
+// #endregion variables

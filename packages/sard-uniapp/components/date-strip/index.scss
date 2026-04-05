@@ -1,0 +1,81 @@
+@use '../style/base' as *;
+
+@include bem(date-strip) {
+  @include b() {
+    @include universal;
+    overflow: hidden;
+  }
+
+  @include e(scroll) {
+    @include universal;
+  }
+
+  @include e(content) {
+    @include universal;
+    display: inline-flex;
+    flex-direction: row;
+    gap: var(--sar-date-strip-column-gap);
+  }
+
+  @include e(item) {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    flex: none;
+    width: var(--sar-date-strip-item-width);
+    padding: var(--sar-date-strip-item-padding-y)
+      var(--sar-date-strip-item-padding-x);
+    text-align: center;
+    border-radius: var(--sar-date-strip-item-border-radius);
+    border: 1px solid var(--sar-date-strip-item-border-color);
+    background: var(--sar-date-strip-item-bg);
+    cursor: pointer;
+  }
+
+  @include e(item-week) {
+    font-size: var(--sar-date-strip-item-week-font-size);
+    color: var(--sar-date-strip-item-week-color);
+    order: var(--sar-date-strip-item-week-order);
+  }
+
+  @include e(item-day) {
+    font-size: var(--sar-date-strip-item-day-font-size);
+    color: var(--sar-date-strip-item-day-color);
+    order: var(--sar-date-strip-item-day-order);
+  }
+
+  @include e(item-info) {
+    font-size: var(--sar-date-strip-item-info-font-size);
+    color: var(--sar-date-strip-item-info-color);
+    order: var(--sar-date-strip-item-info-order);
+  }
+
+  @include e(item) {
+    @include m(today) {
+      color: var(--sar-date-strip-item-today-color);
+    }
+
+    @include m(selected, start, end, same) {
+      color: var(--sar-date-strip-item-selected-color);
+      border-color: transparent;
+      background: var(--sar-date-strip-item-selected-bg);
+    }
+
+    @include m(middle) {
+      border-color: transparent;
+      background: var(--sar-date-strip-item-middle-bg);
+    }
+
+    @include m(disabled) {
+      @include disabled-text;
+    }
+
+    @include m(selected, start, end, same, disabled, today) {
+      @include e(item-week, item-info, item-day) {
+        color: inherit;
+      }
+    }
+  }
+}

@@ -105,6 +105,9 @@
           "path": "crop-image/index"
         },
         {
+          "path": "date-strip/index"
+        },
+        {
           "path": "datetime-picker-input/index"
         },
         {

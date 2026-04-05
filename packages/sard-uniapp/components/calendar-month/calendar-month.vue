@@ -177,6 +177,7 @@ const daysInfo = computed(() => {
                 : selected
                   ? 'selected'
                   : 'normal',
+      today: props.todayNumber === dateNumber,
     }
 
     if (within && props.formatter) {
@@ -198,7 +199,7 @@ const daysInfo = computed(() => {
         props.bem.em('day', type, type !== 'normal'),
         props.bem.em('day', 'without', !within),
         props.bem.em('day', 'disabled', disabled),
-        props.bem.em('day', 'today', props.todayNumber === dateNumber),
+        props.bem.em('day', 'today', day.today),
         day.className,
       ),
     }

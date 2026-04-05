@@ -105,6 +105,10 @@
         "name": "color-picker-popout"
       },
       {
+        "title": "DateStrip 日期横条",
+        "name": "date-strip"
+      },
+      {
         "title": "DatetimePicker 日期时间选择器",
         "name": "datetime-picker"
       },

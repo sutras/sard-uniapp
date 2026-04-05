@@ -9,6 +9,7 @@ export interface CalendarDay {
   date: Date
   disabled: boolean
   type: 'same' | 'start' | 'middle' | 'end' | 'selected' | 'normal'
+  today: boolean
   top: string
   text: string | number
   bottom: string

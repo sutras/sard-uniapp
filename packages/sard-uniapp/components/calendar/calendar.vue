@@ -101,7 +101,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, ref, toRaw, watch } from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -185,11 +185,11 @@ let currentEmitValue: string | string[] | Date | Date[] | undefined =
   innerValue.value
 
 watch(
-  () => props.modelValue,
-  () => {
-    if (currentEmitValue !== props.modelValue) {
-      innerValue.value = normalizeValue(props.modelValue)
-      currentEmitValue = props.modelValue
+  () => toRaw(props.modelValue),
+  (value) => {
+    if (currentEmitValue !== value) {
+      innerValue.value = normalizeValue(value)
+      currentEmitValue = value
     }
   },
 )

@@ -128,12 +128,6 @@ export type StyleProp =
   | false
   | StyleProp[]
 
-function toKebabCase(str: string) {
-  return str
-    .replace(/^[A-Z]/, (m) => m.toLowerCase())
-    .replace(/[A-Z]/g, (m) => '-' + m.toLowerCase())
-}
-
 /**
  * 把样式对象拼接成字符串，解决小程序不支持 styleObject 的问题。
  */
@@ -154,10 +148,16 @@ export function stringifyStyle(...args: StyleProp[]): string {
         }
       }
     } else if (typeof arg === 'object') {
-      for (const key in arg) {
+      for (let key in arg) {
         const value = arg[key]
         if (value || value === 0) {
-          result += `${toKebabCase(key)}:${value};`
+          key = key.includes('-')
+            ? key
+            : key
+                .replace(/(?:^(webkit|moz|ms|o)|)(?=[A-Z])/g, '-$&')
+                .toLowerCase()
+
+          result += `${key}:${value};`
         }
       }
     }

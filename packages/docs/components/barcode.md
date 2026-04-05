@@ -2,7 +2,7 @@
 title: Barcode
 subtitle: 条形码
 group: 数据展示
-version: 1.29.0+
+version: 1.29+
 ---
 
 ## 介绍
@@ -50,36 +50,36 @@ import Barcode from 'sard-uniapp/components/barcode/barcode.vue'
 
 ### BarcodeProps
 
-| 属性                                      | 描述                         | 类型                                                  | 默认值      |
-| ----------------------------------------- | ---------------------------- | ----------------------------------------------------- | ----------- |
-| root-class                                | 组件根元素类名               | string                                                | -           |
-| root-style                                | 组件根元素样式               | StyleValue                                            | -           |
-| value                                     | 条形码内容                   | string                                                | -           |
-| format                                    | 条形码类型                   | BarcodeFormat                                         | 'CODE128'   |
-| width                                     | 条形码单个条纹宽度           | number                                                | 2           |
-| height                                    | 条形码高度                   | number                                                | 100         |
-| color                                     | 条形码颜色                   | string                                                | '#000'      |
-| background                                | 背景颜色                     | string                                                | '#fff'      |
-| display-value                             | 是否显示文本                 | boolean                                               | true        |
-| text-position                             | 文本位置                     | 'top' \| 'bottom'                                     | 'bottom'    |
-| text-align                                | 文本对齐方式                 | 'left' \| 'center' \| 'right'                         | 'center'    |
-| text-margin                               | 文本与条形码间距             | number                                                | 2           |
-| font-style                                | 文本样式                     | 'normal' \| 'italic' \| 'oblique'                     | 'normal'    |
-| font-weight                               | 文本加粗                     | 'normal' \| 'bold' \| number \| 'lighter' \| 'bolder' | 'normal'    |
-| font-size                                 | 文本字号                     | number                                                | 14          |
-| font-family                               | 文本字体                     | string                                                | 'monospace' |
-| margin                                    | 统一外边距                   | number                                                | 10          |
-| margin-top                                | 上外边距                     | number                                                | 'margin'    |
-| margin-bottom                             | 下外边距                     | number                                                | 'margin'    |
-| margin-left                               | 左外边距                     | number                                                | 'margin'    |
-| margin-right                              | 右外边距                     | number                                                | 'margin'    |
-| show-menu-by-longpress <sup>1.29.0+</sup> | 长按图片显示菜单(微信小程序) | boolean                                               | false       |
+| 属性                   | 描述                         | 类型                                                  | 默认值      |
+| ---------------------- | ---------------------------- | ----------------------------------------------------- | ----------- |
+| root-class             | 组件根元素类名               | string                                                | -           |
+| root-style             | 组件根元素样式               | StyleValue                                            | -           |
+| value                  | 条形码内容                   | string                                                | -           |
+| format                 | 条形码类型                   | BarcodeFormat                                         | 'CODE128'   |
+| width                  | 条形码单个条纹宽度           | number                                                | 2           |
+| height                 | 条形码高度                   | number                                                | 100         |
+| color                  | 条形码颜色                   | string                                                | '#000'      |
+| background             | 背景颜色                     | string                                                | '#fff'      |
+| display-value          | 是否显示文本                 | boolean                                               | true        |
+| text-position          | 文本位置                     | 'top' \| 'bottom'                                     | 'bottom'    |
+| text-align             | 文本对齐方式                 | 'left' \| 'center' \| 'right'                         | 'center'    |
+| text-margin            | 文本与条形码间距             | number                                                | 2           |
+| font-style             | 文本样式                     | 'normal' \| 'italic' \| 'oblique'                     | 'normal'    |
+| font-weight            | 文本加粗                     | 'normal' \| 'bold' \| number \| 'lighter' \| 'bolder' | 'normal'    |
+| font-size              | 文本字号                     | number                                                | 14          |
+| font-family            | 文本字体                     | string                                                | 'monospace' |
+| margin                 | 统一外边距                   | number                                                | 10          |
+| margin-top             | 上外边距                     | number                                                | 'margin'    |
+| margin-bottom          | 下外边距                     | number                                                | 'margin'    |
+| margin-left            | 左外边距                     | number                                                | 'margin'    |
+| margin-right           | 右外边距                     | number                                                | 'margin'    |
+| show-menu-by-longpress | 长按图片显示菜单(微信小程序) | boolean                                               | false       |
 
 ### BarcodeEmits
 
-| 事件                       | 描述                                             | 类型                             |
-| -------------------------- | ------------------------------------------------ | -------------------------------- |
-| success <sup>1.29.0+</sup> | 条形码图片绘制成功后触发，可用于获取临时文件路径 | `(tempFilePath: string) => void` |
+| 事件    | 描述                                             | 类型                             |
+| ------- | ------------------------------------------------ | -------------------------------- |
+| success | 条形码图片绘制成功后触发，可用于获取临时文件路径 | `(tempFilePath: string) => void` |
 
 ### BarcodeFormat
 

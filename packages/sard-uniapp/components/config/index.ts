@@ -33,6 +33,7 @@ import { type DatetimePickerProps } from '../datetime-picker'
 import { type DatetimeRangePickerInputProps } from '../datetime-range-picker-input'
 import { type DatetimeRangePickerPopoutProps } from '../datetime-range-picker-popout'
 import { type DatetimeRangePickerProps } from '../datetime-range-picker'
+import { type DateStripProps } from '../date-strip'
 import { type DialogAgentProps } from '../dialog-agent'
 import { type DialogProps } from '../dialog'
 import { type DividerProps } from '../divider'
@@ -171,6 +172,7 @@ export interface ConfigOptions {
   datetimeRangePickerPopout?: InferDefaults<
     LooseRequired<DatetimeRangePickerPopoutProps>
   >
+  dateStrip?: InferDefaults<LooseRequired<DateStripProps>>
   dialog?: InferDefaults<LooseRequired<DialogProps>>
   dialogAgent?: InferDefaults<LooseRequired<DialogAgentProps>>
   divider?: InferDefaults<LooseRequired<DividerProps>>

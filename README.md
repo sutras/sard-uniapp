@@ -24,11 +24,11 @@
 
 `sard-uniapp` 是一套基于 `Uniapp` + `Vue3`框架开发的兼容多端的 `UI` 组件库。
 
-`sard-uniapp` 兼容 H5 / 小程序 / `APP`（不支持 `nvue` 或 `uvue`）。
+`sard-uniapp` 兼容 H5 / 小程序（微信、支付宝） / `APP`（不支持 `nvue` 或 `uvue`）。
 
 ## 特性
 
-- 🧩 114+个高质量组件，覆盖移动端主流场景
+- 🧩 115+个高质量组件，覆盖移动端主流场景
 - 💪 支持一套代码同时开发 H5 / 小程序 / App
 - 🌿 支持按需引入和 `Tree Shaking`
 - 📖 详尽的文档和案例展示
@@ -65,6 +65,19 @@ git clone https://github.com/sutras/sard-uniapp.git
 
 ```bash
 npm install
+```
+
+### 修改 uniapp 构建脚本源码
+
+打开 `node_modules/@dcloudio/vite-plugin-uni/dist/cli/action.js` 文件，
+在 `await (0, build_1.build)(options, async (event) => {` 代码上面插入以下代码：
+
+```js
+options.watch = {
+  chokidar: {
+    ignored: ['!**/sard-uniapp/**'],
+  },
+}
 ```
 
 ### 运行开发环境
@@ -120,33 +133,40 @@ npm run release
 
 ## 修复问题流程
 
-- 修复问题
-- 测试 `npm run test`
-- 修改版本号 `packages/sard-uniapp/package.json`
-- 暂存 `git add .`
-- 提交 `git commit -m 'fix: '`
-- 给提交打标签 `npm run tag`
-- 生成 changelog `npm run changelog`
-- 暂存、提交 changelog `git commit -a -m 'chore: changelog'`
-- 打包组件库 `npm run build`
-- 发布到 npm `npm run release`
-- 使用 HBuilderX 发布到 uniapp 插件市场
-- 推送代码和标签 `npm run push`
-- 打包文档（如果文档有修改）`npm run build:site`
-- 部署文档（如果文档有修改）`npm run deploy`
-- 更新 gitee 上的文档（如果文档有修改）
+1. 修复问题
+2. 测试 `npm run test`
+3. 修改版本号 `packages/sard-uniapp/package.json`
+4. 暂存 `git add .`
+5. 提交 `git commit -m 'fix: '`
+6. 给提交打标签 `npm run tag`
+7. 生成 changelog `npm run changelog`
+8. 暂存、提交 changelog `git commit -a -m 'chore: changelog'`
+9. 打包组件库 `npm run build`
+10. 发布到 npm `npm run release`
+11. 使用 HBuilderX 发布到 uniapp 插件市场
+12. 推送代码和标签 `npm run push`
+13. 打包文档 `npm run build:site`
+14. 部署文档 `npm run deploy`
 
 ## 新增组件流程
 
-- 运行 `npm run nc` 命令创建组件
-- 运行 `npm run nsc` 命令创建子组件
-- 编写组件代码（接口、类型、结构、样式、交互）
-- 编写案例代码
-- 编写组件文档
-- 编写测试用例
-- 分别在移动端浏览器、微信开发者工具、微信真机、支付宝开发者工具、支付宝真机、安卓真机、iOS模拟器测试
-- 使用实际项目本地安装测试 `pnpm link ../sard-uniapp`
-- 从上面的“修复问题流程”第三个步骤“修改版本号”开始走一遍
+1. 运行 `npm run nc` 命令创建组件
+2. 运行 `npm run nsc` 命令创建子组件
+3. 编写组件代码（接口、类型、结构、样式、交互）
+4. 编写案例代码
+5. 编写组件文档
+6. 编写测试用例
+7. 分别在以下环境进行测试：
+   - 桌面端浏览器
+   - 移动端浏览器
+   - 微信开发者工具
+   - 微信真机
+   - 支付宝开发者工具
+   - 支付宝真机
+   - 安卓真机
+   - iOS模拟器
+   - 鸿蒙模拟器
+8. 从上面的“修复问题流程”步骤2开始走一遍
 
 ## 打包安卓包流程
 

@@ -39,6 +39,7 @@ declare module 'vue' {
     SarDatetimeRangePicker: typeof import('./components/datetime-range-picker/datetime-range-picker.vue').default
     SarDatetimeRangePickerInput: typeof import('./components/datetime-range-picker-input/datetime-range-picker-input.vue').default
     SarDatetimeRangePickerPopout: typeof import('./components/datetime-range-picker-popout/datetime-range-picker-popout.vue').default
+    SarDateStrip: typeof import('./components/date-strip/date-strip.vue').default
     SarDialog: typeof import('./components/dialog/dialog.vue').default
     SarDialogAgent: typeof import('./components/dialog-agent/dialog-agent.vue').default
     SarDivider: typeof import('./components/divider/divider.vue').default

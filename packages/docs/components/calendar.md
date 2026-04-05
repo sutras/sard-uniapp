@@ -71,6 +71,7 @@ type CalendarType = 'single' | 'multiple' | 'range'
 | date      | 当前月份中每日对应的日期对象     | Date                                                             |
 | disabled  | 是否禁用                         | boolean                                                          |
 | type      | 日期类型，每个类型对应的含义如下 | 'same' \| 'start' \| 'middle' \| 'end' \| 'selected' \| 'normal' |
+| today     | 是否为当天                       | boolean                                                          |
 | top       | 额外的上方信息                   | string                                                           |
 | text      | 中间显示的文字                   | string \| number                                                 |
 | bottom    | 额外的下方信息                   | string                                                           |
