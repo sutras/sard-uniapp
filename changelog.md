@@ -1,3 +1,20 @@
+## 1.29.0 (2026-04-05)
+
+* feat: 新增 barcode 组件 ([e6b065e](https://github.com/sutras/sard-uniapp/commit/e6b065e))
+* feat: 新增 ColorPicker, ColorPickerInput, ColorPickerPopout 组件 ([1576b6d](https://github.com/sutras/sard-uniapp/commit/1576b6d))
+* feat: 新增 DateStrip ([7b8d24d](https://github.com/sutras/sard-uniapp/commit/7b8d24d))
+* feat: 新增 Ellipsis 组件 ([8585cdb](https://github.com/sutras/sard-uniapp/commit/8585cdb))
+* docs: 修改文件路径 ([c2284b1](https://github.com/sutras/sard-uniapp/commit/c2284b1))
+* docs(dropdown): 修改示例标题 ([74037ab](https://github.com/sutras/sard-uniapp/commit/74037ab))
+* test: 更新测试用例 ([01a23b7](https://github.com/sutras/sard-uniapp/commit/01a23b7))
+* refactor: 使用vitepress重构文档 ([926e6a1](https://github.com/sutras/sard-uniapp/commit/926e6a1))
+* refactor: 添加案例iframe ([4a905f8](https://github.com/sutras/sard-uniapp/commit/4a905f8))
+* refactor: 重构开发服务脚本 ([2274073](https://github.com/sutras/sard-uniapp/commit/2274073))
+* refactor: 重构构建脚本 ([53b436d](https://github.com/sutras/sard-uniapp/commit/53b436d))
+* refactor: 重构部署命令 ([f95e64f](https://github.com/sutras/sard-uniapp/commit/f95e64f))
+* refactor: 重构部署脚本 ([7c0bf0c](https://github.com/sutras/sard-uniapp/commit/7c0bf0c))
+* refactor: 重构预览脚本 ([80cd166](https://github.com/sutras/sard-uniapp/commit/80cd166))
+* chore: changelog ([29eab29](https://github.com/sutras/sard-uniapp/commit/29eab29))
 
 ## 1.28.0 (2026-03-27)
 
