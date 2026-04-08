@@ -1,5 +1,9 @@
-## 1.29.0 (2026-04-05)
+## <small>1.29.1 (2026-04-08)</small>
 
+* build: 更新vite版本 ([8c17954](https://github.com/sutras/sard-uniapp/commit/8c17954))
+* fix: 修复打包时删除uniapp条件注释问题 ([016d5a8](https://github.com/sutras/sard-uniapp/commit/016d5a8))
+* chore: changelog ([70f8724](https://github.com/sutras/sard-uniapp/commit/70f8724))
+* chore: changelog ([29eab29](https://github.com/sutras/sard-uniapp/commit/29eab29))
 * feat: 新增 barcode 组件 ([e6b065e](https://github.com/sutras/sard-uniapp/commit/e6b065e))
 * feat: 新增 ColorPicker, ColorPickerInput, ColorPickerPopout 组件 ([1576b6d](https://github.com/sutras/sard-uniapp/commit/1576b6d))
 * feat: 新增 DateStrip ([7b8d24d](https://github.com/sutras/sard-uniapp/commit/7b8d24d))
@@ -14,7 +18,6 @@
 * refactor: 重构部署命令 ([f95e64f](https://github.com/sutras/sard-uniapp/commit/f95e64f))
 * refactor: 重构部署脚本 ([7c0bf0c](https://github.com/sutras/sard-uniapp/commit/7c0bf0c))
 * refactor: 重构预览脚本 ([80cd166](https://github.com/sutras/sard-uniapp/commit/80cd166))
-* chore: changelog ([29eab29](https://github.com/sutras/sard-uniapp/commit/29eab29))
 
 ## 1.28.0 (2026-03-27)
 
