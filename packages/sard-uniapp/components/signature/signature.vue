@@ -243,7 +243,7 @@ const onTouchStart = async (event: TouchEvent) => {
   context.stroke()
 
   // #ifdef APP-PLUS || APP-HARMONY
-  ;(context as unknown as CanvasContext).draw(true)
+  void (context as unknown as CanvasContext).draw(true)
   // #endif
 
   isEmpty = false
@@ -260,7 +260,7 @@ const onTouchMove = (event: TouchEvent) => {
   context.stroke()
 
   // #ifdef APP-PLUS || APP-HARMONY
-  ;(context as unknown as CanvasContext).draw(true)
+  void (context as unknown as CanvasContext).draw(true)
   // #endif
 }
 
