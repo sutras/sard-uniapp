@@ -1,7 +1,12 @@
 import child_process from 'node:child_process'
-import packageJson from '../package.json' with { type: 'json' }
+import path from 'node:path'
+import { libSrcDir } from './config'
 
 export async function tag() {
+  const packageJson = await import(path.resolve(libSrcDir, 'package.json'), {
+    with: { type: 'json' },
+  })
+
   await new Promise<void>((resolve, reject) => {
     child_process.exec(`git tag v${packageJson.version}`, (error) => {
       if (error) {
@@ -12,3 +17,5 @@ export async function tag() {
     })
   })
 }
+
+tag()
