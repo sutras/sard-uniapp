@@ -228,6 +228,9 @@
           "path": "form/demo/Validate"
         },
         {
+          "path": "form/demo/Popup"
+        },
+        {
           "path": "form/index"
         },
         {

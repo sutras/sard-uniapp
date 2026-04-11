@@ -1,64 +1,17 @@
-import { type StyleValue } from 'vue'
+import { shallowRef, type StyleValue } from 'vue'
 import { type DefaultProps, defaultConfig } from '../config'
+import {
+  InputNativeEmits,
+  InputNativeProps,
+  TextareaNativeEmits,
+  TextareaNativeProps,
+} from '../input-base/common'
 
-export interface InputProps {
-  // 现支付宝小程序特有属性详情请查看: https://opendocs.alipay.com/mini/component/input
-  enableNative?: boolean
-  placeholder?: string
-  placeholderStyle?: string
-  placeholderClass?: string
-  disabled?: boolean
-  maxlength?: number
-  focus?: boolean
-  cursorSpacing?: number
-  cursor?: number
-  confirmType?: 'send' | 'search' | 'next' | 'go' | 'done'
-  confirmHold?: boolean
-  selectionStart?: number
-  selectionEnd?: number
-  adjustPosition?: boolean
-  holdKeyboard?: boolean
-  autoBlur?: boolean
-  ignoreCompositionEvent?: boolean
-  inputmode?:
-    | 'none'
-    | 'text'
-    | 'decimal'
-    | 'numeric'
-    | 'tel'
-    | 'search'
-    | 'email'
-    | 'url'
-
-  // textarea
-  autoHeight?: boolean
-  fixed?: boolean
-  showConfirmBar?: boolean
-  disableDefaultPadding?: boolean
-  inputMinHeight?: boolean
-
+export interface InputProps
+  extends Omit<InputNativeProps, 'type'>,
+    TextareaNativeProps {
   // input
-  type?:
-    | 'text'
-    | 'number'
-    | 'idcard'
-    | 'digit'
-    | 'tel'
-    | 'safe-password'
-    | 'nickname'
-    // custom
-    | 'password'
-    | 'textarea'
-  alwaysEmbed?: boolean
-  safePasswordCertPath?: string
-  safePasswordLength?: string
-  safePasswordTimeStamp?: string
-  safePasswordNonce?: string
-  safePasswordSalt?: string
-  safePasswordCustomHash?: string
-  randomNumber?: boolean
-  controlled?: boolean
-  alwaysSystem?: boolean
+  type?: InputNativeProps['type'] | 'password' | 'textarea'
 
   // custom
   rootClass?: string
@@ -74,6 +27,7 @@ export interface InputProps {
   minHeight?: string
   validateEvent?: boolean
   showEye?: boolean
+  inputMinHeight?: boolean
 
   size?: 'mini' | 'small' | 'medium' | 'large'
 
@@ -104,15 +58,11 @@ export interface InputSlots {
   addon?(props: Record<string, never>): any
 }
 
-export interface InputEmits {
+export interface InputEmits extends InputNativeEmits, TextareaNativeEmits {
   (e: 'update:model-value', value: string): void
   (e: 'change', value: string): void
-  (e: 'input', value: string): void
   (e: 'clear'): void
-  (e: 'focus', event: any): void
-  (e: 'blur', event: any): void
-  (e: 'linechange', event: any): void
-  (e: 'confirm', event: any): void
-  (e: 'keyboardheightchange', event: any): void
   (e: 'click', event: any): void
 }
+
+export const lastFocusInput = shallowRef<string>('')

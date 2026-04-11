@@ -7,130 +7,27 @@
       >
         <slot name="prepend"></slot>
       </view>
-      <textarea
+      <sar-textarea-base
         v-if="type === 'textarea'"
-        :class="
-          classNames(
-            bem.e('control'),
-            bem.em('control', 'textarea'),
-            bem.em('control', 'input-min-height', inputMinHeight),
-          )
-        "
-        :enableNative="enableNative"
-        :controlled="controlled"
+        v-bind="textareaProps"
         :value="innerValue"
-        :placeholder="placeholder"
-        :placeholder-style="mergedPlaceholderStyle"
-        :placeholder-class="placeholderClass"
-        :disabled="isDisabled || isReadonly"
-        :focus="focus"
-        :cursor-spacing="cursorSpacing"
-        :cursor="cursor"
-        :confirm-type="confirmType"
-        :confirm-hold="confirmHold"
-        :selection-start="selectionStart"
-        :selection-end="selectionEnd"
-        :adjust-position="adjustPosition"
-        :hold-keyboard="holdKeyboard"
-        :auto-blur="autoBlur"
-        :ignore-composition-event="ignoreCompositionEvent"
-        :inputmode="inputmode"
-        autocomplete="off"
-        :fixed="fixed"
-        :show-confirm-bar="showConfirmBar"
-        :disable-default-padding="disableDefaultPadding"
-        :maxlength="maxLength"
         @input="onInput"
         @focus="onFocus"
         @blur="onBlur"
         @linechange="onLinechange"
         @confirm="onConfirm"
         @keyboardheightchange="onKeyboardheightchange"
-        :auto-height="autoHeight"
-        :style="controlStyle"
-        :show-count="false"
       />
-      <input
-        v-if="type !== 'textarea' && showPassword"
-        :class="classNames(bem.e('control'), bem.em('control', 'input'))"
-        :enableNative="enableNative"
-        :controlled="controlled"
+      <sar-input-base
+        v-if="type !== 'textarea'"
+        v-bind="inputProps"
         :value="innerValue"
-        :placeholder="placeholder"
-        :placeholder-style="mergedPlaceholderStyle"
-        :placeholder-class="placeholderClass"
-        :disabled="isDisabled || isReadonly"
-        :focus="focus"
-        :cursor-spacing="cursorSpacing"
-        :cursor="cursor"
-        :confirm-type="confirmType"
-        :confirm-hold="confirmHold"
-        :selection-start="selectionStart"
-        :selection-end="selectionEnd"
-        :adjust-position="adjustPosition"
-        :hold-keyboard="holdKeyboard"
-        :auto-blur="autoBlur"
-        :ignore-composition-event="ignoreCompositionEvent"
-        :inputmode="inputmode"
-        autocomplete="off"
-        :maxlength="maxLength"
+        :password="showPassword"
         @input="onInput"
         @focus="onFocus"
         @blur="onBlur"
         @confirm="onConfirm"
         @keyboardheightchange="onKeyboardheightchange"
-        :type="mergedType"
-        :password="true"
-        :always-embed="alwaysEmbed"
-        :safe-password-cert-path="safePasswordCertPath"
-        :safe-password-length="safePasswordLength"
-        :safe-password-time-stamp="safePasswordTimeStamp"
-        :safe-password-nonce="safePasswordNonce"
-        :safe-password-salt="safePasswordSalt"
-        :safe-password-custom-hash="safePasswordCustomHash"
-        :random-number="randomNumber"
-        :always-system="alwaysSystem"
-      />
-      <input
-        v-if="type !== 'textarea' && !showPassword"
-        :class="classNames(bem.e('control'), bem.em('control', 'input'))"
-        :enableNative="enableNative"
-        :controlled="controlled"
-        :value="innerValue"
-        :placeholder="placeholder"
-        :placeholder-style="mergedPlaceholderStyle"
-        :placeholder-class="placeholderClass"
-        :disabled="isDisabled || isReadonly"
-        :focus="focus"
-        :cursor-spacing="cursorSpacing"
-        :cursor="cursor"
-        :confirm-type="confirmType"
-        :confirm-hold="confirmHold"
-        :selection-start="selectionStart"
-        :selection-end="selectionEnd"
-        :adjust-position="adjustPosition"
-        :hold-keyboard="holdKeyboard"
-        :auto-blur="autoBlur"
-        :ignore-composition-event="ignoreCompositionEvent"
-        :inputmode="inputmode"
-        autocomplete="off"
-        :maxlength="maxLength"
-        @input="onInput"
-        @focus="onFocus"
-        @blur="onBlur"
-        @confirm="onConfirm"
-        @keyboardheightchange="onKeyboardheightchange"
-        :type="mergedType"
-        :password="false"
-        :always-embed="alwaysEmbed"
-        :safe-password-cert-path="safePasswordCertPath"
-        :safe-password-length="safePasswordLength"
-        :safe-password-time-stamp="safePasswordTimeStamp"
-        :safe-password-nonce="safePasswordNonce"
-        :safe-password-salt="safePasswordSalt"
-        :safe-password-custom-hash="safePasswordCustomHash"
-        :random-number="randomNumber"
-        :always-system="alwaysSystem"
       />
       <view :class="bem.e('tools')">
         <view
@@ -166,7 +63,13 @@
 
 <script setup lang="ts">
 import { computed, inject, ref, watch } from 'vue'
-import { classNames, stringifyStyle, createBem, isWeb } from '../../utils'
+import {
+  classNames,
+  stringifyStyle,
+  createBem,
+  isWeb,
+  uniqid,
+} from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
 import {
@@ -174,9 +77,13 @@ import {
   type InputSlots,
   type InputEmits,
   defaultInputProps,
+  lastFocusInput,
 } from './common'
 import { type CompactContext, compactContextSymbol } from '../compact/common'
 import { popoutInputContextSymbol } from '../popout-input/common'
+import SarInputBase from '../input-base/input-base.vue'
+import SarTextareaBase from '../input-base/textarea-base.vue'
+import { type InputBaseProps } from '../input-base/common'
 
 defineOptions({
   options: {
@@ -230,6 +137,8 @@ watch(
 const onInput = (event: any) => {
   let value = event.detail.value
 
+  lastFocusInput.value = thisInput
+
   if (!isWeb) {
     if (props.maxlength >= 0) {
       value = value.slice(0, props.maxlength)
@@ -249,10 +158,14 @@ watch([() => props.focus, () => props.focused], () => {
 
 let oldValue = ''
 
+const thisInput = uniqid()
+
 const onFocus = (event: any) => {
   oldValue = innerValue.value
   innerFocused.value = true
   emit('focus', event)
+
+  lastFocusInput.value = thisInput
 }
 
 const onBlur = (event: any) => {
@@ -265,6 +178,10 @@ const onBlur = (event: any) => {
     emit('change', innerValue.value)
   }
 }
+
+watch(lastFocusInput, () => {
+  innerFocused.value = lastFocusInput.value === thisInput
+})
 
 // clear
 const clearVisible = computed(() => {
@@ -340,12 +257,10 @@ const showPassword = computed(() => {
   return props.type === 'password' && isPlainText.value === false
 })
 
-const mergedType = computed(() => {
-  return showPassword.value
-    ? 'password'
-    : props.type === 'password'
-      ? 'text'
-      : props.type
+const omittedType = computed(() => {
+  return props.type === 'password' || props.type === 'textarea'
+    ? 'text'
+    : props.type
 })
 
 const mergedShowEye = computed(() => props.type === 'password' && props.showEye)
@@ -393,6 +308,75 @@ const mergedPlaceholderStyle = computed(() => {
       : null,
     props.placeholderStyle,
   )
+})
+
+const fieldCommonProps = computed<InputBaseProps>(() => {
+  return {
+    placeholder: props.placeholder,
+    placeholderStyle: mergedPlaceholderStyle.value,
+    placeholderClass: props.placeholderClass,
+    disabled: isDisabled.value || isReadonly.value,
+    maxlength: maxLength.value,
+    focus: props.focus,
+    cursorSpacing: props.cursorSpacing,
+    cursor: props.cursor,
+    confirmType: props.confirmType,
+    confirmHold: props.confirmHold,
+    selectionStart: props.selectionStart,
+    selectionEnd: props.selectionEnd,
+    adjustPosition: props.adjustPosition,
+    holdKeyboard: props.holdKeyboard,
+    ignoreCompositionEvent: props.ignoreCompositionEvent,
+    inputmode: props.inputmode,
+    enableNative: props.enableNative,
+    autoBlur: props.autoBlur,
+  }
+})
+
+const inputOnlyProps = computed(() => {
+  return {
+    type: omittedType.value,
+    alwaysEmbed: props.alwaysEmbed,
+    safePasswordCertPath: props.safePasswordCertPath,
+    safePasswordLength: props.safePasswordLength,
+    safePasswordTimeStamp: props.safePasswordTimeStamp,
+    safePasswordNonce: props.safePasswordNonce,
+    safePasswordSalt: props.safePasswordSalt,
+    safePasswordCustomHash: props.safePasswordCustomHash,
+    randomNumber: props.randomNumber,
+    controlled: props.controlled,
+    alwaysSystem: props.alwaysSystem,
+  }
+})
+
+const inputProps = computed(() => {
+  return {
+    ...fieldCommonProps.value,
+    ...inputOnlyProps.value,
+    rootClass: classNames(bem.e('control'), bem.em('control', 'input')),
+  }
+})
+
+const textareaOnlyProps = computed(() => {
+  return {
+    autoHeight: props.autoHeight,
+    fixed: props.fixed,
+    showConfirmBar: props.showConfirmBar,
+    disableDefaultPadding: props.disableDefaultPadding,
+  }
+})
+
+const textareaProps = computed(() => {
+  return {
+    ...fieldCommonProps.value,
+    ...textareaOnlyProps.value,
+    rootClass: classNames(
+      bem.e('control'),
+      bem.em('control', 'textarea'),
+      bem.em('control', 'input-min-height', props.inputMinHeight),
+    ),
+    rootStyle: controlStyle.value,
+  }
 })
 </script>
 

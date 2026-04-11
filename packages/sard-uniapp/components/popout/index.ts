@@ -1,1 +1,6 @@
-export type { PopoutProps, PopoutSlots, PopoutEmits } from './common'
+export type {
+  PopoutProps,
+  PopoutSlots,
+  PopoutEmits,
+  PopoutBeforeClose,
+} from './common'

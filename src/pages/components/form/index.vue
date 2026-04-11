@@ -22,6 +22,12 @@
           @click="navigateTo('Validate')"
         />
         <sar-list-item
+          title="弹出框中的表单"
+          arrow
+          hover
+          @click="navigateTo('Popup')"
+        />
+        <sar-list-item
           title="自定义校验规则"
           arrow
           hover
