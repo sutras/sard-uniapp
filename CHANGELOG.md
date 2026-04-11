@@ -1,4 +1,8 @@
 
+## <small>1.29.2 (2026-04-11)</small>
+
+* Bug Fixes: 优化输入框在微信聚焦问题 ([8df22dd](https://github.com/sutras/sard-uniapp/commit/8df22dd))
+
 ## <small>1.29.1 (2026-04-08)</small>
 
 * Bug Fixes: 修复打包时删除uniapp条件注释问题 ([016d5a8](https://github.com/sutras/sard-uniapp/commit/016d5a8))
