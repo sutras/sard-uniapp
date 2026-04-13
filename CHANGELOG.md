@@ -1,4 +1,8 @@
 
+## <small>1.29.3 (2026-04-13)</small>
+
+* Bug Fixes: 修复textarea-base导入问题 ([fa9e57f](https://github.com/sutras/sard-uniapp/commit/fa9e57f))
+
 ## <small>1.29.2 (2026-04-11)</small>
 
 * Bug Fixes: 优化输入框在微信聚焦问题 ([8df22dd](https://github.com/sutras/sard-uniapp/commit/8df22dd))
