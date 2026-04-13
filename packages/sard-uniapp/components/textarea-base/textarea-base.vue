@@ -40,7 +40,7 @@ import {
   type TextareaBaseEmits,
   type TextareaBaseProps,
   defaultTextareaBaseProps,
-} from './common'
+} from '../input-base/common'
 
 defineOptions({
   options: {

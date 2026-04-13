@@ -82,7 +82,7 @@ import {
 import { type CompactContext, compactContextSymbol } from '../compact/common'
 import { popoutInputContextSymbol } from '../popout-input/common'
 import SarInputBase from '../input-base/input-base.vue'
-import SarTextareaBase from '../input-base/textarea-base.vue'
+import SarTextareaBase from '../textarea-base/textarea-base.vue'
 import { type InputBaseProps } from '../input-base/common'
 
 defineOptions({
