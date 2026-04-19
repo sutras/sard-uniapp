@@ -15,6 +15,7 @@
     "ignoreDeprecations": "5.0",
     "esModuleInterop": true,
     "resolveJsonModule": true,
+    "moduleResolution": "bundler",
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "strictNullChecks": true,
