@@ -72,7 +72,15 @@ const getSectionList = () => {
   return list
 }
 
-const sectionList = ref<Section[]>(getSectionList())
+const sectionList = ref<Section[]>([])
+
+uni.showLoading({ title: '加载中' })
+
+setTimeout(() => {
+  sectionList.value = getSectionList()
+
+  uni.hideLoading()
+}, 1000)
 
 const onSelect = (code: string) => {
   toast(code)

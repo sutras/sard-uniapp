@@ -1,4 +1,4 @@
-import { computed, ref, shallowRef } from 'vue'
+import { computed, nextTick, ref, shallowRef } from 'vue'
 import { useTimeout } from './useTimeout'
 import { isNullish, matchScrollVisible, type NodeRect } from '../utils'
 
@@ -27,6 +27,18 @@ export function useScrollSpy(options: UseScrollSpyOptions) {
 
   let lockScroll = false
 
+  let requestUpdate = false
+
+  const queueUpdate = () => {
+    if (requestUpdate) return
+
+    requestUpdate = true
+    nextTick(() => {
+      requestUpdate = false
+      update()
+    })
+  }
+
   const { start: unLockScrollLater } = useTimeout(() => {
     lockScroll = false
   }, 150)
@@ -36,10 +48,12 @@ export function useScrollSpy(options: UseScrollSpyOptions) {
     getRect: () => Promise<NodeRect>,
   ) => {
     anchorMap.set(name, getRect)
+    queueUpdate()
   }
 
   const unregister = (name: string | number) => {
     anchorMap.delete(name)
+    queueUpdate()
   }
 
   const calcPosition = (offset: number) => {
