@@ -1,4 +1,8 @@
 
+## <small>1.29.4 (2026-04-27)</small>
+
+* Bug Fixes: 修复动态加载数据时不生成nav的问题 ([d1cdaf1](https://github.com/sutras/sard-uniapp/commit/d1cdaf1))
+
 ## <small>1.29.3 (2026-04-13)</small>
 
 * Bug Fixes: 修复textarea-base导入问题 ([fa9e57f](https://github.com/sutras/sard-uniapp/commit/fa9e57f))
