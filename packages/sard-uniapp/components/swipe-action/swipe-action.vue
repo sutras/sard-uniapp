@@ -34,7 +34,15 @@
 </template>
 
 <script setup lang="ts">
-import { computed, getCurrentInstance, onMounted, ref, watch } from 'vue'
+import {
+  computed,
+  getCurrentInstance,
+  inject,
+  onBeforeUnmount,
+  onMounted,
+  ref,
+  watch,
+} from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -49,6 +57,10 @@ import {
   type SwipeActionExpose,
   type SwipeActionVisible,
 } from './common'
+import {
+  type SwipeActionGroupContext,
+  swipeActionGroupContextSymbol,
+} from '../swipe-action-group/common'
 import { useMouseDown, useInitialVelocity, useStopMovedClick } from '../../use'
 
 defineOptions({
@@ -65,8 +77,13 @@ const slots = defineSlots<SwipeActionSlots>()
 const emit = defineEmits<SwipeActionEmits>()
 
 const bem = createBem('swipe-action')
+const groupContext = inject<SwipeActionGroupContext | null>(
+  swipeActionGroupContextSymbol,
+  null,
+)
 
 // main
+const swipeActionId = uniqid()
 
 // visible
 const innerVisible = ref<SwipeActionVisible>(props.visible || false)
@@ -154,6 +171,10 @@ const setTranslateXByVisible = (visible: SwipeActionVisible) => {
 }
 
 onMounted(() => {
+  groupContext?.register(swipeActionId, {
+    hide,
+  })
+
   setTimeout(() => {
     if (innerVisible.value) {
       getWidth().then(() => {
@@ -165,10 +186,16 @@ onMounted(() => {
   })
 })
 
+onBeforeUnmount(() => {
+  groupContext?.unregister(swipeActionId)
+})
+
 const onTouchStart = async (event: TouchEvent) => {
   if (props.disabled || (!slots.left && !slots.right)) {
     return
   }
+
+  groupContext?.closeAll(swipeActionId)
 
   startX = event.touches[0].clientX
   startY = event.touches[0].clientY

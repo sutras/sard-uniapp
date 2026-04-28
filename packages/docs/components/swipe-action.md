@@ -13,6 +13,7 @@ version: 1.19+
 
 ```js
 import SwipeAction from 'sard-uniapp/components/swipe-action/swipe-action.vue'
+import SwipeActionGroup from 'sard-uniapp/components/swipe-action-group/swipe-action-group.vue'
 ```
 
 ## 代码演示
@@ -30,6 +31,12 @@ import SwipeAction from 'sard-uniapp/components/swipe-action/swipe-action.vue'
 使用 `v-model:visible` 属性控制显隐。
 
 <<< @demo/swipe-action/demo/Visible.vue
+
+### 手风琴 <sup>1.30+</sup>
+
+使用 `SwipeActionGroup` 管理一组 `SwipeAction`。默认只允许同时展示一个组件的操作按钮，也可以通过 `closeAll` 方法关闭全部操作按钮。
+
+<<< @demo/swipe-action/demo/Accordion.vue
 
 ### 禁止滑动
 
@@ -79,3 +86,23 @@ import SwipeAction from 'sard-uniapp/components/swipe-action/swipe-action.vue'
 | 属性 | 描述         | 类型         |
 | ---- | ------------ | ------------ |
 | hide | 隐藏操作按钮 | `() => void` |
+
+### SwipeActionGroupProps <sup>1.30+</sup>
+
+| 属性       | 描述                         | 类型       | 默认值 |
+| ---------- | ---------------------------- | ---------- | ------ |
+| root-class | 组件根元素类名               | string     | -      |
+| root-style | 组件根元素样式               | StyleValue | -      |
+| multiple   | 是否允许同时展示多个操作按钮 | boolean    | false  |
+
+### SwipeActionGroupSlots <sup>1.30+</sup>
+
+| 插槽    | 描述         | 属性 |
+| ------- | ------------ | ---- |
+| default | 放置默认内容 | -    |
+
+### SwipeActionGroupExpose <sup>1.30+</sup>
+
+| 属性     | 描述             | 类型         |
+| -------- | ---------------- | ------------ |
+| closeAll | 关闭所有操作按钮 | `() => void` |

@@ -35,6 +35,7 @@ const mapReadme: Record<string, string> = {
   'skeleton-paragraph': '../skeleton',
   'skeleton-title': '../skeleton',
   step: '../steps',
+  'swipe-action-group': '../swipe-action',
   tab: '../tabs',
   'tabbar-item': '../tabbar',
   'table-cell': '../table',

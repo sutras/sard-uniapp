@@ -9,6 +9,10 @@
       <DemoVisible />
     </doc-demo>
 
+    <doc-demo title="手风琴">
+      <DemoAccordion />
+    </doc-demo>
+
     <doc-demo title="禁止滑动">
       <DemoDisabled />
     </doc-demo>
@@ -28,6 +32,7 @@ import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
 import { onBackPress } from '@dcloudio/uni-app'
 import DemoBasic from './demo/Basic.vue'
 import DemoVisible from './demo/Visible.vue'
+import DemoAccordion from './demo/Accordion.vue'
 import DemoDisabled from './demo/Disabled.vue'
 import DemoAsync from './demo/Async.vue'
 import DemoForm from './demo/Form.vue'
