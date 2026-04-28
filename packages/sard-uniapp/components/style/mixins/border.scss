@@ -83,14 +83,14 @@
   $style: var(--sar-border-style)
 ) {
   position: absolute;
-  top: -50%;
-  right: -50%;
-  bottom: -50%;
-  left: -50%;
+  top: 0;
+  left: 0;
   z-index: 1;
+  width: 200%;
+  height: 200%;
   border: $width $style transparent;
   transform: scale(0.5);
-  transform-origin: center;
+  transform-origin: 0 0;
   pointer-events: none;
   touch-action: none;
   content: '';

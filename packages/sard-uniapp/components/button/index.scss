@@ -124,8 +124,6 @@
   @include m(outline) {
     &::after {
       display: flex;
-      // 强化细边框渲染
-      will-change: transform;
     }
   }
 
