@@ -3,6 +3,14 @@
     <view :class="bem.e('thumb')">
       <sar-loading v-if="innerLoading" size="0.5em" />
     </view>
+    <view :class="bem.e('text')">
+      <view :class="bem.e('text-checked')">
+        <slot name="checked-text">{{ checkedText }}</slot>
+      </view>
+      <view :class="bem.e('text-unchecked')">
+        <slot name="unchecked-text">{{ uncheckedText }}</slot>
+      </view>
+    </view>
   </view>
 </template>
 
@@ -14,6 +22,7 @@ import { useFormContext, useFormItemContext } from '../form/common'
 import {
   type SwitchProps,
   type SwitchEmits,
+  type SwitchSlots,
   defaultSwitchProps,
 } from './common'
 
@@ -25,6 +34,8 @@ defineOptions({
 })
 
 const props = withDefaults(defineProps<SwitchProps>(), defaultSwitchProps())
+
+defineSlots<SwitchSlots>()
 
 const emit = defineEmits<SwitchEmits>()
 
@@ -110,7 +121,7 @@ const switchClass = computed(() => {
 const switchStyle = computed(() => {
   return stringifyStyle(
     {
-      fontSize: props.size,
+      '--sar-switch-size': props.size,
       backgroundColor: isChecked.value
         ? props.checkedColor
         : props.uncheckedColor,

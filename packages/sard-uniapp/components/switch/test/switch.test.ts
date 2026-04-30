@@ -24,7 +24,7 @@ describe('Switch', () => {
     )
 
     expect(wrapper.find('.sar-switch').attributes().style).includes(
-      'font-size: 48px;',
+      '--sar-switch-size: 48px;',
     )
   })
 
@@ -96,5 +96,38 @@ describe('Switch', () => {
     )
     await sleep(1)
     expect(wrapper.find('.sar-switch').classes()).includes('sar-switch_checked')
+  })
+
+  test('text props', async () => {
+    const wrapper = mount(
+      h(Switch, {
+        checkedText: '开',
+        uncheckedText: '关',
+      }),
+    )
+
+    expect(wrapper.find('.sar-switch__text-checked').text()).toBe('开')
+    expect(wrapper.find('.sar-switch__text-unchecked').text()).toBe('关')
+  })
+
+  test('text slots', async () => {
+    const wrapper = mount(
+      h(
+        Switch,
+        {},
+        {
+          'checked-text': () => h('span', { class: 'checked-slot' }, '已开启'),
+          'unchecked-text': () =>
+            h('span', { class: 'unchecked-slot' }, '已关闭'),
+        },
+      ),
+    )
+
+    expect(wrapper.find('.sar-switch__text-checked .checked-slot').text()).toBe(
+      '已开启',
+    )
+    expect(
+      wrapper.find('.sar-switch__text-unchecked .unchecked-slot').text(),
+    ).toBe('已关闭')
   })
 })

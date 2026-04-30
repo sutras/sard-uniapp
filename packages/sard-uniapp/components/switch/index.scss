@@ -2,13 +2,16 @@
 
 @include bem(switch) {
   @include b() {
+    --sar-switch-overflow-margin: calc(
+      100% + var(--sar-switch-text-max-margin) + var(--sar-switch-thumb-gap)
+    );
+
     position: relative;
     box-sizing: border-box;
     display: inline-flex;
-    width: var(--sar-switch-width);
     height: var(--sar-switch-height);
     border-radius: var(--sar-rounded-full);
-    font-size: var(--sar-switch-font-size);
+    font-size: var(--sar-switch-size);
     vertical-align: middle;
     background: var(--sar-switch-bg);
     cursor: pointer;
@@ -38,8 +41,8 @@
   @include e(thumb) {
     @include universal;
     position: absolute;
-    left: 0;
     top: var(--sar-switch-thumb-gap);
+    left: var(--sar-switch-thumb-gap);
     width: var(--sar-switch-thumb-width);
     height: var(--sar-switch-thumb-height);
     justify-content: center;
@@ -47,19 +50,61 @@
     border-radius: var(--sar-rounded-full);
     color: var(--sar-switch-thumb-color);
     background: var(--sar-switch-thumb-bg);
-    transform: translateX(var(--sar-switch-thumb-gap));
-    transition: transform var(--sar-switch-thumb-transition-duration);
+    transition: left var(--sar-switch-thumb-transition-duration);
+  }
+
+  @include e(text) {
+    @include universal;
+    overflow: hidden;
+    border-radius: var(--sar-rounded-full);
+    height: 100%;
+    padding-left: var(--sar-switch-text-max-margin);
+    padding-right: var(--sar-switch-text-min-margin);
+    min-width: var(--sar-switch-width);
+    transition: padding var(--sar-switch-transition-duration);
+  }
+
+  @include e(text-checked, text-unchecked) {
+    @include universal;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    flex: none;
+    text-align: center;
+    font-size: var(--sar-switch-text-font-size);
+    color: var(--sar-switch-text-color);
+    pointer-events: none;
+    transition: margin var(--sar-switch-transition-duration);
+  }
+
+  @include e(text-checked) {
+    margin-left: calc(var(--sar-switch-overflow-margin) * -1);
+    margin-right: var(--sar-switch-overflow-margin);
+  }
+
+  @include e(text-unchecked) {
+    margin-left: 0;
+    margin-right: 0;
+    top: -100%;
   }
 
   @include m(checked) {
     @include e(thumb) {
-      transform: translateX(
-        calc(
-          var(--sar-switch-width) - var(--sar-switch-thumb-width) - var(
-              --sar-switch-thumb-gap
-            )
-        )
+      left: calc(
+        100% - var(--sar-switch-thumb-width) - var(--sar-switch-thumb-gap)
       );
+    }
+    @include e(text) {
+      padding-left: var(--sar-switch-text-min-margin);
+      padding-right: var(--sar-switch-text-max-margin);
+    }
+    @include e(text-checked) {
+      margin-left: 0;
+      margin-right: 0;
+    }
+    @include e(text-unchecked) {
+      margin-left: var(--sar-switch-overflow-margin);
+      margin-right: calc(var(--sar-switch-overflow-margin) * -1);
     }
   }
 }

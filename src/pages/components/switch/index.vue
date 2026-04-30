@@ -24,6 +24,14 @@
     <doc-demo title="加载状态">
       <DemoLoading />
     </doc-demo>
+
+    <doc-demo title="带有文字">
+      <DemoText />
+    </doc-demo>
+
+    <doc-demo title="使用插槽自定义内容">
+      <DemoSlots />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -36,6 +44,8 @@ import DemoColor from './demo/Color.vue'
 import DemoValue from './demo/Value.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoLoading from './demo/Loading.vue'
+import DemoText from './demo/Text.vue'
+import DemoSlots from './demo/Slots.vue'
 
 const { isLocked } = useCurrentPageLock()
 

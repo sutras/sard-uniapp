@@ -15,6 +15,8 @@ export interface SwitchProps {
   uncheckedValue?: any
   beforeUpdate?: (value: any) => Promise<any>
   validateEvent?: boolean
+  checkedText?: string
+  uncheckedText?: string
 }
 
 export const defaultSwitchProps = (): DefaultProps<SwitchProps> => ({
@@ -23,6 +25,11 @@ export const defaultSwitchProps = (): DefaultProps<SwitchProps> => ({
   validateEvent: true,
   ...defaultConfig.switch,
 })
+
+export interface SwitchSlots {
+  'checked-text'?(props: Record<string, never>): any
+  'unchecked-text'?(props: Record<string, never>): any
+}
 
 export interface SwitchEmits {
   (e: 'click', event: any): void

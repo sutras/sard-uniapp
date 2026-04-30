@@ -1,11 +1,11 @@
 // #region variables
 page,
 .sar-portal {
-  --sar-switch-font-size: 60rpx;
-  --sar-switch-width: calc(1em / 6 * 10);
-  --sar-switch-height: 1em;
+  --sar-switch-size: 60rpx;
+  --sar-switch-width: calc(var(--sar-switch-size) / 6 * 10);
+  --sar-switch-height: var(--sar-switch-size);
   --sar-switch-transition-duration: var(--sar-duration);
-  --sar-switch-bg: var(--sar-secondary-bg);
+  --sar-switch-bg: var(--sar-tertiary-bg);
   --sar-switch-checked-bg: var(--sar-primary);
 
   --sar-switch-is-loading-opacity: var(--sar-loading-opacity);
@@ -19,5 +19,12 @@ page,
   --sar-switch-thumb-bg: var(--sar-white);
   --sar-switch-thumb-color: var(--sar-gray-600);
   --sar-switch-thumb-transition-duration: var(--sar-duration);
+
+  --sar-switch-text-min-margin: 18rpx;
+  --sar-switch-text-max-margin: calc(
+    var(--sar-switch-thumb-width) + var(--sar-switch-text-min-margin)
+  );
+  --sar-switch-text-color: var(--sar-white);
+  --sar-switch-text-font-size: var(--sar-text-base);
 }
 // #endregion variables
