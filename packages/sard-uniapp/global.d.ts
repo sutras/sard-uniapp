@@ -8,8 +8,8 @@ declare module 'vue' {
     SarAvatar: typeof import('./components/avatar/avatar.vue').default
     SarAvatarGroup: typeof import('./components/avatar-group/avatar-group.vue').default
     SarBackTop: typeof import('./components/back-top/back-top.vue').default
-    SarBarcode: typeof import('./components/barcode/barcode.vue').default
     SarBadge: typeof import('./components/badge/badge.vue').default
+    SarBarcode: typeof import('./components/barcode/barcode.vue').default
     SarButton: typeof import('./components/button/button.vue').default
     SarCalendar: typeof import('./components/calendar/calendar.vue').default
     SarCalendarInput: typeof import('./components/calendar-input/calendar-input.vue').default
@@ -33,13 +33,13 @@ declare module 'vue' {
     SarCountTo: typeof import('./components/count-to/count-to.vue').default
     SarCropImage: typeof import('./components/crop-image/crop-image.vue').default
     SarCropImageAgent: typeof import('./components/crop-image-agent/crop-image-agent.vue').default
+    SarDateStrip: typeof import('./components/date-strip/date-strip.vue').default
     SarDatetimePicker: typeof import('./components/datetime-picker/datetime-picker.vue').default
     SarDatetimePickerInput: typeof import('./components/datetime-picker-input/datetime-picker-input.vue').default
     SarDatetimePickerPopout: typeof import('./components/datetime-picker-popout/datetime-picker-popout.vue').default
     SarDatetimeRangePicker: typeof import('./components/datetime-range-picker/datetime-range-picker.vue').default
     SarDatetimeRangePickerInput: typeof import('./components/datetime-range-picker-input/datetime-range-picker-input.vue').default
     SarDatetimeRangePickerPopout: typeof import('./components/datetime-range-picker-popout/datetime-range-picker-popout.vue').default
-    SarDateStrip: typeof import('./components/date-strip/date-strip.vue').default
     SarDialog: typeof import('./components/dialog/dialog.vue').default
     SarDialogAgent: typeof import('./components/dialog-agent/dialog-agent.vue').default
     SarDivider: typeof import('./components/divider/divider.vue').default
@@ -48,8 +48,8 @@ declare module 'vue' {
     SarDndItem: typeof import('./components/dnd-item/dnd-item.vue').default
     SarDropdown: typeof import('./components/dropdown/dropdown.vue').default
     SarDropdownItem: typeof import('./components/dropdown-item/dropdown-item.vue').default
-    SarEmpty: typeof import('./components/empty/empty.vue').default
     SarEllipsis: typeof import('./components/ellipsis/ellipsis.vue').default
+    SarEmpty: typeof import('./components/empty/empty.vue').default
     SarFab: typeof import('./components/fab/fab.vue').default
     SarFabItem: typeof import('./components/fab-item/fab-item.vue').default
     SarFloatingBubble: typeof import('./components/floating-bubble/floating-bubble.vue').default
@@ -136,6 +136,7 @@ declare module 'vue' {
     SarStickyBox: typeof import('./components/sticky-box/sticky-box.vue').default
     SarSwipeAction: typeof import('./components/swipe-action/swipe-action.vue').default
     SarSwipeActionGroup: typeof import('./components/swipe-action-group/swipe-action-group.vue').default
+    SarSwiper: typeof import('./components/swiper/swiper.vue').default
     SarSwiperDot: typeof import('./components/swiper-dot/swiper-dot.vue').default
     SarSwitch: typeof import('./components/switch/switch.vue').default
     SarTab: typeof import('./components/tab/tab.vue').default

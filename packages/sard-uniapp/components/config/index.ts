@@ -94,6 +94,7 @@ import { type StatusBarProps } from '../status-bar'
 import { type StepperProps } from '../stepper'
 import { type StepsProps } from '../steps'
 import { type SwipeActionGroupProps } from '../swipe-action-group'
+import { type SwiperProps } from '../swiper'
 import { type SwiperDotProps } from '../swiper-dot'
 import { type SwitchProps } from '../switch'
 import { type TabbarProps } from '../tabbar'
@@ -235,6 +236,7 @@ export interface ConfigOptions {
   stepper?: InferDefaults<LooseRequired<StepperProps>>
   steps?: InferDefaults<LooseRequired<StepsProps>>
   swipeActionGroup?: InferDefaults<LooseRequired<SwipeActionGroupProps>>
+  swiper?: InferDefaults<LooseRequired<SwiperProps>>
   swiperDot?: InferDefaults<LooseRequired<SwiperDotProps>>
   switch?: InferDefaults<LooseRequired<SwitchProps>>
   tabbar?: InferDefaults<LooseRequired<TabbarProps>>

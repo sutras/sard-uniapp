@@ -45,6 +45,9 @@
           "path": "badge/index"
         },
         {
+          "path": "barcode/index"
+        },
+        {
           "path": "button/index"
         },
         {
@@ -75,7 +78,10 @@
           "path": "checkbox-popout/index"
         },
         {
-          "path": "color-picker/index"
+          "path": "checkbox/index"
+        },
+        {
+          "path": "collapse/index"
         },
         {
           "path": "color-picker-input/index"
@@ -84,10 +90,7 @@
           "path": "color-picker-popout/index"
         },
         {
-          "path": "checkbox/index"
-        },
-        {
-          "path": "collapse/index"
+          "path": "color-picker/index"
         },
         {
           "path": "compact/index"
@@ -138,10 +141,10 @@
           "path": "dropdown/index"
         },
         {
-          "path": "empty/index"
+          "path": "ellipsis/index"
         },
         {
-          "path": "ellipsis/index"
+          "path": "empty/index"
         },
         {
           "path": "fab/index"
@@ -216,6 +219,9 @@
           "path": "form/demo/Plain"
         },
         {
+          "path": "form/demo/Popup"
+        },
+        {
           "path": "form/demo/ScrollToFirstError"
         },
         {
@@ -226,9 +232,6 @@
         },
         {
           "path": "form/demo/Validate"
-        },
-        {
-          "path": "form/demo/Popup"
         },
         {
           "path": "form/index"
@@ -336,9 +339,6 @@
           "path": "puzzle-verify/index"
         },
         {
-          "path": "barcode/index"
-        },
-        {
           "path": "qrcode/index"
         },
         {
@@ -433,6 +433,9 @@
         },
         {
           "path": "swiper-dot/index"
+        },
+        {
+          "path": "swiper/index"
         },
         {
           "path": "switch/index"

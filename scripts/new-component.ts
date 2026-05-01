@@ -18,7 +18,7 @@ import {
   runSteps,
 } from './utils'
 import fs from 'node:fs/promises'
-import { libSrcDir } from './config'
+import { docsSrcDir, libSrcDir } from './config'
 
 async function createComponent(
   compDir: string,
@@ -27,6 +27,7 @@ async function createComponent(
   pascalCaseName: string,
   cnName: string,
   groupCnName: string,
+  compReadmePath: string,
 ) {
   await createComponentVue(
     compDir,
@@ -42,7 +43,7 @@ async function createComponent(
   await createComponentIndex(compDir, pascalCaseName)
 
   await createComponentReadme(
-    compDir,
+    compReadmePath,
     kebabCaseName,
     pascalCaseName,
     cnName,
@@ -107,6 +108,11 @@ async function newComponent() {
 
   const compDir = path.resolve(libSrcDir, `components/${kebabCaseName}`)
 
+  const compReadmePath = path.resolve(
+    docsSrcDir,
+    `components/${kebabCaseName}.md`,
+  )
+
   try {
     await fs.access(compDir)
     consola.error(`目录已存在: ${compDir}`)
@@ -126,6 +132,7 @@ async function newComponent() {
           pascalCaseName,
           cnName,
           groupCnName,
+          compReadmePath,
         ),
     ],
     [

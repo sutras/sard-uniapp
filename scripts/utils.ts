@@ -169,14 +169,14 @@ export async function createComponentIndex(
 
 // README.md
 export async function createComponentReadme(
-  compDir: string,
+  compReadmePath: string,
   kebabCaseName: string,
   pascalCaseName: string,
   cnName: string,
   groupCnName: string,
 ) {
   await writeFileWithDirs(
-    logNewFile(path.resolve(compDir, `README.md`)),
+    logNewFile(compReadmePath),
     `---
 title: ${pascalCaseName}
 subtitle: ${cnName}

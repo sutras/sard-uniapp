@@ -1,0 +1,28 @@
+@use '../style/base' as *;
+
+@include bem(swiper) {
+  @include b() {
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(wrapper) {
+    @include universal;
+    height: var(--sar-swiper-height);
+  }
+
+  @include e(item) {
+    position: relative;
+    height: 100%;
+  }
+
+  @include e(image) {
+    width: 100%;
+    height: 100%;
+  }
+
+  @include e(video) {
+    width: 100%;
+    height: 100%;
+  }
+}

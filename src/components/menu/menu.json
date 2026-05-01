@@ -262,12 +262,12 @@
         "name": "count-to"
       },
       {
-        "title": "Empty 空状态",
-        "name": "empty"
-      },
-      {
         "title": "Ellipsis 文本省略",
         "name": "ellipsis"
+      },
+      {
+        "title": "Empty 空状态",
+        "name": "empty"
       },
       {
         "title": "List 列表",
@@ -312,6 +312,10 @@
       {
         "title": "ScrollSpy 滚动监听",
         "name": "scroll-spy"
+      },
+      {
+        "title": "Swiper 轮播图",
+        "name": "swiper"
       },
       {
         "title": "SwiperDot 轮播图指示点",
