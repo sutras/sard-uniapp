@@ -72,6 +72,7 @@
     flex: none;
     text-align: center;
     font-size: var(--sar-switch-text-font-size);
+    line-height: var(--sar-leading-none);
     color: var(--sar-switch-text-color);
     pointer-events: none;
     transition: margin var(--sar-switch-transition-duration);

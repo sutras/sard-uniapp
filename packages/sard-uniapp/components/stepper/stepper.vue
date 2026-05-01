@@ -237,6 +237,7 @@ const stepperClass = computed(() => {
     bem.m(props.size),
     bem.m('disabled', isDisabled.value),
     bem.m('readonly', isReadonly.value),
+    bem.m(props.variant),
     props.rootClass,
   )
 })

@@ -46,6 +46,12 @@ import Stepper from 'sard-uniapp/components/stepper/stepper.vue'
 
 <<< @demo/stepper/demo/DisabledReadOnly.vue
 
+### 变体 <sup>1.30+</sup>
+
+使用 `variant` 属性可以设置不同的变体。
+
+<<< @demo/stepper/demo/Variant.vue
+
 ### 尺寸
 
 设置 `size="small"` 可以小尺寸展示步进器。
@@ -56,26 +62,27 @@ import Stepper from 'sard-uniapp/components/stepper/stepper.vue'
 
 ### StepperProps
 
-| 属性                  | 描述                                  | 类型                             | 默认值                  |
-| --------------------- | ------------------------------------- | -------------------------------- | ----------------------- |
-| root-class            | 组件根元素类名                        | string                           | -                       |
-| root-style            | 组件根元素样式                        | StyleValue                       | -                       |
-| model-value (v-model) | 当前输入值                            | number \| string                 | -                       |
-| min                   | 最小值                                | number                           | Number.MIN_SAFE_INTEGER |
-| max                   | 最大值                                | number                           | Number.MAX_SAFE_INTEGER |
-| value-on-clear        | 当输入框被清空时显示的值              | number \| null \| 'min' \| 'max' | null                    |
-| step                  | 点击按钮时增加或减少的数值            | number                           | 1                       |
-| precision             | 数值精度，即允许的小数位数            | number                           | -                       |
-| input-style           | 输入框样式                            | string                           | -                       |
-| input-type            | 输入框类型                            | 'number' \| 'digit' \| 'text'    | 'number'                |
-| placeholder           | 输入框占位符                          | string                           | -                       |
-| disabled              | 禁用状态                              | boolean                          | false                   |
-| readonly              | 只读状态                              | boolean                          | false                   |
-| press                 | 是否可以通过长按增加/减少按钮改变数值 | boolean                          | true                    |
-| press-time            | 触发长按事件的时间，单位毫秒          | boolean                          | 350                     |
-| interval              | 长按改变数值的时间间隔，单位毫秒      | number                           | 150                     |
-| validate-event        | 是否触发表单验证                      | boolean                          | true                    |
-| size                  | 步进器尺寸                            | 'medium' \| 'small'              | 'medium'                |
+| 属性                     | 描述                                  | 类型                                        | 默认值                  |
+| ------------------------ | ------------------------------------- | ------------------------------------------- | ----------------------- |
+| root-class               | 组件根元素类名                        | string                                      | -                       |
+| root-style               | 组件根元素样式                        | StyleValue                                  | -                       |
+| model-value (v-model)    | 当前输入值                            | number \| string                            | -                       |
+| min                      | 最小值                                | number                                      | Number.MIN_SAFE_INTEGER |
+| max                      | 最大值                                | number                                      | Number.MAX_SAFE_INTEGER |
+| value-on-clear           | 当输入框被清空时显示的值              | number \| null \| 'min' \| 'max'            | null                    |
+| step                     | 点击按钮时增加或减少的数值            | number                                      | 1                       |
+| precision                | 数值精度，即允许的小数位数            | number                                      | -                       |
+| input-style              | 输入框样式                            | string                                      | -                       |
+| input-type               | 输入框类型                            | 'number' \| 'digit' \| 'text'               | 'number'                |
+| placeholder              | 输入框占位符                          | string                                      | -                       |
+| disabled                 | 禁用状态                              | boolean                                     | false                   |
+| readonly                 | 只读状态                              | boolean                                     | false                   |
+| press                    | 是否可以通过长按增加/减少按钮改变数值 | boolean                                     | true                    |
+| press-time               | 触发长按事件的时间，单位毫秒          | boolean                                     | 350                     |
+| interval                 | 长按改变数值的时间间隔，单位毫秒      | number                                      | 150                     |
+| validate-event           | 是否触发表单验证                      | boolean                                     | true                    |
+| size                     | 步进器尺寸                            | 'medium' \| 'small'                         | 'medium'                |
+| variant <sup>1.30+</sup> | 设置步进器变体                        | 'solid' \| 'outline' \| 'accent' \| 'ghost' | 'solid'                 |
 
 ### StepperEmits
 

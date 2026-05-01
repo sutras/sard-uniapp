@@ -20,6 +20,7 @@ export interface StepperProps {
   interval?: number
   validateEvent?: boolean
   size?: 'small' | 'medium'
+  variant?: 'solid' | 'outline' | 'accent' | 'ghost'
 }
 
 export const defaultStepperProps = (): DefaultProps<StepperProps> => ({
@@ -32,6 +33,7 @@ export const defaultStepperProps = (): DefaultProps<StepperProps> => ({
   interval: 150,
   validateEvent: true,
   size: 'medium',
+  variant: 'solid',
   ...defaultConfig.stepper,
 })
 

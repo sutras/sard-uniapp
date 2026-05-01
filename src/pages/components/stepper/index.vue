@@ -21,6 +21,10 @@
       <DemoDisabledReadOnly />
     </doc-demo>
 
+    <doc-demo title="变体">
+      <DemoVariant />
+    </doc-demo>
+
     <doc-demo title="尺寸">
       <DemoSize />
     </doc-demo>
@@ -36,6 +40,7 @@ import DemoStep from './demo/Step.vue'
 import DemoPrecision from './demo/Precision.vue'
 import DemoDisabledReadOnly from './demo/DisabledReadOnly.vue'
 import DemoSize from './demo/Size.vue'
+import DemoVariant from './demo/Variant.vue'
 
 const { isLocked } = useCurrentPageLock()
 

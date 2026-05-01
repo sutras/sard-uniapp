@@ -114,4 +114,20 @@ describe('Stepper', () => {
 
     expect(wrapper.find('.sar-stepper.sar-stepper_small').exists()).toBeTruthy()
   })
+
+  test('variant', async () => {
+    const wrapper = mount(
+      h(Stepper, {
+        placeholder: '数量',
+        size: 'small',
+      }),
+    )
+
+    for (const variant of ['solid', 'outline', 'accent', 'ghost'] as const) {
+      await wrapper.setProps({ variant })
+      expect(
+        wrapper.find(`.sar-stepper.sar-stepper_${variant}`).exists(),
+      ).toBeTruthy()
+    }
+  })
 })
