@@ -90,6 +90,18 @@ const isGroupable = computed(() => {
 
 const labelCache: Record<any, any> = {}
 
+watch(
+  () => props.mapLabel,
+  () => {
+    if (props.mapLabel) {
+      Object.assign(labelCache, props.mapLabel)
+    }
+  },
+  {
+    immediate: true,
+  },
+)
+
 const getCacheLabel = (option: any, value: any) => {
   if (option) {
     return (labelCache[value] = getLabel(option))

@@ -13,6 +13,7 @@
           :remote-method="remoteMethod"
           :options="listData"
           :option-keys="{ label: 'name', value: 'code' }"
+          :map-label="mapLabel"
           @change="onChange"
         />
       </sar-list-item>
@@ -39,6 +40,10 @@ import { sleep } from 'sard-uniapp'
 
 const visible = ref(false)
 const value = ref<number>()
+
+const mapLabel = {
+  440100: '广州市',
+}
 
 const onChange = (value: any) => {
   console.log('change', value)

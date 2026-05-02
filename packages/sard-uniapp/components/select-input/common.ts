@@ -15,6 +15,7 @@ export interface SelectInputProps
     Omit<PopoutInputProps, 'modelValue'> {
   valueOnClear?: () => any
   maxLabels?: number
+  mapLabel?: Record<any, any>
 }
 
 export const defaultSelectInputProps = (): DefaultProps<SelectInputProps> => ({

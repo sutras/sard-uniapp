@@ -45,7 +45,9 @@ import SelectInput from 'sard-uniapp/components/select-input/select-input.vue'
 
 远程的使用参考 `SelectPopout` ，不多赘述。
 
-当远程数据没有加载时，输入框会显示对应的 `value` 值。值的已加载的标签会被缓存起来，后续筛选清空列表时也能显示缓存的标签。
+当远程数据没有加载时，输入框会显示对应的 `value` 值。
+值的已加载的标签会被缓存起来，后续筛选清空列表时也能显示缓存的标签。
+回显时如果标签不在列表中，可以通过 `map-label` 属性配置一个映射表来显示标签。
 
 <<< @demo/select-input/demo/Remote.vue
 
@@ -55,9 +57,10 @@ import SelectInput from 'sard-uniapp/components/select-input/select-input.vue'
 
 继承 [`SelectPopoutProps`](./select-popout#SelectPopoutProps) 并有以下额外属性：
 
-| 属性       | 描述                                               | 类型   | 默认值 |
-| ---------- | -------------------------------------------------- | ------ | ------ |
-| max-labels | 多选时，输入框最大展示标签个数，设为 -1 表示不限制 | number | 10     |
+| 属性                       | 描述                                                                                     | 类型             | 默认值 |
+| -------------------------- | ---------------------------------------------------------------------------------------- | ---------------- | ------ |
+| max-labels                 | 多选时，输入框最大展示标签个数，设为 -1 表示不限制                                       | number           | 10     |
+| map-label <sup>1.30+</sup> | 选项标签映射表，远程加载时如果选项标签不在列表中，可以通过此属性配置一个映射表来显示标签 | Record<any, any> | -      |
 
 ### SelectInputSlots
 
