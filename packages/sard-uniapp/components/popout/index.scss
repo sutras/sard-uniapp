@@ -15,7 +15,6 @@
     flex-shrink: 0;
     flex-direction: row;
     align-items: center;
-    justify-content: space-between;
 
     @include m(compact) {
       height: var(--sar-popout-header-compact-height);
@@ -29,31 +28,26 @@
   }
 
   @include e(button-wrap) {
-    @include universal;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    z-index: 1;
     height: 100%;
-    min-width: var(--sar-popout-button-wrap-min-width);
-  }
 
-  @include e(header-button) {
-    height: 100%;
-  }
-
-  @include e(header-cancel) {
-    margin-left: 0;
-    margin-right: auto;
-  }
-
-  @include e(header-confirm) {
-    margin-left: auto;
-    margin-right: 0;
+    @include m(end) {
+      margin-left: auto;
+    }
   }
 
   @include e(title) {
-    @include universal;
-    flex-direction: row;
+    position: absolute;
+    left: 0;
+    right: 0;
+    display: flex;
     justify-content: center;
     align-items: center;
-    flex: 1 1 0;
+    width: 70%;
+    height: 100%;
     margin-left: auto;
     margin-right: auto;
     text-align: center;

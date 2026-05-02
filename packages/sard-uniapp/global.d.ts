@@ -66,6 +66,7 @@ declare module 'vue' {
     SarIndexesAnchor: typeof import('./components/indexes-anchor/indexes-anchor.vue').default
     SarInput: typeof import('./components/input/input.vue').default
     SarKeyboard: typeof import('./components/keyboard/keyboard.vue').default
+    SarKeyboardPopout: typeof import('./components/keyboard-popout/keyboard-popout.vue').default
     SarList: typeof import('./components/list/list.vue').default
     SarListItem: typeof import('./components/list-item/list-item.vue').default
     SarLoadMore: typeof import('./components/load-more/load-more.vue').default

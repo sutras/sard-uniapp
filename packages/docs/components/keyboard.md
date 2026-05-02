@@ -50,12 +50,13 @@ import Keyboard from 'sard-uniapp/components/keyboard/keyboard.vue'
 
 ### KeyboardProps
 
-| 属性                              | 描述                | 类型                                                   | 默认值    |
-| --------------------------------- | ------------------- | ------------------------------------------------------ | --------- |
-| root-class                        | 组件根元素类名      | string                                                 | -         |
-| root-style                        | 组件根元素样式      | StyleValue                                             | -         |
-| type                              | 键盘类型            | 'number' \| 'digit' \| 'idcard' \| 'random' \| 'plate' | 'number'  |
-| mode (v-model) <sup>1.24.1+</sup> | 'plate'键盘时的模式 | 'chinese' \| 'english'                                 | 'chinese' |
+| 属性                              | 描述                | 类型                                                     | 默认值      |
+| --------------------------------- | ------------------- | -------------------------------------------------------- | ----------- |
+| root-class                        | 组件根元素类名      | `string`                                                 | -           |
+| root-style                        | 组件根元素样式      | `StyleValue`                                             | -           |
+| type                              | 键盘类型            | `'number' \| 'digit' \| 'idcard' \| 'random' \| 'plate'` | `'number'`  |
+| mode (v-model) <sup>1.24.1+</sup> | 'plate'键盘时的模式 | `'chinese' \| 'english'`                                 | `'chinese'` |
+| disabled-key <sup>1.30+</sup>     | 禁用按键的回调函数  | `(key: string) => boolean`                               | -           |
 
 ### KeyboardEmits
 
@@ -68,10 +69,10 @@ import Keyboard from 'sard-uniapp/components/keyboard/keyboard.vue'
 
 ### KeyBoardExpose
 
-| 属性                     | 描述                                 | 类型                                     |
-| ------------------------ | ------------------------------------ | ---------------------------------------- |
-| shuffle                  | 重新打乱随机键盘按键                 | `() => void`                             |
-| toggle<sup>1.23.6+</sup> | 切换车牌号的中英文按键，可选传入mode | `(mode?: 'chinese'\| 'english') => void` |
+| 属性                      | 描述                                 | 类型                                     |
+| ------------------------- | ------------------------------------ | ---------------------------------------- |
+| shuffle                   | 重新打乱随机键盘按键                 | `() => void`                             |
+| toggle <sup>1.23.6+</sup> | 切换车牌号的中英文按键，可选传入mode | `(mode?: 'chinese'\| 'english') => void` |
 
 ## 主题定制
 

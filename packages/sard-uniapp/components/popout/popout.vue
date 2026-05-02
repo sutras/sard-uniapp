@@ -18,7 +18,12 @@
   >
     <view :class="popoutClass" :style="popoutStyle" @transitionend.stop>
       <view :class="classNames(bem.e('header'), bem.em('header', props.type))">
-        <view v-if="type === 'compact'" :class="bem.e('button-wrap')">
+        <view
+          v-if="type === 'compact' && mergedShowCancel"
+          :class="
+            classNames(bem.e('button-wrap'), bem.em('button-wrap', 'start'))
+          "
+        >
           <slot
             v-if="$slots.cancel"
             name="cancel"
@@ -30,7 +35,6 @@
             v-if="!$slots.cancel"
             type="pale-text"
             theme="neutral"
-            :root-class="classNames(bem.e('header-cancel'))"
             :loading="loading.cancel"
             block
             @click="onCancel"
@@ -45,7 +49,12 @@
           </template>
           <slot v-else-if="$slots.title" name="title"></slot>
         </view>
-        <view v-if="type === 'compact'" :class="bem.e('button-wrap')">
+        <view
+          v-if="type === 'compact' && showConfirm"
+          :class="
+            classNames(bem.e('button-wrap'), bem.em('button-wrap', 'end'))
+          "
+        >
           <slot
             v-if="$slots.confirm"
             name="confirm"
@@ -58,7 +67,6 @@
             v-if="!$slots.confirm"
             type="pale-text"
             theme="primary"
-            :root-class="classNames(bem.e('header-confirm'))"
             :loading="loading.confirm"
             :disabled="confirmDisabled"
             block
@@ -81,15 +89,14 @@
       <slot name="visible" :whole="wholeVisible" :already="already"></slot>
       <view v-if="showFooter && type === 'loose'" :class="bem.e('footer')">
         <slot
-          v-if="$slots.cancel"
+          v-if="$slots.cancel && mergedShowCancel"
           name="cancel"
           :on-click="onCancel"
-          :visible="showCancel"
           :loading="loading.cancel"
           :text="mergedCancelText"
         ></slot>
         <sar-button
-          v-if="!$slots.cancel && showCancel"
+          v-if="!$slots.cancel && mergedShowCancel"
           type="pale"
           theme="primary"
           round
@@ -100,9 +107,8 @@
           {{ mergedCancelText }}
         </sar-button>
         <slot
-          v-if="$slots.confirm"
+          v-if="$slots.confirm && showConfirm"
           name="confirm"
-          :visible="showConfirm"
           :on-click="onConfirm"
           :disabled="confirmDisabled"
           :loading="loading.confirm"
@@ -134,6 +140,7 @@ import {
   noop,
   isFunction,
   isObject,
+  isBoolean,
 } from '../../utils'
 import SarPopup from '../popup/popup.vue'
 import SarButton from '../button/button.vue'
@@ -165,6 +172,14 @@ const bem = createBem('popout')
 
 // main
 const { t } = useTranslate('popout')
+
+const mergedShowCancel = computed(() => {
+  return isBoolean(props.showCancel)
+    ? props.showCancel
+    : props.type === 'loose'
+      ? false
+      : true
+})
 
 // visible
 const innerVisible = ref(props.visible)

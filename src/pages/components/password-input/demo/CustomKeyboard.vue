@@ -2,7 +2,7 @@
   <sar-password-input
     v-model="value"
     type="underline"
-    customKeyboard
+    custom-keyboard
     focused
     root-style="margin-bottom: 20rpx"
   />

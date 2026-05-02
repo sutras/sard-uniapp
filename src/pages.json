@@ -258,6 +258,9 @@
           "path": "keyboard/index"
         },
         {
+          "path": "keyboard-popout/index"
+        },
+        {
           "path": "layout/index"
         },
         {

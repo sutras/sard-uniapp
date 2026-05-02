@@ -5,7 +5,7 @@
         <view
           v-for="key in numberKeys"
           :key="key"
-          :class="classNames(bem.e('key-wrapper'), bem.em('key-wrapper', key))"
+          :class="getKeyWrapperClass(key)"
           @click="onKeyClick(key)"
         >
           <view :class="bem.e('key')">
@@ -17,7 +17,7 @@
         <view
           v-for="key in digitKeys"
           :key="key"
-          :class="classNames(bem.e('key-wrapper'), bem.em('key-wrapper', key))"
+          :class="getKeyWrapperClass(key)"
           @click="onKeyClick(key)"
         >
           <view :class="bem.e('key')">
@@ -29,7 +29,7 @@
         <view
           v-for="key in idcardKeys"
           :key="key"
-          :class="classNames(bem.e('key-wrapper'), bem.em('key-wrapper', key))"
+          :class="getKeyWrapperClass(key)"
           @click="onKeyClick(key)"
         >
           <view :class="bem.e('key')">
@@ -41,7 +41,7 @@
         <view
           v-for="key in randomKeys"
           :key="key"
-          :class="classNames(bem.e('key-wrapper'), bem.em('key-wrapper', key))"
+          :class="getKeyWrapperClass(key)"
           @click="onKeyClick(key)"
         >
           <view :class="bem.e('key')">
@@ -54,9 +54,7 @@
           <view
             v-for="(key, i) in chineseKeys"
             :key="key"
-            :class="
-              classNames(bem.e('key-wrapper'), bem.em('key-wrapper', key))
-            "
+            :class="getKeyWrapperClass(key)"
             :style="`order: ${i}`"
             @click="onKeyClick(key)"
           >
@@ -74,9 +72,7 @@
             v-for="(key, i) in englishKeys"
             :key="key"
             :style="`order: ${i}`"
-            :class="
-              classNames(bem.e('key-wrapper'), bem.em('key-wrapper', key))
-            "
+            :class="getKeyWrapperClass(key)"
             @click="onKeyClick(key)"
           >
             <view :class="bem.e('key')">
@@ -85,9 +81,9 @@
           </view>
         </template>
         <view
-          :class="toggleClass"
+          :class="getKeyWrapperClass('toggle')"
           :style="`order: ${interceptOrder}`"
-          @click="onToggle()"
+          @click="toggle()"
         >
           <view :class="bem.e('key')">
             {{ toggleKey }}
@@ -139,21 +135,20 @@ const bem = createBem('keyboard')
 
 // main
 const onKeyClick = (key: string) => {
+  if (props.type === 'plate') {
+    if (key === 'I' || key === 'O') {
+      return
+    }
+    if (chineseKeys.includes(key)) {
+      toggle()
+    }
+  }
   emit('input', key)
 }
 
 const onBackspace = () => {
   emit('delete')
 }
-
-defineExpose<KeyBoardExpose>({
-  shuffle() {
-    randomKeys.value = getRandomKeys()
-  },
-  toggle(mode?: KeyboardPlateMode) {
-    onToggle(mode)
-  },
-})
 
 // random
 const randomKeys = ref<string[]>([])
@@ -194,24 +189,39 @@ const interceptOrder = computed(() => {
   return chineseKeys.length - (overflow > 7 ? 0 : overflow + 1)
 })
 
-const onToggle = (newMode?: KeyboardPlateMode) => {
-  innerMode.value =
-    newMode || (innerMode.value === 'chinese' ? 'english' : 'chinese')
+const toggle = (mode?: KeyboardPlateMode) => {
+  const nextMode =
+    mode || (innerMode.value === 'chinese' ? 'english' : 'chinese')
+  if (nextMode === innerMode.value) {
+    return
+  }
+  innerMode.value = nextMode
   emit('toggle', innerMode.value)
   emit('update:mode', innerMode.value)
 }
 
+defineExpose<KeyBoardExpose>({
+  shuffle() {
+    randomKeys.value = getRandomKeys()
+  },
+  toggle,
+})
+
 // others
+const getKeyWrapperClass = (key: string) => {
+  return classNames(
+    bem.e('key-wrapper'),
+    bem.em('key-wrapper', key),
+    bem.em('key-wrapper', 'disabled', props.disabledKey?.(key)),
+  )
+}
+
 const keyboardClass = computed(() => {
   return classNames(bem.b(), bem.m(props.type), props.rootClass)
 })
 
 const keyboardStyle = computed(() => {
   return stringifyStyle(props.rootStyle)
-})
-
-const toggleClass = computed(() => {
-  return classNames(bem.e('key-wrapper'), bem.em('key-wrapper', 'toggle'))
 })
 
 const backspaceClass = computed(() => {

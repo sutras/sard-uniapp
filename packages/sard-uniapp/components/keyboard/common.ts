@@ -7,6 +7,7 @@ export interface KeyboardProps {
   rootClass?: string
   type?: 'number' | 'digit' | 'idcard' | 'random' | 'plate'
   mode?: KeyboardPlateMode
+  disabledKey?: (key: string) => boolean
 }
 
 export const defaultKeyboardProps = (): DefaultProps<KeyboardProps> => ({
@@ -31,100 +32,27 @@ export interface KeyBoardExpose {
   toggle: (mode?: KeyboardPlateMode) => void
 }
 
-export const numberKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
-export const digitKeys = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '.', '0']
-export const idcardKeys = [
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  'X',
-  '0',
-]
+const oneToNineChars = '123456789'
+const oneToZeroChars = oneToNineChars + '0'
+const provinceChars =
+  '京津渝沪冀晋辽吉黑苏浙皖闽赣鲁豫鄂湘粤琼川贵云陕甘青蒙桂宁新藏'
+const suffixChars = '使领警学港澳'
+const englishChars = 'QWERTYUIOPASDFGHJKLZXCVBNM'
 
-export const chineseKeys = [
-  '京',
-  '津',
-  '渝',
-  '沪',
-  '冀',
-  '晋',
-  '辽',
-  '吉',
-  '黑',
-  '苏',
-  '浙',
-  '皖',
-  '闽',
-  '赣',
-  '鲁',
-  '豫',
-  '鄂',
-  '湘',
-  '粤',
-  '琼',
-  '川',
-  '贵',
-  '云',
-  '陕',
-  '甘',
-  '青',
-  '蒙',
-  '桂',
-  '宁',
-  '新',
-  '藏',
-  '港',
-  '澳',
-  '使',
-  '领',
-  '警',
-  '学',
-]
+export const plateProvinceKeys = provinceChars.split('')
+export const plateSuffixKeys = suffixChars.split('')
+export const plateEnglishLetterKeys = englishChars.split('')
 
-export const englishKeys = [
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-  '7',
-  '8',
-  '9',
-  '0',
-  'Q',
-  'W',
-  'E',
-  'R',
-  'T',
-  'Y',
-  'U',
-  'I',
-  'O',
-  'P',
-  'A',
-  'S',
-  'D',
-  'F',
-  'G',
-  'H',
-  'J',
-  'K',
-  'L',
-  'Z',
-  'X',
-  'C',
-  'V',
-  'B',
-  'N',
-  'M',
-]
+const numberOneToNine = oneToNineChars.split('')
+const numberOneToZero = oneToZeroChars.split('')
+
+export const numberKeys = numberOneToZero
+export const digitKeys = [...numberOneToNine, '.', '0']
+export const idcardKeys = [...numberOneToNine, 'X', '0']
+
+export const chineseKeys = [...plateProvinceKeys, ...plateSuffixKeys]
+
+export const englishKeys = [...numberOneToZero, ...plateEnglishLetterKeys]
 
 export function getRandomKeys() {
   return shuffle(numberKeys.slice())

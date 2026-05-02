@@ -38,6 +38,7 @@ export interface PopoutProps {
 
 export const defaultPopoutProps = (): DefaultProps<PopoutProps> => ({
   type: 'loose',
+  showCancel: undefined,
   showConfirm: true,
   showClose: true,
   showFooter: true,

@@ -20,6 +20,11 @@
     margin-top: var(--sar-keyboard-key-gap);
     padding: 0 calc(var(--sar-keyboard-key-gap) / 2);
     flex: 1;
+
+    @include m(disabled) {
+      opacity: 0.4;
+      pointer-events: none;
+    }
   }
 
   @include e(key) {
@@ -50,6 +55,11 @@
 
       @include m(A) {
         margin-left: 5%;
+      }
+
+      @include m(I, O) {
+        opacity: 0.4;
+        pointer-events: none;
       }
 
       @include m(backspace, toggle) {

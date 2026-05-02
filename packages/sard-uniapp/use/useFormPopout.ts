@@ -20,6 +20,7 @@ export interface FormPopoutProps {
   resettable?: boolean
   validateEvent?: boolean
   showConfirm?: boolean
+  showCancel?: boolean
 }
 
 export function omitFormPopoutProps(props: {} & FormPopoutProps) {

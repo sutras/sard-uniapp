@@ -145,6 +145,10 @@
         "name": "keyboard"
       },
       {
+        "title": "KeyboardPopout 键盘弹出框",
+        "name": "keyboard-popout"
+      },
+      {
         "title": "PasswordInput 密码输入框",
         "name": "password-input"
       },

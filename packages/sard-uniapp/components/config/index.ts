@@ -50,6 +50,7 @@ import { type ImageProps } from '../image'
 import { type IndexesProps } from '../indexes'
 import { type InputProps } from '../input'
 import { type KeyboardProps } from '../keyboard'
+import { type KeyboardPopoutProps } from '../keyboard-popout'
 import { type ListItemProps } from '../list'
 import { type LoadingProps } from '../loading'
 import { type MarqueeProps } from '../marquee'
@@ -192,6 +193,7 @@ export interface ConfigOptions {
   indexes?: InferDefaults<LooseRequired<IndexesProps>>
   input?: InferDefaults<LooseRequired<InputProps>>
   keyboard?: InferDefaults<LooseRequired<KeyboardProps>>
+  keyboardPopout?: InferDefaults<LooseRequired<KeyboardPopoutProps>>
   listItem?: InferDefaults<LooseRequired<ListItemProps>>
   loading?: InferDefaults<LooseRequired<LoadingProps>>
   marquee?: InferDefaults<LooseRequired<MarqueeProps>>

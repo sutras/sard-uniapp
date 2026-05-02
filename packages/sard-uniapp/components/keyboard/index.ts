@@ -1,7 +1,10 @@
-export type {
-  KeyboardProps,
-  KeyboardSlots,
-  KeyboardEmits,
-  KeyBoardExpose,
-  KeyboardPlateMode,
+export {
+  type KeyboardProps,
+  type KeyboardSlots,
+  type KeyboardEmits,
+  type KeyBoardExpose,
+  type KeyboardPlateMode,
+  plateProvinceKeys,
+  plateSuffixKeys,
+  plateEnglishLetterKeys,
 } from './common'
