@@ -26,6 +26,7 @@
       align-items: center;
       border-radius: var(--sar-rounded-full);
       font-size: var(--sar-swiper-dot-font-size);
+      line-height: 1;
       color: var(--sar-swiper-dot-color);
       background: var(--sar-swiper-dot-bg);
 
@@ -48,6 +49,11 @@
     @include e(item) {
       width: var(--sar-swiper-dot-index-size);
       height: var(--sar-swiper-dot-index-size);
+      color: var(--sar-swiper-dot-index-color);
+      background: var(--sar-swiper-dot-index-bg);
+      @include m(active) {
+        background: var(--sar-swiper-dot-index-active-bg);
+      }
     }
   }
 

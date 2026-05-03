@@ -1,4 +1,14 @@
 
+## 1.30.0 (2026-05-02)
+
+* Features: 允许在开关里面展示文字 ([55b9f23](https://github.com/sutras/sard-uniapp/commit/55b9f23))
+* Features: 新增 KeyboardPopout 组件 ([ff5707a](https://github.com/sutras/sard-uniapp/commit/ff5707a))
+* Features: 新增 map-label 属性 ([726f9e4](https://github.com/sutras/sard-uniapp/commit/726f9e4))
+* Features: 新增 swipe-action-group 组件 ([7bbeda3](https://github.com/sutras/sard-uniapp/commit/7bbeda3))
+* Features: 新增 swiper 组件 ([774ddd4](https://github.com/sutras/sard-uniapp/commit/774ddd4))
+* Features: 新增 variant 属性 ([d191638](https://github.com/sutras/sard-uniapp/commit/d191638))
+* Bug Fixes: 修复按钮细边框薄厚不一致问题 ([1e7f9fb](https://github.com/sutras/sard-uniapp/commit/1e7f9fb))
+
 ## <small>1.29.4 (2026-04-27)</small>
 
 * Bug Fixes: 修复动态加载数据时不生成nav的问题 ([d1cdaf1](https://github.com/sutras/sard-uniapp/commit/d1cdaf1))

@@ -13,6 +13,9 @@ page,
   --sar-swiper-dot-bar-duration: var(--sar-duration);
 
   --sar-swiper-dot-index-size: 32rpx;
+  --sar-swiper-dot-index-color: var(--sar-white);
+  --sar-swiper-dot-index-bg: rgba(0, 0, 0, 0.3);
+  --sar-swiper-dot-index-active-bg: rgba(0, 0, 0, 0.7);
 
   --sar-swiper-dot-title-padding: 16rpx;
   --sar-swiper-dot-title-font-size: var(--sar-text-sm);

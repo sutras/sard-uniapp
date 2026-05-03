@@ -9,6 +9,7 @@
     position: relative;
     box-sizing: border-box;
     display: inline-flex;
+    width: fit-content;
     height: var(--sar-switch-height);
     border-radius: var(--sar-rounded-full);
     font-size: var(--sar-switch-size);

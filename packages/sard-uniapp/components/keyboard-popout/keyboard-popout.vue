@@ -9,6 +9,7 @@
     :transparent="transparent"
     :show-cancel="showCancel"
     :show-confirm="showConfirm"
+    :show-divider="transparent"
     @cancel="emit('cancel')"
     @confirm="emit('confirm')"
     @back-press="emit('back-press')"

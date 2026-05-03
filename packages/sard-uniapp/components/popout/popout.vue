@@ -315,7 +315,11 @@ const mergedCancelText = computed(() => {
 
 // others
 const popoutClass = computed(() => {
-  return classNames(bem.b(), props.rootClass)
+  return classNames(
+    bem.b(),
+    bem.m('divided', props.showDivider),
+    props.rootClass,
+  )
 })
 
 const popoutStyle = computed(() => {

@@ -7,6 +7,11 @@
     border-top-left-radius: var(--sar-popout-border-top-radius);
     border-top-right-radius: var(--sar-popout-border-top-radius);
     background: var(--sar-popout-bg);
+
+    @include m(divided) {
+      border-radius: 0;
+      border-top: 1px solid var(--sar-border-color);
+    }
   }
 
   @include e(header) {

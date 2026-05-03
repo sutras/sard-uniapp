@@ -34,6 +34,7 @@ export interface PopoutProps {
   beforeClose?: PopoutBeforeClose
   keepRender?: boolean
   backPress?: 'close' | 'back'
+  showDivider?: boolean
 }
 
 export const defaultPopoutProps = (): DefaultProps<PopoutProps> => ({
