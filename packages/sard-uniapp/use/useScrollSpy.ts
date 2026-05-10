@@ -1,6 +1,7 @@
 import { computed, nextTick, ref, shallowRef } from 'vue'
 import { useTimeout } from './useTimeout'
 import { isNullish, matchScrollVisible, type NodeRect } from '../utils'
+import { usePopupEnter } from '../components/popup'
 
 export interface UseScrollSpyOptions {
   defaultCurrent?: string | number
@@ -142,6 +143,10 @@ export function useScrollSpy(options: UseScrollSpyOptions) {
     }
   }
 
+  usePopupEnter(() => {
+    queueUpdate()
+  })
+
   return {
     scrollTop,
     innerCurrent,
@@ -150,7 +155,7 @@ export function useScrollSpy(options: UseScrollSpyOptions) {
     unregister,
     onScroll,
     scrollTo,
-    update,
+    update: queueUpdate,
     initialize,
   }
 }
