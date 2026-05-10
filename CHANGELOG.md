@@ -1,4 +1,10 @@
 
+## <small>1.30.1 (2026-05-10)</small>
+
+* Bug Fixes: 修复小程序端字数限制问题 ([a0c6923](https://github.com/sutras/sard-uniapp/commit/a0c6923))
+* Bug Fixes: 修复弹窗中使用时滚动位置不正确问题 ([30fb9d9](https://github.com/sutras/sard-uniapp/commit/30fb9d9))
+* Bug Fixes: 透传常用属性 ([cc21393](https://github.com/sutras/sard-uniapp/commit/cc21393))
+
 ## 1.30.0 (2026-05-02)
 
 * Features: 允许在开关里面展示文字 ([55b9f23](https://github.com/sutras/sard-uniapp/commit/55b9f23))
