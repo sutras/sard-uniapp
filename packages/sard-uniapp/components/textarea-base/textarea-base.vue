@@ -7,7 +7,7 @@
     :placeholder-style="placeholderStyle"
     :placeholder-class="placeholderClass"
     :disabled="disabled"
-    :maxlength="maxlength"
+    :maxlength="maxLength"
     :focus="focus"
     :cursor-spacing="cursorSpacing"
     :cursor="cursor"
@@ -36,6 +36,8 @@
 </template>
 
 <script lang="ts" setup>
+import { computed } from 'vue'
+import { isWeb } from '../../utils'
 import {
   type TextareaBaseEmits,
   type TextareaBaseProps,
@@ -49,12 +51,30 @@ defineOptions({
   },
 })
 
-withDefaults(defineProps<TextareaBaseProps>(), defaultTextareaBaseProps())
+const props = withDefaults(
+  defineProps<TextareaBaseProps>(),
+  defaultTextareaBaseProps(),
+)
 
 const emit = defineEmits<TextareaBaseEmits>()
 
+// max length
+const maxLength = computed(() => {
+  return isWeb ? props.maxlength : -1
+})
+
 const onInput = (event: any) => {
-  emit('input', event)
+  let value = event.detail.value
+
+  if (!isWeb) {
+    if (props.maxlength >= 0) {
+      value = value.slice(0, props.maxlength)
+    }
+  }
+
+  emit('input', value)
+
+  return value
 }
 
 const onFocus = (event: any) => {

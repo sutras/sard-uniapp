@@ -63,13 +63,7 @@
 
 <script setup lang="ts">
 import { computed, inject, ref, watch } from 'vue'
-import {
-  classNames,
-  stringifyStyle,
-  createBem,
-  isWeb,
-  uniqid,
-} from '../../utils'
+import { classNames, stringifyStyle, createBem, uniqid } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
 import {
@@ -134,19 +128,9 @@ watch(
   },
 )
 
-const onInput = (event: any) => {
-  let value = event.detail.value
-
+const onInput = (value: any) => {
   lastFocusInput.value = thisInput
-
-  if (!isWeb) {
-    if (props.maxlength >= 0) {
-      value = value.slice(0, props.maxlength)
-    }
-  }
-
   setInnerValue(value)
-  return value
 }
 
 // focus
@@ -239,11 +223,6 @@ const onClick = (event: any) => {
   emit('click', event)
 }
 
-// max length
-const maxLength = computed(() => {
-  return isWeb ? props.maxlength : -1
-})
-
 // eye
 const isPlainText = ref(false)
 
@@ -316,7 +295,7 @@ const fieldCommonProps = computed<InputBaseProps>(() => {
     placeholderStyle: mergedPlaceholderStyle.value,
     placeholderClass: props.placeholderClass,
     disabled: isDisabled.value || isReadonly.value,
-    maxlength: maxLength.value,
+    maxlength: props.maxlength,
     focus: props.focus,
     cursorSpacing: props.cursorSpacing,
     cursor: props.cursor,
