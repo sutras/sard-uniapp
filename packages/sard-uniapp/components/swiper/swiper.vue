@@ -3,6 +3,10 @@
     <swiper
       :class="swiperClass"
       :current="innerValue"
+      :autoplay="autoplay"
+      :interval="interval"
+      :duration="duration"
+      :circular="circular"
       :previous-margin="previousMargin"
       :next-margin="nextMargin"
       :display-multiple-items="displayMultipleItems"
