@@ -1,4 +1,8 @@
 
+## <small>1.30.2 (2026-05-14)</small>
+
+* Bug Fixes: 修复表单项布尔类型属性的覆盖问题 ([903a2c4](https://github.com/sutras/sard-uniapp/commit/903a2c4))
+
 ## <small>1.30.1 (2026-05-10)</small>
 
 * Bug Fixes: 修复小程序端字数限制问题 ([a0c6923](https://github.com/sutras/sard-uniapp/commit/a0c6923))
