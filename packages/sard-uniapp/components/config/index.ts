@@ -57,6 +57,7 @@ import { type MarqueeProps } from '../marquee'
 import { type NoticeBarProps } from '../notice-bar'
 import { type NotifyAgentProps } from '../notify-agent'
 import { type NotifyProps } from '../notify'
+import { type OverlayAgentProps } from '../overlay-agent'
 import { type OverlayProps } from '../overlay'
 import { type PaginationProps } from '../pagination'
 import { type PasswordInputProps } from '../password-input'
@@ -201,6 +202,7 @@ export interface ConfigOptions {
   notify?: InferDefaults<LooseRequired<NotifyProps>>
   notifyAgent?: InferDefaults<LooseRequired<NotifyAgentProps>>
   overlay?: InferDefaults<LooseRequired<OverlayProps>>
+  overlayAgent?: InferDefaults<LooseRequired<OverlayAgentProps>>
   pagination?: InferDefaults<LooseRequired<PaginationProps>>
   passwordInput?: InferDefaults<LooseRequired<PasswordInputProps>>
   picker?: InferDefaults<LooseRequired<PickerProps>>
