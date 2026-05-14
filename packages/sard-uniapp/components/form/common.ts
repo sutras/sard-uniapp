@@ -55,6 +55,7 @@ export const defaultFormProps = (): DefaultProps<FormProps> =>
     starPosition: 'left',
     contentPosition: 'left',
     showError: true,
+    hideStar: false,
     scrollDuration: 150,
     ...defaultConfig.form,
   }) as Omit<typeof defaultConfig.form, 'validateTrigger'>
@@ -94,9 +95,10 @@ export interface FormItemProps {
 }
 
 export const defaultFormItemProps = (): DefaultProps<FormItemProps> => ({
-  showError: true,
-  ...defaultConfig.formItem,
+  showError: undefined,
+  hideStar: undefined,
   required: undefined,
+  ...defaultConfig.formItem,
 })
 
 export interface FormItemSlots {

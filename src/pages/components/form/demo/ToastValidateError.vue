@@ -1,7 +1,7 @@
 <template>
   <page-meta :page-style="isLocked ? 'overflow: hidden' : ''"></page-meta>
   <doc-page title="toast显示验证错误信息">
-    <sar-form ref="formRef" :model="formState" class="form" :showError="false">
+    <sar-form ref="formRef" :model="formState" class="form" :show-error="false">
       <sar-form-item
         name="username"
         class="form-item"

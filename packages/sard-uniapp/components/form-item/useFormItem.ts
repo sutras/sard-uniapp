@@ -26,6 +26,7 @@ import {
   getScrollIntoViewValue,
   getViewportScrollInfo,
   getWindowInfo,
+  isBoolean,
   noop,
   toArray,
   uniqid,
@@ -33,7 +34,6 @@ import {
 import { type Rule, type VdaliteFailResult } from '../form/Validator'
 
 export function useFormItem(props: FormItemProps) {
-  // main
   // 解决在微信小程序中 被插槽隔离的表单项无法通过inject获得上下文，此时可通过插槽的转发获得上下文
   const formContext = props.context || useFormContext()
 
@@ -89,9 +89,11 @@ export function useFormItem(props: FormItemProps) {
   )
 
   const shouldShowError = computed(() => {
-    return (
-      !!props.showError && !!formContext.showError && !!validateMessage.value
-    )
+    if (!validateMessage.value) return false
+
+    if (isBoolean(props.showError)) return props.showError
+
+    return !!formContext.showError
   })
 
   const mergedValidateTrigger = computed(() => {
@@ -152,7 +154,11 @@ export function useFormItem(props: FormItemProps) {
   })
 
   const shouldShowStar = computed(() => {
-    return !formContext.hideStar && !props.hideStar && isRequired.value
+    if (!isRequired.value) return false
+
+    if (isBoolean(props.hideStar)) return !props.hideStar
+
+    return !formContext.hideStar
   })
 
   const validate = async (trigger?: string | string[]) => {
