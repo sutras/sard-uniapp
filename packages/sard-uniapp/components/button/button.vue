@@ -21,6 +21,7 @@
     @click="onClick"
     @getphonenumber="onGetphonenumber"
     @getAuthorize="onGetauthorize"
+    @followLifestyle="onFollowLifestyle"
     @getuserinfo="onGetuserinfo"
     @error="onError"
     @opensetting="onOpensetting"
@@ -100,6 +101,10 @@ const onGetphonenumber = (event: any) => {
 
 const onGetauthorize = (event: any) => {
   emit('getAuthorize', event)
+}
+
+const onFollowLifestyle = (event: any) => {
+  emit('followLifestyle', event)
 }
 
 const onGetuserinfo = (event: any) => {
