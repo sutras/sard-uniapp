@@ -33,6 +33,7 @@ export interface ButtonProps {
   appParameter?: string
   hoverStopPropagation?: boolean
   lang?: string
+  scope?: string
   sessionFrom?: string
   sendMessageTitle?: string
   sendMessagePath?: string
