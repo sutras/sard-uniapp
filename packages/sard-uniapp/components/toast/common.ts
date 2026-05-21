@@ -7,6 +7,8 @@ export interface ToastProps {
   rootClass?: string
   type?: 'text' | 'loading' | 'success' | 'fail'
   title?: string | number
+  icon?: string
+  iconFamily?: string
   visible?: boolean
   position?: 'top' | 'center' | 'bottom'
   overlay?: boolean
@@ -32,4 +34,9 @@ export interface ToastEmits extends TransitionHookEmits {
 export interface ToastExpose {
   reHideLater: () => void
   cancelHide: () => void
+}
+
+export interface ToastSlots {
+  default?(props?: any): any
+  icon?(props?: any): any
 }

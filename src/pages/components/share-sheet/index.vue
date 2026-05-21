@@ -20,6 +20,10 @@
     <doc-demo title="禁用">
       <DemoDisabled />
     </doc-demo>
+
+    <doc-demo title="插槽">
+      <DemoSlot />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -31,6 +35,7 @@ import DemoMultipleRow from './demo/MultipleRow.vue'
 import DemoTitleDescription from './demo/TitleDescription.vue'
 import DemoPicture from './demo/Picture.vue'
 import DemoDisabled from './demo/Disabled.vue'
+import DemoSlot from './demo/Slot.vue'
 
 const { isLocked } = useCurrentPageLock()
 

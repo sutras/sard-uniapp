@@ -1,11 +1,11 @@
 <template>
-  <sar-action-sheet
+  <sar-share-sheet
     :root-style="innerProps.rootStyle"
     :root-class="innerProps.rootClass"
+    :title="innerProps.title"
     :description="innerProps.description"
     :item-list="innerProps.itemList"
     :cancel="innerProps.cancel"
-    :show-cancel="innerProps.showCancel"
     :visible="innerProps.visible"
     :overlay-closable="innerProps.overlayClosable"
     :before-close="innerProps.beforeClose"
@@ -24,6 +24,9 @@
     @after-leave="onAfterLeave"
     @leave-cancelled="onLeaveCancelled"
   >
+    <template #title>
+      <slot name="title" />
+    </template>
     <template #description>
       <slot name="description" />
     </template>
@@ -31,21 +34,21 @@
       <slot name="cancel" />
     </template>
     <slot />
-  </sar-action-sheet>
+  </sar-share-sheet>
 </template>
 
 <script setup lang="ts">
 import { computed, Ref, ref } from 'vue'
-import SarActionSheet from '../action-sheet/action-sheet.vue'
+import SarShareSheet from '../share-sheet/share-sheet.vue'
 import {
-  type ActionSheetAgentEmits,
-  type ActionSheetAgentProps,
-  type ActionSheetImperative,
-  defaultActionSheetAgentProps,
+  type ShareSheetAgentEmits,
+  type ShareSheetAgentProps,
+  type ShareSheetImperative,
+  defaultShareSheetAgentProps,
   imperativeName,
 } from './common'
 import { type TransitionHookName, useImperative } from '../../use'
-import { type ActionSheetItemProps } from '../action-sheet/common'
+import type { ShareSheetItemProps } from '../share-sheet-item/common'
 
 defineOptions({
   options: {
@@ -55,16 +58,15 @@ defineOptions({
 })
 
 const props = withDefaults(
-  defineProps<ActionSheetAgentProps>(),
-  defaultActionSheetAgentProps(),
+  defineProps<ShareSheetAgentProps>(),
+  defaultShareSheetAgentProps(),
 )
 
-const emit = defineEmits<ActionSheetAgentEmits>()
+const emit = defineEmits<ShareSheetAgentEmits>()
 
-// main
-const innerProps = ref({ ...props }) as unknown as Ref<ActionSheetAgentProps>
+const innerProps = ref({ ...props }) as unknown as Ref<ShareSheetAgentProps>
 
-const imperative: ActionSheetImperative = {
+const imperative: ShareSheetImperative = {
   show(newProps: Record<string, any>) {
     innerProps.value = {
       ...props,
@@ -80,9 +82,9 @@ const imperative: ActionSheetImperative = {
   },
 }
 
-const onSelect = (item: ActionSheetItemProps, index: number) => {
-  emit('select', item, index)
-  innerProps.value.onSelect?.(item, index)
+const onSelect = (item: ShareSheetItemProps) => {
+  emit('select', item)
+  innerProps.value.onSelect?.(item)
 }
 
 const onClose = () => {

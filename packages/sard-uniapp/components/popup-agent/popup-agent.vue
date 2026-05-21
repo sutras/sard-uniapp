@@ -1,19 +1,22 @@
 <template>
-  <sar-action-sheet
+  <sar-popup
+    :visible="innerProps.visible"
     :root-style="innerProps.rootStyle"
     :root-class="innerProps.rootClass"
-    :description="innerProps.description"
-    :item-list="innerProps.itemList"
-    :cancel="innerProps.cancel"
-    :show-cancel="innerProps.showCancel"
-    :visible="innerProps.visible"
-    :overlay-closable="innerProps.overlayClosable"
-    :before-close="innerProps.beforeClose"
     :duration="innerProps.duration"
+    :effect="innerProps.effect"
+    :overlay="innerProps.overlay"
+    :overlay-class="innerProps.overlayClass"
+    :overlay-style="innerProps.overlayStyle"
+    :background="innerProps.background"
+    :transparent="innerProps.transparent"
+    :keep-render="innerProps.keepRender"
+    :overlay-closable="innerProps.overlayClosable"
+    :lock-scroll="innerProps.lockScroll"
+    :back-press="innerProps.backPress"
+    @overlay-click="onOverlayClick"
     @update:visible="onUpdateVisible"
-    @select="onSelect"
-    @close="onClose"
-    @cancel="onCancel"
+    @back-press="onBackPress"
     @visible-hook="onVisibleHook"
     @before-enter="onBeforeEnter"
     @enter="onEnter"
@@ -24,28 +27,21 @@
     @after-leave="onAfterLeave"
     @leave-cancelled="onLeaveCancelled"
   >
-    <template #description>
-      <slot name="description" />
-    </template>
-    <template #cancel>
-      <slot name="cancel" />
-    </template>
     <slot />
-  </sar-action-sheet>
+  </sar-popup>
 </template>
 
 <script setup lang="ts">
 import { computed, Ref, ref } from 'vue'
-import SarActionSheet from '../action-sheet/action-sheet.vue'
+import SarPopup from '../popup/popup.vue'
 import {
-  type ActionSheetAgentEmits,
-  type ActionSheetAgentProps,
-  type ActionSheetImperative,
-  defaultActionSheetAgentProps,
+  type PopupAgentProps,
+  type PopupAgentEmits,
+  type PopupImperative,
   imperativeName,
+  defaultPopupAgentProps,
 } from './common'
 import { type TransitionHookName, useImperative } from '../../use'
-import { type ActionSheetItemProps } from '../action-sheet/common'
 
 defineOptions({
   options: {
@@ -55,16 +51,18 @@ defineOptions({
 })
 
 const props = withDefaults(
-  defineProps<ActionSheetAgentProps>(),
-  defaultActionSheetAgentProps(),
+  defineProps<PopupAgentProps>(),
+  defaultPopupAgentProps(),
 )
 
-const emit = defineEmits<ActionSheetAgentEmits>()
+const emit = defineEmits<PopupAgentEmits>()
 
 // main
-const innerProps = ref({ ...props }) as unknown as Ref<ActionSheetAgentProps>
+const innerProps = ref<PopupAgentProps>({
+  ...props,
+}) as unknown as Ref<PopupAgentProps>
 
-const imperative: ActionSheetImperative = {
+const imperative: PopupImperative = {
   show(newProps: Record<string, any>) {
     innerProps.value = {
       ...props,
@@ -80,24 +78,19 @@ const imperative: ActionSheetImperative = {
   },
 }
 
-const onSelect = (item: ActionSheetItemProps, index: number) => {
-  emit('select', item, index)
-  innerProps.value.onSelect?.(item, index)
-}
-
-const onClose = () => {
-  emit('close')
-  innerProps.value.onClose?.()
-}
-
-const onCancel = () => {
-  emit('cancel')
-  innerProps.value.onCancel?.()
+const onOverlayClick = (event: any) => {
+  emit('overlay-click', event)
+  innerProps.value.onOverlayClick?.(event)
 }
 
 const onUpdateVisible = (visible: boolean) => {
   innerProps.value.visible = visible
   emit('update:visible', visible)
+}
+
+const onBackPress = () => {
+  emit('back-press')
+  innerProps.value.onBackPress?.()
 }
 
 const onVisibleHook = (name: TransitionHookName) => {
