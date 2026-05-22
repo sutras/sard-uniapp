@@ -1,6 +1,7 @@
 import { type StyleValue } from 'vue'
 import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
+import { ActionSheetItemProps } from '../action-sheet-item'
 
 export type ActionSheetBeforeClose = ((
   type: 'close' | 'cancel',
@@ -12,7 +13,7 @@ export type ActionSheetBeforeClose = ((
 ) => any | Promise<any>) &
   ((
     type: 'select',
-    item: ActionSheetItem,
+    item: ActionSheetItemProps,
     index: number,
     loading: {
       readonly cancel: boolean
@@ -25,7 +26,7 @@ export interface ActionSheetProps {
   rootStyle?: StyleValue
   rootClass?: string
   description?: string
-  itemList?: ActionSheetItem[]
+  itemList?: ActionSheetItemProps[]
   cancel?: string
   showCancel?: boolean
   visible?: boolean
@@ -44,13 +45,17 @@ export interface ActionSheetEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'close'): void
   (e: 'cancel'): void
-  (e: 'select', item: ActionSheetItem, index: number): void
+  (e: 'select', item: ActionSheetItemProps, index: number): void
 }
 
-export interface ActionSheetItem {
-  name?: string
-  description?: string
-  color?: string
-  loading?: boolean
-  disabled?: boolean
+export interface ActionSheetSlots {
+  default?(props?: any): any
+  description?(props?: any): any
+  cancel?(props?: any): any
 }
+
+export type {
+  ActionSheetItemProps,
+  ActionSheetItemEmits,
+  ActionSheetItemSlots,
+} from '../action-sheet-item/common'
