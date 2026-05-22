@@ -6,6 +6,8 @@
     :root-class="innerProps.rootClass"
     :type="innerProps.type"
     :title="innerProps.title"
+    :icon="innerProps.icon"
+    :icon-family="innerProps.iconFamily"
     :position="innerProps.position"
     :overlay="innerProps.overlay"
     :transparent="innerProps.transparent"
@@ -21,11 +23,16 @@
     @leave="onLeave"
     @after-leave="onAfterLeave"
     @leave-cancelled="onLeaveCancelled"
-  />
+  >
+    <template #icon>
+      <slot name="icon" />
+    </template>
+    <slot />
+  </sar-toast>
 </template>
 
 <script setup lang="ts">
-import { computed, ref } from 'vue'
+import { computed, Ref, ref } from 'vue'
 import SarToast from '../toast/toast.vue'
 import { type ToastExpose } from '../toast/common'
 import {
@@ -52,7 +59,7 @@ const props = withDefaults(
 const emit = defineEmits<ToastAgentEmits>()
 
 // main
-const innerProps = ref({ ...props })
+const innerProps = ref({ ...props }) as unknown as Ref<ToastAgentProps>
 
 const elRef = ref<ToastExpose>()
 
@@ -129,6 +136,6 @@ const onLeaveCancelled = () => {
 useImperative(
   imperativeName,
   imperative,
-  computed(() => innerProps.value.id),
+  computed(() => innerProps.value.id!),
 )
 </script>

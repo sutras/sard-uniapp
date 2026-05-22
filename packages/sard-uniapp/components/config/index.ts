@@ -67,6 +67,7 @@ import { type PopoutInputProps } from '../popout-input'
 import { type PopoutProps } from '../popout'
 import { type PopoverProps } from '../popover'
 import { type PopupProps } from '../popup'
+import { type PopupAgentProps } from '../popup-agent'
 import { type ProgressBarProps } from '../progress-bar'
 import { type ProgressCircleProps } from '../progress-circle'
 import { type PullDownRefreshProps } from '../pull-down-refresh'
@@ -86,6 +87,7 @@ import { type SelectProps } from '../select'
 import { type SelectInputProps } from '../select-input'
 import { type SelectPopoutProps } from '../select-popout'
 import { type ShareSheetProps } from '../share-sheet'
+import { type ShareSheetAgentProps } from '../share-sheet-agent'
 import { type SignatureProps } from '../signature'
 import { type SkeletonProps } from '../skeleton'
 import { type SliderProps } from '../slider'
@@ -210,6 +212,7 @@ export interface ConfigOptions {
   popoutInput?: InferDefaults<LooseRequired<PopoutInputProps>>
   popover?: InferDefaults<LooseRequired<PopoverProps<any>>>
   popup?: InferDefaults<LooseRequired<PopupProps>>
+  popupAgent?: InferDefaults<LooseRequired<PopupAgentProps>>
   progressBar?: InferDefaults<LooseRequired<ProgressBarProps>>
   progressCircle?: InferDefaults<LooseRequired<ProgressCircleProps>>
   pullDownRefresh?: InferDefaults<LooseRequired<PullDownRefreshProps>>
@@ -229,6 +232,7 @@ export interface ConfigOptions {
   selectInput?: InferDefaults<LooseRequired<SelectInputProps>>
   selectPopout?: InferDefaults<LooseRequired<SelectPopoutProps>>
   shareSheet?: InferDefaults<LooseRequired<ShareSheetProps>>
+  shareSheetAgent?: InferDefaults<LooseRequired<ShareSheetAgentProps>>
   signature?: InferDefaults<LooseRequired<SignatureProps>>
   skeleton?: InferDefaults<LooseRequired<SkeletonProps>>
   slider?: InferDefaults<LooseRequired<SliderProps>>

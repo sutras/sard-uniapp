@@ -9,63 +9,79 @@
     @back-press="onBackPress"
   >
     <view :class="shareSheetClass" :style="shareSheetStyle">
-      <view v-if="title || description" :class="bem.e('header')">
-        <view v-if="title" :class="bem.e('title')">
-          {{ title }}
+      <template
+        v-if="title || $slots.title || description || $slots.description"
+      >
+        <view :class="bem.e('header')">
+          <view v-if="title || $slots.title" :class="bem.e('title')">
+            <slot name="title">{{ title }}</slot>
+          </view>
+          <view
+            v-if="description || $slots.description"
+            :class="bem.e('description')"
+          >
+            <slot name="description">{{ description }}</slot>
+          </view>
         </view>
-        <view v-if="description" :class="bem.e('description')">
-          {{ description }}
-        </view>
-      </view>
+      </template>
+
       <view :class="bem.e('body')">
-        <view v-for="(row, i) in finalItemList" :key="i" :class="bem.e('row')">
-          <scroll-view scroll-x>
-            <view :class="bem.e('row-content')">
-              <view
-                v-for="(item, j) in row"
-                :key="j"
-                :class="
-                  classNames(
-                    bem.e('item'),
-                    bem.em('item', 'disabled', item.disabled),
-                  )
-                "
-                @click="onSelect(item)"
-              >
+        <template v-if="finalItemList.length > 0">
+          <view
+            v-for="(row, i) in finalItemList"
+            :key="i"
+            :class="bem.e('row')"
+          >
+            <scroll-view scroll-x>
+              <view :class="bem.e('row-content')">
                 <view
-                  :class="bem.e('icon-wrapper')"
-                  :style="
-                    stringifyStyle({
-                      backgroundColor: item.background,
-                      color: item.color,
-                    })
+                  v-for="(item, j) in row"
+                  :key="j"
+                  :class="
+                    classNames(
+                      bem.e('item'),
+                      bem.em('item', 'disabled', item.disabled),
+                    )
                   "
+                  @click="onSelect(item)"
                 >
-                  <image
-                    v-if="isImg(item.icon)"
-                    :src="item.icon"
-                    mode="aspectFill"
-                    :class="bem.e('image')"
-                  />
-                  <sar-icon
-                    v-else
-                    :name="item.icon"
-                    :family="item.iconFamily"
-                  />
-                </view>
-                <view :class="bem.e('item-name')">{{ item.name }}</view>
-                <view :class="bem.e('item-description')">
-                  {{ item.description }}
+                  <view
+                    :class="bem.e('icon-wrapper')"
+                    :style="
+                      stringifyStyle({
+                        backgroundColor: item.background,
+                        color: item.color,
+                      })
+                    "
+                  >
+                    <image
+                      v-if="isImg(item.icon)"
+                      :src="item.icon"
+                      mode="aspectFill"
+                      :class="bem.e('image')"
+                    />
+                    <sar-icon
+                      v-else
+                      :name="item.icon"
+                      :family="item.iconFamily"
+                    />
+                  </view>
+                  <view :class="bem.e('item-name')">{{ item.name }}</view>
+                  <view :class="bem.e('item-description')">
+                    {{ item.description }}
+                  </view>
                 </view>
               </view>
-            </view>
-          </scroll-view>
-        </view>
+            </scroll-view>
+          </view>
+        </template>
+        <slot />
       </view>
-      <template v-if="cancel">
+
+      <template v-if="cancel || $slots.cancel">
         <view :class="bem.e('gap')"></view>
         <view :class="bem.e('cancel')" @click="onCancel">
-          {{ cancel }}
+          <slot name="cancel">{{ cancel }}</slot>
         </view>
       </template>
     </view>
@@ -88,10 +104,12 @@ import SarIcon from '../icon/icon.vue'
 import {
   type ShareSheetProps,
   type ShareSheetEmits,
-  type ShareSheetItem,
+  type ShareSheetSlots,
   defaultShareSheetProps,
 } from './common'
+import type { ShareSheetItemProps } from '../share-sheet-item/common'
 import { type TransitionHookName } from '../../use'
+import { provideShareSheet } from './context'
 
 defineOptions({
   options: {
@@ -105,25 +123,44 @@ const props = withDefaults(
   defaultShareSheetProps(),
 )
 
+const slots = defineSlots<ShareSheetSlots>()
+
 const emit = defineEmits<ShareSheetEmits>()
 
 const bem = createBem('share-sheet')
 
 // main
+const innerVisible = ref(props.visible)
+const itemListRef = ref<Array<ShareSheetItemProps>>([])
+
+provideShareSheet({
+  onItemSelect: (item) => {
+    onSelect(item)
+  },
+  registerItem: (item) => {
+    itemListRef.value.push(item)
+    return itemListRef.value.length - 1
+  },
+  unregisterItem: (item) => {
+    const index = itemListRef.value.indexOf(item)
+    if (index > -1) {
+      itemListRef.value.splice(index, 1)
+    }
+  },
+})
+
 const finalItemList = computed(() => {
   const itemList = props.itemList
   if (!Array.isArray(itemList)) {
-    return [] as ShareSheetItem[][]
+    return [] as ShareSheetItemProps[][]
   }
 
   if (!Array.isArray(itemList[0])) {
-    return [itemList] as ShareSheetItem[][]
+    return [itemList] as ShareSheetItemProps[][]
   }
 
-  return itemList as ShareSheetItem[][]
+  return itemList as ShareSheetItemProps[][]
 })
-
-const innerVisible = ref(props.visible)
 
 watch(
   () => props.visible,
@@ -158,7 +195,7 @@ const onOverlayClick = () => {
   }
 }
 
-const onSelect = (item: ShareSheetItem) => {
+const onSelect = (item: ShareSheetItemProps) => {
   if (!item.disabled) {
     emit('select', item)
     perhapsClose('select')
@@ -186,7 +223,11 @@ const isImg = (url: any) => {
 
 // others
 const shareSheetClass = computed(() => {
-  return classNames(bem.b(), bem.m('titled', !!props.title), props.rootClass)
+  return classNames(
+    bem.b(),
+    bem.m('titled', !!props.title || !!slots.title?.(props)),
+    props.rootClass,
+  )
 })
 
 const shareSheetStyle = computed(() => {

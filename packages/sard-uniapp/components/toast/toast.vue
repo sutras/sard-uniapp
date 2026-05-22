@@ -11,11 +11,20 @@
     @visible-hook="onVisibleHook"
   >
     <view :class="toastClass" :style="toastStyle">
-      <view v-if="type !== 'text'" :class="iconClass">
-        <sar-loading v-if="type === 'loading'" />
-        <sar-icon v-else family="sari" :name="type" />
-      </view>
-      <view :class="bem.e('title')">{{ title }}</view>
+      <template v-if="$slots.default">
+        <slot />
+      </template>
+      <template v-else>
+        <template v-if="showIcon">
+          <view :class="iconClass">
+            <slot name="icon">
+              <sar-loading v-if="type === 'loading'" />
+              <sar-icon v-else family="sari" :name="iconName" />
+            </slot>
+          </view>
+        </template>
+        <view :class="bem.e('title')">{{ title }}</view>
+      </template>
     </view>
   </sar-popup>
 </template>
@@ -47,11 +56,14 @@ import { type TransitionHookName, useTimeout } from '../../use'
 import {
   type ToastProps,
   type ToastEmits,
+  type ToastSlots,
   type ToastExpose,
   defaultToastProps,
 } from './common'
 
 const props = withDefaults(defineProps<ToastProps>(), defaultToastProps())
+
+const slots = defineSlots<ToastSlots>()
 
 const emit = defineEmits<ToastEmits>()
 
@@ -102,10 +114,10 @@ const toastClass = computed(() => {
     bem.b(),
     bem.m('is-text', props.type === 'text'),
     bem.m('not-text', props.type !== 'text'),
-
     props.rootClass,
   )
 })
+
 const toastStyle = computed(() => {
   return stringifyStyle(props.rootStyle)
 })
@@ -136,6 +148,14 @@ const iconClass = computed(() => {
     bem.e('icon'),
     bem.em('icon', 'loading', props.type === 'loading'),
   )
+})
+
+const showIcon = computed(() => {
+  return props.type !== 'text' || props.icon || !!slots.icon?.()
+})
+
+const iconName = computed(() => {
+  return props.icon || props.type
 })
 </script>
 

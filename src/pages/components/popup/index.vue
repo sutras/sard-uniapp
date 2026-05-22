@@ -4,6 +4,10 @@
     <doc-demo title="基础使用">
       <DemoBasic />
     </doc-demo>
+
+    <doc-demo title="Agent组件">
+      <DemoAgent />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -11,6 +15,7 @@
 import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
 import { onBackPress } from '@dcloudio/uni-app'
 import DemoBasic from './demo/Basic.vue'
+import DemoAgent from './demo/Agent.vue'
 
 const { isLocked } = useCurrentPageLock()
 

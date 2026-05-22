@@ -118,6 +118,7 @@ declare module 'vue' {
     SarSelectOptionGroup: typeof import('./components/select-option-group/select-option-group.vue').default
     SarSelectPopout: typeof import('./components/select-popout/select-popout.vue').default
     SarShareSheet: typeof import('./components/share-sheet/share-sheet.vue').default
+    SarShareSheetAgent: typeof import('./components/share-sheet-agent/share-sheet-agent.vue').default
     SarSidebar: typeof import('./components/sidebar/sidebar.vue').default
     SarSidebarItem: typeof import('./components/sidebar-item/sidebar-item.vue').default
     SarSignature: typeof import('./components/signature/signature.vue').default

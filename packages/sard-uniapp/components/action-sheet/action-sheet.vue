@@ -9,40 +9,47 @@
     @back-press="onBackPress"
   >
     <view :class="actionSheetClass" :style="actionSheetStyle">
-      <view v-if="description" :class="bem.e('description')">
-        {{ description }}
-      </view>
-      <view :class="bem.e('content')">
-        <view
-          v-for="(item, i) in itemList"
-          :key="i"
-          :class="
-            classNames(
-              bem.e('item'),
-              bem.em('item', 'disabled', item.disabled),
-              bem.em('item', 'loading', item.loading),
-            )
-          "
-          :style="stringifyStyle({ color: item.color })"
-          @click="onSelect(item, i)"
-        >
-          <template v-if="!item.loading">
-            <view :class="bem.e('item-name')">
-              {{ item.name }}
-            </view>
-            <view v-if="item.description" :class="bem.e('item-description')">
-              {{ item.description }}
-            </view>
-          </template>
-          <view v-else :class="bem.e('loading')">
-            <sar-loading />
-          </view>
+      <template v-if="description || $slots.description">
+        <view :class="bem.e('description')">
+          <slot name="description">{{ description }}</slot>
         </view>
+      </template>
+
+      <view :class="bem.e('content')">
+        <template v-if="itemList && itemList.length > 0">
+          <view
+            v-for="(item, i) in itemList"
+            :key="i"
+            :class="
+              classNames(
+                bem.e('item'),
+                bem.em('item', 'disabled', item.disabled),
+                bem.em('item', 'loading', item.loading),
+              )
+            "
+            :style="stringifyStyle({ color: item.color })"
+            @click="onSelect(item, i)"
+          >
+            <template v-if="!item.loading">
+              <view :class="bem.e('item-name')">
+                {{ item.name }}
+              </view>
+              <view v-if="item.description" :class="bem.e('item-description')">
+                {{ item.description }}
+              </view>
+            </template>
+            <view v-else :class="bem.e('loading')">
+              <sar-loading />
+            </view>
+          </view>
+        </template>
+        <slot />
       </view>
+
       <template v-if="mergedShowCancel">
         <view :class="bem.e('gap')"></view>
         <view :class="bem.e('cancel')" @click="onCancel">
-          {{ cancel || t('cancel') }}
+          <slot name="cancel">{{ cancel || t('cancel') }}</slot>
         </view>
       </template>
     </view>
@@ -50,7 +57,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, reactive, readonly, ref, watch } from 'vue'
+import { reactive, readonly, ref, watch, computed } from 'vue'
 import {
   classNames,
   stringifyStyle,
@@ -62,13 +69,15 @@ import {
 import SarPopup from '../popup/popup.vue'
 import SarLoading from '../loading/loading.vue'
 import {
-  type ActionSheetItem,
+  type ActionSheetItemProps,
   type ActionSheetProps,
   type ActionSheetEmits,
+  type ActionSheetSlots,
   defaultActionSheetProps,
 } from './common'
 import { type TransitionHookName } from '../../use'
 import { useTranslate } from '../locale'
+import { provideActionSheet } from './context'
 
 defineOptions({
   options: {
@@ -82,6 +91,8 @@ const props = withDefaults(
   defaultActionSheetProps(),
 )
 
+const slots = defineSlots<ActionSheetSlots>()
+
 const emit = defineEmits<ActionSheetEmits>()
 
 const bem = createBem('action-sheet')
@@ -90,6 +101,25 @@ const { t } = useTranslate('actionSheet')
 
 // main
 const innerVisible = ref(props.visible)
+const itemListRef = ref<Array<ActionSheetItemProps>>([])
+
+// 给子组件提供 context
+provideActionSheet({
+  onItemSelect: (item) => {
+    const index = itemListRef.value.indexOf(item)
+    onSelect(item, index)
+  },
+  registerItem: (item) => {
+    itemListRef.value.push(item)
+    return itemListRef.value.length - 1
+  },
+  unregisterItem: (item) => {
+    const index = itemListRef.value.indexOf(item)
+    if (index > -1) {
+      itemListRef.value.splice(index, 1)
+    }
+  },
+})
 
 watch(
   () => props.visible,
@@ -130,10 +160,14 @@ watch(
 )
 
 function perhapsClose(type: 'close' | 'cancel'): any
-function perhapsClose(type: 'select', item: ActionSheetItem, index: number): any
+function perhapsClose(
+  type: 'select',
+  item: ActionSheetItemProps,
+  index: number,
+): any
 function perhapsClose(
   type: 'close' | 'cancel' | 'select',
-  item?: ActionSheetItem,
+  item?: ActionSheetItemProps,
   index?: number,
 ) {
   if (isFunction(props.beforeClose)) {
@@ -164,7 +198,7 @@ const onOverlayClick = () => {
   }
 }
 
-const onSelect = (item: ActionSheetItem, index: number) => {
+const onSelect = (item: ActionSheetItemProps, index: number) => {
   if (!item.disabled && !item.loading) {
     emit('select', item, index)
     perhapsClose('select', item, index)
@@ -190,7 +224,7 @@ const onBackPress = () => {
 const actionSheetClass = computed(() => {
   return classNames(
     bem.b(),
-    bem.m('headless', !props.description),
+    bem.m('headless', !props.description && !slots.description?.()),
     props.rootClass,
   )
 })

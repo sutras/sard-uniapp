@@ -1,5 +1,16 @@
 export type {
   ActionSheetProps,
   ActionSheetEmits,
-  ActionSheetItem,
+  ActionSheetSlots,
+  ActionSheetItemProps,
+  ActionSheetItemEmits,
+  ActionSheetItemSlots,
 } from './common'
+
+export type { ActionSheetContext } from './context'
+
+export {
+  useActionSheet,
+  provideActionSheet,
+  useActionSheetItem,
+} from './context'

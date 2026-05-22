@@ -12,6 +12,18 @@
     <doc-demo title="加载中的背景">
       <DemoMask />
     </doc-demo>
+
+    <doc-demo title="自定义图标">
+      <DemoIcon />
+    </doc-demo>
+
+    <doc-demo title="插槽">
+      <DemoSlot />
+    </doc-demo>
+
+    <doc-demo title="Agent组件">
+      <DemoAgent />
+    </doc-demo>
   </doc-page>
 </template>
 
@@ -21,6 +33,9 @@ import { onBackPress } from '@dcloudio/uni-app'
 import DemoBasic from './demo/Basic.vue'
 import DemoPlacement from './demo/Placement.vue'
 import DemoMask from './demo/Mask.vue'
+import DemoIcon from './demo/Icon.vue'
+import DemoSlot from './demo/Slot.vue'
+import DemoAgent from './demo/Agent.vue'
 
 const { isLocked } = useCurrentPageLock()
 
