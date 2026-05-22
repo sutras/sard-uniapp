@@ -18,6 +18,7 @@
     :duration="innerProps.duration"
     :cancel-props="innerProps.cancelProps"
     :confirm-props="innerProps.confirmProps"
+    :back-press="innerProps.backPress"
     @update:visible="onUpdateVisible"
     @confirm="onConfirm"
     @close="onClose"

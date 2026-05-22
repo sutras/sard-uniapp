@@ -31,6 +31,7 @@ export interface DialogProps {
   duration?: number
   cancelProps?: ButtonProps
   confirmProps?: ButtonProps
+  backPress?: 'close' | 'back'
 }
 
 export const defaultDialogProps = (): DefaultProps<DialogProps> => ({
@@ -40,6 +41,7 @@ export const defaultDialogProps = (): DefaultProps<DialogProps> => ({
   showConfirm: true,
   overlayClosable: true,
   duration: 200,
+  backPress: 'close',
   ...defaultConfig.dialog,
 })
 

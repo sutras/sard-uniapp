@@ -5,7 +5,7 @@
     :duration="duration"
     :root-class="popupClass"
     :root-style="mergedPopupStyle"
-    back-press="close"
+    :back-press="backPress"
     @overlay-click="onOverlayClick"
     @visible-hook="onVisibleHook"
     @back-press="onBackPress"
