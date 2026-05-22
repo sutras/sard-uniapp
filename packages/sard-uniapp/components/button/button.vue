@@ -9,6 +9,7 @@
     :app-parameter="appParameter"
     :hover-stop-propagation="hoverStopPropagation"
     :lang="lang"
+    :scope="scope"
     :session-from="sessionFrom"
     :send-message-title="sendMessageTitle"
     :send-message-path="sendMessagePath"
@@ -19,6 +20,8 @@
     :public-id="publicId"
     @click="onClick"
     @getphonenumber="onGetphonenumber"
+    @getAuthorize="onGetauthorize"
+    @followLifestyle="onFollowLifestyle"
     @getuserinfo="onGetuserinfo"
     @error="onError"
     @opensetting="onOpensetting"
@@ -94,6 +97,14 @@ const onClick = (event: any) => {
 
 const onGetphonenumber = (event: any) => {
   emit('getphonenumber', event)
+}
+
+const onGetauthorize = (event: any) => {
+  emit('getAuthorize', event)
+}
+
+const onFollowLifestyle = (event: any) => {
+  emit('followLifestyle', event)
 }
 
 const onGetuserinfo = (event: any) => {

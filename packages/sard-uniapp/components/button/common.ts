@@ -33,6 +33,7 @@ export interface ButtonProps {
   appParameter?: string
   hoverStopPropagation?: boolean
   lang?: string
+  scope?: string
   sessionFrom?: string
   sendMessageTitle?: string
   sendMessagePath?: string
@@ -63,6 +64,8 @@ export interface ButtonEmits {
 
   // 小程序能力
   (e: 'getphonenumber', event: any): void
+  (e: 'getAuthorize', event: any): void
+  (e: 'followLifestyle', event: any): void
   (e: 'getuserinfo', event: any): void
   (e: 'error', event: any): void
   (e: 'opensetting', event: any): void
