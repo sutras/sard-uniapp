@@ -119,6 +119,9 @@ export default {
     selectAll: 'Chọn tất cả',
     clearSelect: 'Xóa lựa chọn',
   },
+  shareSheet: {
+    cancel: 'Hủy',
+  },
   signature: {
     confirm: 'Xác nhận',
     clear: 'Xóa',

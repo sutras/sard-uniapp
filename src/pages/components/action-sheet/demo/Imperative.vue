@@ -8,10 +8,10 @@ import { actionSheet, toast } from 'sard-uniapp'
 const onClick = () => {
   actionSheet({
     description: '请选择',
-    itemList: [{ name: '选项1' }, { name: '选项2' }, { name: '选项3' }],
+    itemList: [{ label: '选项1' }, { label: '选项2' }, { label: '选项3' }],
     showCancel: true,
     onSelect(item) {
-      toast(item.name)
+      toast(item.label)
     },
   })
 }

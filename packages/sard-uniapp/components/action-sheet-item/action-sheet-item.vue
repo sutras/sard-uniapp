@@ -11,12 +11,10 @@
     @click="onClick"
   >
     <template v-if="!props.loading">
-      <view v-if="$slots.default" :class="bem.e('item-content')">
-        <slot />
-      </view>
+      <slot v-if="$slots.default"></slot>
       <template v-else>
         <view :class="bem.e('item-name')">
-          <slot name="name">{{ props.name }}</slot>
+          <slot name="label">{{ props.label || props.name }}</slot>
         </view>
         <view
           v-if="props.description || $slots.description"
@@ -61,7 +59,7 @@ const emit = defineEmits<ActionSheetItemEmits>()
 
 const bem = createBem('action-sheet')
 
-const { onItemSelect: triggerItemSelect } = useActionSheetItem(props)
+const { select } = useActionSheetItem(props)
 
 const itemStyle = computed(() => {
   return stringifyStyle({ color: props.color })
@@ -70,7 +68,7 @@ const itemStyle = computed(() => {
 const onClick = () => {
   if (!props.disabled && !props.loading) {
     emit('click')
-    triggerItemSelect()
+    select()
   }
 }
 </script>

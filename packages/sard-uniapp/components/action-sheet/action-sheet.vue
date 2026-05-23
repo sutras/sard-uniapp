@@ -9,47 +9,31 @@
     @back-press="onBackPress"
   >
     <view :class="actionSheetClass" :style="actionSheetStyle">
-      <template v-if="description || $slots.description">
+      <template v-if="showDescription">
         <view :class="bem.e('description')">
-          <slot name="description">{{ description }}</slot>
+          <slot v-if="hasDescriptionSlot" name="description"></slot>
+          <template v-else>{{ description }}</template>
         </view>
       </template>
 
       <view :class="bem.e('content')">
         <template v-if="itemList && itemList.length > 0">
-          <view
+          <sar-action-sheet-item
             v-for="(item, i) in itemList"
             :key="i"
-            :class="
-              classNames(
-                bem.e('item'),
-                bem.em('item', 'disabled', item.disabled),
-                bem.em('item', 'loading', item.loading),
-              )
-            "
-            :style="stringifyStyle({ color: item.color })"
-            @click="onSelect(item, i)"
-          >
-            <template v-if="!item.loading">
-              <view :class="bem.e('item-name')">
-                {{ item.name }}
-              </view>
-              <view v-if="item.description" :class="bem.e('item-description')">
-                {{ item.description }}
-              </view>
-            </template>
-            <view v-else :class="bem.e('loading')">
-              <sar-loading />
-            </view>
-          </view>
+            v-bind="item"
+          />
         </template>
-        <slot />
+        <slot></slot>
       </view>
 
       <template v-if="mergedShowCancel">
         <view :class="bem.e('gap')"></view>
         <view :class="bem.e('cancel')" @click="onCancel">
-          <slot name="cancel">{{ cancel || t('cancel') }}</slot>
+          <slot v-if="hasCancelSlot" name="cancel"></slot>
+          <template v-else>
+            {{ cancel || t('cancel') }}
+          </template>
         </view>
       </template>
     </view>
@@ -65,9 +49,10 @@ import {
   noop,
   isFunction,
   isObject,
+  isNumber,
 } from '../../utils'
 import SarPopup from '../popup/popup.vue'
-import SarLoading from '../loading/loading.vue'
+import SarActionSheetItem from '../action-sheet-item/action-sheet-item.vue'
 import {
   type ActionSheetItemProps,
   type ActionSheetProps,
@@ -77,7 +62,7 @@ import {
 } from './common'
 import { type TransitionHookName } from '../../use'
 import { useTranslate } from '../locale'
-import { provideActionSheet } from './context'
+import { useActionSheet } from './context'
 
 defineOptions({
   options: {
@@ -100,26 +85,30 @@ const bem = createBem('action-sheet')
 const { t } = useTranslate('actionSheet')
 
 // main
-const innerVisible = ref(props.visible)
-const itemListRef = ref<Array<ActionSheetItemProps>>([])
 
-// 给子组件提供 context
-provideActionSheet({
-  onItemSelect: (item) => {
-    const index = itemListRef.value.indexOf(item)
-    onSelect(item, index)
-  },
-  registerItem: (item) => {
-    itemListRef.value.push(item)
-    return itemListRef.value.length - 1
-  },
-  unregisterItem: (item) => {
-    const index = itemListRef.value.indexOf(item)
-    if (index > -1) {
-      itemListRef.value.splice(index, 1)
-    }
-  },
+const hasCancelSlot = computed(
+  () =>
+    !!(isNumber(props.internalCancel) ? props.internalCancel : slots.cancel),
+)
+
+const mergedShowCancel = computed(() => {
+  return !!(props.showCancel || props.cancel || hasCancelSlot.value)
 })
+
+const hasDescriptionSlot = computed(
+  () =>
+    !!(isNumber(props.internalDescription)
+      ? props.internalDescription
+      : slots.description),
+)
+
+const showDescription = computed(() => {
+  return !!(props.description || hasDescriptionSlot.value)
+})
+
+// visible
+
+const innerVisible = ref(props.visible)
 
 watch(
   () => props.visible,
@@ -127,8 +116,6 @@ watch(
     innerVisible.value = props.visible
   },
 )
-
-const mergedShowCancel = computed(() => props.showCancel || props.cancel)
 
 const loading = reactive({
   cancel: false,
@@ -200,6 +187,7 @@ const onOverlayClick = () => {
 
 const onSelect = (item: ActionSheetItemProps, index: number) => {
   if (!item.disabled && !item.loading) {
+    item = { ...item }
     emit('select', item, index)
     perhapsClose('select', item, index)
   }
@@ -220,11 +208,16 @@ const onBackPress = () => {
   emit('update:visible', false)
 }
 
+// context
+const context = props.internalContext || useActionSheet()
+
+context.setSelectCallback(onSelect)
+
 // others
 const actionSheetClass = computed(() => {
   return classNames(
     bem.b(),
-    bem.m('headless', !props.description && !slots.description?.()),
+    bem.m('headless', !showDescription.value),
     props.rootClass,
   )
 })

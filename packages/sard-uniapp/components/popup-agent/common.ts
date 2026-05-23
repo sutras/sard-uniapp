@@ -1,6 +1,7 @@
 import {
   type PopupProps,
   type PopupEmits,
+  type PopupSlots,
   defaultPopupProps,
 } from '../popup/common'
 import { type DefaultProps, defaultConfig } from '../config'
@@ -24,6 +25,8 @@ export const defaultPopupAgentProps = (): DefaultProps<PopupAgentProps> => ({
 })
 
 export interface PopupAgentEmits extends PopupEmits {}
+
+export interface PopupAgentSlots extends PopupSlots {}
 
 export const imperativeName = 'popup'
 

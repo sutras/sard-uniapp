@@ -1,57 +1,96 @@
 import {
+  type InjectionKey,
+  type Ref,
   provide,
   inject,
-  type InjectionKey,
-  ref,
   onMounted,
   onUnmounted,
+  useAttrs,
+  ref,
 } from 'vue'
-import { type ActionSheetItemProps } from '../action-sheet-item'
+import { type ActionSheetItemProps } from '../action-sheet-item/common'
+import { reactiveComputed } from '../../use'
 
 export interface ActionSheetContext {
-  onItemSelect: (item: ActionSheetItemProps) => void
-  registerItem: (item: ActionSheetItemProps) => number
-  unregisterItem: (item: ActionSheetItemProps) => void
+  select: (item: ActionSheetItemProps) => void
+  addItem: (item: ActionSheetItemProps) => void
+  removeItem: (item: ActionSheetItemProps) => void
 }
 
-export const actionSheetContextKey: InjectionKey<ActionSheetContext> =
-  Symbol('ActionSheetContext')
+export const actionSheetContextKey = Symbol(
+  'ActionSheetContext',
+) as InjectionKey<ActionSheetContext>
 
-export function useActionSheet() {
-  const context = inject(actionSheetContextKey)
-  if (!context) {
-    console.warn(
-      '[SardUI] ActionSheetItem must be used within an ActionSheet component',
-    )
+export interface UseActionSheetReturn {
+  items: Ref<ActionSheetItemProps[]>
+  setSelectCallback: (
+    callback: (item: ActionSheetItemProps, index: number) => void,
+  ) => void
+}
+
+export function useActionSheet(): UseActionSheetReturn {
+  const items = ref<ActionSheetItemProps[]>([])
+
+  let selectCallback:
+    | ((item: ActionSheetItemProps, index: number) => void)
+    | null = null
+
+  const setSelectCallback = (
+    callback: (item: ActionSheetItemProps, index: number) => void,
+  ) => {
+    selectCallback = callback
   }
-  return context
-}
 
-export function provideActionSheet(context: ActionSheetContext) {
-  provide(actionSheetContextKey, context)
-}
-
-// 子组件使用的 composable
-export function useActionSheetItem(item: ActionSheetItemProps) {
-  const context = useActionSheet()
-  const index = ref(-1)
-
-  if (context) {
-    onMounted(() => {
-      index.value = context.registerItem(item)
-    })
-    onUnmounted(() => {
-      context.unregisterItem(item)
-    })
-  }
+  provide<ActionSheetContext>(actionSheetContextKey, {
+    select: (item) => {
+      const index = items.value.indexOf(item)
+      selectCallback?.(item, index)
+    },
+    addItem: (item) => {
+      if (!items.value.includes(item)) {
+        items.value.push(item)
+      }
+    },
+    removeItem: (item) => {
+      const index = items.value.indexOf(item)
+      if (index > -1) {
+        items.value.splice(index, 1)
+      }
+    },
+  })
 
   return {
-    index,
-    context,
-    onItemSelect: () => {
-      if (context && index.value >= 0) {
-        context.onItemSelect(item)
-      }
+    items,
+    setSelectCallback,
+  }
+}
+
+export function useActionSheetItem(item: ActionSheetItemProps) {
+  const context = inject(actionSheetContextKey)
+  if (!context) {
+    throw new Error('ActionSheetItem must be included in ActionSheet.')
+  }
+
+  const attrs = useAttrs()
+
+  const mergedItem = reactiveComputed(() => {
+    return {
+      ...item,
+      ...attrs,
+    }
+  })
+
+  onMounted(() => {
+    context.addItem(mergedItem)
+  })
+
+  onUnmounted(() => {
+    context.removeItem(mergedItem)
+  })
+
+  return {
+    select: () => {
+      context.select(mergedItem)
     },
   }
 }

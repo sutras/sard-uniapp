@@ -13,6 +13,8 @@
     :transparent="innerProps.transparent"
     :timeout="innerProps.timeout"
     :duration="innerProps.duration"
+    :internal-icon="$slots.icon ? 1 : 0"
+    :internal-default="$slots.default ? 1 : 0"
     @update:visible="onUpdateVisible"
     @visible-hook="onVisibleHook"
     @before-enter="onBeforeEnter"
@@ -25,9 +27,9 @@
     @leave-cancelled="onLeaveCancelled"
   >
     <template #icon>
-      <slot name="icon" />
+      <slot name="icon"></slot>
     </template>
-    <slot />
+    <slot></slot>
   </sar-toast>
 </template>
 
@@ -39,6 +41,7 @@ import {
   type ToastAgentProps,
   type ToastImperative,
   type ToastAgentEmits,
+  type ToastAgentSlots,
   imperativeName,
   defaultToastAgentProps,
 } from './common'
@@ -55,6 +58,8 @@ const props = withDefaults(
   defineProps<ToastAgentProps>(),
   defaultToastAgentProps(),
 )
+
+defineSlots<ToastAgentSlots>()
 
 const emit = defineEmits<ToastAgentEmits>()
 

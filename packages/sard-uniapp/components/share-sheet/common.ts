@@ -1,7 +1,8 @@
 import { type StyleValue } from 'vue'
 import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
-import { ShareSheetItemProps } from '../share-sheet-item'
+import { type ShareSheetItemProps } from '../share-sheet-item'
+import { type UseShareSheetReturn } from './context'
 
 export interface ShareSheetProps {
   rootStyle?: StyleValue
@@ -10,10 +11,16 @@ export interface ShareSheetProps {
   title?: string
   description?: string
   cancel?: string
+  showCancel?: boolean
   visible?: boolean
   overlayClosable?: boolean
   beforeClose?: (type: 'close' | 'cancel' | 'select') => boolean | Promise<any>
   duration?: number
+  internalDefault?: number
+  internalTitle?: number
+  internalDescription?: number
+  internalCancel?: number
+  internalContext?: UseShareSheetReturn
 }
 
 export const defaultShareSheetProps = (): DefaultProps<ShareSheetProps> => ({
@@ -35,9 +42,3 @@ export interface ShareSheetSlots {
   description?(props?: any): any
   cancel?(props?: any): any
 }
-
-export type {
-  ShareSheetItemProps,
-  ShareSheetItemEmits,
-  ShareSheetItemSlots,
-} from '../share-sheet-item/common'

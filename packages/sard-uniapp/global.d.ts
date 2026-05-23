@@ -4,6 +4,7 @@ declare module 'vue' {
     SarAccordionItem: typeof import('./components/accordion-item/accordion-item.vue').default
     SarActionSheet: typeof import('./components/action-sheet/action-sheet.vue').default
     SarActionSheetAgent: typeof import('./components/action-sheet-agent/action-sheet-agent.vue').default
+    SarActionSheetItem: typeof import('./components/action-sheet-item/action-sheet-item.vue').default
     SarAlert: typeof import('./components/alert/alert.vue').default
     SarAvatar: typeof import('./components/avatar/avatar.vue').default
     SarAvatarGroup: typeof import('./components/avatar-group/avatar-group.vue').default
@@ -91,6 +92,7 @@ declare module 'vue' {
     SarPopover: typeof import('./components/popover/popover.vue').default
     SarPopoverReference: typeof import('./components/popover-reference/popover-reference.vue').default
     SarPopup: typeof import('./components/popup/popup.vue').default
+    SarPopupAgent: typeof import('./components/popup-agent/popup-agent.vue').default
     SarProgressBar: typeof import('./components/progress-bar/progress-bar.vue').default
     SarProgressCircle: typeof import('./components/progress-circle/progress-circle.vue').default
     SarPullDownRefresh: typeof import('./components/pull-down-refresh/pull-down-refresh.vue').default
@@ -119,6 +121,8 @@ declare module 'vue' {
     SarSelectPopout: typeof import('./components/select-popout/select-popout.vue').default
     SarShareSheet: typeof import('./components/share-sheet/share-sheet.vue').default
     SarShareSheetAgent: typeof import('./components/share-sheet-agent/share-sheet-agent.vue').default
+    SarShareSheetItem: typeof import('./components/share-sheet-item/share-sheet-item.vue').default
+    SarShareSheetRow: typeof import('./components/share-sheet-row/share-sheet-row.vue').default
     SarSidebar: typeof import('./components/sidebar/sidebar.vue').default
     SarSidebarItem: typeof import('./components/sidebar-item/sidebar-item.vue').default
     SarSignature: typeof import('./components/signature/signature.vue').default

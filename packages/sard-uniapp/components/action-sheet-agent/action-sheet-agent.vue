@@ -10,6 +10,10 @@
     :overlay-closable="innerProps.overlayClosable"
     :before-close="innerProps.beforeClose"
     :duration="innerProps.duration"
+    :internal-cancel="$slots.cancel ? 1 : 0"
+    :internal-description="$slots.description ? 1 : 0"
+    :internal-default="$slots.default ? 1 : 0"
+    :internal-context="context"
     @update:visible="onUpdateVisible"
     @select="onSelect"
     @close="onClose"
@@ -25,12 +29,12 @@
     @leave-cancelled="onLeaveCancelled"
   >
     <template #description>
-      <slot name="description" />
+      <slot name="description"></slot>
     </template>
     <template #cancel>
-      <slot name="cancel" />
+      <slot name="cancel"></slot>
     </template>
-    <slot />
+    <slot></slot>
   </sar-action-sheet>
 </template>
 
@@ -40,12 +44,14 @@ import SarActionSheet from '../action-sheet/action-sheet.vue'
 import {
   type ActionSheetAgentEmits,
   type ActionSheetAgentProps,
+  type ActionSheetAgentSlots,
   type ActionSheetImperative,
   defaultActionSheetAgentProps,
   imperativeName,
 } from './common'
 import { type TransitionHookName, useImperative } from '../../use'
 import { type ActionSheetItemProps } from '../action-sheet/common'
+import { useActionSheet } from '../action-sheet/context'
 
 defineOptions({
   options: {
@@ -58,6 +64,8 @@ const props = withDefaults(
   defineProps<ActionSheetAgentProps>(),
   defaultActionSheetAgentProps(),
 )
+
+defineSlots<ActionSheetAgentSlots>()
 
 const emit = defineEmits<ActionSheetAgentEmits>()
 
@@ -144,6 +152,8 @@ const onLeaveCancelled = () => {
   emit('leave-cancelled')
   innerProps.value.onLeaveCancelled?.()
 }
+
+const context = useActionSheet()
 
 useImperative(
   imperativeName,

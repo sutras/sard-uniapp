@@ -42,20 +42,41 @@ import { toast } from 'sard-uniapp'
 
 <<< @demo/toast/demo/Mask.vue
 
+### 自定义图标 <sup>1.30.3+</sup>
+
+可以使用 `icon` 插槽或者 `icon` 和 `icon-family` 属性自定义图标。
+
+<<< @demo/toast/demo/Icon.vue
+
+### 插槽 <sup>1.30.3+</sup>
+
+可以使用 `toast` 组件的插槽自定义内容，如果喜欢命令式来使用 `toast` 组件，可以使用 `toast-agent` 组件 + `toast` 函数，只要给 `toast-agent` 组件设置对应的 `id`，在调用 `toast` 函数时传入相同的 `id`，就可以使用对应的 `toast-agent` 组件的插槽内容了。
+
+<<< @demo/toast/demo/Slot.vue
+
 ## API
 
 ### ToastProps
 
-| 属性        | 描述                     | 类型                                       | 默认值   |
-| ----------- | ------------------------ | ------------------------------------------ | -------- |
-| type        | 提示框类型               | 'text' \| 'loading' \| 'success' \| 'fail' | 'text'   |
-| title       | 标题                     | string \| number                           | -        |
-| visible     | 是否可见                 | boolean                                    | -        |
-| position    | 提示框垂直方向放置的位置 | 'top' \| 'center' \| 'bottom'              | 'center' |
-| overlay     | 是否显示背景遮罩         | boolean                                    | false    |
-| transparent | 使背景透明               | boolean                                    | false    |
-| timeout     | 提示的延迟时间，单位 ms  | number                                     | 1500     |
-| duration    | 显隐动画时长，单位 ms    | number                                     | 300      |
+| 属性                           | 描述                     | 类型                                       | 默认值   |
+| ------------------------------ | ------------------------ | ------------------------------------------ | -------- |
+| type                           | 提示框类型               | 'text' \| 'loading' \| 'success' \| 'fail' | 'text'   |
+| title                          | 标题                     | string \| number                           | -        |
+| icon <sup>1.30.3+</sup>        | 图标名称                 | string                                     | -        |
+| icon-family <sup>1.30.3+</sup> | 图标字体名称             | string                                     | -        |
+| visible                        | 是否可见                 | boolean                                    | -        |
+| position                       | 提示框垂直方向放置的位置 | 'top' \| 'center' \| 'bottom'              | 'center' |
+| overlay                        | 是否显示背景遮罩         | boolean                                    | false    |
+| transparent                    | 使背景透明               | boolean                                    | false    |
+| timeout                        | 提示的延迟时间，单位 ms  | number                                     | 1500     |
+| duration                       | 显隐动画时长，单位 ms    | number                                     | 300      |
+
+### ToastSlots <sup>1.30.3+</sup>
+
+| 插槽    | 描述           | 属性 |
+| ------- | -------------- | ---- |
+| default | 自定义默认内容 | -    |
+| icon    | 自定义图标     | -    |
 
 ### ToastEmits
 
@@ -89,20 +110,24 @@ import { toast } from 'sard-uniapp'
 | onAfterLeave <sup>1.20.2+</sup>     | 退场动画结束时调用          | `() => void`                         |
 | onLeaveCancelled <sup>1.20.2+</sup> | 退场动画取消时调用          | `() => void`                         |
 
+### ToastAgentSlots <sup>1.30.3+</sup>
+
+继承 [`ToastSlots`](#ToastSlots)。
+
 ### ToastAgentEmits <sup>1.20.2+</sup>
 
 继承 [`ToastEmits`](#ToastEmits)。
 
 ### 命令式方法
 
-| 名称    | 描述                       | 类型                     |
-| ------- | -------------------------- | ------------------------ |
-| toast   | 显示提示                   | ToastFunction            |
-| success | 显示成功类型提示           | ToastSimpleShowFunction  |
-| fail    | 显示失败类型提示           | ToastSimpleShowFunction  |
-| loading | 显示加载类型提示           | ToastSimpleShowFunction  |
-| hide    | 隐藏指定 `id` 的命令式提示 | `(id = 'toast') => void` |
-| hideAll | 隐藏所有命令式提示         | `() => void`             |
+| 名称          | 描述                       | 类型                     |
+| ------------- | -------------------------- | ------------------------ |
+| toast         | 显示提示                   | ToastFunction            |
+| toast.success | 显示成功类型提示           | ToastSimpleShowFunction  |
+| toast.fail    | 显示失败类型提示           | ToastSimpleShowFunction  |
+| toast.loading | 显示加载类型提示           | ToastSimpleShowFunction  |
+| toast.hide    | 隐藏指定 `id` 的命令式提示 | `(id = 'toast') => void` |
+| toast.hideAll | 隐藏所有命令式提示         | `() => void`             |
 
 ### ToastFunction
 

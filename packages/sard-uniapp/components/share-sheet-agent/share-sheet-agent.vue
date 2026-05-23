@@ -6,10 +6,16 @@
     :description="innerProps.description"
     :item-list="innerProps.itemList"
     :cancel="innerProps.cancel"
+    :show-cancel="innerProps.showCancel"
     :visible="innerProps.visible"
     :overlay-closable="innerProps.overlayClosable"
     :before-close="innerProps.beforeClose"
     :duration="innerProps.duration"
+    :internal-title="$slots.title ? 1 : 0"
+    :internal-description="$slots.description ? 1 : 0"
+    :internal-cancel="$slots.cancel ? 1 : 0"
+    :internal-default="$slots.default ? 1 : 0"
+    :internal-context="context"
     @update:visible="onUpdateVisible"
     @select="onSelect"
     @close="onClose"
@@ -25,15 +31,15 @@
     @leave-cancelled="onLeaveCancelled"
   >
     <template #title>
-      <slot name="title" />
+      <slot name="title"></slot>
     </template>
     <template #description>
-      <slot name="description" />
+      <slot name="description"></slot>
     </template>
     <template #cancel>
-      <slot name="cancel" />
+      <slot name="cancel"></slot>
     </template>
-    <slot />
+    <slot></slot>
   </sar-share-sheet>
 </template>
 
@@ -49,6 +55,7 @@ import {
 } from './common'
 import { type TransitionHookName, useImperative } from '../../use'
 import type { ShareSheetItemProps } from '../share-sheet-item/common'
+import { useShareSheet } from '../share-sheet/context'
 
 defineOptions({
   options: {
@@ -146,6 +153,8 @@ const onLeaveCancelled = () => {
   emit('leave-cancelled')
   innerProps.value.onLeaveCancelled?.()
 }
+
+const context = useShareSheet()
 
 useImperative(
   imperativeName,

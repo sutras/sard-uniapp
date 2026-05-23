@@ -15,7 +15,7 @@
       "
     >
       <template v-if="$slots.icon">
-        <slot name="icon" />
+        <slot name="icon"></slot>
       </template>
       <template v-else-if="isImg(props.icon)">
         <image :src="props.icon" mode="aspectFill" :class="bem.e('image')" />
@@ -23,7 +23,7 @@
       <sar-icon v-else :name="props.icon" :family="props.iconFamily" />
     </view>
     <view :class="bem.e('item-name')">
-      <slot name="name">{{ props.name }}</slot>
+      <slot name="label">{{ props.label || props.name }}</slot>
     </view>
     <view
       v-if="props.description || $slots.description"
@@ -61,7 +61,7 @@ const emit = defineEmits<ShareSheetItemEmits>()
 
 const bem = createBem('share-sheet')
 
-const { onItemSelect: triggerItemSelect } = useShareSheetItem(props)
+const { select } = useShareSheetItem(props)
 
 const isImg = (url: any) => {
   return typeof url === 'string' && isFileUrl(url)
@@ -70,7 +70,7 @@ const isImg = (url: any) => {
 const onClick = () => {
   if (!props.disabled) {
     emit('click')
-    triggerItemSelect()
+    select()
   }
 }
 </script>

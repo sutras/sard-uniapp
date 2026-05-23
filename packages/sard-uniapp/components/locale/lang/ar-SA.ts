@@ -119,6 +119,9 @@ export default {
     selectAll: 'اختر الكل',
     clearSelect: 'مسح التحديد',
   },
+  shareSheet: {
+    cancel: 'إلغاء',
+  },
   signature: {
     confirm: 'موافق',
     clear: 'مسح',

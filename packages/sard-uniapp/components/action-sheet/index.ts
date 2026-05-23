@@ -8,9 +8,3 @@ export type {
 } from './common'
 
 export type { ActionSheetContext } from './context'
-
-export {
-  useActionSheet,
-  provideActionSheet,
-  useActionSheetItem,
-} from './context'

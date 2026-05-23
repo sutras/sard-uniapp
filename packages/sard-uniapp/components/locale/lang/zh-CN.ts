@@ -137,6 +137,9 @@ export default {
     selectAll: '选择所有',
     clearSelect: '清空选择',
   },
+  shareSheet: {
+    cancel: '取消',
+  },
   signature: {
     confirm: '确定',
     clear: '清空',

@@ -18,10 +18,23 @@ import Popup from 'sard-uniapp/components/popup/popup.vue'
 
 ### 基础使用
 
-使用 `visible` 控制显隐。
-使用 `effect` 控制显隐效果。
+使用 `visible` 控制显隐，使用 `effect` 控制显隐效果。
 
 <<< @demo/popup/demo/Basic.vue
+
+### 命令式 <sup>1.30.3+</sup>
+
+先在页面放置代理组件。
+
+```tsx
+<sar-popup-agent></sar-popup-agent>
+```
+
+接着便可以使用 `popup` 方法显示弹出层。
+
+如果需要显示多个命令式弹出层，可以给代理组件设置 `id`，在调用 `popup` 方法时传入相同的 `id` 来使用对应的代理组件。
+
+<<< @demo/popup/demo/Imperative.vue
 
 ## API
 
@@ -66,6 +79,57 @@ import Popup from 'sard-uniapp/components/popup/popup.vue'
 | leave                           | 退场动画开始时触发                                     | `() => void`                         |
 | after-leave                     | 退场动画结束时触发                                     | `() => void`                         |
 | leave-cancelled                 | 退场动画取消时触发                                     | `() => void`                         |
+
+### PopupAgentProps / PopupOptions <sup>1.30.3+</sup>
+
+继承 [`ToastProps`](#ToastProps) 并有以下额外属性。
+
+| 属性             | 描述                        | 类型                                 | 默认值  |
+| ---------------- | --------------------------- | ------------------------------------ | ------- |
+| id               | 弹出层组件的 id             | string                               | 'popup' |
+| onOverlayClick   | 点击遮罩时调用              | `() => void`                         |
+| onVisibleHook    | 入场/退场动画状态改变时调用 | `(name: TransitionHookName) => void` |
+| onBeforeEnter    | 入场动画开始前调用          | `() => void`                         |
+| onEnter          | 入场动画开始时调用          | `() => void`                         |
+| onAfterEnter     | 入场动画结束时调用          | `() => void`                         |
+| onEnterCancelled | 入场动画取消时调用          | `() => void`                         |
+| onBeforeLeave    | 退场动画开始前调用          | `() => void`                         |
+| onLeave          | 退场动画开始时调用          | `() => void`                         |
+| onAfterLeave     | 退场动画结束时调用          | `() => void`                         |
+| onLeaveCancelled | 退场动画取消时调用          | `() => void`                         |
+
+### PopupAgentSlots <sup>1.30.3+</sup>
+
+继承 [`PopupSlots`](#PopupSlots)。
+
+### PopupAgentEmits <sup>1.30.3+</sup>
+
+继承 [`PopupEmits`](#PopupEmits)。
+
+### 命令式方法 <sup>1.30.3+</sup>
+
+| 名称          | 描述                         | 类型                     |
+| ------------- | ---------------------------- | ------------------------ |
+| popup         | 显示对话框                   | PopupFunction            |
+| popup.hide    | 隐藏指定 `id` 的命令式对话框 | `(id = 'popup') => void` |
+| popup.hideAll | 隐藏所有命令式对话框         | `() => void`             |
+
+### PopupFunction
+
+```ts
+type PopupFunction = PopupShowFunction & {
+  hide: (id?: string) => void
+  hideAll: () => void
+}
+```
+
+### PopupShowFunction
+
+```ts
+interface PopupShowFunction {
+  (options?: PopupOptions): void
+}
+```
 
 ## 主题定制
 

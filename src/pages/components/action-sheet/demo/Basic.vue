@@ -12,9 +12,13 @@ import { ref } from 'vue'
 import { toast, type ActionSheetItem } from 'sard-uniapp'
 
 const visible = ref(false)
-const itemList = ref([{ name: '选项1' }, { name: '选项2' }, { name: '选项3' }])
+const itemList = ref([
+  { label: '选项1' },
+  { label: '选项2' },
+  { label: '选项3' },
+])
 
 const onSelect = (item: ActionSheetItem) => {
-  toast(item.name)
+  toast(item.label)
 }
 </script>

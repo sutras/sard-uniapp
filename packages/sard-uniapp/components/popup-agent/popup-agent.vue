@@ -27,7 +27,7 @@
     @after-leave="onAfterLeave"
     @leave-cancelled="onLeaveCancelled"
   >
-    <slot />
+    <slot></slot>
   </sar-popup>
 </template>
 
@@ -38,6 +38,7 @@ import {
   type PopupAgentProps,
   type PopupAgentEmits,
   type PopupImperative,
+  type PopupAgentSlots,
   imperativeName,
   defaultPopupAgentProps,
 } from './common'
@@ -57,10 +58,10 @@ const props = withDefaults(
 
 const emit = defineEmits<PopupAgentEmits>()
 
+defineSlots<PopupAgentSlots>()
+
 // main
-const innerProps = ref<PopupAgentProps>({
-  ...props,
-}) as unknown as Ref<PopupAgentProps>
+const innerProps = ref({ ...props }) as unknown as Ref<PopupAgentProps>
 
 const imperative: PopupImperative = {
   show(newProps: Record<string, any>) {

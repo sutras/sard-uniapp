@@ -109,6 +109,10 @@ import { notify } from 'sard-uniapp'
 | onAfterLeave <sup>1.20.2+</sup>     | 退场动画结束时调用          | `() => void`                         |
 | onLeaveCancelled <sup>1.20.2+</sup> | 退场动画取消时调用          | `() => void`                         |
 
+### NotifyAgentSlots <sup>1.30.3+</sup>
+
+继承 [`NotifySlots`](#NotifySlots)。
+
 ### NotifyAgentEmits <sup>1.20.2+</sup>
 
 继承 [`NotifyEmits`](#NotifyEmits)。

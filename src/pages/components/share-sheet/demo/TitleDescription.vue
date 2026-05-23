@@ -5,25 +5,25 @@
     :item-list="itemList"
     title="分享到"
     description="这是描述"
-    cancel="取消"
+    show-cancel
     @select="onSelect"
   />
 </template>
 
 <script setup lang="ts">
-import { toast, type ShareSheetItem } from 'sard-uniapp'
+import { toast, type ShareSheetItemProps } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const itemList = [
   {
-    name: 'Wechat',
+    label: 'Wechat',
     color: '#fff',
     background: '#0bc15f',
     iconFamily: 'demo-icons',
     icon: 'wechat-fill',
   },
   {
-    name: 'Alipay',
+    label: 'Alipay',
     color: '#fff',
     background: '#1677ff',
     iconFamily: 'demo-icons',
@@ -31,14 +31,14 @@ const itemList = [
     description: '这是描述这是描述',
   },
   {
-    name: 'Twitter',
+    label: 'Twitter',
     color: '#fff',
     background: '#1d9bf0',
     iconFamily: 'demo-icons',
     icon: 'twitter-fill',
   },
   {
-    name: 'Facebook',
+    label: 'Facebook',
     color: '#fff',
     background: '#1877f2',
     iconFamily: 'demo-icons',
@@ -48,7 +48,7 @@ const itemList = [
 
 const visible = ref(false)
 
-const onSelect = (item: ShareSheetItem) => {
-  toast(item.name)
+const onSelect = (item: ShareSheetItemProps) => {
+  toast(item.label)
 }
 </script>

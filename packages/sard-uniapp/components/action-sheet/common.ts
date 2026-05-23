@@ -1,7 +1,8 @@
 import { type StyleValue } from 'vue'
 import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
-import { ActionSheetItemProps } from '../action-sheet-item'
+import { type ActionSheetItemProps } from '../action-sheet-item'
+import { type UseActionSheetReturn } from './context'
 
 export type ActionSheetBeforeClose = ((
   type: 'close' | 'cancel',
@@ -33,6 +34,10 @@ export interface ActionSheetProps {
   overlayClosable?: boolean
   beforeClose?: ActionSheetBeforeClose
   duration?: number
+  internalDefault?: number
+  internalDescription?: number
+  internalCancel?: number
+  internalContext?: UseActionSheetReturn
 }
 
 export const defaultActionSheetProps = (): DefaultProps<ActionSheetProps> => ({

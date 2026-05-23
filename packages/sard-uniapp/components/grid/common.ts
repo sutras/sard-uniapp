@@ -55,4 +55,4 @@ export type GridContext = {
   gutter: readonly [number, string]
 }
 
-export const gridSymbol = Symbol('grid')
+export const gridContextSymbol = Symbol('grid')

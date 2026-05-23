@@ -1,6 +1,7 @@
 import {
   type DialogEmits,
   type DialogProps,
+  type DialogSlots,
   defaultDialogProps,
 } from '../dialog/common'
 import { type DefaultProps, defaultConfig } from '../config'
@@ -23,6 +24,8 @@ export const defaultDialogAgentProps = (): DefaultProps<DialogAgentProps> => ({
   id: 'dialog',
   ...defaultConfig.dialogAgent,
 })
+
+export interface DialogAgentSlots extends DialogSlots {}
 
 export interface DialogAgentEmits extends DialogEmits {}
 

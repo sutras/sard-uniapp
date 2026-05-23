@@ -3,40 +3,40 @@
   <sar-share-sheet
     v-model:visible="visible"
     :item-list="itemList"
-    cancel="取消"
+    show-cancel
     @select="onSelect"
   />
 </template>
 
 <script setup lang="ts">
-import { toast, type ShareSheetItem } from 'sard-uniapp'
+import { toast, type ShareSheetItemProps } from 'sard-uniapp'
 import { ref } from 'vue'
 
 const itemList = [
   [
     {
-      name: 'Wechat',
+      label: 'Wechat',
       color: '#fff',
       background: '#0bc15f',
       iconFamily: 'demo-icons',
       icon: 'wechat-fill',
     },
     {
-      name: 'Alipay',
+      label: 'Alipay',
       color: '#fff',
       background: '#1677ff',
       iconFamily: 'demo-icons',
       icon: 'alipay-fill',
     },
     {
-      name: 'Twitter',
+      label: 'Twitter',
       color: '#fff',
       background: '#1d9bf0',
       iconFamily: 'demo-icons',
       icon: 'twitter-fill',
     },
     {
-      name: 'Facebook',
+      label: 'Facebook',
       color: '#fff',
       background: '#1877f2',
       iconFamily: 'demo-icons',
@@ -45,49 +45,49 @@ const itemList = [
   ],
   [
     {
-      name: 'Spotify',
+      label: 'Spotify',
       color: '#fff',
       background: '#1ed760',
       iconFamily: 'demo-icons',
       icon: 'spotify-fill',
     },
     {
-      name: 'Skype',
+      label: 'Skype',
       color: '#fff',
       background: '#0b64a4',
       iconFamily: 'demo-icons',
       icon: 'skype-fill',
     },
     {
-      name: 'Youtube',
+      label: 'Youtube',
       color: '#fff',
       background: '#ff0000',
       iconFamily: 'demo-icons',
       icon: 'youtube-fill',
     },
     {
-      name: 'Paypal',
+      label: 'Paypal',
       color: '#fff',
       background: '#0070ba',
       iconFamily: 'demo-icons',
       icon: 'paypal-fill',
     },
     {
-      name: 'Whatsapp',
+      label: 'Whatsapp',
       color: '#fff',
       background: '#128c7e',
       iconFamily: 'demo-icons',
       icon: 'whatsapp-fill',
     },
     {
-      name: 'Telegram',
+      label: 'Telegram',
       color: '#fff',
       background: '#0088cc',
       iconFamily: 'demo-icons',
       icon: 'telegram-fill',
     },
     {
-      name: 'Snapchat',
+      label: 'Snapchat',
       color: '#000',
       background: '#fffc00',
       iconFamily: 'demo-icons',
@@ -98,7 +98,7 @@ const itemList = [
 
 const visible = ref(false)
 
-const onSelect = (item: ShareSheetItem) => {
-  toast(item.name)
+const onSelect = (item: ShareSheetItemProps) => {
+  toast(item.label)
 }
 </script>

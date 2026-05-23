@@ -1,6 +1,7 @@
 import {
   type NotifyEmits,
   type NotifyProps,
+  type NotifySlots,
   defaultNotifyProps,
 } from '../notify/common'
 import { type DefaultProps, defaultConfig } from '../config'
@@ -20,6 +21,8 @@ export const defaultNotifyAgentProps = (): DefaultProps<NotifyAgentProps> => ({
   id: 'notify',
   ...defaultConfig.notifyAgent,
 })
+
+export interface NotifyAgentSlots extends NotifySlots {}
 
 export interface NotifyAgentEmits extends NotifyEmits {}
 

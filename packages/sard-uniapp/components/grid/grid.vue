@@ -11,7 +11,7 @@ import {
   type GridContext,
   type GridProps,
   type GridSlots,
-  gridSymbol,
+  gridContextSymbol,
   defaultGridProps,
 } from './common'
 
@@ -38,7 +38,7 @@ const gutter = computed(() => {
 })
 
 provide<GridContext>(
-  gridSymbol,
+  gridContextSymbol,
   reactive({
     columns: toRef(() => props.columns),
     gap: toRef(() => props.gap),

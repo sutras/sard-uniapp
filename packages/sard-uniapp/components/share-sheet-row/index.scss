@@ -1,0 +1,21 @@
+@use '../style/base' as *;
+
+@include bem(share-sheet-row) {
+  @include b() {
+    @include universal;
+
+    &:not(:first-child) {
+      &::before {
+        @include border-top(var(--sar-share-sheet-border-color));
+      }
+    }
+  }
+
+  @include e(content) {
+    @include universal;
+    flex-direction: row;
+    flex-wrap: nowrap;
+    padding: var(--sar-share-sheet-row-padding-y)
+      var(--sar-share-sheet-row-padding-x);
+  }
+}

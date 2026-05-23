@@ -5,8 +5,8 @@
       <DemoBasic />
     </doc-demo>
 
-    <doc-demo title="Agent组件">
-      <DemoAgent />
+    <doc-demo title="命令式">
+      <DemoImperative />
     </doc-demo>
   </doc-page>
 </template>
@@ -15,7 +15,7 @@
 import { useCurrentPageLock, usePageTopPopup } from 'sard-uniapp'
 import { onBackPress } from '@dcloudio/uni-app'
 import DemoBasic from './demo/Basic.vue'
-import DemoAgent from './demo/Agent.vue'
+import DemoImperative from './demo/Imperative.vue'
 
 const { isLocked } = useCurrentPageLock()
 

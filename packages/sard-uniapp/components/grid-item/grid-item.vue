@@ -37,7 +37,7 @@ import {
   type GridItemSlots,
   type GridItemEmits,
   type GridContext,
-  gridSymbol,
+  gridContextSymbol,
 } from '../grid/common'
 import SarIcon from '../icon/icon.vue'
 import SarBadge from '../badge/badge.vue'
@@ -58,7 +58,7 @@ const emit = defineEmits<GridItemEmits>()
 const bem = createBem('grid')
 
 // main
-const context = inject<GridContext>(gridSymbol) as GridContext
+const context = inject<GridContext>(gridContextSymbol) as GridContext
 
 if (!context) {
   throw new Error('GridItem must be included in Grid.')

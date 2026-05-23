@@ -2,6 +2,7 @@
   <sar-button @click="visible = true">显示分享面板</sar-button>
   <sar-share-sheet
     v-model:visible="visible"
+    show-cancel
     :item-list="itemList"
     @select="onSelect"
   />

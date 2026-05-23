@@ -8,6 +8,7 @@ import { type TransitionHookCallbacks } from '../popup/common'
 import {
   type ToastEmits,
   type ToastProps,
+  type ToastSlots,
   defaultToastProps,
 } from '../toast/common'
 
@@ -20,6 +21,8 @@ export const defaultToastAgentProps = (): DefaultProps<ToastAgentProps> => ({
   id: 'toast',
   ...defaultConfig.toastAgent,
 })
+
+export interface ToastAgentSlots extends ToastSlots {}
 
 export interface ToastAgentEmits extends ToastEmits {}
 

@@ -54,7 +54,18 @@ import { actionSheet } from 'sard-uniapp'
 
 接着便可以使用 `actionSheet` 方法显示动作面板。
 
+如果需要显示多个命令式动作面板，可以给代理组件设置 `id`，在调用 `actionSheet` 方法时传入相同的 `id` 来使用对应的代理组件。
+
 <<< @demo/action-sheet/demo/Imperative.vue
+
+### 插槽 <sup>1.30.3+</sup>
+
+可以使用插槽自定义内容，包括描述、取消按钮等。
+也可以使用默认插槽自定义动作项，此时需要使用 `action-sheet-item` 组件来构建动作项的布局。
+
+可使用 `action-sheet` 或者 `action-sheet-agent` 组件的插槽自定义内容。
+
+<<< @demo/action-sheet/demo/Slot.vue
 
 ## API
 
@@ -65,7 +76,7 @@ import { actionSheet } from 'sard-uniapp'
 | root-class                     | 组件根元素类名                                                       | string                 | -      |
 | root-style                     | 组件根元素样式                                                       | StyleValue             | -      |
 | description                    | 动作面板描述说明                                                     | string                 | -      |
-| item-list                      | 面板项列表                                                           | ActionSheetItem[]      | []     |
+| item-list                      | 面板项列表                                                           | ActionSheetItemProps[] | []     |
 | show-cancel <sup>1.25.6+</sup> | 是否显示取消按钮                                                     | boolean                | false  |
 | cancel                         | 自定义取消按钮文字                                                   | string                 | -      |
 | visible                        | 是否显示动作面板                                                     | boolean                | false  |
@@ -87,7 +98,7 @@ type ActionSheetBeforeClose =
     ) => any | Promise<any>)
   | ((
       type: 'select',
-      item: ActionSheetItem,
+      item: ActionSheetItemProps,
       index: number,
       loading: {
         readonly cancel: boolean
@@ -103,53 +114,81 @@ type ActionSheetBeforeClose =
 
 `loading` 表示当前哪个按钮处于异步关闭状态。
 
-### ActionSheetItem
+### ActionSheetSlots <sup>1.30.3+</sup>
 
-| 属性        | 描述           | 类型    | 默认值 |
-| ----------- | -------------- | ------- | ------ |
-| name        | 动作名称       | string  | -      |
-| description | 动作的描述说明 | string  | -      |
-| color       | 字体颜色       | string  | -      |
-| disabled    | 禁用状态       | boolean | false  |
-| loading     | 加载状态       | boolean | false  |
+| 插槽        | 描述           | 属性 |
+| ----------- | -------------- | ---- |
+| default     | 自定义默认内容 | -    |
+| description | 自定义描述     | -    |
+| cancel      | 自定义取消按钮 | -    |
 
 ### ActionSheetEmits
 
-| 事件                               | 描述                        | 类型                                             |
-| ---------------------------------- | --------------------------- | ------------------------------------------------ |
-| update:visible                     | 动作面板显隐时触发          | `(visible: boolean) => void`                     |
-| close                              | 点击遮罩时触发              | `() => void`                                     |
-| cancel                             | 点击取消按钮时触发          | `() => void`                                     |
-| select                             | 点击动作按钮时触发          | `(item: ActionSheetItem, index: number) => void` |
-| visible-hook <sup>1.22.1+</sup>    | 入场/退场动画状态改变时触发 | `(name: TransitionHookName) => void`             |
-| before-enter <sup>1.22.1+</sup>    | 入场动画开始前触发          | `() => void`                                     |
-| enter <sup>1.22.1+</sup>           | 入场动画开始时触发          | `() => void`                                     |
-| after-enter <sup>1.22.1+</sup>     | 入场动画结束时触发          | `() => void`                                     |
-| enter-cancelled <sup>1.22.1+</sup> | 入场动画取消时触发          | `() => void`                                     |
-| before-leave <sup>1.22.1+</sup>    | 退场动画开始前触发          | `() => void`                                     |
-| leave <sup>1.22.1+</sup>           | 退场动画开始时触发          | `() => void`                                     |
-| after-leave <sup>1.22.1+</sup>     | 退场动画结束时触发          | `() => void`                                     |
-| leave-cancelled <sup>1.22.1+</sup> | 退场动画取消时触发          | `() => void`                                     |
+| 事件                               | 描述                        | 类型                                                  |
+| ---------------------------------- | --------------------------- | ----------------------------------------------------- |
+| update:visible                     | 动作面板显隐时触发          | `(visible: boolean) => void`                          |
+| close                              | 点击遮罩时触发              | `() => void`                                          |
+| cancel                             | 点击取消按钮时触发          | `() => void`                                          |
+| select                             | 点击动作按钮时触发          | `(item: ActionSheetItemProps, index: number) => void` |
+| visible-hook <sup>1.22.1+</sup>    | 入场/退场动画状态改变时触发 | `(name: TransitionHookName) => void`                  |
+| before-enter <sup>1.22.1+</sup>    | 入场动画开始前触发          | `() => void`                                          |
+| enter <sup>1.22.1+</sup>           | 入场动画开始时触发          | `() => void`                                          |
+| after-enter <sup>1.22.1+</sup>     | 入场动画结束时触发          | `() => void`                                          |
+| enter-cancelled <sup>1.22.1+</sup> | 入场动画取消时触发          | `() => void`                                          |
+| before-leave <sup>1.22.1+</sup>    | 退场动画开始前触发          | `() => void`                                          |
+| leave <sup>1.22.1+</sup>           | 退场动画开始时触发          | `() => void`                                          |
+| after-leave <sup>1.22.1+</sup>     | 退场动画结束时触发          | `() => void`                                          |
+| leave-cancelled <sup>1.22.1+</sup> | 退场动画取消时触发          | `() => void`                                          |
+
+### ActionSheetItemProps <sup>1.30.3+</sup>
+
+| 属性                     | 描述                                   | 类型    | 默认值 |
+| ------------------------ | -------------------------------------- | ------- | ------ |
+| name                     | 动作标签，同 `label`，建议使用 `label` | string  | -      |
+| label <sup>1.30.3+</sup> | 动作标签                               | string  | -      |
+| value                    | 动作的值                               | any     | -      |
+| description              | 动作的描述说明                         | string  | -      |
+| color                    | 字体颜色                               | string  | -      |
+| disabled                 | 禁用状态                               | boolean | false  |
+| loading                  | 加载状态                               | boolean | false  |
+
+### ActionSheetItemSlots <sup>1.30.3+</sup>
+
+| 插槽        | 描述           | 属性 |
+| ----------- | -------------- | ---- |
+| default     | 自定义默认内容 | -    |
+| label       | 自定义标签     | -    |
+| description | 自定义描述     | -    |
+
+### ActionSheetItemEmits <sup>1.30.3+</sup>
+
+| 事件  | 描述             | 类型         |
+| ----- | ---------------- | ------------ |
+| click | 点击动作项时触发 | `() => void` |
 
 ### ActionSheetAgentProps / ActionSheetOptions <sup>1.25.6+</sup>
 
 继承 [`ActionSheetProps`](#ActionSheetProps) 并有以下额外属性。
 
-| 属性             | 描述                        | 类型                                             | 默认值        |
-| ---------------- | --------------------------- | ------------------------------------------------ | ------------- |
-| id               | 动作面板组件的 id           | string                                           | 'actionSheet' |
-| onClose          | 点击遮罩时调用              | `() => void`                                     |
-| onCancel         | 点击取消按钮时调用          | `() => void`                                     |
-| onSelect         | 点击动作项时调用            | `(item: ActionSheetItem, index: number) => void` |
-| onVisibleHook    | 入场/退场动画状态改变时调用 | `(name: TransitionHookName) => void`             |
-| onBeforeEnter    | 入场动画开始前调用          | `() => void`                                     |
-| onEnter          | 入场动画开始时调用          | `() => void`                                     |
-| onAfterEnter     | 入场动画结束时调用          | `() => void`                                     |
-| onEnterCancelled | 入场动画取消时调用          | `() => void`                                     |
-| onBeforeLeave    | 退场动画开始前调用          | `() => void`                                     |
-| onLeave          | 退场动画开始时调用          | `() => void`                                     |
-| onAfterLeave     | 退场动画结束时调用          | `() => void`                                     |
-| onLeaveCancelled | 退场动画取消时调用          | `() => void`                                     |
+| 属性             | 描述                        | 类型                                                  | 默认值        |
+| ---------------- | --------------------------- | ----------------------------------------------------- | ------------- |
+| id               | 动作面板组件的 id           | string                                                | 'actionSheet' |
+| onClose          | 点击遮罩时调用              | `() => void`                                          |
+| onCancel         | 点击取消按钮时调用          | `() => void`                                          |
+| onSelect         | 点击动作项时调用            | `(item: ActionSheetItemProps, index: number) => void` |
+| onVisibleHook    | 入场/退场动画状态改变时调用 | `(name: TransitionHookName) => void`                  |
+| onBeforeEnter    | 入场动画开始前调用          | `() => void`                                          |
+| onEnter          | 入场动画开始时调用          | `() => void`                                          |
+| onAfterEnter     | 入场动画结束时调用          | `() => void`                                          |
+| onEnterCancelled | 入场动画取消时调用          | `() => void`                                          |
+| onBeforeLeave    | 退场动画开始前调用          | `() => void`                                          |
+| onLeave          | 退场动画开始时调用          | `() => void`                                          |
+| onAfterLeave     | 退场动画结束时调用          | `() => void`                                          |
+| onLeaveCancelled | 退场动画取消时调用          | `() => void`                                          |
+
+### ActionSheetAgentSlots <sup>1.30.3+</sup>
+
+继承 [`ActionSheetSlots`](#ActionSheetSlots)。
 
 ### ActionSheetAgentEmits <sup>1.25.6+</sup>
 
@@ -157,11 +196,11 @@ type ActionSheetBeforeClose =
 
 ### 命令式方法 <sup>1.25.6+</sup>
 
-| 名称        | 描述                           | 类型                           |
-| ----------- | ------------------------------ | ------------------------------ |
-| actionSheet | 显示动作面板                   | ActionSheetFunction            |
-| hide        | 隐藏指定 `id` 的命令式动作面板 | `(id = 'actionSheet') => void` |
-| hideAll     | 隐藏所有命令式动作面板         | `() => void`                   |
+| 名称                | 描述                           | 类型                           |
+| ------------------- | ------------------------------ | ------------------------------ |
+| actionSheet         | 显示动作面板                   | ActionSheetFunction            |
+| actionSheet.hide    | 隐藏指定 `id` 的命令式动作面板 | `(id = 'actionSheet') => void` |
+| actionSheet.hideAll | 隐藏所有命令式动作面板         | `() => void`                   |
 
 ### ActionSheetFunction <sup>1.25.6+</sup>
 

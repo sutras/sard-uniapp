@@ -1,7 +1,8 @@
 import {
   type ActionSheetProps,
   type ActionSheetEmits,
-  type ActionSheetItem,
+  type ActionSheetItemProps,
+  type ActionSheetSlots,
   defaultActionSheetProps,
 } from '../action-sheet/common'
 import { type DefaultProps, defaultConfig } from '../config'
@@ -18,7 +19,7 @@ export interface ActionSheetAgentProps
   id?: string
   onClose?: () => void
   onCancel?: () => void
-  onSelect?: (item: ActionSheetItem, index: number) => void
+  onSelect?: (item: ActionSheetItemProps, index: number) => void
 }
 
 export const defaultActionSheetAgentProps =
@@ -27,6 +28,8 @@ export const defaultActionSheetAgentProps =
     id: 'actionSheet',
     ...defaultConfig.actionSheetAgent,
   })
+
+export interface ActionSheetAgentSlots extends ActionSheetSlots {}
 
 export interface ActionSheetAgentEmits extends ActionSheetEmits {}
 

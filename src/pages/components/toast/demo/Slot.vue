@@ -6,8 +6,8 @@
 
   <sar-toast-agent id="custom-content">
     <view class="custom-content">
-      <text>完全自定义的内容</text>
-      <text>可以包含多个元素</text>
+      <text style="text-decoration: line-through">完全自定义的内容</text>
+      <text style="font-style: italic">可以包含多个元素</text>
     </view>
   </sar-toast-agent>
 
@@ -41,5 +41,6 @@ const onIconToast = () => {
   align-items: center;
   gap: 20rpx;
   padding: 40rpx 60rpx;
+  color: var(--sar-white);
 }
 </style>

@@ -1,2 +1,6 @@
-export { default } from './share-sheet-item.vue'
-export * from './common'
+export type {
+  ShareSheetItemProps,
+  ShareSheetItem,
+  ShareSheetItemEmits,
+  ShareSheetItemSlots,
+} from './common'

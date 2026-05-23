@@ -119,6 +119,9 @@ export default {
     selectAll: 'Select all',
     clearSelect: 'Clear selection',
   },
+  shareSheet: {
+    cancel: 'Cancel',
+  },
   signature: {
     confirm: 'Ok',
     clear: 'Clear',

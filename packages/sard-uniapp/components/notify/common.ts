@@ -14,6 +14,7 @@ export interface NotifyProps {
   timeout?: number
   duration?: number
   statusBar?: boolean
+  internalDefault?: number
 }
 
 export const defaultNotifyProps = (): DefaultProps<NotifyProps> => ({

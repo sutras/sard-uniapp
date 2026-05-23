@@ -12,6 +12,7 @@
     :timeout="innerProps.timeout"
     :duration="innerProps.duration"
     :status-bar="innerProps.statusBar"
+    :internal-default="$slots.default ? 1 : 0"
     @click="onClick"
     @update:visible="onUpdateVisible"
     @visible-hook="onVisibleHook"
@@ -23,7 +24,9 @@
     @leave="onLeave"
     @after-leave="onAfterLeave"
     @leave-cancelled="onLeaveCancelled"
-  />
+  >
+    <slot></slot>
+  </sar-notify>
 </template>
 
 <script setup lang="ts">
@@ -34,6 +37,7 @@ import {
   type NotifyAgentProps,
   type NotifyImperative,
   type NotifyAgentEmits,
+  type NotifyAgentSlots,
   imperativeName,
   defaultNotifyAgentProps,
 } from './common'
@@ -50,6 +54,8 @@ const props = withDefaults(
   defineProps<NotifyAgentProps>(),
   defaultNotifyAgentProps(),
 )
+
+defineSlots<NotifyAgentSlots>()
 
 const emit = defineEmits<NotifyAgentEmits>()
 

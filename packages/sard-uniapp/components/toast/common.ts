@@ -15,6 +15,8 @@ export interface ToastProps {
   transparent?: boolean
   timeout?: number
   duration?: number
+  internalIcon?: number
+  internalDefault?: number
 }
 
 export const defaultToastProps = (): DefaultProps<ToastProps> => ({
@@ -27,6 +29,11 @@ export const defaultToastProps = (): DefaultProps<ToastProps> => ({
   ...defaultConfig.toast,
 })
 
+export interface ToastSlots {
+  default?(props?: any): any
+  icon?(props?: any): any
+}
+
 export interface ToastEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
 }
@@ -34,9 +41,4 @@ export interface ToastEmits extends TransitionHookEmits {
 export interface ToastExpose {
   reHideLater: () => void
   cancelHide: () => void
-}
-
-export interface ToastSlots {
-  default?(props?: any): any
-  icon?(props?: any): any
 }

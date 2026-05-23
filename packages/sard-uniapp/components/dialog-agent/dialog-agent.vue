@@ -32,7 +32,9 @@
     @leave="onLeave"
     @after-leave="onAfterLeave"
     @leave-cancelled="onLeaveCancelled"
-  />
+  >
+    <slot></slot>
+  </sar-dialog>
 </template>
 
 <script setup lang="ts">
@@ -41,6 +43,7 @@ import SarDialog from '../dialog/dialog.vue'
 import {
   type DialogAgentEmits,
   type DialogAgentProps,
+  type DialogAgentSlots,
   type DialogImperative,
   defaultDialogAgentProps,
   imperativeName,
@@ -58,6 +61,8 @@ const props = withDefaults(
   defineProps<DialogAgentProps>(),
   defaultDialogAgentProps(),
 )
+
+defineSlots<DialogAgentSlots>()
 
 const emit = defineEmits<DialogAgentEmits>()
 

@@ -1,2 +1,6 @@
-export { default } from './action-sheet-item.vue'
-export * from './common'
+export type {
+  ActionSheetItemProps,
+  ActionSheetItem,
+  ActionSheetItemEmits,
+  ActionSheetItemSlots,
+} from './common'

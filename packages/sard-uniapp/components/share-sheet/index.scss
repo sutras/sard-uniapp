@@ -32,24 +32,6 @@
     color: var(--sar-share-sheet-description-color);
   }
 
-  @include e(row) {
-    @include universal;
-
-    &:not(:first-child) {
-      &::before {
-        @include border-top(var(--sar-share-sheet-border-color));
-      }
-    }
-  }
-
-  @include e(row-content) {
-    @include universal;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    padding: var(--sar-share-sheet-row-padding-y)
-      var(--sar-share-sheet-row-padding-x);
-  }
-
   @include e(item) {
     @include universal;
     justify-content: flex-start;

@@ -24,10 +24,6 @@
     <doc-demo title="插槽">
       <DemoSlot />
     </doc-demo>
-
-    <doc-demo title="Agent组件">
-      <DemoAgent />
-    </doc-demo>
   </doc-page>
 </template>
 
@@ -40,7 +36,6 @@ import DemoDescription from './demo/Description.vue'
 import DemoStatus from './demo/Status.vue'
 import DemoImperative from './demo/Imperative.vue'
 import DemoSlot from './demo/Slot.vue'
-import DemoAgent from './demo/Agent.vue'
 
 const { isLocked } = useCurrentPageLock()
 

@@ -68,13 +68,13 @@ const onSelect = () => {
   }
 }
 
-const internalDefault = computed(() =>
-  isNumber(props.internalDefault)
+const internalDefault = computed(() => {
+  return isNumber(props.internalDefault)
     ? props.internalDefault
     : slots.default
       ? 1
-      : 0,
-)
+      : 0
+})
 
 // provide
 if (

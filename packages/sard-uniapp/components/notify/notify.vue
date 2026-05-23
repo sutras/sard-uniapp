@@ -11,7 +11,8 @@
     <view :class="notifyClass" :style="notifyStyle" @click="onClick">
       <sar-status-bar v-if="position === 'top' && statusBar" />
       <view :class="bem.e('content')">
-        <slot>{{ message }}</slot>
+        <slot v-if="hasDefaultSlot"></slot>
+        <template v-else>{{ message }}</template>
       </view>
     </view>
   </sar-popup>
@@ -19,7 +20,7 @@
 
 <script setup lang="ts">
 import { computed, ref, watch, nextTick } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
+import { classNames, stringifyStyle, createBem, isNumber } from '../../utils'
 import { type TransitionHookName, useTimeout } from '../../use'
 import {
   type NotifyExpose,
@@ -41,7 +42,7 @@ defineOptions({
 
 const props = withDefaults(defineProps<NotifyProps>(), defaultNotifyProps())
 
-defineSlots<NotifySlots>()
+const slots = defineSlots<NotifySlots>()
 
 const emit = defineEmits<NotifyEmits>()
 
@@ -54,6 +55,11 @@ const effect = computed(() => {
     bottom: 'slide-bottom',
   }[props.position] as PopupProps['effect']
 })
+
+const hasDefaultSlot = computed(
+  () =>
+    !!(isNumber(props.internalDefault) ? props.internalDefault : slots.default),
+)
 
 const innerVisible = ref(props.visible)
 

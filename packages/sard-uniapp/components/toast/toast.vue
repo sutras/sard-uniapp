@@ -11,16 +11,15 @@
     @visible-hook="onVisibleHook"
   >
     <view :class="toastClass" :style="toastStyle">
-      <template v-if="$slots.default">
-        <slot />
-      </template>
+      <slot v-if="hasDefaultIcon"></slot>
       <template v-else>
         <template v-if="showIcon">
           <view :class="iconClass">
-            <slot name="icon">
+            <slot v-if="hasIconSlot" name="icon"></slot>
+            <template v-else>
               <sar-loading v-if="type === 'loading'" />
-              <sar-icon v-else family="sari" :name="iconName" />
-            </slot>
+              <sar-icon v-else :family="iconFamily" :name="icon" />
+            </template>
           </view>
         </template>
         <view :class="bem.e('title')">{{ title }}</view>
@@ -48,7 +47,7 @@ export const mapIdToast: Record<
 
 <script setup lang="ts">
 import { computed, watch, nextTick } from 'vue'
-import { classNames, stringifyStyle, createBem } from '../../utils'
+import { classNames, stringifyStyle, createBem, isNumber } from '../../utils'
 import SarPopup from '../popup/popup.vue'
 import SarLoading from '../loading/loading.vue'
 import SarIcon from '../icon/icon.vue'
@@ -70,6 +69,19 @@ const emit = defineEmits<ToastEmits>()
 const bem = createBem('toast')
 
 // main
+const hasDefaultIcon = computed(
+  () =>
+    !!(isNumber(props.internalDefault) ? props.internalDefault : slots.default),
+)
+
+const hasIconSlot = computed(
+  () => !!(isNumber(props.internalIcon) ? props.internalIcon : slots.icon),
+)
+
+const showIcon = computed(() => {
+  return !!(props.type !== 'text' || props.icon || hasIconSlot.value)
+})
+
 const { start: hideLater, stop: cancelHide } = useTimeout(
   () => {
     emit('update:visible', false)
@@ -150,11 +162,7 @@ const iconClass = computed(() => {
   )
 })
 
-const showIcon = computed(() => {
-  return props.type !== 'text' || props.icon || !!slots.icon?.()
-})
-
-const iconName = computed(() => {
+const icon = computed(() => {
   return props.icon || props.type
 })
 </script>

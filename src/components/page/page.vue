@@ -11,6 +11,7 @@
     <sar-dialog-agent />
     <sar-notify-agent status-bar />
     <sar-action-sheet-agent />
+    <sar-share-sheet-agent />
     <sar-navbar
       :title="title"
       show-back

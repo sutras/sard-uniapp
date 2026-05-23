@@ -155,19 +155,23 @@ type DialogBeforeClose = (
 | onAfterLeave <sup>1.20.2+</sup>     | 退场动画结束时调用          | `() => void`                         |
 | onLeaveCancelled <sup>1.20.2+</sup> | 退场动画取消时调用          | `() => void`                         |
 
+### DialogAgentSlots <sup>1.30.3+</sup>
+
+继承 [`DialogSlots`](#DialogSlots)。
+
 ### DialogAgentEmits <sup>1.20.2+</sup>
 
 继承 [`DialogEmits`](#DialogEmits)。
 
 ### 命令式方法
 
-| 名称    | 描述                         | 类型                      |
-| ------- | ---------------------------- | ------------------------- |
-| dialog  | 显示对话框                   | DialogFunction            |
-| alert   | 显示警告框                   | DialogSimpleShowFunction  |
-| confirm | 显示确认框                   | DialogSimpleShowFunction  |
-| hide    | 隐藏指定 `id` 的命令式对话框 | `(id = 'dialog') => void` |
-| hideAll | 隐藏所有命令式对话框         | `() => void`              |
+| 名称           | 描述                         | 类型                      |
+| -------------- | ---------------------------- | ------------------------- |
+| dialog         | 显示对话框                   | DialogFunction            |
+| dialog.alert   | 显示警告框                   | DialogSimpleShowFunction  |
+| dialog.confirm | 显示确认框                   | DialogSimpleShowFunction  |
+| dialog.hide    | 隐藏指定 `id` 的命令式对话框 | `(id = 'dialog') => void` |
+| dialog.hideAll | 隐藏所有命令式对话框         | `() => void`              |
 
 ### DialogFunction
 
@@ -193,25 +197,13 @@ interface DialogSimpleShowFunction {
 
 命令式默认值和声明式有所区别。
 
-::: code-group
-
-```ts [ts]
+```ts
 const defaultDialogOptions = {
   headed: false,
   buttonType: 'text',
   showCancel: false,
 }
 ```
-
-```js [js]
-const defaultDialogOptions = {
-  headed: false,
-  buttonType: 'text',
-  showCancel: false,
-}
-```
-
-:::
 
 ## 主题定制
 

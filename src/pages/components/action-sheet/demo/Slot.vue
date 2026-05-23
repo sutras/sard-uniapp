@@ -1,62 +1,41 @@
 <template>
-  <sar-list card>
-    <sar-list-item
-      hover
-      arrow
-      title="自定义描述"
-      @click="onCustomDescription"
-    />
-    <sar-list-item hover arrow title="自定义取消按钮" @click="onCustomCancel" />
-    <sar-list-item hover arrow title="自定义内容" @click="onCustomContent" />
-  </sar-list>
+  <sar-button @click="onCustomDescription">显示</sar-button>
 
-  <sar-action-sheet-agent id="custom-description">
+  <sar-action-sheet-agent id="custom-action-sheet">
     <template #description>
-      <text style="color: #999; font-size: 28rpx">
-        这是通过插槽自定义的描述内容
-      </text>
+      <view class="flex items-center justify-center">
+        <sar-icon name="/static/logo.svg" size="64rpx" />
+        <text class="ml-10">描述内容</text>
+      </view>
     </template>
-    <sar-action-sheet-item name="选项1" />
-    <sar-action-sheet-item name="选项2" color="#ff4d4f" />
-    <sar-action-sheet-item name="选项3" description="这是描述" />
-  </sar-action-sheet-agent>
-
-  <sar-action-sheet-agent id="custom-cancel">
-    <sar-action-sheet-item name="选项1" />
-    <sar-action-sheet-item name="选项2" />
-    <template #cancel>
-      <text style="color: #666">自定义取消按钮</text>
-    </template>
-  </sar-action-sheet-agent>
-
-  <sar-action-sheet-agent id="custom-content">
-    <sar-action-sheet-item name="选项1" />
-    <sar-action-sheet-item name="自定义名称">
-      <template #name>
-        <text style="color: #1890ff">自定义名称</text>
+    <sar-action-sheet-item label="自定义名称">
+      <template #label>
+        <text style="color: var(--sar-primary)">自定义名称</text>
+      </template>
+      <template #description>
+        <text style="color: var(--sar-primary)">自定义描述</text>
       </template>
     </sar-action-sheet-item>
+    <sar-action-sheet-item label="选项2" color="#ff4d4f" />
+    <sar-action-sheet-item label="选项3" description="这是描述" />
+    <template #cancel>
+      <view class="flex items-center justify-center">
+        <text class="mr-10">取消</text>
+        <sar-icon label="trash" color="var(--sar-danger)" />
+      </view>
+    </template>
   </sar-action-sheet-agent>
 </template>
 
 <script setup lang="ts">
-import { actionSheet } from 'sard-uniapp'
+import { actionSheet, toast } from 'sard-uniapp'
 
 const onCustomDescription = () => {
   actionSheet({
-    id: 'custom-description',
-  })
-}
-
-const onCustomCancel = () => {
-  actionSheet({
-    id: 'custom-cancel',
-  })
-}
-
-const onCustomContent = () => {
-  actionSheet({
-    id: 'custom-content',
+    id: 'custom-action-sheet',
+    onSelect(item) {
+      toast(item.label)
+    },
   })
 }
 </script>

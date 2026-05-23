@@ -3,7 +3,7 @@ import { mount } from '@vue/test-utils'
 import { h } from 'vue'
 
 import ShareSheet from '../share-sheet.vue'
-import { type ShareSheetItem } from '../common'
+import { ShareSheetItemProps } from '../../share-sheet-item'
 
 const itemList = [
   {
@@ -147,7 +147,7 @@ describe('ShareSheet', () => {
 
     await wrapper.find('.sar-share-sheet__item:last-child').trigger('click')
     expect(wrapper.emitted()).toHaveProperty('select')
-    expect(wrapper.emitted<[ShareSheetItem]>().select[0][0].name).toBe(
+    expect(wrapper.emitted<[ShareSheetItemProps]>().select[0][0].name).toBe(
       'Facebook',
     )
   })
@@ -160,7 +160,7 @@ describe('ShareSheet', () => {
       }),
     )
 
-    expect(wrapper.findAll('.sar-share-sheet__row').length).toBe(4)
+    expect(wrapper.findAll('.sar-share-sheet-row').length).toBe(4)
   })
 
   test('titleAndDescription', async () => {
