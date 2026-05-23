@@ -1,4 +1,12 @@
 
+## <small>1.30.3 (2026-05-23)</small>
+
+* Code Refactoring: 优化代理组件代码 ([1e2c4ce](https://github.com/sutras/sard-uniapp/commit/1e2c4ce))
+* Bug Fixes: 新增back-press属性,允许自定义用户的返回操作 ([5bf1425](https://github.com/sutras/sard-uniapp/commit/5bf1425))
+* Features: 新增scope属性和getAuthorize事件支持 ([a863c8f](https://github.com/sutras/sard-uniapp/commit/a863c8f))
+* Features: 新增小程序关注生活号和授权相关事件支持 ([5f2329a](https://github.com/sutras/sard-uniapp/commit/5f2329a))
+* Features: 新增弹窗、动作面板、分享面板等组件的插槽与命令式调用能力，优化Toast组件 ([68e87fb](https://github.com/sutras/sard-uniapp/commit/68e87fb))
+
 ## <small>1.30.2 (2026-05-14)</small>
 
 * Bug Fixes: 修复表单项布尔类型属性的覆盖问题 ([903a2c4](https://github.com/sutras/sard-uniapp/commit/903a2c4))
