@@ -77,7 +77,10 @@ export function useCascaderTree(
         stateNode.children = toStateNodes(children, stateNode)
       }
 
-      treeMap.value[key] = stateNode
+      // matchFromTop 为 true 时，只保存第一次遇到的节点（顶层节点）
+      if (!props.matchFromTop || !treeMap.value[key]) {
+        treeMap.value[key] = stateNode
+      }
 
       return stateNode
     })

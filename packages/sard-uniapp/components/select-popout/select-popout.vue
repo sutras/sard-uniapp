@@ -11,6 +11,7 @@
     <template #visible="{ already }">
       <sar-select
         v-if="already"
+        ref="selectRef"
         v-bind="omittedProps"
         :model-value="popoutValue"
         :internal-default="internalDefault"
@@ -36,7 +37,7 @@ import SarPopout from '../popout/popout.vue'
 import SarSelect from '../select/select.vue'
 import { useSelect } from '../select/useSelect'
 import { SelectContext, selectContextSymbol } from '../select/common'
-import { computed, inject } from 'vue'
+import { computed, inject, ref } from 'vue'
 import { isNumber } from '../../utils'
 
 defineOptions({
@@ -84,6 +85,14 @@ if (
   useSelect(props)
 }
 
+const selectRef = ref<InstanceType<typeof SarSelect>>()
+
+const refresh = () => {
+  selectRef.value?.refresh()
+}
+
 // others
-defineExpose<SelectPopoutExpose>({})
+defineExpose<SelectPopoutExpose>({
+  refresh,
+})
 </script>

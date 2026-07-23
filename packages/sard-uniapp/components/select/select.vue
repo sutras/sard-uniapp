@@ -195,7 +195,15 @@ const {
 } = useScrollSide()
 
 // search
-const searchValue = ref('')
+const searchValue = ref(props.filterQuery || '')
+
+// 监听外部传入的 filterQuery
+watch(
+  () => props.filterQuery,
+  (val) => {
+    searchValue.value = val || ''
+  },
+)
 
 watch(searchValue, () => {
   props.filterMethod?.(searchValue.value)
@@ -203,7 +211,13 @@ watch(searchValue, () => {
 })
 
 // remote
-const { status, onLoadMore, onReload, refresh, loadMoreId } = useLoadMore({
+const {
+  status,
+  onLoadMore,
+  onReload,
+  refresh: loadMoreRefresh,
+  loadMoreId,
+} = useLoadMore({
   scrollViewSelector: `#${scrollViewId}`,
   disabled: () => !props.remote || !props.remoteMethod,
   request: async (page, isRefresh) => {
@@ -218,7 +232,17 @@ const { status, onLoadMore, onReload, refresh, loadMoreId } = useLoadMore({
   },
 })
 
-const debouncedRefresh = debounce(refresh, props.threshold)
+const debouncedRefresh = debounce(loadMoreRefresh, props.threshold)
+
+// immediateLoad 为 false 时不立即加载，需要手动调用 refresh
+const refresh = () => {
+  loadMoreRefresh()
+}
+
+// 只有在 remote 模式下才自动触发初始加载
+if (props.remote && props.immediateLoad !== false) {
+  debouncedRefresh()
+}
 
 const isEmpty = computed(() => {
   return (
@@ -309,7 +333,9 @@ const onScroll = (event: any) => {
 
 // others
 
-defineExpose<SelectExpose>({})
+defineExpose<SelectExpose>({
+  refresh,
+})
 
 const selectClass = computed(() => {
   return classNames(bem.b(), props.rootClass)

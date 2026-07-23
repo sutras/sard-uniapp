@@ -24,4 +24,6 @@ export interface CascaderPopoutEmits extends TransitionHookEmits {
   (e: 'confirm'): void
 }
 
-export interface CascaderPopoutExpose {}
+export interface CascaderPopoutExpose {
+  refresh: () => void
+}
