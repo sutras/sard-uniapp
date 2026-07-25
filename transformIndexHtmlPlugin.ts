@@ -13,41 +13,43 @@ export function transformIndexHtmlPlugin() {
     transformIndexHtml(html: any) {
       html = html.replace(/<title>.*?<\/title>/, '')
 
-      return {
-        html,
-        tags: [
-          {
-            tag: 'title',
-            children: 'Sard uniapp | Vue Component',
+      const tags = [
+        {
+          tag: 'title',
+          children: 'Sard uniapp | Vue Component',
+        },
+        {
+          tag: 'meta',
+          attrs: {
+            name: 'description',
+            content: 'Sard uniapp | uniapp UI 组件库',
           },
-          {
-            tag: 'meta',
-            attrs: {
-              name: 'description',
-              content: 'Sard uniapp | uniapp UI 组件库',
-            },
+        },
+        {
+          tag: 'link',
+          attrs: {
+            rel: 'icon',
+            type: 'image/svg+xml',
+            href: config.base + 'static/logo.svg',
           },
-          {
-            tag: 'link',
-            attrs: {
-              rel: 'icon',
-              type: 'image/svg+xml',
-              href: config.base + 'static/logo.svg',
-            },
-          },
+        },
+      ]
 
-          {
-            tag: 'script',
-            children: `var _hmt = _hmt || []
-          ;(function () {
-            var hm = document.createElement('script')
-            hm.src = 'https://hm.baidu.com/hm.js?f83f5174c995e2f5c9520acb67f574b9'
-            var s = document.getElementsByTagName('script')[0]
-            s.parentNode.insertBefore(hm, s)
-          })()`,
-          },
-        ],
+      // 百度统计仅在 build 时注入，避免 dev 模式外网请求阻塞首屏
+      if (config.command === 'build') {
+        tags.push({
+          tag: 'script',
+          children: `var _hmt = _hmt || []
+        ;(function () {
+          var hm = document.createElement('script')
+          hm.src = 'https://hm.baidu.com/hm.js?f83f5174c995e2f5c9520acb67f574b9'
+          var s = document.getElementsByTagName('script')[0]
+          s.parentNode.insertBefore(hm, s)
+        })()`,
+        })
       }
+
+      return { html, tags }
     },
   } as PluginOption
 }

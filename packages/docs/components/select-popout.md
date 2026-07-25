@@ -69,6 +69,8 @@ import SelectPopout from 'sard-uniapp/components/select-popout/select-popout.vue
 
 如果选项数量太多，可以设置 `filterable` 属性显示筛选输入框；并设置 `filter-method` 属性，这个属性是一个回调函数，会在输入框值改变时触发，并接收输入框值作为参数。筛选逻辑需自行实现。
 
+通过 `v-model:filter-query` 可以外部控制筛选输入框的值。
+
 <<< @demo/select-popout/demo/Filterable.vue
 
 ### 远程
