@@ -129,7 +129,6 @@ watch(
 )
 
 const onInput = (value: any) => {
-  lastFocusInput.value = thisInput
   setInnerValue(value)
 }
 
@@ -146,7 +145,6 @@ const thisInput = uniqid()
 
 const onFocus = (event: any) => {
   oldValue = innerValue.value
-  innerFocused.value = true
   emit('focus', event)
 
   lastFocusInput.value = thisInput
@@ -161,10 +159,17 @@ const onBlur = (event: any) => {
   if (oldValue !== innerValue.value) {
     emit('change', innerValue.value)
   }
+  lastFocusInput.value = ''
 }
 
 watch(lastFocusInput, () => {
-  innerFocused.value = lastFocusInput.value === thisInput
+  if (lastFocusInput.value === thisInput) {
+    setTimeout(() => {
+      innerFocused.value = true
+    }, 0)
+  } else {
+    innerFocused.value = false
+  }
 })
 
 // clear
