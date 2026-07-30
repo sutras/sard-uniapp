@@ -132,10 +132,9 @@ const onInput = (value: any) => {
 }
 
 // focus
-// iOS 上原生组件聚焦期间任何 setData 都可能导致同层渲染不稳定从而失焦。
-// 因此 onFocus 中不进行任何 setData，仅延迟到键盘弹起后再设置 innerFocused。
-// 之前方案的真正元凶是 onFocus 中 lastFocusInput.value = thisInput 的同步 setData，
-// 它会触发所有实例的 watcher 造成连锁 setData。当前方案 onFocus 中零 setData。
+// 保留 sar-textarea-base/sar-input-base 包装组件。
+// 关键修复：fieldCommonProps 中的 focus 与 innerFocused 关联，
+// 确保 setData 传播到子组件时 focus 属性为 true，不会因重新设置 focus:false 导致失焦。
 const innerFocused = ref(props.focus || props.focused)
 
 watch([() => props.focus, () => props.focused], () => {
@@ -144,24 +143,13 @@ watch([() => props.focus, () => props.focused], () => {
 
 let oldValue = ''
 
-let focusTimer: ReturnType<typeof setTimeout> | null = null
-
 const onFocus = (event: any) => {
   oldValue = innerValue.value
+  innerFocused.value = true
   emit('focus', event)
-
-  // 延迟设置 innerFocused，等键盘弹起动画结束后再更新聚焦样式
-  focusTimer = setTimeout(() => {
-    innerFocused.value = true
-    focusTimer = null
-  }, 500)
 }
 
 const onBlur = (event: any) => {
-  if (focusTimer) {
-    clearTimeout(focusTimer)
-    focusTimer = null
-  }
   innerFocused.value = false
   emit('blur', event)
   if (props.validateEvent) {
@@ -301,7 +289,10 @@ const fieldCommonProps = computed<InputBaseProps>(() => {
     placeholderClass: props.placeholderClass,
     disabled: isDisabled.value || isReadonly.value,
     maxlength: props.maxlength,
-    focus: props.focus,
+    // 关键修复：将 focus 与 innerFocused 关联。
+    // 当 innerFocused 变化触发 setData 传播到子组件时，
+    // focus 属性与实际聚焦状态一致（true），不会因重新设置 focus:false 导致失焦。
+    focus: props.focus || innerFocused.value,
     cursorSpacing: props.cursorSpacing,
     cursor: props.cursor,
     confirmType: props.confirmType,
