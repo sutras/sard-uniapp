@@ -63,7 +63,7 @@
 
 <script setup lang="ts">
 import { computed, inject, ref, watch } from 'vue'
-import { classNames, stringifyStyle, createBem, uniqid } from '../../utils'
+import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
 import {
@@ -71,7 +71,6 @@ import {
   type InputSlots,
   type InputEmits,
   defaultInputProps,
-  lastFocusInput,
 } from './common'
 import { type CompactContext, compactContextSymbol } from '../compact/common'
 import { popoutInputContextSymbol } from '../popout-input/common'
@@ -137,14 +136,10 @@ const isFocused = computed(() => props.focus || props.focused)
 
 let oldValue = ''
 
-const thisInput = uniqid()
-
 const onFocus = (event: any) => {
   oldValue = innerValue.value
   emit('focus', event)
   emit('update:focused', true)
-
-  lastFocusInput.value = thisInput
 }
 
 const onBlur = (event: any) => {
