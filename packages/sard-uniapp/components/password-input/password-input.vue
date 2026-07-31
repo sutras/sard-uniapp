@@ -12,7 +12,7 @@
         <view v-else :class="bem.e('ciphertext')"></view>
       </template>
       <view
-        v-if="innerFocused && item.index === innerValue.length"
+        v-if="isFocused && item.index === innerValue.length"
         :class="bem.e('cursor')"
       ></view>
     </view>
@@ -92,23 +92,16 @@ const onInput = (event: any) => {
 }
 
 // focus
-const innerFocused = ref(props.focused)
+const isFocused = computed(() => props.focused)
 
-watch(
-  () => props.focused,
-  () => {
-    innerFocused.value = props.focused
-  },
-)
-
-const onFocus = () => {
-  innerFocused.value = true
-  emit('updat:focused', true)
+const onFocus = (event: any) => {
+  emit('focus', event)
+  emit('update:focused', true)
 }
 
-const onBlur = () => {
-  innerFocused.value = false
-  emit('updat:focused', false)
+const onBlur = (event: any) => {
+  emit('blur', event)
+  emit('update:focused', false)
 
   if (props.validateEvent) {
     formItemContext?.onBlur()
@@ -124,7 +117,7 @@ const items = computed(() => {
       return {
         index: i,
         active:
-          innerFocused.value &&
+          isFocused.value &&
           (i === valueLength ||
             (i === valueLength - 1 && i === props.length - 1)),
       }
