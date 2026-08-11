@@ -1,4 +1,13 @@
 
+## <small>1.30.4 (2026-08-11)</small>
+
+* Features: cascader新增initialize方法, select 新增 refresh 方法 ([cc97792](https://github.com/sutras/sard-uniapp/commit/cc97792))
+* Features: 新增组件refresh暴露与级联选择匹配优化 ([b63282a](https://github.com/sutras/sard-uniapp/commit/b63282a))
+* Code Refactoring: 移除全局共享的lastFocusInput状态 ([04f50e9](https://github.com/sutras/sard-uniapp/commit/04f50e9))
+* Bug Fixes: 修复iOS端输入框聚焦后莫名失焦问题 ([b16ba04](https://github.com/sutras/sard-uniapp/commit/b16ba04))
+* Bug Fixes: 修复uniapp输入框聚焦后意外失焦的问题 ([3915a6f](https://github.com/sutras/sard-uniapp/commit/3915a6f))
+* Bug Fixes: 修复顶层匹配模式下全路径选中逻辑 ([10f3164](https://github.com/sutras/sard-uniapp/commit/10f3164))
+
 ## <small>1.30.3 (2026-05-23)</small>
 
 * Code Refactoring: 优化代理组件代码 ([1e2c4ce](https://github.com/sutras/sard-uniapp/commit/1e2c4ce))
