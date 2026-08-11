@@ -48,21 +48,14 @@ export interface CascaderProps {
   multiple?: boolean
   checkStrictly?: boolean
   lazy?: boolean
-  immediateLoad?: boolean
-  matchFromTop?: boolean
   load?: (
     node?: CascaderStateNode,
   ) => Promise<CascaderOption[]> | CascaderOption[]
 }
 
-export interface CascaderExpose {
-  refresh: () => void
-}
-
 export const defaultCascaderProps = (): DefaultProps<CascaderProps> => ({
-  options: () => [],
-  immediateLoad: true,
   ...defaultConfig.cascader,
+  options: () => [],
 })
 
 export interface CascaderSlots {
@@ -85,7 +78,6 @@ export function getSelectedOptionsByValue(
   value: CascaderValue,
   useOptionKeysReturn: UseOptionKeysReturn,
   multiple?: boolean,
-  matchFromTop?: boolean,
 ): CascaderOption[] | CascaderOption[][] | undefined {
   const { getValue, getChildren } = useOptionKeysReturn
 
@@ -94,13 +86,7 @@ export function getSelectedOptionsByValue(
     if (Array.isArray(value)) {
       return value
         .map((item) =>
-          getSelectedOptionsByValue(
-            options,
-            item,
-            useOptionKeysReturn,
-            multiple,
-            matchFromTop,
-          ),
+          getSelectedOptionsByValue(options, item, useOptionKeysReturn),
         )
         .filter((item) =>
           Array.isArray(item) ? item.length !== 0 : !isNullish(item),
@@ -127,11 +113,6 @@ export function getSelectedOptionsByValue(
     // 最后一级
     else {
       for (const option of options) {
-        // matchFromTop 为 true 时，从顶层开始查找，找到第一个匹配的节点就返回
-        if (getValue(option) === value) {
-          return [option]
-        }
-
         // 优先在子结点中查找，找到后再向上回溯路径
         // 这样可以处理存在重复值场景时候更偏向于更深层次的选项
         if (Array.isArray(getChildren(option))) {
@@ -140,11 +121,14 @@ export function getSelectedOptionsByValue(
             value,
             useOptionKeysReturn,
             multiple,
-            matchFromTop,
           )
           if (selectedOptions) {
             return [option, ...selectedOptions]
           }
+        }
+
+        if (getValue(option) === value) {
+          return [option]
         }
       }
     }

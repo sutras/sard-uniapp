@@ -11,7 +11,6 @@
     <template #visible="{ already }">
       <sar-cascader
         v-if="already"
-        ref="cascaderRef"
         v-bind="omittedProps"
         :model-value="popoutValue"
         @select="(option, tabIndex) => $emit('select', option, tabIndex)"
@@ -26,14 +25,12 @@
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue'
 import SarPopout from '../popout/popout.vue'
 import SarCascader from '../cascader/cascader.vue'
 import {
   type CascaderPopoutProps,
   type CascaderPopoutSlots,
   type CascaderPopoutEmits,
-  type CascaderPopoutExpose,
   defaultCascaderPopoutProps,
 } from './common'
 import { isEmptyBinding } from '../../utils'
@@ -67,14 +64,4 @@ const { innerVisible, popoutValue, onChange, onConfirm, onVisibleHook } =
       }
     },
   })
-
-const cascaderRef = ref<InstanceType<typeof SarCascader>>()
-
-const refresh = () => {
-  cascaderRef.value?.refresh()
-}
-
-defineExpose<CascaderPopoutExpose>({
-  refresh,
-})
 </script>

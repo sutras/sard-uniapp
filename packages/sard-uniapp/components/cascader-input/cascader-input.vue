@@ -16,7 +16,6 @@
       <slot name="arrow"></slot>
     </template>
     <sar-cascader-popout
-      ref="cascaderPopoutRef"
       v-bind="omittedProps"
       v-model:visible="innerVisible"
       v-model="innerValue"
@@ -33,7 +32,7 @@
 </template>
 
 <script setup lang="ts">
-import { watch, computed, shallowRef, provide, ref } from 'vue'
+import { watch, computed, shallowRef, provide } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarCascaderPopout from '../cascader-popout/cascader-popout.vue'
 import {
@@ -53,7 +52,6 @@ import {
   type CascaderInputProps,
   type CascaderInputSlots,
   type CascaderInputEmits,
-  type CascaderInputExpose,
   defaultCascaderInputProps,
 } from './common'
 
@@ -118,7 +116,6 @@ function getOutletText(
     value,
     useOptionKeysReturn,
     props.multiple,
-    props.matchFromTop,
   )
 
   if (!selectedOptions || selectedOptions.length === 0) {
@@ -185,14 +182,4 @@ watch(
 const onConfirm = () => {
   emit('confirm')
 }
-
-const cascaderPopoutRef = ref<InstanceType<typeof SarCascaderPopout>>()
-
-const refresh = () => {
-  cascaderPopoutRef.value?.refresh()
-}
-
-defineExpose<CascaderInputExpose>({
-  refresh,
-})
 </script>

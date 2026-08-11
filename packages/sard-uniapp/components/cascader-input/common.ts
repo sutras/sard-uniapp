@@ -10,7 +10,8 @@ import {
 } from '../cascader-popout/common'
 
 export interface CascaderInputProps
-  extends CascaderPopoutProps, Omit<PopoutInputProps, 'modelValue'> {
+  extends CascaderPopoutProps,
+    Omit<PopoutInputProps, 'modelValue'> {
   valueOnClear?: () => any
   maxRows?: number
 }
@@ -25,10 +26,7 @@ export const defaultCascaderInputProps =
   })
 
 export interface CascaderInputSlots
-  extends CascaderPopoutSlots, PopoutInputSlots {}
+  extends CascaderPopoutSlots,
+    PopoutInputSlots {}
 
 export interface CascaderInputEmits extends CascaderPopoutEmits {}
-
-export interface CascaderInputExpose {
-  refresh: () => void
-}

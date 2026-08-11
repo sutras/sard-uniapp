@@ -17,7 +17,6 @@
     </template>
 
     <sar-select-popout
-      ref="selectPopoutRef"
       v-bind="omittedProps"
       v-model:visible="innerVisible"
       v-model="innerValue"
@@ -32,7 +31,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch, ref } from 'vue'
+import { computed, watch } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarSelectPopout from '../select-popout/select-popout.vue'
 import {
@@ -167,14 +166,6 @@ if (slots.default) {
   useSelect(props)
 }
 
-const selectPopoutRef = ref<InstanceType<typeof SarSelectPopout>>()
-
-const refresh = () => {
-  selectPopoutRef.value?.refresh()
-}
-
 // others
-defineExpose<SelectInputExpose>({
-  refresh,
-})
+defineExpose<SelectInputExpose>({})
 </script>

@@ -11,7 +11,8 @@ import {
 } from '../popout-input/common'
 
 export interface SelectInputProps
-  extends SelectPopoutProps, Omit<PopoutInputProps, 'modelValue'> {
+  extends SelectPopoutProps,
+    Omit<PopoutInputProps, 'modelValue'> {
   valueOnClear?: () => any
   maxLabels?: number
   mapLabel?: Record<any, any>
@@ -27,6 +28,4 @@ export interface SelectInputSlots extends SelectPopoutSlots, PopoutInputSlots {}
 
 export interface SelectInputEmits extends SelectPopoutEmits {}
 
-export interface SelectInputExpose {
-  refresh: () => void
-}
+export interface SelectInputExpose {}
