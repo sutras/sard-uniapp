@@ -63,7 +63,7 @@
 
 <script setup lang="ts">
 import { computed, inject, ref, watch } from 'vue'
-import { classNames, stringifyStyle, createBem, uniqid } from '../../utils'
+import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarIcon from '../icon/icon.vue'
 import { useFormContext, useFormItemContext } from '../form/common'
 import {
@@ -71,7 +71,6 @@ import {
   type InputSlots,
   type InputEmits,
   defaultInputProps,
-  lastFocusInput,
 } from './common'
 import { type CompactContext, compactContextSymbol } from '../compact/common'
 import { popoutInputContextSymbol } from '../popout-input/common'
@@ -129,32 +128,24 @@ watch(
 )
 
 const onInput = (value: any) => {
-  lastFocusInput.value = thisInput
   setInnerValue(value)
 }
 
 // focus
-const innerFocused = ref(props.focus || props.focused)
-
-watch([() => props.focus, () => props.focused], () => {
-  innerFocused.value = props.focus || props.focused
-})
+const isFocused = computed(() => props.focus || props.focused)
 
 let oldValue = ''
 
-const thisInput = uniqid()
-
 const onFocus = (event: any) => {
   oldValue = innerValue.value
-  innerFocused.value = true
   emit('focus', event)
-
-  lastFocusInput.value = thisInput
+  emit('update:focused', true)
 }
 
 const onBlur = (event: any) => {
-  innerFocused.value = false
   emit('blur', event)
+  emit('update:focused', false)
+
   if (props.validateEvent) {
     formItemContext?.onBlur()
   }
@@ -162,10 +153,6 @@ const onBlur = (event: any) => {
     emit('change', innerValue.value)
   }
 }
-
-watch(lastFocusInput, () => {
-  innerFocused.value = lastFocusInput.value === thisInput
-})
 
 // clear
 const clearVisible = computed(() => {
@@ -176,7 +163,7 @@ const clearVisible = computed(() => {
     !isReadonly.value
 
   return props.showClearOnlyFocus
-    ? holdupClear.value || (innerFocused.value && visibleBase)
+    ? holdupClear.value || (isFocused.value && visibleBase)
     : visibleBase
 })
 
@@ -253,7 +240,7 @@ const inputClass = computed(() => {
     bem.m('borderless', props.borderless),
     bem.m('disabled', isDisabled.value),
     bem.m('readonly', isReadonly.value),
-    bem.m('focused', innerFocused.value),
+    bem.m('focused', isFocused.value),
     bem.m(`compact-${compactContext?.direction}`, compactContext),
     bem.m('compact-block', compactContext?.block),
     bem.m('in-popout-input', popoutInputContext),

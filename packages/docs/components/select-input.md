@@ -51,6 +51,12 @@ import SelectInput from 'sard-uniapp/components/select-input/select-input.vue'
 
 <<< @demo/select-input/demo/Remote.vue
 
+### 手动刷新与筛选 <sup>1.31+</sup>
+
+通过 `v-model:filter-query` 可以外部控制筛选输入框的值，通过 `immediate-load` 属性可以阻止初始加载，需要通过 `refresh` 方法手动触发。
+
+<<< @demo/select-input/demo/ManualRefresh.vue
+
 ## API
 
 ### SelectInputProps

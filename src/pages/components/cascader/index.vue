@@ -17,6 +17,18 @@
       <DemoLazy />
     </doc-demo>
 
+    <doc-demo title="从顶层匹配">
+      <DemoMatchFromTop />
+    </doc-demo>
+
+    <doc-demo title="从顶层匹配-绑定所有级别">
+      <DemoMatchFromTopAllLevels />
+    </doc-demo>
+
+    <doc-demo title="手动加载">
+      <DemoManualLoad />
+    </doc-demo>
+
     <doc-demo title="自定义面板上方内容">
       <DemoOptionTop />
     </doc-demo>
@@ -54,6 +66,9 @@ import DemoBasic from './demo/Basic.vue'
 import DemoChangeOnSelect from './demo/ChangeOnSelect.vue'
 import DemoAsync from './demo/Async.vue'
 import DemoLazy from './demo/Lazy.vue'
+import DemoMatchFromTop from './demo/MatchFromTop.vue'
+import DemoMatchFromTopAllLevels from './demo/MatchFromTopAllLevels.vue'
+import DemoManualLoad from './demo/ManualLoad.vue'
 import DemoOptionTop from './demo/OptionTop.vue'
 import DemoDisabled from './demo/Disabled.vue'
 import DemoAllLevels from './demo/AllLevels.vue'
