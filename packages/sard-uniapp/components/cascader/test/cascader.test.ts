@@ -19,6 +19,8 @@ describe('Cascader', () => {
       }),
     )
 
+    await sleep(0)
+
     expect(
       wrapper
         .findAll('.sar-cascader__option_selected')
@@ -118,6 +120,8 @@ describe('Cascader', () => {
       }),
     )
 
+    await sleep(0)
+
     await wrapper
       .find(
         '.sar-cascader__pane:first-child .sar-cascader__option:nth-child(1)',
@@ -184,6 +188,8 @@ describe('Cascader', () => {
       ),
     )
 
+    await sleep(0)
+
     expect(wrapper.find('.box').text()).toBe('0')
 
     await wrapper
@@ -228,6 +234,8 @@ describe('Cascader', () => {
       }),
     )
 
+    await sleep(0)
+
     expect(
       wrapper
         .find(
@@ -270,6 +278,8 @@ describe('Cascader', () => {
         modelValue: [440106, 440111],
       }),
     )
+
+    await sleep(0)
 
     // initial
     expect(
@@ -337,6 +347,8 @@ describe('Cascader', () => {
       }),
     )
 
+    await sleep(0)
+
     // initial
 
     expect(
@@ -371,6 +383,8 @@ describe('Cascader', () => {
         modelValue: [440106, 440111],
       }),
     )
+
+    await sleep(0)
 
     // initial
 
