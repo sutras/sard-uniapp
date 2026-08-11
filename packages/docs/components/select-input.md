@@ -69,3 +69,9 @@ import SelectInput from 'sard-uniapp/components/select-input/select-input.vue'
 ### SelectInputEmits
 
 继承 [`SelectPopoutEmits`](./select-popout#SelectPopoutEmits)
+
+### SelectInputExpose
+
+| 属性                       | 描述                   | 类型         |
+| -------------------------- | ---------------------- | ------------ |
+| refresh <sup>1.30.4+</sup> | 用于远程中手动请求数据 | `() => void` |

@@ -8,6 +8,7 @@ import {
   type CascaderPopoutEmits,
   type CascaderPopoutSlots,
 } from '../cascader-popout/common'
+import { type CascaderExpose } from '../cascader/common'
 
 export interface CascaderInputProps
   extends CascaderPopoutProps,
@@ -30,3 +31,5 @@ export interface CascaderInputSlots
     PopoutInputSlots {}
 
 export interface CascaderInputEmits extends CascaderPopoutEmits {}
+
+export interface CascaderInputExpose extends CascaderExpose {}

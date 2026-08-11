@@ -106,6 +106,7 @@ import Cascader from 'sard-uniapp/components/cascader/cascader.vue'
 | check-strictly <sup>1.25.5+</sup> | 是否严格的遵守父子节点不互相关联（用于多选）  | boolean                                                                       | false            |
 | lazy <sup>1.25.5+</sup>           | 是否懒加载子节点，需与 load 方法结合使用      | boolean                                                                       | false            |
 | load <sup>1.25.5+</sup>           | 加载子节点的方法，仅当 lazy 属性为true 时生效 | `(node?: CascaderStateNode) => Promise<CascaderOption[]> \| CascaderOption[]` | -                |
+| initial <sup>1.30.4+</sup>        | 是否初始化级联数据，通常用于懒加载            | boolean                                                                       | true             |
 
 ### CascaderSlots
 
@@ -120,6 +121,12 @@ import Cascader from 'sard-uniapp/components/cascader/cascader.vue'
 | update:model-value       | 全部选项选择完成后触发 | `(value: CascaderValue, selectedOptions: CascaderOption[]) => void` |
 | change <sup>1.9.2+</sup> | 全部选项选择完成后触发 | `(value: CascaderValue, selectedOptions: CascaderOption[]) => void` |
 | select                   | 选中某一项时触发       | `(option: CascaderOption, tabIndex: number) => void`                |
+
+### CascaderExpose
+
+| 事件                          | 描述                           | 类型         |
+| ----------------------------- | ------------------------------ | ------------ |
+| initialize <sup>1.30.4+</sup> | 初始化数据，通常用于远程懒加载 | `() => void` |
 
 ### CascaderValue
 

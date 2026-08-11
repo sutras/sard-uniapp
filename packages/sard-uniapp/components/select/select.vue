@@ -195,11 +195,22 @@ const {
 } = useScrollSide()
 
 // search
-const searchValue = ref('')
+const searchValue = ref(props.filterValue ?? '')
+
+watch(
+  () => props.filterValue,
+  () => {
+    searchValue.value = props.filterValue ?? ''
+  },
+)
 
 watch(searchValue, () => {
   props.filterMethod?.(searchValue.value)
   debouncedRefresh()
+
+  if (searchValue.value !== props.filterValue) {
+    emit('update:filter-value', searchValue.value)
+  }
 })
 
 // remote
@@ -309,7 +320,9 @@ const onScroll = (event: any) => {
 
 // others
 
-defineExpose<SelectExpose>({})
+defineExpose<SelectExpose>({
+  refresh,
+})
 
 const selectClass = computed(() => {
   return classNames(bem.b(), props.rootClass)

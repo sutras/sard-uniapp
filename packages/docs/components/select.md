@@ -31,23 +31,24 @@ import SelectOptionGroup from 'sard-uniapp/components/select-option-group/select
 
 ### SelectProps
 
-| 属性               | 描述                                              | 类型                                                                     | 默认值                                                   |
-| ------------------ | ------------------------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------- |
-| root-class         | 组件根元素类名                                    | string                                                                   | -                                                        |
-| root-style         | 组件根元素样式                                    | StyleValue                                                               | -                                                        |
-| model-value        | 当前绑定的值                                      | any                                                                      | -                                                        |
-| multiple           | 是否允许多选                                      | boolean                                                                  | false                                                    |
-| multiple-limit     | 多选时允许最多选择的个数，为0则不限制             | number                                                                   | 0                                                        |
-| filterable         | 是否允许筛选                                      | boolean                                                                  | false                                                    |
-| filter-placeholder | 筛选输入框的占位文案                              | string                                                                   | -                                                        |
-| filter-method      | 允许筛选时的回调                                  | `(query: string) => void`                                                | -                                                        |
-| remote             | 是否允许远程加载数据                              | boolean                                                                  | false                                                    |
-| remote-method      | 允许远程加载数据时的回调                          | `(query: string, page: number, isRefresh: boolean) => Promise\<boolean>` | -                                                        |
-| threshold          | 触发远程加载回调的阈值，单位ms                    | number                                                                   | 500                                                      |
-| show-toolbar       | 多选时，是否显示工具栏                            | boolean                                                                  | false                                                    |
-| options            | 选项的数据                                        | Record<string, any>[]                                                    | []                                                       |
-| option-keys        | 自定义 `options` 中的字段                         | OptionKeys                                                               | `{label: 'label', value: 'value', children: 'children'}` |
-| value-key          | 作为 value 唯一标识的键名，绑定值为对象类型时必填 | OptionKeys                                                               | `{label: 'label', value: 'value', children: 'children'}` |
+| 属性                            | 描述                                              | 类型                                                                     | 默认值                                                   |
+| ------------------------------- | ------------------------------------------------- | ------------------------------------------------------------------------ | -------------------------------------------------------- |
+| root-class                      | 组件根元素类名                                    | string                                                                   | -                                                        |
+| root-style                      | 组件根元素样式                                    | StyleValue                                                               | -                                                        |
+| model-value                     | 当前绑定的值                                      | any                                                                      | -                                                        |
+| multiple                        | 是否允许多选                                      | boolean                                                                  | false                                                    |
+| multiple-limit                  | 多选时允许最多选择的个数，为0则不限制             | number                                                                   | 0                                                        |
+| filterable                      | 是否允许筛选                                      | boolean                                                                  | false                                                    |
+| filter-placeholder              | 筛选输入框的占位文案                              | string                                                                   | -                                                        |
+| filter-method                   | 允许筛选时的回调                                  | `(query: string) => void`                                                | -                                                        |
+| filter-value <sup>1.30.4+</sup> | 当前筛选输入框的值                                | string                                                                   | -                                                        |
+| remote                          | 是否允许远程加载数据                              | boolean                                                                  | false                                                    |
+| remote-method                   | 允许远程加载数据时的回调                          | `(query: string, page: number, isRefresh: boolean) => Promise\<boolean>` | -                                                        |
+| threshold                       | 触发远程加载回调的阈值，单位ms                    | number                                                                   | 500                                                      |
+| show-toolbar                    | 多选时，是否显示工具栏                            | boolean                                                                  | false                                                    |
+| options                         | 选项的数据                                        | Record<string, any>[]                                                    | []                                                       |
+| option-keys                     | 自定义 `options` 中的字段                         | OptionKeys                                                               | `{label: 'label', value: 'value', children: 'children'}` |
+| value-key                       | 作为 value 唯一标识的键名，绑定值为对象类型时必填 | OptionKeys                                                               | `{label: 'label', value: 'value', children: 'children'}` |
 
 ### OptionKeys
 
@@ -67,10 +68,17 @@ interface OptionKeys {
 
 ### SelectEmits
 
-| 事件               | 描述                     | 类型                   |
-| ------------------ | ------------------------ | ---------------------- |
-| update:model-value | 列表选择组件值改变时触发 | `(value: any) => void` |
-| change             | 列表选择组件值改变时触发 | `(value: any) => void` |
+| 事件                                   | 描述                       | 类型                   |
+| -------------------------------------- | -------------------------- | ---------------------- |
+| update:model-value                     | 列表选择组件值改变时触发   | `(value: any) => void` |
+| change                                 | 列表选择组件值改变时触发   | `(value: any) => void` |
+| update:filter-value <sup>1.30.4+</sup> | 当前筛选输入框值改变时触发 | `(value: any) => void` |
+
+### SelectExpose
+
+| 属性                       | 描述                   | 类型         |
+| -------------------------- | ---------------------- | ------------ |
+| refresh <sup>1.30.4+</sup> | 用于远程中手动请求数据 | `() => void` |
 
 ### SelectOptionGroupProps
 

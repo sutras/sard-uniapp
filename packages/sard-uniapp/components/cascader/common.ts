@@ -48,6 +48,7 @@ export interface CascaderProps {
   multiple?: boolean
   checkStrictly?: boolean
   lazy?: boolean
+  initial?: boolean
   load?: (
     node?: CascaderStateNode,
   ) => Promise<CascaderOption[]> | CascaderOption[]
@@ -55,6 +56,7 @@ export interface CascaderProps {
 
 export const defaultCascaderProps = (): DefaultProps<CascaderProps> => ({
   ...defaultConfig.cascader,
+  initial: true,
   options: () => [],
 })
 
@@ -66,6 +68,10 @@ export interface CascaderEmits {
   (e: 'update:model-value', value: CascaderValue, selectedOptions: any[]): void
   (e: 'change', value: CascaderValue, selectedOptions: any[]): void
   (e: 'select', option: any, tabIndex: number): void
+}
+
+export interface CascaderExpose {
+  initialize: () => void
 }
 
 export interface CascaderPanel {

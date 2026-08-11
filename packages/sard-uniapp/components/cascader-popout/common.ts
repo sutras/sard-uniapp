@@ -1,4 +1,8 @@
-import { type CascaderOption, type CascaderProps } from '../cascader/common'
+import {
+  type CascaderExpose,
+  type CascaderOption,
+  type CascaderProps,
+} from '../cascader/common'
 import { type DefaultProps, defaultConfig } from '../config'
 import { type TransitionHookEmits } from '../popup/common'
 import { type FormPopoutProps } from '../../use/useFormPopout'
@@ -24,4 +28,4 @@ export interface CascaderPopoutEmits extends TransitionHookEmits {
   (e: 'confirm'): void
 }
 
-export interface CascaderPopoutExpose {}
+export interface CascaderPopoutExpose extends CascaderExpose {}

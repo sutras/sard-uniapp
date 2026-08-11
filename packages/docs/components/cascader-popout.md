@@ -67,3 +67,9 @@ import CascaderPopout from 'sard-uniapp/components/cascader-popout/cascader-popo
 | leave <sup>1.22.1+</sup>           | 退场动画开始时触发          | `() => void`                                                           |
 | after-leave <sup>1.22.1+</sup>     | 退场动画结束时触发          | `() => void`                                                           |
 | leave-cancelled <sup>1.22.1+</sup> | 退场动画取消时触发          | `() => void`                                                           |
+
+### CascaderPopoutExpose
+
+| 事件                          | 描述                           | 类型         |
+| ----------------------------- | ------------------------------ | ------------ |
+| initialize <sup>1.30.4+</sup> | 初始化数据，通常用于远程懒加载 | `() => void` |

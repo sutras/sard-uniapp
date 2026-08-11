@@ -12,6 +12,7 @@ export interface SelectProps {
   filterable?: boolean
   filterPlaceholder?: string
   filterMethod?: (query: string) => void
+  filterValue?: string
   remote?: boolean
   remoteMethod?: (
     query: string,
@@ -41,9 +42,12 @@ export interface SelectEmits {
   (e: 'update:model-value', value: any): void
   (e: 'change', value: any): void
   (e: 'select', value: any): void
+  (e: 'update:filter-value', value: any): void
 }
 
-export interface SelectExpose {}
+export interface SelectExpose {
+  refresh: () => void
+}
 
 export interface SelectItem {
   getRect: () => Promise<NodeRect>

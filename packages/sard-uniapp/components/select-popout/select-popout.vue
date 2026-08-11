@@ -12,10 +12,12 @@
       <sar-select
         v-if="already"
         v-bind="omittedProps"
+        ref="selectRef"
         :model-value="popoutValue"
         :internal-default="internalDefault"
         @change="onChange"
         @select="onSelect"
+        @update:filter-value="emit('update:filter-value', $event)"
       >
         <slot></slot>
       </sar-select>
@@ -35,8 +37,12 @@ import { omitFormPopoutProps, useFormPopout } from '../../use'
 import SarPopout from '../popout/popout.vue'
 import SarSelect from '../select/select.vue'
 import { useSelect } from '../select/useSelect'
-import { SelectContext, selectContextSymbol } from '../select/common'
-import { computed, inject } from 'vue'
+import {
+  type SelectContext,
+  selectContextSymbol,
+  type SelectExpose,
+} from '../select/common'
+import { computed, inject, ref } from 'vue'
 import { isNumber } from '../../utils'
 
 defineOptions({
@@ -85,5 +91,11 @@ if (
 }
 
 // others
-defineExpose<SelectPopoutExpose>({})
+const selectRef = ref<SelectExpose>()
+
+defineExpose<SelectPopoutExpose>({
+  refresh: () => {
+    selectRef.value?.refresh()
+  },
+})
 </script>

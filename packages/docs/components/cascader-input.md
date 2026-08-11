@@ -64,3 +64,9 @@ import CascaderInput from 'sard-uniapp/components/cascader-input/cascader-input.
 ### CascaderInputEmits
 
 继承 [`CascaderPopoutEmits`](./cascader-popout#CascaderPopoutEmits)
+
+### CascaderInputExpose
+
+| 事件                          | 描述                           | 类型         |
+| ----------------------------- | ------------------------------ | ------------ |
+| initialize <sup>1.30.4+</sup> | 初始化数据，通常用于远程懒加载 | `() => void` |

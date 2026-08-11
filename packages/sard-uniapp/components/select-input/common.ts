@@ -1,6 +1,7 @@
 import { type DefaultProps, defaultConfig } from '../config'
 import {
   type SelectPopoutEmits,
+  type SelectPopoutExpose,
   type SelectPopoutProps,
   type SelectPopoutSlots,
   defaultSelectPopoutProps,
@@ -28,4 +29,4 @@ export interface SelectInputSlots extends SelectPopoutSlots, PopoutInputSlots {}
 
 export interface SelectInputEmits extends SelectPopoutEmits {}
 
-export interface SelectInputExpose {}
+export interface SelectInputExpose extends SelectPopoutExpose {}

@@ -19,6 +19,7 @@
       v-bind="omittedProps"
       v-model:visible="innerVisible"
       v-model="innerValue"
+      ref="cascaderPopoutRef"
       @change="onChange"
       @visible-hook="onVisibleHook"
       @confirm="onConfirm"
@@ -32,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { watch, computed, shallowRef, provide } from 'vue'
+import { watch, computed, shallowRef, provide, ref } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarCascaderPopout from '../cascader-popout/cascader-popout.vue'
 import {
@@ -53,7 +54,9 @@ import {
   type CascaderInputSlots,
   type CascaderInputEmits,
   defaultCascaderInputProps,
+  CascaderInputExpose,
 } from './common'
+import { type CascaderPopoutExpose } from '../cascader-popout/common'
 
 defineOptions({
   options: {
@@ -182,4 +185,12 @@ watch(
 const onConfirm = () => {
   emit('confirm')
 }
+
+const cascaderPopoutRef = ref<CascaderPopoutExpose>()
+
+defineExpose<CascaderInputExpose>({
+  initialize: () => {
+    cascaderPopoutRef.value?.initialize()
+  },
+})
 </script>

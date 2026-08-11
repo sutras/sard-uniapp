@@ -3,6 +3,7 @@ import {
   defaultSelectProps,
   type SelectSlots,
   type SelectProps,
+  type SelectExpose,
 } from '../select/common'
 import { type TransitionHookEmits } from '../popup/common'
 import { type FormPopoutProps } from '../../use/useFormPopout'
@@ -22,8 +23,9 @@ export interface SelectPopoutSlots extends SelectSlots {}
 export interface SelectPopoutEmits extends TransitionHookEmits {
   (e: 'update:visible', visible: boolean): void
   (e: 'update:model-value', value: any): void
+  (e: 'update:filter-value', value: any): void
   (e: 'change', value: any): void
   (e: 'confirm'): void
 }
 
-export interface SelectPopoutExpose {}
+export interface SelectPopoutExpose extends SelectExpose {}

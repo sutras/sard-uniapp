@@ -9,5 +9,11 @@
     "*.json": "jsonc"
   },
   "typescript.tsdk": "node_modules/typescript/lib",
-  "scss.lint.unknownAtRules": "ignore"
+  "scss.lint.unknownAtRules": "ignore",
+  "i18n-ally.localesPaths": [
+    "packages/sard-uniapp/components/locale",
+    "uni_modules/sard-uniapp/components/locale",
+    "packages/sard-uniapp/components/locale/lang",
+    "uni_modules/sard-uniapp/components/locale/lang"
+  ]
 }

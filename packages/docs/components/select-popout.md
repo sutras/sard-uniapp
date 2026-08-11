@@ -118,3 +118,9 @@ import SelectPopout from 'sard-uniapp/components/select-popout/select-popout.vue
 | leave              | 退场动画开始时触发          | `() => void`                         |
 | after-leave        | 退场动画结束时触发          | `() => void`                         |
 | leave-cancelled    | 退场动画取消时触发          | `() => void`                         |
+
+### SelectPopoutExpose
+
+| 属性                       | 描述                   | 类型         |
+| -------------------------- | ---------------------- | ------------ |
+| refresh <sup>1.30.4+</sup> | 用于远程中手动请求数据 | `() => void` |

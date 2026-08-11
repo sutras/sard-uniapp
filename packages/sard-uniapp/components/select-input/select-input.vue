@@ -20,10 +20,12 @@
       v-bind="omittedProps"
       v-model:visible="innerVisible"
       v-model="innerValue"
+      ref="selectPopoutRef"
       :internal-default="$slots.default ? 1 : 0"
       @change="onChange"
       @visible-hook="onVisibleHook"
       @confirm="onConfirm"
+      @update:filter-value="emit('update:filter-value', $event)"
     >
       <slot></slot>
     </sar-select-popout>
@@ -31,7 +33,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, watch } from 'vue'
+import { computed, ref, watch } from 'vue'
 import SarPopoutInput from '../popout-input/popout-input.vue'
 import SarSelectPopout from '../select-popout/select-popout.vue'
 import {
@@ -49,6 +51,7 @@ import {
 } from '../../use'
 import { isEmptyArray, isEmptyBinding } from '../../utils'
 import { useSelect } from '../select/useSelect'
+import { type SelectPopoutExpose } from '../select-popout/common'
 
 defineOptions({
   options: {
@@ -167,5 +170,10 @@ if (slots.default) {
 }
 
 // others
-defineExpose<SelectInputExpose>({})
+const selectPopoutRef = ref<SelectPopoutExpose>()
+defineExpose<SelectInputExpose>({
+  refresh: () => {
+    selectPopoutRef.value?.refresh()
+  },
+})
 </script>

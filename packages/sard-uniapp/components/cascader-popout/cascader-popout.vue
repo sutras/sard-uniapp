@@ -12,6 +12,7 @@
       <sar-cascader
         v-if="already"
         v-bind="omittedProps"
+        ref="cascaderRef"
         :model-value="popoutValue"
         @select="(option, tabIndex) => $emit('select', option, tabIndex)"
         @change="onChange"
@@ -31,10 +32,13 @@ import {
   type CascaderPopoutProps,
   type CascaderPopoutSlots,
   type CascaderPopoutEmits,
+  type CascaderPopoutExpose,
   defaultCascaderPopoutProps,
 } from './common'
 import { isEmptyBinding } from '../../utils'
 import { omitFormPopoutProps, useFormPopout } from '../../use'
+import { ref } from 'vue'
+import { type CascaderExpose } from '../cascader/common'
 
 defineOptions({
   options: {
@@ -64,4 +68,12 @@ const { innerVisible, popoutValue, onChange, onConfirm, onVisibleHook } =
       }
     },
   })
+
+const cascaderRef = ref<CascaderExpose>()
+
+defineExpose<CascaderPopoutExpose>({
+  initialize: () => {
+    cascaderRef.value?.initialize()
+  },
+})
 </script>

@@ -91,7 +91,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue'
+import { computed, nextTick, ref, watch } from 'vue'
 import { classNames, stringifyStyle, createBem } from '../../utils'
 import SarTabs from '../tabs/tabs.vue'
 import SarIcon from '../icon/icon.vue'
@@ -102,6 +102,7 @@ import {
   type CascaderSlots,
   type CascaderEmits,
   type CascaderStateNode,
+  type CascaderExpose,
   defaultCascaderProps,
 } from './common'
 import { useCascaderTree } from './useCascaderTree'
@@ -152,7 +153,15 @@ const {
   useOptionKeysReturn,
 })
 
-initialize()
+if (props.initial) {
+  nextTick(() => {
+    initialize()
+  })
+}
+
+defineExpose<CascaderExpose>({
+  initialize,
+})
 
 const { renderedPane, panels, currentTab, tabList } = useCascaderTabs(props, {
   treeData,
