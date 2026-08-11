@@ -36,12 +36,6 @@ import CascaderInput from 'sard-uniapp/components/cascader-input/cascader-input.
 
 <<< @demo/cascader-input/demo/Lazy.vue
 
-### 手动加载 <sup>1.31+</sup>
-
-设置 `immediate-load` 属性为 `false` 可以阻止组件初始化时自动加载数据，需要通过 `refresh` 方法手动触发加载。
-
-<<< @demo/cascader-input/demo/ManualLoad.vue
-
 ## API
 
 ### CascaderInputProps

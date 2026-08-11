@@ -2,7 +2,6 @@
   <sar-select-popout
     v-model="value"
     v-model:visible="visible"
-    v-model:filter-query="filterQuery"
     title="请选择"
     filterable
     filter-placeholder="请输入过滤关键词"
@@ -30,18 +29,6 @@
       @click="value = 440000"
     />
     <sar-list-item title="清空" arrow hover @click="value = undefined" />
-    <sar-list-item
-      title="设置筛选关键词为：广东"
-      arrow
-      hover
-      @click="filterQuery = '广东'"
-    />
-    <sar-list-item
-      title="清空筛选关键词"
-      arrow
-      hover
-      @click="filterQuery = ''"
-    />
   </sar-list>
 </template>
 
@@ -54,7 +41,6 @@ const filteredData = ref(regionData)
 
 const visible = ref(false)
 const value = ref<number>()
-const filterQuery = ref('')
 
 const filterMethod = (query: string) => {
   filteredData.value = query

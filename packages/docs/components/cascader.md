@@ -42,20 +42,6 @@ import Cascader from 'sard-uniapp/components/cascader/cascader.vue'
 
 <<< @demo/cascader/demo/Lazy.vue
 
-### 从顶层匹配 <sup>1.31+</sup>
-
-当每一级都有相同值（如 `-1` 表示"其他"）时，设置 `match-from-top` 属性可以从顶层开始匹配第一个节点。
-
-<<< @demo/cascader/demo/MatchFromTop.vue
-
-### 手动加载 <sup>1.31+</sup>
-
-设置 `immediate-load` 属性为 `false` 可以阻止组件初始化时自动加载数据，需要通过 `refresh` 方法手动触发加载。
-
-配合 `all-levels` 属性，可以绑定全路径数组值。
-
-<<< @demo/cascader/demo/ManualLoad.vue
-
 ### 自定义面板上方内容
 
 使用 `top` 插槽可以在面板顶部展示当前面板的一些信息。
@@ -104,24 +90,22 @@ import Cascader from 'sard-uniapp/components/cascader/cascader.vue'
 
 ### CascaderProps
 
-| 属性                              | 描述                                            | 类型                                                                          | 默认值           |
-| --------------------------------- | ----------------------------------------------- | ----------------------------------------------------------------------------- | ---------------- |
-| root-class                        | 组件根元素类名                                  | string                                                                        | -                |
-| root-style                        | 组件根元素样式                                  | StyleValue                                                                    | -                |
-| model-value (v-model)             | 选中项的值                                      | CascaderValue                                                                 | -                |
-| options                           | 可选项数据源                                    | CascaderOption[]                                                              | []               |
-| field-keys                        | 自定义 `options` 中的字段                       | OptionKeys                                                                    | defaultOptonKeys |
-| option-keys <sup>1.27+</sup>      | 自定义 `options` 中的字段，同 `field-keys`      | OptionKeys                                                                    | defaultOptonKeys |
-| hint-text                         | 未选中时的提示文案                              | string                                                                        | '请选择'         |
-| label-render                      | 自定义可选项渲染                                | `(option: CascaderOption) => string`                                          | -                |
-| change-on-select <sup>1.14+</sup> | 点击每级选项都会触发变化                        | boolean                                                                       | false            |
-| all-levels <sup>1.23+</sup>       | 是否绑定所有级别的值，而不单单是最后一级        | boolean                                                                       | false            |
-| multiple <sup>1.25.5+</sup>       | 是否多选                                        | boolean                                                                       | false            |
-| check-strictly <sup>1.25.5+</sup> | 是否严格的遵守父子节点不互相关联（用于多选）    | boolean                                                                       | false            |
-| lazy <sup>1.25.5+</sup>           | 是否懒加载子节点，需与 load 方法结合使用        | boolean                                                                       | false            |
-| load <sup>1.25.5+</sup>           | 加载子节点的方法，仅当 lazy 属性为true 时生效   | `(node?: CascaderStateNode) => Promise<CascaderOption[]> \| CascaderOption[]` | -                |
-| match-from-top <sup>1.31+</sup>   | 是否从顶层开始匹配节点，用于处理重复值场景      | boolean                                                                       | false            |
-| immediate-load <sup>1.31+</sup>   | 是否立即加载数据，设为 false 需手动调用 refresh | boolean                                                                       | true             |
+| 属性                              | 描述                                          | 类型                                                                          | 默认值           |
+| --------------------------------- | --------------------------------------------- | ----------------------------------------------------------------------------- | ---------------- |
+| root-class                        | 组件根元素类名                                | string                                                                        | -                |
+| root-style                        | 组件根元素样式                                | StyleValue                                                                    | -                |
+| model-value (v-model)             | 选中项的值                                    | CascaderValue                                                                 | -                |
+| options                           | 可选项数据源                                  | CascaderOption[]                                                              | []               |
+| field-keys                        | 自定义 `options` 中的字段                     | OptionKeys                                                                    | defaultOptonKeys |
+| option-keys <sup>1.27+</sup>      | 自定义 `options` 中的字段，同 `field-keys`    | OptionKeys                                                                    | defaultOptonKeys |
+| hint-text                         | 未选中时的提示文案                            | string                                                                        | '请选择'         |
+| label-render                      | 自定义可选项渲染                              | `(option: CascaderOption) => string`                                          | -                |
+| change-on-select <sup>1.14+</sup> | 点击每级选项都会触发变化                      | boolean                                                                       | false            |
+| all-levels <sup>1.23+</sup>       | 是否绑定所有级别的值，而不单单是最后一级      | boolean                                                                       | false            |
+| multiple <sup>1.25.5+</sup>       | 是否多选                                      | boolean                                                                       | false            |
+| check-strictly <sup>1.25.5+</sup> | 是否严格的遵守父子节点不互相关联（用于多选）  | boolean                                                                       | false            |
+| lazy <sup>1.25.5+</sup>           | 是否懒加载子节点，需与 load 方法结合使用      | boolean                                                                       | false            |
+| load <sup>1.25.5+</sup>           | 加载子节点的方法，仅当 lazy 属性为true 时生效 | `(node?: CascaderStateNode) => Promise<CascaderOption[]> \| CascaderOption[]` | -                |
 
 ### CascaderSlots
 

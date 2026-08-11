@@ -1,4 +1,4 @@
-import { type StyleValue } from 'vue'
+import { shallowRef, type StyleValue } from 'vue'
 import { type DefaultProps, defaultConfig } from '../config'
 import {
   InputNativeEmits,
@@ -8,7 +8,8 @@ import {
 } from '../input-base/common'
 
 export interface InputProps
-  extends Omit<InputNativeProps, 'type'>, TextareaNativeProps {
+  extends Omit<InputNativeProps, 'type'>,
+    TextareaNativeProps {
   // input
   type?: InputNativeProps['type'] | 'password' | 'textarea'
 
@@ -62,5 +63,6 @@ export interface InputEmits extends InputNativeEmits, TextareaNativeEmits {
   (e: 'change', value: string): void
   (e: 'clear'): void
   (e: 'click', event: any): void
-  (e: 'update:focused', focused: boolean): void
 }
+
+export const lastFocusInput = shallowRef<string>('')

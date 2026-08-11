@@ -16,10 +16,6 @@
     <doc-demo title="远程">
       <DemoRemote />
     </doc-demo>
-
-    <doc-demo title="手动刷新与筛选">
-      <DemoManualRefresh />
-    </doc-demo>
   </doc-page>
 </template>
 
@@ -29,7 +25,6 @@ import DemoBasic from './demo/Basic.vue'
 import DemoCustom from './demo/Custom.vue'
 import DemoMultiple from './demo/Multiple.vue'
 import DemoRemote from './demo/Remote.vue'
-import DemoManualRefresh from './demo/ManualRefresh.vue'
 
 const { isLocked } = useCurrentPageLock()
 </script>

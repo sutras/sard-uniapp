@@ -12,10 +12,6 @@
     <doc-demo title="懒加载">
       <DemoLazy />
     </doc-demo>
-
-    <doc-demo title="手动加载">
-      <DemoManualLoad />
-    </doc-demo>
   </doc-page>
 </template>
 
@@ -25,7 +21,6 @@ import { onBackPress } from '@dcloudio/uni-app'
 import DemoBasic from './demo/Basic.vue'
 import DemoMultiple from './demo/Multiple.vue'
 import DemoLazy from './demo/Lazy.vue'
-import DemoManualLoad from './demo/ManualLoad.vue'
 
 const { isLocked } = useCurrentPageLock()
 

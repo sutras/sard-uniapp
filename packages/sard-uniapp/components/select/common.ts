@@ -12,9 +12,7 @@ export interface SelectProps {
   filterable?: boolean
   filterPlaceholder?: string
   filterMethod?: (query: string) => void
-  filterQuery?: string
   remote?: boolean
-  immediateLoad?: boolean
   remoteMethod?: (
     query: string,
     page: number,
@@ -28,16 +26,11 @@ export interface SelectProps {
   internalDefault?: number
 }
 
-export interface SelectExpose {
-  refresh: () => void
-}
-
 export const defaultSelectProps = (): DefaultProps<SelectProps> => ({
   multipleLimit: 0,
   threshold: 500,
-  immediateLoad: true,
-  options: () => [],
   ...defaultConfig.select,
+  options: () => [],
 })
 
 export interface SelectSlots {

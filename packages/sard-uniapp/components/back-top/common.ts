@@ -12,8 +12,8 @@ export interface BackTopProps {
 
 export const defaultBackTopProps = (): DefaultProps<BackTopProps> => ({
   visibleHeight: 200,
-  scrollTop: 0,
   ...defaultConfig.backTop,
+  scrollTop: 0,
 })
 
 export interface BackTopSlots {

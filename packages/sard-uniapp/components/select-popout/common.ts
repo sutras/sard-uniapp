@@ -26,6 +26,4 @@ export interface SelectPopoutEmits extends TransitionHookEmits {
   (e: 'confirm'): void
 }
 
-export interface SelectPopoutExpose {
-  refresh: () => void
-}
+export interface SelectPopoutExpose {}

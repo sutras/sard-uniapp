@@ -152,14 +152,7 @@ const {
   useOptionKeysReturn,
 })
 
-// immediateLoad 为 false 时不立即加载，需要手动调用 refresh
-if (props.immediateLoad !== false) {
-  initialize()
-}
-
-const refresh = () => {
-  initialize()
-}
+initialize()
 
 const { renderedPane, panels, currentTab, tabList } = useCascaderTabs(props, {
   treeData,
@@ -306,12 +299,6 @@ watch(
 )
 
 // others
-import { type CascaderExpose } from './common'
-
-defineExpose<CascaderExpose>({
-  refresh,
-})
-
 const cascaderClass = computed(() => {
   return classNames(bem.b(), props.rootClass)
 })

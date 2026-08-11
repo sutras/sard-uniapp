@@ -77,10 +77,7 @@ export function useCascaderTree(
         stateNode.children = toStateNodes(children, stateNode)
       }
 
-      // matchFromTop 为 true 时，只保存第一次遇到的节点（顶层节点）
-      if (!props.matchFromTop || !treeMap.value[key]) {
-        treeMap.value[key] = stateNode
-      }
+      treeMap.value[key] = stateNode
 
       return stateNode
     })
@@ -198,7 +195,7 @@ export function useCascaderTree(
         if (isString(value) || isNumber(value)) {
           const node = treeMap.value[value]
           if (node) {
-            node.selected = true
+            setAncestorSelected(node)
           }
         }
       }
@@ -206,26 +203,7 @@ export function useCascaderTree(
       // 全路径
       if (props.allLevels) {
         if (Array.isArray(value)) {
-          // 同时设置了 matchFromTop 和 allLevels 时，按层级顺序查找
-          if (props.matchFromTop) {
-            let currentNodes = treeData.value
-            for (const item of value) {
-              if (isString(item) || isNumber(item)) {
-                const node = currentNodes.find(
-                  (n) => getValue(n.option) === item,
-                )
-                if (node) {
-                  node.selected = true
-                  currentNodes = node.children || []
-                } else {
-                  break
-                }
-              }
-            }
-          } else {
-            // 遍历数组中的每个值，依次设置每一层的选中状态
-            value.forEach(maySetSelected)
-          }
+          maySetSelected(value[value.length - 1])
         }
       }
 
