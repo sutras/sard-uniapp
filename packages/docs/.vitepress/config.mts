@@ -308,6 +308,10 @@ export default defineConfig({
             text: 'Cosey Admin',
             link: 'https://docs.cosey.wzt.zone/',
           },
+          {
+            text: 'Sard H5',
+            link: 'https://sard.wzt.zone/',
+          },
         ],
       },
     ],

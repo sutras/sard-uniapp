@@ -14,8 +14,8 @@
 </p>
 
 <p align="center">
-  国内：📖 <a href="http://sard.wzt.zone/">文档</a>&nbsp;&nbsp;&nbsp;&nbsp;
-  🧑🏻‍🏫 <a href="http://sard.wzt.zone/mobile/">案例演示</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  国内：📖 <a href="http://sard-uniapp.wzt.zone/">文档</a>&nbsp;&nbsp;&nbsp;&nbsp;
+  🧑🏻‍🏫 <a href="http://sard-uniapp.wzt.zone/mobile/">案例演示</a>&nbsp;&nbsp;&nbsp;&nbsp;
 </p>
 
 ---

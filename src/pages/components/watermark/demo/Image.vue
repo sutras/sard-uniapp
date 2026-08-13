@@ -10,6 +10,6 @@ import { ref } from 'vue'
 const image = ref('/static/logo-name.png')
 
 // #ifndef H5
-image.value = 'https://sard.wzt.zone/mobile/static/logo-name.png'
+image.value = 'https://sard-uniapp.wzt.zone/mobile/static/logo-name.png'
 // #endif
 </script>

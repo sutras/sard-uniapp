@@ -1,5 +1,5 @@
 <template>
-  <sar-qrcode text="https://sard.wzt.zone/mobile/">
+  <sar-qrcode text="https://sard-uniapp.wzt.zone/mobile/">
     <view class="icon">
       <sar-icon name="/static/logo.svg" size="64rpx" />
     </view>
