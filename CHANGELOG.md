@@ -1,4 +1,8 @@
 
+## <small>1.30.5 (2026-09-01)</small>
+
+* Bug Fixes: 修复cascader-input和cascader-popout初始不渲染问题 ([0672d5d](https://github.com/sutras/sard-uniapp/commit/0672d5d))
+
 ## <small>1.30.4 (2026-08-11)</small>
 
 * Features: cascader新增initialize方法, select 新增 refresh 方法 ([cc97792](https://github.com/sutras/sard-uniapp/commit/cc97792))
