@@ -21,6 +21,7 @@ export const defaultCascaderInputProps =
   (): DefaultProps<CascaderInputProps> => ({
     showConfirm: true,
     validateEvent: true,
+    initial: true,
     ...defaultConfig.cascaderPopout,
     maxRows: 3,
     ...defaultConfig.cascaderInput,

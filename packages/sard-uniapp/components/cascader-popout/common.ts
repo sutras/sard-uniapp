@@ -13,6 +13,7 @@ export const defaultCascaderPopoutProps =
   (): DefaultProps<CascaderPopoutProps> => ({
     showConfirm: true,
     validateEvent: true,
+    initial: true,
     ...defaultConfig.cascaderPopout,
   })
 
