@@ -1,4 +1,8 @@
 
+## <small>1.30.6 (2026-09-11)</small>
+
+* Features: *-popout类组件添加immediate-render属性 ([88debef](https://github.com/sutras/sard-uniapp/commit/88debef))
+
 ## <small>1.30.5 (2026-09-01)</small>
 
 * Bug Fixes: 修复cascader-input和cascader-popout初始不渲染问题 ([0672d5d](https://github.com/sutras/sard-uniapp/commit/0672d5d))
