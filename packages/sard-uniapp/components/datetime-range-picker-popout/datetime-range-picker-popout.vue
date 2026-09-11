@@ -5,6 +5,7 @@
     :title="title"
     :root-class="popoutClass"
     :root-style="popoutStyle"
+    :immediate-render="immediateRender"
     @confirm="onConfirm"
     @enter="onEnter"
     @visible-hook="onVisibleHook"

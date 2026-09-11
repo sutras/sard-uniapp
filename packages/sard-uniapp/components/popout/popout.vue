@@ -191,7 +191,7 @@ watch(
   },
 )
 
-const already = ref(props.visible)
+const already = ref(props.visible || props.immediateRender)
 
 watch(innerVisible, () => {
   if (!already.value && innerVisible.value) {

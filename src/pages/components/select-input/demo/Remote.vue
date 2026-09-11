@@ -15,6 +15,7 @@
           :remote-method="remoteMethod"
           :options="listData"
           :option-keys="{ label: 'name', value: 'code' }"
+          immediate-render
           :map-label="mapLabel"
           @change="onChange"
         />

@@ -21,6 +21,7 @@ export interface FormPopoutProps {
   validateEvent?: boolean
   showConfirm?: boolean
   showCancel?: boolean
+  immediateRender?: boolean
 }
 
 export function omitFormPopoutProps(props: {} & FormPopoutProps) {
@@ -33,6 +34,7 @@ export function omitFormPopoutProps(props: {} & FormPopoutProps) {
       'resettable',
       'validateEvent',
       'showConfirm',
+      'immediateRender',
     ]),
   )
 }

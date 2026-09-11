@@ -51,6 +51,7 @@ import RadioPopout from 'sard-uniapp/components/radio-popout/radio-popout.vue'
 | filter-placeholder <sup>1.20+</sup> | 搜索输入框占位符内容             | string            | -      |
 | resettable <sup>1.23.3+</sup>       | 关闭弹出框后，是否可复位弹出框值 | boolean           | false  |
 | icon-position <sup>1.24.1+</sup>    | 可定义单选按钮的位置             | 'left' \| 'right' | 'left' |
+| immediate-render <sup>1.30.6+</sup> | 是否立刻渲染弹窗中的内容         | boolean           | false  |
 
 ### RadioPopoutEmits
 

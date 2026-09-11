@@ -47,15 +47,16 @@ import KeyboardPopout from 'sard-uniapp/components/keyboard-popout/keyboard-popo
 
 继承 [`KeyboardProps`](./keyboard#KeyboardProps) 并有以下额外属性：
 
-| 属性              | 描述             | 类型       | 默认值 |
-| ----------------- | ---------------- | ---------- | ------ |
-| visible (v-model) | 是否显示弹出框   | boolean    | -      |
-| title             | 弹出框标题       | string     | -      |
-| popout-class      | 弹出框根元素类名 | string     | -      |
-| popout-style      | 弹出框根元素样式 | StyleValue | -      |
-| transparent       | 遮罩是否透明     | boolean    | false  |
-| show-cancel       | 是否显示取消按钮 | boolean    | true   |
-| show-confirm      | 是否显示确定按钮 | boolean    | true   |
+| 属性                                | 描述                     | 类型       | 默认值 |
+| ----------------------------------- | ------------------------ | ---------- | ------ |
+| visible (v-model)                   | 是否显示弹出框           | boolean    | -      |
+| title                               | 弹出框标题               | string     | -      |
+| popout-class                        | 弹出框根元素类名         | string     | -      |
+| popout-style                        | 弹出框根元素样式         | StyleValue | -      |
+| transparent                         | 遮罩是否透明             | boolean    | false  |
+| show-cancel                         | 是否显示取消按钮         | boolean    | true   |
+| show-confirm                        | 是否显示确定按钮         | boolean    | true   |
+| immediate-render <sup>1.30.6+</sup> | 是否立刻渲染弹窗中的内容 | boolean    | false  |
 
 ### KeyboardPopoutSlots
 
