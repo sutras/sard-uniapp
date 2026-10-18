@@ -12,6 +12,7 @@ pnpm-lock.yaml
 .DS_Store
 dist
 *.local
+.env.local
 
 node_modules/
 dist/

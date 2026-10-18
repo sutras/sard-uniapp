@@ -275,7 +275,7 @@ export default defineConfig({
     [
       'script',
       {},
-      "var _hmt = _hmt || [];(function () { var hm = document.createElement('script'); hm.src = 'https://hm.baidu.com/hm.js?f83f5174c995e2f5c9520acb67f574b9'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(hm, s); })()",
+      "var _hmt = _hmt || [];(function () { var hm = document.createElement('script'); hm.src = 'https://hm.baidu.com/hm.js?3e9513264cae07e2393c0ab6e7e6670a'; var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(hm, s); })()",
     ],
     [
       'link',

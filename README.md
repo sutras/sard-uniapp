@@ -145,8 +145,7 @@ npm run release
 10. 发布到 npm `npm run release`
 11. 使用 HBuilderX 发布到 uniapp 插件市场
 12. 推送代码和标签 `npm run push`
-13. 打包文档 `npm run build:site`
-14. 部署文档 `npm run deploy`
+13. 部署文档 `npm run deploy`
 
 ## 新增组件流程
 
